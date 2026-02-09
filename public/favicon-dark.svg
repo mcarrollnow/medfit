@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="419.47" height="419.47" viewBox="0 0 419.47 419.47">
+  <g id="Layer_1-2">
+    <circle cx="209.73" cy="209.73" r="207.23" transform="translate(-86.87 209.73) rotate(-45)" style="fill:none; stroke:#fff; stroke-miterlimit:10; stroke-width:5px;"/>
+    <path d="M131.82,132.78h-42.34l21.17,7.06v169.34h-42.34V118.66l-7.06-7.06h155.23c5.83,0,10.82,1.39,14.96,4.16,4.14,2.78,6.21,6.09,6.21,9.95v183.45h-42.34v-176.4h-42.33l21.17,7.06v169.34h-42.34v-176.4Z" style="fill:#fff; stroke:#fff; stroke-miterlimit:10;"/>
+    <path d="M315.28,210.39l-42.33,14.11h21.17v84.67h-42.33V118.66l-7.06-7.06h49.39v84.67l42.34-14.11h-21.17v-70.56h42.33v197.57h-42.33v-98.78Z" style="fill:#fff;"/>
+  </g>
+</svg>

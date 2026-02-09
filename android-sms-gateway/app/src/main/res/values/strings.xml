@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Gateway</string>
+    
+    <!-- Service Notification -->
+    <string name="service_channel_id">sms_gateway_service</string>
+    <string name="service_channel_name">SMS Gateway Service</string>
+    <string name="service_notification_title">SMS Gateway Active</string>
+    <string name="service_notification_text">Listening for SMS messages</string>
+    
+    <!-- Main Screen -->
+    <string name="welcome_title">SMS Gateway</string>
+    <string name="service_status">Service Status:</string>
+    <string name="status_running">Running ✓</string>
+    <string name="status_stopped">Stopped</string>
+    <string name="btn_start_service">Start Gateway</string>
+    <string name="btn_stop_service">Stop Gateway</string>
+    <string name="btn_request_permissions">Grant Permissions</string>
+    <string name="btn_battery_optimization">Disable Battery Optimization</string>
+    
+    <!-- Stats -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_sent">Messages Sent:</string>
+    <string name="stats_received">Messages Received:</string>
+    <string name="stats_fcm_token">FCM Token:</string>
+    
+    <!-- Permissions -->
+    <string name="permission_rationale">SMS Gateway needs SMS permissions to forward messages and send outgoing SMS.</string>
+    <string name="permission_denied">Permissions denied. App will not work properly.</string>
+    
+    <!-- Errors -->
+    <string name="error_send_failed">Failed to send SMS</string>
+    <string name="error_webhook_failed">Failed to forward to webhook</string>
+    <string name="error_no_internet">No internet connection</string>
+</resources>

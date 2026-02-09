@@ -1,0 +1,204 @@
+"use client"
+
+import { useCartStore } from "@/lib/cart-store"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { CheckoutForm } from "@/components/checkout-form"
+import { OrderSummary } from "@/components/order-summary"
+import { CryptoSetupGuide } from "@/components/crypto-setup-guide"
+import { FirstTimeDialog } from "@/components/first-time-dialog"
+import GlobalNav from "@/components/global-nav"
+import { ShoppingBag, ArrowLeft, HelpCircle, Loader2 } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { orderService } from "@/lib/order-service"
+import { isAuthenticated } from "@/lib/auth-utils"
+import { supabase } from "@/lib/supabase"
+
+export default function CheckoutPage() {
+  const { items, fetchCart, getTotal, getItemCount } = useCartStore()
+  const router = useRouter()
+  const itemCount = getItemCount()
+
+  const [showFirstTimeDialog, setShowFirstTimeDialog] = useState(true)
+  const [showSetupGuide, setShowSetupGuide] = useState(false)
+  const [showCheckout, setShowCheckout] = useState(true)
+  const [customerType, setCustomerType] = useState<string | null>(null)
+  const [canPayInstantly, setCanPayInstantly] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function init() {
+      // Check for session tokens in URL (passed from main app)
+      const searchParams = new URLSearchParams(window.location.search)
+      const accessToken = searchParams.get('access_token')
+      const refreshToken = searchParams.get('refresh_token')
+
+      if (accessToken && refreshToken) {
+        console.log('[Checkout] Restoring session from URL params')
+        try {
+          const { data, error } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken
+          })
+          if (error) {
+            console.error('[Checkout] Error restoring session:', error)
+          } else {
+            console.log('[Checkout] Session restored successfully')
+            // Clean URL
+            const cleanUrl = window.location.pathname
+            window.history.replaceState({}, '', cleanUrl)
+          }
+        } catch (err) {
+          console.error('[Checkout] Failed to restore session:', err)
+        }
+      }
+
+      // Fetch cart from Supabase before checking if empty
+      console.log('[Checkout] Fetching cart from Supabase...')
+      await fetchCart()
+
+      // Don't redirect - let user proceed even with empty cart (they can go back)
+      // if (items.length === 0) {
+      //   router.push("/cart")
+      //   return
+      // }
+
+      // Check authentication
+      const authenticated = await isAuthenticated()
+
+      // For development/testing: Allow bypassing auth
+      const isDevelopment = process.env.NODE_ENV === 'development'
+
+      if (!authenticated && !isDevelopment) {
+        console.warn('[Checkout] User not authenticated - redirecting to main app')
+        // Redirect to main app login with return URL
+        window.location.href = `${process.env.NEXT_PUBLIC_MAIN_APP_URL}/login?returnTo=${encodeURIComponent(window.location.href)}`
+        return
+      }
+
+      if (!authenticated && isDevelopment) {
+        console.warn('[Checkout] Development mode: Skipping auth check')
+        // Default to VIP customer for testing
+        setCustomerType('retailvip')
+        setCanPayInstantly(true)
+        setLoading(false)
+        return
+      }
+
+      // Fetch customer type
+      try {
+        const { customer_type } = await orderService.getCustomerType()
+        setCustomerType(customer_type)
+        setCanPayInstantly(customer_type === 'retailvip' || customer_type === 'b2bvip')
+        console.log('[Checkout] Customer type:', customer_type, 'Can pay instantly:', customer_type === 'retailvip' || customer_type === 'b2bvip')
+      } catch (error) {
+        console.error('[Checkout] Failed to fetch customer type:', error)
+        // Default to VIP customer for testing
+        setCustomerType('retailvip')
+        setCanPayInstantly(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    init()
+  }, [items.length, router])
+
+  const handleFirstTimeResponse = (needsHelp: boolean) => {
+    setShowFirstTimeDialog(false)
+    if (needsHelp) {
+      setShowSetupGuide(true)
+      setShowCheckout(false)
+    } else {
+      setShowSetupGuide(false)
+      setShowCheckout(true)
+    }
+  }
+
+  const handleToggleSetup = () => {
+    setShowSetupGuide(!showSetupGuide)
+    if (!showSetupGuide) {
+      setShowCheckout(false)
+    } else {
+      setShowCheckout(true)
+    }
+  }
+
+  if (items.length === 0 || loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading checkout...</p>
+        </div>
+      </div>
+    )
+  }
+
+  const total = getTotal()
+
+  return (
+    <div className="min-h-screen bg-background">
+      <GlobalNav />
+      <FirstTimeDialog open={showFirstTimeDialog} onResponse={handleFirstTimeResponse} />
+
+      <header className="border-b border-border bg-background/95 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/cart">
+                <ArrowLeft className="h-5 w-5" />
+              </Link>
+            </Button>
+            <h1 className="text-2xl font-bold">Checkout</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="sm" onClick={handleToggleSetup} className="gap-2">
+              <HelpCircle className="h-4 w-4" />
+              {showSetupGuide ? "Back to Checkout" : "Setup Guide"}
+            </Button>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <ShoppingBag className="h-4 w-4" />
+              <span>
+                {itemCount} {itemCount === 1 ? "item" : "items"}
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {(showSetupGuide || showCheckout) && (
+        <main className="max-w-7xl mx-auto px-6 py-8">
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              {showSetupGuide ? (
+                <Card>
+                  <CardContent className="pt-6">
+                    <CryptoSetupGuide onComplete={handleToggleSetup} />
+                  </CardContent>
+                </Card>
+              ) : (
+                <Card>
+                  <CardContent className="pt-6">
+                    <CheckoutForm
+                      total={total}
+                      onNeedSetup={handleToggleSetup}
+                      canPayInstantly={canPayInstantly}
+                      customerType={customerType || 'retail'}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+
+            <div className="lg:col-span-1">
+              <OrderSummary items={items} total={total} />
+            </div>
+          </div>
+        </main>
+      )}
+    </div>
+  )
+}

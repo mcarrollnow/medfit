@@ -1,0 +1,55 @@
+/* Global Navigation Theme Variables for v0 */
+
+/* 
+  Add these to your v0 project's CSS if needed.
+  These ensure the component colors work correctly.
+*/
+
+:root {
+  /* Primary color for accents (used in borders, role badges) */
+  --primary: 220 90% 56%;  /* Blue - adjust as needed */
+  
+  /* Background colors */
+  --background: 0 0% 3.9%;     /* For page background */
+  --card: 0 0% 3.9%;           /* For card backgrounds */
+  --muted: 0 0% 14.9%;         /* For muted backgrounds */
+  
+  /* Text colors */
+  --foreground: 0 0% 98%;      /* Main text color */
+  --muted-foreground: 0 0% 63.9%;  /* Muted text */
+  
+  /* Border color */
+  --border: 0 0% 14.9%;        /* For borders */
+}
+
+/* Dark mode is default for this component */
+.dark {
+  --primary: 220 90% 56%;
+  --background: 0 0% 3.9%;
+  --card: 0 0% 7%;
+  --muted: 0 0% 14.9%;
+  --foreground: 0 0% 98%;
+  --muted-foreground: 0 0% 63.9%;
+  --border: 0 0% 14.9%;
+}
+
+/* Component-specific overrides if needed */
+.global-navigation {
+  /* Header background - currently hardcoded as #0a0a0a */
+  --nav-background: #0a0a0a;
+  
+  /* You can override specific colors here */
+  --nav-border: rgb(31 41 55);  /* gray-800 */
+  --nav-text: white;
+  --nav-text-hover: rgba(255, 255, 255, 0.8);
+}
+
+/* Notification badge colors */
+.notification-badge {
+  background-color: rgb(239 68 68);  /* red-500 */
+}
+
+/* Cart badge colors */
+.cart-badge {
+  background-color: rgb(239 68 68);  /* red-500 */
+}

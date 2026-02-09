@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "391187036481",
+    "project_id": "sms-gateway-82a83",
+    "storage_bucket": "sms-gateway-82a83.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391187036481:android:8de36cce76271ec9d589c0",
+        "android_client_info": {
+          "package_name": "co.livewellshop.smsgateway"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbrjD6R7wvcD6ZBD_AUtRDH1LRA7W-fDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

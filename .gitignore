@@ -1,0 +1,91 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# vercel
+.vercel
+
+# env files
+.env*.local
+.env
+
+# build
+dist/
+build/
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+
+# native builds
+ios/
+android/
+
+# old backups
+client-old-vite-backup/
+
+# references/logs
+references/
+lighthouse*.json
+lighthouse*.html
+logs_result*.json
+desktopreport.html
+mobilereport.html
+
+# firebase service account keys
+sms-gateway-*-firebase-adminsdk-*.json
+
+# workspace files
+*.code-workspace
+
+# archives
+*.zip
+
+# CSV data files
+*.csv
+
+# RTF pitch docs
+*.rtf
+
+# debug SQL scripts
+debug-*.sql
+check-*.sql
+fix-*.sql
+combined-*.sql
+get-*.sql
+inspect-*.sql
+update-*.sql
+quick-fix-*.sql
+analyze-*.sql
+
+# one-off scripts
+GIT_COMMANDS.txt
+git-push.sh
+push-to-git.sh
+convert-docs.mjs
+convert-theme.sh
+convert-to-rtf.sh
+test-apis.sh
+check-env-vars.js
+check-sms-device.js
+check-sms.js
+check-tables.js
+check-ticket-schema.js
+identify-products.js
+test-cart-debug.js
+test-minimal-order.js
+test-order-creation.js

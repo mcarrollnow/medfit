@@ -1,0 +1,493 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { type ShippingAddress } from "@/lib/address-store"
+import { MapPin, Plus, Loader2 } from "lucide-react"
+import { getPlacesApiKey } from "@/app/actions/get-places-api-key"
+import { orderService } from "@/lib/order-service"
+import { isAuthenticated, getCustomerProfile } from "@/lib/auth-utils"
+
+interface ShippingAddressFormProps {
+  onAddressChange?: (address: Omit<ShippingAddress, "id">) => void
+}
+
+export function ShippingAddressForm({ onAddressChange }: ShippingAddressFormProps) {
+  const [addresses, setAddresses] = useState<ShippingAddress[]>([])
+  const [selectedAddressId, setSelectedAddressId] = useState<string>("")
+  const [showNewAddressForm, setShowNewAddressForm] = useState(false)
+  const [isLoadingData, setIsLoadingData] = useState(true)
+  const addressInputRef = useRef<HTMLInputElement>(null)
+  const autocompleteRef = useRef<any>(null)
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    country: "United States",
+  })
+
+  useEffect(() => {
+    async function loadGooglePlacesScript() {
+      const apiKey = await getPlacesApiKey()
+
+      if (!apiKey) {
+        console.warn("[v0] Google Places API key not found. Address autocomplete will not work.")
+        return
+      }
+
+      if (window.google?.maps?.places) {
+        setScriptLoaded(true)
+        return
+      }
+
+      const script = document.createElement("script")
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`
+      script.async = true
+      script.defer = true
+      script.onload = () => setScriptLoaded(true)
+      document.head.appendChild(script)
+    }
+
+    loadGooglePlacesScript()
+  }, [])
+
+  useEffect(() => {
+    async function fetchCustomerData() {
+      try {
+        const authenticated = await isAuthenticated()
+        console.log('[ShippingForm] Authentication status:', authenticated)
+
+        if (!authenticated) {
+          console.log('[ShippingForm] Not authenticated - showing empty form')
+          setIsLoadingData(false)
+          setShowNewAddressForm(true)
+          return
+        }
+
+        // Fetch customer profile directly from Supabase
+        console.log('[ShippingForm] Fetching customer profile from Supabase...')
+        const profile = await getCustomerProfile()
+        console.log('[ShippingForm] Profile received from Supabase:', profile)
+
+        if (!profile) {
+          console.log('[ShippingForm] No profile found - showing empty form')
+          setShowNewAddressForm(true)
+          setIsLoadingData(false)
+          return
+        }
+
+        // Fetch saved addresses
+        console.log('[ShippingForm] Fetching saved addresses...')
+        const savedAddresses = await orderService.getSavedAddresses()
+        console.log('[ShippingForm] Saved addresses:', savedAddresses.length)
+
+        // Transform API addresses to match local format
+        const transformedAddresses: ShippingAddress[] = savedAddresses.map((addr: any) => ({
+          id: addr.id,
+          name: `${profile.first_name} ${profile.last_name}`.trim(),
+          addressLine1: addr.address_line1,
+          addressLine2: addr.address_line2 || '',
+          city: addr.city,
+          state: addr.state,
+          zipCode: addr.zip,
+          country: addr.country,
+          isDefault: addr.is_default
+        }))
+
+        setAddresses(transformedAddresses)
+
+        // Pre-fill contact information from profile
+        const contactData = {
+          name: `${profile.first_name} ${profile.last_name}`.trim(),
+          email: profile.email || '',
+          phone: profile.phone || ''
+        }
+
+        // Check if profile has essential contact info (email is required for checkout)
+        const hasCompleteProfile = contactData.email && contactData.email.trim() !== ''
+
+        if (transformedAddresses.length === 0 || !hasCompleteProfile) {
+          // Show new address form if no addresses OR if profile is incomplete
+          const newFormData = {
+            name: contactData.name,
+            email: contactData.email,
+            phone: contactData.phone,
+            addressLine1: transformedAddresses[0]?.addressLine1 || "",
+            addressLine2: transformedAddresses[0]?.addressLine2 || "",
+            city: transformedAddresses[0]?.city || "",
+            state: transformedAddresses[0]?.state || "",
+            zipCode: transformedAddresses[0]?.zipCode || "",
+            country: transformedAddresses[0]?.country || "United States",
+          }
+          setFormData(newFormData)
+          // Notify parent of data (even if email is empty, user can fill it)
+          onAddressChange?.(newFormData)
+          setShowNewAddressForm(true)
+
+          // Pre-select the address if we have one
+          if (transformedAddresses.length > 0) {
+            const defaultAddr = transformedAddresses.find(a => a.isDefault) || transformedAddresses[0]
+            setSelectedAddressId(defaultAddr.id)
+          }
+        } else {
+          // Select default address or first one (profile has email)
+          const defaultAddr = transformedAddresses.find(a => a.isDefault) || transformedAddresses[0]
+          if (defaultAddr) {
+            setSelectedAddressId(defaultAddr.id)
+            loadAddress(defaultAddr, contactData)
+          }
+        }
+      } catch (error) {
+        console.error('[ShippingForm] Error fetching customer data:', error)
+        // Show error details
+        if (error instanceof Error) {
+          console.error('[ShippingForm] Error message:', error.message)
+          console.error('[ShippingForm] Error stack:', error.stack)
+        }
+        setShowNewAddressForm(true)
+      } finally {
+        setIsLoadingData(false)
+      }
+    }
+
+    fetchCustomerData()
+  }, [])
+
+  useEffect(() => {
+    if (!scriptLoaded || !addressInputRef.current || !window.google) return
+
+    autocompleteRef.current = new window.google.maps.places.Autocomplete(addressInputRef.current, {
+      types: ["address"],
+      componentRestrictions: { country: ["us", "ca", "gb", "au"] },
+    })
+
+    autocompleteRef.current.addListener("place_changed", () => {
+      const place = autocompleteRef.current?.getPlace()
+      if (!place || !place.address_components) return
+
+      let streetNumber = ""
+      let route = ""
+      let city = ""
+      let state = ""
+      let zipCode = ""
+      let country = ""
+
+      place.address_components.forEach((component: any) => {
+        const types = component.types
+        if (types.includes("street_number")) {
+          streetNumber = component.long_name
+        }
+        if (types.includes("route")) {
+          route = component.long_name
+        }
+        if (types.includes("locality")) {
+          city = component.long_name
+        }
+        if (types.includes("administrative_area_level_1")) {
+          state = component.short_name
+        }
+        if (types.includes("postal_code")) {
+          zipCode = component.long_name
+        }
+        if (types.includes("country")) {
+          country = component.long_name
+        }
+      })
+
+      const addressLine1 = `${streetNumber} ${route}`.trim()
+      const newFormData = {
+        ...formData,
+        addressLine1,
+        city,
+        state,
+        zipCode,
+        country,
+      }
+
+      setFormData(newFormData)
+      onAddressChange?.(newFormData)
+    })
+
+    return () => {
+      if (autocompleteRef.current && window.google) {
+        window.google.maps.event.clearInstanceListeners(autocompleteRef.current)
+      }
+    }
+  }, [scriptLoaded, showNewAddressForm])
+
+  function loadAddress(address: ShippingAddress, contactData?: { name: string; email: string; phone: string }) {
+    const addressData = {
+      name: address.name,
+      email: contactData?.email || formData.email,
+      phone: contactData?.phone || formData.phone,
+      addressLine1: address.addressLine1,
+      addressLine2: address.addressLine2 || "",
+      city: address.city,
+      state: address.state,
+      zipCode: address.zipCode,
+      country: address.country,
+    }
+    setFormData(addressData)
+    onAddressChange?.(addressData)
+  }
+
+  function handleSelectAddress(addressId: string) {
+    if (addressId === "new") {
+      setShowNewAddressForm(true)
+      setSelectedAddressId("")
+      // Preserve contact info when creating new address
+      setFormData(prev => ({
+        ...prev,
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        country: "United States",
+      }))
+    } else {
+      setShowNewAddressForm(false)
+      setSelectedAddressId(addressId)
+      const address = addresses.find((a) => a.id === addressId)
+      if (address) {
+        // Preserve existing contact info (email, phone) when switching addresses
+        const contactData = {
+          name: formData.name || address.name,
+          email: formData.email,
+          phone: formData.phone
+        }
+        loadAddress(address, contactData)
+      }
+    }
+  }
+
+  function handleInputChange(field: keyof typeof formData, value: string) {
+    const newFormData = { ...formData, [field]: value }
+    setFormData(newFormData)
+    onAddressChange?.(newFormData)
+  }
+
+  async function handleSaveAddress() {
+    if (formData.name && formData.addressLine1 && formData.city && formData.state && formData.zipCode) {
+      try {
+        // Save to database
+        const savedAddress = await orderService.saveAddress({
+          label: formData.name,
+          address_line1: formData.addressLine1,
+          address_line2: formData.addressLine2,
+          city: formData.city,
+          state: formData.state,
+          zip: formData.zipCode,
+          country: formData.country,
+          is_default: addresses.length === 0
+        })
+        
+        // Add to local list
+        const newAddress: ShippingAddress = {
+          id: savedAddress.id,
+          name: formData.name,
+          addressLine1: savedAddress.address_line1,
+          addressLine2: savedAddress.address_line2 || '',
+          city: savedAddress.city,
+          state: savedAddress.state,
+          zipCode: savedAddress.zip,
+          country: savedAddress.country,
+          isDefault: savedAddress.is_default
+        }
+        
+        setAddresses([...addresses, newAddress])
+        setShowNewAddressForm(false)
+        setSelectedAddressId(newAddress.id)
+      } catch (error) {
+        console.error('[ShippingForm] Error saving address:', error)
+        alert('Failed to save address. Please try again.')
+      }
+    }
+  }
+
+  if (isLoadingData) {
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <MapPin className="h-4 w-4 text-muted-foreground" />
+          <h3 className="font-medium">Shipping Address</h3>
+        </div>
+        <div className="flex items-center justify-center py-8">
+          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+          <span className="ml-2 text-sm text-muted-foreground">Loading your information...</span>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2">
+        <MapPin className="h-4 w-4 text-muted-foreground" />
+        <h3 className="font-medium">Shipping Address</h3>
+      </div>
+
+      {addresses.length > 0 && !showNewAddressForm && (
+        <div className="space-y-2">
+          <Label>Select Address</Label>
+          <Select value={selectedAddressId} onValueChange={handleSelectAddress}>
+            <SelectTrigger>
+              <SelectValue placeholder="Choose a saved address" />
+            </SelectTrigger>
+            <SelectContent>
+              {addresses.map((addr) => (
+                <SelectItem key={addr.id} value={addr.id}>
+                  {addr.name} - {addr.addressLine1}, {addr.city}
+                </SelectItem>
+              ))}
+              <SelectItem value="new">
+                <div className="flex items-center gap-2">
+                  <Plus className="h-4 w-4" />
+                  Add New Address
+                </div>
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      )}
+
+      {(showNewAddressForm || addresses.length === 0) && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Full Name</Label>
+            <Input
+              id="name"
+              value={formData.name}
+              onChange={(e) => handleInputChange("name", e.target.value)}
+              placeholder="John Doe"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder="john@example.com"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="phone">Phone Number</Label>
+            <Input
+              id="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => handleInputChange("phone", e.target.value)}
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="addressLine1">Address Line 1</Label>
+            <Input
+              ref={addressInputRef}
+              id="addressLine1"
+              value={formData.addressLine1}
+              onChange={(e) => handleInputChange("addressLine1", e.target.value)}
+              placeholder="Start typing your address..."
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="addressLine2">Address Line 2 (Optional)</Label>
+            <Input
+              id="addressLine2"
+              value={formData.addressLine2}
+              onChange={(e) => handleInputChange("addressLine2", e.target.value)}
+              placeholder="Apt 4B, Suite 100, etc."
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="city">City</Label>
+              <Input
+                id="city"
+                value={formData.city}
+                onChange={(e) => handleInputChange("city", e.target.value)}
+                placeholder="New York"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="state">State</Label>
+              <Input
+                id="state"
+                value={formData.state}
+                onChange={(e) => handleInputChange("state", e.target.value)}
+                placeholder="NY"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="zipCode">ZIP Code</Label>
+              <Input
+                id="zipCode"
+                value={formData.zipCode}
+                onChange={(e) => handleInputChange("zipCode", e.target.value)}
+                placeholder="10001"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="country">Country</Label>
+              <Select value={formData.country} onValueChange={(value) => handleInputChange("country", value)}>
+                <SelectTrigger id="country">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="United States">United States</SelectItem>
+                  <SelectItem value="Canada">Canada</SelectItem>
+                  <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                  <SelectItem value="Australia">Australia</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          {addresses.length > 0 && (
+            <Button onClick={handleSaveAddress} variant="outline" className="w-full bg-transparent">
+              Save Address for Future Orders
+            </Button>
+          )}
+        </div>
+      )}
+
+      {!showNewAddressForm && selectedAddressId && (
+        <div className="p-4 rounded-lg bg-secondary/50 text-sm space-y-1">
+          <p className="font-medium">{formData.name}</p>
+          {formData.email && <p className="text-muted-foreground">{formData.email}</p>}
+          {formData.phone && <p className="text-muted-foreground">{formData.phone}</p>}
+          <div className="pt-2 border-t border-border/50 mt-2">
+            <p>{formData.addressLine1}</p>
+            {formData.addressLine2 && <p>{formData.addressLine2}</p>}
+            <p>
+              {formData.city}, {formData.state} {formData.zipCode}
+            </p>
+            <p>{formData.country}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}

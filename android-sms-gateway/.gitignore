@@ -1,0 +1,61 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Gradle files
+.gradle/
+build/
+/*/build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IntelliJ
+*.iml
+.idea/
+
+# Android Studio
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.hprof
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (IMPORTANT: This should be kept secret)
+# But we have a placeholder that needs to be replaced
+# Uncomment if using real credentials:
+# app/google-services.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Firebase
+firebase-debug.log
+.firebase/
+
+# Misc
+*.swp
+*.swo
+*~

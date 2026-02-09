@@ -1,0 +1,149 @@
+package co.livewellshop.smsgateway
+
+import android.content.Context
+import android.util.Log
+import com.google.android.gms.rcsbusinessmessaging.RbmApiHelper
+import com.google.android.gms.rcsbusinessmessaging.RbmChipList
+import com.google.android.gms.rcsbusinessmessaging.RbmSuggestion
+import com.google.android.gms.rcsbusinessmessaging.RbmSuggestedReply
+import kotlinx.coroutines.tasks.await
+
+/**
+ * Manages RCS (Rich Communication Services) messaging capabilities
+ * with automatic fallback to SMS when RCS is not available.
+ */
+class RcsManager(private val context: Context) {
+    
+    private val TAG = "RcsManager"
+    
+    /**
+     * Check if RCS is available for a specific phone number
+     */
+    suspend fun isRcsAvailable(phoneNumber: String): Boolean {
+        return try {
+            val helper = RbmApiHelper(context, AGENT_ID)
+            val capability = helper.isCapable(phoneNumber).await()
+            capability == true
+        } catch (e: Exception) {
+            Log.w(TAG, "RCS capability check failed for $phoneNumber", e)
+            false
+        }
+    }
+    
+    /**
+     * Send an RCS message with rich features
+     * 
+     * @param phoneNumber Recipient's phone number
+     * @param message Text message
+     * @param imageUrl Optional image URL
+     * @param quickReplies Optional list of quick reply suggestions
+     * @param brandColor Optional brand color in hex format (e.g., "#FFF95E")
+     * @return true if sent successfully, false otherwise
+     */
+    suspend fun sendRcsMessage(
+        phoneNumber: String,
+        message: String,
+        imageUrl: String? = null,
+        quickReplies: List<String>? = null,
+        brandColor: String? = null
+    ): Boolean {
+        return try {
+            val helper = RbmApiHelper(context, AGENT_ID)
+            
+            // Build message payload
+            val messageBuilder = StringBuilder()
+            messageBuilder.append(message)
+            
+            // Add image if provided
+            if (!imageUrl.isNullOrEmpty()) {
+                // RCS supports rich cards with images
+                Log.d(TAG, "Sending RCS with image: $imageUrl")
+            }
+            
+            // Add quick reply suggestions
+            val suggestions = mutableListOf<RbmSuggestion>()
+            quickReplies?.forEach { reply ->
+                suggestions.add(
+                    RbmSuggestedReply(reply, reply)
+                )
+            }
+            
+            // Send the message
+            val result = if (suggestions.isNotEmpty()) {
+                helper.sendTextMessage(
+                    phoneNumber,
+                    messageBuilder.toString(),
+                    RbmChipList(suggestions)
+                ).await()
+            } else {
+                helper.sendTextMessage(phoneNumber, messageBuilder.toString()).await()
+            }
+            
+            Log.i(TAG, "RCS message sent successfully to $phoneNumber")
+            true
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to send RCS message to $phoneNumber", e)
+            false
+        }
+    }
+    
+    /**
+     * Send a rich card RCS message with image, title, description, and action buttons
+     */
+    suspend fun sendRcsRichCard(
+        phoneNumber: String,
+        title: String,
+        description: String,
+        imageUrl: String?,
+        actionButtons: List<Pair<String, String>>? = null
+    ): Boolean {
+        return try {
+            val helper = RbmApiHelper(context, AGENT_ID)
+            
+            // Create rich card (implementation depends on specific RCS API version)
+            // This is a simplified version - full rich card support may require additional setup
+            
+            val messageText = buildString {
+                append("**$title**\n\n")
+                append(description)
+            }
+            
+            val suggestions = mutableListOf<RbmSuggestion>()
+            actionButtons?.forEach { (text, data) ->
+                suggestions.add(RbmSuggestedReply(text, data))
+            }
+            
+            val result = helper.sendTextMessage(
+                phoneNumber,
+                messageText,
+                if (suggestions.isNotEmpty()) RbmChipList(suggestions) else null
+            ).await()
+            
+            Log.i(TAG, "RCS rich card sent successfully to $phoneNumber")
+            true
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to send RCS rich card to $phoneNumber", e)
+            false
+        }
+    }
+    
+    companion object {
+        // RCS Agent ID - will be provided after Google Business Communications registration
+        // For now, this is a placeholder. Update with your actual Agent ID after setup.
+        private const val AGENT_ID = "YOUR_RCS_AGENT_ID_HERE"
+        
+        /**
+         * Check if RCS is generally available on this device
+         */
+        fun isRcsSupported(context: Context): Boolean {
+            return try {
+                // Check if RCS APIs are available
+                Class.forName("com.google.android.gms.rcsbusinessmessaging.RbmApiHelper")
+                true
+            } catch (e: ClassNotFoundException) {
+                Log.w("RcsManager", "RCS Business Messaging not available on this device")
+                false
+            }
+        }
+    }
+}

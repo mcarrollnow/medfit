@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1107.07 153.01">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #e99000;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        font-family: Standerd-Black, Standerd;
+        font-size: 143px;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <text class="cls-4" transform="translate(0 121.55)"><tspan class="cls-1" x="0" y="0">A</tspan><tspan class="cls-2" x="98.38" y="0">CH</tspan><tspan x="299.3" y="0"> </tspan><tspan class="cls-3" x="329.32" y="0">TRANSFER</tspan></text>
+  </g>
+</svg>

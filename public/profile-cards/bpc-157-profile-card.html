@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPC-157 Profile Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            background: transparent;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 600px;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .profile-card {
+            width: 400px;
+            background: #000000;
+            border-radius: 24px;
+            padding: 0;
+            border: 1px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+            height: 600px;
+            min-height: 600px;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #fff95e 0%, #fff95e 100%);
+            height: 80px;
+            position: relative;
+            z-index: 10;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .main-content {
+            padding: 24px 20px 24px 20px;
+            color: white;
+        }
+
+        .peptide-name {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 24px 0;
+            color: white;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .info-section {
+            margin-bottom: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .info-label {
+            color: white;
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: white;
+            font-weight: 400;
+        }
+
+        .efficacy-section {
+            margin-top: 24px;
+        }
+
+        .efficacy-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 249, 94, 0.1);
+        }
+
+        .efficacy-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .efficacy-label {
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .efficacy-bar {
+            flex: 2;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-left: 16px;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .efficacy-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #fff95e 0%, #fff95e 100%);
+            border-radius: 3px;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Animation for bars */
+        .efficacy-fill.animate {
+            animation: fillBar 2s ease-in-out forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0%; }
+        }
+
+        .research-status {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .research-text {
+            color: #b9b9b9;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="header-section">
+        </div>
+        
+        <div class="main-content">
+            <h1 class="peptide-name">BPC-157</h1>
+            
+            <div class="info-section">
+                <div class="info-row">
+                    <span class="info-label">CAS #:</span>
+                    <span class="info-value">137525-51-0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Formula:</span>
+                    <span class="info-value">C₆₂H₉₈N₁₆O₂₂</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">M.W.:</span>
+                    <span class="info-value">1,419.55 Da</span>
+                </div>
+            </div>
+
+            <div class="efficacy-section">
+                <div class="efficacy-item">
+                    <div class="efficacy-label">Tissue Repair</div>
+                    <div class="efficacy-bar">
+                        <div class="efficacy-fill" style="width: 87%"></div>
+                    </div>
+                </div>
+                
+                <div class="efficacy-item">
+                    <div class="efficacy-label">Inflammation Reduction</div>
+                    <div class="efficacy-bar">
+                        <div class="efficacy-fill" style="width: 82%"></div>
+                    </div>
+                </div>
+                
+                <div class="efficacy-item">
+                    <div class="efficacy-label">Recovery Speed</div>
+                    <div class="efficacy-bar">
+                        <div class="efficacy-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="research-status">
+                <div class="research-text">Developed in 1993 by</div>
+                <div class="research-text">University of Zagreb</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate bars on load
+        window.addEventListener('load', function() {
+            const bars = document.querySelectorAll('.efficacy-fill');
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.classList.add('animate');
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

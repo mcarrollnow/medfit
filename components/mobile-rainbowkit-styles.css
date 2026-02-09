@@ -1,0 +1,211 @@
+/* Mobile-optimized RainbowKit styles following brand guidelines */
+
+/* Mobile wallet modal optimizations */
+@media (max-width: 768px) {
+  /* RainbowKit modal container */
+  [data-rk] {
+    --rk-colors-accentcolor: #3dff8b !important;
+    --rk-colors-accentcolorforeground: #000000 !important;
+    --rk-colors-connectbuttonbackground: #3dff8b !important;
+    --rk-colors-connectbuttontext: #000000 !important;
+    --rk-colors-modalbackground: #000000 !important;
+    --rk-colors-modaltext: #ffffff !important;
+    --rk-colors-modaltextdim: #818181 !important;
+    --rk-colors-modaltextsecondary: #818181 !important;
+    --rk-radii-modal: 20px !important;
+    --rk-radii-connectbutton: 12px !important;
+  }
+
+  /* Mobile modal positioning */
+  [data-rk] div[role="dialog"] {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    max-height: 85vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Mobile connect button styling */
+  [data-rk] button[data-testid="rk-connect-button"] {
+    width: 100% !important;
+    height: 48px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    background: #3dff8b !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(61, 255, 139, 0.2) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  [data-rk] button[data-testid="rk-connect-button"]:hover {
+    background: rgba(61, 255, 139, 0.9) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(61, 255, 139, 0.25) !important;
+  }
+
+  /* Mobile wallet option styling */
+  [data-rk] div[role="button"] {
+    padding: 16px !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
+    border: 1px solid #818181 !important;
+    background: #000000 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  [data-rk] div[role="button"]:hover {
+    border-color: #3dff8b !important;
+    background: rgba(61, 255, 139, 0.05) !important;
+  }
+
+  /* Mobile wallet icons */
+  [data-rk] img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Mobile text styling */
+  [data-rk] div[role="button"] div {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+  }
+
+  /* Mobile QR code container */
+  [data-rk] svg {
+    border-radius: 12px !important;
+    border: 2px solid #818181 !important;
+  }
+
+  /* Mobile loading states */
+  [data-rk] div[data-testid="rk-loading"] {
+    color: #3dff8b !important;
+  }
+
+  /* Mobile error states */
+  [data-rk] div[data-testid="rk-error"] {
+    color: #e60041 !important;
+    background: rgba(230, 0, 65, 0.1) !important;
+    border: 1px solid #e60041 !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+  }
+
+  /* Mobile account button (when connected) */
+  [data-rk] button[data-testid="rk-account-button"] {
+    height: 44px !important;
+    border-radius: 12px !important;
+    background: rgba(61, 255, 139, 0.1) !important;
+    border: 1px solid #3dff8b !important;
+    color: #ffffff !important;
+    padding: 0 16px !important;
+  }
+
+  /* Mobile account menu */
+  [data-rk] div[role="menu"] {
+    background: #000000 !important;
+    border: 1px solid #818181 !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  [data-rk] div[role="menuitem"] {
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+  }
+
+  [data-rk] div[role="menuitem"]:hover {
+    background: rgba(61, 255, 139, 0.1) !important;
+  }
+
+  /* Mobile backdrop */
+  [data-rk] div[data-testid="rk-overlay"] {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+
+  /* Mobile header/title styling */
+  [data-rk] h1,
+  [data-rk] h2,
+  [data-rk] h3 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+  }
+
+  /* Mobile close button */
+  [data-rk] button[aria-label="Close"] {
+    color: #ffffff !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+  }
+
+  [data-rk] button[aria-label="Close"]:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Mobile wallet connect success state */
+  [data-rk] div[data-testid="rk-connect-success"] {
+    background: rgba(61, 255, 139, 0.1) !important;
+    border: 1px solid #3dff8b !important;
+    color: #3dff8b !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    margin: 16px 0 !important;
+  }
+
+  /* Ensure mobile touch targets are large enough */
+  [data-rk] button,
+  [data-rk] div[role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* Mobile animation improvements */
+  [data-rk] * {
+    transition: all 0.2s ease !important;
+  }
+
+  /* Mobile safe area handling */
+  [data-rk] div[role="dialog"] {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  [data-rk] div[role="dialog"] {
+    max-width: 420px !important;
+    margin: auto !important;
+  }
+  
+  [data-rk] button[data-testid="rk-connect-button"] {
+    height: 48px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Desktop fallback - maintain existing styling */
+@media (min-width: 1025px) {
+  [data-rk] button[data-testid="rk-connect-button"] {
+    background: #3dff8b !important;
+    color: #000000 !important;
+    border: none !important;
+    font-weight: 600 !important;
+  }
+  
+  [data-rk] button[data-testid="rk-connect-button"]:hover {
+    background: rgba(61, 255, 139, 0.9) !important;
+  }
+}

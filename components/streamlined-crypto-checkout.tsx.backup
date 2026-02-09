@@ -1,0 +1,446 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { CheckCircle2, AlertCircle, Loader2, Wallet, ArrowRight, Zap } from "lucide-react"
+import { ShippingAddressFormSimplified as ShippingAddressForm } from "@/components/shipping-address-form"
+import type { ShippingAddress } from "@/lib/address-store"
+import { orderService } from "@/lib/order-service"
+import { getCurrentUser, getCustomerProfile } from "@/lib/auth-utils"
+import { useCartStore } from "@/lib/cart-store"
+import { useRouter } from "next/navigation"
+import { supabase } from "@/lib/supabase"
+
+interface StreamlinedCheckoutProps {
+  total: number
+  discount?: number
+  promoCode?: string
+  discountCodeId?: string
+}
+
+type CheckoutStep = 'shipping' | 'wallet-setup' | 'payment'
+
+export function StreamlinedCryptoCheckout({ total, discount = 0, promoCode, discountCodeId }: StreamlinedCheckoutProps) {
+  const [currentStep, setCurrentStep] = useState<CheckoutStep>('shipping')
+  const [shippingAddress, setShippingAddress] = useState<Omit<ShippingAddress, "id"> | null>(null)
+  const [isFirstTimeUser, setIsFirstTimeUser] = useState(false)
+  const [hasWallet, setHasWallet] = useState<boolean | null>(null)
+  const [isCreatingOrder, setIsCreatingOrder] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [orderId, setOrderId] = useState<string | null>(null)
+  const [merchantWallet, setMerchantWallet] = useState<{ address: string; id: string } | null>(null)
+  
+  const { items, clearCart } = useCartStore()
+  const router = useRouter()
+  
+  const finalTotal = total - discount
+
+  // Check if first-time crypto user
+  useEffect(() => {
+    const checkUserStatus = async () => {
+      try {
+        const user = await getCurrentUser()
+        if (user) {
+          // Check if user has any previous crypto orders
+          const hasWalletSetup = localStorage.getItem('wallet_setup_complete')
+          setIsFirstTimeUser(!hasWalletSetup)
+          
+          // Auto-skip wallet setup if they've done it before
+          if (hasWalletSetup === 'true') {
+            setHasWallet(true)
+          }
+        }
+      } catch (error) {
+        console.error('Failed to check user status:', error)
+      }
+    }
+    checkUserStatus()
+  }, [])
+
+  // Create order and prepare payment
+  const createOrderAndPrepare = async () => {
+    setError(null)
+    
+    if (!shippingAddress?.name || !shippingAddress?.addressLine1 || !shippingAddress?.email) {
+      setError("Please complete shipping information")
+      return false
+    }
+
+    try {
+      setIsCreatingOrder(true)
+
+      const user = await getCurrentUser()
+      const isDevelopment = process.env.NODE_ENV === 'development'
+      
+      if (!user && !isDevelopment) {
+        setError("Please log in")
+        return false
+      }
+
+      const userEmail = shippingAddress.email || user?.email || 'test@example.com'
+      const nameParts = shippingAddress.name.split(' ')
+      const firstName = nameParts[0] || ''
+      const lastName = nameParts.slice(1).join(' ') || ''
+
+      // Create order
+      const orderData = await orderService.createOrder({
+        items: items.map((item: any) => ({
+          product_id: item.id,
+          quantity: item.quantity,
+          unit_price: item.price
+        })),
+        shipping_address: {
+          line1: shippingAddress.addressLine1,
+          line2: shippingAddress.addressLine2,
+          city: shippingAddress.city,
+          state: shippingAddress.state,
+          zip: shippingAddress.zip || shippingAddress.zipCode || '',
+          country: shippingAddress.country || 'USA'
+        },
+        customer_info: {
+          first_name: firstName,
+          last_name: lastName,
+          email: userEmail,
+          phone: shippingAddress.phone || shippingAddress.phoneNumber || undefined
+        },
+        discount_code_id: discountCodeId,
+        discount_amount: discount,
+        payment_method: 'crypto',
+        notes: undefined
+      })
+
+      // Get merchant wallet from customer's assigned business wallet
+      const customerProfile = await getCustomerProfile()
+      const merchantWalletId = (customerProfile as any)?.default_wallet_id
+      
+      if (!merchantWalletId) {
+        throw new Error('No merchant wallet assigned. Please contact support.')
+      }
+      
+      // Fetch the actual business wallet details
+      const { data: merchantWallet, error: walletError } = await supabase
+        .from('business_wallets')
+        .select('id, address, label')
+        .eq('id', merchantWalletId)
+        .single()
+      
+      if (walletError || !merchantWallet) {
+        throw new Error('Failed to load merchant wallet. Please contact support.')
+      }
+      
+      console.log('[Checkout] Using merchant wallet:', merchantWallet.label, merchantWallet.address)
+      setMerchantWallet({ address: merchantWallet.address, id: merchantWalletId })
+      setOrderId(orderData.order.id)
+      
+      return true
+    } catch (err) {
+      console.error('[Checkout] Error:', err)
+      setError(err instanceof Error ? err.message : "Failed to create order")
+      return false
+    } finally {
+      setIsCreatingOrder(false)
+    }
+  }
+
+  // Step 1: Shipping → Step 2
+  const handleShippingComplete = async () => {
+    if (isFirstTimeUser && hasWallet === null) {
+      // New user - show wallet setup
+      setCurrentStep('wallet-setup')
+    } else {
+      // Returning user - go straight to payment
+      const success = await createOrderAndPrepare()
+      if (success) {
+        setCurrentStep('payment')
+      }
+    }
+  }
+
+  // Step 2: Wallet Setup → Step 3
+  const handleWalletSetupComplete = async (walletConfirmed: boolean) => {
+    setHasWallet(walletConfirmed)
+    localStorage.setItem('wallet_setup_complete', 'true')
+    
+    const success = await createOrderAndPrepare()
+    if (success) {
+      setCurrentStep('payment')
+    }
+  }
+
+  // Step 3: Execute Payment
+  const handlePayment = async (paymentType: 'USDC' | 'ETH') => {
+    if (!orderId || !merchantWallet) {
+      setError("Order not ready. Please try again.")
+      return
+    }
+
+    try {
+      // Initiate payment
+      const paymentData = await orderService.initiatePayment(
+        orderId,
+        merchantWallet.id,
+        paymentType
+      )
+
+      if (paymentType === 'USDC') {
+        // IMPORTANT: Most mobile wallets don't support ERC-20 via ethereum: URLs
+        // Instead, show instructions for manual USDC transfer
+        setError("USDC payment requires manual setup. Use WalletConnect or show payment instructions.")
+        
+        // For now, redirect to payment instructions page
+        router.push(`/payment-instructions?orderId=${orderId}&amount=${finalTotal}&token=USDC&address=${merchantWallet.address}`)
+        return
+      }
+
+      // ETH payment - this works reliably
+      const ethAmount = parseFloat(paymentData.ethAmount || '0')
+      const amountInWei = Math.floor(ethAmount * 1e18).toString()
+      
+      // Simple ethereum transfer URL (widely supported)
+      const paymentUrl = `ethereum:${merchantWallet.address}@1?value=${amountInWei}`
+      
+      console.log('[Payment Debug] ETH Payment:', {
+        recipient: merchantWallet.address,
+        amountETH: ethAmount,
+        amountWei: amountInWei,
+        url: paymentUrl
+      })
+
+      console.log('[Payment] Opening wallet with URL:', paymentUrl)
+      
+      // Detect mobile vs desktop
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      
+      if (isMobile) {
+        // Mobile: Use location.href for better deep linking
+        window.location.href = paymentUrl
+      } else {
+        // Desktop: Open in new tab
+        window.open(paymentUrl, '_blank')
+        
+        // Clear cart and redirect after short delay
+        await clearCart()
+        setTimeout(() => {
+          router.push('/dashboard')
+        }, 2000)
+      }
+      
+    } catch (err) {
+      console.error('[Payment] Error:', err)
+      setError(err instanceof Error ? err.message : "Payment failed")
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      {error && (
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {/* Step Indicator */}
+      <div className="flex items-center justify-between mb-8">
+        <StepIndicator 
+          step={1} 
+          label="Shipping" 
+          active={currentStep === 'shipping'} 
+          completed={currentStep !== 'shipping'}
+        />
+        <div className="flex-1 h-px bg-border mx-2" />
+        {isFirstTimeUser && (
+          <>
+            <StepIndicator 
+              step={2} 
+              label="Wallet" 
+              active={currentStep === 'wallet-setup'} 
+              completed={currentStep === 'payment'}
+            />
+            <div className="flex-1 h-px bg-border mx-2" />
+          </>
+        )}
+        <StepIndicator 
+          step={isFirstTimeUser ? 3 : 2} 
+          label="Payment" 
+          active={currentStep === 'payment'} 
+          completed={false}
+        />
+      </div>
+
+      {/* STEP 1: SHIPPING */}
+      {currentStep === 'shipping' && (
+        <Card>
+          <CardContent className="pt-6">
+            <h2 className="text-2xl font-bold mb-4">Shipping Information</h2>
+            <ShippingAddressForm onAddressChange={setShippingAddress} />
+            
+            <Button
+              onClick={handleShippingComplete}
+              className="w-full mt-6"
+              size="lg"
+              disabled={!shippingAddress?.name || !shippingAddress?.addressLine1}
+            >
+              Continue to Payment
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* STEP 2: WALLET SETUP (First-time users only) */}
+      {currentStep === 'wallet-setup' && (
+        <Card>
+          <CardContent className="pt-6">
+            <h2 className="text-2xl font-bold mb-4">Quick Wallet Setup</h2>
+            
+            <div className="space-y-4 mb-6">
+              <Alert className="border-blue-500 bg-blue-500/10">
+                <Zap className="h-4 w-4 text-blue-500" />
+                <AlertDescription>
+                  <strong>You'll need 2 things in your wallet:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
+                    <li><strong>${finalTotal.toFixed(2)} USDC</strong> - for your order</li>
+                    <li><strong>~$5-10 ETH</strong> - for gas fees (transaction costs)</li>
+                  </ul>
+                </AlertDescription>
+              </Alert>
+
+              <div className="bg-secondary/10 rounded-lg p-4 space-y-3">
+                <h3 className="font-semibold">Recommended Wallet: Trust Wallet</h3>
+                <p className="text-sm text-muted-foreground">
+                  Trust Wallet lets you buy both USDC and ETH directly in the app with a credit card.
+                </p>
+                
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-start gap-2">
+                    <div className="rounded-full bg-primary text-primary-foreground w-5 h-5 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
+                    <span>Download Trust Wallet from app store</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <div className="rounded-full bg-primary text-primary-foreground w-5 h-5 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
+                    <span>Tap "Buy" in the app</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <div className="rounded-full bg-primary text-primary-foreground w-5 h-5 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
+                    <span>Purchase ${finalTotal.toFixed(2)} USDC + $10 ETH (for gas)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <Button
+                variant="outline"
+                onClick={() => handleWalletSetupComplete(false)}
+                className="flex-1"
+              >
+                I'll Do This Later
+              </Button>
+              <Button
+                onClick={() => handleWalletSetupComplete(true)}
+                className="flex-1"
+                disabled={isCreatingOrder}
+              >
+                {isCreatingOrder ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Creating Order...
+                  </>
+                ) : (
+                  <>
+                    Wallet Ready
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* STEP 3: PAYMENT */}
+      {currentStep === 'payment' && (
+        <Card>
+          <CardContent className="pt-6">
+            <h2 className="text-2xl font-bold mb-4">Complete Payment</h2>
+            
+            <div className="bg-secondary/10 rounded-lg p-4 mb-6">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-muted-foreground">Order Total</span>
+                <span className="text-2xl font-bold">${finalTotal.toFixed(2)}</span>
+              </div>
+              {promoCode && (
+                <p className="text-sm text-green-600">Promo code applied: {promoCode}</p>
+              )}
+            </div>
+
+            <Alert className="mb-6 border-yellow-500 bg-yellow-500/10">
+              <Wallet className="h-4 w-4 text-yellow-600" />
+              <AlertDescription className="text-sm">
+                Clicking "Pay" will open your wallet app with pre-filled transaction details. Simply confirm the transaction in your wallet.
+              </AlertDescription>
+            </Alert>
+
+            <div className="space-y-3">
+              <Button
+                onClick={() => handlePayment('USDC')}
+                className="w-full bg-blue-600 hover:bg-blue-700"
+                size="lg"
+              >
+                <Wallet className="mr-2 h-5 w-5" />
+                Pay ${finalTotal.toFixed(2)} with USDC
+              </Button>
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">Or</span>
+                </div>
+              </div>
+
+              <Button
+                onClick={() => handlePayment('ETH')}
+                variant="outline"
+                className="w-full"
+                size="lg"
+              >
+                <Wallet className="mr-2 h-5 w-5" />
+                Pay with Ethereum
+              </Button>
+            </div>
+
+            <p className="text-xs text-muted-foreground text-center mt-4">
+              Payment opens in your wallet app. After confirming, check your orders in the dashboard.
+            </p>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  )
+}
+
+function StepIndicator({ step, label, active, completed }: { 
+  step: number
+  label: string
+  active: boolean
+  completed: boolean 
+}) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className={`
+        w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm
+        ${completed ? 'bg-green-600 text-white' : active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}
+      `}>
+        {completed ? <CheckCircle2 className="h-5 w-5" /> : step}
+      </div>
+      <span className={`text-xs mt-2 ${active ? 'font-semibold' : 'text-muted-foreground'}`}>
+        {label}
+      </span>
+    </div>
+  )
+}

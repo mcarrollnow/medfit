@@ -1,0 +1,990 @@
+AI SDK 5 is available now.
+
+
+
+
+
+
+
+
+
+
+Menu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# [Svelte Quickstart](#svelte-quickstart)
+
+The AI SDK is a powerful Typescript library designed to help developers build AI-powered applications.
+
+In this quickstart tutorial, you'll build a simple AI-chatbot with a streaming user interface. Along the way, you'll learn key concepts and techniques that are fundamental to using the SDK in your own projects.
+
+If you are unfamiliar with the concepts of [Prompt Engineering](../advanced/prompt-engineering.html) and [HTTP Streaming](../foundations/streaming.html), you can optionally read these documents first.
+
+## [Prerequisites](#prerequisites)
+
+To follow this quickstart, you'll need:
+
+- Node.js 18+ and pnpm installed on your local development machine.
+- An OpenAI API key.
+
+
+## [Set Up Your Application](#set-up-your-application)
+
+Start by creating a new SvelteKit application. This command will create a new directory named `my-ai-app` and set up a basic SvelteKit application inside it.
+
+
+
+``` geist-overflow-scroll-y
+npx sv create my-ai-app
+```
+
+
+
+
+
+
+
+
+
+
+Navigate to the newly created directory:
+
+
+
+``` geist-overflow-scroll-y
+cd my-ai-app
+```
+
+
+
+
+
+
+
+
+
+
+### [Install Dependencies](#install-dependencies)
+
+Install `ai` and `@ai-sdk/openai`, the AI SDK's OpenAI provider.
+
+
+
+
+The AI SDK is designed to be a unified interface to interact with any large language model. This means that you can change model and providers with just one line of code! Learn more about [available providers](../../providers/ai-sdk-providers.html) and [building custom providers](../../providers/community-providers/custom-providers.html) in the [providers](../../providers/ai-sdk-providers.html) section.
+
+
+
+
+
+
+
+
+
+pnpm
+
+
+
+
+
+
+
+npm
+
+
+
+
+
+
+
+yarn
+
+
+
+
+
+
+
+bun
+
+
+
+
+
+
+
+
+``` geist-overflow-scroll-y
+pnpm add -D ai @ai-sdk/openai @ai-sdk/svelte zod
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+### [Configure OpenAI API Key](#configure-openai-api-key)
+
+Create a `.env.local` file in your project root and add your OpenAI API Key. This key is used to authenticate your application with the OpenAI service.
+
+
+
+``` geist-overflow-scroll-y
+touch .env.local
+```
+
+
+
+
+
+
+
+
+
+
+Edit the `.env.local` file:
+
+
+
+
+
+
+
+
+
+
+
+
+
+``` env
+OPENAI_API_KEY=xxxxxxxxx
+```
+
+
+Replace `xxxxxxxxx` with your actual OpenAI API key.
+
+
+
+
+Vite does not automatically load environment variables onto `process.env`, so you'll need to import `OPENAI_API_KEY` from `$env/static/private` in your code (see below).
+
+
+
+## [Create an API route](#create-an-api-route)
+
+Create a SvelteKit Endpoint, `src/routes/api/chat/+server.ts` and add the following code:
+
+
+
+
+
+
+
+
+
+
+
+
+``` tsx
+import  from '@ai-sdk/openai';import  from 'ai';
+import  from '$env/static/private';
+const openai = createOpenAI();
+export async function POST() :  = await request.json();
+  const result = streamText();
+  return result.toUIMessageStreamResponse();}
+```
+
+
+
+
+
+If you see type errors with `OPENAI_API_KEY` or your `POST` function, run the dev server.
+
+
+
+Let's take a look at what is happening in this code:
+
+1.  Create an OpenAI provider instance with the `createOpenAI` function from the `@ai-sdk/openai` package.
+2.  Define a `POST` request handler and extract `messages` from the body of the request. The `messages` variable contains a history of the conversation between you and the chatbot and provides the chatbot with the necessary context to make the next generation. The `messages` are of UIMessage type, which are designed for use in application UI - they contain the entire message history and associated metadata like timestamps.
+3.  Call [`streamText`](../reference/ai-sdk-core/stream-text.html), which is imported from the `ai` package. This function accepts a configuration object that contains a `model` provider (defined in step 1) and `messages` (defined in step 2). You can pass additional [settings](../ai-sdk-core/settings.html) to further customise the model's behaviour. The `messages` key expects a `ModelMessage[]` array. This type is different from `UIMessage` in that it does not include metadata, such as timestamps or sender information. To convert between these types, we use the `convertToModelMessages` function, which strips the UI-specific metadata and transforms the `UIMessage[]` array into the `ModelMessage[]` format that the model expects.
+5.  Return the result to the client to stream the response.
+
+## [Wire up the UI](#wire-up-the-ui)
+
+Now that you have an API route that can query an LLM, it's time to set up your frontend. The AI SDK's [UI](../ai-sdk-ui.html) package abstracts the complexity of a chat interface into one class, `Chat`. Its properties and API are largely the same as React's [`useChat`](../reference/ai-sdk-ui/use-chat.html).
+
+Update your root page (`src/routes/+page.svelte`) with the following code to show a list of chat messages and provide a user message input:
+
+
+
+
+
+
+
+
+
+
+
+
+``` html
+<script lang="ts">  import  from '@ai-sdk/svelte';
+  let input = '';  const chat = new Chat();
+  function handleSubmit(event: SubmitEvent) );    input = '';  }</script>
+```
+
+
+This page utilizes the `Chat` class, which will, by default, use the `POST` route handler you created earlier. The class provides functions and state for handling user input and form submission. The `Chat` class provides multiple utility functions and state variables:
+
+- `messages` - the current chat messages (an array of objects with `id`, `role`, and `parts` properties).
+- `sendMessage` - a function to send a message to the chat API.
+
+The component uses local state to manage the input field value, and handles form submission by calling `sendMessage` with the input text and then clearing the input field.
+
+The LLM's response is accessed through the message `parts` array. Each message contains an ordered array of `parts` that represents everything the model generated in its response. These parts can include plain text, reasoning tokens, and more that you will see later. The `parts` array preserves the sequence of the model's outputs, allowing you to display or process each component in the order it was generated.
+
+## [Running Your Application](#running-your-application)
+
+With that, you have built everything you need for your chatbot! To start your application, use the command:
+
+
+
+``` geist-overflow-scroll-y
+pnpm run dev
+```
+
+
+
+
+
+
+
+
+
+
+
+## [Enhance Your Chatbot with Tools](#enhance-your-chatbot-with-tools)
+
+While large language models (LLMs) have incredible generation capabilities, they struggle with discrete tasks (e.g. mathematics) and interacting with the outside world (e.g. getting the weather). This is where [tools](../ai-sdk-core/tools-and-tool-calling.html) come in.
+
+Tools are actions that an LLM can invoke. The results of these actions can be reported back to the LLM to be considered in the next response.
+
+For example, if a user asks about the current weather, without tools, the model would only be able to provide general information based on its training data. But with a weather tool, it can fetch and provide up-to-date, location-specific weather information.
+
+Let's enhance your chatbot by adding a simple weather tool.
+
+### [Update Your API Route](#update-your-api-route)
+
+Modify your `src/routes/api/chat/+server.ts` file to include the new weather tool:
+
+
+
+
+
+
+
+
+
+
+
+
+``` tsx
+import  from '@ai-sdk/openai';import  from 'ai';import  from 'zod';
+import  from '$env/static/private';
+const openai = createOpenAI();
+export async function POST() :  = await request.json();
+  const result = streamText(),        execute: async () => ;        },      }),    },  });
+  return result.toUIMessageStreamResponse();}
+```
+
+
+In this updated code:
+
+1.  You import the `tool` function from the `ai` package and `z` from `zod` for schema validation.
+
+2.  You define a `tools` object with a `weather` tool. This tool:
+
+    - Has a description that helps the model understand when to use it.
+    - Defines `inputSchema` using a Zod schema, specifying that it requires a `location` string to execute this tool. The model will attempt to extract this input from the context of the conversation. If it can't, it will ask the user for the missing information.
+    - Defines an `execute` function that simulates getting weather data (in this case, it returns a random temperature). This is an asynchronous function running on the server so you can fetch real data from an external API.
+
+Now your chatbot can "fetch" weather information for any location the user asks about. When the model determines it needs to use the weather tool, it will generate a tool call with the necessary input. The `execute` function will then be automatically run, and the tool output will be added to the `messages` as a `tool` message.
+
+Try asking something like "What's the weather in New York?" and see how the model uses the new tool.
+
+Notice the blank response in the UI? This is because instead of generating a text response, the model generated a tool call. You can access the tool call and subsequent tool result on the client via the `tool-weather` part of the `message.parts` array.
+
+
+
+
+Tool parts are always named `tool-`, where `` is the key you used when defining the tool. In this case, since we defined the tool as `weather`, the part type is `tool-weather`.
+
+
+
+### [Update the UI](#update-the-ui)
+
+To display the tool invocation in your UI, update your `src/routes/+page.svelte` file:
+
+
+
+
+
+
+
+
+
+
+
+
+``` html
+<script lang="ts">  import  from '@ai-sdk/svelte';
+  let input = '';  const chat = new Chat();
+  function handleSubmit(event: SubmitEvent) );    input = '';  }</script>
+```
+
+
+With this change, you're updating the UI to handle different message parts. For text parts, you display the text content as before. For weather tool invocations, you display a JSON representation of the tool call and its result.
+
+Now, when you ask about the weather, you'll see the tool call and its result displayed in your chat interface.
+
+## [Enabling Multi-Step Tool Calls](#enabling-multi-step-tool-calls)
+
+You may have noticed that while the tool is now visible in the chat interface, the model isn't using this information to answer your original query. This is because once the model generates a tool call, it has technically completed its generation.
+
+To solve this, you can enable multi-step tool calls using `stopWhen`. By default, `stopWhen` is set to `stepCountIs(1)`, which means generation stops after the first step when there are tool results. By changing this condition, you can allow the model to automatically send tool results back to itself to trigger additional generations until your specified stopping condition is met. In this case, you want the model to continue generating so it can use the weather tool results to answer your original question.
+
+### [Update Your API Route](#update-your-api-route-1)
+
+Modify your `src/routes/api/chat/+server.ts` file to include the `stopWhen` condition:
+
+
+
+
+
+
+
+
+
+
+
+
+``` ts
+import  from '@ai-sdk/openai';import  from 'ai';import  from 'zod';
+import  from '$env/static/private';
+const openai = createOpenAI();
+export async function POST() :  = await request.json();
+  const result = streamText(),        execute: async () => ;        },      }),    },  });
+  return result.toUIMessageStreamResponse();}
+```
+
+
+Head back to the browser and ask about the weather in a location. You should now see the model using the weather tool results to answer your question.
+
+By setting `stopWhen: stepCountIs(5)`, you're allowing the model to use up to 5 "steps" for any given generation. This enables more complex interactions and allows the model to gather and process information over several steps if needed. You can see this in action by adding another tool to convert the temperature from Fahrenheit to Celsius.
+
+### [Add another tool](#add-another-tool)
+
+Update your `src/routes/api/chat/+server.ts` file to add a new tool to convert the temperature from Fahrenheit to Celsius:
+
+
+
+
+
+
+
+
+
+
+
+
+``` tsx
+import  from '@ai-sdk/openai';import  from 'ai';import  from 'zod';
+import  from '$env/static/private';
+const openai = createOpenAI();
+export async function POST() :  = await request.json();
+  const result = streamText(),        execute: async () => ;        },      }),      convertFahrenheitToCelsius: tool(),        execute: async () => ;        },      }),    },  });
+  return result.toUIMessageStreamResponse();}
+```
+
+
+### [Update Your Frontend](#update-your-frontend)
+
+Update your UI to handle the new temperature conversion tool by modifying the tool part handling:
+
+
+
+
+
+
+
+
+
+
+
+
+``` html
+<script lang="ts">  import  from '@ai-sdk/svelte';
+  let input = '';  const chat = new Chat();
+  function handleSubmit(event: SubmitEvent) );    input = '';  }</script>
+```
+
+
+This update handles the new `tool-convertFahrenheitToCelsius` part type, displaying the temperature conversion tool calls and results in the UI.
+
+Now, when you ask "What's the weather in New York in celsius?", you should see a more complete interaction:
+
+1.  The model will call the weather tool for New York.
+2.  You'll see the tool output displayed.
+3.  It will then call the temperature conversion tool to convert the temperature from Fahrenheit to Celsius.
+4.  The model will then use that information to provide a natural language response about the weather in New York.
+
+This multi-step approach allows the model to gather information and use it to provide more accurate and contextual responses, making your chatbot considerably more useful.
+
+This simple example demonstrates how tools can expand your model's capabilities. You can create more complex tools to integrate with real APIs, databases, or any other external systems, allowing the model to access and process real-world data in real-time. Tools bridge the gap between the model's knowledge cutoff and current information.
+
+## [How does `@ai-sdk/svelte` differ from `@ai-sdk/react`?](#how-does-ai-sdksvelte-differ-from-ai-sdkreact)
+
+The surface-level difference is that Svelte uses classes to manage state, whereas React uses hooks, so `useChat` in React is `Chat` in Svelte. Other than that, there are a few things to keep in mind:
+
+### [1. Arguments to classes aren't reactive by default](#1-arguments-to-classes-arent-reactive-by-default)
+
+Unlike in React, where hooks are rerun any time their containing component is invalidated, code in the `script` block of a Svelte component is only run once when the component is created. This means that, if you want arguments to your class to be reactive, you need to make sure you pass a *reference* into the class, rather than a value:
+
+
+
+``` html
+<script>  import  from '@ai-sdk/svelte';
+  let  = $props();
+  // won't work; the class instance will be created once, `id` will be copied by value, and won't update when $props.id changes  let chat = new Chat();
+  // will work; passes `id` by reference, so `Chat` always has the latest value  let chat = new Chat(,  });</script>
+```
+
+
+Keep in mind that this normally doesn't matter; most parameters you'll pass into the Chat class are static (for example, you typically wouldn't expect your `onError` handler to change).
+
+### [2. You can't destructure class properties](#2-you-cant-destructure-class-properties)
+
+In vanilla JavaScript, destructuring class properties copies them by value and "disconnects" them from their class instance:
+
+
+
+``` js
+const classInstance = new Whatever();classInstance.foo = 'bar';const  = classInstance;classInstance.foo = 'baz';
+console.log(foo); // 'bar'
+```
+
+
+The same is true of classes in Svelte:
+
+
+
+``` html
+<script>  import  from '@ai-sdk/svelte';
+  const chat = new Chat();  let  = chat;
+  chat.append().then(() => ] (plus some other stuff)  });</script>
+```
+
+
+### [3. Instance synchronization requires context](#3-instance-synchronization-requires-context)
+
+In React, hook instances with the same `id` are synchronized -- so two instances of `useChat` will have the same `messages`, `status`, etc. if they have the same `id`. For most use cases, you probably don't need this behavior -- but if you do, you can create a context in your root layout file using `createAIContext`:
+
+
+
+``` html
+<script>  import  from '@ai-sdk/svelte';
+  let  = $props();
+  createAIContext();  // all hooks created after this or in components that are children of this component  // will have synchronized state</script>
+
+```
+
+
+## [Where to Next?](#where-to-next)
+
+You've built an AI chatbot using the AI SDK! From here, you have several paths to explore:
+
+- To learn more about the AI SDK, read through the [documentation](../introduction.html).
+- If you're interested in diving deeper with guides, check out the [RAG (retrieval-augmented generation)](../../cookbook/guides/rag-chatbot.html) and [multi-modal chatbot](../../cookbook/guides/multi-modal-chatbot.html) guides.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+On this page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vercel delivers the infrastructure and developer experience you need to ship reliable AI-powered applications at scale.
+
+Trusted by industry leaders:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Resources
+
+
+
+
+#### More
+
+
+
+
+#### About Vercel
+
+
+
+
+#### Legal
+
+
+
+
+
+
+
+© 2025 Vercel, Inc.

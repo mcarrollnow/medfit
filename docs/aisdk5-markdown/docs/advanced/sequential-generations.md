@@ -1,0 +1,285 @@
+Advanced: Sequential Generations
+
+[](https://vercel.com/)
+
+[
+
+AI SDK
+
+
+
+](../../index.html)
+
+-   [Docs](../introduction.html)
+-   [Cookbook](../../cookbook.html)
+-   [Providers](../../providers/ai-sdk-providers.html)
+-   [Playground](../../playground.html)
+-   [
+    
+    AI ElementsAI Elements
+    
+    ](../../elements/overview.html)
+-   [AI GatewayGateway](https://vercel.com/ai-gateway)
+
+AI SDK 5 is available now.
+
+[View Announcement](https://vercel.com/blog/ai-sdk-5)
+
+Menu
+
+[AI SDK by Vercel](../introduction.html)
+
+[Foundations](../foundations.html)
+
+[Overview](../foundations/overview.html)
+
+[Providers and Models](../foundations/providers-and-models.html)
+
+[Prompts](../foundations/prompts.html)
+
+[Tools](../foundations/tools.html)
+
+[Streaming](../foundations/streaming.html)
+
+[Getting Started](../getting-started.html)
+
+[Navigating the Library](../getting-started/navigating-the-library.html)
+
+[Next.js App Router](../getting-started/nextjs-app-router.html)
+
+[Next.js Pages Router](../getting-started/nextjs-pages-router.html)
+
+[Svelte](../getting-started/svelte.html)
+
+[Vue.js (Nuxt)](../getting-started/nuxt.html)
+
+[Node.js](../getting-started/nodejs.html)
+
+[Expo](../getting-started/expo.html)
+
+[Agents](../agents.html)
+
+[Agents](../agents/overview.html)
+
+[Building Agents](../agents/building-agents.html)
+
+[Workflow Patterns](../agents/workflows.html)
+
+[Loop Control](../agents/loop-control.html)
+
+[AI SDK Core](../ai-sdk-core.html)
+
+[Overview](../ai-sdk-core/overview.html)
+
+[Generating Text](../ai-sdk-core/generating-text.html)
+
+[Generating Structured Data](../ai-sdk-core/generating-structured-data.html)
+
+[Tool Calling](../ai-sdk-core/tools-and-tool-calling.html)
+
+[Model Context Protocol (MCP) Tools](../ai-sdk-core/mcp-tools.html)
+
+[Prompt Engineering](../ai-sdk-core/prompt-engineering.html)
+
+[Settings](../ai-sdk-core/settings.html)
+
+[Embeddings](../ai-sdk-core/embeddings.html)
+
+[Image Generation](../ai-sdk-core/image-generation.html)
+
+[Transcription](../ai-sdk-core/transcription.html)
+
+[Speech](../ai-sdk-core/speech.html)
+
+[Language Model Middleware](../ai-sdk-core/middleware.html)
+
+[Provider & Model Management](../ai-sdk-core/provider-management.html)
+
+[Error Handling](../ai-sdk-core/error-handling.html)
+
+[Testing](../ai-sdk-core/testing.html)
+
+[Telemetry](../ai-sdk-core/telemetry.html)
+
+[AI SDK UI](../ai-sdk-ui.html)
+
+[Overview](../ai-sdk-ui/overview.html)
+
+[Chatbot](../ai-sdk-ui/chatbot.html)
+
+[Chatbot Message Persistence](../ai-sdk-ui/chatbot-message-persistence.html)
+
+[Chatbot Resume Streams](../ai-sdk-ui/chatbot-resume-streams.html)
+
+[Chatbot Tool Usage](../ai-sdk-ui/chatbot-tool-usage.html)
+
+[Generative User Interfaces](../ai-sdk-ui/generative-user-interfaces.html)
+
+[Completion](../ai-sdk-ui/completion.html)
+
+[Object Generation](../ai-sdk-ui/object-generation.html)
+
+[Streaming Custom Data](../ai-sdk-ui/streaming-data.html)
+
+[Error Handling](../ai-sdk-ui/error-handling.html)
+
+[Transport](../ai-sdk-ui/transport.html)
+
+[Reading UIMessage Streams](../ai-sdk-ui/reading-ui-message-streams.html)
+
+[Message Metadata](../ai-sdk-ui/message-metadata.html)
+
+[Stream Protocols](../ai-sdk-ui/stream-protocol.html)
+
+[AI SDK RSC](../ai-sdk-rsc.html)
+
+[Advanced](../advanced.html)
+
+[Prompt Engineering](prompt-engineering.html)
+
+[Stopping Streams](stopping-streams.html)
+
+[Backpressure](backpressure.html)
+
+[Caching](caching.html)
+
+[Multiple Streamables](multiple-streamables.html)
+
+[Rate Limiting](rate-limiting.html)
+
+[Rendering UI with Language Models](rendering-ui-with-language-models.html)
+
+[Language Models as Routers](model-as-router.html)
+
+[Multistep Interfaces](multistep-interfaces.html)
+
+[Sequential Generations](sequential-generations.html)
+
+[Vercel Deployment Guide](vercel-deployment-guide.html)
+
+[Reference](../reference.html)
+
+[AI SDK Core](../reference/ai-sdk-core.html)
+
+[AI SDK UI](../reference/ai-sdk-ui.html)
+
+[AI SDK RSC](../reference/ai-sdk-rsc.html)
+
+[Stream Helpers](../reference/stream-helpers.html)
+
+[AI SDK Errors](../reference/ai-sdk-errors.html)
+
+[Migration Guides](../migration-guides.html)
+
+[Troubleshooting](../troubleshooting.html)
+
+[Advanced](../advanced.html)Sequential Generations
+
+# [Sequential Generations](#sequential-generations)
+
+When working with the AI SDK, you may want to create sequences of generations (often referred to as "chains" or "pipes"), where the output of one becomes the input for the next. This can be useful for creating more complex AI-powered workflows or for breaking down larger tasks into smaller, more manageable steps.
+
+## [Example](#example)
+
+In a sequential chain, the output of one generation is directly used as input for the next generation. This allows you to create a series of dependent generations, where each step builds upon the previous one.
+
+Here's an example of how you can implement sequential actions:
+
+```typescript
+import { openai } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+
+async function sequentialActions() {
+  // Generate blog post ideas
+  const ideasGeneration = await generateText({
+    model: openai('gpt-4o'),
+    prompt: 'Generate 10 ideas for a blog post about making spaghetti.',
+  });
+
+
+  console.log('Generated Ideas:\n', ideasGeneration);
+
+
+  // Pick the best idea
+  const bestIdeaGeneration = await generateText({
+    model: openai('gpt-4o'),
+    prompt: `Here are some blog post ideas about making spaghetti:
+${ideasGeneration}
+
+
+Pick the best idea from the list above and explain why it's the best.`,
+  });
+
+
+  console.log('\nBest Idea:\n', bestIdeaGeneration);
+
+
+  // Generate an outline
+  const outlineGeneration = await generateText({
+    model: openai('gpt-4o'),
+    prompt: `We've chosen the following blog post idea about making spaghetti:
+${bestIdeaGeneration}
+
+
+Create a detailed outline for a blog post based on this idea.`,
+  });
+
+
+  console.log('\nBlog Post Outline:\n', outlineGeneration);
+}
+
+
+sequentialActions().catch(console.error);
+```
+
+In this example, we first generate ideas for a blog post, then pick the best idea, and finally create an outline based on that idea. Each step uses the output from the previous step as input for the next generation.
+
+[Previous
+
+Multistep Interfaces
+
+](multistep-interfaces.html)
+
+[Next
+
+Vercel Deployment Guide
+
+](vercel-deployment-guide.html)
+
+On this page
+
+[Sequential Generations](#sequential-generations)
+
+[Example](#example)
+
+Deploy and Scale AI Apps with Vercel.
+
+Vercel delivers the infrastructure and developer experience you need to ship reliable AI-powered applications at scale.
+
+Trusted by industry leaders:
+
+-   OpenAI
+-   Photoroom
+-   ![leonardo-ai Logo](../../_next/logo-leonardo-ai-light.svg)![leonardo-ai Logo](../../_next/logo-leonardo-ai-dark.svg)
+-   ![zapier Logo](../../_next/logo-zapier-light.svg)![zapier Logo](../../_next/logo-zapier-dark.svg)
+
+[](https://vercel.com/contact/sales?utm_source=ai_sdk&utm_medium=web&utm_campaign=contact_sales_cta&utm_content=talk_to_an_expert_sdk_docs)
+
+#### Resources
+
+[Docs](../introduction.html)[Cookbook](../../cookbook.html)[Providers](../../providers/ai-sdk-providers.html)[Showcase](../../showcase.html)[GitHub](https://github.com/vercel/ai)[Discussions](https://github.com/vercel/ai/discussions)
+
+#### More
+
+[Playground](../../playground.html)[](https://v0.dev)[Contact Sales](https://vercel.com/contact/sales)
+
+#### About Vercel
+
+[Next.js + Vercel](https://vercel.com/frameworks/nextjs)[Open Source Software](https://vercel.com/oss)[GitHub](https://github.com/vercel)[X](https://x.com/vercel)
+
+#### Legal
+
+[Privacy Policy](https://vercel.com/legal/privacy-policy)
+
+© 2025 Vercel, Inc.

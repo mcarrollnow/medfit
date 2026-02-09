@@ -1,0 +1,21 @@
+{
+  "dependencies-to-add": {
+    "lucide-react": "^0.263.1",
+    "sonner": "^1.2.0"
+  },
+  "install-command": "npm install lucide-react sonner",
+  "notes": {
+    "lucide-react": "Provides all the icons (Menu, X, User, ShoppingCart, etc.)",
+    "sonner": "Toast notifications for logout success message",
+    "next": "Already included in v0 projects",
+    "react": "Already included in v0 projects",
+    "tailwindcss": "Already included in v0 projects"
+  },
+  "removed-from-original": {
+    "@supabase/supabase-js": "Authentication - replaced with mock data",
+    "zustand": "State management - replaced with local state",
+    "react-hot-toast": "Toast notifications - replaced with sonner",
+    "@/lib/cart-store": "Cart state - replaced with local state",
+    "@/lib/supabase-browser": "Supabase client - removed"
+  }
+}

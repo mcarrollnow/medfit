@@ -1,0 +1,4 @@
+# Use Prebuild - don't include native folders
+android
+ios
+.expo

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors (matching dashboard) -->
+    <color name="yellow_primary">#FFF95E</color>
+    <color name="purple_primary">#6609FF</color>
+    <color name="red_accent">#E60041</color>
+    <color name="blue_accent">#1086FF</color>
+    <color name="green_accent">#47FF7B</color>
+    <color name="orange_accent">#FF9845</color>
+    
+    <!-- Material Design Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#818181</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray_dark">#212121</color>
+</resources>
