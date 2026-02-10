@@ -505,9 +505,9 @@ export default function PulsingHexagonBackground({
       if (!currentSettings.useColorCycle) {
           const k = (t % T_SWITCH) * f
           const rgb = {
-            r: ~~(wp[csi].r * (1 - k) + wp[(csi + 1) % nwp].r * k),
-            g: ~~(wp[csi].g * (1 - k) + wp[(csi + 1) % nwp].g * k),
-            b: ~~(wp[csi].b * (1 - k) + wp[(csi + 1) % nwp].b * k),
+            r: ~~((wp[csi].r * (1 - k) + wp[(csi + 1) % nwp].r * k) * 0.5 + 255 * 0.5),
+            g: ~~((wp[csi].g * (1 - k) + wp[(csi + 1) % nwp].g * k) * 0.5 + 255 * 0.5),
+            b: ~~((wp[csi].b * (1 - k) + wp[(csi + 1) % nwp].b * k) * 0.5 + 255 * 0.5),
           }
           rgb_str = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")"
       } else {
@@ -526,12 +526,12 @@ export default function PulsingHexagonBackground({
           source.x, source.y, customRadius
       )
       
-      const concentrationString = `rgba(0,0,0,${currentSettings.lightConcentration.toFixed(2)})`
+      const concentrationString = `rgba(255,255,255,${currentSettings.lightConcentration.toFixed(2)})`
 
       light.addColorStop(0, rgb_str)
       light.addColorStop(stp, concentrationString) 
 
-      const fadeOutString = `rgba(0,0,0,${currentSettings.persistenceFactor.toFixed(3)})`
+      const fadeOutString = `rgba(255,255,255,${currentSettings.persistenceFactor.toFixed(3)})`
       
       fillBackground(fadeOutString) 
       fillBackground(light) 
