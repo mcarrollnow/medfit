@@ -197,7 +197,7 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
             <div class="footer" style="border-top: 1px solid #e5e5e5; padding-top: 20px; text-align: center;">
               <p style="font-size: 10px; line-height: 1.5; color: #666; margin: 0;">
                 For research purposes only. Not for human consumption.<br>
-                Thank you for your purchase from Modern Health Pro.
+                Thank you for your purchase from Medfit 90.
               </p>
               <div style="width: 48px; height: 1px; background: #ccc; margin: 12px auto;"></div>
               <p style="font-size: 9px; color: #999; margin: 0;">Questions? Contact support@modernhealthpro.com</p>
@@ -435,7 +435,7 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
               <p className="text-xs leading-relaxed text-muted-foreground">
                 For research purposes only. Not for human consumption.
                 <br />
-                Thank you for your purchase from Modern Health Pro.
+                Thank you for your purchase from Medfit 90.
               </p>
               <div className="mx-auto mt-6 h-px w-16 bg-foreground/20" />
               <p className="mt-4 text-xs text-muted-foreground/50">Questions? Contact support@modernhealthpro.com</p>

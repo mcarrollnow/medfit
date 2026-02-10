@@ -699,7 +699,7 @@ export function DesktopChatInterface() {
               />
             </div>
             <div>
-              <h1 className="font-semibold text-card-foreground">Modern Health Pro Agent</h1>
+              <h1 className="font-semibold text-card-foreground">Medfit 90 Agent</h1>
             </div>
           </div>
           <div className="flex items-center gap-2">

@@ -182,7 +182,7 @@ export function DrawerMenu({ visible, onClose }: DrawerMenuProps) {
         {/* Footer */}
         <View style={styles.footer}>
           <View style={styles.footerCard}>
-            <Text style={styles.footerText}>Modern Health Pro</Text>
+            <Text style={styles.footerText}>Medfit 90</Text>
           </View>
         </View>
       </Animated.View>

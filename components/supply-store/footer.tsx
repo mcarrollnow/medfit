@@ -12,7 +12,7 @@ export function SupplyStoreFooter() {
               <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
                 <span className="text-background font-serif text-lg">M</span>
               </div>
-              <span className="font-serif text-lg font-light">Modern Health Pro</span>
+              <span className="font-serif text-lg font-light">Medfit 90</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Premium B2B wholesale supply for wellness professionals. Equip your facility with the best in recovery,
@@ -84,7 +84,7 @@ export function SupplyStoreFooter() {
         </div>
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground font-mono">© 2025 Modern Health Pro. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground font-mono">© 2025 Medfit 90. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy

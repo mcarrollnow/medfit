@@ -16,7 +16,7 @@ const PulsingHexagonBackground = dynamic(
 )
 
 const defaultSettings: LandingSettings = {
-  hero_slogan: 'Welcome to Modern Health Pro',
+  hero_slogan: 'Welcome to Medfit 90',
   hero_subtitle: 'Premium research compounds for scientific discovery',
   background_style: 'aurora',
   background_color_1: '#F1E6DE',
@@ -1274,7 +1274,7 @@ function LandingPage() {
 
         {/* Footer */}
         <p className="mt-12 text-sm font-mono tracking-widest text-muted-foreground/50 uppercase">
-          © 2025 Modern Health Pro
+          © 2025 Medfit 90
         </p>
       </div>
     </div>

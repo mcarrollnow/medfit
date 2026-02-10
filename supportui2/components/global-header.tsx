@@ -39,7 +39,7 @@ export function GlobalHeader() {
               height={32}
               className="h-8 w-8"
             />
-            <span className="font-semibold text-foreground whitespace-nowrap">Modern Health Pro</span>
+            <span className="font-semibold text-foreground whitespace-nowrap">Medfit 90</span>
           </Link>
 
           {/* Search Bar */}

@@ -524,7 +524,7 @@ export default function InvoicePage() {
   const status = isPaid ? 'Paid' : invoice.status === 'overdue' ? 'Overdue' : 'Due'
 
   const companyInfo = {
-    name: 'Modern Health Pro',
+    name: 'Medfit 90',
     address: '',
     city: '',
     email: siteConfig.supportEmail,

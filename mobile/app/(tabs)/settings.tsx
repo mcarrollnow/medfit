@@ -70,8 +70,8 @@ export default function SettingsScreen() {
 
       {/* Footer */}
       <View style={styles.footer}>
-        <Text style={styles.appName}>Modern Health Pro</Text>
-        <Text style={styles.copyright}>© 2025 MODERN HEALTH PRO</Text>
+        <Text style={styles.appName}>Medfit 90</Text>
+        <Text style={styles.copyright}>© 2025 MEDFIT 90</Text>
       </View>
     </ScrollView>
   );

@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <Text style={styles.title}>Modern Health Pro</Text>
+      <Text style={styles.title}>Medfit 90</Text>
       <Text style={styles.subtitle}>Mobile App</Text>
       
       <View style={styles.actions}>

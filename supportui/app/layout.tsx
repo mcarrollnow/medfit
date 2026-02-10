@@ -10,7 +10,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Support UI - Modern Health Pro",
+  title: "Support UI - Medfit 90",
   description: "Customer and Admin Support Interface",
 }
 

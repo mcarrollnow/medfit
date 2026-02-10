@@ -57,7 +57,7 @@ Primary customer-facing interface where support agents interact with the AI and 
 **Components:**
 
 - Eagle logo (theme-aware: black for light mode, white for dark mode)
-- App title: "Modern Health Pro Agent"
+- App title: "Medfit 90 Agent"
 - Theme toggle button (sun/moon icon)
 - Sidebar toggle button (menu icon with collapse/expand functionality)
 

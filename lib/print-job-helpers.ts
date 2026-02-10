@@ -119,8 +119,8 @@ export async function createShippingLabelJob(
 
     // Sender address (your business)
     const sender = {
-      name: 'Modern Health Pro',
-      company: 'Modern Health Pro',
+      name: 'Medfit 90',
+      company: 'Medfit 90',
       address_line1: process.env.BUSINESS_ADDRESS_LINE1 || '',
       city: process.env.BUSINESS_CITY || '',
       state: process.env.BUSINESS_STATE || '',

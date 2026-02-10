@@ -344,7 +344,7 @@ export default function SupplyStoreHomePage() {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-tight text-balance max-w-3xl mx-auto">
               Why Choose
               <br />
-              <span className="italic text-muted-foreground">Modern Health Pro</span>
+              <span className="italic text-muted-foreground">Medfit 90</span>
             </h2>
           </motion.div>
 

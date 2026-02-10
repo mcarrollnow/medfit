@@ -365,7 +365,7 @@ export async function POST(request: NextRequest) {
           issue_date: issueDate,
           due_date: dueDateFormatted,
           invoice_url: emailActionUrl || '',
-          company_name: 'Modern Health Pro',
+          company_name: 'Medfit 90',
         })
         emailSubject = replaceTemplateVariables(savedTemplate.subject, {
           invoice_number: invoiceNumber,
@@ -387,7 +387,7 @@ export async function POST(request: NextRequest) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Invoice from Modern Health Pro</title>
+  <title>Invoice from Medfit 90</title>
   <style>
     body, table, td, p, a, li, blockquote {
       -webkit-text-size-adjust: 100%;
@@ -447,7 +447,7 @@ export async function POST(request: NextRequest) {
           <tr>
             <td align="center" style="padding-bottom: 48px;">
               <p style="margin: 0; font-family: 'SF Mono', 'Monaco', 'Courier New', monospace; font-size: 10px; letter-spacing: 0.3em; color: #a3a3a3; text-transform: uppercase;">
-                Modern Health Pro
+                Medfit 90
               </p>
             </td>
           </tr>

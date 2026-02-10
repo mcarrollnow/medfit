@@ -17,7 +17,7 @@ export function GlobalFooter() {
               alt="MHP Logo"
               className="w-10 h-10"
             />
-            <span className="font-serif font-light text-lg tracking-tight">Modern Health Pro</span>
+            <span className="font-serif font-light text-lg tracking-tight">Medfit 90</span>
           </div>
           
           {/* Links */}
@@ -60,7 +60,7 @@ export function GlobalFooter() {
         <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              © {currentYear} Modern Health Pro
+              © {currentYear} Medfit 90
             </p>
             <p className="text-xs text-muted-foreground/50 mt-2 italic">
               A division of STROUD COMPANY LLC

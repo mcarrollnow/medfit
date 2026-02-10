@@ -4,7 +4,7 @@ import { SupplyStoreFooter } from "@/components/supply-store/footer"
 import { SupplyStoreBusinessProvider } from "@/lib/supply-store/business-context"
 
 export const metadata: Metadata = {
-  title: "Modern Health Pro | B2B Wellness Supply",
+  title: "Medfit 90 | B2B Wellness Supply",
   description:
     "Premium wholesale equipment and supplies for gyms, med spas, and wellness centers. Outfit your facility with professional-grade recovery, fitness, and wellness equipment.",
 }

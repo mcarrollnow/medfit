@@ -60,7 +60,7 @@ VALUES (
   'welcome',
   'Welcome Email',
   'Sent when a new customer account is created',
-  'Welcome to Modern Health Pro',
+  'Welcome to Medfit 90',
   '',
   '["{{first_name}}", "{{login_url}}", "{{company_name}}"]'::jsonb
 ) ON CONFLICT (template_key) DO NOTHING;

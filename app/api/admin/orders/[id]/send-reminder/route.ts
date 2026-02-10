@@ -81,7 +81,7 @@ export async function POST(
           order_number: order.order_number,
           total_amount: (order.total_amount || 0).toFixed(2),
           payment_url: paymentUrl,
-          company_name: 'Modern Health Pro',
+          company_name: 'Medfit 90',
         })
         emailSubject = replaceTemplateVariables(savedTemplate.subject, {
           order_number: order.order_number,
@@ -108,7 +108,7 @@ export async function POST(
           <tr>
             <td align="center" style="padding-bottom: 32px;">
               <p style="margin: 0; font-family: monospace; font-size: 10px; letter-spacing: 0.3em; color: #a3a3a3; text-transform: uppercase;">
-                Modern Health Pro
+                Medfit 90
               </p>
             </td>
           </tr>

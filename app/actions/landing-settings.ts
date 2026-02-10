@@ -16,7 +16,7 @@ export interface LandingSettings {
 }
 
 const defaultSettings: LandingSettings = {
-  hero_slogan: 'Welcome to Modern Health Pro',
+  hero_slogan: 'Welcome to Medfit 90',
   hero_subtitle: 'Premium research compounds for scientific discovery',
   background_style: 'aurora',
   background_color_1: '#0f0f23',

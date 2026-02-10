@@ -1,7 +1,7 @@
 -- Create landing_settings table for customizing the landing page
 CREATE TABLE IF NOT EXISTS landing_settings (
   id TEXT PRIMARY KEY DEFAULT '1',
-  hero_slogan TEXT NOT NULL DEFAULT 'Welcome to Modern Health Pro',
+  hero_slogan TEXT NOT NULL DEFAULT 'Welcome to Medfit 90',
   hero_subtitle TEXT DEFAULT 'Premium research compounds for scientific discovery',
   background_style TEXT DEFAULT 'aurora',
   background_color_1 TEXT DEFAULT '#0f0f23',
