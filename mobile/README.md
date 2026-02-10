@@ -1,6 +1,6 @@
-# Modern Health Pro Mobile App
+# Medfit 90 Mobile App
 
-A React Native mobile app for managing the Modern Health Pro store. Built with Expo for iOS and Android.
+A React Native mobile app for managing the Medfit 90 store. Built with Expo for iOS and Android.
 
 ## Features
 

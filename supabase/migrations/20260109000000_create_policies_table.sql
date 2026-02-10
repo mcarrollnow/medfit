@@ -65,7 +65,7 @@ VALUES
         "type": "promise",
         "title": "Our Privacy Promise",
         "icon": "Shield",
-        "content": "At Modern Health Pro, your personal information is never for sale. We collect only what we need to serve you, protect it with industry-standard encryption, and never share it with third parties for marketing purposes. This isn''t just policy—it''s how we operate."
+        "content": "At Medfit 90, your personal information is never for sale. We collect only what we need to serve you, protect it with industry-standard encryption, and never share it with third parties for marketing purposes. This isn''t just policy—it''s how we operate."
       },
       {
         "id": "section-1",
@@ -232,7 +232,7 @@ VALUES
         "title": "1. Purpose & Scope",
         "icon": "FileText",
         "content": "This Information Security Policy establishes our commitment to protecting payment card data in accordance with the Payment Card Industry Data Security Standard (PCI DSS). This policy applies to all systems, personnel, and processes involved in accepting payment cards.",
-        "extra": "Scope: Modern Health Pro accepts payment cards through a PCI DSS-validated third-party payment processor. We do not store, process, or transmit cardholder data on our systems. All payment card transactions are handled entirely by our payment processor''s secure, PCI-compliant infrastructure."
+        "extra": "Scope: Medfit 90 accepts payment cards through a PCI DSS-validated third-party payment processor. We do not store, process, or transmit cardholder data on our systems. All payment card transactions are handled entirely by our payment processor''s secure, PCI-compliant infrastructure."
       },
       {
         "id": "section-2",

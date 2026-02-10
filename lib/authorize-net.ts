@@ -204,7 +204,7 @@ export async function createHostedPaymentPage(
               settingName: 'hostedPaymentOrderOptions',
               settingValue: JSON.stringify({
                 show: true,
-                merchantName: 'Modern Health Pro',
+                merchantName: 'Medfit 90',
               }),
             },
             {

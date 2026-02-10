@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     const options = {
       challenge: challenge.toString('base64'),
       rp: {
-        name: 'Modern Health Pro',
+        name: 'Medfit 90',
         id: rpId
       },
       user: {

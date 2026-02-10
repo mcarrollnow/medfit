@@ -48,7 +48,7 @@ export function SupplyStoreNavbar() {
                 <span className="text-background font-serif text-lg">M</span>
               </div>
               <div className="hidden sm:block">
-                <span className="font-serif text-lg tracking-tight font-light">Modern Health Pro</span>
+                <span className="font-serif text-lg tracking-tight font-light">Medfit 90</span>
                 <p className="text-xs font-mono tracking-wider text-muted-foreground uppercase">B2B Supply</p>
               </div>
             </Link>

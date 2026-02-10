@@ -927,7 +927,7 @@ async function createCustomer(params: any, supabase: any) {
   try {
     await sendEmail({
       to: normalizedEmail,
-      subject: 'Welcome to Modern Health Pro',
+      subject: 'Welcome to Medfit 90',
       html: generateWelcomeEmail(first_name || 'there', origin),
     })
   } catch (emailError) {
@@ -954,7 +954,7 @@ function generateWelcomeEmail(firstName: string, origin: string): string {
 <tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
 <tr><td align="center" style="padding-bottom:32px;">
-<p style="margin:0;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Modern Health Pro</p>
+<p style="margin:0;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Medfit 90</p>
 </td></tr>
 <tr><td style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:48px;">
 <p style="margin:0 0 8px;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Welcome</p>
@@ -978,7 +978,7 @@ function generateInvoiceEmail(invoiceNumber: string, customerName: string, total
 <tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
 <tr><td align="center" style="padding-bottom:32px;">
-<p style="margin:0;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Modern Health Pro</p>
+<p style="margin:0;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Medfit 90</p>
 </td></tr>
 <tr><td style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:48px;">
 <p style="margin:0 0 8px;font-size:10px;letter-spacing:0.3em;color:#a3a3a3;text-transform:uppercase;">Invoice</p>

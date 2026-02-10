@@ -1,6 +1,6 @@
 export default {
   expo: {
-    name: "Modern Health Pro",
+    name: "Medfit 90",
     slug: "modern-health-pro",
     version: "1.0.0",
     orientation: "portrait",

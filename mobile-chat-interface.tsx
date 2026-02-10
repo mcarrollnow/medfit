@@ -161,7 +161,7 @@ export function MobileChatInterface() {
             <img src="/eagle-logo.png" alt="Eagle Logo" className="w-10 h-10 object-contain" />
           </div>
           <div>
-            <h1 className="font-semibold text-card-foreground">Modern Health Pro Agent</h1>
+            <h1 className="font-semibold text-card-foreground">Medfit 90 Agent</h1>
             <p className="text-xs text-muted-foreground">Powered by Claude</p>
           </div>
         </div>

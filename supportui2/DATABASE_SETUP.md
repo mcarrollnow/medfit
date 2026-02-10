@@ -1,6 +1,6 @@
 # Database Setup Instructions
 
-This guide will help you set up your Supabase database for the Modern Health Pro Agent application.
+This guide will help you set up your Supabase database for the Medfit 90 Agent application.
 
 ## Prerequisites
 

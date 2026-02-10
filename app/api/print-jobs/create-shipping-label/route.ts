@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
 
     // Sender address (your business)
     const sender = {
-      name: 'Modern Health Pro',
-      company: 'Modern Health Pro',
+      name: 'Medfit 90',
+      company: 'Medfit 90',
       address_line1: process.env.BUSINESS_ADDRESS_LINE1 || '123 Business St',
       city: process.env.BUSINESS_CITY || 'Los Angeles',
       state: process.env.BUSINESS_STATE || 'CA',

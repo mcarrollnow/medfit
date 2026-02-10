@@ -21,7 +21,7 @@ const PulsingHexagonBackground = dynamic(
 )
 
 const defaultSettings: LandingSettings = {
-  hero_slogan: 'Welcome to Modern Health Pro',
+  hero_slogan: 'Welcome to Medfit 90',
   hero_subtitle: 'Premium research compounds for scientific discovery',
   background_style: 'aurora',
   background_color_1: '#0f0f23',
@@ -126,7 +126,7 @@ export default function LandingSettingsPage() {
             className="text-center px-8 max-w-5xl leading-tight text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
             style={{ textShadow: '0 4px 20px rgba(58,66,51,0.2)' }}
           >
-            {settings.hero_slogan || 'Welcome to Modern Health Pro'}
+            {settings.hero_slogan || 'Welcome to Medfit 90'}
           </h1>
           
           {settings.show_subtitle && settings.hero_subtitle && (
@@ -271,7 +271,7 @@ export default function LandingSettingsPage() {
                     <Input
                       value={settings.hero_slogan}
                       onChange={(e) => setSettings({ ...settings, hero_slogan: e.target.value })}
-                      placeholder="Welcome to Modern Health Pro"
+                      placeholder="Welcome to Medfit 90"
                       className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                     />
                     <p className="text-xs text-muted-foreground">This is the main headline on your landing page</p>
@@ -391,7 +391,7 @@ export default function LandingSettingsPage() {
                     {/* Content Preview */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
                       <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-3 leading-tight">
-                        {settings.hero_slogan || 'Welcome to Modern Health Pro'}
+                        {settings.hero_slogan || 'Welcome to Medfit 90'}
                       </h1>
                       {settings.show_subtitle && settings.hero_subtitle && (
                         <p className="text-sm text-foreground/60 text-center max-w-md">

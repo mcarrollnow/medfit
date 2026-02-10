@@ -13,7 +13,7 @@
 
 ## Project Overview
 
-- **App Name:** Modern Health Pro
+- **App Name:** Medfit 90
 - **Framework:** Expo / React Native with Expo Router
 - **Styling:** Custom theme system (Chronicles theme - monochromatic black/white luxury aesthetic)
 - **State:** Zustand (if used)

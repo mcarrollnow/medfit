@@ -241,7 +241,7 @@ export function getPaymentEmailHtml(data: PaymentNotificationData): string {
                 <tr>
                   <td style="padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1);">
                     <p style="color: rgba(255,255,255,0.4); font-size: 12px; margin: 0; text-align: center;">
-                      © ${new Date().getFullYear()} Modern Health Pro. All rights reserved.
+                      © ${new Date().getFullYear()} Medfit 90. All rights reserved.
                     </p>
                   </td>
                 </tr>
@@ -294,7 +294,7 @@ export async function sendPaymentNotification(
           payment_amount: paymentAmount.toFixed(6),
           currency: currency,
           payment_report_url: paymentReportUrl,
-          company_name: 'Modern Health Pro',
+          company_name: 'Medfit 90',
         })
         emailSubject = replaceTemplateVariables(savedTemplate.subject, {
           payment_amount: paymentAmount.toFixed(6),

@@ -102,7 +102,7 @@ const defaultInvoiceData: InvoiceData = {
   dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
   status: "Draft",
   from: {
-    name: "Modern Health Pro",
+    name: "Medfit 90",
     address: "",
     city: "",
     email: siteConfig.supportEmail,

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       availableVariables,
       prompt,
       existingHtml,
-      brandName = 'Modern Health Pro',
+      brandName = 'Medfit 90',
       brandColor = '#ffffff',
       style = 'dark-modern',
     } = await req.json()
