@@ -314,12 +314,12 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
 
   return (
     <Card
-      className="@container group relative overflow-hidden border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl transition-all duration-500 ease-out cursor-pointer shadow-[0_8px_32px_rgba(0,0,0,0.4)] aspect-[6/9]"
+      className="@container group relative overflow-hidden border-0 bg-secondary backdrop-blur-xl rounded-2xl transition-all duration-500 ease-out cursor-pointer shadow-[0_8px_32px_rgba(58,66,51,0.15)] aspect-[6/9]"
       style={{
         transform: isHovering ? "scale(1.03) translateY(-4px)" : "scale(1)",
         boxShadow: isHovering
-          ? `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${primaryProduct.color}, 0 0 40px ${primaryProduct.color}40`
-          : "0 8px 32px rgba(0,0,0,0.4)",
+          ? `0 20px 40px rgba(58,66,51,0.2), 0 0 0 1px ${primaryProduct.color}, 0 0 40px ${primaryProduct.color}40`
+          : "0 8px 32px rgba(58,66,51,0.15)",
       }}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
@@ -339,7 +339,7 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
             <h4 className="font-bold tracking-tight truncate text-[clamp(0.85rem,4cqmin,1.5rem)] leading-tight">
               {category}
             </h4>
-            <p className="text-white/50 uppercase tracking-[0.15em] text-[clamp(0.55rem,2.2cqmin,0.9rem)] mt-[2%]">
+            <p className="text-secondary-foreground/50 uppercase tracking-[0.15em] text-[clamp(0.55rem,2.2cqmin,0.9rem)] mt-[2%]">
               Research Grade
             </p>
           </div>
@@ -347,13 +347,13 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
           {/* Ratings section - largest portion */}
           <div className="flex-[5] py-[2%]">
             <div
-              className="h-full bg-black/70 backdrop-blur-md border border-white/10 flex flex-col justify-evenly p-[4%]"
+              className="h-full bg-background/70 backdrop-blur-md border border-border flex flex-col justify-evenly p-[4%]"
               style={{ borderRadius: "clamp(8px, 3cqmin, 16px)" }}
             >
               {ratings.slice(0, 3).map((rating, index) => (
                 <div key={index} className="flex-1 flex flex-col justify-center">
                   <div className="flex items-center justify-between gap-[4%]">
-                    <span className="font-semibold tracking-wide text-white/80 truncate text-[clamp(0.7rem,2.8cqmin,1.15rem)]">
+                    <span className="font-semibold tracking-wide text-secondary-foreground/80 truncate text-[clamp(0.7rem,2.8cqmin,1.15rem)]">
                       {rating.label}
                     </span>
                     <span
@@ -364,7 +364,7 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
                     </span>
                   </div>
                   <div
-                    className="relative w-full overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 shadow-[inset_0_2px_8px_rgba(0,0,0,0.3)] h-[clamp(4px,1.5cqmin,8px)] mt-[3%]"
+                    className="relative w-full overflow-hidden bg-muted backdrop-blur-md border border-border shadow-[inset_0_2px_8px_rgba(58,66,51,0.1)] h-[clamp(4px,1.5cqmin,8px)] mt-[3%]"
                     style={{ borderRadius: "clamp(2px, 1cqmin, 9999px)" }}
                   >
                     <div
@@ -381,18 +381,18 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
           </div>
 
           {/* Stock status */}
-          <div className="flex-[0.8] flex items-center border-b border-white/10">
-            <span className="font-mono text-white/50 text-[clamp(0.6rem,2.2cqmin,0.9rem)]">
+          <div className="flex-[0.8] flex items-center border-b border-secondary-foreground/10">
+            <span className="font-mono text-secondary-foreground/50 text-[clamp(0.6rem,2.2cqmin,0.9rem)]">
               {getStockStatus(totalStock)}
             </span>
           </div>
 
           {/* Product name and variants */}
           <div className="flex-[2] flex flex-col justify-center py-[1%]">
-            <h3 className="font-bold tracking-tight text-white group-hover:text-primary transition-colors truncate text-[clamp(1.2rem,5.5cqmin,2.2rem)]">
+            <h3 className="font-bold tracking-tight text-secondary-foreground group-hover:text-primary transition-colors truncate text-[clamp(1.2rem,5.5cqmin,2.2rem)]">
               {primaryProduct.base_name}
             </h3>
-            <p className="font-medium text-white/50 truncate text-[clamp(0.6rem,2.5cqmin,1.05rem)] mt-[2%]">
+            <p className="font-medium text-secondary-foreground/50 truncate text-[clamp(0.6rem,2.5cqmin,1.05rem)] mt-[2%]">
               {groupedProduct.variants.map((v) => v.variant).join(" • ")}
             </p>
           </div>

@@ -235,7 +235,7 @@ export default function GlobalNav({ showCart = true }: GlobalNavProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search..."
-                className="w-full pl-11 pr-4 py-2.5 glass-button rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition text-sm"
+                className="w-full pl-11 pr-4 py-2.5 glass-button rounded-2xl text-foreground placeholder-muted-foreground focus:border-primary/30 focus:outline-none transition text-sm"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && searchQuery) {
                     window.location.href = `${mainAppUrl}/?search=${encodeURIComponent(searchQuery)}`;
@@ -324,7 +324,7 @@ export default function GlobalNav({ showCart = true }: GlobalNavProps) {
             <div className="max-w-md w-full mx-auto">
             {/* User Profile Section */}
             {user && (
-              <div className="flex items-center space-x-4 mb-16 pb-8 border-b border-white/10">
+              <div className="flex items-center space-x-4 mb-16 pb-8 border-b border-border">
                 {user.profilePictureUrl ? (
                   <img
                     src={user.profilePictureUrl}
@@ -348,7 +348,7 @@ export default function GlobalNav({ showCart = true }: GlobalNavProps) {
 
             {/* Action Icons Row - hide on admin routes since admin nav has these */}
             {!isAdminRoute && (
-              <div className="flex items-center justify-center gap-12 mb-12 pb-8 border-b border-white/10">
+              <div className="flex items-center justify-center gap-12 mb-12 pb-8 border-b border-border">
                 <Link
                   href="/support"
                   onClick={closeMenu}
@@ -397,7 +397,7 @@ export default function GlobalNav({ showCart = true }: GlobalNavProps) {
                   })}
 
                   {/* Separator */}
-                  <div className="w-full h-px bg-white/10 my-6" />
+                  <div className="w-full h-px bg-border my-6" />
 
                   {/* Back to Store */}
                   <Link
@@ -443,7 +443,7 @@ export default function GlobalNav({ showCart = true }: GlobalNavProps) {
                   })}
 
                   {/* Separator */}
-                  <div className="w-full h-px bg-white/10 my-6" />
+                  <div className="w-full h-px bg-border my-6" />
 
                   {/* Back to Store */}
                   <Link

@@ -4,78 +4,78 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Chronicles aesthetic - near black background, high contrast */
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.1 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.95 0 0);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.12 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.12 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.12 0 0);
-  --accent-foreground: oklch(0.95 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.08 0 0);
-  --ring: oklch(0.8 0 0);
-  --chart-1: rgba(255, 255, 255, 0.8);
-  --chart-2: rgba(255, 255, 255, 0.5);
-  --chart-3: rgba(255, 255, 255, 0.3);
-  --chart-4: rgba(255, 255, 255, 0.15);
-  --chart-5: rgba(255, 255, 255, 0.1);
+  /* Modern Medic - warm cream background, deep blue primary */
+  --background: oklch(0.93 0.015 60);
+  --foreground: oklch(0.30 0.02 130);
+  --card: oklch(0.96 0.012 60);
+  --card-foreground: oklch(0.30 0.02 130);
+  --popover: oklch(0.96 0.012 60);
+  --popover-foreground: oklch(0.30 0.02 130);
+  --primary: oklch(0.42 0.12 255);
+  --primary-foreground: oklch(0.98 0.005 60);
+  --secondary: oklch(0.30 0.02 130);
+  --secondary-foreground: oklch(0.96 0.012 60);
+  --muted: oklch(0.88 0.015 60);
+  --muted-foreground: oklch(0.50 0.02 130);
+  --accent: oklch(0.50 0.16 25);
+  --accent-foreground: oklch(0.98 0.005 60);
+  --destructive: oklch(0.50 0.16 25);
+  --destructive-foreground: oklch(0.98 0.005 60);
+  --border: oklch(0.82 0.02 60);
+  --input: oklch(0.96 0.012 60);
+  --ring: oklch(0.42 0.12 255);
+  --chart-1: oklch(0.42 0.12 255);
+  --chart-2: oklch(0.30 0.02 130);
+  --chart-3: oklch(0.50 0.16 25);
+  --chart-4: oklch(0.55 0.10 130);
+  --chart-5: oklch(0.65 0.08 255);
   /* increased radius for rounder corners */
   --radius: 1.5rem;
-  --sidebar: oklch(0.08 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.95 0 0);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.12 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.15 0 0);
-  --sidebar-ring: oklch(0.8 0 0);
+  --sidebar: oklch(0.30 0.02 130);
+  --sidebar-foreground: oklch(0.93 0.015 60);
+  --sidebar-primary: oklch(0.42 0.12 255);
+  --sidebar-primary-foreground: oklch(0.98 0.005 60);
+  --sidebar-accent: oklch(0.36 0.02 130);
+  --sidebar-accent-foreground: oklch(0.93 0.015 60);
+  --sidebar-border: oklch(0.40 0.02 130);
+  --sidebar-ring: oklch(0.42 0.12 255);
 }
 
-/* Chronicles dark mode - deep blacks, monochromatic aesthetic */
+/* Modern Medic dark mode - dark olive base with blue accents */
 .dark {
-  --background: oklch(0.02 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.08 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.02 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.02 0 0);
-  --secondary: oklch(0.12 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.12 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.12 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.15 0 0);
-  --input: oklch(0.02 0 0);
-  --ring: oklch(0.8 0 0);
-  /* Chronicles monochromatic chart colors */
-  --chart-1: rgba(255, 255, 255, 0.8);
-  --chart-2: rgba(255, 255, 255, 0.5);
-  --chart-3: rgba(255, 255, 255, 0.3);
-  --chart-4: rgba(255, 255, 255, 0.15);
-  --chart-5: rgba(255, 255, 255, 0.1);
-  --sidebar: oklch(0.02 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.985 0 0);
-  --sidebar-primary-foreground: oklch(0.02 0 0);
-  --sidebar-accent: oklch(0.12 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.15 0 0);
-  --sidebar-ring: oklch(0.8 0 0);
+  --background: oklch(0.18 0.015 130);
+  --foreground: oklch(0.93 0.015 60);
+  --card: oklch(0.22 0.015 130);
+  --card-foreground: oklch(0.93 0.015 60);
+  --popover: oklch(0.18 0.015 130);
+  --popover-foreground: oklch(0.93 0.015 60);
+  --primary: oklch(0.55 0.14 255);
+  --primary-foreground: oklch(0.98 0.005 60);
+  --secondary: oklch(0.26 0.015 130);
+  --secondary-foreground: oklch(0.93 0.015 60);
+  --muted: oklch(0.26 0.015 130);
+  --muted-foreground: oklch(0.65 0.01 60);
+  --accent: oklch(0.55 0.16 25);
+  --accent-foreground: oklch(0.98 0.005 60);
+  --destructive: oklch(0.50 0.16 25);
+  --destructive-foreground: oklch(0.98 0.005 60);
+  --border: oklch(0.30 0.015 130);
+  --input: oklch(0.22 0.015 130);
+  --ring: oklch(0.55 0.14 255);
+  /* Modern Medic chart colors */
+  --chart-1: oklch(0.55 0.14 255);
+  --chart-2: oklch(0.55 0.16 25);
+  --chart-3: oklch(0.50 0.08 130);
+  --chart-4: oklch(0.65 0.08 255);
+  --chart-5: oklch(0.70 0.05 60);
+  --sidebar: oklch(0.15 0.015 130);
+  --sidebar-foreground: oklch(0.93 0.015 60);
+  --sidebar-primary: oklch(0.55 0.14 255);
+  --sidebar-primary-foreground: oklch(0.98 0.005 60);
+  --sidebar-accent: oklch(0.22 0.015 130);
+  --sidebar-accent-foreground: oklch(0.93 0.015 60);
+  --sidebar-border: oklch(0.28 0.015 130);
+  --sidebar-ring: oklch(0.55 0.14 255);
 }
 
 @theme inline {
@@ -120,29 +120,45 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Chronicles glassmorphism system */
+/* Modern Medic glassmorphism system */
 @layer utilities {
-  /* Chronicles glass-card - primary container */
+  /* Modern Medic glass-card - primary container */
   .glass-card {
-    background: rgba(255, 255, 255, 0.015);
+    background: rgba(58, 66, 51, 0.04);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(58, 66, 51, 0.10);
+    box-shadow: 0 8px 32px rgba(58, 66, 51, 0.08);
+  }
+
+  .dark .glass-card {
+    background: rgba(241, 230, 222, 0.04);
+    border: 1px solid rgba(241, 230, 222, 0.08);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
-  /* Chronicles glass-button - interactive elements */
+  /* Modern Medic glass-button - interactive elements */
   .glass-button {
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(58, 66, 51, 0.06) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(58, 66, 51, 0.12);
     transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
   }
 
   .glass-button:hover {
-    background: rgba(0, 0, 0, 0.5) !important;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(58, 66, 51, 0.10) !important;
+    border-color: rgba(58, 66, 51, 0.20);
+  }
+
+  .dark .glass-button {
+    background: rgba(241, 230, 222, 0.06) !important;
+    border: 1px solid rgba(241, 230, 222, 0.10);
+  }
+
+  .dark .glass-button:hover {
+    background: rgba(241, 230, 222, 0.10) !important;
+    border-color: rgba(241, 230, 222, 0.18);
   }
 
   /* Override browser autofill styles for all inputs */
@@ -158,43 +174,80 @@
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus,
   select:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.9) inset !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 9999px oklch(0.93 0.015 60) inset !important;
+    -webkit-text-fill-color: oklch(0.30 0.02 130) !important;
     background-color: transparent !important;
     transition: background-color 5000s ease-in-out 0s;
-    caret-color: white;
+    caret-color: oklch(0.30 0.02 130);
+  }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill:active,
+  .dark select:-webkit-autofill,
+  .dark select:-webkit-autofill:hover,
+  .dark select:-webkit-autofill:focus,
+  .dark select:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 9999px oklch(0.18 0.015 130) inset !important;
+    -webkit-text-fill-color: oklch(0.93 0.015 60) !important;
+    caret-color: oklch(0.93 0.015 60);
   }
 
   .glass-button:-webkit-autofill,
   .glass-button:-webkit-autofill:hover,
   .glass-button:-webkit-autofill:focus,
   .glass-button:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.9) inset !important;
-    -webkit-text-fill-color: white !important;
-    background: rgba(0, 0, 0, 0.6) !important;
-    caret-color: white;
+    -webkit-box-shadow: 0 0 0 30px oklch(0.93 0.015 60) inset !important;
+    -webkit-text-fill-color: oklch(0.30 0.02 130) !important;
+    background: rgba(58, 66, 51, 0.06) !important;
+    caret-color: oklch(0.30 0.02 130);
+  }
+
+  .dark .glass-button:-webkit-autofill,
+  .dark .glass-button:-webkit-autofill:hover,
+  .dark .glass-button:-webkit-autofill:focus,
+  .dark .glass-button:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px oklch(0.18 0.015 130) inset !important;
+    -webkit-text-fill-color: oklch(0.93 0.015 60) !important;
+    background: rgba(241, 230, 222, 0.06) !important;
+    caret-color: oklch(0.93 0.015 60);
   }
 
   input.glass-button,
   input.glass-button:focus {
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(58, 66, 51, 0.06) !important;
   }
 
-  /* Chronicles glass-tabs */
+  .dark input.glass-button,
+  .dark input.glass-button:focus {
+    background: rgba(241, 230, 222, 0.06) !important;
+  }
+
+  /* Modern Medic glass-tabs */
   .glass-tabs {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(58, 66, 51, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(58, 66, 51, 0.08);
+  }
+
+  .dark .glass-tabs {
+    background: rgba(241, 230, 222, 0.03);
+    border: 1px solid rgba(241, 230, 222, 0.06);
   }
 
   /* Legacy glass utilities */
   .glass {
-    @apply bg-white/15 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-foreground/5 backdrop-blur-xl border border-foreground/10 shadow-2xl;
   }
 
   .glass-hover {
-    @apply hover:bg-white/20 hover:border-white/20;
+    @apply hover:bg-foreground/10 hover:border-foreground/15;
     transition: background 0.3s ease, border-color 0.3s ease;
   }
 

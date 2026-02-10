@@ -89,7 +89,7 @@ export default async function RootLayout({
   const settings = await getSiteSettings()
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Explicit viewport meta for Safari compatibility */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -103,7 +103,7 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`font-sans antialiased ${playfairDisplay.variable}`} suppressHydrationWarning>
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <AuthProvider>
             <SiteSettingsHead />
             <AuthRedirectHandler />

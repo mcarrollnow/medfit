@@ -9,7 +9,7 @@ export default function RepLayout({
 }>) {
   return (
     <RepAuthProvider>
-      <div className="min-h-screen bg-gradient-to-b from-black via-black to-zinc-950 text-white selection:bg-white selection:text-black">
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
         {/* Grainy Texture Overlay */}
         <div className="pointer-events-none fixed inset-0 z-50 h-full w-full bg-noise opacity-20 mix-blend-overlay" />
 
