@@ -373,8 +373,8 @@ export default function PulsingHexagonBackground({
     const SCALE = settings.gridScaleFactor
     
     const HEX_CRAD = 32 * SCALE
-    const HEX_BG = DEEP_BLACK
-    const HEX_HL = PANEL_GRAY 
+    const HEX_BG = '#FFFFFF'
+    const HEX_HL = '#E5E5E5' 
     const HEX_HLW = 2 * SCALE
     const HEX_GAP = 4 * SCALE
     
