@@ -15,7 +15,7 @@ export function TiersDialog({ open, onOpenChange, currentTier }: TiersDialogProp
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] max-w-4xl overflow-y-auto border-white/10 bg-black/95 text-white backdrop-blur-xl">
+      <DialogContent className="max-h-[85vh] max-w-4xl overflow-y-auto border-border bg-background/95 text-foreground backdrop-blur-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3 text-3xl font-bold">
             <Trophy className="h-8 w-8" />
@@ -33,10 +33,10 @@ export function TiersDialog({ open, onOpenChange, currentTier }: TiersDialogProp
                 key={tierName}
                 className={`relative overflow-hidden rounded-2xl border p-6 transition-all ${
                   isCurrentTier
-                    ? "border-white/30 bg-white/10 shadow-lg"
+                    ? "border-border bg-foreground/10 shadow-lg"
                     : isHigherTier
-                      ? "border-white/10 bg-white/5 opacity-80"
-                      : "border-white/10 bg-white/5 opacity-60"
+                      ? "border-border bg-foreground/5 opacity-80"
+                      : "border-border bg-foreground/5 opacity-60"
                 }`}
               >
                 {/* Grainy texture */}
@@ -60,10 +60,10 @@ export function TiersDialog({ open, onOpenChange, currentTier }: TiersDialogProp
                           {tierName.toUpperCase()}
                         </h3>
                         {isCurrentTier && (
-                          <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-bold">CURRENT</span>
+                          <span className="rounded-full bg-foreground/20 px-3 py-1 text-xs font-bold">CURRENT</span>
                         )}
                       </div>
-                      <p className="text-sm text-white/60">
+                      <p className="text-sm text-foreground/60">
                         {tierInfo.minSpend === 0
                           ? "Join for free"
                           : `Spend $${tierInfo.minSpend.toLocaleString()}+ to unlock`}
@@ -75,15 +75,15 @@ export function TiersDialog({ open, onOpenChange, currentTier }: TiersDialogProp
                     <div className="text-3xl font-bold" style={{ color: tierInfo.color }}>
                       {tierInfo.pointsPerDollar}x
                     </div>
-                    <p className="text-sm text-white/60">Points Per Dollar</p>
+                    <p className="text-sm text-foreground/60">Points Per Dollar</p>
                   </div>
                 </div>
 
                 <div className="relative z-10 mt-6 space-y-2">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Benefits</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground/80">Benefits</h4>
                   <ul className="grid gap-2 md:grid-cols-2">
                     {tierInfo.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-white/70">
+                      <li key={index} className="flex items-start gap-2 text-sm text-foreground/70">
                         <span
                           className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full"
                           style={{ backgroundColor: tierInfo.color }}

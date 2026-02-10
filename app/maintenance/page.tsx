@@ -40,7 +40,7 @@ export default async function MaintenancePage() {
             fontWeight: settings.font_weight,
             fontStyle: settings.font_style,
             color: settings.text_color,
-            textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+            textShadow: '0 4px 20px rgba(58,66,51,0.2)',
           }}
         >
           {settings.title}
@@ -53,7 +53,7 @@ export default async function MaintenancePage() {
               fontSize: `clamp(${mobileSubtitleSize}px, 4vw, ${settings.subtitle_font_size}px)`,
               fontWeight: '400',
               color: settings.text_color,
-              textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+              textShadow: '0 2px 10px rgba(58,66,51,0.2)',
             }}
           >
             {settings.subtitle}
@@ -65,7 +65,7 @@ export default async function MaintenancePage() {
       <div className="fixed bottom-4 right-4 z-40">
         <Link 
           href="/login"
-          className="text-white/20 hover:text-white/50 text-xs transition-colors pointer-events-auto"
+          className="text-muted-foreground/50 hover:text-muted-foreground text-xs transition-colors pointer-events-auto"
         >
           Admin
         </Link>

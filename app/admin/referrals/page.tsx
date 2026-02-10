@@ -189,9 +189,9 @@ export default function AdminReferralsPage() {
   )
 
   const tierColors: Record<RewardTier, string> = {
-    Free: "text-zinc-400",
+    Free: "text-muted-foreground",
     Bronze: "text-amber-600",
-    Silver: "text-zinc-300",
+    Silver: "text-foreground/70",
     Gold: "text-yellow-400",
     Platinum: "text-cyan-300",
     Diamond: "text-purple-400",
@@ -212,7 +212,7 @@ export default function AdminReferralsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -220,8 +220,8 @@ export default function AdminReferralsPage() {
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Referral Management</h1>
-          <p className="text-lg text-white/50">Track and manage customer referral codes and their performance</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">Referral Management</h1>
+          <p className="text-lg text-muted-foreground">Track and manage customer referral codes and their performance</p>
         </div>
 
         {/* Stats Cards */}
@@ -230,38 +230,38 @@ export default function AdminReferralsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-emerald-400" />
             </div>
-            <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Total Referrers</p>
-            <p className="text-3xl font-bold text-white">{stats.totalReferrers}</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Total Referrers</p>
+            <p className="text-3xl font-bold text-foreground">{stats.totalReferrers}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
               <Gift className="w-6 h-6 text-blue-400" />
             </div>
-            <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Total Referrals</p>
-            <p className="text-3xl font-bold text-white">{stats.totalReferrals}</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Total Referrals</p>
+            <p className="text-3xl font-bold text-foreground">{stats.totalReferrals}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
               <DollarSign className="w-6 h-6 text-green-400" />
             </div>
-            <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Referred Sales</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Referred Sales</p>
             <p className="text-3xl font-bold text-green-400">${stats.totalSales.toFixed(2)}</p>
           </motion.div>
 
@@ -269,13 +269,13 @@ export default function AdminReferralsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-4">
               <TrendingUp className="w-6 h-6 text-orange-400" />
             </div>
-            <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Avg Referrals</p>
-            <p className="text-3xl font-bold text-white">{stats.avgReferralsPerUser.toFixed(1)}</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Avg Referrals</p>
+            <p className="text-3xl font-bold text-foreground">{stats.avgReferralsPerUser.toFixed(1)}</p>
           </motion.div>
         </div>
 
@@ -284,12 +284,12 @@ export default function AdminReferralsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="rounded-2xl bg-white/5 border border-white/10 p-8 mb-10"
+          className="rounded-2xl bg-foreground/5 border border-border p-8 mb-10"
         >
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-lg font-semibold text-white mb-1">Referral Discount System</h2>
-              <p className="text-sm text-white/50">Default discount is {DEFAULT_REFERRAL_DISCOUNT}%. Click on any referrer's discount to customize it.</p>
+              <h2 className="text-lg font-semibold text-foreground mb-1">Referral Discount System</h2>
+              <p className="text-sm text-muted-foreground">Default discount is {DEFAULT_REFERRAL_DISCOUNT}%. Click on any referrer's discount to customize it.</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="rounded-xl bg-green-500/20 border border-green-500/30 px-4 py-3 text-center">
@@ -298,22 +298,22 @@ export default function AdminReferralsPage() {
               </div>
             </div>
           </div>
-          <p className="text-xs text-white/40 mb-4">
+          <p className="text-xs text-muted-foreground mb-4">
             Tip: Set a custom discount percentage for individual customers to offer them special rates (e.g., influencers, top referrers).
           </p>
 
           {/* Back Sync Section */}
-          <div className="pt-4 border-t border-white/10">
+          <div className="pt-4 border-t border-border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-white font-medium">Back-Sync Orders</p>
-                <p className="text-xs text-white/40">Create referral tracking records for all past orders from referred customers</p>
+                <p className="text-sm text-foreground font-medium">Back-Sync Orders</p>
+                <p className="text-xs text-muted-foreground">Create referral tracking records for all past orders from referred customers</p>
               </div>
               <Button
                 onClick={handleBackSync}
                 disabled={syncing}
                 variant="outline"
-                className="rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10"
+                className="rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
                 {syncing ? (
                   <>
@@ -341,12 +341,12 @@ export default function AdminReferralsPage() {
         {/* Search and Filters */}
         <div className="mb-8 flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               placeholder="Search by name or referral code..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+              className="pl-12 h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <Button
@@ -355,7 +355,7 @@ export default function AdminReferralsPage() {
               setShowAllCustomers(!showAllCustomers)
               // Reload will happen via useEffect
             }}
-            className={`h-12 rounded-xl border-white/20 ${showAllCustomers ? 'bg-white/10 text-white' : 'bg-transparent text-white/60'}`}
+            className={`h-12 rounded-xl border-border ${showAllCustomers ? 'bg-foreground/10 text-foreground' : 'bg-transparent text-foreground/60'}`}
           >
             {showAllCustomers ? 'Showing All Customers' : 'Showing With Codes Only'}
           </Button>
@@ -364,12 +364,12 @@ export default function AdminReferralsPage() {
         {/* Referrers List */}
         <div className="space-y-4">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">All Referrers</h2>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">All Referrers</h2>
             <Button
               variant="outline"
               size="sm"
               onClick={loadData}
-              className="rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+              className="rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
             >
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh
@@ -379,19 +379,19 @@ export default function AdminReferralsPage() {
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="rounded-2xl bg-white/5 border border-white/10 p-6 animate-pulse">
-                  <div className="h-6 bg-white/10 rounded w-1/3 mb-4" />
-                  <div className="h-4 bg-white/10 rounded w-1/2" />
+                <div key={i} className="rounded-2xl bg-foreground/5 border border-border p-6 animate-pulse">
+                  <div className="h-6 bg-foreground/10 rounded w-1/3 mb-4" />
+                  <div className="h-4 bg-foreground/10 rounded w-1/2" />
                 </div>
               ))}
             </div>
           ) : filteredReferrers.length === 0 ? (
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-16 text-center">
-              <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mx-auto mb-6">
-                <Link2 className="w-10 h-10 text-white/30" />
+            <div className="rounded-2xl bg-foreground/5 border border-border p-16 text-center">
+              <div className="w-20 h-20 rounded-2xl bg-foreground/5 flex items-center justify-center mx-auto mb-6">
+                <Link2 className="w-10 h-10 text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No referral codes found</h3>
-              <p className="text-white/50">Customers will get referral codes when they access the referral section</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">No referral codes found</h3>
+              <p className="text-muted-foreground">Customers will get referral codes when they access the referral section</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -402,7 +402,7 @@ export default function AdminReferralsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.03 }}
                   layout
-                  className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:bg-white/[0.07] transition-all duration-300"
+                  className="rounded-2xl bg-foreground/5 border border-border overflow-hidden hover:bg-card/[0.07] transition-all duration-300"
                 >
                   {/* Referrer Header */}
                   <div className="w-full p-6 flex flex-col lg:flex-row lg:items-center lg:justify-between text-left gap-4">
@@ -420,7 +420,7 @@ export default function AdminReferralsPage() {
                           className="flex items-center gap-3 flex-wrap cursor-pointer"
                           onClick={() => handleExpand(referrer.customerId)}
                         >
-                          <h3 className="text-lg font-semibold text-white">{referrer.customerName}</h3>
+                          <h3 className="text-lg font-semibold text-foreground">{referrer.customerName}</h3>
                           <span className={`text-sm font-medium px-2 py-0.5 rounded-lg ${tierBgColors[referrer.tier]} ${tierColors[referrer.tier]}`}>
                             {referrer.tier}
                           </span>
@@ -428,17 +428,17 @@ export default function AdminReferralsPage() {
                         <div className="flex items-center gap-3 mt-1 flex-wrap">
                           {referrer.referralCode ? (
                             <>
-                              <code className="bg-white/10 px-3 py-1 rounded-lg text-sm font-mono text-white/80">
+                              <code className="bg-foreground/10 px-3 py-1 rounded-lg text-sm font-mono text-foreground/80">
                                 {referrer.referralCode}
                               </code>
                               <button
                                 onClick={() => copyCode(referrer.referralCode!)}
-                                className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                                className="p-1.5 hover:bg-foreground/10 rounded-lg transition-colors"
                               >
                                 {copiedCode === referrer.referralCode ? (
                                   <Check className="w-4 h-4 text-green-400" />
                                 ) : (
-                                  <Copy className="w-4 h-4 text-white/40" />
+                                  <Copy className="w-4 h-4 text-muted-foreground" />
                                 )}
                               </button>
                               {/* Editable Discount */}
@@ -451,10 +451,10 @@ export default function AdminReferralsPage() {
                                     value={discountInput}
                                     onChange={(e) => setDiscountInput(e.target.value)}
                                     placeholder={DEFAULT_REFERRAL_DISCOUNT.toString()}
-                                    className="w-20 h-8 text-sm bg-white/10 border-white/20 text-white rounded-lg px-2"
+                                    className="w-20 h-8 text-sm bg-foreground/10 border-border text-foreground rounded-lg px-2"
                                     autoFocus
                                   />
-                                  <span className="text-white/40">%</span>
+                                  <span className="text-muted-foreground">%</span>
                                   <Button
                                     size="sm"
                                     variant="ghost"
@@ -468,7 +468,7 @@ export default function AdminReferralsPage() {
                                     size="sm"
                                     variant="ghost"
                                     onClick={cancelEditDiscount}
-                                    className="h-7 px-2 text-white/40 hover:text-white hover:bg-white/10"
+                                    className="h-7 px-2 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                                   >
                                     ✕
                                   </Button>
@@ -476,7 +476,7 @@ export default function AdminReferralsPage() {
                               ) : (
                                 <button
                                   onClick={() => startEditDiscount(referrer)}
-                                  className={`text-sm px-2 py-1 rounded-lg transition-colors hover:bg-white/10 ${
+                                  className={`text-sm px-2 py-1 rounded-lg transition-colors hover:bg-foreground/10 ${
                                     referrer.customDiscount !== null
                                       ? "text-purple-400 bg-purple-500/20"
                                       : "text-green-400"
@@ -496,7 +496,7 @@ export default function AdminReferralsPage() {
                               variant="outline"
                               onClick={() => handleGenerateCode(referrer.customerId)}
                               disabled={generatingCode === referrer.customerId}
-                              className="h-8 text-sm border-white/20 bg-white/5 text-white hover:bg-white/10 rounded-lg"
+                              className="h-8 text-sm border-border bg-foreground/5 text-foreground hover:bg-foreground/10 rounded-lg"
                             >
                               {generatingCode === referrer.customerId ? (
                                 <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
@@ -515,15 +515,15 @@ export default function AdminReferralsPage() {
                       onClick={() => handleExpand(referrer.customerId)}
                     >
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-white">{referrer.totalReferrals}</p>
-                        <p className="text-xs text-white/50 uppercase">Referrals</p>
+                        <p className="text-2xl font-bold text-foreground">{referrer.totalReferrals}</p>
+                        <p className="text-xs text-muted-foreground uppercase">Referrals</p>
                       </div>
                       <div className="text-center">
                         <p className="text-2xl font-bold text-green-400">${referrer.totalSales.toFixed(2)}</p>
-                        <p className="text-xs text-white/50 uppercase">Sales</p>
+                        <p className="text-xs text-muted-foreground uppercase">Sales</p>
                       </div>
                       <ChevronDown
-                        className={`w-5 h-5 text-white/40 transition-transform duration-300 ${
+                        className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
                           expandedReferrer === referrer.customerId ? "rotate-180" : ""
                         }`}
                       />
@@ -538,31 +538,31 @@ export default function AdminReferralsPage() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="border-t border-white/10"
+                        className="border-t border-border"
                       >
                         <div className="p-6 space-y-4">
-                          <h4 className="text-sm font-semibold text-white/50 uppercase tracking-wider">
+                          <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
                             Referred Customers
                           </h4>
 
                           {!referredCustomers[referrer.customerId] ? (
                             <div className="flex items-center justify-center py-8">
-                              <RefreshCw className="w-5 h-5 animate-spin text-white/40" />
+                              <RefreshCw className="w-5 h-5 animate-spin text-muted-foreground" />
                             </div>
                           ) : referredCustomers[referrer.customerId].length === 0 ? (
-                            <p className="text-white/40 text-center py-4">No referred customers yet</p>
+                            <p className="text-muted-foreground text-center py-4">No referred customers yet</p>
                           ) : (
                             <div className="space-y-3">
                               {referredCustomers[referrer.customerId].map((customer) => (
-                                <div key={customer.id} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                                <div key={customer.id} className="rounded-xl bg-foreground/5 border border-border p-4">
                                   <div className="flex items-center justify-between flex-wrap gap-4">
                                     <div>
-                                      <p className="font-medium text-white">{customer.name}</p>
-                                      <p className="text-sm text-white/50">{customer.email}</p>
+                                      <p className="font-medium text-foreground">{customer.name}</p>
+                                      <p className="text-sm text-muted-foreground">{customer.email}</p>
                                     </div>
                                     <div className="text-right">
-                                      <p className="text-sm text-white/50">Signed up</p>
-                                      <p className="text-sm text-white">
+                                      <p className="text-sm text-muted-foreground">Signed up</p>
+                                      <p className="text-sm text-foreground">
                                         {customer.signupDate
                                           ? new Date(customer.signupDate).toLocaleDateString()
                                           : "Unknown"}
@@ -570,12 +570,12 @@ export default function AdminReferralsPage() {
                                     </div>
                                   </div>
 
-                                  <div className="flex items-center gap-6 pt-4 mt-4 border-t border-white/10">
+                                  <div className="flex items-center gap-6 pt-4 mt-4 border-t border-border">
                                     <div className="flex items-center gap-2">
-                                      <ShoppingBag className="w-4 h-4 text-white/40" />
-                                      <span className="text-sm text-white">
+                                      <ShoppingBag className="w-4 h-4 text-muted-foreground" />
+                                      <span className="text-sm text-foreground">
                                         <span className="font-semibold">{customer.totalOrders}</span>
-                                        <span className="text-white/50"> orders</span>
+                                        <span className="text-muted-foreground"> orders</span>
                                       </span>
                                     </div>
                                     <div className="flex items-center gap-2">
@@ -584,7 +584,7 @@ export default function AdminReferralsPage() {
                                         <span className="font-semibold text-green-400">
                                           ${customer.totalSpent.toFixed(2)}
                                         </span>
-                                        <span className="text-white/50"> spent</span>
+                                        <span className="text-muted-foreground"> spent</span>
                                       </span>
                                     </div>
                                   </div>

@@ -536,7 +536,7 @@ export default function RepCustomerDetailPage() {
       case "failed":
         return "text-red-400"
       default:
-        return "text-gray-400"
+        return "text-muted-foreground"
     }
   }
 
@@ -551,8 +551,8 @@ export default function RepCustomerDetailPage() {
     return (
       <>
         <SiteHeader />
-        <div className="min-h-screen bg-gradient-to-b from-black via-black to-zinc-950 flex items-center justify-center">
-        <div className="text-white">Loading customer details...</div>
+        <div className="min-h-screen bg-gradient-to-b from-background via-background to-background flex items-center justify-center">
+        <div className="text-foreground">Loading customer details...</div>
       </div>
       </>
     )
@@ -562,9 +562,9 @@ export default function RepCustomerDetailPage() {
     return (
       <>
         <SiteHeader />
-        <div className="min-h-screen bg-gradient-to-b from-black via-black to-zinc-950 flex flex-col items-center justify-center">
-          <h1 className="text-2xl text-white mb-4">{error || "Customer not found"}</h1>
-          <Link href="/rep/customers" className="text-gray-400 hover:text-white transition">
+        <div className="min-h-screen bg-gradient-to-b from-background via-background to-background flex flex-col items-center justify-center">
+          <h1 className="text-2xl text-foreground mb-4">{error || "Customer not found"}</h1>
+          <Link href="/rep/customers" className="text-muted-foreground hover:text-foreground transition">
             ← Back to Customers
         </Link>
       </div>
@@ -575,12 +575,12 @@ export default function RepCustomerDetailPage() {
   return (
     <>
       <SiteHeader />
-      <div className="min-h-screen bg-gradient-to-b from-black via-black to-zinc-950 text-white px-6 py-12 md:px-12 lg:px-24">
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-background text-foreground px-6 py-12 md:px-12 lg:px-24">
         <div className="mx-auto max-w-5xl space-y-12">
           {/* Back Button */}
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+            className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="text-base font-medium">Back to Customers</span>
@@ -590,7 +590,7 @@ export default function RepCustomerDetailPage() {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4">
               <div className="flex items-center gap-4 flex-wrap">
-                <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">
+                <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">
                 {customer.first_name} {customer.last_name}
               </h1>
                 <Badge className={`px-4 py-2 text-base font-bold border-0 ${
@@ -598,14 +598,14 @@ export default function RepCustomerDetailPage() {
                     ? "bg-blue-500/20 text-blue-400"
                     : customer.customer_type === "b2bvip"
                     ? "bg-purple-500/20 text-purple-400"
-                    : "bg-zinc-500/20 text-zinc-400"
+                    : "bg-zinc-500/20 text-muted-foreground"
                 }`}>
                   {customer.customer_type === "b2b" ? "B2B" : customer.customer_type === "b2bvip" ? "B2B VIP" : "Retail"}
                 </Badge>
               </div>
-              <p className="text-xl text-white/50">{customer.email || "No email"}</p>
+              <p className="text-xl text-muted-foreground">{customer.email || "No email"}</p>
               {customer.company_name && (
-                <p className="text-lg text-white/40">{customer.company_name}</p>
+                <p className="text-lg text-muted-foreground">{customer.company_name}</p>
               )}
             </div>
         </div>
@@ -640,7 +640,7 @@ export default function RepCustomerDetailPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.08] backdrop-blur-xl p-6"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-foreground/[0.08] backdrop-blur-xl p-6"
               >
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
@@ -650,8 +650,8 @@ export default function RepCustomerDetailPage() {
                     <stat.icon className={`h-5 w-5 ${stat.color.split(" ")[1]}`} />
         </div>
                   <div>
-                    <p className="text-2xl font-bold tracking-tight text-white">{stat.value}</p>
-                    <p className="text-sm text-white/40">{stat.label}</p>
+                    <p className="text-2xl font-bold tracking-tight text-foreground">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
               </div>
                 </div>
               </div>
@@ -668,8 +668,8 @@ export default function RepCustomerDetailPage() {
                   flex items-center justify-center gap-2 rounded-2xl px-4 md:px-8 py-4 md:py-5 text-base md:text-lg font-bold transition-all duration-300
                   ${
                     activeTab === tab.id
-                      ? "bg-white text-black shadow-lg shadow-white/20"
-                      : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10"
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                      : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border"
                   }
                 `}
               >
@@ -685,19 +685,19 @@ export default function RepCustomerDetailPage() {
               <TabsContent value="overview" className="mt-0">
                 <div className="grid gap-6 md:grid-cols-2">
             {/* Contact Information */}
-                  <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
-                    <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                      <User className="h-5 w-5 text-white/50" />
+                  <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
+                    <h3 className="text-xl font-bold text-foreground flex items-center gap-3">
+                      <User className="h-5 w-5 text-muted-foreground" />
                 Contact Information
                     </h3>
 
                     <div className="space-y-4">
                 {customer.email && (
                         <div className="flex items-start gap-3">
-                          <Mail className="h-5 w-5 text-white/40 mt-0.5" />
+                          <Mail className="h-5 w-5 text-muted-foreground mt-0.5" />
                     <div>
-                            <p className="text-sm text-white/40">Email</p>
-                            <a href={`mailto:${customer.email}`} className="text-white hover:text-white/80">
+                            <p className="text-sm text-muted-foreground">Email</p>
+                            <a href={`mailto:${customer.email}`} className="text-foreground hover:text-foreground/80">
                         {customer.email}
                       </a>
                     </div>
@@ -706,10 +706,10 @@ export default function RepCustomerDetailPage() {
 
                 {customer.phone && (
                         <div className="flex items-start gap-3">
-                          <Phone className="h-5 w-5 text-white/40 mt-0.5" />
+                          <Phone className="h-5 w-5 text-muted-foreground mt-0.5" />
                     <div>
-                            <p className="text-sm text-white/40">Phone</p>
-                            <a href={`tel:${customer.phone}`} className="text-white hover:text-white/80">
+                            <p className="text-sm text-muted-foreground">Phone</p>
+                            <a href={`tel:${customer.phone}`} className="text-foreground hover:text-foreground/80">
                         {customer.phone}
                       </a>
                     </div>
@@ -718,10 +718,10 @@ export default function RepCustomerDetailPage() {
 
                 {customer.company_name && (
                         <div className="flex items-start gap-3">
-                          <Building className="h-5 w-5 text-white/40 mt-0.5" />
+                          <Building className="h-5 w-5 text-muted-foreground mt-0.5" />
                     <div>
-                            <p className="text-sm text-white/40">Company</p>
-                      <p className="text-white">{customer.company_name}</p>
+                            <p className="text-sm text-muted-foreground">Company</p>
+                      <p className="text-foreground">{customer.company_name}</p>
                     </div>
                   </div>
                 )}
@@ -729,14 +729,14 @@ export default function RepCustomerDetailPage() {
             </div>
 
             {/* Shipping Address */}
-                  <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
-                    <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                      <MapPin className="h-5 w-5 text-white/50" />
+                  <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
+                    <h3 className="text-xl font-bold text-foreground flex items-center gap-3">
+                      <MapPin className="h-5 w-5 text-muted-foreground" />
                   Shipping Address
                     </h3>
 
                     {customer.shipping_address_line1 ? (
-                      <div className="text-white/70 space-y-1">
+                      <div className="text-foreground/70 space-y-1">
                     <p>{customer.shipping_address_line1}</p>
                         {customer.shipping_address_line2 && <p>{customer.shipping_address_line2}</p>}
                     <p>
@@ -746,32 +746,32 @@ export default function RepCustomerDetailPage() {
                         {customer.shipping_country && <p>{customer.shipping_country}</p>}
                       </div>
                     ) : (
-                      <p className="text-white/40">No shipping address on file</p>
+                      <p className="text-muted-foreground">No shipping address on file</p>
                     )}
                   </div>
 
                   {/* Customer Timeline */}
-                  <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6 md:col-span-2">
-                    <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                      <Calendar className="h-5 w-5 text-white/50" />
+                  <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6 md:col-span-2">
+                    <h3 className="text-xl font-bold text-foreground flex items-center gap-3">
+                      <Calendar className="h-5 w-5 text-muted-foreground" />
                       Customer Timeline
                     </h3>
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                       <div>
-                        <p className="text-sm text-white/40">Customer Since</p>
-                        <p className="text-lg font-semibold text-white">{formatDate(stats.customerSince)}</p>
+                        <p className="text-sm text-muted-foreground">Customer Since</p>
+                        <p className="text-lg font-semibold text-foreground">{formatDate(stats.customerSince)}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/40">Last Order</p>
-                        <p className="text-lg font-semibold text-white">{formatDate(stats.lastOrderDate)}</p>
+                        <p className="text-sm text-muted-foreground">Last Order</p>
+                        <p className="text-lg font-semibold text-foreground">{formatDate(stats.lastOrderDate)}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/40">Preferred Payment</p>
-                        <p className="text-lg font-semibold text-white capitalize">{stats.preferredPaymentMethod || "N/A"}</p>
+                        <p className="text-sm text-muted-foreground">Preferred Payment</p>
+                        <p className="text-lg font-semibold text-foreground capitalize">{stats.preferredPaymentMethod || "N/A"}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/40">Active Discounts</p>
+                        <p className="text-sm text-muted-foreground">Active Discounts</p>
                         <p className="text-lg font-semibold text-purple-400">
                           {assignedDiscounts.filter(d => d.status === "active").length}
                         </p>
@@ -782,36 +782,36 @@ export default function RepCustomerDetailPage() {
               </TabsContent>
 
               <TabsContent value="orders" className="mt-0">
-                <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
-                  <h3 className="text-2xl font-bold text-white">Order History</h3>
+                <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
+                  <h3 className="text-2xl font-bold text-foreground">Order History</h3>
 
                   {orders.length === 0 ? (
                     <div className="text-center py-12">
-                      <Package className="h-12 w-12 text-white/20 mx-auto mb-4" />
-                      <p className="text-white/40">No orders yet</p>
+                      <Package className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                      <p className="text-muted-foreground">No orders yet</p>
                     </div>
                   ) : (
                     <div className="space-y-3">
                       {orders.map((order) => (
                         <div
                           key={order.id}
-                          className="p-6 bg-white/[0.05] rounded-xl hover:bg-white/[0.08] transition border border-white/5"
+                          className="p-6 bg-foreground/[0.06] rounded-xl hover:bg-foreground/[0.08] transition border border-border"
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <p className="text-white font-medium text-lg">Order #{order.order_number}</p>
-                              <p className="text-sm text-white/40">{formatDate(order.created_at)}</p>
+                              <p className="text-foreground font-medium text-lg">Order #{order.order_number}</p>
+                              <p className="text-sm text-muted-foreground">{formatDate(order.created_at)}</p>
                               {order.item_count && (
-                                <p className="text-sm text-white/30">{order.item_count} items</p>
+                                <p className="text-sm text-muted-foreground">{order.item_count} items</p>
                               )}
                             </div>
                             <div className="text-right">
-                              <p className="text-white font-bold text-lg">{formatCurrency(order.total_amount)}</p>
+                              <p className="text-foreground font-bold text-lg">{formatCurrency(order.total_amount)}</p>
                               <p className={`text-sm capitalize ${getStatusColor(order.status)}`}>
                                 {order.status.replace("_", " ")}
                               </p>
                               {order.payment_method && (
-                                <p className="text-xs text-white/30 mt-1 flex items-center justify-end gap-1">
+                                <p className="text-xs text-muted-foreground mt-1 flex items-center justify-end gap-1">
                                   <CreditCard className="w-3 h-3" />
                                   {order.payment_method}
                     </p>
@@ -828,24 +828,24 @@ export default function RepCustomerDetailPage() {
               <TabsContent value="pricing" className="mt-0">
                 <div className="space-y-8">
                   {/* Pricing Tier Assignment */}
-                  <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
+                  <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
                     <div className="space-y-2">
-                      <h3 className="font-serif text-2xl font-light text-white flex items-center gap-3">
-                        <Layers className="h-5 w-5 text-white/50" />
+                      <h3 className="font-serif text-2xl font-light text-foreground flex items-center gap-3">
+                        <Layers className="h-5 w-5 text-muted-foreground" />
                         Pricing Tier
                       </h3>
-                      <p className="text-white/40 text-sm">
+                      <p className="text-muted-foreground text-sm">
                         Assign this customer to a pricing tier for automatic discount application.
                       </p>
                     </div>
 
                     {pricingTiers.length === 0 ? (
-                      <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 text-center space-y-3">
-                        <Layers className="h-8 w-8 text-white/20 mx-auto" />
-                        <p className="text-white/40 text-sm">No pricing tiers created yet.</p>
+                      <div className="rounded-xl border border-border bg-foreground/[0.04] p-6 text-center space-y-3">
+                        <Layers className="h-8 w-8 text-muted-foreground/50 mx-auto" />
+                        <p className="text-muted-foreground text-sm">No pricing tiers created yet.</p>
                         <Link
                           href="/rep/pricing-tiers"
-                          className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+                          className="inline-flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors"
                         >
                           <Plus className="h-4 w-4" />
                           Create Pricing Tiers
@@ -857,28 +857,28 @@ export default function RepCustomerDetailPage() {
                           value={currentTierId || ""}
                           onChange={(e) => handleTierChange(e.target.value)}
                           disabled={savingTier}
-                          className="w-full h-14 px-6 rounded-2xl bg-white/[0.05] border border-white/10 text-white text-lg hover:bg-white/[0.08] cursor-pointer focus:outline-none focus:border-white/20 disabled:opacity-50 transition-all"
+                          className="w-full h-14 px-6 rounded-2xl bg-foreground/[0.06] border border-border text-foreground text-lg hover:bg-foreground/[0.08] cursor-pointer focus:outline-none focus:border-border disabled:opacity-50 transition-all"
                         >
-                          <option value="" className="bg-zinc-900">No Tier Assigned</option>
+                          <option value="" className="bg-card">No Tier Assigned</option>
                           {pricingTiers.map((tier) => (
-                            <option key={tier.id} value={tier.id} className="bg-zinc-900">
+                            <option key={tier.id} value={tier.id} className="bg-card">
                               {tier.name} — {tier.discount_percentage}% discount
                             </option>
                           ))}
                         </select>
                         {currentTierId && (
-                          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+                          <div className="rounded-xl border border-border bg-foreground/[0.04] p-4">
                             {(() => {
                               const tier = pricingTiers.find(t => t.id === currentTierId)
                               if (!tier) return null
                               return (
                                 <div className="flex items-center justify-between">
                                   <div>
-                                    <p className="text-white font-medium">{tier.name}</p>
-                                    {tier.description && <p className="text-white/40 text-sm">{tier.description}</p>}
+                                    <p className="text-foreground font-medium">{tier.name}</p>
+                                    {tier.description && <p className="text-muted-foreground text-sm">{tier.description}</p>}
                                   </div>
-                                  <p className="font-serif text-3xl font-light text-white">
-                                    {tier.discount_percentage}<span className="text-lg text-white/40">%</span>
+                                  <p className="font-serif text-3xl font-light text-foreground">
+                                    {tier.discount_percentage}<span className="text-lg text-muted-foreground">%</span>
                                   </p>
                                 </div>
                               )
@@ -890,20 +890,20 @@ export default function RepCustomerDetailPage() {
                   </div>
 
                   {/* Per-Product Price Overrides */}
-                  <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
+                  <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
                     <div className="flex items-start justify-between">
                       <div className="space-y-2">
-                        <h3 className="font-serif text-2xl font-light text-white flex items-center gap-3">
-                          <DollarSign className="h-5 w-5 text-white/50" />
+                        <h3 className="font-serif text-2xl font-light text-foreground flex items-center gap-3">
+                          <DollarSign className="h-5 w-5 text-muted-foreground" />
                           Product Price Overrides
                         </h3>
-                        <p className="text-white/40 text-sm">
+                        <p className="text-muted-foreground text-sm">
                           Set custom prices for specific products. These override tier discounts.
                         </p>
                       </div>
                       <Button
                         onClick={() => setShowAddOverride(true)}
-                        className="h-12 px-6 rounded-xl bg-white text-black hover:bg-white/90 gap-2"
+                        className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 gap-2"
                       >
                         <Plus className="h-4 w-4" />
                         Add Override
@@ -911,37 +911,37 @@ export default function RepCustomerDetailPage() {
                     </div>
 
                     {productOverrides.length === 0 ? (
-                      <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-8 text-center space-y-3">
-                        <DollarSign className="h-8 w-8 text-white/20 mx-auto" />
-                        <p className="text-white/40">No product price overrides set</p>
+                      <div className="rounded-xl border border-border bg-foreground/[0.04] p-8 text-center space-y-3">
+                        <DollarSign className="h-8 w-8 text-muted-foreground/50 mx-auto" />
+                        <p className="text-muted-foreground">No product price overrides set</p>
                       </div>
                     ) : (
                       <div className="space-y-3">
                         {productOverrides.map((override) => (
                           <div
                             key={override.id}
-                            className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-5 flex items-center justify-between group hover:bg-white/[0.05] transition-all"
+                            className="rounded-xl border border-border bg-foreground/[0.04] p-5 flex items-center justify-between group hover:bg-foreground/[0.06] transition-all"
                           >
                             <div className="space-y-1">
-                              <p className="text-white font-medium">{override.product_name}</p>
+                              <p className="text-foreground font-medium">{override.product_name}</p>
                               {override.product_variant && (
-                                <p className="text-white/40 text-sm">{override.product_variant}</p>
+                                <p className="text-muted-foreground text-sm">{override.product_variant}</p>
                               )}
                               <div className="flex items-center gap-4 text-sm">
                                 {override.product_retail_price && (
-                                  <span className="text-white/30 line-through">
+                                  <span className="text-muted-foreground line-through">
                                     ${override.product_retail_price.toFixed(2)}
                                   </span>
                                 )}
                               </div>
                             </div>
                             <div className="flex items-center gap-4">
-                              <p className="font-serif text-2xl font-light text-white">
+                              <p className="font-serif text-2xl font-light text-foreground">
                                 ${override.custom_price.toFixed(2)}
                               </p>
                               <button
                                 onClick={() => handleRemoveOverride(override.id)}
-                                className="p-2 rounded-lg text-white/20 hover:text-red-400 hover:bg-red-500/10 transition-all opacity-0 group-hover:opacity-100"
+                                className="p-2 rounded-lg text-muted-foreground/50 hover:text-red-400 hover:bg-red-500/10 transition-all opacity-0 group-hover:opacity-100"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </button>
@@ -955,11 +955,11 @@ export default function RepCustomerDetailPage() {
               </TabsContent>
 
               <TabsContent value="discounts" className="mt-0">
-                <div className="rounded-2xl bg-white/[0.08] backdrop-blur-xl border border-white/10 p-8 space-y-6">
+                <div className="rounded-2xl bg-foreground/[0.08] backdrop-blur-xl border border-border p-8 space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-bold text-white">Assigned Discounts</h3>
-                      <p className="text-white/50">Discounts that auto-apply at checkout for this customer.</p>
+                      <h3 className="text-2xl font-bold text-foreground">Assigned Discounts</h3>
+                      <p className="text-muted-foreground">Discounts that auto-apply at checkout for this customer.</p>
                     </div>
                     <Button
                       onClick={() => setShowAssignDiscount(true)}
@@ -974,14 +974,14 @@ export default function RepCustomerDetailPage() {
                   <div className="space-y-4">
                     {assignedDiscounts.filter(d => d.status === "active").length === 0 ? (
                       <div className="text-center py-12">
-                        <Gift className="h-12 w-12 text-white/20 mx-auto mb-4" />
-                        <p className="text-white/40">No active discounts assigned</p>
+                        <Gift className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                        <p className="text-muted-foreground">No active discounts assigned</p>
                       </div>
                     ) : (
                       assignedDiscounts.filter(d => d.status === "active").map((discount) => (
                         <div
                           key={discount.id}
-                          className="rounded-2xl border border-white/10 bg-white/[0.05] p-6"
+                          className="rounded-2xl border border-border bg-foreground/[0.06] p-6"
                         >
                           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                             <div className="flex items-center gap-4">
@@ -989,19 +989,19 @@ export default function RepCustomerDetailPage() {
                                 <Percent className="h-6 w-6 text-purple-400" />
                               </div>
                               <div>
-                                <p className="text-lg font-bold text-white">
+                                <p className="text-lg font-bold text-foreground">
                                   {discount.custom_discount_type === "percentage" 
                                     ? `${discount.custom_discount_value}% Off`
                                     : `$${discount.custom_discount_value} Off`}
                                 </p>
-                                <p className="text-sm text-white/50">
+                                <p className="text-sm text-muted-foreground">
                                   {discount.custom_description || (discount.discount_code ? `Code: ${discount.discount_code}` : "Custom discount")}
                                 </p>
                               </div>
                             </div>
                             <div className="flex items-center gap-4">
                               {discount.expires_at && (
-                                <div className="flex items-center gap-2 text-sm text-white/40">
+                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                   <Clock className="h-4 w-4" />
                                   Expires: {new Date(discount.expires_at).toLocaleDateString()}
               </div>
@@ -1024,28 +1024,28 @@ export default function RepCustomerDetailPage() {
 
                   {/* Past Discounts */}
                   {assignedDiscounts.filter(d => d.status !== "active").length > 0 && (
-                    <div className="space-y-4 pt-6 border-t border-white/10">
-                      <h4 className="text-lg font-semibold text-white/60">Discount History</h4>
+                    <div className="space-y-4 pt-6 border-t border-border">
+                      <h4 className="text-lg font-semibold text-foreground/60">Discount History</h4>
                       {assignedDiscounts.filter(d => d.status !== "active").map((discount) => (
                         <div
                           key={discount.id}
-                          className="rounded-xl border border-white/5 bg-white/[0.02] p-4 opacity-60"
+                          className="rounded-xl border border-border bg-foreground/[0.03] p-4 opacity-60"
                         >
                           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                             <div>
-                              <p className="font-medium text-white">
+                              <p className="font-medium text-foreground">
                                 {discount.custom_discount_type === "percentage" 
                                   ? `${discount.custom_discount_value}% Off`
                                   : `$${discount.custom_discount_value} Off`}
                               </p>
-                              <p className="text-sm text-white/40">
+                              <p className="text-sm text-muted-foreground">
                                 {discount.custom_description || "Custom discount"}
                               </p>
                             </div>
                             <Badge className={
                               discount.status === "used" ? "bg-blue-500/20 text-blue-400" :
                               discount.status === "expired" ? "bg-yellow-500/20 text-yellow-400" :
-                              "bg-zinc-500/20 text-zinc-400"
+                              "bg-zinc-500/20 text-muted-foreground"
                             }>
                               {discount.status.charAt(0).toUpperCase() + discount.status.slice(1)}
                             </Badge>
@@ -1067,7 +1067,7 @@ export default function RepCustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => { setShowAddOverride(false); setSelectedProduct(null); setProductSearch(""); setProductResults([]); setOverridePrice("") }}
             >
               <motion.div
@@ -1076,16 +1076,16 @@ export default function RepCustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-serif text-xl font-light text-white">Add Price Override</h3>
-                    <p className="text-sm text-white/40 mt-1">Set a custom price for a specific product</p>
+                    <h3 className="font-serif text-xl font-light text-foreground">Add Price Override</h3>
+                    <p className="text-sm text-muted-foreground mt-1">Set a custom price for a specific product</p>
                   </div>
                   <button
                     onClick={() => { setShowAddOverride(false); setSelectedProduct(null); setProductSearch(""); setProductResults([]); setOverridePrice("") }}
-                    className="text-white/40 hover:text-white transition-colors"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1096,18 +1096,18 @@ export default function RepCustomerDetailPage() {
                     <>
                       {/* Product Search */}
                       <div className="space-y-2">
-                        <Label className="font-mono text-xs uppercase tracking-widest text-white/50">Search Product</Label>
+                        <Label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Search Product</Label>
                         <div className="relative">
-                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                           <Input
                             value={productSearch}
                             onChange={(e) => handleProductSearch(e.target.value)}
                             placeholder="Search by product name or barcode..."
-                            className="h-12 pl-10 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/20"
+                            className="h-12 pl-10 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground/50"
                           />
                           {searchingProducts && (
                             <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                              <div className="h-4 w-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                              <div className="h-4 w-4 border-2 border-border border-t-white rounded-full animate-spin" />
                             </div>
                           )}
                         </div>
@@ -1115,18 +1115,18 @@ export default function RepCustomerDetailPage() {
 
                       {/* Results */}
                       {productResults.length > 0 && (
-                        <div className="max-h-60 overflow-y-auto rounded-xl border border-white/10 divide-y divide-white/5">
+                        <div className="max-h-60 overflow-y-auto rounded-xl border border-border divide-y divide-white/5">
                           {productResults.map((product) => (
                             <button
                               key={product.id}
                               onClick={() => { setSelectedProduct(product); setProductResults([]); setProductSearch("") }}
-                              className="w-full text-left p-4 hover:bg-white/5 transition-colors"
+                              className="w-full text-left p-4 hover:bg-foreground/5 transition-colors"
                             >
-                              <p className="text-white font-medium">{product.name}</p>
+                              <p className="text-foreground font-medium">{product.name}</p>
                               <div className="flex items-center gap-3 mt-1 text-sm">
-                                {product.variant && <span className="text-white/40">{product.variant}</span>}
-                                <span className="text-white/30">Retail: ${product.retail_price.toFixed(2)}</span>
-                                {product.b2b_price && <span className="text-white/30">B2B: ${product.b2b_price.toFixed(2)}</span>}
+                                {product.variant && <span className="text-muted-foreground">{product.variant}</span>}
+                                <span className="text-muted-foreground">Retail: ${product.retail_price.toFixed(2)}</span>
+                                {product.b2b_price && <span className="text-muted-foreground">B2B: ${product.b2b_price.toFixed(2)}</span>}
                               </div>
                             </button>
                           ))}
@@ -1136,17 +1136,17 @@ export default function RepCustomerDetailPage() {
                   ) : (
                     <>
                       {/* Selected product */}
-                      <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 flex items-center justify-between">
+                      <div className="rounded-xl border border-border bg-foreground/[0.04] p-4 flex items-center justify-between">
                         <div>
-                          <p className="text-white font-medium">{selectedProduct.name}</p>
+                          <p className="text-foreground font-medium">{selectedProduct.name}</p>
                           <div className="flex items-center gap-3 mt-1 text-sm">
-                            {selectedProduct.variant && <span className="text-white/40">{selectedProduct.variant}</span>}
-                            <span className="text-white/30">Retail: ${selectedProduct.retail_price.toFixed(2)}</span>
+                            {selectedProduct.variant && <span className="text-muted-foreground">{selectedProduct.variant}</span>}
+                            <span className="text-muted-foreground">Retail: ${selectedProduct.retail_price.toFixed(2)}</span>
                           </div>
                         </div>
                         <button
                           onClick={() => setSelectedProduct(null)}
-                          className="text-white/40 hover:text-white p-1"
+                          className="text-muted-foreground hover:text-foreground p-1"
                         >
                           <X className="h-4 w-4" />
                         </button>
@@ -1154,9 +1154,9 @@ export default function RepCustomerDetailPage() {
 
                       {/* Custom price input */}
                       <div className="space-y-2">
-                        <Label className="font-mono text-xs uppercase tracking-widest text-white/50">Custom Price</Label>
+                        <Label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Custom Price</Label>
                         <div className="relative">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg">$</span>
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">$</span>
                           <Input
                             type="number"
                             min="0"
@@ -1164,11 +1164,11 @@ export default function RepCustomerDetailPage() {
                             value={overridePrice}
                             onChange={(e) => setOverridePrice(e.target.value)}
                             placeholder="0.00"
-                            className="h-14 pl-8 rounded-xl bg-white/5 border-white/10 text-white text-lg placeholder:text-white/20"
+                            className="h-14 pl-8 rounded-xl bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground/50"
                           />
                         </div>
                         {overridePrice && parseFloat(overridePrice) < selectedProduct.retail_price && (
-                          <p className="text-sm text-white/40">
+                          <p className="text-sm text-muted-foreground">
                             Savings: ${(selectedProduct.retail_price - parseFloat(overridePrice)).toFixed(2)} ({Math.round(((selectedProduct.retail_price - parseFloat(overridePrice)) / selectedProduct.retail_price) * 100)}% off retail)
                           </p>
                         )}
@@ -1181,14 +1181,14 @@ export default function RepCustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => { setShowAddOverride(false); setSelectedProduct(null); setProductSearch(""); setProductResults([]); setOverridePrice("") }}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
                   <Button
                     onClick={handleAddOverride}
                     disabled={savingOverride || !selectedProduct || !overridePrice || parseFloat(overridePrice) < 0}
-                    className="h-12 px-6 rounded-xl bg-white text-black hover:bg-white/90 gap-2"
+                    className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 gap-2"
                   >
                     {savingOverride ? (
                       <>
@@ -1212,7 +1212,7 @@ export default function RepCustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setShowAssignDiscount(false)}
             >
               <motion.div
@@ -1221,16 +1221,16 @@ export default function RepCustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Assign Discount</h3>
-                    <p className="text-sm text-white/50 mt-1">This discount will auto-apply at checkout</p>
+                    <h3 className="text-xl font-bold text-foreground">Assign Discount</h3>
+                    <p className="text-sm text-muted-foreground mt-1">This discount will auto-apply at checkout</p>
                   </div>
                   <button
                     onClick={() => setShowAssignDiscount(false)}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1238,13 +1238,13 @@ export default function RepCustomerDetailPage() {
 
                 <div className="space-y-4">
                   {/* Discount Type Toggle */}
-                  <div className="flex gap-2 p-1 bg-white/5 rounded-xl">
+                  <div className="flex gap-2 p-1 bg-foreground/5 rounded-xl">
                     <button
                       onClick={() => setNewDiscount(prev => ({ ...prev, type: "custom" }))}
                       className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                         newDiscount.type === "custom" 
-                          ? "bg-white text-black" 
-                          : "text-white/60 hover:text-white"
+                          ? "bg-primary text-primary-foreground" 
+                          : "text-foreground/60 hover:text-foreground"
                       }`}
                     >
                       Custom Discount
@@ -1254,8 +1254,8 @@ export default function RepCustomerDetailPage() {
                         onClick={() => setNewDiscount(prev => ({ ...prev, type: "existing" }))}
                         className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                           newDiscount.type === "existing" 
-                            ? "bg-white text-black" 
-                            : "text-white/60 hover:text-white"
+                            ? "bg-primary text-primary-foreground" 
+                            : "text-foreground/60 hover:text-foreground"
                         }`}
                       >
                         My Codes
@@ -1267,14 +1267,14 @@ export default function RepCustomerDetailPage() {
                     <>
                       {/* Custom Discount Type */}
                       <div className="space-y-2">
-                        <Label className="text-white">Discount Type</Label>
+                        <Label className="text-foreground">Discount Type</Label>
                         <div className="flex gap-2">
                           <button
                             onClick={() => setNewDiscount(prev => ({ ...prev, customType: "percentage" }))}
                             className={`flex-1 py-3 rounded-lg font-medium border transition-all ${
                               newDiscount.customType === "percentage" 
                                 ? "bg-purple-500/20 border-purple-500/50 text-purple-300" 
-                                : "border-white/10 text-white/60 hover:text-white"
+                                : "border-border text-foreground/60 hover:text-foreground"
                             }`}
                           >
                             Percentage %
@@ -1284,7 +1284,7 @@ export default function RepCustomerDetailPage() {
                             className={`flex-1 py-3 rounded-lg font-medium border transition-all ${
                               newDiscount.customType === "fixed" 
                                 ? "bg-green-500/20 border-green-500/50 text-green-300" 
-                                : "border-white/10 text-white/60 hover:text-white"
+                                : "border-border text-foreground/60 hover:text-foreground"
                             }`}
                           >
                             Fixed Amount $
@@ -1294,7 +1294,7 @@ export default function RepCustomerDetailPage() {
 
                       {/* Discount Value */}
                       <div className="space-y-2">
-                        <Label className="text-white">
+                        <Label className="text-foreground">
                           {newDiscount.customType === "percentage" ? "Percentage" : "Amount"}
                         </Label>
                         <Input
@@ -1302,21 +1302,21 @@ export default function RepCustomerDetailPage() {
                           value={newDiscount.customValue}
                           onChange={(e) => setNewDiscount(prev => ({ ...prev, customValue: e.target.value }))}
                           placeholder={newDiscount.customType === "percentage" ? "e.g. 15" : "e.g. 10.00"}
-                          className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                          className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                         />
                       </div>
                     </>
                   ) : (
                     <div className="space-y-2">
-                      <Label className="text-white">Select Discount Code</Label>
+                      <Label className="text-foreground">Select Discount Code</Label>
                       <select
                         value={newDiscount.discountCodeId}
                         onChange={(e) => setNewDiscount(prev => ({ ...prev, discountCodeId: e.target.value }))}
-                        className="w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                        className="w-full h-12 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                       >
-                        <option value="" className="bg-black">Select a discount code...</option>
+                        <option value="" className="bg-background">Select a discount code...</option>
                         {availableDiscounts.filter(d => d.is_active).map((discount) => (
-                          <option key={discount.id} value={discount.id} className="bg-black">
+                          <option key={discount.id} value={discount.id} className="bg-background">
                             {discount.code} - {discount.discount_type === "percentage" ? `${discount.discount_value}%` : discount.discount_type === "set_price" ? "Custom pricing" : `$${discount.discount_value}`}
                           </option>
                         ))}
@@ -1326,23 +1326,23 @@ export default function RepCustomerDetailPage() {
 
                   {/* Description */}
               <div className="space-y-2">
-                    <Label className="text-white">Description (Optional)</Label>
+                    <Label className="text-foreground">Description (Optional)</Label>
                     <Input
                       value={newDiscount.description}
                       onChange={(e) => setNewDiscount(prev => ({ ...prev, description: e.target.value }))}
                       placeholder="e.g. Loyalty reward, First order discount"
-                      className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
               </div>
 
                   {/* Expiration */}
                   <div className="space-y-2">
-                    <Label className="text-white">Expires (Optional)</Label>
+                    <Label className="text-foreground">Expires (Optional)</Label>
                     <Input
                       type="date"
                       value={newDiscount.expiresAt}
                       onChange={(e) => setNewDiscount(prev => ({ ...prev, expiresAt: e.target.value }))}
-                      className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
             </div>
           </div>
@@ -1351,7 +1351,7 @@ export default function RepCustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => setShowAssignDiscount(false)}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>

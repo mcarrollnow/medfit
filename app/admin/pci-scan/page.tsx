@@ -379,9 +379,9 @@ export default function PCIScanAdminPage() {
     switch (status) {
       case 'scheduled': return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
       case 'active': return 'bg-green-500/20 text-green-400 border-green-500/30'
-      case 'completed': return 'bg-gray-500/20 text-gray-400 border-gray-500/30'
+      case 'completed': return 'bg-gray-500/20 text-muted-foreground border-border'
       case 'cancelled': return 'bg-red-500/20 text-red-400 border-red-500/30'
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30'
+      default: return 'bg-gray-500/20 text-muted-foreground border-border'
     }
   }
 
@@ -392,18 +392,18 @@ export default function PCIScanAdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <RefreshCw className="w-8 h-8 text-white/50 animate-spin" />
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <RefreshCw className="w-8 h-8 text-muted-foreground animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(58,66,51,0.08),transparent_50%)]" />
         
         <motion.div 
           className="relative max-w-6xl mx-auto text-center"
@@ -412,7 +412,7 @@ export default function PCIScanAdminPage() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-foreground/5 mb-8"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
@@ -423,10 +423,10 @@ export default function PCIScanAdminPage() {
 
           <h1 className="font-serif text-5xl md:text-6xl font-light tracking-tight mb-6">
             Vulnerability Scan
-            <span className="block text-white/60">Management</span>
+            <span className="block text-foreground/60">Management</span>
           </h1>
 
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
             Schedule PCI vulnerability scans and manage scanner IP whitelisting
           </p>
         </motion.div>
@@ -470,7 +470,7 @@ export default function PCIScanAdminPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="p-6 border border-white/10 rounded-xl bg-gradient-to-br from-orange-500/5 to-transparent">
+          <div className="p-6 border border-border rounded-xl bg-gradient-to-br from-orange-500/5 to-transparent">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
                 {cloudflareConfigured ? (
@@ -478,13 +478,13 @@ export default function PCIScanAdminPage() {
                     <Cloud className="w-6 h-6 text-orange-400" />
                   </div>
                 ) : (
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                    <CloudOff className="w-6 h-6 text-white/40" />
+                  <div className="w-12 h-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+                    <CloudOff className="w-6 h-6 text-muted-foreground" />
                   </div>
                 )}
                 <div>
                   <h2 className="font-serif text-2xl font-light">Cloudflare Automation</h2>
-                  <p className="text-white/50 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     {cloudflareConfigured 
                       ? 'Connected - Auto whitelist IPs when scans start' 
                       : 'Not configured - Add environment variables to enable'}
@@ -504,27 +504,27 @@ export default function PCIScanAdminPage() {
             </div>
 
             {!cloudflareConfigured && (
-              <div className="p-4 bg-black/30 rounded-lg border border-white/10">
-                <p className="text-sm text-white/60 mb-3">Add these to your environment variables:</p>
+              <div className="p-4 bg-foreground/30 rounded-lg border border-border">
+                <p className="text-sm text-foreground/60 mb-3">Add these to your environment variables:</p>
                 <code className="block text-sm font-mono text-orange-400">
                   CLOUDFLARE_API_TOKEN=your_api_token<br />
                   CLOUDFLARE_ZONE_ID=your_zone_id
                 </code>
-                <p className="text-xs text-white/40 mt-3">
+                <p className="text-xs text-muted-foreground mt-3">
                   Get these from Cloudflare Dashboard → Your domain → Overview (Zone ID) and API Tokens
                 </p>
               </div>
             )}
 
             {cloudflareConfigured && cloudflareStatus && (
-              <div className="p-4 bg-black/30 rounded-lg border border-white/10 mb-4">
-                <p className="text-sm text-white/70">{cloudflareStatus}</p>
+              <div className="p-4 bg-foreground/30 rounded-lg border border-border mb-4">
+                <p className="text-sm text-foreground/70">{cloudflareStatus}</p>
               </div>
             )}
 
             {cloudflareConfigured && activeWhitelistRules.length > 0 && (
               <div className="mt-4">
-                <p className="text-sm text-white/50 mb-2">Active PCI Whitelist Rules in Cloudflare:</p>
+                <p className="text-sm text-muted-foreground mb-2">Active PCI Whitelist Rules in Cloudflare:</p>
                 <div className="flex flex-wrap gap-2">
                   {activeWhitelistRules.map(rule => (
                     <span 
@@ -549,7 +549,7 @@ export default function PCIScanAdminPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="font-serif text-3xl font-light mb-2">Scanner IP Whitelist</h2>
-              <p className="text-white/50">
+              <p className="text-muted-foreground">
                 {cloudflareConfigured 
                   ? 'These IPs will be automatically whitelisted when scans start'
                   : 'These IPs need to be whitelisted in Cloudflare during scan windows'}
@@ -558,21 +558,21 @@ export default function PCIScanAdminPage() {
             <div className="flex gap-3">
               <button
                 onClick={copyAllIPs}
-                className="flex items-center gap-2 px-4 py-2 border border-white/20 rounded-lg hover:bg-white/5 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-foreground/5 transition-colors"
               >
                 <Copy className="w-4 h-4" />
                 Copy All
               </button>
               <button
                 onClick={() => { setShowBulkPaste(true); setShowNewIP(false); }}
-                className="flex items-center gap-2 px-4 py-2 border border-white/20 rounded-lg hover:bg-white/5 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-foreground/5 transition-colors"
               >
                 <Server className="w-4 h-4" />
                 Bulk Paste
               </button>
               <button
                 onClick={() => { setShowNewIP(true); setShowBulkPaste(false); }}
-                className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-card/90 transition-colors"
               >
                 <Plus className="w-4 h-4" />
                 Add IP
@@ -589,37 +589,37 @@ export default function PCIScanAdminPage() {
                 exit={{ opacity: 0, height: 0 }}
                 className="mb-6 overflow-hidden"
               >
-                <div className="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
+                <div className="p-6 border border-border rounded-xl bg-foreground/5 backdrop-blur-sm">
                   <h3 className="text-lg font-medium mb-4">Add Scanner IP</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">IP Range (CIDR)</label>
+                      <label className="block text-sm text-foreground/60 mb-2">IP Range (CIDR)</label>
                       <input
                         type="text"
                         value={newIP.ip_range}
                         onChange={(e) => setNewIP({ ...newIP, ip_range: e.target.value })}
                         placeholder="e.g., 192.168.1.0/24"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Provider</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Provider</label>
                       <input
                         type="text"
                         value={newIP.provider}
                         onChange={(e) => setNewIP({ ...newIP, provider: e.target.value })}
                         placeholder="e.g., SecurityMetrics"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Description</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Description</label>
                       <input
                         type="text"
                         value={newIP.description}
                         onChange={(e) => setNewIP({ ...newIP, description: e.target.value })}
                         placeholder="e.g., Primary Scanner"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                   </div>
@@ -627,13 +627,13 @@ export default function PCIScanAdminPage() {
                     <button
                       onClick={handleAddIP}
                       disabled={saving}
-                      className="px-6 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50"
+                      className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-card/90 transition-colors disabled:opacity-50"
                     >
                       {saving ? 'Adding...' : 'Add IP'}
                     </button>
                     <button
                       onClick={() => setShowNewIP(false)}
-                      className="px-6 py-2 border border-white/20 rounded-lg hover:bg-white/5 transition-colors"
+                      className="px-6 py-2 border border-border rounded-lg hover:bg-foreground/5 transition-colors"
                     >
                       Cancel
                     </button>
@@ -652,14 +652,14 @@ export default function PCIScanAdminPage() {
                 exit={{ opacity: 0, height: 0 }}
                 className="mb-6 overflow-hidden"
               >
-                <div className="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
+                <div className="p-6 border border-border rounded-xl bg-foreground/5 backdrop-blur-sm">
                   <h3 className="text-lg font-medium mb-2">Bulk Paste Scanner IPs</h3>
-                  <p className="text-sm text-white/50 mb-4">
+                  <p className="text-sm text-muted-foreground mb-4">
                     Paste a list of IPs - supports bullets, dashes, numbered lists, or one IP per line
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div className="md:col-span-3">
-                      <label className="block text-sm text-white/60 mb-2">IP Addresses</label>
+                      <label className="block text-sm text-foreground/60 mb-2">IP Addresses</label>
                       <textarea
                         value={bulkIPs}
                         onChange={(e) => setBulkIPs(e.target.value)}
@@ -669,22 +669,22 @@ export default function PCIScanAdminPage() {
 1. 172.16.0.1
 52.203.96.0/24, 52.203.97.0/24`}
                         rows={6}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none resize-none font-mono text-sm"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none resize-none font-mono text-sm"
                       />
                       {bulkIPs && (
-                        <p className="text-xs text-white/40 mt-2">
+                        <p className="text-xs text-muted-foreground mt-2">
                           {parseBulkIPs(bulkIPs).length} valid IP{parseBulkIPs(bulkIPs).length !== 1 ? 's' : ''} detected
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Provider</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Provider</label>
                       <input
                         type="text"
                         value={bulkProvider}
                         onChange={(e) => setBulkProvider(e.target.value)}
                         placeholder="e.g., SecurityMetrics"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                   </div>
@@ -692,13 +692,13 @@ export default function PCIScanAdminPage() {
                     <button
                       onClick={handleBulkAddIPs}
                       disabled={saving || !bulkIPs.trim()}
-                      className="px-6 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50"
+                      className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-card/90 transition-colors disabled:opacity-50"
                     >
                       {saving ? 'Adding...' : `Add ${parseBulkIPs(bulkIPs).length || ''} IPs`}
                     </button>
                     <button
                       onClick={() => { setShowBulkPaste(false); setBulkIPs(''); }}
-                      className="px-6 py-2 border border-white/20 rounded-lg hover:bg-white/5 transition-colors"
+                      className="px-6 py-2 border border-border rounded-lg hover:bg-foreground/5 transition-colors"
                     >
                       Cancel
                     </button>
@@ -718,38 +718,38 @@ export default function PCIScanAdminPage() {
                 transition={{ delay: index * 0.05 }}
                 className={`flex items-center justify-between p-4 border rounded-lg transition-colors ${
                   ip.is_active 
-                    ? 'border-white/20 bg-white/5' 
-                    : 'border-white/10 bg-white/[0.02] opacity-50'
+                    ? 'border-border bg-foreground/5' 
+                    : 'border-border bg-foreground/[0.03] opacity-50'
                 }`}
               >
                 <div className="flex items-center gap-4">
-                  <Server className="w-5 h-5 text-white/40" />
+                  <Server className="w-5 h-5 text-muted-foreground" />
                   <div>
                     <code className="text-lg font-mono">{ip.ip_range}</code>
                     {ip.description && (
-                      <p className="text-sm text-white/50">{ip.description}</p>
+                      <p className="text-sm text-muted-foreground">{ip.description}</p>
                     )}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-white/40 px-3 py-1 border border-white/10 rounded-full">
+                  <span className="text-sm text-muted-foreground px-3 py-1 border border-border rounded-full">
                     {ip.provider}
                   </span>
                   <button
                     onClick={() => copyToClipboard(ip.ip_range)}
-                    className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                    className="p-2 hover:bg-foreground/10 rounded-lg transition-colors"
                     title="Copy IP"
                   >
                     {copiedIP === ip.ip_range ? (
                       <Check className="w-4 h-4 text-green-400" />
                     ) : (
-                      <Copy className="w-4 h-4 text-white/40" />
+                      <Copy className="w-4 h-4 text-muted-foreground" />
                     )}
                   </button>
                   <button
                     onClick={() => handleToggleIP(ip.id, !ip.is_active)}
                     className={`p-2 rounded-lg transition-colors ${
-                      ip.is_active ? 'bg-green-500/20 text-green-400' : 'bg-white/10 text-white/40'
+                      ip.is_active ? 'bg-green-500/20 text-green-400' : 'bg-foreground/10 text-muted-foreground'
                     }`}
                     title={ip.is_active ? 'Disable' : 'Enable'}
                   >
@@ -757,7 +757,7 @@ export default function PCIScanAdminPage() {
                   </button>
                   <button
                     onClick={() => handleDeleteIP(ip.id)}
-                    className="p-2 hover:bg-red-500/20 text-white/40 hover:text-red-400 rounded-lg transition-colors"
+                    className="p-2 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 rounded-lg transition-colors"
                     title="Delete"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -777,13 +777,13 @@ export default function PCIScanAdminPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="font-serif text-3xl font-light mb-2">Scheduled Scans</h2>
-              <p className="text-white/50">
+              <p className="text-muted-foreground">
                 Track when PCI vulnerability scans are scheduled to run
               </p>
             </div>
             <button
               onClick={() => setShowNewSchedule(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-card/90 transition-colors"
             >
               <Plus className="w-4 h-4" />
               Schedule Scan
@@ -799,55 +799,55 @@ export default function PCIScanAdminPage() {
                 exit={{ opacity: 0, height: 0 }}
                 className="mb-6 overflow-hidden"
               >
-                <div className="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm">
+                <div className="p-6 border border-border rounded-xl bg-foreground/5 backdrop-blur-sm">
                   <h3 className="text-lg font-medium mb-4">Schedule New Scan</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Scan Name *</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Scan Name *</label>
                       <input
                         type="text"
                         value={newSchedule.scan_name}
                         onChange={(e) => setNewSchedule({ ...newSchedule, scan_name: e.target.value })}
                         placeholder="e.g., Q1 2026 PCI Scan"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Scanner Provider</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Scanner Provider</label>
                       <input
                         type="text"
                         value={newSchedule.scanner_provider}
                         onChange={(e) => setNewSchedule({ ...newSchedule, scanner_provider: e.target.value })}
                         placeholder="e.g., SecurityMetrics"
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">Start Time *</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Start Time *</label>
                       <input
                         type="datetime-local"
                         value={newSchedule.scheduled_start}
                         onChange={(e) => setNewSchedule({ ...newSchedule, scheduled_start: e.target.value })}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">End Time *</label>
+                      <label className="block text-sm text-foreground/60 mb-2">End Time *</label>
                       <input
                         type="datetime-local"
                         value={newSchedule.scheduled_end}
                         onChange={(e) => setNewSchedule({ ...newSchedule, scheduled_end: e.target.value })}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none"
                       />
                     </div>
                     <div className="md:col-span-2">
-                      <label className="block text-sm text-white/60 mb-2">Notes</label>
+                      <label className="block text-sm text-foreground/60 mb-2">Notes</label>
                       <textarea
                         value={newSchedule.notes}
                         onChange={(e) => setNewSchedule({ ...newSchedule, notes: e.target.value })}
                         placeholder="Any additional notes about this scan..."
                         rows={3}
-                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-lg focus:border-white/30 focus:outline-none resize-none"
+                        className="w-full px-4 py-3 bg-foreground/50 border border-border rounded-lg focus:border-border focus:outline-none resize-none"
                       />
                     </div>
                   </div>
@@ -855,13 +855,13 @@ export default function PCIScanAdminPage() {
                     <button
                       onClick={handleCreateSchedule}
                       disabled={saving}
-                      className="px-6 py-2 bg-white text-black rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50"
+                      className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-card/90 transition-colors disabled:opacity-50"
                     >
                       {saving ? 'Scheduling...' : 'Schedule Scan'}
                     </button>
                     <button
                       onClick={() => setShowNewSchedule(false)}
-                      className="px-6 py-2 border border-white/20 rounded-lg hover:bg-white/5 transition-colors"
+                      className="px-6 py-2 border border-border rounded-lg hover:bg-foreground/5 transition-colors"
                     >
                       Cancel
                     </button>
@@ -873,12 +873,12 @@ export default function PCIScanAdminPage() {
 
           {/* Schedules List */}
           {schedules.length === 0 ? (
-            <div className="text-center py-16 border border-white/10 rounded-xl bg-white/[0.02]">
-              <Calendar className="w-12 h-12 text-white/20 mx-auto mb-4" />
-              <p className="text-white/50">No scans scheduled yet</p>
+            <div className="text-center py-16 border border-border rounded-xl bg-foreground/[0.03]">
+              <Calendar className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
+              <p className="text-muted-foreground">No scans scheduled yet</p>
               <button
                 onClick={() => setShowNewSchedule(true)}
-                className="mt-4 text-white/70 hover:text-white underline underline-offset-4"
+                className="mt-4 text-foreground/70 hover:text-foreground underline underline-offset-4"
               >
                 Schedule your first scan
               </button>
@@ -898,7 +898,7 @@ export default function PCIScanAdminPage() {
                     className={`p-6 border rounded-xl transition-colors ${
                       isActive && schedule.status !== 'completed' && schedule.status !== 'cancelled'
                         ? 'border-green-500/30 bg-green-500/5'
-                        : 'border-white/10 bg-white/[0.02]'
+                        : 'border-border bg-foreground/[0.03]'
                     }`}
                   >
                     <div className="flex items-start justify-between">
@@ -915,7 +915,7 @@ export default function PCIScanAdminPage() {
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-6 text-sm text-white/50">
+                        <div className="flex items-center gap-6 text-sm text-muted-foreground">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
                             {formatDate(schedule.scheduled_start)}
@@ -927,9 +927,9 @@ export default function PCIScanAdminPage() {
                           </div>
                         </div>
                         {schedule.notes && (
-                          <p className="text-sm text-white/40">{schedule.notes}</p>
+                          <p className="text-sm text-muted-foreground">{schedule.notes}</p>
                         )}
-                        <p className="text-xs text-white/30">Provider: {schedule.scanner_provider}</p>
+                        <p className="text-xs text-muted-foreground">Provider: {schedule.scanner_provider}</p>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -969,7 +969,7 @@ export default function PCIScanAdminPage() {
                         {!cloudflareConfigured && schedule.status === 'scheduled' && (
                           <button
                             onClick={() => handleUpdateStatus(schedule.id, 'active')}
-                            className="p-2 hover:bg-green-500/20 text-white/40 hover:text-green-400 rounded-lg transition-colors"
+                            className="p-2 hover:bg-green-500/20 text-muted-foreground hover:text-green-400 rounded-lg transition-colors"
                             title="Mark as Active"
                           >
                             <Play className="w-4 h-4" />
@@ -978,7 +978,7 @@ export default function PCIScanAdminPage() {
                         {!cloudflareConfigured && schedule.status === 'active' && (
                           <button
                             onClick={() => handleUpdateStatus(schedule.id, 'completed')}
-                            className="p-2 hover:bg-blue-500/20 text-white/40 hover:text-blue-400 rounded-lg transition-colors"
+                            className="p-2 hover:bg-blue-500/20 text-muted-foreground hover:text-blue-400 rounded-lg transition-colors"
                             title="Mark as Completed"
                           >
                             <CheckCircle className="w-4 h-4" />
@@ -987,7 +987,7 @@ export default function PCIScanAdminPage() {
                         {(schedule.status === 'scheduled' || schedule.status === 'active') && (
                           <button
                             onClick={() => handleUpdateStatus(schedule.id, 'cancelled')}
-                            className="p-2 hover:bg-red-500/20 text-white/40 hover:text-red-400 rounded-lg transition-colors"
+                            className="p-2 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 rounded-lg transition-colors"
                             title="Cancel"
                           >
                             <Square className="w-4 h-4" />
@@ -995,7 +995,7 @@ export default function PCIScanAdminPage() {
                         )}
                         <button
                           onClick={() => handleDeleteSchedule(schedule.id)}
-                          className="p-2 hover:bg-red-500/20 text-white/40 hover:text-red-400 rounded-lg transition-colors"
+                          className="p-2 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 rounded-lg transition-colors"
                           title="Delete"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -1014,19 +1014,19 @@ export default function PCIScanAdminPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="p-8 border border-white/10 rounded-xl bg-gradient-to-br from-white/5 to-transparent"
+          className="p-8 border border-border rounded-xl bg-gradient-to-br from-white/5 to-transparent"
         >
           <h2 className="font-serif text-2xl font-light mb-6">
             {cloudflareConfigured ? 'How Automation Works' : 'Manual Setup Instructions'}
           </h2>
           
           {cloudflareConfigured ? (
-            <div className="space-y-4 text-white/70">
+            <div className="space-y-4 text-foreground/70">
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500/20 text-green-400 text-sm">✓</span>
                 <div>
-                  <p className="font-medium text-white">Automatic Whitelisting</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Automatic Whitelisting</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Click &quot;Enable&quot; on a scheduled scan to automatically whitelist all scanner IPs in Cloudflare
                   </p>
                 </div>
@@ -1034,8 +1034,8 @@ export default function PCIScanAdminPage() {
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-500/20 text-green-400 text-sm">✓</span>
                 <div>
-                  <p className="font-medium text-white">Automatic Cleanup</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Automatic Cleanup</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Click &quot;Disable&quot; when the scan is complete to remove all whitelist rules from Cloudflare
                   </p>
                 </div>
@@ -1043,38 +1043,38 @@ export default function PCIScanAdminPage() {
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm">⏰</span>
                 <div>
-                  <p className="font-medium text-white">Scheduled Automation (Optional)</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Scheduled Automation (Optional)</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Set up a cron job to call <code className="text-orange-400">/api/cron/pci-scan</code> every 5 minutes for fully automatic whitelist management based on scan windows
                   </p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="space-y-4 text-white/70">
+            <div className="space-y-4 text-foreground/70">
               <div className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-sm">1</span>
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-foreground/10 text-sm">1</span>
                 <div>
-                  <p className="font-medium text-white">Whitelist Scanner IPs in Cloudflare</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Whitelist Scanner IPs in Cloudflare</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Go to Cloudflare → Security → WAF → Tools → IP Access Rules and add each scanner IP as &quot;Allow&quot;
                   </p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-sm">2</span>
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-foreground/10 text-sm">2</span>
                 <div>
-                  <p className="font-medium text-white">Or Pause Cloudflare Temporarily</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Or Pause Cloudflare Temporarily</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Alternatively, pause Cloudflare during the scan window (Overview → Advanced Actions → Pause Cloudflare)
                   </p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-sm">3</span>
+                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-foreground/10 text-sm">3</span>
                 <div>
-                  <p className="font-medium text-white">Re-enable Protection After Scan</p>
-                  <p className="text-sm text-white/50 mt-1">
+                  <p className="font-medium text-foreground">Re-enable Protection After Scan</p>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Once the scan is complete, remove the IP whitelist rules or resume Cloudflare protection
                   </p>
                 </div>

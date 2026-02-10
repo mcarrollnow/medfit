@@ -19,16 +19,16 @@ export function GrainyCard({
   ...props 
 }: GrainyCardProps) {
   const variantStyles = {
-    default: "border border-white/10",
-    elevated: "border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
-    subtle: "border border-white/5",
-    transparent: "border border-white/10",
+    default: "border border-border",
+    elevated: "border border-border shadow-[0_8px_32px_rgba(58,66,51,0.15)]",
+    subtle: "border border-border",
+    transparent: "border border-border",
   }
   
   const variantBgColors: Record<string, string> = {
-    default: "rgba(0,0,0,0.3)",
-    elevated: "rgba(0,0,0,0.4)",
-    subtle: "rgba(0,0,0,0.2)",
+    default: "rgba(58,66,51,0.15)",
+    elevated: "rgba(58,66,51,0.15)",
+    subtle: "rgba(58,66,51,0.12)",
     transparent: "transparent",
   }
 
@@ -37,7 +37,7 @@ export function GrainyCard({
       className={cn(
         "relative overflow-hidden rounded-2xl backdrop-blur-xl transition-all duration-300",
         variantStyles[variant],
-        hoverEffect && "hover:border-white/20 hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] cursor-pointer",
+        hoverEffect && "hover:border-border hover:shadow-[0_12px_40px_rgba(58,66,51,0.2)] cursor-pointer",
         className,
       )}
       style={{

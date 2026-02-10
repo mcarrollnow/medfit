@@ -187,11 +187,11 @@ export default function SupplyStoreHomePage() {
                 >
                   <GlassCard
                     hover
-                    className={`h-full transition-all duration-500 ${isActive ? "ring-2 ring-white/30" : ""}`}
+                    className={`h-full transition-all duration-500 ${isActive ? "ring-2 ring-foreground/30" : ""}`}
                     padding="lg"
                   >
                     <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors ${isActive ? "bg-foreground text-background" : "bg-[rgba(255,255,255,0.05)]"}`}
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors ${isActive ? "bg-foreground text-background" : "bg-foreground/[0.06]"}`}
                     >
                       <Icon className="w-8 h-8" />
                     </div>
@@ -199,7 +199,7 @@ export default function SupplyStoreHomePage() {
                     <p className="text-muted-foreground mb-6">{type.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {type.categories.slice(0, 3).map((cat) => (
-                        <span key={cat} className="px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] text-xs text-muted-foreground">
+                        <span key={cat} className="px-3 py-1 rounded-full bg-foreground/[0.06] text-xs text-muted-foreground">
                           {cat}
                         </span>
                       ))}
@@ -307,7 +307,7 @@ export default function SupplyStoreHomePage() {
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square bg-[rgba(255,255,255,0.03)] rounded-3xl animate-pulse" />
+                <div key={i} className="aspect-square bg-foreground/[0.04] rounded-3xl animate-pulse" />
               ))}
             </div>
           ) : (

@@ -275,23 +275,23 @@ export default function WebsiteSettingsPage() {
     return (
       <div className="space-y-3">
         <div>
-          <Label className="text-sm font-medium text-white/70">{label}</Label>
-          <p className="text-xs text-white/40 mt-1">{description}</p>
+          <Label className="text-sm font-medium text-foreground/70">{label}</Label>
+          <p className="text-xs text-muted-foreground mt-1">{description}</p>
         </div>
         <div className="flex items-center gap-4">
           {value ? (
-            <div className={`relative ${sizeClasses[previewSize]} rounded-xl border border-white/10 bg-white/5 overflow-hidden group`}>
+            <div className={`relative ${sizeClasses[previewSize]} rounded-xl border border-border bg-foreground/5 overflow-hidden group`}>
               <img src={value} alt={label} className="h-full w-full object-contain" />
               <button
                 onClick={() => clearImage(fieldName)}
-                className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
               >
-                <X className="h-5 w-5 text-white" />
+                <X className="h-5 w-5 text-foreground" />
               </button>
             </div>
           ) : (
-            <div className={`${sizeClasses[previewSize]} rounded-xl border border-dashed border-white/20 bg-white/5 flex items-center justify-center`}>
-              <ImageIcon className="h-6 w-6 text-white/20" />
+            <div className={`${sizeClasses[previewSize]} rounded-xl border border-dashed border-border bg-foreground/5 flex items-center justify-center`}>
+              <ImageIcon className="h-6 w-6 text-muted-foreground/50" />
             </div>
           )}
           <div>
@@ -299,7 +299,7 @@ export default function WebsiteSettingsPage() {
               type="button"
               variant="outline"
               disabled={isUploading}
-              className="h-10 px-4 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+              className="h-10 px-4 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               onClick={() => inputRef.current?.click()}
             >
               {isUploading ? (
@@ -328,7 +328,7 @@ export default function WebsiteSettingsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -339,7 +339,7 @@ export default function WebsiteSettingsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -352,14 +352,14 @@ export default function WebsiteSettingsPage() {
           className="flex items-center justify-between"
         >
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Website Settings</h1>
-            <p className="text-lg text-white/50">Customize your site's branding, SEO, app settings, and more</p>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Website Settings</h1>
+            <p className="text-lg text-muted-foreground">Customize your site's branding, SEO, app settings, and more</p>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/admin/website/pages">
               <Button
                 variant="outline"
-                className="h-12 px-6 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+                className="h-12 px-6 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
                 <FileText className="h-4 w-4 mr-2" />
                 Page SEO
@@ -368,7 +368,7 @@ export default function WebsiteSettingsPage() {
           <Button
             onClick={handleSave}
             disabled={saving}
-            className="h-12 px-6 rounded-xl bg-white text-black hover:bg-white/90 font-semibold"
+            className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 font-semibold"
           >
             {saving ? (
               <>
@@ -390,7 +390,7 @@ export default function WebsiteSettingsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-2"
+          className="rounded-2xl bg-foreground/5 border border-border backdrop-blur-xl p-2"
         >
           <nav className="flex flex-wrap gap-1">
             {tabs.map((tab) => {
@@ -402,8 +402,8 @@ export default function WebsiteSettingsPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
                     isActive
-                      ? 'bg-white/10 text-white'
-                      : 'text-white/50 hover:text-white hover:bg-white/5'
+                      ? 'bg-foreground/10 text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -428,7 +428,7 @@ export default function WebsiteSettingsPage() {
                 className="space-y-6"
               >
                 {/* Site Identity */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -436,27 +436,27 @@ export default function WebsiteSettingsPage() {
                         <Globe className="h-5 w-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Site Identity</h2>
-                        <p className="text-sm text-white/50">Basic information about your site</p>
+                        <h2 className="text-xl font-bold text-foreground">Site Identity</h2>
+                        <p className="text-sm text-muted-foreground">Basic information about your site</p>
                       </div>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Site Name</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Site Name</Label>
                         <Input
                           value={settings.site_name}
                           onChange={(e) => setSettings({ ...settings, site_name: e.target.value })}
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Site Tagline</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Site Tagline</Label>
                         <Input
                           value={settings.site_tagline}
                           onChange={(e) => setSettings({ ...settings, site_tagline: e.target.value })}
                           placeholder="Your site's slogan or tagline"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                     </div>
@@ -464,7 +464,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Logos */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -472,16 +472,16 @@ export default function WebsiteSettingsPage() {
                         <Sparkles className="h-5 w-5 text-purple-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Logos</h2>
-                        <p className="text-sm text-white/50">Upload logos for light and dark backgrounds</p>
+                        <h2 className="text-xl font-bold text-foreground">Logos</h2>
+                        <p className="text-sm text-muted-foreground">Upload logos for light and dark backgrounds</p>
                       </div>
                     </div>
 
                     <div className="grid gap-8 md:grid-cols-2">
-                      <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="p-4 rounded-xl bg-foreground/5 border border-border">
                         <div className="flex items-center gap-2 mb-4">
                           <Sun className="h-4 w-4 text-amber-400" />
-                          <span className="text-sm font-medium text-white/70">Light Mode Logo</span>
+                          <span className="text-sm font-medium text-foreground/70">Light Mode Logo</span>
                         </div>
                         <ImageUploadField
                           label=""
@@ -492,10 +492,10 @@ export default function WebsiteSettingsPage() {
                           accept="image/*,.svg"
                         />
                       </div>
-                      <div className="p-4 rounded-xl bg-black/30 border border-white/10">
+                      <div className="p-4 rounded-xl bg-foreground/30 border border-border">
                         <div className="flex items-center gap-2 mb-4">
                           <Moon className="h-4 w-4 text-blue-400" />
-                          <span className="text-sm font-medium text-white/70">Dark Mode Logo</span>
+                          <span className="text-sm font-medium text-foreground/70">Dark Mode Logo</span>
                         </div>
                         <ImageUploadField
                           label=""
@@ -511,7 +511,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Favicons */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -519,13 +519,13 @@ export default function WebsiteSettingsPage() {
                         <Monitor className="h-5 w-5 text-emerald-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Favicons</h2>
-                        <p className="text-sm text-white/50">Browser tab icons for different themes</p>
+                        <h2 className="text-xl font-bold text-foreground">Favicons</h2>
+                        <p className="text-sm text-muted-foreground">Browser tab icons for different themes</p>
                       </div>
                     </div>
 
                     <div className="grid gap-8 md:grid-cols-2">
-                      <div className="p-4 rounded-xl bg-white border border-white/10">
+                      <div className="p-4 rounded-xl bg-white border border-border">
                         <div className="flex items-center gap-2 mb-4">
                           <Sun className="h-4 w-4 text-amber-500" />
                           <span className="text-sm font-medium text-gray-700">Light Theme Favicon</span>
@@ -539,10 +539,10 @@ export default function WebsiteSettingsPage() {
                           accept=".ico,.png,.svg,image/x-icon,image/png,image/svg+xml"
                         />
                       </div>
-                      <div className="p-4 rounded-xl bg-[#1a1a1a] border border-white/10">
+                      <div className="p-4 rounded-xl bg-card border border-border">
                         <div className="flex items-center gap-2 mb-4">
                           <Moon className="h-4 w-4 text-blue-400" />
-                          <span className="text-sm font-medium text-white/70">Dark Theme Favicon</span>
+                          <span className="text-sm font-medium text-foreground/70">Dark Theme Favicon</span>
                         </div>
                         <ImageUploadField
                           label=""
@@ -556,14 +556,14 @@ export default function WebsiteSettingsPage() {
                     </div>
 
                     {/* Safari Favicon */}
-                    <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10">
+                    <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-border">
                       <div className="flex items-center gap-2 mb-4">
                         <svg className="h-4 w-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm.5-13h-1v5.414l3.293 3.293.707-.707-3-3V7z"/>
                         </svg>
-                        <span className="text-sm font-medium text-white/70">Safari Favicon (PNG)</span>
+                        <span className="text-sm font-medium text-foreground/70">Safari Favicon (PNG)</span>
                       </div>
-                      <p className="text-xs text-white/40 mb-3">Safari doesn't support SVG favicons. Upload a PNG version for Safari compatibility.</p>
+                      <p className="text-xs text-muted-foreground mb-3">Safari doesn't support SVG favicons. Upload a PNG version for Safari compatibility.</p>
                       <ImageUploadField
                         label=""
                         description="PNG format, 32x32px for Safari browser"
@@ -577,7 +577,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Apple & Safari Icons */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -585,8 +585,8 @@ export default function WebsiteSettingsPage() {
                         <Smartphone className="h-5 w-5 text-pink-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Apple & Safari Icons</h2>
-                        <p className="text-sm text-white/50">Icons for iOS devices and Safari browser</p>
+                        <h2 className="text-xl font-bold text-foreground">Apple & Safari Icons</h2>
+                        <p className="text-sm text-muted-foreground">Icons for iOS devices and Safari browser</p>
                       </div>
                     </div>
 
@@ -609,18 +609,18 @@ export default function WebsiteSettingsPage() {
                           accept=".svg,image/svg+xml"
                         />
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">Mask Icon Color</Label>
+                          <Label className="text-sm font-medium text-foreground/70">Mask Icon Color</Label>
                           <div className="flex items-center gap-3">
                             <input
                               type="color"
                               value={settings.mask_icon_color}
                               onChange={(e) => setSettings({ ...settings, mask_icon_color: e.target.value })}
-                              className="h-10 w-10 rounded-lg border border-white/10 bg-transparent cursor-pointer"
+                              className="h-10 w-10 rounded-lg border border-border bg-transparent cursor-pointer"
                             />
                             <Input
                               value={settings.mask_icon_color}
                               onChange={(e) => setSettings({ ...settings, mask_icon_color: e.target.value })}
-                              className="h-10 w-24 bg-white/5 border-white/10 text-white rounded-xl font-mono text-sm"
+                              className="h-10 w-24 bg-foreground/5 border-border text-foreground rounded-xl font-mono text-sm"
                             />
                           </div>
                         </div>
@@ -640,7 +640,7 @@ export default function WebsiteSettingsPage() {
                 className="space-y-6"
               >
                 {/* Shop Hero */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -648,33 +648,33 @@ export default function WebsiteSettingsPage() {
                         <Store className="h-5 w-5 text-emerald-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Shop Hero Section</h2>
-                        <p className="text-sm text-white/50">Customize the main headline and subtitle on your shop page</p>
+                        <h2 className="text-xl font-bold text-foreground">Shop Hero Section</h2>
+                        <p className="text-sm text-muted-foreground">Customize the main headline and subtitle on your shop page</p>
                       </div>
                     </div>
 
                     <div className="space-y-6">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Hero Title</Label>
-                        <p className="text-xs text-white/40">The main headline displayed on the shop page</p>
+                        <Label className="text-sm font-medium text-foreground/70">Hero Title</Label>
+                        <p className="text-xs text-muted-foreground">The main headline displayed on the shop page</p>
                         <Textarea
                           value={settings.shop_hero_title}
                           onChange={(e) => setSettings({ ...settings, shop_hero_title: e.target.value })}
                           placeholder="Innovation is born where research lives."
                           rows={2}
-                          className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none text-lg"
+                          className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none text-lg"
                         />
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Hero Subtitle</Label>
-                        <p className="text-xs text-white/40">Supporting text below the headline</p>
+                        <Label className="text-sm font-medium text-foreground/70">Hero Subtitle</Label>
+                        <p className="text-xs text-muted-foreground">Supporting text below the headline</p>
                         <Textarea
                           value={settings.shop_hero_subtitle}
                           onChange={(e) => setSettings({ ...settings, shop_hero_subtitle: e.target.value })}
                           placeholder="Premium quality compounds for scientific research."
                           rows={3}
-                          className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none"
+                          className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none"
                         />
                       </div>
                     </div>
@@ -682,18 +682,18 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Preview */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8">
-                    <h3 className="text-sm font-semibold text-white/70 mb-6 flex items-center gap-2">
+                    <h3 className="text-sm font-semibold text-foreground/70 mb-6 flex items-center gap-2">
                       <Eye className="h-4 w-4" />
                       Live Preview
                     </h3>
-                    <div className="rounded-xl bg-gradient-to-b from-black to-zinc-950 border border-white/10 p-8 text-center space-y-4">
-                      <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl text-balance">
+                    <div className="rounded-xl bg-gradient-to-b from-background to-background border border-border p-8 text-center space-y-4">
+                      <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
                         {settings.shop_hero_title || 'Your Hero Title'}
                       </h2>
-                      <p className="mx-auto max-w-2xl text-base text-white/60 text-balance">
+                      <p className="mx-auto max-w-2xl text-base text-foreground/60 text-balance">
                         {settings.shop_hero_subtitle || 'Your hero subtitle will appear here.'}
                       </p>
                     </div>
@@ -711,7 +711,7 @@ export default function WebsiteSettingsPage() {
                 className="space-y-6"
               >
                 {/* Page Title & Meta */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -719,31 +719,31 @@ export default function WebsiteSettingsPage() {
                         <Search className="h-5 w-5 text-emerald-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Page Title & Meta</h2>
-                        <p className="text-sm text-white/50">How your site appears in search results</p>
+                        <h2 className="text-xl font-bold text-foreground">Page Title & Meta</h2>
+                        <p className="text-sm text-muted-foreground">How your site appears in search results</p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <div className="grid gap-4 md:grid-cols-[1fr,auto]">
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">Browser Title</Label>
+                          <Label className="text-sm font-medium text-foreground/70">Browser Title</Label>
                           <Input
                             value={settings.browser_title}
                             onChange={(e) => setSettings({ ...settings, browser_title: e.target.value })}
-                            className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                            className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                           />
                         </div>
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">Separator</Label>
+                          <Label className="text-sm font-medium text-foreground/70">Separator</Label>
                           <Select
                             value={settings.title_separator}
                             onValueChange={(value) => setSettings({ ...settings, title_separator: value })}
                           >
-                            <SelectTrigger className="h-12 w-24 bg-white/5 border-white/10 text-white rounded-xl">
+                            <SelectTrigger className="h-12 w-24 bg-foreground/5 border-border text-foreground rounded-xl">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#1a1a1a] border-white/10">
+                            <SelectContent className="bg-card border-border">
                               <SelectItem value="|">|</SelectItem>
                               <SelectItem value="-">-</SelectItem>
                               <SelectItem value="•">•</SelectItem>
@@ -755,35 +755,35 @@ export default function WebsiteSettingsPage() {
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Meta Description</Label>
-                        <p className="text-xs text-white/40">150-160 characters recommended</p>
+                        <Label className="text-sm font-medium text-foreground/70">Meta Description</Label>
+                        <p className="text-xs text-muted-foreground">150-160 characters recommended</p>
                         <Textarea
                           value={settings.meta_description}
                           onChange={(e) => setSettings({ ...settings, meta_description: e.target.value })}
                           rows={3}
-                          className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none"
+                          className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none"
                         />
-                        <p className="text-xs text-white/40">{settings.meta_description.length} characters</p>
+                        <p className="text-xs text-muted-foreground">{settings.meta_description.length} characters</p>
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Meta Keywords</Label>
-                        <p className="text-xs text-white/40">Comma-separated keywords</p>
+                        <Label className="text-sm font-medium text-foreground/70">Meta Keywords</Label>
+                        <p className="text-xs text-muted-foreground">Comma-separated keywords</p>
                         <Input
                           value={settings.meta_keywords}
                           onChange={(e) => setSettings({ ...settings, meta_keywords: e.target.value })}
                           placeholder="keyword1, keyword2, keyword3"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Canonical URL</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Canonical URL</Label>
                         <Input
                           value={settings.canonical_url}
                           onChange={(e) => setSettings({ ...settings, canonical_url: e.target.value })}
                           placeholder="https://yoursite.com"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                     </div>
@@ -791,7 +791,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Robots & Indexing */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -799,16 +799,16 @@ export default function WebsiteSettingsPage() {
                         <Eye className="h-5 w-5 text-amber-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Search Engine Indexing</h2>
-                        <p className="text-sm text-white/50">Control how search engines interact with your site</p>
+                        <h2 className="text-xl font-bold text-foreground">Search Engine Indexing</h2>
+                        <p className="text-sm text-muted-foreground">Control how search engines interact with your site</p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                      <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                         <div className="space-y-1">
-                          <Label className="text-white font-medium">Allow Indexing</Label>
-                          <p className="text-sm text-white/50">Let search engines index your pages</p>
+                          <Label className="text-foreground font-medium">Allow Indexing</Label>
+                          <p className="text-sm text-muted-foreground">Let search engines index your pages</p>
                         </div>
                         <Switch 
                           checked={settings.robots_index} 
@@ -816,10 +816,10 @@ export default function WebsiteSettingsPage() {
                         />
                       </div>
 
-                      <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                      <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                         <div className="space-y-1">
-                          <Label className="text-white font-medium">Follow Links</Label>
-                          <p className="text-sm text-white/50">Let search engines follow links on your pages</p>
+                          <Label className="text-foreground font-medium">Follow Links</Label>
+                          <p className="text-sm text-muted-foreground">Let search engines follow links on your pages</p>
                         </div>
                         <Switch 
                           checked={settings.robots_follow} 
@@ -831,7 +831,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Site Verification */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -839,28 +839,28 @@ export default function WebsiteSettingsPage() {
                         <CheckCircle2 className="h-5 w-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Site Verification</h2>
-                        <p className="text-sm text-white/50">Verify ownership with search engines</p>
+                        <h2 className="text-xl font-bold text-foreground">Site Verification</h2>
+                        <p className="text-sm text-muted-foreground">Verify ownership with search engines</p>
                       </div>
                     </div>
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Google Verification</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Google Verification</Label>
                         <Input
                           value={settings.google_site_verification}
                           onChange={(e) => setSettings({ ...settings, google_site_verification: e.target.value })}
                           placeholder="Verification code"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Bing Verification</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Bing Verification</Label>
                         <Input
                           value={settings.bing_site_verification}
                           onChange={(e) => setSettings({ ...settings, bing_site_verification: e.target.value })}
                           placeholder="Verification code"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                     </div>
@@ -868,10 +868,10 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Google Search Preview */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8">
-                    <h3 className="text-sm font-semibold text-white/70 mb-4 flex items-center gap-2">
+                    <h3 className="text-sm font-semibold text-foreground/70 mb-4 flex items-center gap-2">
                       <Globe className="h-4 w-4" />
                       Google Search Preview
                     </h3>
@@ -896,7 +896,7 @@ export default function WebsiteSettingsPage() {
                 className="space-y-6"
               >
                 {/* App Identity */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -904,53 +904,53 @@ export default function WebsiteSettingsPage() {
                         <Smartphone className="h-5 w-5 text-cyan-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">App Identity</h2>
-                        <p className="text-sm text-white/50">Settings for PWA and mobile app experience</p>
+                        <h2 className="text-xl font-bold text-foreground">App Identity</h2>
+                        <p className="text-sm text-muted-foreground">Settings for PWA and mobile app experience</p>
                       </div>
                     </div>
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">App Name</Label>
+                        <Label className="text-sm font-medium text-foreground/70">App Name</Label>
                         <Input
                           value={settings.app_name}
                           onChange={(e) => setSettings({ ...settings, app_name: e.target.value })}
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Short Name</Label>
-                        <p className="text-xs text-white/40">Shown on home screen (12 chars max)</p>
+                        <Label className="text-sm font-medium text-foreground/70">Short Name</Label>
+                        <p className="text-xs text-muted-foreground">Shown on home screen (12 chars max)</p>
                         <Input
                           value={settings.app_short_name}
                           onChange={(e) => setSettings({ ...settings, app_short_name: e.target.value })}
                           maxLength={12}
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-3">
-                      <Label className="text-sm font-medium text-white/70">App Description</Label>
+                      <Label className="text-sm font-medium text-foreground/70">App Description</Label>
                       <Textarea
                         value={settings.app_description}
                         onChange={(e) => setSettings({ ...settings, app_description: e.target.value })}
                         rows={2}
-                        className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none"
+                        className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none"
                       />
                     </div>
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Display Mode</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Display Mode</Label>
                         <Select
                           value={settings.display_mode}
                           onValueChange={(value: any) => setSettings({ ...settings, display_mode: value })}
                         >
-                          <SelectTrigger className="h-12 bg-white/5 border-white/10 text-white rounded-xl">
+                          <SelectTrigger className="h-12 bg-foreground/5 border-border text-foreground rounded-xl">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent className="bg-[#1a1a1a] border-white/10">
+                          <SelectContent className="bg-card border-border">
                             <SelectItem value="standalone">Standalone (App-like)</SelectItem>
                             <SelectItem value="fullscreen">Fullscreen</SelectItem>
                             <SelectItem value="minimal-ui">Minimal UI</SelectItem>
@@ -959,12 +959,12 @@ export default function WebsiteSettingsPage() {
                         </Select>
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Start URL</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Start URL</Label>
                         <Input
                           value={settings.start_url}
                           onChange={(e) => setSettings({ ...settings, start_url: e.target.value })}
                           placeholder="/"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                         />
                       </div>
                     </div>
@@ -972,7 +972,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Theme Colors */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -980,43 +980,43 @@ export default function WebsiteSettingsPage() {
                         <Palette className="h-5 w-5 text-purple-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Theme Colors</h2>
-                        <p className="text-sm text-white/50">Colors for browser chrome and splash screen</p>
+                        <h2 className="text-xl font-bold text-foreground">Theme Colors</h2>
+                        <p className="text-sm text-muted-foreground">Colors for browser chrome and splash screen</p>
                       </div>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Theme Color</Label>
-                        <p className="text-xs text-white/40">Browser toolbar/address bar color</p>
+                        <Label className="text-sm font-medium text-foreground/70">Theme Color</Label>
+                        <p className="text-xs text-muted-foreground">Browser toolbar/address bar color</p>
                         <div className="flex items-center gap-3">
                           <input
                             type="color"
                             value={settings.theme_color}
                             onChange={(e) => setSettings({ ...settings, theme_color: e.target.value })}
-                            className="h-12 w-12 rounded-xl border border-white/10 bg-transparent cursor-pointer"
+                            className="h-12 w-12 rounded-xl border border-border bg-transparent cursor-pointer"
                           />
                           <Input
                             value={settings.theme_color}
                             onChange={(e) => setSettings({ ...settings, theme_color: e.target.value })}
-                            className="h-12 w-32 bg-white/5 border-white/10 text-white rounded-xl font-mono text-sm"
+                            className="h-12 w-32 bg-foreground/5 border-border text-foreground rounded-xl font-mono text-sm"
                           />
                         </div>
                       </div>
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Background Color</Label>
-                        <p className="text-xs text-white/40">Splash screen background</p>
+                        <Label className="text-sm font-medium text-foreground/70">Background Color</Label>
+                        <p className="text-xs text-muted-foreground">Splash screen background</p>
                         <div className="flex items-center gap-3">
                           <input
                             type="color"
                             value={settings.background_color}
                             onChange={(e) => setSettings({ ...settings, background_color: e.target.value })}
-                            className="h-12 w-12 rounded-xl border border-white/10 bg-transparent cursor-pointer"
+                            className="h-12 w-12 rounded-xl border border-border bg-transparent cursor-pointer"
                           />
                           <Input
                             value={settings.background_color}
                             onChange={(e) => setSettings({ ...settings, background_color: e.target.value })}
-                            className="h-12 w-32 bg-white/5 border-white/10 text-white rounded-xl font-mono text-sm"
+                            className="h-12 w-32 bg-foreground/5 border-border text-foreground rounded-xl font-mono text-sm"
                           />
                         </div>
                       </div>
@@ -1025,7 +1025,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* App Icons */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -1033,8 +1033,8 @@ export default function WebsiteSettingsPage() {
                         <ImageIcon className="h-5 w-5 text-orange-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">App Icons</h2>
-                        <p className="text-sm text-white/50">Icons for PWA installation</p>
+                        <h2 className="text-xl font-bold text-foreground">App Icons</h2>
+                        <p className="text-sm text-muted-foreground">Icons for PWA installation</p>
                       </div>
                     </div>
 
@@ -1070,7 +1070,7 @@ export default function WebsiteSettingsPage() {
                 className="space-y-6"
               >
                 {/* Open Graph */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -1078,51 +1078,51 @@ export default function WebsiteSettingsPage() {
                         <Share2 className="h-5 w-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Open Graph</h2>
-                        <p className="text-sm text-white/50">How your site appears when shared on Facebook, LinkedIn, etc.</p>
+                        <h2 className="text-xl font-bold text-foreground">Open Graph</h2>
+                        <p className="text-sm text-muted-foreground">How your site appears when shared on Facebook, LinkedIn, etc.</p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <div className="grid gap-4 md:grid-cols-2">
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">OG Title</Label>
+                          <Label className="text-sm font-medium text-foreground/70">OG Title</Label>
                           <Input
                             value={settings.og_title}
                             onChange={(e) => setSettings({ ...settings, og_title: e.target.value })}
-                            className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                            className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                           />
                         </div>
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">OG Site Name</Label>
+                          <Label className="text-sm font-medium text-foreground/70">OG Site Name</Label>
                           <Input
                             value={settings.og_site_name}
                             onChange={(e) => setSettings({ ...settings, og_site_name: e.target.value })}
-                            className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                            className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">OG Description</Label>
+                        <Label className="text-sm font-medium text-foreground/70">OG Description</Label>
                         <Textarea
                           value={settings.og_description}
                           onChange={(e) => setSettings({ ...settings, og_description: e.target.value })}
                           rows={3}
-                          className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none"
+                          className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none"
                         />
                       </div>
 
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">OG Type</Label>
+                        <Label className="text-sm font-medium text-foreground/70">OG Type</Label>
                         <Select
                           value={settings.og_type}
                           onValueChange={(value) => setSettings({ ...settings, og_type: value })}
                         >
-                          <SelectTrigger className="h-12 bg-white/5 border-white/10 text-white rounded-xl">
+                          <SelectTrigger className="h-12 bg-foreground/5 border-border text-foreground rounded-xl">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent className="bg-[#1a1a1a] border-white/10">
+                          <SelectContent className="bg-card border-border">
                             <SelectItem value="website">Website</SelectItem>
                             <SelectItem value="article">Article</SelectItem>
                             <SelectItem value="product">Product</SelectItem>
@@ -1144,7 +1144,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Twitter */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -1154,22 +1154,22 @@ export default function WebsiteSettingsPage() {
                         </svg>
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Twitter / X</h2>
-                        <p className="text-sm text-white/50">How your site appears when shared on Twitter</p>
+                        <h2 className="text-xl font-bold text-foreground">Twitter / X</h2>
+                        <p className="text-sm text-muted-foreground">How your site appears when shared on Twitter</p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <div className="space-y-3">
-                        <Label className="text-sm font-medium text-white/70">Card Type</Label>
+                        <Label className="text-sm font-medium text-foreground/70">Card Type</Label>
                         <Select
                           value={settings.twitter_card}
                           onValueChange={(value: any) => setSettings({ ...settings, twitter_card: value })}
                         >
-                          <SelectTrigger className="h-12 bg-white/5 border-white/10 text-white rounded-xl">
+                          <SelectTrigger className="h-12 bg-foreground/5 border-border text-foreground rounded-xl">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent className="bg-[#1a1a1a] border-white/10">
+                          <SelectContent className="bg-card border-border">
                             <SelectItem value="summary">Summary</SelectItem>
                             <SelectItem value="summary_large_image">Summary Large Image</SelectItem>
                           </SelectContent>
@@ -1178,21 +1178,21 @@ export default function WebsiteSettingsPage() {
 
                       <div className="grid gap-4 md:grid-cols-2">
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">Twitter Site</Label>
+                          <Label className="text-sm font-medium text-foreground/70">Twitter Site</Label>
                           <Input
                             value={settings.twitter_site}
                             onChange={(e) => setSettings({ ...settings, twitter_site: e.target.value })}
                             placeholder="@yoursite"
-                            className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                            className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                           />
                         </div>
                         <div className="space-y-3">
-                          <Label className="text-sm font-medium text-white/70">Twitter Creator</Label>
+                          <Label className="text-sm font-medium text-foreground/70">Twitter Creator</Label>
                           <Input
                             value={settings.twitter_creator}
                             onChange={(e) => setSettings({ ...settings, twitter_creator: e.target.value })}
                             placeholder="@yourusername"
-                            className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                            className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                           />
                         </div>
                       </div>
@@ -1201,27 +1201,27 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Social Preview */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8">
-                    <h3 className="text-sm font-semibold text-white/70 mb-4 flex items-center gap-2">
+                    <h3 className="text-sm font-semibold text-foreground/70 mb-4 flex items-center gap-2">
                       <Share2 className="h-4 w-4" />
                       Social Media Preview
                     </h3>
-                    <div className="border border-white/10 rounded-xl overflow-hidden">
+                    <div className="border border-border rounded-xl overflow-hidden">
                       {settings.og_image_url ? (
-                        <div className="relative h-48 w-full bg-white/5">
+                        <div className="relative h-48 w-full bg-foreground/5">
                           <img src={settings.og_image_url} alt="Preview" className="h-full w-full object-cover" />
                         </div>
                       ) : (
-                        <div className="h-48 w-full bg-white/5 flex items-center justify-center">
-                          <ImageIcon className="h-12 w-12 text-white/20" />
+                        <div className="h-48 w-full bg-foreground/5 flex items-center justify-center">
+                          <ImageIcon className="h-12 w-12 text-muted-foreground/50" />
                         </div>
                       )}
-                      <div className="p-4 bg-white/5">
-                        <div className="text-sm text-white/40 mb-1">{settings.og_site_name || 'yourstore.com'}</div>
-                        <div className="text-base font-medium text-white mb-1">{settings.og_title || 'Open Graph Title'}</div>
-                        <div className="text-sm text-white/50 leading-relaxed">{settings.og_description || 'Open Graph description...'}</div>
+                      <div className="p-4 bg-foreground/5">
+                        <div className="text-sm text-muted-foreground mb-1">{settings.og_site_name || 'yourstore.com'}</div>
+                        <div className="text-base font-medium text-foreground mb-1">{settings.og_title || 'Open Graph Title'}</div>
+                        <div className="text-sm text-muted-foreground leading-relaxed">{settings.og_description || 'Open Graph description...'}</div>
                       </div>
                     </div>
                   </div>
@@ -1237,7 +1237,7 @@ export default function WebsiteSettingsPage() {
                 transition={{ delay: 0.2 }}
                 className="space-y-6"
               >
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-6">
                     <div className="flex items-center gap-3 mb-6">
@@ -1245,13 +1245,13 @@ export default function WebsiteSettingsPage() {
                         <BarChart3 className="h-5 w-5 text-amber-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Analytics & Tracking</h2>
-                        <p className="text-sm text-white/50">Connect your analytics services</p>
+                        <h2 className="text-xl font-bold text-foreground">Analytics & Tracking</h2>
+                        <p className="text-sm text-muted-foreground">Connect your analytics services</p>
                       </div>
                     </div>
 
                     <div className="space-y-6">
-                      <div className="p-4 rounded-xl border border-white/10 bg-white/5 space-y-3">
+                      <div className="p-4 rounded-xl border border-border bg-foreground/5 space-y-3">
                         <div className="flex items-center gap-3">
                           <div className="h-8 w-8 rounded-lg bg-[#F9AB00]/20 flex items-center justify-center">
                             <svg className="h-4 w-4 text-[#F9AB00]" viewBox="0 0 24 24" fill="currentColor">
@@ -1261,47 +1261,47 @@ export default function WebsiteSettingsPage() {
                               <path d="M2.43994 18.0107V20.9857C2.43994 21.5132 2.00244 21.9507 1.47494 21.9507C0.947437 21.9507 0.509937 21.5132 0.509937 20.9857V18.0107C0.509937 17.4832 0.947437 17.0457 1.47494 17.0457C2.00244 17.0457 2.43994 17.4832 2.43994 18.0107Z"/>
                             </svg>
                           </div>
-                          <Label className="text-white font-medium">Google Analytics</Label>
+                          <Label className="text-foreground font-medium">Google Analytics</Label>
                         </div>
                         <Input
                           value={settings.google_analytics_id}
                           onChange={(e) => setSettings({ ...settings, google_analytics_id: e.target.value })}
                           placeholder="G-XXXXXXXXXX or UA-XXXXXXXXX-X"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 font-mono"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border font-mono"
                         />
                       </div>
 
-                      <div className="p-4 rounded-xl border border-white/10 bg-white/5 space-y-3">
+                      <div className="p-4 rounded-xl border border-border bg-foreground/5 space-y-3">
                         <div className="flex items-center gap-3">
                           <div className="h-8 w-8 rounded-lg bg-[#246FDB]/20 flex items-center justify-center">
                             <svg className="h-4 w-4 text-[#246FDB]" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                             </svg>
                           </div>
-                          <Label className="text-white font-medium">Google Tag Manager</Label>
+                          <Label className="text-foreground font-medium">Google Tag Manager</Label>
                         </div>
                         <Input
                           value={settings.google_tag_manager_id}
                           onChange={(e) => setSettings({ ...settings, google_tag_manager_id: e.target.value })}
                           placeholder="GTM-XXXXXXX"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 font-mono"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border font-mono"
                         />
                       </div>
 
-                      <div className="p-4 rounded-xl border border-white/10 bg-white/5 space-y-3">
+                      <div className="p-4 rounded-xl border border-border bg-foreground/5 space-y-3">
                         <div className="flex items-center gap-3">
                           <div className="h-8 w-8 rounded-lg bg-[#1877F2]/20 flex items-center justify-center">
                             <svg className="h-4 w-4 text-[#1877F2]" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
                           </div>
-                          <Label className="text-white font-medium">Facebook Pixel</Label>
+                          <Label className="text-foreground font-medium">Facebook Pixel</Label>
                         </div>
                         <Input
                           value={settings.facebook_pixel_id}
                           onChange={(e) => setSettings({ ...settings, facebook_pixel_id: e.target.value })}
                           placeholder="XXXXXXXXXXXXXXXX"
-                          className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 font-mono"
+                          className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border font-mono"
                         />
                       </div>
                     </div>
@@ -1322,8 +1322,8 @@ export default function WebsiteSettingsPage() {
                 <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-6 flex gap-4">
                   <AlertTriangle className="h-6 w-6 text-amber-400 shrink-0" />
                   <div>
-                    <h4 className="text-base font-semibold text-white mb-1">Warning: Advanced Feature</h4>
-                    <p className="text-sm text-white/60 leading-relaxed">
+                    <h4 className="text-base font-semibold text-foreground mb-1">Warning: Advanced Feature</h4>
+                    <p className="text-sm text-foreground/60 leading-relaxed">
                       Only add code from trusted sources. Malicious code can compromise your site's security and
                       functionality. Always verify code before adding it.
                     </p>
@@ -1331,7 +1331,7 @@ export default function WebsiteSettingsPage() {
                 </div>
 
                 {/* Custom CSS */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-4">
                     <div className="flex items-center gap-3">
@@ -1339,8 +1339,8 @@ export default function WebsiteSettingsPage() {
                         <Palette className="h-5 w-5 text-pink-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Custom CSS</h2>
-                        <p className="text-sm text-white/50">Add custom styles to your site</p>
+                        <h2 className="text-xl font-bold text-foreground">Custom CSS</h2>
+                        <p className="text-sm text-muted-foreground">Add custom styles to your site</p>
                       </div>
                     </div>
                     <Textarea
@@ -1348,13 +1348,13 @@ export default function WebsiteSettingsPage() {
                       onChange={(e) => setSettings({ ...settings, custom_css: e.target.value })}
                       placeholder="/* Custom CSS styles */"
                       rows={8}
-                      className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none font-mono text-sm"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none font-mono text-sm"
                     />
                   </div>
                 </div>
 
                 {/* Head Code */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-4">
                     <div className="flex items-center gap-3">
@@ -1362,8 +1362,8 @@ export default function WebsiteSettingsPage() {
                         <Code2 className="h-5 w-5 text-purple-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Head Code</h2>
-                        <p className="text-sm text-white/50">Injected into {'<head>'} section</p>
+                        <h2 className="text-xl font-bold text-foreground">Head Code</h2>
+                        <p className="text-sm text-muted-foreground">Injected into {'<head>'} section</p>
                       </div>
                     </div>
                     <Textarea
@@ -1371,13 +1371,13 @@ export default function WebsiteSettingsPage() {
                       onChange={(e) => setSettings({ ...settings, custom_head_code: e.target.value })}
                       placeholder="<!-- Analytics, meta tags, fonts, etc. -->"
                       rows={8}
-                      className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none font-mono text-sm"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none font-mono text-sm"
                     />
                   </div>
                 </div>
 
                 {/* Body Start Code */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-4">
                     <div className="flex items-center gap-3">
@@ -1385,8 +1385,8 @@ export default function WebsiteSettingsPage() {
                         <Code2 className="h-5 w-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Body Start Code</h2>
-                        <p className="text-sm text-white/50">Injected right after opening {'<body>'} tag</p>
+                        <h2 className="text-xl font-bold text-foreground">Body Start Code</h2>
+                        <p className="text-sm text-muted-foreground">Injected right after opening {'<body>'} tag</p>
                       </div>
                     </div>
                     <Textarea
@@ -1394,13 +1394,13 @@ export default function WebsiteSettingsPage() {
                       onChange={(e) => setSettings({ ...settings, custom_body_start_code: e.target.value })}
                       placeholder="<!-- GTM noscript, etc. -->"
                       rows={6}
-                      className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none font-mono text-sm"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none font-mono text-sm"
                     />
                   </div>
                 </div>
 
                 {/* Body End Code */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 p-8 space-y-4">
                     <div className="flex items-center gap-3">
@@ -1408,8 +1408,8 @@ export default function WebsiteSettingsPage() {
                         <Code2 className="h-5 w-5 text-emerald-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Body End Code</h2>
-                        <p className="text-sm text-white/50">Injected before closing {'</body>'} tag</p>
+                        <h2 className="text-xl font-bold text-foreground">Body End Code</h2>
+                        <p className="text-sm text-muted-foreground">Injected before closing {'</body>'} tag</p>
                       </div>
                     </div>
                     <Textarea
@@ -1417,7 +1417,7 @@ export default function WebsiteSettingsPage() {
                       onChange={(e) => setSettings({ ...settings, custom_body_end_code: e.target.value })}
                       placeholder="<!-- Scripts, widgets, chat tools, etc. -->"
                       rows={8}
-                      className="bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30 resize-none font-mono text-sm"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl focus:border-border resize-none font-mono text-sm"
                     />
                   </div>
                 </div>
@@ -1433,14 +1433,14 @@ export default function WebsiteSettingsPage() {
               transition={{ delay: 0.3 }}
               className="sticky top-8 space-y-6"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 p-6">
-                  <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                     Quick Tips
                   </h3>
-                  <div className="space-y-3 text-sm text-white/50 leading-relaxed">
+                  <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                     {activeTab === 'branding' && (
                       <>
                         <p>• Upload both light & dark logos for optimal display</p>

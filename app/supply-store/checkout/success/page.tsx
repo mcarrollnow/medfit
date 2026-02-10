@@ -28,14 +28,14 @@ export default function SupplyStoreCheckoutSuccessPage() {
           </p>
 
           <div className="space-y-4 mb-8">
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5">
               <Mail className="w-6 h-6 text-muted-foreground" />
               <div className="text-left">
                 <p className="font-medium">Confirmation Email Sent</p>
                 <p className="text-sm text-muted-foreground">Check your inbox for order details</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5">
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-foreground/5">
               <Package className="w-6 h-6 text-muted-foreground" />
               <div className="text-left">
                 <p className="font-medium">Shipping Updates</p>

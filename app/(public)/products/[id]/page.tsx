@@ -255,17 +255,17 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="animate-pulse text-white/50">Loading...</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-pulse text-muted-foreground">Loading...</div>
       </div>
     )
   }
 
   if (error || !groupedProduct || !selectedVariant) {
     return (
-      <div className="min-h-screen bg-black flex flex-col items-center justify-center gap-6 px-6">
-        <h1 className="text-2xl text-white text-center">{error || 'Product not found'}</h1>
-        <Link href="/" className="text-white/50 hover:text-white transition-colors flex items-center gap-2">
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-6 px-6">
+        <h1 className="text-2xl text-foreground text-center">{error || 'Product not found'}</h1>
+        <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
           <ArrowLeft className="w-4 h-4" />
           Back to Shop
         </Link>
@@ -278,11 +278,11 @@ export default function ProductDetailPage() {
   const description = selectedVariant.description || "Research-grade peptide with documented efficacy in clinical studies."
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
         {/* Back Button */}
-        <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+        <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
           <div className="px-5 py-3 xl:px-6 xl:py-4 max-w-6xl mx-auto">
-            <Link href="/" className="inline-flex items-center text-white/60 hover:text-white transition-colors text-sm">
+            <Link href="/" className="inline-flex items-center text-foreground/60 hover:text-foreground transition-colors text-sm">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Link>
@@ -317,12 +317,12 @@ export default function ProductDetailPage() {
                   {/* Product Name - At Top */}
                   <div className="text-center">
                     <h1 className="text-4xl sm:text-5xl font-bold">{selectedVariant.base_name}</h1>
-                    <p className="text-white/60 text-lg sm:text-xl mt-1">{selectedVariant.variant}</p>
+                    <p className="text-foreground/60 text-lg sm:text-xl mt-1">{selectedVariant.variant}</p>
                   </div>
 
                   {/* Stock Badge */}
                   <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                    <Badge variant="outline" className="border-white/30 text-white/70 text-xs sm:text-sm">
+                    <Badge variant="outline" className="border-border text-foreground/70 text-xs sm:text-sm">
                       RESEARCH USE ONLY
                     </Badge>
                     {selectedVariant.current_stock > 0 ? (
@@ -338,20 +338,20 @@ export default function ProductDetailPage() {
 
                   {/* Category & Ratings */}
                   <div className="text-center">
-                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-white/70">{groupedProduct.category}</h3>
-                    <p className="text-white/40 text-xs sm:text-sm uppercase tracking-widest mt-1">Research Grade</p>
+                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-foreground/70">{groupedProduct.category}</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-widest mt-1">Research Grade</p>
                   </div>
 
                   <div className="space-y-4 sm:space-y-5">
                     {ratings.map((rating, i) => (
                       <div key={i} className="space-y-1.5 sm:space-y-2">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm sm:text-base text-white/80">{rating.label}</span>
+                          <span className="text-sm sm:text-base text-foreground/80">{rating.label}</span>
                           <span className="font-mono font-bold text-base sm:text-lg" style={{ color: selectedVariant.color }}>
                             {rating.value.toFixed(1)}
                           </span>
                         </div>
-                        <div className="h-2 sm:h-3 rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-2 sm:h-3 rounded-full bg-foreground/10 overflow-hidden">
                           <div
                             className="h-full rounded-full transition-all duration-1000"
                             style={{ width: `${(rating.value / 10) * 100}%`, backgroundColor: selectedVariant.color }}
@@ -364,7 +364,7 @@ export default function ProductDetailPage() {
                   {/* Tap for Info */}
                   <button
                     onClick={() => setIsFlipped(true)}
-                    className="w-full py-3 sm:py-4 rounded-xl border border-white/10 bg-white/5 text-sm sm:text-base text-white/60 hover:bg-white/10 transition"
+                    className="w-full py-3 sm:py-4 rounded-xl border border-border bg-foreground/5 text-sm sm:text-base text-foreground/60 hover:bg-foreground/10 transition"
                   >
                     Tap for info →
                   </button>
@@ -372,7 +372,7 @@ export default function ProductDetailPage() {
                   {/* Variant Selection */}
                   {groupedProduct.variants.length > 1 && (
                     <div>
-                      <p className="text-xs sm:text-sm uppercase tracking-widest text-white/40 font-semibold mb-2 sm:mb-3 text-center">Select Variant</p>
+                      <p className="text-xs sm:text-sm uppercase tracking-widest text-muted-foreground font-semibold mb-2 sm:mb-3 text-center">Select Variant</p>
                       <div className="grid grid-cols-2 gap-2 sm:gap-3">
                         {groupedProduct.variants.map((variant) => (
                           <button
@@ -380,8 +380,8 @@ export default function ProductDetailPage() {
                             onClick={() => { setSelectedVariant(variant); setQuantity(1) }}
                             className={`p-3 sm:p-4 rounded-xl text-sm sm:text-base font-medium border transition-all ${
                               selectedVariant.id === variant.id
-                                ? "bg-white text-black border-white"
-                                : "bg-white/5 text-white/70 border-white/10 hover:border-white/30"
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-foreground/5 text-foreground/70 border-border hover:border-border"
                             }`}
                           >
                             <div className="text-xs sm:text-sm opacity-60">Variant</div>
@@ -395,21 +395,21 @@ export default function ProductDetailPage() {
 
                   {/* Quantity & Price */}
                   <div className="space-y-4 sm:space-y-5 pt-2">
-                    <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 sm:px-6 py-3 sm:py-4">
-                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-xl sm:text-2xl text-white/60 hover:text-white p-1 sm:p-2">−</button>
+                    <div className="flex items-center justify-between rounded-xl border border-border bg-foreground/5 px-4 sm:px-6 py-3 sm:py-4">
+                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-xl sm:text-2xl text-foreground/60 hover:text-foreground p-1 sm:p-2">−</button>
                       <span className="font-mono text-xl sm:text-2xl font-bold">{quantity}</span>
-                      <button onClick={() => setQuantity(Math.min(selectedVariant.current_stock || 99, quantity + 1))} className="text-xl sm:text-2xl text-white/60 hover:text-white p-1 sm:p-2">+</button>
+                      <button onClick={() => setQuantity(Math.min(selectedVariant.current_stock || 99, quantity + 1))} className="text-xl sm:text-2xl text-foreground/60 hover:text-foreground p-1 sm:p-2">+</button>
                     </div>
 
                     <div className="text-center">
-                      <p className="text-xs sm:text-sm text-white/40 uppercase tracking-wider">Total</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Total</p>
                       <p className="text-3xl sm:text-4xl font-bold">${(retailPrice * quantity).toFixed(2)}</p>
                     </div>
 
                     <Button
                       onClick={handleAddToCart}
                       disabled={!selectedVariant.current_stock}
-                      className="w-full h-14 sm:h-16 bg-white text-black hover:bg-white/90 text-lg sm:text-xl font-bold rounded-2xl disabled:opacity-50"
+                      className="w-full h-14 sm:h-16 bg-primary text-primary-foreground hover:bg-card/90 text-lg sm:text-xl font-bold rounded-2xl disabled:opacity-50"
                     >
                       <ShoppingCart className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                       {selectedVariant.current_stock > 0 ? "ADD TO CART" : "OUT OF STOCK"}
@@ -423,7 +423,7 @@ export default function ProductDetailPage() {
 
             {/* Back - Description (Info) */}
             <div
-              className={`absolute inset-0 min-h-[calc(100vh-56px)] overflow-y-auto bg-black transition-opacity duration-500 ${
+              className={`absolute inset-0 min-h-[calc(100vh-56px)] overflow-y-auto bg-background transition-opacity duration-500 ${
                 isFlipped ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
               onClick={() => setIsFlipped(false)}
@@ -446,13 +446,13 @@ export default function ProductDetailPage() {
               <div className="relative z-10 px-5 pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 min-h-[calc(100vh-56px)] flex flex-col max-w-md sm:max-w-lg mx-auto">
                 <div className="mb-6 sm:mb-8 text-center">
                   <h2 className="text-3xl sm:text-4xl font-bold">{selectedVariant.base_name}</h2>
-                  <p className="text-white/60 text-lg sm:text-xl mt-1">{selectedVariant.variant}</p>
-                  <div className="h-0.5 w-16 sm:w-20 bg-white/30 mt-4 mx-auto" />
+                  <p className="text-foreground/60 text-lg sm:text-xl mt-1">{selectedVariant.variant}</p>
+                  <div className="h-0.5 w-16 sm:w-20 bg-foreground/30 mt-4 mx-auto" />
                 </div>
 
                 <p className="text-base sm:text-lg md:text-xl leading-relaxed text-white/90 flex-1 text-center">{description}</p>
 
-                <button className="mt-8 sm:mt-10 py-3 sm:py-4 rounded-xl border border-white/10 bg-white/5 text-sm sm:text-base text-white/60 hover:bg-white/10 transition">
+                <button className="mt-8 sm:mt-10 py-3 sm:py-4 rounded-xl border border-border bg-foreground/5 text-sm sm:text-base text-foreground/60 hover:bg-foreground/10 transition">
                   ← Back
                 </button>
               </div>
@@ -465,9 +465,9 @@ export default function ProductDetailPage() {
         {/* DESKTOP VIEW - Only on large screens (xl+) */}
         <div className="hidden xl:block py-8">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/10 h-[80vh]">
+            <div className="grid grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border h-[80vh]">
               {/* Left Panel - Sliding */}
-              <div className="relative overflow-hidden cursor-pointer bg-black" onClick={handleSlide}>
+              <div className="relative overflow-hidden cursor-pointer bg-background" onClick={handleSlide}>
                 {/* Ratings */}
                 <div
                   className="absolute inset-0 flex items-center justify-center p-8 transition-transform ease-in-out"
@@ -483,15 +483,15 @@ export default function ProductDetailPage() {
                   <div className="w-full max-w-md space-y-6 relative z-10">
                     <div className="text-center mb-8">
                       <h3 className="text-3xl font-bold">{groupedProduct.category}</h3>
-                      <p className="text-white/50 text-sm uppercase tracking-widest mt-1">Research Grade Analysis</p>
+                      <p className="text-muted-foreground text-sm uppercase tracking-widest mt-1">Research Grade Analysis</p>
                     </div>
                     {ratings.map((rating, i) => (
                       <div key={i} className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-sm text-white/80">{rating.label}</span>
+                          <span className="text-sm text-foreground/80">{rating.label}</span>
                           <span className="font-mono font-bold" style={{ color: selectedVariant.color }}>{rating.value.toFixed(1)}</span>
                         </div>
-                        <div className="h-3 rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-3 rounded-full bg-foreground/10 overflow-hidden">
                           <div className="h-full rounded-full" style={{ width: `${(rating.value / 10) * 100}%`, backgroundColor: selectedVariant.color }} />
                         </div>
                       </div>
@@ -513,16 +513,16 @@ export default function ProductDetailPage() {
                   }} />
                   <div className="w-full max-w-md text-center relative z-10">
                     <h3 className="text-3xl font-bold mb-4">{selectedVariant.base_name}</h3>
-                    <div className="h-1 w-16 bg-white/20 mx-auto rounded-full mb-6" />
+                    <div className="h-1 w-16 bg-foreground/20 mx-auto rounded-full mb-6" />
                     <p className="text-lg leading-relaxed text-white/90">{description}</p>
                   </div>
                 </div>
               </div>
 
               {/* Right Panel - Purchase */}
-              <div className="flex flex-col p-8 bg-black/90 overflow-y-auto">
+              <div className="flex flex-col p-8 bg-background/90 overflow-y-auto">
                 <div className="flex gap-2 mb-4">
-                  <Badge variant="outline" className="border-white/30 text-xs">RESEARCH USE ONLY</Badge>
+                  <Badge variant="outline" className="border-border text-xs">RESEARCH USE ONLY</Badge>
                   {selectedVariant.current_stock > 0 ? (
                     selectedVariant.current_stock < 10 ? (
                       <Badge className="bg-yellow-500/20 text-yellow-400 text-xs">LOW STOCK</Badge>
@@ -535,11 +535,11 @@ export default function ProductDetailPage() {
                 </div>
 
                 <h1 className="text-4xl font-bold mb-1">{selectedVariant.base_name}</h1>
-                <p className="text-xl text-white/60 mb-6">{selectedVariant.variant}</p>
+                <p className="text-xl text-foreground/60 mb-6">{selectedVariant.variant}</p>
 
                 {groupedProduct.variants.length > 1 && (
                   <div className="mb-6">
-                    <p className="text-xs uppercase tracking-widest text-white/40 mb-2">Select Variant</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Select Variant</p>
                     <div className="flex flex-wrap gap-2">
                       {groupedProduct.variants.map((variant) => (
                         <button
@@ -547,8 +547,8 @@ export default function ProductDetailPage() {
                           onClick={() => { setSelectedVariant(variant); setQuantity(1) }}
                           className={`px-4 py-2 rounded-xl text-sm border transition-all ${
                             selectedVariant.id === variant.id
-                              ? "bg-white text-black border-white"
-                              : "bg-white/5 text-white/70 border-white/10 hover:border-white/30"
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "bg-foreground/5 text-foreground/70 border-border hover:border-border"
                           }`}
                         >
                           {variant.variant} <span className="ml-1 font-bold">${getPrice(variant).toFixed(2)}</span>
@@ -558,20 +558,20 @@ export default function ProductDetailPage() {
                   </div>
                 )}
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-5 flex justify-between items-center mb-6">
-                  <span className="text-white/60">Price</span>
+                <div className="rounded-2xl border border-border bg-foreground/5 p-5 flex justify-between items-center mb-6">
+                  <span className="text-foreground/60">Price</span>
                   <span className="font-mono text-3xl font-bold">${retailPrice.toFixed(2)}</span>
                 </div>
 
-                <div className="mt-auto space-y-4 border-t border-white/10 pt-6">
+                <div className="mt-auto space-y-4 border-t border-border pt-6">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-2">
-                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-lg text-white/60 hover:text-white">−</button>
+                    <div className="flex items-center gap-3 rounded-xl border border-border bg-foreground/5 px-4 py-2">
+                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="text-lg text-foreground/60 hover:text-foreground">−</button>
                       <span className="w-8 text-center font-mono font-bold">{quantity}</span>
-                      <button onClick={() => setQuantity(Math.min(selectedVariant.current_stock || 99, quantity + 1))} className="text-lg text-white/60 hover:text-white">+</button>
+                      <button onClick={() => setQuantity(Math.min(selectedVariant.current_stock || 99, quantity + 1))} className="text-lg text-foreground/60 hover:text-foreground">+</button>
                     </div>
                     <div className="flex-1 text-right">
-                      <p className="text-xs text-white/40 uppercase">Total</p>
+                      <p className="text-xs text-muted-foreground uppercase">Total</p>
                       <p className="text-2xl font-bold">${(retailPrice * quantity).toFixed(2)}</p>
                     </div>
                   </div>
@@ -579,7 +579,7 @@ export default function ProductDetailPage() {
                   <Button
                     onClick={handleAddToCart}
                     disabled={!selectedVariant.current_stock}
-                    className="w-full h-14 bg-white text-black hover:bg-white/90 text-lg font-bold rounded-xl disabled:opacity-50"
+                    className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 text-lg font-bold rounded-xl disabled:opacity-50"
                   >
                     <ShoppingCart className="mr-2 h-5 w-5" />
                     {selectedVariant.current_stock > 0 ? "ADD TO CART" : "OUT OF STOCK"}

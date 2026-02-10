@@ -54,34 +54,34 @@ export default function DashboardPage() {
       <main className="container mx-auto px-6 md:px-20 py-12 md:py-24 max-w-[1400px]">
         {/* Header */}
         <div className="mb-16 md:mb-24 space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white">Dashboard</h1>
-          <p className="text-xl text-white/50">Manage your account and orders.</p>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">Dashboard</h1>
+          <p className="text-xl text-muted-foreground">Manage your account and orders.</p>
         </div>
 
         {/* Quick Links Grid */}
         <section className="space-y-8">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Quick Actions</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Quick Actions</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {quickLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur-xl transition-all duration-500 hover:bg-white/10 hover:border-white/20"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-10 backdrop-blur-xl transition-all duration-500 hover:bg-foreground/10 hover:border-border"
               >
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/5 blur-3xl transition-all duration-500 group-hover:bg-white/10" />
+                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-foreground/5 blur-3xl transition-all duration-500 group-hover:bg-foreground/10" />
 
                 <div className="relative z-10 flex items-start justify-between">
                   <div className="space-y-6">
-                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 border border-white/10">
-                      <link.icon className="h-8 w-8 text-white" />
+                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-foreground/10 border border-border">
+                      <link.icon className="h-8 w-8 text-foreground" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-bold tracking-tight text-white">{link.title}</h3>
-                      <p className="text-base text-white/50">{link.description}</p>
+                      <h3 className="text-2xl font-bold tracking-tight text-foreground">{link.title}</h3>
+                      <p className="text-base text-muted-foreground">{link.description}</p>
                     </div>
                   </div>
-                  <ArrowRight className="h-6 w-6 text-white/20 transition-all duration-300 group-hover:translate-x-2 group-hover:text-white" />
+                  <ArrowRight className="h-6 w-6 text-muted-foreground/50 transition-all duration-300 group-hover:translate-x-2 group-hover:text-foreground" />
                 </div>
               </Link>
             ))}

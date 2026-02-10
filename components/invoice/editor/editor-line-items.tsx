@@ -82,7 +82,7 @@ export function EditorLineItems({ data, onChange, products = [] }: EditorLineIte
         <h2 className="font-serif text-xl md:text-2xl font-light text-foreground">Products</h2>
         <button
           onClick={addItem}
-          className="bg-white/10 border border-white/20 hover:bg-white/20 px-3 md:px-4 py-2 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors"
+          className="bg-foreground/10 border border-border hover:bg-foreground/20 px-3 md:px-4 py-2 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors"
         >
           <Plus className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Add Product</span>
@@ -100,7 +100,7 @@ export function EditorLineItems({ data, onChange, products = [] }: EditorLineIte
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="group bg-black/50 border border-white/10 rounded-xl p-4 space-y-3 relative">
+              <div className="group bg-foreground/50 border border-border rounded-xl p-4 space-y-3 relative">
                 {/* Product Name Row */}
                 <div className="relative">
                   <input
@@ -124,15 +124,15 @@ export function EditorLineItems({ data, onChange, products = [] }: EditorLineIte
 
                   {/* Product Autocomplete Dropdown */}
                   {activeItemId === item.id && searchQuery.length > 0 && filteredProducts.length > 0 && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-white/10 rounded-xl max-h-96 overflow-y-auto z-[200] shadow-2xl">
-                      <div className="px-3 py-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider border-b border-white/10 flex items-center gap-2">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl max-h-96 overflow-y-auto z-[200] shadow-2xl">
+                      <div className="px-3 py-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider border-b border-border flex items-center gap-2">
                         <Package className="w-3 h-3" />
                         Select Product & Price
                       </div>
                       {filteredProducts.slice(0, 15).map((product) => (
                         <div
                           key={product.id}
-                          className="p-3 border-b border-white/5 last:border-0"
+                          className="p-3 border-b border-border last:border-0"
                         >
                           <p className="font-medium text-foreground text-sm mb-2">{product.name}</p>
                           <div className="flex gap-1.5">
@@ -174,7 +174,7 @@ export function EditorLineItems({ data, onChange, products = [] }: EditorLineIte
                         type="number"
                         value={item.quantity}
                         onChange={(e) => updateItem(item.id, { quantity: Number(e.target.value) })}
-                        className="w-16 bg-black/40 border border-white/10 rounded-lg px-2 py-1.5 text-foreground text-center font-mono text-sm focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/20"
+                        className="w-16 bg-foreground/40 border border-border rounded-lg px-2 py-1.5 text-foreground text-center font-mono text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 focus:border-border"
                         min="1"
                       />
                     </div>
@@ -182,7 +182,7 @@ export function EditorLineItems({ data, onChange, products = [] }: EditorLineIte
                     {/* Price */}
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Price</span>
-                      <div className="flex items-center bg-black/40 border border-white/10 rounded-lg px-2 py-1.5">
+                      <div className="flex items-center bg-foreground/40 border border-border rounded-lg px-2 py-1.5">
                         <span className="text-muted-foreground text-sm">$</span>
                         <input
                           type="number"

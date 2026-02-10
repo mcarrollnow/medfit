@@ -183,7 +183,7 @@ export default function SupplierCustomersPage() {
     return `${first} ${last}`.trim() || "Unknown"
   }
 
-  const inputClasses = "w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+  const inputClasses = "w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
   const labelClasses = "block text-xs font-mono tracking-widest text-muted-foreground uppercase mb-2"
 
   if (isLoading) {
@@ -238,7 +238,7 @@ export default function SupplierCustomersPage() {
         <div className="flex flex-col md:flex-row gap-4 mb-12">
           <div className="relative flex-1 max-w-xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search customers..." className="w-full pl-10 pr-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors" />
+            <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search customers..." className="w-full pl-10 pr-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors" />
           </div>
           <button onClick={() => { resetForm(); setShowAddForm(true) }} className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-foreground text-background font-mono text-sm hover:bg-foreground/90 transition-colors">
             <Plus className="h-4 w-4" />
@@ -355,7 +355,7 @@ export default function SupplierCustomersPage() {
                           <p className="font-mono text-lg font-light">{customer.order_count || 0} orders</p>
                           <p className="text-xs text-muted-foreground font-mono">${(customer.total_spent || 0).toLocaleString(undefined, { maximumFractionDigits: 0 })} spent</p>
                         </div>
-                        <button onClick={() => startEditing(customer)} className="p-2 rounded-lg hover:bg-white/[0.06] transition-colors text-muted-foreground hover:text-foreground">
+                        <button onClick={() => startEditing(customer)} className="p-2 rounded-lg hover:bg-foreground/[0.07] transition-colors text-muted-foreground hover:text-foreground">
                           <Edit3 className="h-5 w-5" />
                         </button>
                       </div>

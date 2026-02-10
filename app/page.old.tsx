@@ -130,12 +130,12 @@ export default function Shop() {
       {/* Modal for expanded product - only renders when a card is clicked */}
       {expandedProductId && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/85 p-8"
           onClick={() => setExpandedProductId(null)}
         >
           <button
             onClick={() => setExpandedProductId(null)}
-            className="absolute top-8 right-8 text-white hover:text-gray-300 transition-colors"
+            className="absolute top-8 right-8 text-foreground hover:text-foreground/70 transition-colors"
           >
             <X className="h-12 w-12" />
           </button>

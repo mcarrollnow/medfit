@@ -171,7 +171,7 @@ export default function OrdersPage() {
         {/* Back Navigation */}
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-border text-foreground/70 hover:text-foreground hover:bg-foreground/10 hover:border-border transition-all mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="font-medium">Back to Dashboard</span>
@@ -179,67 +179,67 @@ export default function OrdersPage() {
 
         {/* Header */}
         <div className="mb-16 md:mb-24 space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white">Orders</h1>
-          <p className="text-xl text-white/50">View your order history and track shipments.</p>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">Orders</h1>
+          <p className="text-xl text-muted-foreground">View your order history and track shipments.</p>
         </div>
 
         {/* Stats Cards */}
         {loading ? (
           <div className="grid gap-8 md:gap-10 md:grid-cols-2 lg:grid-cols-4 mb-16 md:mb-24">
             {[1, 2, 3, 4].map(i => (
-              <Card key={i} className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+              <Card key={i} className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
                 <CardHeader className="pb-6">
-                  <Skeleton className="h-5 w-32 mb-4 bg-white/10" />
-                  <Skeleton className="h-14 w-48 bg-white/10" />
+                  <Skeleton className="h-5 w-32 mb-4 bg-foreground/10" />
+                  <Skeleton className="h-14 w-48 bg-foreground/10" />
                 </CardHeader>
               </Card>
             ))}
           </div>
         ) : stats && (
           <div className="grid gap-8 md:gap-10 md:grid-cols-2 lg:grid-cols-4 mb-16 md:mb-24">
-            <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:bg-white/[0.12] transition-all duration-300">
+            <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] hover:bg-foreground/[0.12] transition-all duration-300">
               <CardHeader className="pb-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Package className="h-5 w-5 text-white/50" strokeWidth={2} />
-                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-white/50">Total Orders</CardDescription>
+                  <Package className="h-5 w-5 text-muted-foreground" strokeWidth={2} />
+                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-muted-foreground">Total Orders</CardDescription>
                 </div>
-                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                   {stats.totalOrders}
                 </CardTitle>
               </CardHeader>
             </Card>
 
-            <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:bg-white/[0.12] transition-all duration-300">
+            <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] hover:bg-foreground/[0.12] transition-all duration-300">
               <CardHeader className="pb-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <TrendingUpIcon className="h-5 w-5 text-white/50" strokeWidth={2} />
-                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-white/50">Total Spent</CardDescription>
+                  <TrendingUpIcon className="h-5 w-5 text-muted-foreground" strokeWidth={2} />
+                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-muted-foreground">Total Spent</CardDescription>
                 </div>
-                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                   ${stats.totalSpent.toFixed(2)}
                 </CardTitle>
               </CardHeader>
             </Card>
 
-            <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:bg-white/[0.12] transition-all duration-300">
+            <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] hover:bg-foreground/[0.12] transition-all duration-300">
               <CardHeader className="pb-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <TrendingUpIcon className="h-5 w-5 text-white/50" strokeWidth={2} />
-                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-white/50">Average Order</CardDescription>
+                  <TrendingUpIcon className="h-5 w-5 text-muted-foreground" strokeWidth={2} />
+                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-muted-foreground">Average Order</CardDescription>
                 </div>
-                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                   ${stats.averageOrder.toFixed(2)}
                 </CardTitle>
               </CardHeader>
             </Card>
 
-            <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:bg-white/[0.12] transition-all duration-300">
+            <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] hover:bg-foreground/[0.12] transition-all duration-300">
               <CardHeader className="pb-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Package className="h-5 w-5 text-white/50" strokeWidth={2} />
-                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-white/50">Pending</CardDescription>
+                  <Package className="h-5 w-5 text-muted-foreground" strokeWidth={2} />
+                  <CardDescription className="text-sm md:text-base font-medium uppercase tracking-wider text-muted-foreground">Pending</CardDescription>
                 </div>
-                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-white">
+                <CardTitle className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                   {stats.pendingOrders}
                 </CardTitle>
               </CardHeader>
@@ -248,19 +248,19 @@ export default function OrdersPage() {
         )}
 
         {/* Download Options */}
-        <Card id="downloads" className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-16 md:mb-24 scroll-mt-24">
+        <Card id="downloads" className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] mb-16 md:mb-24 scroll-mt-24">
           <CardHeader className="pb-8">
-            <CardTitle className="text-4xl md:text-5xl font-bold text-white">Download Options</CardTitle>
-            <CardDescription className="text-lg md:text-xl mt-3 font-light text-white/50">Export your order history and tax documents</CardDescription>
+            <CardTitle className="text-4xl md:text-5xl font-bold text-foreground">Download Options</CardTitle>
+            <CardDescription className="text-lg md:text-xl mt-3 font-light text-muted-foreground">Export your order history and tax documents</CardDescription>
           </CardHeader>
           <CardContent className="pt-8 pb-10">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="flex flex-col space-y-4">
-                <label className="text-sm font-medium uppercase tracking-wider text-white/50">Select Year</label>
+                <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">Select Year</label>
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="h-16 px-6 border-0 rounded-2xl bg-white/[0.05] text-white text-lg hover:bg-white/[0.08] transition-all duration-300 cursor-pointer"
+                  className="h-16 px-6 border-0 rounded-2xl bg-foreground/[0.06] text-foreground text-lg hover:bg-foreground/[0.08] transition-all duration-300 cursor-pointer"
                 >
                   {availableYears.map(year => (
                     <option key={year} value={year} style={{ backgroundColor: '#18181b', color: 'white' }}>{year}</option>
@@ -269,26 +269,26 @@ export default function OrdersPage() {
               </div>
               <div 
                 onClick={downloadBulkHistory}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-white/[0.05] hover:bg-white/[0.1] cursor-pointer transition-all duration-300 group"
+                className="flex items-center gap-4 p-6 rounded-2xl bg-foreground/[0.06] hover:bg-card/[0.1] cursor-pointer transition-all duration-300 group"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-white/[0.08] group-hover:bg-white/[0.12]">
-                  <Download className="w-6 h-6 text-white/70" />
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-foreground/[0.08] group-hover:bg-foreground/[0.12]">
+                  <Download className="w-6 h-6 text-foreground/70" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-white">Order History</h4>
-                  <p className="text-sm text-white/50">Download all orders as PDF</p>
+                  <h4 className="text-lg font-semibold text-foreground">Order History</h4>
+                  <p className="text-sm text-muted-foreground">Download all orders as PDF</p>
                 </div>
               </div>
               <div 
                 onClick={downloadTaxInfo}
-                className="flex items-center gap-4 p-6 rounded-2xl bg-white/[0.05] hover:bg-white/[0.1] cursor-pointer transition-all duration-300 group"
+                className="flex items-center gap-4 p-6 rounded-2xl bg-foreground/[0.06] hover:bg-card/[0.1] cursor-pointer transition-all duration-300 group"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-white/[0.08] group-hover:bg-white/[0.12]">
-                  <Receipt className="w-6 h-6 text-white/70" />
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-foreground/[0.08] group-hover:bg-foreground/[0.12]">
+                  <Receipt className="w-6 h-6 text-foreground/70" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-white">Tax Information</h4>
-                  <p className="text-sm text-white/50">Export tax documents</p>
+                  <h4 className="text-lg font-semibold text-foreground">Tax Information</h4>
+                  <p className="text-sm text-muted-foreground">Export tax documents</p>
                 </div>
               </div>
             </div>
@@ -299,14 +299,14 @@ export default function OrdersPage() {
         <section className="space-y-8">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Order History</h2>
-              <p className="text-base md:text-lg mt-3 font-light text-white/50">View and manage your orders</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Order History</h2>
+              <p className="text-base md:text-lg mt-3 font-light text-muted-foreground">View and manage your orders</p>
             </div>
             <button 
               onClick={fetchOrders} 
-              className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-white transition-all duration-300 border border-white/10"
+              className="flex items-center gap-3 px-6 py-3 rounded-xl bg-foreground/[0.06] hover:bg-card/[0.1] text-foreground transition-all duration-300 border border-border"
             >
-              <RefreshCw className="w-5 h-5 text-white/70" />
+              <RefreshCw className="w-5 h-5 text-foreground/70" />
               <span className="font-medium">Refresh</span>
             </button>
           </div>

@@ -194,13 +194,13 @@ Total: $${payment.amount.toFixed(2)}
   // Access Code Entry Screen
   if (!isVerified) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 space-y-8">
               {/* Header */}
@@ -208,8 +208,8 @@ Total: $${payment.amount.toFixed(2)}
                 <div className="mx-auto h-16 w-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                   <Shield className="h-8 w-8 text-emerald-400" />
                 </div>
-                <h1 className="text-3xl font-bold text-white">Payment Report</h1>
-                <p className="text-white/50">
+                <h1 className="text-3xl font-bold text-foreground">Payment Report</h1>
+                <p className="text-muted-foreground">
                   Enter your PIN to view payment details
                 </p>
               </div>
@@ -225,14 +225,14 @@ Total: $${payment.amount.toFixed(2)}
               {/* PIN Input */}
               <div className="space-y-4">
                 <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     type="password"
                     value={pin}
                     onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 12))}
                     placeholder="Enter PIN"
                     maxLength={12}
-                    className="h-16 pl-12 bg-white/5 border-white/10 rounded-xl text-white text-center text-2xl tracking-[0.5em] font-mono"
+                    className="h-16 pl-12 bg-foreground/5 border-border rounded-xl text-foreground text-center text-2xl tracking-[0.5em] font-mono"
                     onKeyDown={(e) => e.key === "Enter" && handleVerify()}
                   />
                 </div>
@@ -240,7 +240,7 @@ Total: $${payment.amount.toFixed(2)}
                 <Button
                   onClick={handleVerify}
                   disabled={isVerifying || pin.length < 4}
-                  className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-xl font-semibold text-lg disabled:opacity-50"
+                  className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold text-lg disabled:opacity-50"
                 >
                   {isVerifying ? (
                     <div className="h-5 w-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -253,7 +253,7 @@ Total: $${payment.amount.toFixed(2)}
                 </Button>
               </div>
 
-              <p className="text-center text-white/40 text-sm">
+              <p className="text-center text-muted-foreground text-sm">
                 Use the PIN you set up for your wallet
               </p>
             </div>
@@ -265,7 +265,7 @@ Total: $${payment.amount.toFixed(2)}
 
   // Payment Report Screen
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       {/* Print-specific styles */}
       <style jsx global>{`
         @media print {
@@ -273,9 +273,9 @@ Total: $${payment.amount.toFixed(2)}
           .no-print { display: none !important; }
           .print-only { display: block !important; }
           .bg-white\\/5, .bg-white\\/10 { background: #f5f5f5 !important; }
-          .text-white { color: black !important; }
-          .text-white\\/50, .text-white\\/60, .text-white\\/40 { color: #666 !important; }
-          .border-white\\/10, .border-white\\/20 { border-color: #ddd !important; }
+          .text-foreground { color: black !important; }
+          .text-foreground\\/50, .text-foreground\\/60, .text-foreground\\/40 { color: #666 !important; }
+          .border-primary\\/10, .border-primary\\/20 { border-color: #ddd !important; }
         }
       `}</style>
 
@@ -284,7 +284,7 @@ Total: $${payment.amount.toFixed(2)}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-2">
             <div className="flex items-center gap-3">
-              <h1 className="text-4xl font-bold text-white">Payment Report</h1>
+              <h1 className="text-4xl font-bold text-foreground">Payment Report</h1>
               <Badge className={cn(
                 "rounded-full",
                 payment?.status === "completed" 
@@ -294,7 +294,7 @@ Total: $${payment.amount.toFixed(2)}
                 {payment?.status}
               </Badge>
             </div>
-            <p className="text-white/50">
+            <p className="text-muted-foreground">
               {payment?.completed_at && format(new Date(payment.completed_at), "PPpp")}
             </p>
           </div>
@@ -304,7 +304,7 @@ Total: $${payment.amount.toFixed(2)}
             <Button
               onClick={handlePrint}
               variant="outline"
-              className="h-10 bg-white/5 border-white/10 hover:bg-white/10 rounded-xl"
+              className="h-10 bg-foreground/5 border-border hover:bg-foreground/10 rounded-xl"
             >
               <Printer className="h-4 w-4 mr-2" />
               Print
@@ -312,7 +312,7 @@ Total: $${payment.amount.toFixed(2)}
             <Button
               onClick={handleDownloadCSV}
               variant="outline"
-              className="h-10 bg-white/5 border-white/10 hover:bg-white/10 rounded-xl"
+              className="h-10 bg-foreground/5 border-border hover:bg-foreground/10 rounded-xl"
             >
               <Download className="h-4 w-4 mr-2" />
               CSV
@@ -320,7 +320,7 @@ Total: $${payment.amount.toFixed(2)}
             <Button
               onClick={handleCopyText}
               variant="outline"
-              className="h-10 bg-white/5 border-white/10 hover:bg-white/10 rounded-xl"
+              className="h-10 bg-foreground/5 border-border hover:bg-foreground/10 rounded-xl"
             >
               {copied === "report" ? (
                 <><Check className="h-4 w-4 mr-2" /> Copied</>
@@ -331,7 +331,7 @@ Total: $${payment.amount.toFixed(2)}
             <Button
               onClick={handleSendEmail}
               variant="outline"
-              className="h-10 bg-white/5 border-white/10 hover:bg-white/10 rounded-xl"
+              className="h-10 bg-foreground/5 border-border hover:bg-foreground/10 rounded-xl"
             >
               <Mail className="h-4 w-4 mr-2" />
               Email
@@ -339,7 +339,7 @@ Total: $${payment.amount.toFixed(2)}
             <Button
               onClick={handleSendSMS}
               variant="outline"
-              className="h-10 bg-white/5 border-white/10 hover:bg-white/10 rounded-xl"
+              className="h-10 bg-foreground/5 border-border hover:bg-foreground/10 rounded-xl"
             >
               <MessageSquare className="h-4 w-4 mr-2" />
               Text
@@ -348,82 +348,82 @@ Total: $${payment.amount.toFixed(2)}
         </div>
 
         {/* Payment Summary Card */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Amount */}
               <div className="space-y-2">
-                <p className="text-sm font-medium text-white/50">Payment Amount</p>
-                <p className="text-5xl font-bold text-white">
+                <p className="text-sm font-medium text-muted-foreground">Payment Amount</p>
+                <p className="text-5xl font-bold text-foreground">
                   ${payment?.amount.toFixed(2)}
-                  <span className="text-xl text-white/50 ml-2">{payment?.currency}</span>
+                  <span className="text-xl text-muted-foreground ml-2">{payment?.currency}</span>
                 </p>
               </div>
 
               {/* Recipient */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center">
-                    <User className="h-6 w-6 text-white/60" />
+                  <div className="h-12 w-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+                    <User className="h-6 w-6 text-foreground/60" />
                   </div>
                   <div>
-                    <p className="font-semibold text-white">
+                    <p className="font-semibold text-foreground">
                       {payment?.rep.first_name} {payment?.rep.last_name}
                     </p>
-                    <p className="text-sm text-white/50">{payment?.rep.email}</p>
+                    <p className="text-sm text-muted-foreground">{payment?.rep.email}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-8 pt-8 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Transaction Hash */}
               <div className="space-y-2">
-                <p className="text-sm font-medium text-white/50 flex items-center gap-2">
+                <p className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                   <Hash className="h-4 w-4" />
                   Transaction Hash
                 </p>
                 <div className="flex items-center gap-2">
-                  <code className="flex-1 text-sm font-mono text-white bg-white/5 px-3 py-2 rounded-lg break-all">
+                  <code className="flex-1 text-sm font-mono text-foreground bg-foreground/5 px-3 py-2 rounded-lg break-all">
                     {payment?.transaction_hash}
                   </code>
                   <button
                     onClick={() => copyToClipboard(payment?.transaction_hash || "", "hash")}
-                    className="p-2 rounded-lg hover:bg-white/10 no-print"
+                    className="p-2 rounded-lg hover:bg-foreground/10 no-print"
                   >
                     {copied === "hash" ? (
                       <Check className="h-4 w-4 text-emerald-400" />
                     ) : (
-                      <Copy className="h-4 w-4 text-white/40" />
+                      <Copy className="h-4 w-4 text-muted-foreground" />
                     )}
                   </button>
                   <a
                     href={`https://etherscan.io/tx/${payment?.transaction_hash}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg hover:bg-white/10 no-print"
+                    className="p-2 rounded-lg hover:bg-foreground/10 no-print"
                   >
-                    <ExternalLink className="h-4 w-4 text-white/40" />
+                    <ExternalLink className="h-4 w-4 text-muted-foreground" />
                   </a>
                 </div>
               </div>
 
               {/* Wallet Address */}
               <div className="space-y-2">
-                <p className="text-sm font-medium text-white/50">Wallet Address</p>
+                <p className="text-sm font-medium text-muted-foreground">Wallet Address</p>
                 <div className="flex items-center gap-2">
-                  <code className="flex-1 text-sm font-mono text-white bg-white/5 px-3 py-2 rounded-lg break-all">
+                  <code className="flex-1 text-sm font-mono text-foreground bg-foreground/5 px-3 py-2 rounded-lg break-all">
                     {payment?.recipient_address}
                   </code>
                   <button
                     onClick={() => copyToClipboard(payment?.recipient_address || "", "address")}
-                    className="p-2 rounded-lg hover:bg-white/10 no-print"
+                    className="p-2 rounded-lg hover:bg-foreground/10 no-print"
                   >
                     {copied === "address" ? (
                       <Check className="h-4 w-4 text-emerald-400" />
                     ) : (
-                      <Copy className="h-4 w-4 text-white/40" />
+                      <Copy className="h-4 w-4 text-muted-foreground" />
                     )}
                   </button>
                 </div>
@@ -433,27 +433,27 @@ Total: $${payment.amount.toFixed(2)}
         </div>
 
         {/* Commission Breakdown */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
-            <h2 className="text-xl font-bold text-white mb-6">Commission Breakdown</h2>
+            <h2 className="text-xl font-bold text-foreground mb-6">Commission Breakdown</h2>
             
             <div className="space-y-4">
               {payment?.commissions.map(({ commission }, index) => (
                 <div
                   key={commission.id}
-                  className="p-4 rounded-xl bg-white/5 border border-white/10"
+                  className="p-4 rounded-xl bg-foreground/5 border border-border"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center">
-                        <FileText className="h-5 w-5 text-white/60" />
+                      <div className="h-10 w-10 rounded-lg bg-foreground/10 flex items-center justify-center">
+                        <FileText className="h-5 w-5 text-foreground/60" />
                       </div>
                       <div>
-                        <p className="font-medium text-white">
+                        <p className="font-medium text-foreground">
                           Order #{commission.order?.id?.slice(0, 8) || "N/A"}
                         </p>
-                        <p className="text-sm text-white/50">
+                        <p className="text-sm text-muted-foreground">
                           {format(new Date(commission.created_at), "PP")}
                         </p>
                       </div>
@@ -461,15 +461,15 @@ Total: $${payment.amount.toFixed(2)}
                     
                     <div className="flex items-center gap-6 text-sm">
                       <div>
-                        <p className="text-white/50">Order Total</p>
-                        <p className="text-white font-medium">${commission.order_total.toFixed(2)}</p>
+                        <p className="text-muted-foreground">Order Total</p>
+                        <p className="text-foreground font-medium">${commission.order_total.toFixed(2)}</p>
                       </div>
                       <div>
-                        <p className="text-white/50">Rate</p>
-                        <p className="text-white font-medium">{commission.commission_rate}%</p>
+                        <p className="text-muted-foreground">Rate</p>
+                        <p className="text-foreground font-medium">{commission.commission_rate}%</p>
                       </div>
                       <div>
-                        <p className="text-white/50">Commission</p>
+                        <p className="text-muted-foreground">Commission</p>
                         <p className="text-emerald-400 font-bold">
                           ${commission.commission_amount.toFixed(2)}
                         </p>
@@ -481,8 +481,8 @@ Total: $${payment.amount.toFixed(2)}
             </div>
 
             {/* Total */}
-            <div className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center">
-              <p className="text-lg font-semibold text-white">Total Payment</p>
+            <div className="mt-6 pt-6 border-t border-border flex justify-between items-center">
+              <p className="text-lg font-semibold text-foreground">Total Payment</p>
               <p className="text-2xl font-bold text-emerald-400">
                 ${payment?.amount.toFixed(2)} {payment?.currency}
               </p>
@@ -492,17 +492,17 @@ Total: $${payment.amount.toFixed(2)}
 
         {/* Notes */}
         {payment?.notes && (
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
-              <p className="text-sm font-medium text-white/50 mb-2">Notes</p>
-              <p className="text-white">{payment.notes}</p>
+              <p className="text-sm font-medium text-muted-foreground mb-2">Notes</p>
+              <p className="text-foreground">{payment.notes}</p>
             </div>
           </div>
         )}
 
         {/* Footer */}
-        <div className="text-center text-white/40 text-sm py-8">
+        <div className="text-center text-muted-foreground text-sm py-8">
           <p>This payment report was generated automatically.</p>
           <p>For questions, contact support.</p>
         </div>

@@ -186,7 +186,7 @@ export default function PageSeoManager() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -204,13 +204,13 @@ export default function PageSeoManager() {
             <div className="flex items-center gap-3">
               <Link
                 href="/admin/website"
-                className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition"
+                className="h-10 w-10 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition"
               >
-                <ArrowLeft className="h-5 w-5 text-white/70" />
+                <ArrowLeft className="h-5 w-5 text-foreground/70" />
               </Link>
               <div>
-                <h1 className="text-4xl font-bold tracking-tight text-white">Page SEO Manager</h1>
-                <p className="text-lg text-white/50">Manage titles and descriptions for all pages</p>
+                <h1 className="text-4xl font-bold tracking-tight text-foreground">Page SEO Manager</h1>
+                <p className="text-lg text-muted-foreground">Manage titles and descriptions for all pages</p>
               </div>
             </div>
           </div>
@@ -219,14 +219,14 @@ export default function PageSeoManager() {
               onClick={handleScan}
               disabled={scanning}
               variant="outline"
-              className="h-10 px-4 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+              className="h-10 px-4 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
             >
               {scanning ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <RefreshCw className="h-4 w-4 mr-2" />}
               Scan Pages
             </Button>
             <Button
               onClick={() => setShowNewPageForm(true)}
-              className="h-10 px-4 rounded-xl bg-white/10 text-white hover:bg-white/20"
+              className="h-10 px-4 rounded-xl bg-foreground/10 text-foreground hover:bg-foreground/20"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Page
@@ -243,7 +243,7 @@ export default function PageSeoManager() {
               exit={{ opacity: 0, y: -10 }}
               className="rounded-2xl bg-purple-500/20 border border-purple-500/30 p-4 flex items-center justify-between"
             >
-              <span className="text-white font-medium">
+              <span className="text-foreground font-medium">
                 {selectedIds.length} page{selectedIds.length > 1 ? 's' : ''} selected
               </span>
               <div className="flex items-center gap-3">
@@ -262,7 +262,7 @@ export default function PageSeoManager() {
                 <Button
                   onClick={() => setSelectedIds([])}
                   variant="ghost"
-                  className="h-10 px-4 text-white/70 hover:text-white"
+                  className="h-10 px-4 text-foreground/70 hover:text-foreground"
                 >
                   Clear
                 </Button>
@@ -281,12 +281,12 @@ export default function PageSeoManager() {
           >
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search pages..."
-                className="h-12 pl-12 bg-white/5 border-white/10 text-white rounded-xl"
+                className="h-12 pl-12 bg-foreground/5 border-border text-foreground rounded-xl"
               />
             </div>
 
@@ -296,17 +296,17 @@ export default function PageSeoManager() {
                 checked={selectedIds.length === filteredPages.length && filteredPages.length > 0}
                 onCheckedChange={toggleSelectAll}
               />
-              <span className="text-sm text-white/50">Select all ({filteredPages.length} pages)</span>
+              <span className="text-sm text-muted-foreground">Select all ({filteredPages.length} pages)</span>
             </div>
 
             {/* Page List */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
               <div className="max-h-[600px] overflow-y-auto">
                 {filteredPages.map((page) => (
                   <div
                     key={page.id}
-                    className={`flex items-center gap-3 p-4 border-b border-white/5 hover:bg-white/5 cursor-pointer transition ${
-                      selectedPage?.id === page.id ? 'bg-white/10' : ''
+                    className={`flex items-center gap-3 p-4 border-b border-border hover:bg-foreground/5 cursor-pointer transition ${
+                      selectedPage?.id === page.id ? 'bg-foreground/10' : ''
                     }`}
                   >
                     <Checkbox
@@ -319,8 +319,8 @@ export default function PageSeoManager() {
                       onClick={() => setSelectedPage(page)}
                     >
                       <div className="flex items-center gap-2">
-                        <FileText className="h-4 w-4 text-white/40 shrink-0" />
-                        <span className="text-white font-medium truncate">{page.path}</span>
+                        <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
+                        <span className="text-foreground font-medium truncate">{page.path}</span>
                         {page.ai_generated && (
                           <span className="px-2 py-0.5 text-xs bg-purple-500/20 text-purple-300 rounded-full">AI</span>
                         )}
@@ -328,16 +328,16 @@ export default function PageSeoManager() {
                           <EyeOff className="h-3 w-3 text-amber-400" />
                         )}
                       </div>
-                      <p className="text-sm text-white/40 truncate mt-1">
+                      <p className="text-sm text-muted-foreground truncate mt-1">
                         {page.title || 'No title set'}
                       </p>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-white/30" />
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
                   </div>
                 ))}
 
                 {filteredPages.length === 0 && (
-                  <div className="p-8 text-center text-white/40">
+                  <div className="p-8 text-center text-muted-foreground">
                     No pages found
                   </div>
                 )}
@@ -352,7 +352,7 @@ export default function PageSeoManager() {
             transition={{ delay: 0.2 }}
           >
             {selectedPage ? (
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 p-6 space-y-6">
                   {/* Header */}
@@ -362,8 +362,8 @@ export default function PageSeoManager() {
                         <Globe className="h-5 w-5 text-blue-400" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold text-white">{selectedPage.path}</h2>
-                        <p className="text-sm text-white/50">Edit SEO settings</p>
+                        <h2 className="text-lg font-bold text-foreground">{selectedPage.path}</h2>
+                        <p className="text-sm text-muted-foreground">Edit SEO settings</p>
                       </div>
                     </div>
                     <Button
@@ -393,93 +393,93 @@ export default function PageSeoManager() {
                   {/* Title */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium text-white/70">Page Title</Label>
-                      <span className="text-xs text-white/40">{selectedPage.title?.length || 0}/60</span>
+                      <Label className="text-sm font-medium text-foreground/70">Page Title</Label>
+                      <span className="text-xs text-muted-foreground">{selectedPage.title?.length || 0}/60</span>
                     </div>
                     <Input
                       value={selectedPage.title || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, title: e.target.value })}
                       placeholder="Enter page title"
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                     />
                   </div>
 
                   {/* Description */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium text-white/70">Meta Description</Label>
-                      <span className="text-xs text-white/40">{selectedPage.description?.length || 0}/160</span>
+                      <Label className="text-sm font-medium text-foreground/70">Meta Description</Label>
+                      <span className="text-xs text-muted-foreground">{selectedPage.description?.length || 0}/160</span>
                     </div>
                     <Textarea
                       value={selectedPage.description || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, description: e.target.value })}
                       placeholder="Enter meta description"
                       rows={3}
-                      className="bg-white/5 border-white/10 text-white rounded-xl resize-none"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl resize-none"
                     />
                   </div>
 
                   {/* Keywords */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-white/70">Keywords</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Keywords</Label>
                     <Input
                       value={selectedPage.keywords || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, keywords: e.target.value })}
                       placeholder="keyword1, keyword2, keyword3"
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                     />
                   </div>
 
                   {/* OG Title */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-white/70">OG Title (Social)</Label>
+                    <Label className="text-sm font-medium text-foreground/70">OG Title (Social)</Label>
                     <Input
                       value={selectedPage.og_title || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, og_title: e.target.value })}
                       placeholder="Leave blank to use page title"
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                     />
                   </div>
 
                   {/* OG Description */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-white/70">OG Description (Social)</Label>
+                    <Label className="text-sm font-medium text-foreground/70">OG Description (Social)</Label>
                     <Textarea
                       value={selectedPage.og_description || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, og_description: e.target.value })}
                       placeholder="Leave blank to use meta description"
                       rows={2}
-                      className="bg-white/5 border-white/10 text-white rounded-xl resize-none"
+                      className="bg-foreground/5 border-border text-foreground rounded-xl resize-none"
                     />
                   </div>
 
                   {/* Canonical URL */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-white/70">Canonical URL</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Canonical URL</Label>
                     <Input
                       value={selectedPage.canonical_url || ''}
                       onChange={(e) => setSelectedPage({ ...selectedPage, canonical_url: e.target.value })}
                       placeholder="https://..."
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                     />
                   </div>
 
                   {/* Robots */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                       <div>
-                        <Label className="text-white font-medium">No Index</Label>
-                        <p className="text-xs text-white/40">Hide from search</p>
+                        <Label className="text-foreground font-medium">No Index</Label>
+                        <p className="text-xs text-muted-foreground">Hide from search</p>
                       </div>
                       <Switch
                         checked={selectedPage.no_index}
                         onCheckedChange={(checked) => setSelectedPage({ ...selectedPage, no_index: checked })}
                       />
                     </div>
-                    <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                       <div>
-                        <Label className="text-white font-medium">No Follow</Label>
-                        <p className="text-xs text-white/40">Don't follow links</p>
+                        <Label className="text-foreground font-medium">No Follow</Label>
+                        <p className="text-xs text-muted-foreground">Don't follow links</p>
                       </div>
                       <Switch
                         checked={selectedPage.no_follow}
@@ -492,7 +492,7 @@ export default function PageSeoManager() {
                   <Button
                     onClick={handleSave}
                     disabled={saving}
-                    className="w-full h-12 rounded-xl bg-white text-black hover:bg-white/90 font-semibold"
+                    className="w-full h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 font-semibold"
                   >
                     {saving ? (
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -504,15 +504,15 @@ export default function PageSeoManager() {
 
                   {/* Last AI Update */}
                   {selectedPage.ai_generated && selectedPage.last_ai_update && (
-                    <p className="text-xs text-center text-white/30">
+                    <p className="text-xs text-center text-muted-foreground">
                       AI generated: {new Date(selectedPage.last_ai_update).toLocaleDateString()}
                     </p>
                   )}
                 </div>
               </div>
             ) : (
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl h-full min-h-[400px] flex items-center justify-center">
-                <div className="text-center text-white/40">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl h-full min-h-[400px] flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
                   <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
                   <p>Select a page to edit</p>
                 </div>
@@ -528,21 +528,21 @@ export default function PageSeoManager() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm"
               onClick={() => setShowNewPageForm(false)}
             >
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
-                className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-6 w-full max-w-md"
+                className="bg-card border border-border rounded-2xl p-6 w-full max-w-md"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-white">Add New Page</h3>
+                  <h3 className="text-xl font-bold text-foreground">Add New Page</h3>
                   <button
                     onClick={() => setShowNewPageForm(false)}
-                    className="text-white/50 hover:text-white"
+                    className="text-muted-foreground hover:text-foreground"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -550,18 +550,18 @@ export default function PageSeoManager() {
 
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-white/70">Page Path</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Page Path</Label>
                     <Input
                       value={newPagePath}
                       onChange={(e) => setNewPagePath(e.target.value)}
                       placeholder="/example-page"
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                     />
                   </div>
 
                   <Button
                     onClick={handleCreatePage}
-                    className="w-full h-12 rounded-xl bg-white text-black hover:bg-white/90 font-semibold"
+                    className="w-full h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 font-semibold"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add Page

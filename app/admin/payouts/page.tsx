@@ -199,7 +199,7 @@ export default function PayoutsPage() {
       case "processing":
         return "bg-cyan-500/20 text-cyan-400 border-cyan-500/30"
       default:
-        return "bg-white/10 text-white/60 border-white/20"
+        return "bg-foreground/10 text-foreground/60 border-border"
     }
   }
 
@@ -226,7 +226,7 @@ export default function PayoutsPage() {
           {/* Back Navigation */}
           <Link
             href="/admin"
-            className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+            className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="text-base font-medium">Back to Admin</span>
@@ -234,69 +234,69 @@ export default function PayoutsPage() {
 
           {/* Header */}
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Rep Payouts</h1>
-            <p className="text-xl text-white/50">Manage commissions and process payouts for your sales reps.</p>
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Rep Payouts</h1>
+            <p className="text-xl text-muted-foreground">Manage commissions and process payouts for your sales reps.</p>
           </div>
 
           {/* Stats */}
           <section className="space-y-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <DollarSign className="h-5 w-5 text-emerald-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Earned</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Earned</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     ${summaries.reduce((sum, s) => sum + s.total_earned, 0).toFixed(2)}
                   </p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                       <CheckCircle2 className="h-5 w-5 text-blue-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Paid</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Paid</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     ${summaries.reduce((sum, s) => sum + s.total_paid, 0).toFixed(2)}
                   </p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                       <Clock className="h-5 w-5 text-amber-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Pending</p>
+                    <p className="text-sm font-medium text-muted-foreground">Pending</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     ${summaries.reduce((sum, s) => sum + s.pending_amount, 0).toFixed(2)}
                   </p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                       <Wallet className="h-5 w-5 text-purple-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Ready to Pay</p>
+                    <p className="text-sm font-medium text-muted-foreground">Ready to Pay</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     ${summaries.reduce((sum, s) => sum + s.approved_amount, 0).toFixed(2)}
                   </p>
                 </div>
@@ -306,19 +306,19 @@ export default function PayoutsPage() {
 
           {/* Rep List */}
           <section className="space-y-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Sales Representatives</h2>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Sales Representatives</h2>
 
             {loading ? (
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="h-24 animate-pulse rounded-2xl bg-white/5" />
+                  <div key={i} className="h-24 animate-pulse rounded-2xl bg-foreground/5" />
                 ))}
               </div>
             ) : summaries.length === 0 ? (
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                <Wallet className="w-12 h-12 text-white/20 mx-auto mb-4 relative z-10" />
-                <p className="text-white/50 relative z-10">No sales representatives found</p>
+                <Wallet className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+                <p className="text-muted-foreground relative z-10">No sales representatives found</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -326,7 +326,7 @@ export default function PayoutsPage() {
                   <div
                     key={rep.rep_id}
                     onClick={() => loadRepDetails(rep)}
-                    className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.08] hover:border-white/15"
+                    className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-foreground/[0.08] hover:border-primary/15"
                   >
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -335,26 +335,26 @@ export default function PayoutsPage() {
                           {rep.rep_name.charAt(0).toUpperCase()}
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold text-white">{rep.rep_name}</h3>
-                          <p className="text-sm text-white/50">{rep.rep_email}</p>
+                          <h3 className="text-lg font-semibold text-foreground">{rep.rep_name}</h3>
+                          <p className="text-sm text-muted-foreground">{rep.rep_email}</p>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                         <div className="text-center md:text-right">
-                          <p className="text-xs text-white/40 uppercase tracking-wider">Earned</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Earned</p>
                           <p className="text-lg font-semibold text-emerald-400">${rep.total_earned.toFixed(2)}</p>
                         </div>
                         <div className="text-center md:text-right">
-                          <p className="text-xs text-white/40 uppercase tracking-wider">Paid</p>
-                          <p className="text-lg font-semibold text-white">${rep.total_paid.toFixed(2)}</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Paid</p>
+                          <p className="text-lg font-semibold text-foreground">${rep.total_paid.toFixed(2)}</p>
                         </div>
                         <div className="text-center md:text-right">
-                          <p className="text-xs text-white/40 uppercase tracking-wider">Pending</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Pending</p>
                           <p className="text-lg font-semibold text-amber-400">${rep.pending_amount.toFixed(2)}</p>
                         </div>
                         <div className="text-center md:text-right">
-                          <p className="text-xs text-white/40 uppercase tracking-wider">Ready</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Ready</p>
                           <p className="text-lg font-semibold text-blue-400">${rep.approved_amount.toFixed(2)}</p>
                         </div>
                       </div>
@@ -385,13 +385,13 @@ export default function PayoutsPage() {
                 setPayouts([])
                 setSelectedCommissions(new Set())
               }}
-              className="h-12 w-12 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10"
+              className="h-12 w-12 rounded-xl bg-foreground/5 hover:bg-foreground/10 border border-border"
             >
               <ArrowLeft className="w-5 h-5" />
             </Button>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">{selectedRep.rep_name}</h1>
-              <p className="text-white/50">{selectedRep.rep_email}</p>
+              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">{selectedRep.rep_name}</h1>
+              <p className="text-muted-foreground">{selectedRep.rep_email}</p>
             </div>
           </div>
 
@@ -404,20 +404,20 @@ export default function PayoutsPage() {
         <div className="grid gap-4 md:grid-cols-4">
           {[
             { label: "Total Earned", value: selectedRep.total_earned, color: "text-emerald-400" },
-            { label: "Total Paid", value: selectedRep.total_paid, color: "text-white" },
+            { label: "Total Paid", value: selectedRep.total_paid, color: "text-foreground" },
             { label: "Pending Approval", value: selectedRep.pending_amount, color: "text-amber-400" },
             { label: "Ready to Pay", value: selectedRep.approved_amount, color: "text-blue-400" },
           ].map((stat) => (
-            <div key={stat.label} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl text-center">
+            <div key={stat.label} className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl text-center">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-              <p className="text-sm text-white/50 relative z-10">{stat.label}</p>
+              <p className="text-sm text-muted-foreground relative z-10">{stat.label}</p>
               <p className={`text-2xl font-bold relative z-10 ${stat.color}`}>${stat.value.toFixed(2)}</p>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-2 backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10 grid grid-cols-3 gap-2">
             {(["commissions", "payouts", "new"] as const).map((tab) => (
@@ -425,7 +425,7 @@ export default function PayoutsPage() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`py-4 px-6 rounded-xl text-center font-medium transition-all ${
-                  activeTab === tab ? "bg-white text-black" : "text-white/60 hover:text-white hover:bg-white/5"
+                  activeTab === tab ? "bg-primary text-primary-foreground" : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
                 }`}
               >
                 {tab === "commissions" ? "Commissions" : tab === "payouts" ? "Payout History" : "New Payout"}
@@ -442,7 +442,7 @@ export default function PayoutsPage() {
               <Button
                 onClick={selectAllApproved}
                 variant="outline"
-                className="h-12 px-6 rounded-xl bg-white/5 border-white/10 hover:bg-white/10 text-white"
+                className="h-12 px-6 rounded-xl bg-foreground/5 border-border hover:bg-foreground/10 text-foreground"
               >
                 Select All Approved
               </Button>
@@ -468,10 +468,10 @@ export default function PayoutsPage() {
             {/* Commission List */}
             <div className="space-y-3">
               {commissions.length === 0 ? (
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+                <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                  <DollarSign className="w-12 h-12 text-white/20 mx-auto mb-4 relative z-10" />
-                  <p className="text-white/50 relative z-10">No commissions yet</p>
+                  <DollarSign className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+                  <p className="text-muted-foreground relative z-10">No commissions yet</p>
                 </div>
               ) : (
                 commissions.map((commission) => (
@@ -485,7 +485,7 @@ export default function PayoutsPage() {
                     className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl p-6 cursor-pointer transition-all duration-300 ${
                       selectedCommissions.has(commission.id)
                         ? "border-emerald-500/50 bg-emerald-500/10"
-                        : "border-white/10 bg-white/5 hover:bg-white/[0.08]"
+                        : "border-border bg-foreground/5 hover:bg-foreground/[0.08]"
                     }`}
                   >
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -495,16 +495,16 @@ export default function PayoutsPage() {
                           className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-colors ${
                             selectedCommissions.has(commission.id)
                               ? "bg-emerald-500 border-emerald-500"
-                              : "border-white/30"
+                              : "border-border"
                           }`}
                         >
-                          {selectedCommissions.has(commission.id) && <Check className="w-4 h-4 text-white" />}
+                          {selectedCommissions.has(commission.id) && <Check className="w-4 h-4 text-foreground" />}
                         </div>
                         <div>
-                          <p className="font-medium text-white">
+                          <p className="font-medium text-foreground">
                             Order from {commission.order?.customer?.user?.first_name || "Customer"}
                           </p>
-                          <p className="text-sm text-white/50">
+                          <p className="text-sm text-muted-foreground">
                             {new Date(commission.created_at).toLocaleDateString()} • Order Total: $
                             {Number(commission.order_total).toFixed(2)}
                           </p>
@@ -531,19 +531,19 @@ export default function PayoutsPage() {
         {activeTab === "payouts" && (
           <section className="space-y-4">
             {payouts.length === 0 ? (
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                <Send className="w-12 h-12 text-white/20 mx-auto mb-4 relative z-10" />
-                <p className="text-white/50 relative z-10">No payouts yet</p>
+                <Send className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+                <p className="text-muted-foreground relative z-10">No payouts yet</p>
               </div>
             ) : (
               payouts.map((payout) => (
-                <div key={payout.id} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <div key={payout.id} className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   
                   {/* Header */}
                   <div
-                    className="relative z-10 p-6 cursor-pointer hover:bg-white/5 transition-colors"
+                    className="relative z-10 p-6 cursor-pointer hover:bg-foreground/5 transition-colors"
                     onClick={() => {
                       const newSet = new Set(expandedPayouts)
                       if (newSet.has(payout.id)) {
@@ -556,23 +556,23 @@ export default function PayoutsPage() {
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-xl bg-white/10">{getPaymentIcon(payout.payment_type)}</div>
+                        <div className="p-3 rounded-xl bg-foreground/10">{getPaymentIcon(payout.payment_type)}</div>
                         <div>
-                          <p className="font-medium text-white capitalize">
+                          <p className="font-medium text-foreground capitalize">
                             {payout.payment_type.replace("_", " ")} Payment
                             {payout.crypto_currency && ` (${payout.crypto_currency})`}
                           </p>
-                          <p className="text-sm text-white/50">{new Date(payout.created_at).toLocaleDateString()}</p>
+                          <p className="text-sm text-muted-foreground">{new Date(payout.created_at).toLocaleDateString()}</p>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-4">
                         <Badge className={`px-3 py-1 border ${getStatusColor(payout.status)}`}>{payout.status}</Badge>
-                        <p className="text-2xl font-bold text-white">${Number(payout.amount).toFixed(2)}</p>
+                        <p className="text-2xl font-bold text-foreground">${Number(payout.amount).toFixed(2)}</p>
                         {expandedPayouts.has(payout.id) ? (
-                          <ChevronUp className="w-5 h-5 text-white/40" />
+                          <ChevronUp className="w-5 h-5 text-muted-foreground" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-white/40" />
+                          <ChevronDown className="w-5 h-5 text-muted-foreground" />
                         )}
                       </div>
                     </div>
@@ -580,20 +580,20 @@ export default function PayoutsPage() {
 
                   {/* Expanded Details */}
                   {expandedPayouts.has(payout.id) && (
-                    <div className="relative z-10 px-6 pb-6 border-t border-white/10 pt-6 space-y-6">
+                    <div className="relative z-10 px-6 pb-6 border-t border-border pt-6 space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {payout.wallet_address && (
                           <div className="space-y-2">
-                            <Label className="text-white/50">Wallet Address</Label>
+                            <Label className="text-muted-foreground">Wallet Address</Label>
                             <div className="flex items-center gap-2">
-                              <code className="flex-1 p-3 bg-white/5 rounded-xl text-sm text-white truncate border border-white/10">
+                              <code className="flex-1 p-3 bg-foreground/5 rounded-xl text-sm text-foreground truncate border border-border">
                                 {payout.wallet_address}
                               </code>
                               <Button
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => copyToClipboard(payout.wallet_address!, `wallet-${payout.id}`)}
-                                className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10"
+                                className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10"
                               >
                                 {copiedId === `wallet-${payout.id}` ? (
                                   <Check className="w-4 h-4" />
@@ -607,16 +607,16 @@ export default function PayoutsPage() {
 
                         {payout.transaction_hash && (
                           <div className="space-y-2">
-                            <Label className="text-white/50">Transaction Hash</Label>
+                            <Label className="text-muted-foreground">Transaction Hash</Label>
                             <div className="flex items-center gap-2">
-                              <code className="flex-1 p-3 bg-white/5 rounded-xl text-sm text-white truncate border border-white/10">
+                              <code className="flex-1 p-3 bg-foreground/5 rounded-xl text-sm text-foreground truncate border border-border">
                                 {payout.transaction_hash}
                               </code>
                               <Button
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => copyToClipboard(payout.transaction_hash!, `hash-${payout.id}`)}
-                                className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10"
+                                className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10"
                               >
                                 {copiedId === `hash-${payout.id}` ? (
                                   <Check className="w-4 h-4" />
@@ -630,8 +630,8 @@ export default function PayoutsPage() {
 
                         {payout.notes && (
                           <div className="space-y-2 md:col-span-2">
-                            <Label className="text-white/50">Notes</Label>
-                            <p className="p-3 bg-white/5 rounded-xl text-white border border-white/10">{payout.notes}</p>
+                            <Label className="text-muted-foreground">Notes</Label>
+                            <p className="p-3 bg-foreground/5 rounded-xl text-foreground border border-border">{payout.notes}</p>
                           </div>
                         )}
                       </div>
@@ -677,14 +677,14 @@ export default function PayoutsPage() {
 
         {/* New Payout Tab */}
         {activeTab === "new" && (
-          <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <section className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-8 space-y-8">
-              <h2 className="text-2xl font-bold text-white">Create New Payout</h2>
+              <h2 className="text-2xl font-bold text-foreground">Create New Payout</h2>
 
               {/* Payment Type */}
               <div className="space-y-4">
-                <Label className="text-lg text-white">Payment Method</Label>
+                <Label className="text-lg text-foreground">Payment Method</Label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {[
                     { value: "crypto", label: "Crypto", icon: Bitcoin },
@@ -700,11 +700,11 @@ export default function PayoutsPage() {
                       className={`p-6 rounded-xl border-2 transition-all flex flex-col items-center gap-3 ${
                         payoutForm.payment_type === value
                           ? "border-emerald-500 bg-emerald-500/10"
-                          : "border-white/10 hover:border-white/30 bg-white/5"
+                          : "border-border hover:border-border bg-foreground/5"
                       }`}
                     >
-                      <Icon className="w-8 h-8 text-white" />
-                      <span className="font-medium text-white">{label}</span>
+                      <Icon className="w-8 h-8 text-foreground" />
+                      <span className="font-medium text-foreground">{label}</span>
                     </button>
                   ))}
                 </div>
@@ -712,19 +712,19 @@ export default function PayoutsPage() {
 
               {/* Amount */}
               <div className="space-y-4">
-                <Label className="text-lg text-white">Payout Amount</Label>
+                <Label className="text-lg text-foreground">Payout Amount</Label>
                 <div className="relative">
-                  <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-white/40" />
+                  <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-muted-foreground" />
                   <Input
                     type="number"
                     value={payoutForm.amount}
                     onChange={(e) => setPayoutForm((prev) => ({ ...prev, amount: Number(e.target.value) }))}
-                    className="h-16 pl-12 text-2xl bg-white/5 border-white/10 rounded-xl text-white"
+                    className="h-16 pl-12 text-2xl bg-foreground/5 border-border rounded-xl text-foreground"
                     placeholder="0.00"
                   />
                 </div>
                 {selectedRep.approved_amount > 0 && (
-                  <p className="text-sm text-white/50">Available balance: ${selectedRep.approved_amount.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground">Available balance: ${selectedRep.approved_amount.toFixed(2)}</p>
                 )}
               </div>
 
@@ -732,7 +732,7 @@ export default function PayoutsPage() {
               {payoutForm.payment_type === "crypto" && (
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <Label className="text-lg text-white">Cryptocurrency</Label>
+                    <Label className="text-lg text-foreground">Cryptocurrency</Label>
                     <div className="grid grid-cols-3 gap-4">
                       {["USDT", "BTC", "ETH"].map((crypto) => (
                         <button
@@ -741,7 +741,7 @@ export default function PayoutsPage() {
                           className={`p-4 rounded-xl border-2 font-medium transition-all ${
                             payoutForm.crypto_currency === crypto
                               ? "border-emerald-500 bg-emerald-500/10 text-white"
-                              : "border-white/10 hover:border-white/30 bg-white/5 text-white"
+                              : "border-border hover:border-border bg-foreground/5 text-foreground"
                           }`}
                         >
                           {crypto}
@@ -751,21 +751,21 @@ export default function PayoutsPage() {
                   </div>
 
                   <div className="space-y-4">
-                    <Label className="text-lg text-white">Wallet Address</Label>
+                    <Label className="text-lg text-foreground">Wallet Address</Label>
                     <Input
                       value={payoutForm.wallet_address}
                       onChange={(e) => setPayoutForm((prev) => ({ ...prev, wallet_address: e.target.value }))}
-                      className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                      className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                       placeholder="Enter wallet address"
                     />
                   </div>
 
                   <div className="space-y-4">
-                    <Label className="text-lg text-white">Transaction Hash (optional)</Label>
+                    <Label className="text-lg text-foreground">Transaction Hash (optional)</Label>
                     <Input
                       value={payoutForm.transaction_hash}
                       onChange={(e) => setPayoutForm((prev) => ({ ...prev, transaction_hash: e.target.value }))}
-                      className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                      className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                       placeholder="Enter after sending payment"
                     />
                   </div>
@@ -775,11 +775,11 @@ export default function PayoutsPage() {
               {/* Non-crypto transaction number */}
               {payoutForm.payment_type !== "crypto" && (
                 <div className="space-y-4">
-                  <Label className="text-lg text-white">Transaction/Reference Number</Label>
+                  <Label className="text-lg text-foreground">Transaction/Reference Number</Label>
                   <Input
                     value={payoutForm.transaction_number}
                     onChange={(e) => setPayoutForm((prev) => ({ ...prev, transaction_number: e.target.value }))}
-                    className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                    className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                     placeholder="Check number, transfer ID, etc."
                   />
                 </div>
@@ -787,22 +787,22 @@ export default function PayoutsPage() {
 
               {/* Notes */}
               <div className="space-y-4">
-                <Label className="text-lg text-white">Notes (optional)</Label>
+                <Label className="text-lg text-foreground">Notes (optional)</Label>
                 <Textarea
                   value={payoutForm.notes}
                   onChange={(e) => setPayoutForm((prev) => ({ ...prev, notes: e.target.value }))}
-                  className="min-h-[120px] bg-white/5 border-white/10 rounded-xl resize-none text-white"
+                  className="min-h-[120px] bg-foreground/5 border-border rounded-xl resize-none text-foreground"
                   placeholder="Add any notes about this payout..."
                 />
               </div>
 
               {/* Receipt Upload */}
               <div className="space-y-4">
-                <Label className="text-lg text-white">Receipt (optional)</Label>
-                <div className="border-2 border-dashed border-white/20 rounded-xl p-8 text-center hover:border-white/40 transition-colors cursor-pointer">
-                  <Upload className="w-10 h-10 text-white/40 mx-auto mb-4" />
-                  <p className="text-white/50">Click to upload receipt</p>
-                  <p className="text-sm text-white/30 mt-1">PNG, JPG, PDF up to 10MB</p>
+                <Label className="text-lg text-foreground">Receipt (optional)</Label>
+                <div className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-border transition-colors cursor-pointer">
+                  <Upload className="w-10 h-10 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-muted-foreground">Click to upload receipt</p>
+                  <p className="text-sm text-muted-foreground mt-1">PNG, JPG, PDF up to 10MB</p>
                 </div>
               </div>
 

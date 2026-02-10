@@ -118,7 +118,7 @@ export function AdminOverlayNav() {
         {/* Background with 98% opacity */}
         <div 
           className={cn(
-            "absolute inset-0 bg-black transition-all duration-500",
+            "absolute inset-0 bg-background transition-all duration-500",
             isOpen ? "opacity-98" : "opacity-0"
           )}
           onClick={() => setIsOpen(false)}
@@ -128,13 +128,13 @@ export function AdminOverlayNav() {
         <button
           onClick={() => setIsOpen(false)}
           className={cn(
-            "absolute top-6 right-6 z-10 p-3 rounded-lg bg-white/10 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-500/60 transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,211,238,0.25)] group",
+            "absolute top-6 right-6 z-10 p-3 rounded-lg bg-foreground/10 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-500/60 transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,211,238,0.25)] group",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           )}
           style={{ transitionDelay: isOpen ? '200ms' : '0ms' }}
           aria-label="Close navigation menu"
         >
-          <X className="h-8 w-8 text-white group-hover:text-cyan-400 transition-colors duration-300" />
+          <X className="h-8 w-8 text-foreground group-hover:text-cyan-400 transition-colors duration-300" />
         </button>
 
         {/* Admin Profile */}
@@ -146,11 +146,11 @@ export function AdminOverlayNav() {
           style={{ transitionDelay: isOpen ? '100ms' : '0ms' }}
         >
           <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 p-1 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+            <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
               <User className="h-12 w-12 text-cyan-400" />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-wide">Admin User</h2>
+          <h2 className="text-2xl font-bold text-foreground tracking-wide">Admin User</h2>
         </div>
 
         {/* Navigation Links */}

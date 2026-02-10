@@ -148,7 +148,7 @@ export default function MaintenanceSettingsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -181,7 +181,7 @@ export default function MaintenanceSettingsPage() {
               fontWeight: settings.font_weight,
               fontStyle: settings.font_style,
               color: settings.text_color,
-              textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+              textShadow: '0 4px 20px rgba(58,66,51,0.2)',
             }}
           >
             {settings.title || 'Under Maintenance'}
@@ -194,7 +194,7 @@ export default function MaintenanceSettingsPage() {
                 fontSize: `${settings.subtitle_font_size}px`,
                 fontWeight: '400',
                 color: settings.text_color,
-                textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                textShadow: '0 2px 10px rgba(58,66,51,0.2)',
               }}
             >
               {settings.subtitle}
@@ -209,14 +209,14 @@ export default function MaintenanceSettingsPage() {
             // Re-fetch settings to get any visual settings changes made in preview
             fetchSettings()
           }}
-          className="fixed top-4 right-4 z-[60] bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-lg backdrop-blur-sm transition-colors flex items-center gap-2"
+          className="fixed top-4 right-4 z-[60] bg-foreground/50 hover:bg-foreground/70 text-foreground px-4 py-2 rounded-lg backdrop-blur-sm transition-colors flex items-center gap-2"
         >
           <span>Close Preview</span>
-          <span className="text-white/50 text-sm">(ESC)</span>
+          <span className="text-muted-foreground text-sm">(ESC)</span>
         </button>
 
         {/* Info Banner */}
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] bg-black/50 text-white px-6 py-3 rounded-lg backdrop-blur-sm text-sm">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] bg-foreground/50 text-foreground px-6 py-3 rounded-lg backdrop-blur-sm text-sm">
           Use the Rhythm Controller panel (top-left) to adjust the visual effects
         </div>
       </div>
@@ -233,8 +233,8 @@ export default function MaintenanceSettingsPage() {
           className="flex items-center justify-between"
         >
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">Maintenance Mode</h1>
-            <p className="text-lg text-white/50">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Maintenance Mode</h1>
+            <p className="text-lg text-muted-foreground">
               Control your site's maintenance page with a live preview
             </p>
           </div>
@@ -242,7 +242,7 @@ export default function MaintenanceSettingsPage() {
             <Button
               onClick={() => setShowFullPreview(true)}
               variant="outline"
-              className="h-12 px-6 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+              className="h-12 px-6 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
             >
               <Eye className="h-4 w-4 mr-2" />
               Full Preview
@@ -250,7 +250,7 @@ export default function MaintenanceSettingsPage() {
             <Button
               onClick={handleReset}
               variant="outline"
-              className="h-12 px-6 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+              className="h-12 px-6 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
             >
               <RefreshCw className="h-4 w-4 mr-2" />
               Reset
@@ -258,7 +258,7 @@ export default function MaintenanceSettingsPage() {
             <Button
               onClick={handleSave}
               disabled={saving || !hasChanges}
-              className="h-12 px-6 rounded-xl bg-white text-black hover:bg-white/90 font-semibold disabled:opacity-50"
+              className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 font-semibold disabled:opacity-50"
             >
               {saving ? (
                 <>
@@ -281,7 +281,7 @@ export default function MaintenanceSettingsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className={`relative overflow-hidden rounded-2xl border ${settings.enabled ? 'border-red-500/50 bg-red-500/10' : 'border-white/10 bg-white/5'} backdrop-blur-xl transition-colors duration-300`}>
+          <div className={`relative overflow-hidden rounded-2xl border ${settings.enabled ? 'border-red-500/50 bg-red-500/10' : 'border-border bg-foreground/5'} backdrop-blur-xl transition-colors duration-300`}>
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-8">
               <div className="flex items-center justify-between">
@@ -290,10 +290,10 @@ export default function MaintenanceSettingsPage() {
                     <Power className={`h-6 w-6 ${settings.enabled ? 'text-red-400' : 'text-emerald-400'} transition-colors`} />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white">
+                    <h2 className="text-2xl font-bold text-foreground">
                       {settings.enabled ? 'Maintenance Mode is ON' : 'Maintenance Mode is OFF'}
                     </h2>
-                    <p className="text-sm text-white/50 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       {settings.enabled 
                         ? 'All visitors will see the maintenance page. Admin routes remain accessible.'
                         : 'Your site is operating normally. Toggle to enable maintenance mode.'
@@ -332,7 +332,7 @@ export default function MaintenanceSettingsPage() {
             className="space-y-6"
           >
             {/* Text Content */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 p-8 space-y-6">
                 <div className="flex items-center gap-3 mb-6">
@@ -340,26 +340,26 @@ export default function MaintenanceSettingsPage() {
                     <Type className="h-5 w-5 text-blue-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-white">Text Content</h2>
-                    <p className="text-sm text-white/50">Customize the message shown to visitors</p>
+                    <h2 className="text-xl font-bold text-foreground">Text Content</h2>
+                    <p className="text-sm text-muted-foreground">Customize the message shown to visitors</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div className="space-y-3">
-                    <Label className="text-sm font-medium text-white/70">Main Title</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Main Title</Label>
                     <Input
                       value={settings.title}
                       onChange={(e) => setSettings({ ...settings, title: e.target.value })}
                       placeholder="Under Maintenance"
-                      className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                      className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                     />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                  <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                     <div className="space-y-1">
-                      <Label className="text-white font-medium">Show Subtitle</Label>
-                      <p className="text-sm text-white/50">Display additional message below the title</p>
+                      <Label className="text-foreground font-medium">Show Subtitle</Label>
+                      <p className="text-sm text-muted-foreground">Display additional message below the title</p>
                     </div>
                     <Switch 
                       checked={settings.show_subtitle} 
@@ -369,12 +369,12 @@ export default function MaintenanceSettingsPage() {
 
                   {settings.show_subtitle && (
                     <div className="space-y-3">
-                      <Label className="text-sm font-medium text-white/70">Subtitle</Label>
+                      <Label className="text-sm font-medium text-foreground/70">Subtitle</Label>
                       <Input
                         value={settings.subtitle}
                         onChange={(e) => setSettings({ ...settings, subtitle: e.target.value })}
                         placeholder="We'll be back soon"
-                        className="h-12 bg-white/5 border-white/10 text-white rounded-xl focus:border-white/30"
+                        className="h-12 bg-foreground/5 border-border text-foreground rounded-xl focus:border-border"
                       />
                     </div>
                   )}
@@ -383,7 +383,7 @@ export default function MaintenanceSettingsPage() {
             </div>
 
             {/* Typography */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 p-8 space-y-6">
                 <div className="flex items-center gap-3 mb-6">
@@ -391,8 +391,8 @@ export default function MaintenanceSettingsPage() {
                     <Palette className="h-5 w-5 text-purple-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-white">Typography & Style</h2>
-                    <p className="text-sm text-white/50">Adjust the appearance of your text</p>
+                    <h2 className="text-xl font-bold text-foreground">Typography & Style</h2>
+                    <p className="text-sm text-muted-foreground">Adjust the appearance of your text</p>
                   </div>
                 </div>
 
@@ -400,8 +400,8 @@ export default function MaintenanceSettingsPage() {
                   {/* Font Size */}
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium text-white/70">Title Font Size</Label>
-                      <span className="text-sm text-white/50 font-mono">{settings.font_size}px</span>
+                      <Label className="text-sm font-medium text-foreground/70">Title Font Size</Label>
+                      <span className="text-sm text-muted-foreground font-mono">{settings.font_size}px</span>
                     </div>
                     <Slider
                       value={[settings.font_size]}
@@ -411,7 +411,7 @@ export default function MaintenanceSettingsPage() {
                       step={4}
                       className="py-2"
                     />
-                    <div className="flex justify-between text-xs text-white/30">
+                    <div className="flex justify-between text-xs text-muted-foreground">
                       <span>32px</span>
                       <span>144px</span>
                     </div>
@@ -420,8 +420,8 @@ export default function MaintenanceSettingsPage() {
                   {settings.show_subtitle && (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <Label className="text-sm font-medium text-white/70">Subtitle Font Size</Label>
-                        <span className="text-sm text-white/50 font-mono">{settings.subtitle_font_size}px</span>
+                        <Label className="text-sm font-medium text-foreground/70">Subtitle Font Size</Label>
+                        <span className="text-sm text-muted-foreground font-mono">{settings.subtitle_font_size}px</span>
                       </div>
                       <Slider
                         value={[settings.subtitle_font_size]}
@@ -431,7 +431,7 @@ export default function MaintenanceSettingsPage() {
                         step={2}
                         className="py-2"
                       />
-                      <div className="flex justify-between text-xs text-white/30">
+                      <div className="flex justify-between text-xs text-muted-foreground">
                         <span>14px</span>
                         <span>48px</span>
                       </div>
@@ -440,15 +440,15 @@ export default function MaintenanceSettingsPage() {
 
                   {/* Font Weight */}
                   <div className="space-y-3">
-                    <Label className="text-sm font-medium text-white/70">Font Weight</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Font Weight</Label>
                     <Select
                       value={settings.font_weight}
                       onValueChange={(value) => setSettings({ ...settings, font_weight: value })}
                     >
-                      <SelectTrigger className="h-12 bg-white/5 border-white/10 text-white rounded-xl">
+                      <SelectTrigger className="h-12 bg-foreground/5 border-border text-foreground rounded-xl">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a1a] border-white/10">
+                      <SelectContent className="bg-card border-border">
                         <SelectItem value="400">Regular (400)</SelectItem>
                         <SelectItem value="500">Medium (500)</SelectItem>
                         <SelectItem value="600">Semibold (600)</SelectItem>
@@ -461,15 +461,15 @@ export default function MaintenanceSettingsPage() {
 
                   {/* Font Style */}
                   <div className="space-y-3">
-                    <Label className="text-sm font-medium text-white/70">Font Style</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Font Style</Label>
                     <Select
                       value={settings.font_style}
                       onValueChange={(value) => setSettings({ ...settings, font_style: value })}
                     >
-                      <SelectTrigger className="h-12 bg-white/5 border-white/10 text-white rounded-xl">
+                      <SelectTrigger className="h-12 bg-foreground/5 border-border text-foreground rounded-xl">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a1a] border-white/10">
+                      <SelectContent className="bg-card border-border">
                         <SelectItem value="normal">Normal</SelectItem>
                         <SelectItem value="italic">Italic</SelectItem>
                       </SelectContent>
@@ -478,25 +478,25 @@ export default function MaintenanceSettingsPage() {
 
                   {/* Text Color */}
                   <div className="space-y-3">
-                    <Label className="text-sm font-medium text-white/70">Text Color</Label>
+                    <Label className="text-sm font-medium text-foreground/70">Text Color</Label>
                     <div className="flex items-center gap-3">
                       <input
                         type="color"
                         value={settings.text_color}
                         onChange={(e) => setSettings({ ...settings, text_color: e.target.value })}
-                        className="h-12 w-12 rounded-xl border border-white/10 bg-transparent cursor-pointer"
+                        className="h-12 w-12 rounded-xl border border-border bg-transparent cursor-pointer"
                       />
                       <Input
                         value={settings.text_color}
                         onChange={(e) => setSettings({ ...settings, text_color: e.target.value })}
-                        className="h-12 w-32 bg-white/5 border-white/10 text-white rounded-xl font-mono text-sm uppercase"
+                        className="h-12 w-32 bg-foreground/5 border-border text-foreground rounded-xl font-mono text-sm uppercase"
                       />
                       <div className="flex gap-2">
                         {['#FFFFFF', '#F0F0F0', '#FFD700', '#00FF88'].map((color) => (
                           <button
                             key={color}
                             onClick={() => setSettings({ ...settings, text_color: color })}
-                            className="h-10 w-10 rounded-lg border border-white/10 hover:border-white/30 transition-colors"
+                            className="h-10 w-10 rounded-lg border border-border hover:border-border transition-colors"
                             style={{ backgroundColor: color }}
                             title={color}
                           />
@@ -516,25 +516,25 @@ export default function MaintenanceSettingsPage() {
             transition={{ delay: 0.3 }}
             className="xl:sticky xl:top-8 h-fit"
           >
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="p-6 border-b border-white/10">
+                <div className="p-6 border-b border-border">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                         <Eye className="h-5 w-5 text-emerald-400" />
                       </div>
                       <div>
-                        <h2 className="text-xl font-bold text-white">Live Preview</h2>
-                        <p className="text-sm text-white/50">Click "Full Preview" for interactive controls</p>
+                        <h2 className="text-xl font-bold text-foreground">Live Preview</h2>
+                        <p className="text-sm text-muted-foreground">Click "Full Preview" for interactive controls</p>
                       </div>
                     </div>
                     <Button
                       onClick={() => setShowFullPreview(true)}
                       size="sm"
                       variant="outline"
-                      className="border-white/10 bg-white/5 text-white hover:bg-white/10"
+                      className="border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Expand
@@ -545,7 +545,7 @@ export default function MaintenanceSettingsPage() {
                 {/* Preview Frame */}
                 <div className="relative">
                   {/* Browser Chrome */}
-                  <div className="bg-[#1a1a1a] px-4 py-3 border-b border-white/10">
+                  <div className="bg-card px-4 py-3 border-b border-border">
                     <div className="flex items-center gap-2">
                       <div className="flex gap-1.5">
                         <div className="w-3 h-3 rounded-full bg-red-500/50" />
@@ -553,9 +553,9 @@ export default function MaintenanceSettingsPage() {
                         <div className="w-3 h-3 rounded-full bg-green-500/50" />
                       </div>
                       <div className="flex-1 mx-4">
-                        <div className="h-7 bg-white/5 rounded-lg flex items-center px-3">
-                          <Monitor className="h-3.5 w-3.5 text-white/30 mr-2" />
-                          <span className="text-xs text-white/40 font-mono">yoursite.com</span>
+                        <div className="h-7 bg-foreground/5 rounded-lg flex items-center px-3">
+                          <Monitor className="h-3.5 w-3.5 text-muted-foreground mr-2" />
+                          <span className="text-xs text-muted-foreground font-mono">yoursite.com</span>
                         </div>
                       </div>
                     </div>
@@ -577,7 +577,7 @@ export default function MaintenanceSettingsPage() {
                             <path 
                               d="M28 0l28 16v32L28 64 0 48V16L28 0z" 
                               fill="none" 
-                              stroke="rgba(255,255,255,0.1)" 
+                              stroke="rgba(58,66,51,0.08)" 
                               strokeWidth="1"
                             />
                           </pattern>
@@ -603,7 +603,7 @@ export default function MaintenanceSettingsPage() {
                           fontWeight: settings.font_weight,
                           fontStyle: settings.font_style,
                           color: settings.text_color,
-                          textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                          textShadow: '0 4px 20px rgba(58,66,51,0.2)',
                         }}
                       >
                         {settings.title || 'Under Maintenance'}
@@ -616,7 +616,7 @@ export default function MaintenanceSettingsPage() {
                             fontSize: `${Math.min(settings.subtitle_font_size * 0.5, 24)}px`,
                             fontWeight: '400',
                             color: settings.text_color,
-                            textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                            textShadow: '0 2px 10px rgba(58,66,51,0.2)',
                           }}
                         >
                           {settings.subtitle}
@@ -625,8 +625,8 @@ export default function MaintenanceSettingsPage() {
                     </div>
 
                     {/* Click to expand overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 text-white px-4 py-2 rounded-lg backdrop-blur-sm flex items-center gap-2">
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-foreground/20 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-foreground/50 text-foreground px-4 py-2 rounded-lg backdrop-blur-sm flex items-center gap-2">
                         <Eye className="h-4 w-4" />
                         Click for Full Preview with Controls
                       </div>
@@ -634,8 +634,8 @@ export default function MaintenanceSettingsPage() {
                   </div>
                 </div>
                 
-                <div className="p-4 bg-white/5 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-white/40">
+                <div className="p-4 bg-foreground/5 border-t border-border flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">
                     Text preview updates live • Click preview for Rhythm Controller
                   </span>
                   <a

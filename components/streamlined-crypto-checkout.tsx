@@ -679,7 +679,7 @@ export function StreamlinedCryptoCheckout({
       {currentStep === 'shipping' && (
         <>
           {!isPaymentOnlyMode && (
-            <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+            <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
               <CardContent className="pt-6">
                 <h2 className="text-2xl font-bold mb-4">Shipping Information</h2>
                 <ShippingAddressForm onAddressChange={handleShippingChange} />
@@ -689,20 +689,20 @@ export function StreamlinedCryptoCheckout({
 
           {/* Payment Options Header - only show in payment-only mode */}
           {isPaymentOnlyMode && (
-            <h3 className="text-sm font-medium uppercase tracking-wider text-white/50 mb-2">Payment</h3>
+            <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-2">Payment</h3>
           )}
 
           {/* EXPRESS CHECKOUT - DISABLED FOR NOW, KEEP FOR LATER USE
           {!isLoadingWallet && primaryWallet && (
-            <Card className="border-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-emerald-500/20">
+            <Card className="border-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] border border-emerald-500/20">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-emerald-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white">Express Checkout</h3>
-                    <p className="text-sm text-white/60">Pay instantly with your wallet</p>
+                    <h3 className="font-semibold text-foreground">Express Checkout</h3>
+                    <p className="text-sm text-foreground/60">Pay instantly with your wallet</p>
                   </div>
                 </div>
                 
@@ -726,7 +726,7 @@ export function StreamlinedCryptoCheckout({
                   )}
                 </Button>
                 
-                <div className="flex items-center justify-center gap-2 mt-3 text-sm text-white/50">
+                <div className="flex items-center justify-center gap-2 mt-3 text-sm text-muted-foreground">
                   {getSecurityIcon()}
                   <span>{primaryWallet.label} ({primaryWallet.currency})</span>
                 </div>
@@ -737,13 +737,13 @@ export function StreamlinedCryptoCheckout({
 
           {/* WALLET SETUP PROMPT - DISABLED FOR NOW, KEEP FOR LATER USE
           {!isLoadingWallet && !primaryWallet && (
-            <Card className="border-0 bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/10">
+            <Card className="border-0 bg-foreground/[0.04] backdrop-blur-xl rounded-2xl border border-border">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <Wallet className="w-5 h-5 text-emerald-400" />
-                  <span className="font-medium text-white">Want faster checkout?</span>
+                  <span className="font-medium text-foreground">Want faster checkout?</span>
                 </div>
-                <p className="text-sm text-white/50 mb-4">
+                <p className="text-sm text-muted-foreground mb-4">
                   Set up a crypto wallet for one-tap express checkout
                 </p>
                 <Button size="sm" variant="outline" className="border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10" asChild>
@@ -756,15 +756,15 @@ export function StreamlinedCryptoCheckout({
 
           {/* Payment Fallback Mode Notice */}
           {isPaymentFallbackMode && !isLoadingFallbackStatus && (
-            <Card className="border-0 bg-gradient-to-br from-amber-500/10 to-orange-600/5 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-amber-500/20">
+            <Card className="border-0 bg-gradient-to-br from-amber-500/10 to-orange-600/5 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] border border-amber-500/20">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white">Invoice Payment</h3>
-                    <p className="text-sm text-white/60">Your payment link will be sent via email</p>
+                    <h3 className="font-semibold text-foreground">Invoice Payment</h3>
+                    <p className="text-sm text-foreground/60">Your payment link will be sent via email</p>
                   </div>
                 </div>
                 
@@ -772,7 +772,7 @@ export function StreamlinedCryptoCheckout({
                   <p className="text-sm text-amber-200">{fallbackMessage}</p>
                 </div>
 
-                <div className="space-y-2 text-sm text-white/60">
+                <div className="space-y-2 text-sm text-foreground/60">
                   <div className="flex items-center gap-2">
                     <FileText className="w-4 h-4 text-amber-400" />
                     <span>Your order will be created and saved</span>
@@ -797,7 +797,7 @@ export function StreamlinedCryptoCheckout({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                className="fixed inset-0 bg-background/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               >
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -812,8 +812,8 @@ export function StreamlinedCryptoCheckout({
                   >
                     <Mail className="w-12 h-12 text-amber-400" />
                   </motion.div>
-                  <h2 className="text-3xl font-bold text-white mb-2">Order Created!</h2>
-                  <p className="text-zinc-400 mb-2">A payment invoice has been sent to your email</p>
+                  <h2 className="text-3xl font-bold text-foreground mb-2">Order Created!</h2>
+                  <p className="text-muted-foreground mb-2">A payment invoice has been sent to your email</p>
                   <p className="text-sm text-zinc-500 mb-4">Please check your inbox for the payment link</p>
                   <Loader2 className="w-6 h-6 animate-spin text-amber-400 mx-auto" />
                 </motion.div>
@@ -844,7 +844,7 @@ export function StreamlinedCryptoCheckout({
           ) : (
           <Button
             onClick={handleShippingComplete}
-            className="w-full h-14 bg-white hover:bg-white/90 text-black font-semibold text-lg rounded-xl"
+            className="w-full h-14 bg-white hover:bg-card/90 text-black font-semibold text-lg rounded-xl"
             size="lg"
             disabled={!shippingAddress?.name || !shippingAddress?.addressLine1 || isCreatingOrder}
           >
@@ -871,7 +871,7 @@ export function StreamlinedCryptoCheckout({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => {
               setShowSecurityModal(false)
               setSecurityPin('')
@@ -884,12 +884,12 @@ export function StreamlinedCryptoCheckout({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-full max-w-md"
+              className="bg-card border border-border rounded-2xl p-6 w-full max-w-md"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   {getSecurityIcon()}
-                  <h2 className="text-xl font-bold text-white">Verify to Pay</h2>
+                  <h2 className="text-xl font-bold text-foreground">Verify to Pay</h2>
                 </div>
                 <button
                   onClick={() => {
@@ -898,7 +898,7 @@ export function StreamlinedCryptoCheckout({
                     setSecurityPassword('')
                     setVerificationError(null)
                   }}
-                  className="text-zinc-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -908,14 +908,14 @@ export function StreamlinedCryptoCheckout({
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
                   <Wallet className="w-8 h-8 text-emerald-400" />
                 </div>
-                <p className="text-white font-semibold text-2xl mb-1">${finalTotal.toFixed(2)}</p>
-                <p className="text-zinc-400 text-sm">from {primaryWallet.label}</p>
+                <p className="text-foreground font-semibold text-2xl mb-1">${finalTotal.toFixed(2)}</p>
+                <p className="text-muted-foreground text-sm">from {primaryWallet.label}</p>
               </div>
 
               {/* PIN Input */}
               {primaryWallet.has_pin && (
                 <div className="mb-4">
-                  <label className="text-sm text-zinc-400 mb-2 block">Enter your PIN</label>
+                  <label className="text-sm text-muted-foreground mb-2 block">Enter your PIN</label>
                   <Input
                     type="password"
                     inputMode="numeric"
@@ -924,7 +924,7 @@ export function StreamlinedCryptoCheckout({
                     value={securityPin}
                     onChange={(e) => setSecurityPin(e.target.value.replace(/\D/g, ''))}
                     placeholder="••••••"
-                    className="bg-zinc-950 border-zinc-800 text-white text-center text-2xl tracking-[0.5em] h-14"
+                    className="bg-background border-border text-foreground text-center text-2xl tracking-[0.5em] h-14"
                     autoFocus
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && securityPin) {
@@ -938,13 +938,13 @@ export function StreamlinedCryptoCheckout({
               {/* Password Input */}
               {primaryWallet.has_password && !primaryWallet.has_pin && (
                 <div className="mb-4">
-                  <label className="text-sm text-zinc-400 mb-2 block">Enter your password</label>
+                  <label className="text-sm text-muted-foreground mb-2 block">Enter your password</label>
                   <Input
                     type="password"
                     value={securityPassword}
                     onChange={(e) => setSecurityPassword(e.target.value)}
                     placeholder="Password"
-                    className="bg-zinc-950 border-zinc-800 text-white h-14"
+                    className="bg-background border-border text-foreground h-14"
                     autoFocus
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && securityPassword) {
@@ -995,7 +995,7 @@ export function StreamlinedCryptoCheckout({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-background/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -1010,8 +1010,8 @@ export function StreamlinedCryptoCheckout({
               >
                 <Check className="w-12 h-12 text-emerald-400" />
               </motion.div>
-              <h2 className="text-3xl font-bold text-white mb-2">Payment Successful!</h2>
-              <p className="text-zinc-400 mb-4">Redirecting to your order...</p>
+              <h2 className="text-3xl font-bold text-foreground mb-2">Payment Successful!</h2>
+              <p className="text-muted-foreground mb-4">Redirecting to your order...</p>
               <Loader2 className="w-6 h-6 animate-spin text-emerald-400 mx-auto" />
             </motion.div>
           </motion.div>

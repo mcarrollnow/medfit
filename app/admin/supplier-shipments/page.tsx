@@ -171,7 +171,7 @@ export default function AdminSupplierShipmentsPage() {
                 {/* Header */}
                 <button
                   onClick={() => setExpandedShipment(isExpanded ? null : shipment.id)}
-                  className="w-full p-6 md:p-8 text-left hover:bg-white/[0.02] transition-colors"
+                  className="w-full p-6 md:p-8 text-left hover:bg-foreground/[0.03] transition-colors"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
@@ -181,7 +181,7 @@ export default function AdminSupplierShipmentsPage() {
                       <div>
                         <div className="flex items-center gap-3 flex-wrap">
                           <h3 className="font-mono text-lg font-light">{shipment.shipment_number}</h3>
-                          <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/[0.06] border border-white/[0.1]">
+                          <span className="px-3 py-1 rounded-full text-xs font-mono bg-foreground/[0.07] border border-border">
                             {STATUS_LABELS[shipment.status]}
                           </span>
                         </div>
@@ -210,13 +210,13 @@ export default function AdminSupplierShipmentsPage() {
 
                 {/* Expanded */}
                 {isExpanded && (
-                  <div className="border-t border-white/[0.08] p-6 md:p-8 space-y-8">
+                  <div className="border-t border-border p-6 md:p-8 space-y-8">
                     {/* Items */}
                     <div>
                       <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">Contents</p>
                       <div className="space-y-3">
                         {shipment.items?.map((item) => (
-                          <div key={item.id} className="flex items-center justify-between bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                          <div key={item.id} className="flex items-center justify-between bg-foreground/[0.03] border border-border rounded-xl p-4">
                             <div className="flex items-center gap-3">
                               <div className="glass-button rounded-lg p-2"><Box className="h-4 w-4" /></div>
                               <div>
@@ -240,7 +240,7 @@ export default function AdminSupplierShipmentsPage() {
                         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">Photos</p>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                           {shipment.photos.map((photo) => (
-                            <a key={photo.id} href={photo.photo_url} target="_blank" rel="noopener noreferrer" className="rounded-xl overflow-hidden aspect-square border border-white/[0.08] hover:border-white/[0.2] transition-colors">
+                            <a key={photo.id} href={photo.photo_url} target="_blank" rel="noopener noreferrer" className="rounded-xl overflow-hidden aspect-square border border-border hover:border-primary/[0.2] transition-colors">
                               <img src={photo.photo_url} alt={photo.caption || "Shipment photo"} className="w-full h-full object-cover" />
                             </a>
                           ))}
@@ -252,7 +252,7 @@ export default function AdminSupplierShipmentsPage() {
                     {shipment.tracking_number && (
                       <div>
                         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">Tracking</p>
-                        <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                        <div className="bg-foreground/[0.03] border border-border rounded-xl p-4">
                           <div className="flex items-center gap-3">
                             <Truck className="h-5 w-5 text-muted-foreground" />
                             <div>
@@ -278,7 +278,7 @@ export default function AdminSupplierShipmentsPage() {
                         <button
                           onClick={() => handleMarkReceived(shipment.id, false)}
                           disabled={isProcessing}
-                          className="flex-1 py-4 rounded-2xl glass-button font-mono hover:bg-white/[0.08] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                          className="flex-1 py-4 rounded-2xl glass-button font-mono hover:bg-foreground/[0.08] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                         >
                           <CheckCircle2 className="h-5 w-5" />
                           Receive Only
@@ -287,7 +287,7 @@ export default function AdminSupplierShipmentsPage() {
                     )}
 
                     {shipment.status === "received" && (
-                      <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4 text-center">
+                      <div className="bg-foreground/[0.03] border border-border rounded-xl p-4 text-center">
                         <p className="text-muted-foreground font-mono text-sm">
                           Received {shipment.received_at ? new Date(shipment.received_at).toLocaleDateString() : ""}
                         </p>

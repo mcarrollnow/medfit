@@ -100,7 +100,7 @@ export default function AdminRewardsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -108,8 +108,8 @@ export default function AdminRewardsPage() {
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Rewards Management</h1>
-          <p className="text-lg text-white/50">Configure tiers, rewards, promos, and manage customer points</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">Rewards Management</h1>
+          <p className="text-lg text-muted-foreground">Configure tiers, rewards, promos, and manage customer points</p>
         </div>
 
         {/* Stats Grid */}
@@ -119,56 +119,56 @@ export default function AdminRewardsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0 }}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6"
+              className="rounded-2xl bg-foreground/5 border border-border p-6"
             >
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-                <Gift className="w-6 h-6 text-white/60" />
+              <div className="w-12 h-12 rounded-xl bg-foreground/10 flex items-center justify-center mb-4">
+                <Gift className="w-6 h-6 text-foreground/60" />
               </div>
-              <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Total Issued</p>
-              <p className="text-3xl font-bold text-white">{stats.totalPointsIssued?.toLocaleString() || 0}</p>
-              <p className="text-sm text-white/40">points</p>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Total Issued</p>
+              <p className="text-3xl font-bold text-foreground">{stats.totalPointsIssued?.toLocaleString() || 0}</p>
+              <p className="text-sm text-muted-foreground">points</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6"
+              className="rounded-2xl bg-foreground/5 border border-border p-6"
             >
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Check className="w-6 h-6 text-emerald-400" />
               </div>
-              <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Total Redeemed</p>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Total Redeemed</p>
               <p className="text-3xl font-bold text-emerald-400">{stats.totalPointsRedeemed?.toLocaleString() || 0}</p>
-              <p className="text-sm text-white/40">points</p>
+              <p className="text-sm text-muted-foreground">points</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6"
+              className="rounded-2xl bg-foreground/5 border border-border p-6"
             >
               <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-amber-400" />
               </div>
-              <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Active Promos</p>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Active Promos</p>
               <p className="text-3xl font-bold text-amber-400">{stats.activePromos || 0}</p>
-              <p className="text-sm text-white/40">running now</p>
+              <p className="text-sm text-muted-foreground">running now</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6"
+              className="rounded-2xl bg-foreground/5 border border-border p-6"
             >
               <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
                 <Gift className="w-6 h-6 text-purple-400" />
               </div>
-              <p className="text-sm text-white/50 uppercase tracking-wider mb-1">Available Rewards</p>
-              <p className="text-3xl font-bold text-white">{stats.activeRewards || 0}</p>
-              <p className="text-sm text-white/40">to redeem</p>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Available Rewards</p>
+              <p className="text-3xl font-bold text-foreground">{stats.activeRewards || 0}</p>
+              <p className="text-sm text-muted-foreground">to redeem</p>
             </motion.div>
           </div>
         )}
@@ -178,10 +178,10 @@ export default function AdminRewardsPage() {
           <select
             value={activeSection}
             onChange={(e) => setActiveSection(e.target.value as ActiveSection)}
-            className="h-14 w-full rounded-xl bg-white/5 border border-white/10 text-white px-4"
+            className="h-14 w-full rounded-xl bg-foreground/5 border border-border text-foreground px-4"
           >
             {sections.map((section) => (
-              <option key={section.id} value={section.id} className="bg-black">
+              <option key={section.id} value={section.id} className="bg-background">
                 {section.label}
               </option>
             ))}
@@ -198,8 +198,8 @@ export default function AdminRewardsPage() {
                 onClick={() => setActiveSection(section.id)}
                 className={`h-12 px-5 rounded-2xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                   activeSection === section.id
-                    ? "bg-white text-black"
-                    : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -320,7 +320,7 @@ function TiersSection({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Tier Configuration</h2>
+        <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Tier Configuration</h2>
         {editingTier && (
           <div className="flex gap-2">
             <Button
@@ -330,11 +330,11 @@ function TiersSection({
                 setTierRenames({})
                 setEditingTier(null)
               }}
-              className="h-12 rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+              className="h-12 rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
             >
               <X className="mr-2 h-4 w-4" /> Cancel
             </Button>
-            <Button onClick={handleSave} disabled={saving} className="h-12 rounded-xl bg-white text-black hover:bg-white/90">
+            <Button onClick={handleSave} disabled={saving} className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90">
               <Check className="mr-2 h-4 w-4" /> {saving ? "Saving..." : "Save Changes"}
             </Button>
           </div>
@@ -353,10 +353,10 @@ function TiersSection({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.03 }}
-              className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden"
+              className="rounded-2xl bg-foreground/5 border border-border overflow-hidden"
             >
               <div
-                className="flex cursor-pointer items-center justify-between p-6 hover:bg-white/[0.03] transition-colors"
+                className="flex cursor-pointer items-center justify-between p-6 hover:bg-foreground/[0.04] transition-colors"
                 onClick={() => setEditingTier(isEditing ? null : tierName)}
               >
                 <div className="flex items-center gap-4">
@@ -373,7 +373,7 @@ function TiersSection({
                         <span className="ml-2 text-xs text-amber-400 font-normal">(renamed)</span>
                       )}
                     </h3>
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-muted-foreground">
                       ${tier.minSpend.toLocaleString()} - {tier.maxSpend ? `$${tier.maxSpend.toLocaleString()}` : "∞"}
                     </p>
                   </div>
@@ -383,10 +383,10 @@ function TiersSection({
                     <p className="text-2xl font-bold" style={{ color: tier.color }}>
                       {tier.pointsPerDollar}x
                     </p>
-                    <p className="text-xs text-white/50">points/dollar</p>
+                    <p className="text-xs text-muted-foreground">points/dollar</p>
                   </div>
                   <ChevronDown
-                    className={`h-5 w-5 text-white/40 transition-transform duration-300 ${isEditing ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${isEditing ? "rotate-180" : ""}`}
                   />
                 </div>
               </div>
@@ -397,12 +397,12 @@ function TiersSection({
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="border-t border-white/10"
+                    className="border-t border-border"
                   >
                     <div className="space-y-6 p-6">
                       {/* Tier Name */}
                       <div>
-                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Tier Name
                         </label>
                         <div className="flex items-center gap-3">
@@ -416,9 +416,9 @@ function TiersSection({
                               }
                             }}
                             placeholder="Enter tier name"
-                            className="h-12 rounded-xl bg-white/5 border-white/10 text-white flex-1"
+                            className="h-12 rounded-xl bg-foreground/5 border-border text-foreground flex-1"
                           />
-                          <Edit2 className="h-5 w-5 text-white/40" />
+                          <Edit2 className="h-5 w-5 text-muted-foreground" />
                         </div>
                         {tierRenames[tierName] && tierRenames[tierName] !== tierName && (
                           <p className="mt-2 text-xs text-amber-400">
@@ -429,7 +429,7 @@ function TiersSection({
 
                       <div className="grid gap-4 md:grid-cols-3">
                         <div>
-                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                             Min Spend ($)
                           </label>
                           <Input
@@ -441,11 +441,11 @@ function TiersSection({
                                 [tierName]: { ...tier, minSpend: Number.parseInt(e.target.value) || 0 },
                               })
                             }
-                            className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                            className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                           />
                         </div>
                         <div>
-                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                             Max Spend ($)
                           </label>
                           <Input
@@ -461,11 +461,11 @@ function TiersSection({
                                 },
                               })
                             }
-                            className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                            className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
                         <div>
-                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                          <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                             Points Multiplier
                           </label>
                           <Input
@@ -478,13 +478,13 @@ function TiersSection({
                                 [tierName]: { ...tier, pointsPerDollar: Number.parseFloat(e.target.value) || 1 },
                               })
                             }
-                            className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                            className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Tier Color
                         </label>
                         <div className="flex gap-3">
@@ -497,7 +497,7 @@ function TiersSection({
                                 [tierName]: { ...tier, color: e.target.value },
                               })
                             }
-                            className="h-12 w-12 cursor-pointer rounded-xl border border-white/10 bg-transparent"
+                            className="h-12 w-12 cursor-pointer rounded-xl border border-border bg-transparent"
                           />
                           <Input
                             value={tier.color}
@@ -507,13 +507,13 @@ function TiersSection({
                                 [tierName]: { ...tier, color: e.target.value },
                               })
                             }
-                            className="h-12 rounded-xl bg-white/5 border-white/10 text-white flex-1 font-mono"
+                            className="h-12 rounded-xl bg-foreground/5 border-border text-foreground flex-1 font-mono"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Benefits (one per line)
                         </label>
                         <Textarea
@@ -525,7 +525,7 @@ function TiersSection({
                             })
                           }
                           rows={5}
-                          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                     </div>
@@ -616,8 +616,8 @@ function RewardsSection({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Redeemable Rewards</h2>
-        <Button onClick={() => setShowNewReward(true)} className="h-12 rounded-xl bg-white text-black hover:bg-white/90">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Redeemable Rewards</h2>
+        <Button onClick={() => setShowNewReward(true)} className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90">
           <Plus className="mr-2 h-4 w-4" /> Add Reward
         </Button>
       </div>
@@ -629,13 +629,13 @@ function RewardsSection({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-white">Create New Reward</h3>
+              <h3 className="text-lg font-semibold text-foreground">Create New Reward</h3>
               <button
                 onClick={() => setShowNewReward(false)}
-                className="p-2 rounded-xl hover:bg-white/10 text-white/50 hover:text-white"
+                className="p-2 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -644,73 +644,73 @@ function RewardsSection({
             <div className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Reward Name *
                   </label>
                   <Input
                     value={newReward.name}
                     onChange={(e) => setNewReward({ ...newReward, name: e.target.value })}
                     placeholder="e.g. $10 Off Coupon"
-                    className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                    className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Points Cost *
                   </label>
                   <Input
                     type="number"
                     value={newReward.points_cost}
                     onChange={(e) => setNewReward({ ...newReward, points_cost: Number.parseInt(e.target.value) || 0 })}
-                    className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                    className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Description
                 </label>
                 <Textarea
                   value={newReward.description}
                   onChange={(e) => setNewReward({ ...newReward, description: e.target.value })}
                   placeholder="Describe what this reward offers..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                 />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Reward Type
                   </label>
                   <select
                     value={newReward.reward_type}
                     onChange={(e) => setNewReward({ ...newReward, reward_type: e.target.value })}
-                    className="h-12 w-full rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                    className="h-12 w-full rounded-xl bg-foreground/5 border border-border text-foreground px-4"
                   >
-                    <option value="discount" className="bg-black">Discount</option>
-                    <option value="free_shipping" className="bg-black">Free Shipping</option>
-                    <option value="free_product" className="bg-black">Free Product</option>
-                    <option value="store_credit" className="bg-black">Store Credit</option>
-                    <option value="exclusive_access" className="bg-black">Exclusive Access</option>
+                    <option value="discount" className="bg-background">Discount</option>
+                    <option value="free_shipping" className="bg-background">Free Shipping</option>
+                    <option value="free_product" className="bg-background">Free Product</option>
+                    <option value="store_credit" className="bg-background">Store Credit</option>
+                    <option value="exclusive_access" className="bg-background">Exclusive Access</option>
                   </select>
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Tier Required
                   </label>
                   <select
                     value={newReward.tier_required || ""}
                     onChange={(e) => setNewReward({ ...newReward, tier_required: e.target.value || null })}
-                    className="h-12 w-full rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                    className="h-12 w-full rounded-xl bg-foreground/5 border border-border text-foreground px-4"
                   >
-                    <option value="" className="bg-black">All Tiers</option>
-                    <option value="Bronze" className="bg-black">Bronze+</option>
-                    <option value="Silver" className="bg-black">Silver+</option>
-                    <option value="Gold" className="bg-black">Gold+</option>
-                    <option value="Platinum" className="bg-black">Platinum+</option>
-                    <option value="Diamond" className="bg-black">Diamond</option>
+                    <option value="" className="bg-background">All Tiers</option>
+                    <option value="Bronze" className="bg-background">Bronze+</option>
+                    <option value="Silver" className="bg-background">Silver+</option>
+                    <option value="Gold" className="bg-background">Gold+</option>
+                    <option value="Platinum" className="bg-background">Platinum+</option>
+                    <option value="Diamond" className="bg-background">Diamond</option>
                   </select>
                 </div>
               </div>
@@ -719,14 +719,14 @@ function RewardsSection({
                 <Button
                   onClick={handleCreateReward}
                   disabled={saving || !newReward.name || newReward.points_cost <= 0}
-                  className="h-12 rounded-xl bg-white text-black hover:bg-white/90"
+                  className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                 >
                   {saving ? "Creating..." : "Create Reward"}
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => setShowNewReward(false)}
-                  className="h-12 rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+                  className="h-12 rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
                 >
                   Cancel
                 </Button>
@@ -739,12 +739,12 @@ function RewardsSection({
       {/* Rewards List */}
       <div className="space-y-4">
         {rewards.length === 0 && !showNewReward ? (
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-16 text-center">
-            <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mx-auto mb-6">
-              <Gift className="h-10 w-10 text-white/30" />
+          <div className="rounded-2xl bg-foreground/5 border border-border p-16 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-foreground/5 flex items-center justify-center mx-auto mb-6">
+              <Gift className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No rewards created yet</h3>
-            <p className="text-white/50">Create your first redeemable reward to get started</p>
+            <h3 className="text-xl font-semibold text-foreground mb-2">No rewards created yet</h3>
+            <p className="text-muted-foreground">Create your first redeemable reward to get started</p>
           </div>
         ) : (
           rewards.map((reward, index) => (
@@ -753,20 +753,20 @@ function RewardsSection({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.03 }}
-              className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden"
+              className="rounded-2xl bg-foreground/5 border border-border overflow-hidden"
             >
               <div className="flex flex-col gap-4 p-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="flex items-center gap-4">
                   <div
-                    className={`flex h-14 w-14 items-center justify-center rounded-2xl ${reward.is_active ? "bg-emerald-500/20" : "bg-white/10"}`}
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl ${reward.is_active ? "bg-emerald-500/20" : "bg-foreground/10"}`}
                   >
-                    <Gift className={`h-7 w-7 ${reward.is_active ? "text-emerald-400" : "text-white/40"}`} />
+                    <Gift className={`h-7 w-7 ${reward.is_active ? "text-emerald-400" : "text-muted-foreground"}`} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">{reward.name}</h3>
-                    <p className="text-sm text-white/50">{reward.description || "No description"}</p>
+                    <h3 className="text-lg font-bold text-foreground">{reward.name}</h3>
+                    <p className="text-sm text-muted-foreground">{reward.description || "No description"}</p>
                     <div className="mt-2 flex flex-wrap gap-2">
-                      <span className="rounded-lg bg-white/10 px-2 py-1 text-xs text-white/60">
+                      <span className="rounded-lg bg-foreground/10 px-2 py-1 text-xs text-foreground/60">
                         {reward.reward_type}
                       </span>
                       {reward.tier_required && (
@@ -779,12 +779,12 @@ function RewardsSection({
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-white">{reward.points_cost.toLocaleString()}</p>
-                    <p className="text-xs text-white/50">points</p>
+                    <p className="text-2xl font-bold text-foreground">{reward.points_cost.toLocaleString()}</p>
+                    <p className="text-xs text-muted-foreground">points</p>
                   </div>
                   <button
                     onClick={() => handleToggleActive(reward.id, reward.is_active)}
-                    className={`rounded-xl px-4 py-2 text-sm font-medium transition-colors ${reward.is_active ? "bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30" : "bg-white/10 text-white/40 hover:bg-white/20"}`}
+                    className={`rounded-xl px-4 py-2 text-sm font-medium transition-colors ${reward.is_active ? "bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30" : "bg-foreground/10 text-muted-foreground hover:bg-foreground/20"}`}
                   >
                     {reward.is_active ? "Active" : "Inactive"}
                   </button>
@@ -902,8 +902,8 @@ function PromosSection({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Points Promos</h2>
-        <Button onClick={() => setShowNewPromo(true)} className="h-12 rounded-xl bg-white text-black hover:bg-white/90">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Points Promos</h2>
+        <Button onClick={() => setShowNewPromo(true)} className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90">
           <Plus className="mr-2 h-4 w-4" /> Create Promo
         </Button>
       </div>
@@ -915,13 +915,13 @@ function PromosSection({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="rounded-2xl bg-white/5 border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 border border-border p-6"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-white">Create New Promo</h3>
+              <h3 className="text-lg font-semibold text-foreground">Create New Promo</h3>
               <button
                 onClick={() => setShowNewPromo(false)}
-                className="p-2 rounded-xl hover:bg-white/10 text-white/50 hover:text-white"
+                className="p-2 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -929,31 +929,31 @@ function PromosSection({
 
             <div className="space-y-4">
               <div>
-                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Promo Name *
                 </label>
                 <Input
                   value={newPromo.name}
                   onChange={(e) => setNewPromo({ ...newPromo, name: e.target.value })}
                   placeholder="e.g. Double Points Weekend"
-                  className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Description
                 </label>
                 <Textarea
                   value={newPromo.description}
                   onChange={(e) => setNewPromo({ ...newPromo, description: e.target.value })}
                   placeholder="Describe the promo..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Promo Type
                 </label>
                 <div className="grid grid-cols-2 gap-3">
@@ -961,32 +961,32 @@ function PromosSection({
                     onClick={() => setNewPromo({ ...newPromo, promo_type: "multiplier" })}
                     className={`p-4 rounded-xl border transition-all ${
                       newPromo.promo_type === "multiplier"
-                        ? "border-amber-500 bg-amber-500/10 text-white"
-                        : "border-white/10 bg-white/5 text-white/60 hover:bg-white/10"
+                        ? "border-amber-500 bg-amber-500/10 text-foreground"
+                        : "border-border bg-foreground/5 text-foreground/60 hover:bg-foreground/10"
                     }`}
                   >
                     <Zap className="h-6 w-6 mx-auto mb-2" />
                     <span className="font-medium">Multiplier</span>
-                    <p className="text-xs text-white/50 mt-1">e.g. 2x, 3x points</p>
+                    <p className="text-xs text-muted-foreground mt-1">e.g. 2x, 3x points</p>
                   </button>
                   <button
                     onClick={() => setNewPromo({ ...newPromo, promo_type: "bonus" })}
                     className={`p-4 rounded-xl border transition-all ${
                       newPromo.promo_type === "bonus"
-                        ? "border-amber-500 bg-amber-500/10 text-white"
-                        : "border-white/10 bg-white/5 text-white/60 hover:bg-white/10"
+                        ? "border-amber-500 bg-amber-500/10 text-foreground"
+                        : "border-border bg-foreground/5 text-foreground/60 hover:bg-foreground/10"
                     }`}
                   >
                     <Gift className="h-6 w-6 mx-auto mb-2" />
                     <span className="font-medium">Bonus Points</span>
-                    <p className="text-xs text-white/50 mt-1">e.g. +50 points</p>
+                    <p className="text-xs text-muted-foreground mt-1">e.g. +50 points</p>
                   </button>
                 </div>
               </div>
 
               {newPromo.promo_type === "multiplier" ? (
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Points Multiplier
                   </label>
                   <div className="flex items-center gap-4">
@@ -996,14 +996,14 @@ function PromosSection({
                       min="1"
                       value={newPromo.multiplier}
                       onChange={(e) => setNewPromo({ ...newPromo, multiplier: Number.parseFloat(e.target.value) || 1 })}
-                      className="h-12 w-24 rounded-xl bg-white/5 border-white/10 text-white text-center"
+                      className="h-12 w-24 rounded-xl bg-foreground/5 border-border text-foreground text-center"
                     />
-                    <span className="text-white/50">x points per dollar</span>
+                    <span className="text-muted-foreground">x points per dollar</span>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Bonus Points
                   </label>
                   <div className="flex items-center gap-4">
@@ -1012,40 +1012,40 @@ function PromosSection({
                       min="1"
                       value={newPromo.bonus_points}
                       onChange={(e) => setNewPromo({ ...newPromo, bonus_points: Number.parseInt(e.target.value) || 0 })}
-                      className="h-12 w-32 rounded-xl bg-white/5 border-white/10 text-white text-center"
+                      className="h-12 w-32 rounded-xl bg-foreground/5 border-border text-foreground text-center"
                     />
-                    <span className="text-white/50">extra points per order</span>
+                    <span className="text-muted-foreground">extra points per order</span>
                   </div>
                 </div>
               )}
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Start Date
                   </label>
                   <Input
                     type="date"
                     value={newPromo.start_date}
                     onChange={(e) => setNewPromo({ ...newPromo, start_date: e.target.value })}
-                    className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                    className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     End Date
                   </label>
                   <Input
                     type="date"
                     value={newPromo.end_date}
                     onChange={(e) => setNewPromo({ ...newPromo, end_date: e.target.value })}
-                    className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                    className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                   Minimum Order Amount ($)
                 </label>
                 <Input
@@ -1054,7 +1054,7 @@ function PromosSection({
                   value={newPromo.min_order_amount}
                   onChange={(e) => setNewPromo({ ...newPromo, min_order_amount: Number.parseInt(e.target.value) || 0 })}
                   placeholder="0 for no minimum"
-                  className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                 />
               </div>
 
@@ -1062,14 +1062,14 @@ function PromosSection({
                 <Button
                   onClick={handleCreatePromo}
                   disabled={saving || !newPromo.name}
-                  className="h-12 rounded-xl bg-white text-black hover:bg-white/90"
+                  className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                 >
                   {saving ? "Creating..." : "Create Promo"}
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => setShowNewPromo(false)}
-                  className="h-12 rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+                  className="h-12 rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
                 >
                   Cancel
                 </Button>
@@ -1082,12 +1082,12 @@ function PromosSection({
       {/* Promos List */}
       <div className="space-y-4">
         {promos.length === 0 && !showNewPromo ? (
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-16 text-center">
-            <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mx-auto mb-6">
-              <Zap className="h-10 w-10 text-white/30" />
+          <div className="rounded-2xl bg-foreground/5 border border-border p-16 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-foreground/5 flex items-center justify-center mx-auto mb-6">
+              <Zap className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No promos created yet</h3>
-            <p className="text-white/50">Create your first points promo to boost engagement</p>
+            <h3 className="text-xl font-semibold text-foreground mb-2">No promos created yet</h3>
+            <p className="text-muted-foreground">Create your first points promo to boost engagement</p>
           </div>
         ) : (
           promos.map((promo, index) => {
@@ -1098,18 +1098,18 @@ function PromosSection({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
-                className="rounded-2xl bg-white/5 border border-white/10 p-6"
+                className="rounded-2xl bg-foreground/5 border border-border p-6"
               >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`flex h-14 w-14 items-center justify-center rounded-2xl ${active ? "bg-amber-500/20" : "bg-white/10"}`}
+                      className={`flex h-14 w-14 items-center justify-center rounded-2xl ${active ? "bg-amber-500/20" : "bg-foreground/10"}`}
                     >
-                      <Zap className={`h-7 w-7 ${active ? "text-amber-400" : "text-white/40"}`} />
+                      <Zap className={`h-7 w-7 ${active ? "text-amber-400" : "text-muted-foreground"}`} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-white">{promo.name}</h3>
-                      <p className="text-sm text-white/50">
+                      <h3 className="text-lg font-bold text-foreground">{promo.name}</h3>
+                      <p className="text-sm text-muted-foreground">
                         {promo.promo_type === "multiplier" ? `${promo.multiplier}x points` : `+${promo.bonus_points} bonus`}
                         {" • "}
                         {new Date(promo.start_date).toLocaleDateString()} - {new Date(promo.end_date).toLocaleDateString()}
@@ -1118,13 +1118,13 @@ function PromosSection({
                   </div>
                   <div className="flex items-center gap-4">
                     <span
-                      className={`rounded-xl px-4 py-2 text-sm font-medium ${active ? "bg-amber-500/20 text-amber-400" : "bg-white/10 text-white/40"}`}
+                      className={`rounded-xl px-4 py-2 text-sm font-medium ${active ? "bg-amber-500/20 text-amber-400" : "bg-foreground/10 text-muted-foreground"}`}
                     >
                       {active ? "Active" : promo.is_active ? "Scheduled" : "Inactive"}
                     </span>
                     <button
                       onClick={() => handleToggleActive(promo.id, promo.is_active)}
-                      className="rounded-xl p-2 text-white/40 hover:bg-white/10 hover:text-white transition-colors"
+                      className="rounded-xl p-2 text-muted-foreground hover:bg-foreground/10 hover:text-foreground transition-colors"
                     >
                       {promo.is_active ? <X className="h-5 w-5" /> : <Check className="h-5 w-5" />}
                     </button>
@@ -1179,17 +1179,17 @@ function CustomersSection({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Customer Points</h2>
+        <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Customer Points</h2>
       </div>
 
       {/* Search */}
       <div className="relative max-w-md">
-        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40" />
+        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search customers..."
-          className="h-12 pl-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+          className="h-12 pl-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
         />
       </div>
 
@@ -1201,29 +1201,29 @@ function CustomersSection({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.03 }}
-            className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden"
+            className="rounded-2xl bg-foreground/5 border border-border overflow-hidden"
           >
             <div className="flex items-center justify-between p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
-                  <span className="text-lg font-bold text-white">{customer.name?.[0] || customer.email?.[0] || "?"}</span>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10">
+                  <span className="text-lg font-bold text-foreground">{customer.name?.[0] || customer.email?.[0] || "?"}</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">{customer.name || customer.email}</h3>
-                  <p className="text-sm text-white/50">
+                  <h3 className="font-semibold text-foreground">{customer.name || customer.email}</h3>
+                  <p className="text-sm text-muted-foreground">
                     {customer.rewards_tier} • ${customer.lifetime_spending?.toLocaleString() || 0} lifetime
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-xl font-bold text-white">{customer.available_points?.toLocaleString() || 0}</p>
-                  <p className="text-xs text-white/50">available points</p>
+                  <p className="text-xl font-bold text-foreground">{customer.available_points?.toLocaleString() || 0}</p>
+                  <p className="text-xs text-muted-foreground">available points</p>
                 </div>
                 <Button
                   variant="outline"
                   onClick={() => setAdjustingCustomer(adjustingCustomer === customer.id ? null : customer.id)}
-                  className="h-10 rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+                  className="h-10 rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
                 >
                   Adjust
                 </Button>
@@ -1236,12 +1236,12 @@ function CustomersSection({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="border-t border-white/10"
+                  className="border-t border-border"
                 >
                   <div className="space-y-4 p-6">
                     <div className="grid gap-4 md:grid-cols-2">
                       <div>
-                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Points (+/-)
                         </label>
                         <Input
@@ -1251,51 +1251,51 @@ function CustomersSection({
                             setAdjustment({ ...adjustment, points: Number.parseInt(e.target.value) || 0 })
                           }
                           placeholder="Enter points (negative to subtract)"
-                          className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                          className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div>
-                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                        <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Reason
                         </label>
                         <select
                           value={adjustment.reason}
                           onChange={(e) => setAdjustment({ ...adjustment, reason: e.target.value })}
-                          className="h-12 w-full rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                          className="h-12 w-full rounded-xl bg-foreground/5 border border-border text-foreground px-4"
                         >
-                          <option value="" className="bg-black">Select reason...</option>
-                          <option value="Bonus reward" className="bg-black">Bonus reward</option>
-                          <option value="Customer service credit" className="bg-black">Customer service credit</option>
-                          <option value="Promotion" className="bg-black">Promotion</option>
-                          <option value="Correction" className="bg-black">Correction</option>
-                          <option value="Referral bonus" className="bg-black">Referral bonus</option>
-                          <option value="Other" className="bg-black">Other</option>
+                          <option value="" className="bg-background">Select reason...</option>
+                          <option value="Bonus reward" className="bg-background">Bonus reward</option>
+                          <option value="Customer service credit" className="bg-background">Customer service credit</option>
+                          <option value="Promotion" className="bg-background">Promotion</option>
+                          <option value="Correction" className="bg-background">Correction</option>
+                          <option value="Referral bonus" className="bg-background">Referral bonus</option>
+                          <option value="Other" className="bg-background">Other</option>
                         </select>
                       </div>
                     </div>
                     <div>
-                      <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                      <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
                         Notes (optional)
                       </label>
                       <Textarea
                         value={adjustment.notes}
                         onChange={(e) => setAdjustment({ ...adjustment, notes: e.target.value })}
                         placeholder="Additional notes..."
-                        className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                       />
                     </div>
                     <div className="flex justify-end gap-3">
                       <Button
                         variant="outline"
                         onClick={() => setAdjustingCustomer(null)}
-                        className="h-12 rounded-xl border-white/20 bg-transparent text-white hover:bg-white/10"
+                        className="h-12 rounded-xl border-border bg-transparent text-foreground hover:bg-foreground/10"
                       >
                         Cancel
                       </Button>
                       <Button
                         onClick={() => handleAdjust(customer.id)}
                         disabled={saving || !adjustment.points || !adjustment.reason}
-                        className="h-12 rounded-xl bg-white text-black hover:bg-white/90"
+                        className="h-12 rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                       >
                         {saving ? "Saving..." : `${adjustment.points >= 0 ? "Add" : "Subtract"} Points`}
                       </Button>
@@ -1315,16 +1315,16 @@ function CustomersSection({
 function HistorySection({ adjustments }: { adjustments: PointsAdjustment[] }) {
   return (
     <div className="space-y-6">
-      <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Points Adjustment History</h2>
+      <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Points Adjustment History</h2>
 
       <div className="space-y-4">
         {adjustments.length === 0 ? (
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-16 text-center">
-            <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mx-auto mb-6">
-              <Calendar className="h-10 w-10 text-white/30" />
+          <div className="rounded-2xl bg-foreground/5 border border-border p-16 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-foreground/5 flex items-center justify-center mx-auto mb-6">
+              <Calendar className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No adjustments yet</h3>
-            <p className="text-white/50">Point adjustments will appear here</p>
+            <h3 className="text-xl font-semibold text-foreground mb-2">No adjustments yet</h3>
+            <p className="text-muted-foreground">Point adjustments will appear here</p>
           </div>
         ) : (
           adjustments.map((adj, index) => (
@@ -1333,7 +1333,7 @@ function HistorySection({ adjustments }: { adjustments: PointsAdjustment[] }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.03 }}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6"
+              className="rounded-2xl bg-foreground/5 border border-border p-6"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -1347,9 +1347,9 @@ function HistorySection({ adjustments }: { adjustments: PointsAdjustment[] }) {
                     )}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white">{(adj.customer as any)?.email || "Unknown"}</h3>
-                    <p className="text-sm text-white/50">{adj.reason}</p>
-                    {adj.notes && <p className="text-xs text-white/30 mt-1">{adj.notes}</p>}
+                    <h3 className="font-semibold text-foreground">{(adj.customer as any)?.email || "Unknown"}</h3>
+                    <p className="text-sm text-muted-foreground">{adj.reason}</p>
+                    {adj.notes && <p className="text-xs text-muted-foreground mt-1">{adj.notes}</p>}
                   </div>
                 </div>
                 <div className="text-right">
@@ -1357,7 +1357,7 @@ function HistorySection({ adjustments }: { adjustments: PointsAdjustment[] }) {
                     {adj.points_amount >= 0 ? "+" : ""}
                     {adj.points_amount.toLocaleString()}
                   </p>
-                  <p className="text-xs text-white/50">{new Date(adj.created_at).toLocaleDateString()}</p>
+                  <p className="text-xs text-muted-foreground">{new Date(adj.created_at).toLocaleDateString()}</p>
                 </div>
               </div>
             </motion.div>

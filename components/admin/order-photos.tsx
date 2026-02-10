@@ -168,7 +168,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
   }
 
   return (
-    <div className="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 lg:p-16 transition-all duration-300 hover:bg-white/[0.04]">
+    <div className="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 lg:p-16 transition-all duration-300 hover:bg-foreground/[0.05]">
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
       <div className="relative z-10">
         {/* Header - larger, more space */}
@@ -189,7 +189,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
           <button
             onClick={() => cameraInputRef.current?.click()}
             disabled={uploading}
-            className="w-full flex items-center justify-center gap-4 px-8 py-6 md:py-8 glass-button rounded-2xl text-foreground hover:bg-white/[0.08] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-4 px-8 py-6 md:py-8 glass-button rounded-2xl text-foreground hover:bg-foreground/[0.08] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Camera className="w-8 h-8" />
             <span className="text-lg md:text-xl font-light">Take Photo</span>
@@ -198,7 +198,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
           <button
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="w-full flex items-center justify-center gap-4 px-8 py-6 md:py-8 glass-button rounded-2xl text-foreground hover:bg-white/[0.08] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-4 px-8 py-6 md:py-8 glass-button rounded-2xl text-foreground hover:bg-foreground/[0.08] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Upload className="w-8 h-8" />
             <span className="text-lg md:text-xl font-light">Upload Photos</span>
@@ -256,7 +256,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
             {photos.map((photo) => (
               <div
                 key={photo.id}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-200 hover:border-white/20"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/[0.04] transition-all duration-200 hover:border-border"
               >
                 <button
                   type="button"
@@ -270,7 +270,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
                     className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     sizes="100vw"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-transparent group-hover:bg-foreground/20 transition-all duration-200 flex items-center justify-center">
                     <ZoomIn className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-80 transition-opacity duration-200" />
                   </div>
                 </button>
@@ -306,7 +306,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
         {/* Lightbox */}
         {lightboxPhoto && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4 sm:p-8"
             onClick={() => setLightboxPhoto(null)}
             role="dialog"
             aria-modal="true"
@@ -335,7 +335,7 @@ export function OrderPhotos({ orderId, orderNumber, autoOpenCamera }: OrderPhoto
             </div>
 
             <div
-              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-black/60 backdrop-blur-sm rounded-xl text-foreground/70 text-base"
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-foreground/60 backdrop-blur-sm rounded-xl text-foreground/70 text-base"
               onClick={(e) => e.stopPropagation()}
             >
               {lightboxPhoto.filename}

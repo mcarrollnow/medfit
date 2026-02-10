@@ -620,7 +620,7 @@ export default function CustomerWalletPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="flex items-center gap-3 text-white/50">
+        <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="w-6 h-6 animate-spin" />
           <span>Loading wallets...</span>
         </div>
@@ -631,17 +631,17 @@ export default function CustomerWalletPage() {
   if (isAuthenticated === false) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 text-center max-w-md w-full">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-8 text-center max-w-md w-full">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
-            <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-4">
-              <Wallet className="w-8 h-8 text-white/40" />
+            <div className="w-16 h-16 rounded-2xl bg-foreground/10 flex items-center justify-center mx-auto mb-4">
+              <Wallet className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h2 className="text-xl font-semibold text-white mb-2">Please Log In</h2>
-            <p className="text-white/50 mb-6">You need to be logged in to manage your wallets</p>
+            <h2 className="text-xl font-semibold text-foreground mb-2">Please Log In</h2>
+            <p className="text-muted-foreground mb-6">You need to be logged in to manage your wallets</p>
             <Button
               onClick={() => window.location.href = '/login'}
-              className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+              className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
             >
               Go to Login
             </Button>
@@ -657,17 +657,17 @@ export default function CustomerWalletPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8 md:mb-12">
           <div className="space-y-2">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white flex items-center gap-3">
-              <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center">
-                <Wallet className="w-6 h-6 md:w-7 md:h-7 text-white" />
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground flex items-center gap-3">
+              <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center">
+                <Wallet className="w-6 h-6 md:w-7 md:h-7 text-foreground" />
               </div>
               My Wallets
             </h1>
-            <p className="text-lg text-white/50">Manage your crypto wallets for purchases</p>
+            <p className="text-lg text-muted-foreground">Manage your crypto wallets for purchases</p>
           </div>
           <Button
             onClick={() => setShowCreateForm(true)}
-            className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+            className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Wallet
@@ -691,17 +691,17 @@ export default function CustomerWalletPage() {
 
         {/* Wallets List */}
         {wallets.length === 0 ? (
-          <div className="text-center py-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl relative overflow-hidden">
+          <div className="text-center py-16 rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl relative overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
-              <div className="w-20 h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-6">
-                <Wallet className="w-10 h-10 text-white/30" />
+              <div className="w-20 h-20 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mx-auto mb-6">
+                <Wallet className="w-10 h-10 text-muted-foreground" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">No Wallets Yet</h3>
-              <p className="text-white/50 mb-8 max-w-sm mx-auto">Add a wallet to start making purchases with crypto</p>
+              <h3 className="text-2xl font-bold text-foreground mb-2">No Wallets Yet</h3>
+              <p className="text-muted-foreground mb-8 max-w-sm mx-auto">Add a wallet to start making purchases with crypto</p>
             <Button
               onClick={() => setShowCreateForm(true)}
-                className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
             >
               <Plus className="w-4 h-4 mr-2" />
               Create Your First Wallet
@@ -724,8 +724,8 @@ export default function CustomerWalletPage() {
                   className={cn(
                     "group relative overflow-hidden rounded-3xl border backdrop-blur-xl transition-all duration-500",
                     isExpanded 
-                      ? "bg-white/[0.08] border-white/20" 
-                      : "bg-white/5 border-white/10 hover:bg-white/[0.08] hover:border-white/20"
+                      ? "bg-foreground/[0.08] border-border" 
+                      : "bg-foreground/5 border-border hover:bg-foreground/[0.08] hover:border-border"
                   )}
                 >
                   {/* Noise texture overlay */}
@@ -757,13 +757,13 @@ export default function CustomerWalletPage() {
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h3 className="text-lg font-semibold text-white">{wallet.label}</h3>
+                            <h3 className="text-lg font-semibold text-foreground">{wallet.label}</h3>
                             {wallet.is_primary && (
                               <Badge className="bg-emerald-500/20 text-emerald-400 border-0 text-xs">Primary</Badge>
                             )}
                           </div>
                           <div className="flex items-center gap-2 mt-1">
-                            <Badge variant="outline" className="border-zinc-700 text-zinc-400">
+                            <Badge variant="outline" className="border-border text-muted-foreground">
                               {wallet.currency}
                             </Badge>
                             <span className="text-zinc-500 text-sm font-mono">
@@ -774,7 +774,7 @@ export default function CustomerWalletPage() {
                                 e.stopPropagation()
                                 copyToClipboard(wallet.address, wallet.id)
                               }}
-                              className="text-zinc-500 hover:text-white transition-colors"
+                              className="text-zinc-500 hover:text-foreground transition-colors"
                             >
                               {copiedText === wallet.id ? (
                                 <Check className="w-4 h-4 text-emerald-400" />
@@ -789,8 +789,8 @@ export default function CustomerWalletPage() {
                       <div className="flex items-center gap-3">
                         {/* Balance - USD prominent, crypto below */}
                         <div className="text-right">
-                          <div className="text-2xl font-bold text-white">${calculateUSDValue(balance, wallet.currency)}</div>
-                          <div className="text-sm text-zinc-400">{parseFloat(balance).toFixed(6)} {wallet.currency}</div>
+                          <div className="text-2xl font-bold text-foreground">${calculateUSDValue(balance, wallet.currency)}</div>
+                          <div className="text-sm text-muted-foreground">{parseFloat(balance).toFixed(6)} {wallet.currency}</div>
                         </div>
                         
                         {/* Refresh Button */}
@@ -800,11 +800,11 @@ export default function CustomerWalletPage() {
                             refreshWalletBalance(wallet)
                           }}
                           disabled={refreshingWallets.has(wallet.id)}
-                          className="w-8 h-8 rounded-lg bg-zinc-800/50 hover:bg-zinc-700 flex items-center justify-center transition-colors disabled:opacity-50"
+                          className="w-8 h-8 rounded-lg bg-secondary/50 hover:bg-zinc-700 flex items-center justify-center transition-colors disabled:opacity-50"
                           title="Refresh balance"
                         >
                           <RefreshCw className={cn(
-                            "w-4 h-4 text-zinc-400",
+                            "w-4 h-4 text-muted-foreground",
                             refreshingWallets.has(wallet.id) && "animate-spin"
                           )} />
                         </button>
@@ -817,7 +817,7 @@ export default function CustomerWalletPage() {
                               setPrimaryWallet(wallet.id)
                             }}
                             disabled={settingPrimary === wallet.id}
-                            className="px-3 py-1.5 rounded-lg bg-zinc-800/50 hover:bg-emerald-500/20 hover:text-emerald-400 text-xs font-medium text-zinc-400 transition-colors disabled:opacity-50"
+                            className="px-3 py-1.5 rounded-lg bg-secondary/50 hover:bg-emerald-500/20 hover:text-emerald-400 text-xs font-medium text-muted-foreground transition-colors disabled:opacity-50"
                             title="Set as primary wallet for store purchases"
                           >
                             {settingPrimary === wallet.id ? (
@@ -831,24 +831,24 @@ export default function CustomerWalletPage() {
                         {/* Security Indicators */}
                         <div className="flex items-center gap-1">
                           {wallet.has_pin && (
-                            <div className="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center" title="PIN Protected">
-                              <Lock className="w-3 h-3 text-zinc-400" />
+                            <div className="w-6 h-6 rounded bg-secondary flex items-center justify-center" title="PIN Protected">
+                              <Lock className="w-3 h-3 text-muted-foreground" />
                             </div>
                           )}
                           {wallet.has_biometric && (
-                            <div className="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center" title="Biometric Enabled">
-                              <Fingerprint className="w-3 h-3 text-zinc-400" />
+                            <div className="w-6 h-6 rounded bg-secondary flex items-center justify-center" title="Biometric Enabled">
+                              <Fingerprint className="w-3 h-3 text-muted-foreground" />
                             </div>
                           )}
                           {wallet.has_hardware_key && (
-                            <div className="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center" title="Hardware Key">
-                              <Key className="w-3 h-3 text-zinc-400" />
+                            <div className="w-6 h-6 rounded bg-secondary flex items-center justify-center" title="Hardware Key">
+                              <Key className="w-3 h-3 text-muted-foreground" />
                             </div>
                           )}
                         </div>
                         
                         {/* Expand/Collapse Arrow */}
-                        <div className="text-zinc-400">
+                        <div className="text-muted-foreground">
                           {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                         </div>
                       </div>
@@ -863,17 +863,17 @@ export default function CustomerWalletPage() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="relative z-10 border-t border-white/10"
+                        className="relative z-10 border-t border-border"
                       >
                         {/* Action Tabs */}
-                        <div className="flex border-b border-white/10 bg-black/20">
+                        <div className="flex border-b border-border bg-foreground/20">
                           <button
                             onClick={() => setActiveTab('history')}
                             className={cn(
                               "flex-1 py-4 px-4 text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300",
                               activeTab === 'history' 
-                                ? "text-emerald-400 bg-white/5 border-b-2 border-emerald-400 -mb-px" 
-                                : "text-white/50 hover:text-white hover:bg-white/5"
+                                ? "text-emerald-400 bg-foreground/5 border-b-2 border-emerald-400 -mb-px" 
+                                : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                             )}
                           >
                             <History className="w-4 h-4" />
@@ -884,8 +884,8 @@ export default function CustomerWalletPage() {
                             className={cn(
                               "flex-1 py-4 px-4 text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300",
                               activeTab === 'send' 
-                                ? "text-emerald-400 bg-white/5 border-b-2 border-emerald-400 -mb-px" 
-                                : "text-white/50 hover:text-white hover:bg-white/5"
+                                ? "text-emerald-400 bg-foreground/5 border-b-2 border-emerald-400 -mb-px" 
+                                : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                             )}
                           >
                             <Send className="w-4 h-4" />
@@ -896,8 +896,8 @@ export default function CustomerWalletPage() {
                             className={cn(
                               "flex-1 py-4 px-4 text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300",
                               activeTab === 'swap' 
-                                ? "text-purple-400 bg-white/5 border-b-2 border-purple-400 -mb-px" 
-                                : "text-white/50 hover:text-white hover:bg-white/5"
+                                ? "text-purple-400 bg-foreground/5 border-b-2 border-purple-400 -mb-px" 
+                                : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                             )}
                           >
                             <ArrowLeftRight className="w-4 h-4" />
@@ -908,8 +908,8 @@ export default function CustomerWalletPage() {
                             className={cn(
                               "flex-1 py-4 px-4 text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300",
                               activeTab === 'receive' 
-                                ? "text-blue-400 bg-white/5 border-b-2 border-blue-400 -mb-px" 
-                                : "text-white/50 hover:text-white hover:bg-white/5"
+                                ? "text-blue-400 bg-foreground/5 border-b-2 border-blue-400 -mb-px" 
+                                : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                             )}
                           >
                             <ArrowDownLeft className="w-4 h-4" />
@@ -932,7 +932,7 @@ export default function CustomerWalletPage() {
                                   {walletTransactions[wallet.id].map((tx: any, idx: number) => (
                                     <div 
                                       key={tx.hash || idx}
-                                      className="flex items-center justify-between p-4 bg-white/[0.03] rounded-2xl border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-all duration-300 cursor-pointer"
+                                      className="flex items-center justify-between p-4 bg-foreground/[0.04] rounded-2xl border border-border hover:bg-foreground/[0.07] hover:border-border transition-all duration-300 cursor-pointer"
                                       onClick={() => window.open(`https://etherscan.io/tx/${tx.hash}`, '_blank')}
                                     >
                                       <div className="flex items-center gap-4">
@@ -949,10 +949,10 @@ export default function CustomerWalletPage() {
                                           )}
                                         </div>
                                         <div>
-                                          <p className="text-white font-semibold">
+                                          <p className="text-foreground font-semibold">
                                             {tx.type === 'incoming' ? 'Received' : 'Sent'}
                                           </p>
-                                          <p className="text-white/40 text-sm">
+                                          <p className="text-muted-foreground text-sm">
                                             {formatDate(tx.timestamp)} • {formatTime(tx.timestamp)}
                                           </p>
                                         </div>
@@ -964,7 +964,7 @@ export default function CustomerWalletPage() {
                                         )}>
                                           {tx.type === 'incoming' ? '+' : '-'}${calculateUSDValue(tx.amount, wallet.currency)}
                                         </p>
-                                        <p className="text-white/40 text-sm">
+                                        <p className="text-muted-foreground text-sm">
                                           {parseFloat(tx.amount).toFixed(6)} {wallet.currency}
                                         </p>
                                       </div>
@@ -975,7 +975,7 @@ export default function CustomerWalletPage() {
                                     href={`https://etherscan.io/address/${wallet.address}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 text-white/40 hover:text-white text-sm py-4 mt-2 rounded-xl hover:bg-white/5 transition-colors"
+                                    className="flex items-center justify-center gap-2 text-muted-foreground hover:text-foreground text-sm py-4 mt-2 rounded-xl hover:bg-foreground/5 transition-colors"
                                   >
                                     <ExternalLink className="w-4 h-4" />
                                     View all on Etherscan
@@ -983,11 +983,11 @@ export default function CustomerWalletPage() {
                                 </div>
                               ) : (
                                 <div className="text-center py-12">
-                                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mx-auto mb-4">
-                                    <History className="w-8 h-8 text-white/30" />
+                                  <div className="w-16 h-16 rounded-2xl bg-foreground/5 flex items-center justify-center mx-auto mb-4">
+                                    <History className="w-8 h-8 text-muted-foreground" />
                                   </div>
-                                  <p className="text-white font-medium mb-1">No transactions yet</p>
-                                  <p className="text-white/40 text-sm mb-6">Transactions will appear here once you send or receive {wallet.currency}</p>
+                                  <p className="text-foreground font-medium mb-1">No transactions yet</p>
+                                  <p className="text-muted-foreground text-sm mb-6">Transactions will appear here once you send or receive {wallet.currency}</p>
                                   <a
                                     href={`https://etherscan.io/address/${wallet.address}`}
                                     target="_blank"
@@ -1041,7 +1041,7 @@ export default function CustomerWalletPage() {
                                       </div>
                                       <span className="text-emerald-400 font-semibold">Transaction Sent!</span>
                                     </div>
-                                    <p className="text-white/60 text-sm mb-2">Your transaction is being confirmed on the blockchain.</p>
+                                    <p className="text-foreground/60 text-sm mb-2">Your transaction is being confirmed on the blockchain.</p>
                                     <a
                                       href={sendSuccess.explorerUrl}
                                       target="_blank"
@@ -1072,20 +1072,20 @@ export default function CustomerWalletPage() {
                                 )}
 
                                 <div>
-                                  <label className="text-sm text-white/40 font-semibold uppercase tracking-wider mb-3 block">Recipient Address</label>
+                                  <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3 block">Recipient Address</label>
                                   <input
                                     value={sendForm.to}
                                     onChange={(e) => setSendForm({ ...sendForm, to: e.target.value })}
                                     placeholder={`Enter ${wallet.currency} address`}
-                                    className="w-full h-14 rounded-2xl bg-white/5 border border-white/10 text-white font-mono px-4 placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                                    className="w-full h-14 rounded-2xl bg-foreground/5 border border-border text-foreground font-mono px-4 placeholder:text-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                                   />
                                 </div>
                                 <div>
                                   <div className="flex items-center justify-between mb-3">
-                                    <label className="text-sm text-white/40 font-semibold uppercase tracking-wider">Amount</label>
+                                    <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Amount</label>
                                     <div className="flex items-center gap-2">
                                       {/* USD/Crypto Toggle */}
-                                      <div className="flex items-center bg-white/5 rounded-lg p-0.5">
+                                      <div className="flex items-center bg-foreground/5 rounded-lg p-0.5">
                                         <button
                                           onClick={() => {
                                             if (sendInputMode !== 'usd' && sendForm.amount) {
@@ -1099,7 +1099,7 @@ export default function CustomerWalletPage() {
                                             "px-2.5 py-1 text-xs font-semibold rounded-md transition-all",
                                             sendInputMode === 'usd' 
                                               ? "bg-emerald-500 text-white" 
-                                              : "text-white/50 hover:text-white"
+                                              : "text-muted-foreground hover:text-foreground"
                                           )}
                                         >
                                           USD
@@ -1117,7 +1117,7 @@ export default function CustomerWalletPage() {
                                             "px-2.5 py-1 text-xs font-semibold rounded-md transition-all",
                                             sendInputMode === 'crypto' 
                                               ? "bg-emerald-500 text-white" 
-                                              : "text-white/50 hover:text-white"
+                                              : "text-muted-foreground hover:text-foreground"
                                           )}
                                         >
                                           {wallet.currency}
@@ -1125,13 +1125,13 @@ export default function CustomerWalletPage() {
                                       </div>
                                       <button 
                                         onClick={handleMax}
-                                        className="text-xs text-white font-semibold px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                                        className="text-xs text-foreground font-semibold px-3 py-1.5 rounded-lg bg-foreground/10 hover:bg-foreground/20 transition-colors"
                                       >
                                         MAX
                                       </button>
                                     </div>
                                   </div>
-                                  <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors">
+                                  <div className="bg-foreground/5 border border-border rounded-2xl p-5 hover:border-border transition-colors">
                                     <div className="flex items-center justify-between">
                                       <div className="flex items-center gap-3">
                                         {sendInputMode === 'usd' ? (
@@ -1139,7 +1139,7 @@ export default function CustomerWalletPage() {
                                             <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl bg-emerald-500/20">
                                               <span className="text-emerald-400 text-2xl font-bold">$</span>
                                             </div>
-                                            <span className="text-white font-semibold text-lg">USD</span>
+                                            <span className="text-foreground font-semibold text-lg">USD</span>
                                           </>
                                         ) : (
                                           <>
@@ -1149,7 +1149,7 @@ export default function CustomerWalletPage() {
                                             >
                                               <span style={{ color: tokenInfo.color }}>{tokenInfo.icon}</span>
                                             </div>
-                                            <span className="text-white font-semibold text-lg">{wallet.currency}</span>
+                                            <span className="text-foreground font-semibold text-lg">{wallet.currency}</span>
                                           </>
                                         )}
                                       </div>
@@ -1159,9 +1159,9 @@ export default function CustomerWalletPage() {
                                           value={sendForm.amount}
                                           onChange={(e) => setSendForm({ ...sendForm, amount: e.target.value })}
                                           placeholder="0.00"
-                                          className="bg-transparent border-0 text-right text-white text-3xl font-bold w-40 p-0 focus:ring-0 focus:outline-none placeholder:text-white/20"
+                                          className="bg-transparent border-0 text-right text-foreground text-3xl font-bold w-40 p-0 focus:ring-0 focus:outline-none placeholder:text-muted-foreground/50"
                                         />
-                                        <p className="text-white/40 text-sm mt-1">
+                                        <p className="text-muted-foreground text-sm mt-1">
                                           {sendInputMode === 'usd' 
                                             ? `≈ ${cryptoAmount.toFixed(6)} ${wallet.currency}`
                                             : `≈ $${usdAmount.toFixed(2)} USD`
@@ -1169,9 +1169,9 @@ export default function CustomerWalletPage() {
                                         </p>
                                       </div>
                                     </div>
-                                    <div className="flex items-center justify-between text-xs text-white/40 pt-4 mt-4 border-t border-white/10">
+                                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 mt-4 border-t border-border">
                                       <span>Available</span>
-                                      <span className="text-white/60">${calculateUSDValue(balance, wallet.currency)} ({parseFloat(balance).toFixed(6)} {wallet.currency})</span>
+                                      <span className="text-foreground/60">${calculateUSDValue(balance, wallet.currency)} ({parseFloat(balance).toFixed(6)} {wallet.currency})</span>
                                     </div>
                                   </div>
                                 </div>
@@ -1192,7 +1192,7 @@ export default function CustomerWalletPage() {
                                     </>
                                   )}
                                 </Button>
-                                <p className="text-xs text-white/40 text-center">
+                                <p className="text-xs text-muted-foreground text-center">
                                   {cryptoAmount > 0 && `Sending ${cryptoAmount.toFixed(6)} ${wallet.currency} to the blockchain`}
                                 </p>
                               </div>
@@ -1230,10 +1230,10 @@ export default function CustomerWalletPage() {
                                 {/* From Token */}
                                 <div>
                                   <div className="flex items-center justify-between mb-3">
-                                    <label className="text-sm text-white/40 font-semibold uppercase tracking-wider">From</label>
+                                    <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">From</label>
                                     <div className="flex items-center gap-2">
                                       {/* USD/Crypto Toggle */}
-                                      <div className="flex items-center bg-white/5 rounded-lg p-0.5">
+                                      <div className="flex items-center bg-foreground/5 rounded-lg p-0.5">
                                         <button
                                           onClick={() => {
                                             if (swapInputMode !== 'usd' && swapForm.amount) {
@@ -1246,7 +1246,7 @@ export default function CustomerWalletPage() {
                                             "px-2.5 py-1 text-xs font-semibold rounded-md transition-all",
                                             swapInputMode === 'usd' 
                                               ? "bg-purple-500 text-white" 
-                                              : "text-white/50 hover:text-white"
+                                              : "text-muted-foreground hover:text-foreground"
                                           )}
                                         >
                                           USD
@@ -1263,7 +1263,7 @@ export default function CustomerWalletPage() {
                                             "px-2.5 py-1 text-xs font-semibold rounded-md transition-all",
                                             swapInputMode === 'crypto' 
                                               ? "bg-purple-500 text-white" 
-                                              : "text-white/50 hover:text-white"
+                                              : "text-muted-foreground hover:text-foreground"
                                           )}
                                         >
                                           {wallet.currency}
@@ -1271,13 +1271,13 @@ export default function CustomerWalletPage() {
                                       </div>
                                       <button
                                         onClick={handleSwapMax}
-                                        className="text-xs text-white font-semibold px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                                        className="text-xs text-foreground font-semibold px-3 py-1.5 rounded-lg bg-foreground/10 hover:bg-foreground/20 transition-colors"
                                       >
                                         MAX
                                       </button>
                                     </div>
                                   </div>
-                                  <div className="bg-zinc-900 border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors">
+                                  <div className="bg-card border border-border rounded-2xl p-5 hover:border-border transition-colors">
                                     <div className="flex items-center justify-between mb-4">
                                       <div className="flex items-center gap-3">
                                         {swapInputMode === 'usd' ? (
@@ -1286,8 +1286,8 @@ export default function CustomerWalletPage() {
                                               <span className="text-purple-400 text-2xl font-bold">$</span>
                                             </div>
                                             <div>
-                                              <span className="text-white font-semibold text-lg">USD</span>
-                                              <p className="text-white/40 text-sm">US Dollar</p>
+                                              <span className="text-foreground font-semibold text-lg">USD</span>
+                                              <p className="text-muted-foreground text-sm">US Dollar</p>
                                             </div>
                                           </>
                                         ) : (
@@ -1299,8 +1299,8 @@ export default function CustomerWalletPage() {
                                               <span style={{ color: tokenInfo.color }}>{tokenInfo.icon}</span>
                                             </div>
                                             <div>
-                                              <span className="text-white font-semibold text-lg">{wallet.currency}</span>
-                                              <p className="text-white/40 text-sm">{tokenInfo.name}</p>
+                                              <span className="text-foreground font-semibold text-lg">{wallet.currency}</span>
+                                              <p className="text-muted-foreground text-sm">{tokenInfo.name}</p>
                                             </div>
                                           </>
                                         )}
@@ -1311,9 +1311,9 @@ export default function CustomerWalletPage() {
                                           value={swapForm.amount}
                                           onChange={(e) => setSwapForm({ ...swapForm, amount: e.target.value })}
                                           placeholder="0.00"
-                                          className="bg-transparent border-0 text-right text-white text-3xl font-bold w-40 p-0 focus:ring-0 focus:outline-none placeholder:text-white/20"
+                                          className="bg-transparent border-0 text-right text-foreground text-3xl font-bold w-40 p-0 focus:ring-0 focus:outline-none placeholder:text-muted-foreground/50"
                                         />
-                                        <p className="text-white/40 text-sm mt-1">
+                                        <p className="text-muted-foreground text-sm mt-1">
                                           {swapInputMode === 'usd'
                                             ? `≈ ${fromCryptoAmount.toFixed(6)} ${wallet.currency}`
                                             : `≈ $${fromUSD.toFixed(2)} USD`
@@ -1321,24 +1321,24 @@ export default function CustomerWalletPage() {
                                         </p>
                                       </div>
                                     </div>
-                                    <div className="flex items-center justify-between text-xs text-white/40 pt-4 border-t border-white/10">
+                                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
                                       <span>Available</span>
-                                      <span className="text-white/60">${calculateUSDValue(balance, wallet.currency)} ({parseFloat(balance).toFixed(6)} {wallet.currency})</span>
+                                      <span className="text-foreground/60">${calculateUSDValue(balance, wallet.currency)} ({parseFloat(balance).toFixed(6)} {wallet.currency})</span>
                                     </div>
                                   </div>
                                 </div>
                                 
                                 {/* Swap Arrow */}
                                 <div className="flex justify-center -my-2 relative z-10">
-                                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-xl shadow-lg">
-                                    <ArrowLeftRight className="w-5 h-5 text-white" />
+                                  <div className="w-12 h-12 rounded-full bg-foreground/10 border border-border flex items-center justify-center backdrop-blur-xl shadow-lg">
+                                    <ArrowLeftRight className="w-5 h-5 text-foreground" />
                                   </div>
                                 </div>
                                 
                                 {/* To Token */}
                                 <div>
-                                  <label className="text-sm text-white/40 font-semibold uppercase tracking-wider mb-3 block">To (estimated)</label>
-                                  <div className="bg-zinc-900 border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors">
+                                  <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3 block">To (estimated)</label>
+                                  <div className="bg-card border border-border rounded-2xl p-5 hover:border-border transition-colors">
                                     <div className="flex items-center justify-between">
                                       <div className="flex items-center gap-3">
                                         <div 
@@ -1351,22 +1351,22 @@ export default function CustomerWalletPage() {
                                           <select
                                             value={swapForm.toCurrency}
                                             onChange={(e) => setSwapForm({ ...swapForm, toCurrency: e.target.value })}
-                                            className="bg-zinc-800 text-white font-semibold text-lg appearance-none cursor-pointer pr-6 pl-2 py-1 rounded-lg border border-white/10 focus:outline-none focus:border-white/30"
+                                            className="bg-secondary text-foreground font-semibold text-lg appearance-none cursor-pointer pr-6 pl-2 py-1 rounded-lg border border-border focus:outline-none focus:border-border"
                                           >
                                             {TOKENS.filter(t => t.symbol !== wallet.currency).map(token => (
-                                              <option key={token.symbol} value={token.symbol} className="bg-zinc-800 text-white">
+                                              <option key={token.symbol} value={token.symbol} className="bg-secondary text-foreground">
                                                 {token.symbol}
                                               </option>
                                             ))}
                                           </select>
-                                          <p className="text-white/40 text-sm mt-1">{toTokenInfo.name}</p>
+                                          <p className="text-muted-foreground text-sm mt-1">{toTokenInfo.name}</p>
                                         </div>
                                       </div>
                                       <div className="text-right">
-                                        <p className="text-3xl font-bold text-white">
+                                        <p className="text-3xl font-bold text-foreground">
                                           {toAmount > 0 ? toAmount.toFixed(6) : '0.00'}
                                         </p>
-                                        <p className="text-white/40 text-sm mt-1">${fromUSD.toFixed(2)} USD</p>
+                                        <p className="text-muted-foreground text-sm mt-1">${fromUSD.toFixed(2)} USD</p>
                                       </div>
                                     </div>
                                   </div>
@@ -1374,10 +1374,10 @@ export default function CustomerWalletPage() {
                                 
                                 {/* Rate Info */}
                                 {fromCryptoAmount > 0 && (
-                                  <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                                  <div className="bg-foreground/5 rounded-xl p-4 border border-border">
                                     <div className="flex items-center justify-between text-sm">
-                                      <span className="text-white/50">Exchange Rate</span>
-                                      <span className="text-white font-medium">1 {wallet.currency} = {(fromPrice / toPrice).toFixed(6)} {swapForm.toCurrency}</span>
+                                      <span className="text-muted-foreground">Exchange Rate</span>
+                                      <span className="text-foreground font-medium">1 {wallet.currency} = {(fromPrice / toPrice).toFixed(6)} {swapForm.toCurrency}</span>
                                     </div>
                                   </div>
                                 )}
@@ -1395,7 +1395,7 @@ export default function CustomerWalletPage() {
                                   <ArrowLeftRight className="w-5 h-5 mr-2" />
                                   Swap ${fromUSD.toFixed(2)} via Changelly
                                 </Button>
-                                <p className="text-xs text-white/40 text-center">
+                                <p className="text-xs text-muted-foreground text-center">
                                   Powered by Changelly • Best rates guaranteed
                                 </p>
                               </div>
@@ -1405,21 +1405,21 @@ export default function CustomerWalletPage() {
                           {/* Add Funds Tab */}
                           {activeTab === 'receive' && (
                             <div className="space-y-4">
-                              <div className="p-6 rounded-xl bg-white/5 border border-white/10 text-center">
-                                <Coins className="w-12 h-12 mx-auto mb-4 text-white/40" />
-                                <p className="text-white font-medium mb-2">Add Funds</p>
-                                <p className="text-white/50 text-sm mb-4">
+                              <div className="p-6 rounded-xl bg-foreground/5 border border-border text-center">
+                                <Coins className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+                                <p className="text-foreground font-medium mb-2">Add Funds</p>
+                                <p className="text-muted-foreground text-sm mb-4">
                                   Send cryptocurrency directly to your wallet address below
                                 </p>
-                                <div className="p-4 bg-black/30 rounded-lg mb-4">
-                                  <p className="text-xs text-white/40 mb-2">Wallet Address</p>
-                                  <p className="text-white font-mono text-sm break-all">{wallet.address}</p>
+                                <div className="p-4 bg-foreground/30 rounded-lg mb-4">
+                                  <p className="text-xs text-muted-foreground mb-2">Wallet Address</p>
+                                  <p className="text-foreground font-mono text-sm break-all">{wallet.address}</p>
                                 </div>
                                 <button
                                   onClick={() => {
                                     navigator.clipboard.writeText(wallet.address)
                                   }}
-                                  className="flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition"
+                                  className="flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-lg bg-foreground/10 text-foreground hover:bg-foreground/20 transition"
                                 >
                                   <Copy className="w-4 h-4" />
                                   Copy Address
@@ -1444,7 +1444,7 @@ export default function CustomerWalletPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => {
                 if (!createdMnemonic) {
                   setShowCreateForm(false)
@@ -1457,7 +1457,7 @@ export default function CustomerWalletPage() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={e => e.stopPropagation()}
-                className="bg-zinc-950 border border-white/10 rounded-3xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto backdrop-blur-xl"
+                className="bg-background border border-border rounded-3xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto backdrop-blur-xl"
               >
                 {createdMnemonic ? (
                   // Mnemonic Backup Screen
@@ -1466,18 +1466,18 @@ export default function CustomerWalletPage() {
                       <div className="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4">
                         <Shield className="w-8 h-8 text-amber-400" />
                       </div>
-                      <h2 className="text-2xl font-bold text-white">Backup Your Wallet</h2>
-                      <p className="text-zinc-400 mt-2">
+                      <h2 className="text-2xl font-bold text-foreground">Backup Your Wallet</h2>
+                      <p className="text-muted-foreground mt-2">
                         Write down these words in order. This is the ONLY way to recover your wallet.
                       </p>
                     </div>
 
-                    <div className="bg-zinc-950 border border-amber-500/30 rounded-xl p-4 mb-6">
+                    <div className="bg-background border border-amber-500/30 rounded-xl p-4 mb-6">
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-amber-400 text-sm font-medium">Recovery Phrase</span>
                         <button
                           onClick={() => setShowMnemonic(!showMnemonic)}
-                          className="text-zinc-400 hover:text-white"
+                          className="text-muted-foreground hover:text-foreground"
                         >
                           {showMnemonic ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
@@ -1487,15 +1487,15 @@ export default function CustomerWalletPage() {
                         !showMnemonic && "blur-md select-none"
                       )}>
                         {createdMnemonic.split(' ').map((word, i) => (
-                          <div key={i} className="bg-zinc-900 rounded px-2 py-1 text-sm">
+                          <div key={i} className="bg-card rounded px-2 py-1 text-sm">
                             <span className="text-zinc-500 mr-1">{i + 1}.</span>
-                            <span className="text-white">{word}</span>
+                            <span className="text-foreground">{word}</span>
                           </div>
                         ))}
                       </div>
                       <button
                         onClick={() => copyToClipboard(createdMnemonic, 'mnemonic')}
-                        className="mt-3 text-sm text-zinc-400 hover:text-white flex items-center gap-1"
+                        className="mt-3 text-sm text-muted-foreground hover:text-foreground flex items-center gap-1"
                       >
                         {copiedText === 'mnemonic' ? (
                           <>
@@ -1543,13 +1543,13 @@ export default function CustomerWalletPage() {
                   // Create Wallet Form
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-xl font-bold text-white">Add Wallet</h2>
+                      <h2 className="text-xl font-bold text-foreground">Add Wallet</h2>
                       <button
                         onClick={() => {
                           setShowCreateForm(false)
                           resetCreateForm()
                         }}
-                        className="text-zinc-400 hover:text-white"
+                        className="text-muted-foreground hover:text-foreground"
                       >
                         <X className="w-5 h-5" />
                       </button>
@@ -1558,23 +1558,23 @@ export default function CustomerWalletPage() {
                     <div className="space-y-5">
                       {/* Wallet Label */}
                       <div>
-                        <label className="block text-sm text-white/40 font-semibold uppercase tracking-wider mb-2">Wallet Name</label>
+                        <label className="block text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-2">Wallet Name</label>
                         <input
                           value={createForm.label}
                           onChange={e => setCreateForm({ ...createForm, label: e.target.value })}
                           placeholder="My Bitcoin Wallet"
-                          className="w-full h-12 bg-white/5 border border-white/10 rounded-xl px-4 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none transition-colors"
+                          className="w-full h-12 bg-foreground/5 border border-border rounded-xl px-4 text-foreground placeholder:text-muted-foreground focus:border-border focus:outline-none transition-colors"
                         />
                       </div>
 
                       {/* Currency Selection */}
                       <div>
-                        <label className="block text-sm text-white/40 font-semibold uppercase tracking-wider mb-2">Currency</label>
+                        <label className="block text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-2">Currency</label>
                         <div className="relative">
                           <select
                             value={createForm.currency}
                             onChange={e => setCreateForm({ ...createForm, currency: e.target.value })}
-                            className="w-full h-12 bg-white/5 border border-white/10 rounded-xl px-4 text-white appearance-none cursor-pointer focus:border-white/30 focus:outline-none transition-colors"
+                            className="w-full h-12 bg-foreground/5 border border-border rounded-xl px-4 text-foreground appearance-none cursor-pointer focus:border-border focus:outline-none transition-colors"
                             style={{ color: 'white' }}
                           >
                             {TOKENS.map(token => (
@@ -1583,13 +1583,13 @@ export default function CustomerWalletPage() {
                               </option>
                             ))}
                           </select>
-                          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+                          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                         </div>
                       </div>
 
                       {/* Create vs Import */}
                       <div>
-                        <label className="block text-sm text-white/40 font-semibold uppercase tracking-wider mb-3">Wallet Type</label>
+                        <label className="block text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3">Wallet Type</label>
                         <div className="grid grid-cols-2 gap-3">
                           <button
                             type="button"
@@ -1597,13 +1597,13 @@ export default function CustomerWalletPage() {
                             className={cn(
                               "p-4 rounded-xl border text-left transition-all",
                               createForm.generateNew
-                                ? "border-white/30 bg-white/10 text-white"
-                                : "border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/[0.07]"
+                                ? "border-border bg-foreground/10 text-foreground"
+                                : "border-border bg-foreground/5 text-foreground/60 hover:border-border hover:bg-card/[0.07]"
                             )}
                           >
                             <Plus className="w-5 h-5 mb-2" />
                             <div className="font-semibold">Create New</div>
-                            <div className="text-xs text-white/40 mt-1">Generate a new wallet</div>
+                            <div className="text-xs text-muted-foreground mt-1">Generate a new wallet</div>
                           </button>
                           <button
                             type="button"
@@ -1611,13 +1611,13 @@ export default function CustomerWalletPage() {
                             className={cn(
                               "p-4 rounded-xl border text-left transition-all",
                               !createForm.generateNew
-                                ? "border-white/30 bg-white/10 text-white"
-                                : "border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:bg-white/[0.07]"
+                                ? "border-border bg-foreground/10 text-foreground"
+                                : "border-border bg-foreground/5 text-foreground/60 hover:border-border hover:bg-card/[0.07]"
                             )}
                           >
                             <ArrowDownLeft className="w-5 h-5 mb-2" />
                             <div className="font-semibold">Import Existing</div>
-                            <div className="text-xs text-white/40 mt-1">Use seed phrase</div>
+                            <div className="text-xs text-muted-foreground mt-1">Use seed phrase</div>
                           </button>
                         </div>
                       </div>
@@ -1625,33 +1625,33 @@ export default function CustomerWalletPage() {
                       {/* Import Mnemonic */}
                       {!createForm.generateNew && (
                         <div>
-                          <label className="block text-sm text-white/40 font-semibold uppercase tracking-wider mb-2">Recovery Phrase</label>
+                          <label className="block text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-2">Recovery Phrase</label>
                           <textarea
                             value={createForm.importMnemonic}
                             onChange={e => setCreateForm({ ...createForm, importMnemonic: e.target.value })}
                             placeholder="Enter your 12 or 24 word recovery phrase..."
                             rows={3}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 resize-none focus:border-white/30 focus:outline-none transition-colors"
+                            className="w-full bg-foreground/5 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground resize-none focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                       )}
 
                       {/* Security Options */}
                       <div>
-                        <label className="block text-sm text-white/40 font-semibold uppercase tracking-wider mb-3">Security (at least one required)</label>
+                        <label className="block text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3">Security (at least one required)</label>
                         <div className="space-y-2">
                           {/* PIN */}
-                          <label className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:border-white/20 transition-colors">
+                          <label className="flex items-center gap-3 p-4 bg-foreground/5 border border-border rounded-xl cursor-pointer hover:border-border transition-colors">
                             <input
                               type="checkbox"
                               checked={createForm.securityPin}
                               onChange={e => setCreateForm({ ...createForm, securityPin: e.target.checked })}
-                              className="w-4 h-4 rounded border-white/20 bg-white/10 text-white accent-white"
+                              className="w-4 h-4 rounded border-border bg-foreground/10 text-foreground accent-white"
                             />
-                            <Lock className="w-5 h-5 text-white/50" />
+                            <Lock className="w-5 h-5 text-muted-foreground" />
                             <div>
-                              <div className="text-white font-medium">PIN</div>
-                              <div className="text-xs text-white/40">4-12 digit code</div>
+                              <div className="text-foreground font-medium">PIN</div>
+                              <div className="text-xs text-muted-foreground">4-12 digit code</div>
                             </div>
                           </label>
 
@@ -1663,12 +1663,12 @@ export default function CustomerWalletPage() {
                                   value={createForm.pin}
                                   onChange={e => setCreateForm({ ...createForm, pin: e.target.value.replace(/\D/g, '').slice(0, 12) })}
                                   placeholder="Enter PIN"
-                                  className="w-full h-11 bg-white/5 border border-white/10 rounded-xl px-4 pr-10 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none transition-colors"
+                                  className="w-full h-11 bg-foreground/5 border border-border rounded-xl px-4 pr-10 text-foreground placeholder:text-muted-foreground focus:border-border focus:outline-none transition-colors"
                                 />
                                 <button
                                   type="button"
                                   onClick={() => setShowPin(!showPin)}
-                                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60"
+                                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground/60"
                                 >
                                   {showPin ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
@@ -1677,17 +1677,17 @@ export default function CustomerWalletPage() {
                           )}
 
                           {/* Password */}
-                          <label className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:border-white/20 transition-colors">
+                          <label className="flex items-center gap-3 p-4 bg-foreground/5 border border-border rounded-xl cursor-pointer hover:border-border transition-colors">
                             <input
                               type="checkbox"
                               checked={createForm.securityPassword}
                               onChange={e => setCreateForm({ ...createForm, securityPassword: e.target.checked })}
-                              className="w-4 h-4 rounded border-white/20 bg-white/10 text-white accent-white"
+                              className="w-4 h-4 rounded border-border bg-foreground/10 text-foreground accent-white"
                             />
-                            <Key className="w-5 h-5 text-white/50" />
+                            <Key className="w-5 h-5 text-muted-foreground" />
                             <div>
-                              <div className="text-white font-medium">Password</div>
-                              <div className="text-xs text-white/40">Minimum 8 characters</div>
+                              <div className="text-foreground font-medium">Password</div>
+                              <div className="text-xs text-muted-foreground">Minimum 8 characters</div>
                             </div>
                           </label>
 
@@ -1699,12 +1699,12 @@ export default function CustomerWalletPage() {
                                   value={createForm.password}
                                   onChange={e => setCreateForm({ ...createForm, password: e.target.value })}
                                   placeholder="Enter password"
-                                  className="w-full h-11 bg-white/5 border border-white/10 rounded-xl px-4 pr-10 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none transition-colors"
+                                  className="w-full h-11 bg-foreground/5 border border-border rounded-xl px-4 pr-10 text-foreground placeholder:text-muted-foreground focus:border-border focus:outline-none transition-colors"
                                 />
                                 <button
                                   type="button"
                                   onClick={() => setShowPassword(!showPassword)}
-                                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60"
+                                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground/60"
                                 >
                                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
@@ -1713,48 +1713,48 @@ export default function CustomerWalletPage() {
                           )}
 
                           {/* Biometric */}
-                          <label className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:border-white/20 transition-colors">
+                          <label className="flex items-center gap-3 p-4 bg-foreground/5 border border-border rounded-xl cursor-pointer hover:border-border transition-colors">
                             <input
                               type="checkbox"
                               checked={createForm.securityBiometric}
                               onChange={e => setCreateForm({ ...createForm, securityBiometric: e.target.checked })}
-                              className="w-4 h-4 rounded border-white/20 bg-white/10 text-white accent-white"
+                              className="w-4 h-4 rounded border-border bg-foreground/10 text-foreground accent-white"
                             />
-                            <Fingerprint className="w-5 h-5 text-white/50" />
+                            <Fingerprint className="w-5 h-5 text-muted-foreground" />
                             <div>
-                              <div className="text-white font-medium">Biometric</div>
-                              <div className="text-xs text-white/40">Face ID or fingerprint</div>
+                              <div className="text-foreground font-medium">Biometric</div>
+                              <div className="text-xs text-muted-foreground">Face ID or fingerprint</div>
                             </div>
                           </label>
 
                           {/* Hardware Key */}
-                          <label className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:border-white/20 transition-colors">
+                          <label className="flex items-center gap-3 p-4 bg-foreground/5 border border-border rounded-xl cursor-pointer hover:border-border transition-colors">
                             <input
                               type="checkbox"
                               checked={createForm.securityHardwareKey}
                               onChange={e => setCreateForm({ ...createForm, securityHardwareKey: e.target.checked })}
-                              className="w-4 h-4 rounded border-white/20 bg-white/10 text-white accent-white"
+                              className="w-4 h-4 rounded border-border bg-foreground/10 text-foreground accent-white"
                             />
-                            <Shield className="w-5 h-5 text-white/50" />
+                            <Shield className="w-5 h-5 text-muted-foreground" />
                             <div>
-                              <div className="text-white font-medium">Hardware Key</div>
-                              <div className="text-xs text-white/40">YubiKey or similar</div>
+                              <div className="text-foreground font-medium">Hardware Key</div>
+                              <div className="text-xs text-muted-foreground">YubiKey or similar</div>
                             </div>
                           </label>
                         </div>
                       </div>
 
                       {/* Primary Wallet */}
-                      <label className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:border-white/20 transition-colors">
+                      <label className="flex items-center gap-3 p-4 bg-foreground/5 border border-border rounded-xl cursor-pointer hover:border-border transition-colors">
                         <input
                           type="checkbox"
                           checked={createForm.isPrimary}
                           onChange={e => setCreateForm({ ...createForm, isPrimary: e.target.checked })}
-                          className="w-4 h-4 rounded border-white/20 bg-white/10 text-white accent-white"
+                          className="w-4 h-4 rounded border-border bg-foreground/10 text-foreground accent-white"
                         />
                         <div>
-                          <div className="text-white font-medium">Set as Primary</div>
-                          <div className="text-xs text-white/40">Use this wallet by default for purchases</div>
+                          <div className="text-foreground font-medium">Set as Primary</div>
+                          <div className="text-xs text-muted-foreground">Use this wallet by default for purchases</div>
                         </div>
                       </label>
 
@@ -1769,7 +1769,7 @@ export default function CustomerWalletPage() {
                       <Button
                         onClick={handleCreateWallet}
                         disabled={isCreating}
-                        className="w-full h-12 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                        className="w-full h-12 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                       >
                         {isCreating ? (
                           <>
@@ -1798,7 +1798,7 @@ export default function CustomerWalletPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => {
                 setShowUnlockModal(false)
                 setUnlockPin('')
@@ -1811,20 +1811,20 @@ export default function CustomerWalletPage() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-zinc-950 border border-white/10 rounded-3xl p-6 w-full max-w-md backdrop-blur-xl"
+                className="bg-background border border-border rounded-3xl p-6 w-full max-w-md backdrop-blur-xl"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-foreground/10 border border-border flex items-center justify-center">
                       {walletToUnlock.has_biometric ? (
-                        <Fingerprint className="w-6 h-6 text-white" />
+                        <Fingerprint className="w-6 h-6 text-foreground" />
                       ) : walletToUnlock.has_pin ? (
-                        <Lock className="w-6 h-6 text-white" />
+                        <Lock className="w-6 h-6 text-foreground" />
                       ) : (
-                        <Shield className="w-6 h-6 text-white" />
+                        <Shield className="w-6 h-6 text-foreground" />
                       )}
                     </div>
-                    <h2 className="text-xl font-bold text-white">Unlock Wallet</h2>
+                    <h2 className="text-xl font-bold text-foreground">Unlock Wallet</h2>
                   </div>
                   <button
                     onClick={() => {
@@ -1833,15 +1833,15 @@ export default function CustomerWalletPage() {
                       setUnlockPassword('')
                       setUnlockError(null)
                     }}
-                    className="text-white/40 hover:text-white transition-colors"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                <div className="text-center mb-6 p-4 bg-white/5 rounded-xl border border-white/10">
-                  <p className="text-white font-medium mb-1">{walletToUnlock.label}</p>
-                  <p className="text-white/40 text-sm font-mono">
+                <div className="text-center mb-6 p-4 bg-foreground/5 rounded-xl border border-border">
+                  <p className="text-foreground font-medium mb-1">{walletToUnlock.label}</p>
+                  <p className="text-muted-foreground text-sm font-mono">
                     {walletToUnlock.address.slice(0, 10)}...{walletToUnlock.address.slice(-8)}
                   </p>
                 </div>
@@ -1849,7 +1849,7 @@ export default function CustomerWalletPage() {
                 {/* PIN Input */}
                 {walletToUnlock.has_pin && (
                   <div className="mb-4">
-                    <label className="text-sm text-white/40 font-semibold uppercase tracking-wider mb-3 block">Enter your PIN</label>
+                    <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3 block">Enter your PIN</label>
                     <input
                       type="password"
                       inputMode="numeric"
@@ -1858,7 +1858,7 @@ export default function CustomerWalletPage() {
                       value={unlockPin}
                       onChange={(e) => setUnlockPin(e.target.value.replace(/\D/g, ''))}
                       placeholder="••••••"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl text-white text-center text-2xl tracking-[0.5em] h-14 focus:border-white/30 focus:outline-none transition-colors placeholder:text-white/20"
+                      className="w-full bg-foreground/5 border border-border rounded-xl text-foreground text-center text-2xl tracking-[0.5em] h-14 focus:border-border focus:outline-none transition-colors placeholder:text-muted-foreground/50"
                       autoFocus
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' && unlockPin) {
@@ -1872,13 +1872,13 @@ export default function CustomerWalletPage() {
                 {/* Password Input */}
                 {walletToUnlock.has_password && !walletToUnlock.has_pin && (
                   <div className="mb-4">
-                    <label className="text-sm text-white/40 font-semibold uppercase tracking-wider mb-3 block">Enter your password</label>
+                    <label className="text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-3 block">Enter your password</label>
                     <input
                       type="password"
                       value={unlockPassword}
                       onChange={(e) => setUnlockPassword(e.target.value)}
                       placeholder="Password"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl text-white h-14 px-4 focus:border-white/30 focus:outline-none transition-colors placeholder:text-white/30"
+                      className="w-full bg-foreground/5 border border-border rounded-xl text-foreground h-14 px-4 focus:border-border focus:outline-none transition-colors placeholder:text-muted-foreground"
                       autoFocus
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' && unlockPassword) {
@@ -1899,7 +1899,7 @@ export default function CustomerWalletPage() {
                 <Button
                   onClick={verifyUnlock}
                   disabled={isUnlocking || (!unlockPin && !unlockPassword)}
-                  className="w-full h-14 bg-white text-black hover:bg-white/90 font-semibold rounded-xl"
+                  className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 font-semibold rounded-xl"
                 >
                   {isUnlocking ? (
                     <>
@@ -1914,7 +1914,7 @@ export default function CustomerWalletPage() {
                   )}
                 </Button>
 
-                <p className="text-xs text-white/30 text-center mt-4">
+                <p className="text-xs text-muted-foreground text-center mt-4">
                   Your wallet is secured with {walletToUnlock.has_pin ? 'PIN' : walletToUnlock.has_password ? 'password' : 'biometric'}
                 </p>
               </motion.div>

@@ -62,7 +62,7 @@ const getStatusColor = (order: AdminOrder) => {
     return 'bg-red-500/20 text-red-400 border-red-500/30'
   }
   if (order.status === 'delivered') {
-    return 'bg-zinc-500/20 text-zinc-400 border-zinc-500/30'
+    return 'bg-zinc-500/20 text-muted-foreground border-zinc-500/30'
   }
   if (order.payment_status === 'refunded') {
     return 'bg-orange-500/20 text-orange-400 border-orange-500/30'
@@ -80,7 +80,7 @@ const getStatusColor = (order: AdminOrder) => {
   if (order.invoice_sent_at) {
     return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
   }
-  return 'bg-white/10 text-white border-white/20'
+  return 'bg-foreground/10 text-foreground border-border'
 }
 
 const getStatusLabel = (order: AdminOrder) => {
@@ -605,7 +605,7 @@ function OrdersPageContent() {
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => { setSelectionMode(!selectionMode); if (selectionMode) clearSelection() }}
-                className={`glass-button rounded-2xl px-4 md:px-6 py-3 flex items-center gap-2 text-sm md:text-base font-light transition-all ${selectionMode ? 'bg-white/10 border-white/20 text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                className={`glass-button rounded-2xl px-4 md:px-6 py-3 flex items-center gap-2 text-sm md:text-base font-light transition-all ${selectionMode ? 'bg-foreground/10 border-border text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 <MousePointer2 className="h-4 w-4 flex-shrink-0" />
                 {selectionMode ? 'Exit Select' : 'Select'}
@@ -618,7 +618,7 @@ function OrdersPageContent() {
                 <Store className={`h-4 w-4 flex-shrink-0 ${syncingShopify ? 'animate-spin' : ''}`} />
                 {syncingShopify ? 'Syncing...' : 'Sync Shopify'}
               </button>
-              <Link href="/admin/orders/create" className="glass-button rounded-2xl px-4 md:px-6 py-3 flex items-center gap-2 text-sm md:text-base font-light text-foreground hover:border-white/20 bg-white/10">
+              <Link href="/admin/orders/create" className="glass-button rounded-2xl px-4 md:px-6 py-3 flex items-center gap-2 text-sm md:text-base font-light text-foreground hover:border-border bg-foreground/10">
                 <Plus className="h-4 w-4 flex-shrink-0" />
                 Create Order
               </Link>
@@ -644,7 +644,7 @@ function OrdersPageContent() {
 
         {/* Error State - keep minimal color for errors */}
         {error && (
-          <div className="glass-card rounded-2xl p-4 md:p-6 border-white/10 text-foreground">
+          <div className="glass-card rounded-2xl p-4 md:p-6 border-border text-foreground">
             <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground">Error:</span> {error}
           </div>
         )}
@@ -675,7 +675,7 @@ function OrdersPageContent() {
               <button
                 onClick={handleBulkDelete}
                 disabled={selectedOrderIds.size === 0 || bulkActionLoading}
-                className="glass-button rounded-xl px-4 py-2.5 flex items-center gap-2 text-sm font-light text-muted-foreground hover:text-foreground disabled:opacity-50 border-white/10"
+                className="glass-button rounded-xl px-4 py-2.5 flex items-center gap-2 text-sm font-light text-muted-foreground hover:text-foreground disabled:opacity-50 border-border"
               >
                 {bulkActionLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
                 Delete Selected
@@ -717,7 +717,7 @@ function OrdersPageContent() {
                 placeholder="Search by order ID, customer, or email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-12 md:h-14 text-base md:text-lg glass-button border-white/10 text-foreground placeholder:text-muted-foreground focus:border-white/30 rounded-xl"
+                className="pl-12 h-12 md:h-14 text-base md:text-lg glass-button border-border text-foreground placeholder:text-muted-foreground focus:border-border rounded-xl"
               />
             </div>
 
@@ -731,16 +731,16 @@ function OrdersPageContent() {
                     onClick={() => setStatusFilter(tab.value)}
                     className={`px-4 md:px-5 py-2.5 rounded-xl text-sm font-light transition-all flex items-center gap-2 glass-button ${
                       statusFilter === tab.value
-                        ? 'bg-white/10 border-white/20 text-foreground'
-                        : 'text-muted-foreground hover:text-foreground hover:border-white/20 border border-white/10'
+                        ? 'bg-foreground/10 border-border text-foreground'
+                        : 'text-muted-foreground hover:text-foreground hover:border-border border border-border'
                       }`}
                     >
                       {TabIcon && <TabIcon className="w-4 h-4" />}
                       {tab.label}
                       <span className={`px-2 py-0.5 rounded-full text-xs ${
                         statusFilter === tab.value
-                          ? tab.value === 'archived' ? 'bg-white/20 text-white' : 'bg-black/10 text-black'
-                          : 'bg-white/10 text-white/60'
+                          ? tab.value === 'archived' ? 'bg-foreground/20 text-foreground' : 'bg-foreground/10 text-foreground'
+                          : 'bg-foreground/10 text-foreground/60'
                       }`}>
                         {tab.count}
                       </span>
@@ -786,8 +786,8 @@ function OrdersPageContent() {
                 return (
                   <div 
                     key={order.id} 
-                    className={`glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-white/[0.04] ${
-                      isSelected ? 'ring-2 ring-white/20' : ''
+                    className={`glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-foreground/[0.05] ${
+                      isSelected ? 'ring-2 ring-foreground/20' : ''
                     }`}
                     onContextMenu={(e) => handleContextMenu(e, order)}
                   >
@@ -800,8 +800,8 @@ function OrdersPageContent() {
                         >
                           <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
                             isSelected 
-                              ? 'bg-white/20 border-white/40' 
-                              : 'border-white/20 hover:border-white/40'
+                              ? 'bg-foreground/20 border-border' 
+                              : 'border-border hover:border-border'
                           }`}>
                             {isSelected && <Check className="w-3 h-3 text-foreground" />}
                           </div>
@@ -820,7 +820,7 @@ function OrdersPageContent() {
                               <h3 className="font-serif text-lg md:text-xl font-light text-foreground truncate">
                                 {order.customer_name || 'Unknown Customer'}
                               </h3>
-                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-white/10 flex-shrink-0">
+                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-border flex-shrink-0">
                                 {getStatusLabel(order)}
                               </span>
                             </div>
@@ -856,7 +856,7 @@ function OrdersPageContent() {
                               <h3 className="font-serif text-lg md:text-xl font-light text-foreground truncate">
                                 {order.customer_name || 'Unknown Customer'}
                               </h3>
-                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-white/10 flex-shrink-0">
+                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-border flex-shrink-0">
                                 {getStatusLabel(order)}
                               </span>
                             </div>
@@ -889,14 +889,14 @@ function OrdersPageContent() {
                           <Link
                             href={`/fulfill/${order.id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="p-2.5 text-muted-foreground hover:text-foreground hover:bg-white/10 rounded-xl transition-all"
+                            className="p-2.5 text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl transition-all"
                             title="Fulfill order"
                           >
                             <ClipboardList className="w-4 h-4" />
                           </Link>
                         )}
                         {showDeleteConfirm ? (
-                          <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-white/10">
+                          <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-border">
                             <span className="text-muted-foreground text-xs font-mono uppercase px-2">Delete?</span>
                             <button
                               onClick={() => handleDeleteOrder(order.id)}
@@ -917,7 +917,7 @@ function OrdersPageContent() {
                         ) : (
                           <button
                             onClick={() => setDeleteConfirmId(order.id)}
-                            className="p-2.5 text-muted-foreground hover:text-foreground hover:bg-white/10 rounded-xl transition-all"
+                            className="p-2.5 text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl transition-all"
                             title="Delete order"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -947,7 +947,7 @@ function OrdersPageContent() {
             {/* Collapsible Header */}
             <button
               onClick={() => setShowCompletedOrders(!showCompletedOrders)}
-              className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 md:p-6 rounded-2xl glass-button hover:border-white/20 transition-all"
+              className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 md:p-6 rounded-2xl glass-button hover:border-border transition-all"
             >
               <div className="flex items-center gap-3 text-left">
                 <div className="h-10 w-10 rounded-xl glass-button flex items-center justify-center flex-shrink-0">
@@ -959,7 +959,7 @@ function OrdersPageContent() {
                 </div>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
-                <span className="glass-button rounded-xl px-3 py-1.5 text-sm font-mono text-muted-foreground border border-white/10">
+                <span className="glass-button rounded-xl px-3 py-1.5 text-sm font-mono text-muted-foreground border border-border">
                   {filteredCompletedOrders.length}
                 </span>
                 {showCompletedOrders ? (
@@ -980,7 +980,7 @@ function OrdersPageContent() {
                   return (
                     <div 
                       key={order.id} 
-                      className="glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-white/[0.04]"
+                      className="glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-foreground/[0.05]"
                       onContextMenu={(e) => handleContextMenu(e, order)}
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center min-w-0">
@@ -993,7 +993,7 @@ function OrdersPageContent() {
                               <h3 className="font-serif text-base md:text-lg font-light text-foreground truncate">
                                 {order.customer_name || 'Unknown Customer'}
                               </h3>
-                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-white/10 flex-shrink-0">
+                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-border flex-shrink-0">
                                 {getStatusLabel(order)}
                               </span>
                             </div>
@@ -1018,7 +1018,7 @@ function OrdersPageContent() {
                         </Link>
                         <div className="flex items-center gap-2 pr-4 flex-shrink-0">
                           {showDeleteConfirm ? (
-                            <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-white/10">
+                            <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-border">
                               <span className="text-muted-foreground text-xs font-mono uppercase px-2">Delete?</span>
                               <button onClick={() => handleDeleteOrder(order.id)} disabled={isDeleting} className="px-3 py-1.5 glass-button text-foreground text-xs font-light rounded-lg flex items-center gap-1.5 disabled:opacity-50">
                                 {isDeleting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
@@ -1030,7 +1030,7 @@ function OrdersPageContent() {
                               </button>
                             </div>
                           ) : (
-                            <button onClick={() => setDeleteConfirmId(order.id)} className="p-2 text-muted-foreground hover:text-foreground hover:bg-white/10 rounded-xl transition-all" title="Delete order">
+                            <button onClick={() => setDeleteConfirmId(order.id)} className="p-2 text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl transition-all" title="Delete order">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -1050,7 +1050,7 @@ function OrdersPageContent() {
             {/* Collapsible Header */}
             <button
               onClick={() => setShowIncompleteOrders(!showIncompleteOrders)}
-              className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 md:p-6 rounded-2xl glass-button hover:border-white/20 transition-all"
+              className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 md:p-6 rounded-2xl glass-button hover:border-border transition-all"
             >
               <div className="flex items-center gap-3 text-left">
                 <div className="h-10 w-10 rounded-xl glass-button flex items-center justify-center flex-shrink-0">
@@ -1062,7 +1062,7 @@ function OrdersPageContent() {
                 </div>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
-                <span className="glass-button rounded-xl px-3 py-1.5 text-sm font-mono text-muted-foreground border border-white/10">
+                <span className="glass-button rounded-xl px-3 py-1.5 text-sm font-mono text-muted-foreground border border-border">
                   {incompleteArchivedOrders.length}
                 </span>
                 {showIncompleteOrders ? (
@@ -1083,7 +1083,7 @@ function OrdersPageContent() {
                   return (
                     <div 
                       key={order.id} 
-                      className="glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-white/[0.04]"
+                      className="glass-card rounded-2xl md:rounded-3xl transition-all duration-500 hover:bg-foreground/[0.05]"
                       onContextMenu={(e) => handleContextMenu(e, order)}
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center min-w-0">
@@ -1096,7 +1096,7 @@ function OrdersPageContent() {
                               <h3 className="font-serif text-base md:text-lg font-light text-foreground truncate">
                                 {order.customer_name || 'Unknown Customer'}
                               </h3>
-                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-white/10 flex-shrink-0">
+                              <span className="glass-button rounded-xl px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-muted-foreground border border-border flex-shrink-0">
                                 Archived
                               </span>
                             </div>
@@ -1115,7 +1115,7 @@ function OrdersPageContent() {
                         </Link>
                         <div className="flex items-center gap-2 pr-4 flex-shrink-0">
                           {showDeleteConfirm ? (
-                            <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-white/10">
+                            <div className="flex items-center gap-2 p-2 glass-card rounded-xl border border-border">
                               <span className="text-muted-foreground text-xs font-mono uppercase px-2">Delete?</span>
                               <button onClick={() => handleDeleteOrder(order.id)} disabled={isDeleting} className="px-3 py-1.5 glass-button text-foreground text-xs font-light rounded-lg flex items-center gap-1.5 disabled:opacity-50">
                                 {isDeleting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
@@ -1127,7 +1127,7 @@ function OrdersPageContent() {
                               </button>
                             </div>
                           ) : (
-                            <button onClick={() => setDeleteConfirmId(order.id)} className="p-2 text-muted-foreground hover:text-foreground hover:bg-white/10 rounded-xl transition-all" title="Delete order">
+                            <button onClick={() => setDeleteConfirmId(order.id)} className="p-2 text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl transition-all" title="Delete order">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -1162,19 +1162,19 @@ function OrdersPageContent() {
 
       {/* Phone Number Modal for SMS */}
       {phoneModal.open && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-foreground/60 backdrop-blur-sm p-4">
           <div className="w-full max-w-md glass-card rounded-3xl p-6 md:p-8">
             <div className="flex items-center justify-between mb-6">
               <h3 className="font-serif text-xl md:text-2xl font-light text-foreground">Enter Phone Number</h3>
               <button
                 onClick={() => setPhoneModal({ open: false, orderId: null, phone: '', sending: false })}
-                className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+                className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             
-            <p className="text-sm text-white/60 mb-4">
+            <p className="text-sm text-foreground/60 mb-4">
               This customer doesn&apos;t have a phone number on file. Enter a number to send the SMS reminder.
             </p>
             
@@ -1183,7 +1183,7 @@ function OrdersPageContent() {
               placeholder="(555) 123-4567"
               value={phoneModal.phone}
               onChange={(e) => setPhoneModal(prev => ({ ...prev, phone: e.target.value }))}
-              className="mb-4 bg-white/5 border-white/10 text-white placeholder:text-white/40"
+              className="mb-4 bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
               autoFocus
             />
             
@@ -1191,14 +1191,14 @@ function OrdersPageContent() {
               <Button
                 variant="outline"
                 onClick={() => setPhoneModal({ open: false, orderId: null, phone: '', sending: false })}
-                className="flex-1 border-white/10 text-white/70 hover:bg-white/5"
+                className="flex-1 border-border text-foreground/70 hover:bg-foreground/5"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleSendSmsWithPhone}
                 disabled={!phoneModal.phone || phoneModal.sending}
-                className="flex-1 bg-white text-black hover:bg-white/90"
+                className="flex-1 bg-primary text-primary-foreground hover:bg-card/90"
               >
                 {phoneModal.sending ? (
                   <>
@@ -1222,14 +1222,14 @@ function OrdersPageLoading() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <div className="mx-auto max-w-6xl space-y-12">
-        <div className="h-8 w-32 animate-pulse rounded bg-white/10" />
+        <div className="h-8 w-32 animate-pulse rounded bg-foreground/10" />
         <div className="space-y-4">
-          <div className="h-16 animate-pulse rounded-2xl bg-white/[0.02]" />
-          <div className="h-16 animate-pulse rounded-2xl bg-white/[0.02]" />
+          <div className="h-16 animate-pulse rounded-2xl bg-foreground/[0.03]" />
+          <div className="h-16 animate-pulse rounded-2xl bg-foreground/[0.03]" />
         </div>
         <div className="space-y-4">
           {[1, 2, 3].map(i => (
-            <div key={i} className="h-32 animate-pulse rounded-2xl bg-white/[0.02]" />
+            <div key={i} className="h-32 animate-pulse rounded-2xl bg-foreground/[0.03]" />
           ))}
         </div>
       </div>

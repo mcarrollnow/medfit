@@ -21,7 +21,7 @@ export function InvoiceAddresses({ from, to }: InvoiceAddressesProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16 pb-12 md:pb-16 border-b border-white/10"
+      className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16 pb-12 md:pb-16 border-b border-border"
     >
       <div>
         <p className="text-xs font-mono tracking-[0.3em] text-[#888888] uppercase mb-4">From</p>

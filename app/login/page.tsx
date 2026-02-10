@@ -19,9 +19,9 @@ const defaultSettings: LandingSettings = {
   hero_slogan: 'Welcome to Modern Health Pro',
   hero_subtitle: 'Premium research compounds for scientific discovery',
   background_style: 'aurora',
-  background_color_1: '#0f0f23',
-  background_color_2: '#1a1a3e', 
-  background_color_3: '#0a192f',
+  background_color_1: '#F1E6DE',
+  background_color_2: '#E8D9CF', 
+  background_color_3: '#DED0C5',
   show_subtitle: true,
 }
 
@@ -665,7 +665,7 @@ function LandingPage() {
 
                       <button
                         onClick={() => setMobileFlow('phone-entry')}
-                        className="w-full py-4 glass-button rounded-2xl font-light text-lg tracking-wide hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-foreground"
+                        className="w-full py-4 glass-button rounded-2xl font-light text-lg tracking-wide hover:bg-foreground/10 transition-all duration-300 flex items-center justify-center gap-2 text-foreground"
                       >
                         I Have an Existing Account
                         <ArrowRight className="w-5 h-5" />
@@ -695,8 +695,8 @@ function LandingPage() {
                             onChange={handlePhoneChange}
                             placeholder="(555) 123-4567"
                             maxLength={14}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                       </div>
@@ -732,8 +732,8 @@ function LandingPage() {
                         onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                         placeholder="123456"
                         maxLength={6}
-                        style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                        className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
+                        style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                        className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
                         autoFocus
                       />
 
@@ -771,8 +771,8 @@ function LandingPage() {
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                         <div className="space-y-2">
@@ -781,8 +781,8 @@ function LandingPage() {
                             type="text"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                       </div>
@@ -796,8 +796,8 @@ function LandingPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="you@example.com"
                           />
                         </div>
@@ -812,8 +812,8 @@ function LandingPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="••••••••"
                           />
                           <button
@@ -833,8 +833,8 @@ function LandingPage() {
                           value={confirmPassword}
                           onChange={(e) => setConfirmPassword(e.target.value)}
                           required
-                          style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                          className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                          style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                          className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           placeholder="••••••••"
                         />
                       </div>
@@ -871,8 +871,8 @@ function LandingPage() {
                             onChange={handlePhoneChange}
                             placeholder="(555) 123-4567"
                             maxLength={14}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                       </div>
@@ -908,8 +908,8 @@ function LandingPage() {
                         onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                         placeholder="123456"
                         maxLength={6}
-                        style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                        className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
+                        style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                        className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
                         autoFocus
                       />
 
@@ -951,8 +951,8 @@ function LandingPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="you@example.com"
                           />
                         </div>
@@ -967,8 +967,8 @@ function LandingPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="••••••••"
                           />
                           <button
@@ -1004,7 +1004,7 @@ function LandingPage() {
                       onClick={() => switchMode('login')}
                       className={`flex-1 py-3 px-4 rounded-lg text-sm font-light tracking-wide transition-all ${
                         mode === 'login' 
-                          ? 'bg-white text-black' 
+                          ? 'bg-primary text-primary-foreground' 
                           : 'text-muted-foreground hover:text-foreground'
                       }`}
                     >
@@ -1014,7 +1014,7 @@ function LandingPage() {
                       onClick={() => switchMode('register')}
                       className={`flex-1 py-3 px-4 rounded-lg text-sm font-light tracking-wide transition-all ${
                         mode === 'register' 
-                          ? 'bg-white text-black' 
+                          ? 'bg-primary text-primary-foreground' 
                           : 'text-muted-foreground hover:text-foreground'
                       }`}
                     >
@@ -1049,8 +1049,8 @@ function LandingPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="you@example.com"
                           />
                         </div>
@@ -1065,8 +1065,8 @@ function LandingPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="••••••••"
                           />
                           <button
@@ -1102,7 +1102,7 @@ function LandingPage() {
                         )}
                       </button>
 
-                      <div className="pt-4 border-t border-white/10">
+                      <div className="pt-4 border-t border-border">
                         <button
                           type="button"
                           onClick={openMobileFlow}
@@ -1128,8 +1128,8 @@ function LandingPage() {
                               value={firstName}
                               onChange={(e) => setFirstName(e.target.value)}
                               required
-                              style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                              className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                              style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                              className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                               placeholder="John"
                             />
                           </div>
@@ -1142,8 +1142,8 @@ function LandingPage() {
                             type="text"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="Doe"
                           />
                         </div>
@@ -1158,8 +1158,8 @@ function LandingPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="you@example.com"
                           />
                         </div>
@@ -1177,8 +1177,8 @@ function LandingPage() {
                             onChange={handlePhoneChange}
                             placeholder="(555) 123-4567"
                             maxLength={14}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                           />
                         </div>
                       </div>
@@ -1195,8 +1195,8 @@ function LandingPage() {
                             onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
                             placeholder="XXXX1234"
                             maxLength={10}
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors font-mono tracking-wider"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors font-mono tracking-wider"
                           />
                         </div>
                       </div>
@@ -1210,8 +1210,8 @@ function LandingPage() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-12 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="••••••••"
                           />
                           <button
@@ -1234,8 +1234,8 @@ function LandingPage() {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                            style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                            className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                             placeholder="••••••••"
                           />
                         </div>
@@ -1254,7 +1254,7 @@ function LandingPage() {
                         )}
                       </button>
 
-                      <div className="pt-4 border-t border-white/10">
+                      <div className="pt-4 border-t border-border">
                         <button
                           type="button"
                           onClick={openMobileFlow}

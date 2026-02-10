@@ -22,7 +22,7 @@ export default function MaintenanceLayout({
           touch-action: none;
         }
       `}</style>
-      <div className="h-screen w-screen overflow-hidden bg-[#0F0F0F] fixed inset-0 touch-none">
+      <div className="h-screen w-screen overflow-hidden bg-background fixed inset-0 touch-none">
         {children}
       </div>
     </>

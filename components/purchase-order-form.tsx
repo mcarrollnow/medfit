@@ -191,7 +191,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
     <div className="w-full max-w-4xl mx-auto text-base sm:text-lg">
       <div
         className={`rounded-sm shadow-2xl overflow-hidden relative min-h-[600px] flex flex-col transition-colors duration-300 ${
-          isDarkMode ? "bg-[#1c1c1c] text-white" : "bg-[#fdfbf7] text-black"
+          isDarkMode ? "bg-card text-foreground" : "bg-[#fdfbf7] text-foreground"
         }`}
       >
         {/* Notepad Header */}
@@ -208,7 +208,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
             >
               Purchase Request
             </h2>
-            <p className={`text-xs sm:text-sm font-mono mt-1 ${isDarkMode ? "text-gray-400" : "text-[#666]"}`}>
+            <p className={`text-xs sm:text-sm font-mono mt-1 ${isDarkMode ? "text-muted-foreground" : "text-[#666]"}`}>
               FORM-2025-REQ • MODERN HEALTH PRO
             </p>
           </div>
@@ -221,14 +221,14 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
               >
                 Date
               </p>
-              <p className={`font-mono text-sm ${isDarkMode ? "text-gray-300" : "text-[#444]"}`}>
+              <p className={`font-mono text-sm ${isDarkMode ? "text-foreground/70" : "text-[#444]"}`}>
                 {new Date().toLocaleDateString()}
               </p>
             </div>
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className={`p-2 rounded-full transition-colors ${
-                isDarkMode ? "bg-white/10 hover:bg-white/20 text-yellow-400" : "bg-black/5 hover:bg-black/10 text-black"
+                isDarkMode ? "bg-foreground/10 hover:bg-foreground/20 text-yellow-400" : "bg-foreground/5 hover:bg-foreground/10 text-foreground"
               }`}
             >
               {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -242,13 +242,13 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
           {/* Input Section */}
           <div
             className={`flex flex-col md:flex-row gap-4 items-end p-4 rounded-lg border backdrop-blur-sm transition-colors duration-300 ${
-              isDarkMode ? "bg-white/5 border-white/10" : "bg-white/50 border-black/5"
+              isDarkMode ? "bg-foreground/5 border-border" : "bg-foreground/50 border-black/5"
             }`}
           >
             <div className="flex-1 w-full relative">
               <label
                 className={`block text-xs font-bold uppercase tracking-widest mb-2 ${
-                  isDarkMode ? "text-gray-400" : "text-[#666]"
+                  isDarkMode ? "text-muted-foreground" : "text-[#666]"
                 }`}
               >
                 Item Description
@@ -275,14 +275,14 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                   autoComplete="off"
                   className={`bg-transparent border-0 border-b-2 rounded-none px-0 py-2 text-xl font-serif focus-visible:ring-0 h-auto ${
                     isDarkMode
-                      ? "border-white/20 focus-visible:border-white placeholder:text-white/40 text-white"
-                      : "border-black/20 focus-visible:border-black placeholder:text-black/40 text-black"
+                      ? "border-border focus-visible:border-primary placeholder:text-muted-foreground text-foreground"
+                      : "border-black/20 focus-visible:border-black placeholder:text-foreground/40 text-foreground"
                   }`}
                 />
                 {showSuggestions && searchTerm.trim() && (
                   <div
                     className={`absolute top-full left-0 w-full shadow-xl border mt-1 z-50 rounded-md overflow-hidden max-h-80 overflow-y-auto ${
-                      isDarkMode ? "bg-[#2a2a2a] border-white/10" : "bg-white border-black/10"
+                      isDarkMode ? "bg-[#2a2a2a] border-border" : "bg-white border-border"
                     }`}
                   >
                     {filteredProducts.length > 0 ? (
@@ -292,8 +292,8 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                           type="button"
                           className={`w-full text-left px-4 py-3 border-b last:border-0 transition-colors flex justify-between items-center ${
                             isDarkMode
-                              ? "hover:bg-white/5 border-white/5 text-gray-200"
-                              : "hover:bg-[#f5f5f5] border-black/5 text-black"
+                              ? "hover:bg-foreground/5 border-border text-gray-200"
+                              : "hover:bg-[#f5f5f5] border-black/5 text-foreground"
                           }`}
                           onMouseDown={(e) => {
                             e.preventDefault() // Prevent blur from firing before click
@@ -301,13 +301,13 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                           }}
                         >
                           <span className="font-serif text-lg">{product.name}</span>
-                          <span className={`text-sm font-mono ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>
+                          <span className={`text-sm font-mono ${isDarkMode ? "text-muted-foreground" : "text-gray-500"}`}>
                             ${Number.parseFloat(String(product.retail_price || 0)).toFixed(2)}
                           </span>
                         </button>
                       ))
                     ) : (
-                      <div className={`px-4 py-3 italic ${isDarkMode ? "text-gray-500" : "text-gray-400"}`}>
+                      <div className={`px-4 py-3 italic ${isDarkMode ? "text-gray-500" : "text-muted-foreground"}`}>
                         No products found for "{searchTerm}"
                       </div>
                     )}
@@ -319,7 +319,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
             <div className="w-full md:w-32">
               <label
                 className={`block text-xs font-bold uppercase tracking-widest mb-2 ${
-                  isDarkMode ? "text-gray-400" : "text-[#666]"
+                  isDarkMode ? "text-muted-foreground" : "text-[#666]"
                 }`}
               >
                 Quantity
@@ -327,7 +327,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
               <button
                 onClick={handleQuantityClick}
                 className={`w-full text-left border-b-2 py-2 text-xl font-mono transition-colors ${
-                  isDarkMode ? "border-white/20 hover:border-white" : "border-black/20 hover:border-black"
+                  isDarkMode ? "border-border hover:border-primary" : "border-black/20 hover:border-black"
                 }`}
               >
                 {quantity}
@@ -340,8 +340,8 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                 disabled={!selectedProduct}
                 className={`w-full md:w-auto rounded-none h-12 px-8 font-bold tracking-widest ${
                   isDarkMode
-                    ? "bg-white text-black hover:bg-white/90 disabled:bg-white/20 disabled:text-white/50"
-                    : "bg-black text-white hover:bg-black/80"
+                    ? "bg-white text-foreground hover:bg-card/90 disabled:bg-foreground/20 disabled:text-muted-foreground"
+                    : "bg-background text-foreground hover:bg-background/80"
                 }`}
               >
                 <Plus className="w-4 h-4 mr-2" /> ADD ITEM
@@ -353,7 +353,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
           <div className="flex-1">
             <div
               className={`flex items-center justify-between mb-4 border-b-2 pb-2 ${
-                isDarkMode ? "border-white" : "border-black"
+                isDarkMode ? "border-primary" : "border-black"
               }`}
             >
               <h3 className="font-bold uppercase tracking-widest text-sm">Order Items</h3>
@@ -377,12 +377,12 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                       exit={{ opacity: 0, x: -20 }}
                       style={{ height: `${lineHeight}em` }}
                       className={`flex items-center justify-between px-1 sm:px-2 transition-colors group border-b ${
-                        isDarkMode ? "hover:bg-white/5 border-white/10" : "hover:bg-black/5 border-black/10"
+                        isDarkMode ? "hover:bg-foreground/5 border-border" : "hover:bg-foreground/5 border-border"
                       }`}
                     >
                       <div className="flex-1 font-serif truncate pr-2 sm:pr-4 text-sm sm:text-base">
                         {productName}
-                        <span className={`ml-1 sm:ml-2 text-[10px] sm:text-xs font-mono ${isDarkMode ? "text-gray-500" : "text-gray-400"}`}>
+                        <span className={`ml-1 sm:ml-2 text-[10px] sm:text-xs font-mono ${isDarkMode ? "text-gray-500" : "text-muted-foreground"}`}>
                           @${Number.parseFloat(productPrice).toFixed(2)}
                         </span>
                       </div>
@@ -391,8 +391,8 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                           onClick={() => handleEditItemQuantity(productId, item.quantity)}
                           className={`w-8 sm:w-12 text-center font-mono text-sm sm:text-base transition-colors ${
                             isDarkMode 
-                              ? "hover:text-white/80" 
-                              : "hover:text-black/80"
+                              ? "hover:text-foreground/80" 
+                              : "hover:text-foreground/80"
                           }`}
                           title="Click to edit quantity"
                         >
@@ -403,7 +403,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                         </div>
                         <button
                           onClick={() => removeItem(productId)}
-                          className="text-gray-400 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
+                          className="text-muted-foreground hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -415,19 +415,19 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
 
               {items.length === 0 && (
                 <>
-                  <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`} />
-                  <div style={{ height: `${lineHeight}em` }} className={`flex items-center justify-center italic font-serif text-sm sm:text-base border-b ${isDarkMode ? "text-gray-600 border-white/10" : "text-gray-400 border-black/10"}`}>
+                  <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-border" : "border-border"}`} />
+                  <div style={{ height: `${lineHeight}em` }} className={`flex items-center justify-center italic font-serif text-sm sm:text-base border-b ${isDarkMode ? "text-gray-600 border-border" : "text-muted-foreground border-border"}`}>
                     No items added to request form yet.
                   </div>
-                  <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`} />
+                  <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-border" : "border-border"}`} />
                 </>
               )}
             </div>
           </div>
 
           {/* Promo Code Row - fits on one line */}
-          <div style={{ height: `${lineHeight}em` }} className={`flex items-center gap-2 sm:gap-4 border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`}>
-            <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest shrink-0 ${isDarkMode ? "text-gray-400" : "text-[#666]"}`}>
+          <div style={{ height: `${lineHeight}em` }} className={`flex items-center gap-2 sm:gap-4 border-b ${isDarkMode ? "border-border" : "border-border"}`}>
+            <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest shrink-0 ${isDarkMode ? "text-muted-foreground" : "text-[#666]"}`}>
               <Tag className="w-3 h-3 inline mr-1" />
               Promo
             </span>
@@ -452,7 +452,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                 </div>
                 <button
                   onClick={handleRemovePromo}
-                  className={`p-1 transition-colors ${isDarkMode ? "hover:text-white text-gray-400" : "hover:text-black text-gray-500"}`}
+                  className={`p-1 transition-colors ${isDarkMode ? "hover:text-foreground text-muted-foreground" : "hover:text-foreground text-gray-500"}`}
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -474,8 +474,8 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                   placeholder="Enter code"
                   className={`flex-1 bg-transparent border-0 border-b rounded-none px-0 py-1 font-mono uppercase focus-visible:ring-0 h-6 sm:h-8 text-xs sm:text-sm ${
                     isDarkMode
-                      ? "border-white/20 focus-visible:border-white placeholder:text-white/30 text-white"
-                      : "border-black/20 focus-visible:border-black placeholder:text-black/30 text-black"
+                      ? "border-border focus-visible:border-primary placeholder:text-muted-foreground text-foreground"
+                      : "border-black/20 focus-visible:border-black placeholder:text-foreground/30 text-foreground"
                   }`}
                 />
                 <Button
@@ -484,8 +484,8 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
                   size="sm"
                   className={`rounded-none h-6 sm:h-8 px-2 sm:px-4 text-[10px] sm:text-xs font-bold tracking-widest ${
                     isDarkMode
-                      ? "bg-white text-black hover:bg-white/90 disabled:bg-white/20 disabled:text-white/50"
-                      : "bg-black text-white hover:bg-black/80"
+                      ? "bg-white text-foreground hover:bg-card/90 disabled:bg-foreground/20 disabled:text-muted-foreground"
+                      : "bg-background text-foreground hover:bg-background/80"
                   }`}
                 >
                   {isValidatingPromo ? <Loader2 className="w-3 h-3 animate-spin" /> : "APPLY"}
@@ -495,16 +495,16 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
           </div>
           
           {promoError && (
-            <p style={{ height: `${lineHeight}em` }} className={`flex items-center text-xs sm:text-sm border-b ${isDarkMode ? "text-red-400 border-white/10" : "text-red-600 border-black/10"}`}>
+            <p style={{ height: `${lineHeight}em` }} className={`flex items-center text-xs sm:text-sm border-b ${isDarkMode ? "text-red-400 border-border" : "text-red-600 border-border"}`}>
               {promoError}
             </p>
           )}
 
           {/* Footer / Total - each row scales with line height */}
-          <div className={`mt-auto border-t-2 ${isDarkMode ? "border-white" : "border-black"}`}>
+          <div className={`mt-auto border-t-2 ${isDarkMode ? "border-primary" : "border-black"}`}>
             {/* Subtotal row */}
-            <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`}>
-              <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-gray-400" : "text-[#666]"}`}>
+            <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-border" : "border-border"}`}>
+              <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-muted-foreground" : "text-[#666]"}`}>
                 Subtotal
               </span>
               <span className="font-mono text-sm sm:text-base">${subtotal.toFixed(2)}</span>
@@ -512,7 +512,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
             
             {/* Discount row (only if discount applied) */}
             {discountAmount > 0 && (
-              <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`}>
+              <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-border" : "border-border"}`}>
                 <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-green-400" : "text-green-600"}`}>
                   Discount
                 </span>
@@ -523,9 +523,9 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
             )}
             
             {/* Total row - 2 lines tall */}
-            <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`} />
-            <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-white/10" : "border-black/10"}`}>
-              <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-gray-400" : "text-[#666]"}`}>
+            <div style={{ height: `${lineHeight}em` }} className={`border-b ${isDarkMode ? "border-border" : "border-border"}`} />
+            <div style={{ height: `${lineHeight}em` }} className={`flex justify-between items-center border-b ${isDarkMode ? "border-border" : "border-border"}`}>
+              <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-muted-foreground" : "text-[#666]"}`}>
                 Total
               </span>
               <span className="text-2xl sm:text-4xl font-mono font-bold tracking-tighter">${finalTotal.toFixed(2)}</span>
@@ -541,21 +541,21 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
       }}>
         <DialogContent
           className={`sm:max-w-[300px] p-0 overflow-hidden border-0 rounded-xl ${
-            isDarkMode ? "bg-[#1c1c1c] text-white" : "bg-white text-black"
+            isDarkMode ? "bg-card text-foreground" : "bg-white text-foreground"
           }`}
         >
-          <DialogHeader className={`p-4 border-b ${isDarkMode ? "bg-[#2a2a2a] border-white/10" : "bg-gray-50"}`}>
+          <DialogHeader className={`p-4 border-b ${isDarkMode ? "bg-[#2a2a2a] border-border" : "bg-gray-50"}`}>
             <DialogTitle className="text-center font-mono text-2xl">{keypadValue}</DialogTitle>
             <DialogDescription className="sr-only">Enter quantity using the keypad</DialogDescription>
           </DialogHeader>
-          <div className={`grid grid-cols-3 gap-px ${isDarkMode ? "bg-white/10" : "bg-gray-200"}`}>
+          <div className={`grid grid-cols-3 gap-px ${isDarkMode ? "bg-foreground/10" : "bg-gray-200"}`}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
               <button
                 key={num}
                 onClick={() => handleKeypadPress(num.toString())}
                 className={`p-6 text-xl font-bold transition-colors ${
                   isDarkMode
-                    ? "bg-[#1c1c1c] hover:bg-[#2a2a2a] active:bg-[#333]"
+                    ? "bg-card hover:bg-secondary active:bg-secondary"
                     : "bg-white hover:bg-gray-50 active:bg-gray-100"
                 }`}
               >
@@ -566,7 +566,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
               onClick={() => setKeypadValue("0")}
               className={`p-6 text-xl font-bold transition-colors text-red-500 ${
                 isDarkMode
-                  ? "bg-[#1c1c1c] hover:bg-[#2a2a2a] active:bg-[#333]"
+                  ? "bg-card hover:bg-secondary active:bg-secondary"
                   : "bg-white hover:bg-gray-50 active:bg-gray-100"
               }`}
             >
@@ -576,7 +576,7 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
               onClick={() => handleKeypadPress("0")}
               className={`p-6 text-xl font-bold transition-colors ${
                 isDarkMode
-                  ? "bg-[#1c1c1c] hover:bg-[#2a2a2a] active:bg-[#333]"
+                  ? "bg-card hover:bg-secondary active:bg-secondary"
                   : "bg-white hover:bg-gray-50 active:bg-gray-100"
               }`}
             >
@@ -586,18 +586,18 @@ export function PurchaseOrderForm({ products }: PurchaseOrderFormProps) {
               onClick={handleKeypadBackspace}
               className={`p-6 flex items-center justify-center transition-colors ${
                 isDarkMode
-                  ? "bg-[#1c1c1c] hover:bg-[#2a2a2a] active:bg-[#333]"
+                  ? "bg-card hover:bg-secondary active:bg-secondary"
                   : "bg-white hover:bg-gray-50 active:bg-gray-100"
               }`}
             >
               <X className="w-6 h-6" />
             </button>
           </div>
-          <div className={`p-4 border-t ${isDarkMode ? "bg-[#1c1c1c] border-white/10" : "bg-white"}`}>
+          <div className={`p-4 border-t ${isDarkMode ? "bg-card border-border" : "bg-white"}`}>
             <Button
               onClick={handleKeypadSubmit}
               className={`w-full h-12 text-lg ${
-                isDarkMode ? "bg-white text-black hover:bg-white/90" : "bg-black text-white hover:bg-black/90"
+                isDarkMode ? "bg-white text-foreground hover:bg-card/90" : "bg-background text-foreground hover:bg-background/90"
               }`}
             >
               ENTER

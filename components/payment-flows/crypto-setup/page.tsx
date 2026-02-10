@@ -60,10 +60,10 @@ function CryptoSetupContent() {
     <div className="w-full">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-3">
           Choose Your Wallet
         </h1>
-        <p className="text-white/50 text-base sm:text-lg max-w-xl mx-auto">
+        <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
           Select a wallet to get started with crypto payments
         </p>
       </div>
@@ -75,8 +75,8 @@ function CryptoSetupContent() {
             <Card
               className={cn(
                 "group relative overflow-hidden transition-all duration-300 cursor-pointer h-full",
-                "border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
-                "hover:bg-white/[0.12] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]",
+                "border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]",
+                "hover:bg-foreground/[0.12] hover:shadow-[0_12px_40px_rgba(58,66,51,0.2)]",
               )}
             >
               <CardContent className="p-6 sm:p-8">
@@ -93,13 +93,13 @@ function CryptoSetupContent() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-white/50 text-sm sm:text-base text-center mb-6 flex-1">
+                  <p className="text-muted-foreground text-sm sm:text-base text-center mb-6 flex-1">
                     {guide.description}
                   </p>
 
                   {/* Button */}
                   <Button
-                    className="w-full group/btn justify-between text-base font-medium h-12 bg-white/[0.08] hover:bg-white/[0.15] border border-white/20 hover:border-white/40 text-white backdrop-blur-sm"
+                    className="w-full group/btn justify-between text-base font-medium h-12 bg-foreground/[0.08] hover:bg-foreground/[0.15] border border-border hover:border-border text-foreground backdrop-blur-sm"
                     variant="outline"
                   >
                     <span>Get Started</span>

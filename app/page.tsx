@@ -330,7 +330,7 @@ export default function Home() {
   if (!authChecked) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -340,7 +340,7 @@ export default function Home() {
       <GlobalNav />
       <div className="min-h-screen bg-background">
         {/* Hero Section - Chronicles Style */}
-        <section className="border-b border-white/5">
+        <section className="border-b border-border">
           <div className="container mx-auto px-6 md:px-12 py-24 md:py-32">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}

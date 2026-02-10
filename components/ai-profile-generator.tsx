@@ -165,13 +165,13 @@ export function AIProfileGenerator({
   ]
 
   return (
-    <div className="rounded-2xl border border-white/10 overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
+    <div className="rounded-2xl border border-border overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           "w-full flex items-center justify-between px-6 py-4 transition-colors",
-          isOpen ? "bg-white/10" : "hover:bg-white/5"
+          isOpen ? "bg-foreground/10" : "hover:bg-foreground/5"
         )}
       >
         <div className="flex items-center gap-3">
@@ -182,8 +182,8 @@ export function AIProfileGenerator({
             <Sparkles className="h-5 w-5" style={{ color: displayColor }} />
           </div>
           <div className="text-left">
-            <span className="text-base font-semibold text-white block">AI Profile Generator</span>
-            <span className="text-xs text-white/40">
+            <span className="text-base font-semibold text-foreground block">AI Profile Generator</span>
+            <span className="text-xs text-muted-foreground">
               {missingFieldCount > 0 
                 ? `${missingFieldCount} field${missingFieldCount !== 1 ? 's' : ''} missing content`
                 : 'All fields have content'}
@@ -191,13 +191,13 @@ export function AIProfileGenerator({
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-white/30 px-2.5 py-1 rounded-full bg-white/5 border border-white/10">
+          <span className="text-xs text-muted-foreground px-2.5 py-1 rounded-full bg-foreground/5 border border-border">
             Claude Opus 4.5
           </span>
           {isOpen ? (
-            <ChevronUp className="h-5 w-5 text-white/40" />
+            <ChevronUp className="h-5 w-5 text-muted-foreground" />
           ) : (
-            <ChevronDown className="h-5 w-5 text-white/40" />
+            <ChevronDown className="h-5 w-5 text-muted-foreground" />
           )}
         </div>
       </button>
@@ -211,12 +211,12 @@ export function AIProfileGenerator({
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="p-6 space-y-6 border-t border-white/10">
+            <div className="p-6 space-y-6 border-t border-border">
               {/* Mode Selection */}
               {!generatedPreview && (
                 <>
                   <div className="space-y-3">
-                    <label className="block text-sm font-medium text-white/60">Generation Mode</label>
+                    <label className="block text-sm font-medium text-foreground/60">Generation Mode</label>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                       {modeOptions.map((option) => (
                         <button
@@ -227,17 +227,17 @@ export function AIProfileGenerator({
                           className={cn(
                             "p-4 rounded-xl border text-left transition-all",
                             selectedMode === option.value
-                              ? "border-white/30 bg-white/10"
+                              ? "border-border bg-foreground/10"
                               : option.disabled
-                                ? "border-white/5 bg-white/[0.02] opacity-50 cursor-not-allowed"
-                                : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/[0.07]"
+                                ? "border-border bg-foreground/[0.03] opacity-50 cursor-not-allowed"
+                                : "border-border bg-foreground/5 hover:border-border hover:bg-card/[0.07]"
                           )}
                         >
                           <div className="flex items-center gap-2 mb-1">
                             <option.icon className={cn("h-4 w-4", option.color)} />
-                            <span className="text-sm font-medium text-white">{option.label}</span>
+                            <span className="text-sm font-medium text-foreground">{option.label}</span>
                           </div>
-                          <p className="text-xs text-white/40">{option.description}</p>
+                          <p className="text-xs text-muted-foreground">{option.description}</p>
                         </button>
                       ))}
                     </div>
@@ -252,7 +252,7 @@ export function AIProfileGenerator({
                         exit={{ height: 0, opacity: 0 }}
                         className="space-y-3 overflow-hidden"
                       >
-                        <label className="block text-sm font-medium text-white/60">Select Fields to Generate</label>
+                        <label className="block text-sm font-medium text-foreground/60">Select Fields to Generate</label>
                         <div className="grid grid-cols-2 gap-2">
                           {fieldOptions.map((field) => (
                             <button
@@ -262,22 +262,22 @@ export function AIProfileGenerator({
                               className={cn(
                                 "p-3 rounded-xl border text-left transition-all flex items-center gap-3",
                                 selectedFields.includes(field.key)
-                                  ? "border-white/30 bg-white/10"
-                                  : "border-white/10 bg-white/5 hover:border-white/20"
+                                  ? "border-border bg-foreground/10"
+                                  : "border-border bg-foreground/5 hover:border-border"
                               )}
                             >
                               <div className={cn(
                                 "w-5 h-5 rounded-md border flex items-center justify-center transition-all",
                                 selectedFields.includes(field.key)
-                                  ? "border-white/40 bg-white/20"
-                                  : "border-white/20 bg-transparent"
+                                  ? "border-border bg-foreground/20"
+                                  : "border-border bg-transparent"
                               )}>
                                 {selectedFields.includes(field.key) && (
-                                  <Check className="h-3 w-3 text-white" />
+                                  <Check className="h-3 w-3 text-foreground" />
                                 )}
                               </div>
                               <div>
-                                <span className="text-sm text-white">{field.label}</span>
+                                <span className="text-sm text-foreground">{field.label}</span>
                                 {hasMissingFields[field.key] && (
                                   <span className="ml-2 text-[10px] text-yellow-400/80 bg-yellow-400/10 px-1.5 py-0.5 rounded">
                                     missing
@@ -302,29 +302,29 @@ export function AIProfileGenerator({
               {/* Generated Preview */}
               {generatedPreview && (
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm font-medium text-white/60">
+                  <div className="flex items-center gap-2 text-sm font-medium text-foreground/60">
                     <ListChecks className="h-4 w-4" />
                     Generated Profile Preview
                   </div>
                   
                   <div className="space-y-3">
                     {/* Category */}
-                    <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                      <label className="text-xs text-white/40 block mb-1">Category</label>
-                      <p className="text-sm text-white">
+                    <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                      <label className="text-xs text-muted-foreground block mb-1">Category</label>
+                      <p className="text-sm text-foreground">
                         {generatedPreview.categoryName || 'No Category'}
                       </p>
                     </div>
 
                     {/* Ratings */}
-                    <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                      <label className="text-xs text-white/40 block mb-2">Efficacy Ratings</label>
+                    <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                      <label className="text-xs text-muted-foreground block mb-2">Efficacy Ratings</label>
                       <div className="space-y-2">
                         {generatedPreview.ratings.map((rating, i) => (
                           <div key={i} className="flex items-center justify-between">
-                            <span className="text-sm text-white/80">{rating.label}</span>
+                            <span className="text-sm text-foreground/80">{rating.label}</span>
                             <div className="flex items-center gap-2">
-                              <div className="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                              <div className="w-24 h-1.5 bg-foreground/10 rounded-full overflow-hidden">
                                 <div 
                                   className="h-full rounded-full transition-all"
                                   style={{ 
@@ -343,10 +343,10 @@ export function AIProfileGenerator({
                     </div>
 
                     {/* Description */}
-                    <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                      <label className="text-xs text-white/40 block mb-1">Product Description</label>
-                      <p className="text-sm text-white/80 whitespace-pre-wrap">{generatedPreview.description}</p>
-                      <div className="flex items-center gap-3 mt-2 text-xs text-white/40">
+                    <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                      <label className="text-xs text-muted-foreground block mb-1">Product Description</label>
+                      <p className="text-sm text-foreground/80 whitespace-pre-wrap">{generatedPreview.description}</p>
+                      <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
                         <span>{generatedPreview.description.split(/\s+/).filter(Boolean).length} words</span>
                         <span>•</span>
                         <span>{generatedPreview.description.length} chars</span>
@@ -354,9 +354,9 @@ export function AIProfileGenerator({
                     </div>
 
                     {/* Cart Description */}
-                    <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                      <label className="text-xs text-white/40 block mb-1">Cart Preview Text</label>
-                      <p className="text-sm text-white/80">{generatedPreview.cartDescription}</p>
+                    <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                      <label className="text-xs text-muted-foreground block mb-1">Cart Preview Text</label>
+                      <p className="text-sm text-foreground/80">{generatedPreview.cartDescription}</p>
                     </div>
                   </div>
                 </div>
@@ -408,7 +408,7 @@ export function AIProfileGenerator({
                       variant="outline"
                       onClick={handleRegenerate}
                       disabled={isGenerating}
-                      className="rounded-xl h-12 px-6 border-white/20 text-white hover:bg-white/10"
+                      className="rounded-xl h-12 px-6 border-border text-foreground hover:bg-foreground/10"
                     >
                       {isGenerating ? (
                         <Loader2 className="h-5 w-5 animate-spin" />

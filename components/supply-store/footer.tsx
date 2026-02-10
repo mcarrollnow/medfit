@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export function SupplyStoreFooter() {
   return (
-    <footer className="border-t border-[rgba(255,255,255,0.08)] mt-24">
+    <footer className="border-t border-border mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -83,7 +83,7 @@ export function SupplyStoreFooter() {
           </div>
         </div>
 
-        <div className="border-t border-[rgba(255,255,255,0.08)] mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground font-mono">© 2025 Modern Health Pro. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

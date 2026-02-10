@@ -115,10 +115,10 @@ function ProductsContent() {
       <div className="min-h-screen px-6 md:px-12 py-24 md:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse space-y-8">
-            <div className="h-12 bg-[rgba(255,255,255,0.03)] rounded-xl w-48" />
+            <div className="h-12 bg-foreground/[0.04] rounded-xl w-48" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="aspect-square bg-[rgba(255,255,255,0.03)] rounded-3xl" />
+                <div key={i} className="aspect-square bg-foreground/[0.04] rounded-3xl" />
               ))}
             </div>
           </div>
@@ -160,7 +160,7 @@ function ProductsContent() {
                     placeholder="Search products..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(255,255,255,0.2)]"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-foreground/[0.06] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(58,66,51,0.12)]"
                   />
                 </div>
               </GlassCard>
@@ -174,7 +174,7 @@ function ProductsContent() {
                     className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-300 ${
                       !selectedCategory
                         ? "bg-foreground text-background"
-                        : "text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)]"
+                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]"
                     }`}
                   >
                     All Categories
@@ -186,7 +186,7 @@ function ProductsContent() {
                       className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-300 ${
                         selectedCategory === cat
                           ? "bg-foreground text-background"
-                          : "text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)]"
+                          : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]"
                       }`}
                     >
                       {cat}
@@ -204,7 +204,7 @@ function ProductsContent() {
                     className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-300 ${
                       !selectedBrand
                         ? "bg-foreground text-background"
-                        : "text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)]"
+                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]"
                     }`}
                   >
                     All Brands
@@ -216,7 +216,7 @@ function ProductsContent() {
                       className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-300 ${
                         selectedBrand === brand
                           ? "bg-foreground text-background"
-                          : "text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)]"
+                          : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]"
                       }`}
                     >
                       {brand}
@@ -241,7 +241,7 @@ function ProductsContent() {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="lg:hidden flex items-center gap-2 px-4 py-2 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)]"
+                  className="lg:hidden flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/[0.06] border border-border"
                 >
                   <SlidersHorizontal className="w-5 h-5" />
                   Filters
@@ -256,7 +256,7 @@ function ProductsContent() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-                  className="px-4 py-2 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(255,255,255,0.2)]"
+                  className="px-4 py-2 rounded-xl bg-foreground/[0.06] border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(58,66,51,0.12)]"
                 >
                   <option value="name">Name A-Z</option>
                   <option value="price-asc">Price: Low to High</option>
@@ -264,7 +264,7 @@ function ProductsContent() {
                   <option value="brand">Brand</option>
                 </select>
 
-                <div className="hidden sm:flex items-center gap-1 p-1 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)]">
+                <div className="hidden sm:flex items-center gap-1 p-1 rounded-xl bg-foreground/[0.06] border border-border">
                   <button
                     onClick={() => setViewMode("grid")}
                     className={`p-2 rounded-lg transition-all duration-300 ${viewMode === "grid" ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}
@@ -297,7 +297,7 @@ function ProductsContent() {
                         placeholder="Search products..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(255,255,255,0.2)]"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-foreground/[0.06] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(58,66,51,0.12)]"
                       />
                     </div>
 
@@ -306,7 +306,7 @@ function ProductsContent() {
                       <select
                         value={selectedCategory || ""}
                         onChange={(e) => setSelectedCategory(e.target.value || null)}
-                        className="w-full px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(255,255,255,0.2)]"
+                        className="w-full px-4 py-3 rounded-xl bg-foreground/[0.06] border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(58,66,51,0.12)]"
                       >
                         <option value="">All Categories</option>
                         {SUPPLY_STORE_CATEGORIES.map((cat) => (
@@ -322,7 +322,7 @@ function ProductsContent() {
                       <select
                         value={selectedBrand || ""}
                         onChange={(e) => setSelectedBrand(e.target.value || null)}
-                        className="w-full px-4 py-3 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(255,255,255,0.2)]"
+                        className="w-full px-4 py-3 rounded-xl bg-foreground/[0.06] border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-[rgba(58,66,51,0.12)]"
                       >
                         <option value="">All Brands</option>
                         {brands.map((brand) => (
@@ -348,7 +348,7 @@ function ProductsContent() {
             {hasActiveFilters && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-sm">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/[0.06] border border-border text-sm">
                     Search: {searchQuery}
                     <button onClick={() => setSearchQuery("")}>
                       <X className="w-4 h-4" />
@@ -356,7 +356,7 @@ function ProductsContent() {
                   </span>
                 )}
                 {selectedCategory && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-sm">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/[0.06] border border-border text-sm">
                     {selectedCategory}
                     <button onClick={() => setSelectedCategory(null)}>
                       <X className="w-4 h-4" />
@@ -364,7 +364,7 @@ function ProductsContent() {
                   </span>
                 )}
                 {selectedBrand && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-sm">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/[0.06] border border-border text-sm">
                     {selectedBrand}
                     <button onClick={() => setSelectedBrand(null)}>
                       <X className="w-4 h-4" />
@@ -475,10 +475,10 @@ export default function SupplyStoreProductsPage() {
         <div className="min-h-screen px-6 md:px-12 py-24 md:py-32">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-8">
-              <div className="h-12 bg-[rgba(255,255,255,0.03)] rounded-xl w-48" />
+              <div className="h-12 bg-foreground/[0.04] rounded-xl w-48" />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {[...Array(6)].map((_, i) => (
-                  <div key={i} className="aspect-square bg-[rgba(255,255,255,0.03)] rounded-3xl" />
+                  <div key={i} className="aspect-square bg-foreground/[0.04] rounded-3xl" />
                 ))}
               </div>
             </div>

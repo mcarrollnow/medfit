@@ -124,7 +124,7 @@ export default function RepCommissionPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -135,7 +135,7 @@ export default function RepCommissionPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -144,13 +144,13 @@ export default function RepCommissionPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Commission</h1>
-            <p className="text-xl text-white/50">Track your earnings and commission history.</p>
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Commission</h1>
+            <p className="text-xl text-muted-foreground">Track your earnings and commission history.</p>
           </div>
           <div className="flex items-center gap-3">
             <Button
               onClick={exportToCSV}
-              className="h-11 px-5 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 rounded-xl font-medium"
+              className="h-11 px-5 bg-foreground/5 hover:bg-foreground/10 text-foreground border border-border hover:border-border rounded-xl font-medium"
             >
               <Download className="w-4 h-4 mr-2" />
               Export CSV
@@ -173,8 +173,8 @@ export default function RepCommissionPage() {
               className={cn(
                 "px-5 py-2.5 rounded-xl text-sm font-semibold transition-all",
                 dateRange === range.value
-                  ? "bg-white text-black"
-                  : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-foreground/5 text-foreground/60 hover:bg-foreground/10 hover:text-foreground border border-border"
               )}
             >
               {range.label}
@@ -184,65 +184,65 @@ export default function RepCommissionPage() {
 
         {/* Stats Overview */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Total Commission */}
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                     <DollarSign className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Total Commission</p>
+                  <p className="text-sm font-medium text-muted-foreground">Total Commission</p>
                 </div>
                 <p className="text-3xl font-bold tracking-tight text-emerald-400">${totalCommission.toFixed(2)}</p>
-                <p className="text-sm text-white/40">{filteredOrders.length} orders</p>
+                <p className="text-sm text-muted-foreground">{filteredOrders.length} orders</p>
               </div>
             </div>
 
             {/* Completed */}
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                     <TrendingUp className="h-5 w-5 text-blue-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Completed</p>
+                  <p className="text-sm font-medium text-muted-foreground">Completed</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">${completedCommission.toFixed(2)}</p>
-                <p className="text-sm text-white/40">{completedOrders.length} orders paid</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">${completedCommission.toFixed(2)}</p>
+                <p className="text-sm text-muted-foreground">{completedOrders.length} orders paid</p>
               </div>
             </div>
 
             {/* Pending */}
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                     <Clock className="h-5 w-5 text-amber-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Pending</p>
+                  <p className="text-sm font-medium text-muted-foreground">Pending</p>
                 </div>
                 <p className="text-3xl font-bold tracking-tight text-amber-400">${pendingCommission.toFixed(2)}</p>
-                <p className="text-sm text-white/40">Processing orders</p>
+                <p className="text-sm text-muted-foreground">Processing orders</p>
               </div>
             </div>
 
             {/* Average per Order */}
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                     <Percent className="h-5 w-5 text-purple-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Avg per Order</p>
+                  <p className="text-sm font-medium text-muted-foreground">Avg per Order</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">${avgCommission.toFixed(2)}</p>
-                <p className="text-sm text-white/40">{commissionRate.toFixed(1)}% rate</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">${avgCommission.toFixed(2)}</p>
+                <p className="text-sm text-muted-foreground">{commissionRate.toFixed(1)}% rate</p>
               </div>
             </div>
           </div>
@@ -251,31 +251,31 @@ export default function RepCommissionPage() {
         {/* Monthly Breakdown */}
         {Object.keys(monthlyData).length > 0 && (
           <section className="space-y-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Monthly Breakdown</h2>
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Monthly Breakdown</h2>
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-white/10">
-                      <th className="text-left p-4 text-white/60 font-medium">Month</th>
-                      <th className="text-right p-4 text-white/60 font-medium">Orders</th>
-                      <th className="text-right p-4 text-white/60 font-medium">Revenue</th>
-                      <th className="text-right p-4 text-white/60 font-medium">Commission</th>
-                      <th className="text-right p-4 text-white/60 font-medium">Rate</th>
+                    <tr className="border-b border-border">
+                      <th className="text-left p-4 text-foreground/60 font-medium">Month</th>
+                      <th className="text-right p-4 text-foreground/60 font-medium">Orders</th>
+                      <th className="text-right p-4 text-foreground/60 font-medium">Revenue</th>
+                      <th className="text-right p-4 text-foreground/60 font-medium">Commission</th>
+                      <th className="text-right p-4 text-foreground/60 font-medium">Rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     {Object.entries(monthlyData).sort((a, b) => 
                       new Date(b[0]).getTime() - new Date(a[0]).getTime()
                     ).map(([month, data]) => (
-                      <tr key={month} className="border-b border-white/5 hover:bg-white/[0.03] transition-colors">
-                        <td className="p-4 font-medium text-white">{month}</td>
-                        <td className="p-4 text-right text-white/60">{data.orders}</td>
-                        <td className="p-4 text-right text-white">${data.revenue.toFixed(2)}</td>
+                      <tr key={month} className="border-b border-border hover:bg-foreground/[0.04] transition-colors">
+                        <td className="p-4 font-medium text-foreground">{month}</td>
+                        <td className="p-4 text-right text-foreground/60">{data.orders}</td>
+                        <td className="p-4 text-right text-foreground">${data.revenue.toFixed(2)}</td>
                         <td className="p-4 text-right text-emerald-400 font-semibold">${data.commission.toFixed(2)}</td>
                         <td className="p-4 text-right">
-                          <Badge className="bg-white/10 text-white/70 border-0 rounded-full">
+                          <Badge className="bg-foreground/10 text-foreground/70 border-0 rounded-full">
                             {data.revenue > 0 ? ((data.commission / data.revenue) * 100).toFixed(1) : 0}%
                           </Badge>
                         </td>
@@ -291,16 +291,16 @@ export default function RepCommissionPage() {
         {/* Commission by Order */}
         <section className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Commission by Order</h2>
-            <p className="text-sm text-white/40">{filteredOrders.length} orders</p>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Commission by Order</h2>
+            <p className="text-sm text-muted-foreground">{filteredOrders.length} orders</p>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
               {filteredOrders.length === 0 ? (
                 <div className="p-12 text-center">
-                  <Package className="w-12 h-12 text-white/20 mx-auto mb-4" />
-                  <p className="text-white/40">No orders found for this period</p>
+                  <Package className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
+                  <p className="text-muted-foreground">No orders found for this period</p>
                 </div>
               ) : (
                 <div className="divide-y divide-white/5">
@@ -310,20 +310,20 @@ export default function RepCommissionPage() {
                       <div key={order.id}>
                         <button
                           onClick={() => setExpandedOrderId(isExpanded ? null : order.id)}
-                          className="w-full p-4 flex items-center justify-between hover:bg-white/[0.03] transition-colors text-left"
+                          className="w-full p-4 flex items-center justify-between hover:bg-foreground/[0.04] transition-colors text-left"
                         >
                           <div className="flex items-center gap-4">
-                            <div className="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center">
-                              <Package className="h-5 w-5 text-white/60" />
+                            <div className="h-10 w-10 rounded-lg bg-foreground/10 flex items-center justify-center">
+                              <Package className="h-5 w-5 text-foreground/60" />
                             </div>
                             <div>
-                              <p className="font-medium text-white">{order.customer.name}</p>
-                              <p className="text-sm text-white/50">{format(new Date(order.date), "MMM dd, yyyy")}</p>
+                              <p className="font-medium text-foreground">{order.customer.name}</p>
+                              <p className="text-sm text-muted-foreground">{format(new Date(order.date), "MMM dd, yyyy")}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-6">
                             <div className="text-right">
-                              <p className="text-white/60">${order.total.toFixed(2)}</p>
+                              <p className="text-foreground/60">${order.total.toFixed(2)}</p>
                               <p className="text-emerald-400 font-semibold">+${order.commission.toFixed(2)}</p>
                             </div>
                             <Badge className={cn(
@@ -332,35 +332,35 @@ export default function RepCommissionPage() {
                                 ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
                                 : order.status === "pending" || order.status === "processing"
                                 ? "bg-amber-500/20 text-amber-400 border-amber-500/30"
-                                : "bg-white/10 text-white/60 border-white/10"
+                                : "bg-foreground/10 text-foreground/60 border-border"
                             )}>
                               {order.status}
                             </Badge>
                             <ChevronDown className={cn(
-                              "h-5 w-5 text-white/30 transition-transform",
+                              "h-5 w-5 text-muted-foreground transition-transform",
                               isExpanded && "rotate-180"
                             )} />
                           </div>
                         </button>
                         {isExpanded && (
                           <div className="px-4 pb-4">
-                            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5 space-y-3">
+                            <div className="p-4 rounded-xl bg-foreground/[0.04] border border-border space-y-3">
                               <div className="flex justify-between text-sm">
-                                <span className="text-white/50">Order ID</span>
-                                <span className="font-mono text-white/70">{order.id.slice(0, 8)}...</span>
+                                <span className="text-muted-foreground">Order ID</span>
+                                <span className="font-mono text-foreground/70">{order.id.slice(0, 8)}...</span>
                               </div>
                               <div className="flex justify-between text-sm">
-                                <span className="text-white/50">Customer Email</span>
-                                <span className="text-white/70">{order.customer.email}</span>
+                                <span className="text-muted-foreground">Customer Email</span>
+                                <span className="text-foreground/70">{order.customer.email}</span>
                               </div>
                               <div className="flex justify-between text-sm">
-                                <span className="text-white/50">Items</span>
-                                <span className="text-white/70">{order.items.length} item{order.items.length !== 1 ? 's' : ''}</span>
+                                <span className="text-muted-foreground">Items</span>
+                                <span className="text-foreground/70">{order.items.length} item{order.items.length !== 1 ? 's' : ''}</span>
                               </div>
-                              <div className="border-t border-white/10 pt-3 space-y-2">
+                              <div className="border-t border-border pt-3 space-y-2">
                                 {order.items.map((item, idx) => (
                                   <div key={idx} className="flex justify-between text-sm">
-                                    <span className="text-white/60">{item.productName} x{item.quantity}</span>
+                                    <span className="text-foreground/60">{item.productName} x{item.quantity}</span>
                                     <span className="text-emerald-400">+${item.commission.toFixed(2)}</span>
                                   </div>
                                 ))}
@@ -373,7 +373,7 @@ export default function RepCommissionPage() {
                   })}
                   {filteredOrders.length > 20 && (
                     <div className="p-4 text-center">
-                      <p className="text-white/40 text-sm">Showing first 20 orders. Export CSV for full report.</p>
+                      <p className="text-muted-foreground text-sm">Showing first 20 orders. Export CSV for full report.</p>
                     </div>
                   )}
                 </div>

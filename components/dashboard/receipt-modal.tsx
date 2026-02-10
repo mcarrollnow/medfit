@@ -324,7 +324,7 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-black border border-white/20 p-0">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-background border border-border p-0">
         <VisuallyHidden>
           <DialogTitle>Receipt for Order {order.id}</DialogTitle>
         </VisuallyHidden>
@@ -332,58 +332,58 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute right-6 top-6 z-10 rounded-lg p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+            className="absolute right-6 top-6 z-10 rounded-lg p-2 text-foreground/60 transition-colors hover:bg-foreground/10 hover:text-foreground"
           >
             <X className="h-5 w-5" />
           </button>
 
           {/* Receipt content - Display version (dark theme) */}
-          <div className="receipt-content p-12 text-white">
+          <div className="receipt-content p-12 text-foreground">
             {/* Header */}
             <div className="mb-12 text-center">
               <h1 className="mb-2 text-4xl font-bold tracking-tight">MODERN HEALTH PRO</h1>
-              <p className="text-sm uppercase tracking-widest text-white/40">Research Peptides Receipt</p>
-              <div className="mx-auto mt-6 h-px w-24 bg-white/20" />
+              <p className="text-sm uppercase tracking-widest text-muted-foreground">Research Peptides Receipt</p>
+              <div className="mx-auto mt-6 h-px w-24 bg-foreground/20" />
             </div>
 
             {/* Receipt Info */}
             <div className="mb-10 grid grid-cols-2 gap-6">
               <div>
-                <p className="mb-1 text-xs uppercase tracking-wider text-white/40">Receipt Number</p>
+                <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">Receipt Number</p>
                 <p className="font-mono text-lg font-bold">{order.id}</p>
               </div>
               <div>
-                <p className="mb-1 text-xs uppercase tracking-wider text-white/40">Transaction Date & Time</p>
+                <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">Transaction Date & Time</p>
                 <p className="font-mono text-lg font-bold">{formattedDate}</p>
-                {formattedTime && <p className="font-mono text-sm text-white/60">{formattedTime}</p>}
+                {formattedTime && <p className="font-mono text-sm text-foreground/60">{formattedTime}</p>}
               </div>
               <div>
-                <p className="mb-1 text-xs uppercase tracking-wider text-white/40">Payment Method</p>
+                <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">Payment Method</p>
                 <p className="text-lg font-semibold">{order.payment?.method || 'Crypto'}</p>
               </div>
               <div>
-                <p className="mb-1 text-xs uppercase tracking-wider text-white/40">Status</p>
+                <p className="mb-1 text-xs uppercase tracking-wider text-muted-foreground">Status</p>
                 <p className="text-lg font-semibold">{order.status}</p>
               </div>
             </div>
 
             {/* Transaction Hash */}
             {order.payment?.hash && order.payment.hash !== 'N/A' && (
-            <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-              <p className="mb-2 text-xs uppercase tracking-wider text-white/40">Transaction Hash</p>
-              <p className="font-mono text-sm leading-relaxed text-white/80 break-all">{order.payment.hash}</p>
+            <div className="mb-10 rounded-2xl border border-border bg-foreground/5 p-6">
+              <p className="mb-2 text-xs uppercase tracking-wider text-muted-foreground">Transaction Hash</p>
+              <p className="font-mono text-sm leading-relaxed text-foreground/80 break-all">{order.payment.hash}</p>
             </div>
             )}
 
             {/* Items */}
             <div className="mb-10">
-              <h3 className="mb-6 text-xs uppercase tracking-widest text-white/40">Order Items</h3>
+              <h3 className="mb-6 text-xs uppercase tracking-widest text-muted-foreground">Order Items</h3>
               <div className="space-y-4">
                 {order.items?.map((item: any, i: number) => (
-                  <div key={i} className="flex items-start justify-between border-b border-white/5 pb-4 last:border-0">
+                  <div key={i} className="flex items-start justify-between border-b border-border pb-4 last:border-0">
                     <div className="flex-1">
                       <p className="text-lg font-semibold leading-tight">{item.name}</p>
-                      <p className="mt-1 text-sm text-white/40">Qty: {item.quantity}</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Qty: {item.quantity}</p>
                     </div>
                     <p className="font-mono text-xl font-bold">{item.price}</p>
                   </div>
@@ -392,38 +392,38 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
             </div>
 
             {/* Totals */}
-            <div className="mb-10 space-y-3 border-t border-white/10 pt-6">
+            <div className="mb-10 space-y-3 border-t border-border pt-6">
               <div className="flex justify-between text-lg">
-                <span className="text-white/60">Subtotal</span>
+                <span className="text-foreground/60">Subtotal</span>
                 <span className="font-mono font-semibold">{order.total}</span>
               </div>
               <div className="flex justify-between text-lg">
-                <span className="text-white/60">Shipping</span>
+                <span className="text-foreground/60">Shipping</span>
                 <span className="font-mono font-semibold">$0.00</span>
               </div>
-              <div className="flex items-center justify-between border-t border-white/10 pt-4 text-2xl">
+              <div className="flex items-center justify-between border-t border-border pt-4 text-2xl">
                 <span className="font-bold">Total Paid</span>
                 <span className="font-mono font-bold">{order.payment?.amount || order.total}</span>
               </div>
             </div>
 
             {/* Rewards Points */}
-            <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
-              <p className="mb-2 text-xs uppercase tracking-wider text-white/40">Rewards Earned</p>
+            <div className="mb-10 rounded-2xl border border-border bg-foreground/5 p-6 text-center">
+              <p className="mb-2 text-xs uppercase tracking-wider text-muted-foreground">Rewards Earned</p>
               <p className="text-3xl font-bold">+{order.points_earned || 0} Points</p>
             </div>
 
             {/* Tracking Info */}
             {order.tracking && order.tracking.number && order.tracking.number !== 'Pending' && (
-              <div className="mb-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-                <h3 className="mb-4 text-xs uppercase tracking-widest text-white/40">Shipping Details</h3>
+              <div className="mb-10 rounded-2xl border border-border bg-foreground/5 p-6">
+                <h3 className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Shipping Details</h3>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-xs text-white/40">Carrier</p>
+                    <p className="text-xs text-muted-foreground">Carrier</p>
                     <p className="text-lg font-semibold">{order.tracking.carrier}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-white/40">Tracking Number</p>
+                    <p className="text-xs text-muted-foreground">Tracking Number</p>
                     <p className="font-mono text-base font-bold">{order.tracking.number}</p>
                   </div>
                 </div>
@@ -431,24 +431,24 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
             )}
 
             {/* Footer */}
-            <div className="border-t border-white/10 pt-8 text-center">
-              <p className="text-xs leading-relaxed text-white/40">
+            <div className="border-t border-border pt-8 text-center">
+              <p className="text-xs leading-relaxed text-muted-foreground">
                 For research purposes only. Not for human consumption.
                 <br />
                 Thank you for your purchase from Modern Health Pro.
               </p>
-              <div className="mx-auto mt-6 h-px w-16 bg-white/20" />
-              <p className="mt-4 text-xs text-white/20">Questions? Contact support@modernhealthpro.com</p>
+              <div className="mx-auto mt-6 h-px w-16 bg-foreground/20" />
+              <p className="mt-4 text-xs text-muted-foreground/50">Questions? Contact support@modernhealthpro.com</p>
             </div>
           </div>
 
           {/* Action buttons */}
-          <div className="border-t border-white/10 bg-white/5 p-6">
+          <div className="border-t border-border bg-foreground/5 p-6">
             <div className="grid grid-cols-3 gap-3">
               <button
                 onClick={handlePrint}
                 disabled={isExporting}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-transparent py-3 text-sm font-bold text-white transition-all hover:bg-white/10 disabled:opacity-50"
+                className="flex items-center justify-center gap-2 rounded-xl border border-border bg-transparent py-3 text-sm font-bold text-foreground transition-all hover:bg-foreground/10 disabled:opacity-50"
               >
                 <Printer className="h-4 w-4" />
                 Print
@@ -456,7 +456,7 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
               <button
                 onClick={handleDownloadPNG}
                 disabled={isExporting}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-transparent py-3 text-sm font-bold text-white transition-all hover:bg-white/10 disabled:opacity-50"
+                className="flex items-center justify-center gap-2 rounded-xl border border-border bg-transparent py-3 text-sm font-bold text-foreground transition-all hover:bg-foreground/10 disabled:opacity-50"
               >
                 {isExporting && exportType === 'png' ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -468,7 +468,7 @@ export function ReceiptModal({ order, isOpen, onClose }: ReceiptModalProps) {
               <button
                 onClick={handleDownloadPDF}
                 disabled={isExporting}
-                className="flex items-center justify-center gap-2 rounded-xl bg-white py-3 text-sm font-bold text-black transition-all hover:bg-white/90 disabled:opacity-50"
+                className="flex items-center justify-center gap-2 rounded-xl bg-white py-3 text-sm font-bold text-black transition-all hover:bg-card/90 disabled:opacity-50"
               >
                 {isExporting && exportType === 'pdf' ? (
                   <Loader2 className="h-4 w-4 animate-spin" />

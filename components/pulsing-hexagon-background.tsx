@@ -604,7 +604,7 @@ export default function PulsingHexagonBackground({
   }, [settings.gridScaleFactor]) 
 
   return (
-    <div className="fixed inset-0 bg-[#0F0F0F] z-0">
+    <div className="fixed inset-0 bg-background z-0">
       
       {showControls && (
         <SettingsPanel 

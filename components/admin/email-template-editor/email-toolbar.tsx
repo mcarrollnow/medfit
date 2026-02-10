@@ -92,15 +92,15 @@ export function EmailToolbar({
   const variables = getVariables()
 
   return (
-    <div className="border-b border-white/10 bg-black/30 p-2 flex flex-wrap gap-1 items-center">
+    <div className="border-b border-border bg-foreground/30 p-2 flex flex-wrap gap-1 items-center">
       {/* View Mode Tabs */}
-      <div className="flex items-center gap-1 mr-3 pr-3 border-r border-white/10">
+      <div className="flex items-center gap-1 mr-3 pr-3 border-r border-border">
         <Button
           variant="ghost"
           size="sm"
           className={cn(
             "h-8 px-3 text-xs",
-            viewMode === 'design' && "bg-white/10 text-white"
+            viewMode === 'design' && "bg-foreground/10 text-foreground"
           )}
           onClick={() => onViewModeChange('design')}
         >
@@ -112,7 +112,7 @@ export function EmailToolbar({
           size="sm"
           className={cn(
             "h-8 px-3 text-xs",
-            viewMode === 'html' && "bg-white/10 text-white"
+            viewMode === 'html' && "bg-foreground/10 text-foreground"
           )}
           onClick={() => onViewModeChange('html')}
         >
@@ -124,7 +124,7 @@ export function EmailToolbar({
           size="sm"
           className={cn(
             "h-8 px-3 text-xs",
-            viewMode === 'preview' && "bg-white/10 text-white"
+            viewMode === 'preview' && "bg-foreground/10 text-foreground"
           )}
           onClick={() => onViewModeChange('preview')}
         >
@@ -146,17 +146,17 @@ export function EmailToolbar({
             <ChevronDown className="h-3 w-3 ml-1.5" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-64 bg-[#1a1a1a] border-white/10">
-          <DropdownMenuLabel className="text-white/50 text-xs">Supabase Variables</DropdownMenuLabel>
-          <DropdownMenuSeparator className="bg-white/10" />
+        <DropdownMenuContent className="w-64 bg-card border-border">
+          <DropdownMenuLabel className="text-muted-foreground text-xs">Supabase Variables</DropdownMenuLabel>
+          <DropdownMenuSeparator className="bg-foreground/10" />
           {variables.map((variable) => (
             <DropdownMenuItem
               key={variable.value}
               onClick={() => onInsertVariable(variable.value)}
               className="flex flex-col items-start gap-0.5 cursor-pointer"
             >
-              <span className="text-white font-medium">{variable.label}</span>
-              <span className="text-xs text-white/40 font-mono">{variable.value}</span>
+              <span className="text-foreground font-medium">{variable.label}</span>
+              <span className="text-xs text-muted-foreground font-mono">{variable.value}</span>
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
@@ -164,7 +164,7 @@ export function EmailToolbar({
 
       {viewMode === 'design' && editor && (
         <>
-          <div className="w-px h-6 bg-white/10 mx-2" />
+          <div className="w-px h-6 bg-foreground/10 mx-2" />
 
           {/* Text Formatting */}
           <Toggle
@@ -172,7 +172,7 @@ export function EmailToolbar({
             pressed={editor.isActive("bold")}
             onPressedChange={() => editor.chain().focus().toggleBold().run()}
             aria-label="Toggle bold"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Bold className="h-4 w-4" />
           </Toggle>
@@ -181,7 +181,7 @@ export function EmailToolbar({
             pressed={editor.isActive("italic")}
             onPressedChange={() => editor.chain().focus().toggleItalic().run()}
             aria-label="Toggle italic"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Italic className="h-4 w-4" />
           </Toggle>
@@ -190,7 +190,7 @@ export function EmailToolbar({
             pressed={editor.isActive("underline")}
             onPressedChange={() => editor.chain().focus().toggleUnderline().run()}
             aria-label="Toggle underline"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Underline className="h-4 w-4" />
           </Toggle>
@@ -199,12 +199,12 @@ export function EmailToolbar({
             pressed={editor.isActive("strike")}
             onPressedChange={() => editor.chain().focus().toggleStrike().run()}
             aria-label="Toggle strikethrough"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Strikethrough className="h-4 w-4" />
           </Toggle>
 
-          <div className="w-px h-6 bg-white/10 mx-1" />
+          <div className="w-px h-6 bg-foreground/10 mx-1" />
 
           {/* Headings */}
           <Toggle
@@ -212,7 +212,7 @@ export function EmailToolbar({
             pressed={editor.isActive("heading", { level: 1 })}
             onPressedChange={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
             aria-label="Heading 1"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Heading1 className="h-4 w-4" />
           </Toggle>
@@ -221,7 +221,7 @@ export function EmailToolbar({
             pressed={editor.isActive("heading", { level: 2 })}
             onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
             aria-label="Heading 2"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Heading2 className="h-4 w-4" />
           </Toggle>
@@ -230,12 +230,12 @@ export function EmailToolbar({
             pressed={editor.isActive("heading", { level: 3 })}
             onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
             aria-label="Heading 3"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Heading3 className="h-4 w-4" />
           </Toggle>
 
-          <div className="w-px h-6 bg-white/10 mx-1" />
+          <div className="w-px h-6 bg-foreground/10 mx-1" />
 
           {/* Lists */}
           <Toggle
@@ -243,7 +243,7 @@ export function EmailToolbar({
             pressed={editor.isActive("bulletList")}
             onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
             aria-label="Toggle bullet list"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <List className="h-4 w-4" />
           </Toggle>
@@ -252,12 +252,12 @@ export function EmailToolbar({
             pressed={editor.isActive("orderedList")}
             onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
             aria-label="Toggle ordered list"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <ListOrdered className="h-4 w-4" />
           </Toggle>
 
-          <div className="w-px h-6 bg-white/10 mx-1" />
+          <div className="w-px h-6 bg-foreground/10 mx-1" />
 
           {/* Alignment */}
           <Toggle
@@ -265,7 +265,7 @@ export function EmailToolbar({
             pressed={editor.isActive({ textAlign: "left" })}
             onPressedChange={() => editor.chain().focus().setTextAlign("left").run()}
             aria-label="Align left"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <AlignLeft className="h-4 w-4" />
           </Toggle>
@@ -274,7 +274,7 @@ export function EmailToolbar({
             pressed={editor.isActive({ textAlign: "center" })}
             onPressedChange={() => editor.chain().focus().setTextAlign("center").run()}
             aria-label="Align center"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <AlignCenter className="h-4 w-4" />
           </Toggle>
@@ -283,12 +283,12 @@ export function EmailToolbar({
             pressed={editor.isActive({ textAlign: "right" })}
             onPressedChange={() => editor.chain().focus().setTextAlign("right").run()}
             aria-label="Align right"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <AlignRight className="h-4 w-4" />
           </Toggle>
 
-          <div className="w-px h-6 bg-white/10 mx-1" />
+          <div className="w-px h-6 bg-foreground/10 mx-1" />
 
           {/* Link */}
           <Popover>
@@ -297,13 +297,13 @@ export function EmailToolbar({
                 <LinkIcon className="h-4 w-4" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-80 bg-[#1a1a1a] border-white/10">
+            <PopoverContent className="w-80 bg-card border-border">
               <div className="flex gap-2">
                 <Input
                   placeholder="https://example.com"
                   value={linkUrl}
                   onChange={(e) => setLinkUrl(e.target.value)}
-                  className="bg-white/5 border-white/10 text-white"
+                  className="bg-foreground/5 border-border text-foreground"
                 />
                 <Button onClick={addLink} size="sm">Add</Button>
               </div>
@@ -315,7 +315,7 @@ export function EmailToolbar({
             pressed={editor.isActive("blockquote")}
             onPressedChange={() => editor.chain().focus().toggleBlockquote().run()}
             aria-label="Toggle blockquote"
-            className="data-[state=on]:bg-white/20"
+            className="data-[state=on]:bg-foreground/20"
           >
             <Quote className="h-4 w-4" />
           </Toggle>
@@ -329,7 +329,7 @@ export function EmailToolbar({
             <Minus className="h-4 w-4" />
           </Button>
 
-          <div className="w-px h-6 bg-white/10 mx-1" />
+          <div className="w-px h-6 bg-foreground/10 mx-1" />
 
           {/* Undo/Redo */}
           <Button
@@ -358,7 +358,7 @@ export function EmailToolbar({
         <Button
           variant="outline"
           size="sm"
-          className="h-8 px-3 text-xs border-white/10 bg-white/5 hover:bg-white/10"
+          className="h-8 px-3 text-xs border-border bg-foreground/5 hover:bg-foreground/10"
           onClick={onExportHtml}
         >
           <Download className="h-3 w-3 mr-1.5" />

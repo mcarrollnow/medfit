@@ -73,7 +73,7 @@ function RevolutPaymentContent() {
       <div className="max-w-lg mx-auto">
         <Link
           href={`/payment?orderId=${orderData.orderId}&total=${orderData.orderTotal}&wallet=`}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Payment Options
@@ -86,25 +86,25 @@ function RevolutPaymentContent() {
               <RevolutLogo className="w-6 h-6 text-[#0075EB]" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
                 Revolut Pay
               </h1>
-              <p className="text-white/50">
-                Total: <span className="font-semibold text-white">${orderData.orderTotal.toFixed(2)}</span>
+              <p className="text-muted-foreground">
+                Total: <span className="font-semibold text-foreground">${orderData.orderTotal.toFixed(2)}</span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Payment Card */}
-        <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
           <CardContent className="p-6 sm:p-8">
             <div className="space-y-6">
               <div className="text-center">
-                <p className="text-white/70 mb-2">
+                <p className="text-foreground/70 mb-2">
                   Pay instantly with your Revolut account
                 </p>
-                <p className="text-white/50 text-sm">
+                <p className="text-muted-foreground text-sm">
                   Accept card, Apple Pay, or Google Pay
                 </p>
               </div>
@@ -119,19 +119,19 @@ function RevolutPaymentContent() {
               />
 
               <div className="flex items-center gap-4">
-                <div className="flex-1 h-px bg-white/10" />
-                <span className="text-white/30 text-xs">OR</span>
-                <div className="flex-1 h-px bg-white/10" />
+                <div className="flex-1 h-px bg-foreground/10" />
+                <span className="text-muted-foreground text-xs">OR</span>
+                <div className="flex-1 h-px bg-foreground/10" />
               </div>
 
               <div className="flex justify-center gap-4">
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg">
-                  <ApplePayIcon className="w-5 h-5 text-white" />
-                  <span className="text-white/70 text-sm">Apple Pay</span>
+                <div className="flex items-center gap-2 px-3 py-2 bg-foreground/5 rounded-lg">
+                  <ApplePayIcon className="w-5 h-5 text-foreground" />
+                  <span className="text-foreground/70 text-sm">Apple Pay</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg">
+                <div className="flex items-center gap-2 px-3 py-2 bg-foreground/5 rounded-lg">
                   <GooglePayIcon className="w-5 h-5" />
-                  <span className="text-white/70 text-sm">Google Pay</span>
+                  <span className="text-foreground/70 text-sm">Google Pay</span>
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ function RevolutPaymentContent() {
 
         {/* Security Note */}
         <div className="mt-6 text-center">
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-muted-foreground">
             Your payment is secured by Revolut
           </p>
         </div>

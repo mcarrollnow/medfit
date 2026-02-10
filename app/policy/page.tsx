@@ -148,7 +148,7 @@ export default function PolicyPage() {
                       viewport={{ once: true }}
                     >
                       <Link href={`/${policy.slug}`} className="block group">
-                        <div className="glass-card rounded-2xl p-6 md:p-8 hover:bg-white/[0.04] transition-all duration-500">
+                        <div className="glass-card rounded-2xl p-6 md:p-8 hover:bg-foreground/[0.05] transition-all duration-500">
                           <div className="flex flex-col md:flex-row md:items-center gap-6">
                             {/* Icon */}
                             <div className="glass-button rounded-2xl p-4 w-fit">
@@ -158,7 +158,7 @@ export default function PolicyPage() {
                             {/* Content */}
                             <div className="flex-1">
                               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
-                                <h2 className="font-serif text-xl md:text-2xl font-light group-hover:text-white transition-colors">
+                                <h2 className="font-serif text-xl md:text-2xl font-light group-hover:text-foreground transition-colors">
                                   {policy.title}
                                 </h2>
                                 <span className="text-xs font-mono text-muted-foreground">
@@ -210,7 +210,7 @@ export default function PolicyPage() {
                 </p>
                 <a 
                   href="mailto:legal@modernhealthpro.com" 
-                  className="glass-button px-6 py-3 rounded-full inline-block hover:bg-white/10 transition-all duration-300"
+                  className="glass-button px-6 py-3 rounded-full inline-block hover:bg-foreground/10 transition-all duration-300"
                 >
                   <span className="font-mono tracking-wider text-sm">legal@modernhealthpro.com</span>
                 </a>
@@ -224,23 +224,23 @@ export default function PolicyPage() {
 
       <style jsx global>{`
         .glass-card {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(58,66,51,0.04);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(58, 66, 51, 0.08);
         }
         
         .glass-button {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(58,66,51,0.06);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(58,66,51,0.08);
           transition: all 0.3s ease;
         }
         
         .glass-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+          background: rgba(58,66,51,0.08);
+          border-color: rgba(58,66,51,0.12);
         }
         
         .font-serif {

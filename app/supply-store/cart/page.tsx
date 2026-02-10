@@ -136,7 +136,7 @@ export default function SupplyStoreCartPage() {
                       </div>
                       <button
                         onClick={() => removeItem(item.product.sku)}
-                        className="p-2 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors text-muted-foreground hover:text-red-400"
+                        className="p-2 rounded-lg hover:bg-foreground/[0.06] transition-colors text-muted-foreground hover:text-red-400"
                       >
                         <Trash2 className="w-5 h-5" />
                       </button>
@@ -193,7 +193,7 @@ export default function SupplyStoreCartPage() {
                   {shipping > 0 && (
                     <p className="text-xs text-muted-foreground italic">Free shipping on orders over $500</p>
                   )}
-                  <div className="border-t border-[rgba(255,255,255,0.1)] pt-4">
+                  <div className="border-t border-border pt-4">
                     <div className="flex justify-between">
                       <span className="font-serif text-xl font-light">Total</span>
                       <span className="font-mono text-xl">{formatPrice(total)}</span>

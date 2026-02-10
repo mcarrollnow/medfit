@@ -172,7 +172,7 @@ export default function NotificationCenter({ className = '' }: NotificationCente
     <>
       <button
         onClick={() => setShowOverlay(true)}
-        className={`relative text-white hover:text-primary transition p-2 ${className}`}
+        className={`relative text-foreground hover:text-primary transition p-2 ${className}`}
       >
         <Bell className="w-6 h-6" />
         {unreadCount > 0 && (
@@ -184,14 +184,14 @@ export default function NotificationCenter({ className = '' }: NotificationCente
 
       {/* Notification Overlay */}
       {showOverlay && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setShowOverlay(false)}>
+        <div className="fixed inset-0 z-50 bg-background/80 flex items-center justify-center p-4" onClick={() => setShowOverlay(false)}>
           <div 
-            className="bg-[#111111] border border-gray-800 rounded-lg w-full max-w-md max-h-[90vh] flex flex-col"
+            className="bg-card border border-border rounded-lg w-full max-w-md max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-800">
-              <h2 className="text-xl font-bold text-white">Notifications</h2>
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <h2 className="text-xl font-bold text-foreground">Notifications</h2>
               <div className="flex items-center gap-2">
                 {unreadCount > 0 && (
                   <button
@@ -204,7 +204,7 @@ export default function NotificationCenter({ className = '' }: NotificationCente
                 )}
                 <button
                   onClick={() => setShowOverlay(false)}
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -214,7 +214,7 @@ export default function NotificationCenter({ className = '' }: NotificationCente
             {/* Notifications List */}
             <div className="flex-1 overflow-y-auto">
               {notifications.length === 0 ? (
-                <div className="p-8 text-center text-gray-400">
+                <div className="p-8 text-center text-muted-foreground">
                   <Bell className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p>No notifications yet</p>
                 </div>
@@ -224,19 +224,19 @@ export default function NotificationCenter({ className = '' }: NotificationCente
                     <button
                       key={notification.id}
                       onClick={() => handleNotificationClick(notification)}
-                      className={`w-full p-4 hover:bg-gray-900/50 transition text-left ${
-                        !notification.read ? 'bg-gray-900/30' : ''
+                      className={`w-full p-4 hover:bg-card/50 transition text-left ${
+                        !notification.read ? 'bg-card/30' : ''
                       }`}
                     >
                       <div className="flex gap-3">
-                        <div className={`flex-shrink-0 ${!notification.read ? 'text-primary' : 'text-gray-400'}`}>
+                        <div className={`flex-shrink-0 ${!notification.read ? 'text-primary' : 'text-muted-foreground'}`}>
                           {getNotificationIcon(notification.type)}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className={`font-medium ${!notification.read ? 'text-white' : 'text-gray-300'}`}>
+                          <h3 className={`font-medium ${!notification.read ? 'text-foreground' : 'text-foreground/70'}`}>
                             {notification.title}
                           </h3>
-                          <p className="text-sm text-gray-400 mt-1">{notification.message}</p>
+                          <p className="text-sm text-muted-foreground mt-1">{notification.message}</p>
                           <p className="text-xs text-gray-500 mt-2">{formatTimeAgo(notification.created_at)}</p>
                         </div>
                         {!notification.read && (
@@ -253,7 +253,7 @@ export default function NotificationCenter({ className = '' }: NotificationCente
 
             {/* Footer */}
             {notifications.length > 0 && (
-              <div className="p-4 border-t border-gray-800">
+              <div className="p-4 border-t border-border">
                 <a
                   href={`${mainAppUrl}/notifications`}
                   className="block text-center text-primary hover:text-primary/80 font-medium"

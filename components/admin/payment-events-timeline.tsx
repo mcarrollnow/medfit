@@ -50,7 +50,7 @@ const getEventIcon = (status: string) => {
     case 'refunded':
       return <Receipt className="w-5 h-5 text-blue-400" />
     default:
-      return <Clock className="w-5 h-5 text-white/50" />
+      return <Clock className="w-5 h-5 text-muted-foreground" />
   }
 }
 
@@ -68,7 +68,7 @@ const getStatusColor = (status: string) => {
     case 'refunded':
       return 'bg-blue-500/20 border-blue-500/30 text-blue-400'
     default:
-      return 'bg-white/10 border-white/20 text-white/60'
+      return 'bg-foreground/10 border-border text-foreground/60'
   }
 }
 
@@ -156,11 +156,11 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
 
   if (loading) {
     return (
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
         <div className="relative z-10 flex items-center justify-center py-8">
-          <RefreshCw className="w-5 h-5 animate-spin text-white/40 mr-3" />
-          <span className="text-white/40">Loading payment history...</span>
+          <RefreshCw className="w-5 h-5 animate-spin text-muted-foreground mr-3" />
+          <span className="text-muted-foreground">Loading payment history...</span>
         </div>
       </div>
     )
@@ -168,13 +168,13 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
 
   if (error) {
     return (
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
         <div className="relative z-10 text-center py-8">
           <p className="text-red-400">{error}</p>
           <button
             onClick={fetchEvents}
-            className="mt-4 text-white/50 hover:text-white transition-colors text-sm"
+            className="mt-4 text-muted-foreground hover:text-foreground transition-colors text-sm"
           >
             Try again
           </button>
@@ -185,17 +185,17 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
 
   if (events.length === 0) {
     return (
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
         <div className="relative z-10">
-          <h4 className="text-xl font-semibold text-white mb-4 flex items-center">
-            <CreditCard className="w-5 h-5 mr-3 text-white/50" />
+          <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center">
+            <CreditCard className="w-5 h-5 mr-3 text-muted-foreground" />
             Payment History
           </h4>
           <div className="text-center py-8">
-            <Clock className="w-10 h-10 text-white/20 mx-auto mb-3" />
-            <p className="text-white/50">No payment events recorded yet</p>
-            <p className="text-white/30 text-sm mt-1">
+            <Clock className="w-10 h-10 text-muted-foreground/50 mx-auto mb-3" />
+            <p className="text-muted-foreground">No payment events recorded yet</p>
+            <p className="text-muted-foreground text-sm mt-1">
               Payment activity will appear here when Stripe events are received
             </p>
           </div>
@@ -205,17 +205,17 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-6">
-          <h4 className="text-xl font-semibold text-white flex items-center">
-            <CreditCard className="w-5 h-5 mr-3 text-white/50" />
+          <h4 className="text-xl font-semibold text-foreground flex items-center">
+            <CreditCard className="w-5 h-5 mr-3 text-muted-foreground" />
             Payment History
           </h4>
           <button
             onClick={fetchEvents}
-            className="text-white/40 hover:text-white transition-colors"
+            className="text-muted-foreground hover:text-foreground transition-colors"
             title="Refresh"
           >
             <RefreshCw className="w-4 h-4" />
@@ -226,31 +226,31 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
           {events.map((event, index) => (
             <div
               key={event.id}
-              className={`relative pl-8 pb-4 ${index < events.length - 1 ? 'border-l-2 border-white/10 ml-2.5' : 'ml-2.5'}`}
+              className={`relative pl-8 pb-4 ${index < events.length - 1 ? 'border-l-2 border-border ml-2.5' : 'ml-2.5'}`}
             >
               {/* Timeline dot */}
-              <div className="absolute -left-[11px] top-0 bg-black rounded-full p-1">
+              <div className="absolute -left-[11px] top-0 bg-background rounded-full p-1">
                 {getEventIcon(event.status)}
               </div>
 
               {/* Event content */}
-              <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+              <div className="bg-foreground/[0.04] rounded-xl p-4 border border-border">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <span className="font-medium text-white">
+                      <span className="font-medium text-foreground">
                         {formatEventType(event.event_type)}
                       </span>
                       <span className={`px-2 py-0.5 rounded text-xs font-medium uppercase ${getStatusColor(event.status)}`}>
                         {event.status}
                       </span>
                     </div>
-                    <p className="text-white/40 text-sm mt-1">
+                    <p className="text-muted-foreground text-sm mt-1">
                       {formatTimestamp(event.event_timestamp)}
                     </p>
                   </div>
                   {event.amount && (
-                    <span className={`text-lg font-bold ${event.status === 'succeeded' ? 'text-emerald-400' : event.status === 'failed' ? 'text-red-400' : 'text-white'}`}>
+                    <span className={`text-lg font-bold ${event.status === 'succeeded' ? 'text-emerald-400' : event.status === 'failed' ? 'text-red-400' : 'text-foreground'}`}>
                       {formatAmount(event.amount, event.currency)}
                     </span>
                   )}
@@ -259,14 +259,14 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
                 {/* Payment details */}
                 <div className="mt-3 space-y-2">
                   {event.payment_method_brand && event.payment_method_last4 && (
-                    <div className="flex items-center text-sm text-white/60">
+                    <div className="flex items-center text-sm text-foreground/60">
                       <CreditCard className="w-4 h-4 mr-2" />
                       {formatCardBrand(event.payment_method_brand)} •••• {event.payment_method_last4}
                     </div>
                   )}
 
                   {event.customer_email && (
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-muted-foreground">
                       Customer: {event.customer_email}
                     </p>
                   )}
@@ -300,10 +300,10 @@ export function PaymentEventsTimeline({ orderId }: PaymentEventsTimelineProps) {
 
                 {/* Stripe IDs (collapsed) */}
                 <details className="mt-3">
-                  <summary className="text-xs text-white/30 cursor-pointer hover:text-white/50 transition-colors">
+                  <summary className="text-xs text-muted-foreground cursor-pointer hover:text-muted-foreground transition-colors">
                     Technical Details
                   </summary>
-                  <div className="mt-2 text-xs text-white/30 space-y-1 font-mono">
+                  <div className="mt-2 text-xs text-muted-foreground space-y-1 font-mono">
                     <p>Event ID: {event.stripe_event_id}</p>
                     {event.stripe_payment_intent_id && (
                       <p>Payment Intent: {event.stripe_payment_intent_id}</p>

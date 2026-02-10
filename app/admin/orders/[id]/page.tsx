@@ -522,7 +522,7 @@ export default function OrderDetailEditPage() {
                 </button>
                 <button
                   onClick={() => setDeleteConfirmOpen(false)}
-                  className="px-4 py-2 bg-white/10 text-white font-semibold hover:bg-white/20 rounded-lg flex items-center gap-2 transition-all duration-300"
+                  className="px-4 py-2 bg-foreground/10 text-foreground font-semibold hover:bg-foreground/20 rounded-lg flex items-center gap-2 transition-all duration-300"
                 >
                   <X className="w-4 h-4" />
                   No
@@ -552,7 +552,7 @@ export default function OrderDetailEditPage() {
             <button
               onClick={handleSaveOrder}
               disabled={saving}
-              className="px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-card/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
             >
               <Save className="w-4 h-4" />
               <span>{saving ? 'Saving...' : 'Save Changes'}</span>
@@ -596,7 +596,7 @@ export default function OrderDetailEditPage() {
           {/* Main Content - vertical stack with generous spacing */}
           <div className="lg:col-span-2 space-y-8 md:space-y-10">
             {/* Order Status */}
-            <div className="glass-card rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:bg-white/[0.04]">
+            <div className="glass-card rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:bg-foreground/[0.05]">
               <h2 className="font-serif text-xl md:text-2xl font-light text-foreground mb-8">Order Status</h2>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -604,7 +604,7 @@ export default function OrderDetailEditPage() {
                     <select
                       value={orderStatus}
                       onChange={(e) => setOrderStatus(e.target.value as OrderStatus)}
-                      className="w-full h-11 px-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-colors [&>option]:bg-neutral-900 [&>option]:text-white"
+                      className="w-full h-11 px-4 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border transition-colors [&>option]:bg-card [&>option]:text-foreground"
                     >
                       <option value="pending">Pending</option>
                       <option value="payment_requested">Payment Requested</option>
@@ -620,7 +620,7 @@ export default function OrderDetailEditPage() {
                     <select
                       value={paymentStatus}
                       onChange={(e) => setPaymentStatus(e.target.value as PaymentStatus)}
-                      className="w-full h-11 px-4 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-colors [&>option]:bg-neutral-900 [&>option]:text-white"
+                      className="w-full h-11 px-4 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border transition-colors [&>option]:bg-card [&>option]:text-foreground"
                     >
                       <option value="pending">Pending</option>
                       <option value="paid">Paid</option>
@@ -631,7 +631,7 @@ export default function OrderDetailEditPage() {
                 </div>
                 
                 {/* Payment Button */}
-                <div className="mt-6 pt-6 border-t border-white/10">
+                <div className="mt-6 pt-6 border-t border-border">
                   {paymentStatus === 'paid' ? (
                     <div className="flex items-center gap-3 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                       <Check className="w-5 h-5 text-emerald-400" />
@@ -654,7 +654,7 @@ export default function OrderDetailEditPage() {
             </div>
 
             {/* Line Items */}
-            <div className="glass-card rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:bg-white/[0.04]">
+            <div className="glass-card rounded-3xl p-8 md:p-10 lg:p-12 transition-all duration-500 hover:bg-foreground/[0.05]">
               <h2 className="font-serif text-xl md:text-2xl font-light text-foreground mb-8 flex items-center gap-3">
                 <Package className="w-5 h-5 text-muted-foreground" />
                 Order Items
@@ -662,7 +662,7 @@ export default function OrderDetailEditPage() {
                 <div className="space-y-3">
                   {order?.order_items && order.order_items.length > 0 ? (
                     order.order_items.map((item) => (
-                      <div key={item.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 glass-button rounded-xl hover:border-white/20 transition-all">
+                      <div key={item.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 glass-button rounded-xl hover:border-border transition-all">
                         <div className="flex items-center gap-4 min-w-0">
                           <div className="h-10 w-10 rounded-lg glass-button flex items-center justify-center flex-shrink-0">
                             <Package className="h-5 w-5 text-muted-foreground" />
@@ -692,7 +692,7 @@ export default function OrderDetailEditPage() {
             </div>
 
             {/* Shipping & Fulfillment */}
-            <div className="glass-card rounded-3xl p-6 md:p-8 lg:p-10 transition-all duration-500 hover:bg-white/[0.04]">
+            <div className="glass-card rounded-3xl p-6 md:p-8 lg:p-10 transition-all duration-500 hover:bg-foreground/[0.05]">
               <h2 className="font-serif text-xl md:text-2xl font-light text-foreground mb-6 flex items-center gap-3">
                 <Truck className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                 Shipping & Fulfillment
@@ -707,7 +707,7 @@ export default function OrderDetailEditPage() {
                     value={shippingInfo.carrier}
                     onChange={(e) => setShippingInfo({ ...shippingInfo, carrier: e.target.value })}
                     placeholder="e.g., FedEx, UPS, USPS"
-                    className="w-full h-11 px-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors"
+                    className="w-full h-11 px-4 bg-foreground/5 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border transition-colors"
                   />
                 </div>
                 <div>
@@ -717,7 +717,7 @@ export default function OrderDetailEditPage() {
                     value={shippingInfo.trackingNumber}
                     onChange={(e) => setShippingInfo({ ...shippingInfo, trackingNumber: e.target.value })}
                     placeholder="Enter tracking number"
-                    className="w-full h-11 px-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors"
+                    className="w-full h-11 px-4 bg-foreground/5 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border transition-colors"
                   />
                 </div>
               </div>
@@ -737,7 +737,7 @@ export default function OrderDetailEditPage() {
                   href={`/api/admin/orders/${order?.id}/shipping-label`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-medium transition-colors text-sm"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-foreground/10 hover:bg-foreground/20 border border-border text-foreground rounded-xl font-medium transition-colors text-sm"
                   title="Download/view shipping label"
                 >
                   <Download className="w-4 h-4" />
@@ -746,7 +746,7 @@ export default function OrderDetailEditPage() {
                 <button
                   onClick={handlePrintLabel}
                   disabled={printingLabel}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-foreground/10 hover:bg-foreground/20 border border-border text-foreground rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                   title="Print shipping label"
                 >
                   {printingLabel ? (
@@ -761,7 +761,7 @@ export default function OrderDetailEditPage() {
                 <button
                   onClick={handleSendTrackingSms}
                   disabled={sendingTrackingSms || !shippingInfo.trackingNumber}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-foreground/10 hover:bg-foreground/20 border border-border text-foreground rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                   title={!shippingInfo.trackingNumber ? 'Add tracking number first' : 'Send tracking info via SMS'}
                 >
                   {sendingTrackingSms ? (
@@ -777,7 +777,7 @@ export default function OrderDetailEditPage() {
 
               {/* Status Messages */}
               {printLabelSuccess && (
-                <div className="mb-3 p-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm flex items-center gap-2 text-muted-foreground">
+                <div className="mb-3 p-3 bg-foreground/[0.04] border border-border rounded-xl text-sm flex items-center gap-2 text-muted-foreground">
                   <Printer className="w-4 h-4 flex-shrink-0" />
                   Shipping label queued for printing
                 </div>
@@ -790,7 +790,7 @@ export default function OrderDetailEditPage() {
                 </div>
               )}
               {trackingSmsSuccess && (
-                <div className="mb-3 p-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm flex items-center gap-2 text-muted-foreground">
+                <div className="mb-3 p-3 bg-foreground/[0.04] border border-border rounded-xl text-sm flex items-center gap-2 text-muted-foreground">
                   <Check className="w-4 h-4 flex-shrink-0" />
                   Tracking info sent to customer via SMS
                 </div>
@@ -805,7 +805,7 @@ export default function OrderDetailEditPage() {
 
               {/* SMS Preview */}
               {shippingInfo.trackingNumber && (customerUser?.phone || order?.customers?.phone) && (
-                <div className="p-4 bg-white/[0.02] border border-white/[0.06] rounded-xl">
+                <div className="p-4 bg-foreground/[0.03] border border-border rounded-xl">
                   <p className="text-xs text-muted-foreground mb-2 flex items-center gap-2">
                     <Send className="w-3 h-3" />
                     SMS Preview (to {customerUser?.phone || order?.customers?.phone})
@@ -823,7 +823,7 @@ export default function OrderDetailEditPage() {
             {order && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Order Photos QR Link */}
-                <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.04]">
+                <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-foreground/[0.05]">
                   <div className="flex items-center gap-3 mb-4">
                     <QrCode className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
@@ -839,7 +839,7 @@ export default function OrderDetailEditPage() {
                         const url = `${window.location.origin}/order-photos/${order.order_number}`
                         navigator.clipboard.writeText(url)
                       }}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-mono glass-button hover:bg-white/[0.08] transition-all"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-mono glass-button hover:bg-foreground/[0.08] transition-all"
                     >
                       <Copy className="w-4 h-4" />
                       Copy
@@ -857,7 +857,7 @@ export default function OrderDetailEditPage() {
                 </div>
 
                 {/* Internal Notes */}
-                <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.04]">
+                <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-foreground/[0.05]">
                   <div className="flex items-center gap-3 mb-4">
                     <Edit2 className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
@@ -869,7 +869,7 @@ export default function OrderDetailEditPage() {
                     onChange={(e) => setAdminNotes(e.target.value)}
                     placeholder="Add internal notes about this order..."
                     rows={3}
-                    className="w-full px-4 py-3 bg-white/[0.03] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/20 transition-colors resize-none border border-white/[0.08]"
+                    className="w-full px-4 py-3 bg-foreground/[0.04] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border transition-colors resize-none border border-border"
                   />
                 </div>
               </div>
@@ -893,7 +893,7 @@ export default function OrderDetailEditPage() {
           {/* Sidebar - stacked vertically with space */}
           <div className="space-y-6 md:space-y-8">
             {/* Customer Information */}
-            <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.04]">
+            <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-foreground/[0.05]">
               <h2 className="font-serif text-xl md:text-2xl font-light text-foreground mb-6 flex items-center gap-3">
                 <User className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                 Customer
@@ -921,7 +921,7 @@ export default function OrderDetailEditPage() {
                       </div>
                     )}
                     <div className="pt-2">
-                      <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-white/10">
+                      <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-border">
                         {order.customers.customer_type === 'b2b' ? 'Business' : 'Retail'}
                       </span>
                     </div>
@@ -931,7 +931,7 @@ export default function OrderDetailEditPage() {
 
             {/* Shipping Address */}
             {order?.customers && (order.customers.shipping_address_line1 || order.customers.shipping_city) && (
-              <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.04]">
+              <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-foreground/[0.05]">
                 <h2 className="font-serif text-xl md:text-2xl font-light text-foreground mb-6 flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                   Shipping Address
@@ -954,7 +954,7 @@ export default function OrderDetailEditPage() {
             )}
 
             {/* Order Summary */}
-            <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-white/[0.04]">
+            <div className="glass-card rounded-3xl p-6 md:p-8 transition-all duration-500 hover:bg-foreground/[0.05]">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <h2 className="font-serif text-xl md:text-2xl font-light text-foreground flex items-center gap-3">
                   <DollarSign className="w-5 h-5 text-muted-foreground flex-shrink-0" />
@@ -965,7 +965,7 @@ export default function OrderDetailEditPage() {
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                       editingAmounts 
                         ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                        : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
+                        : 'bg-foreground/10 text-foreground/60 hover:bg-foreground/20 hover:text-foreground'
                     }`}
                   >
                     <Edit2 className="w-3 h-3 inline mr-1" />
@@ -980,16 +980,16 @@ export default function OrderDetailEditPage() {
                         ⚠️ Editing amounts will update the order total. If this order has a Shopify invoice, it will be automatically updated.
                       </p>
                     </div>
-                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-white/[0.03]">
-                      <span className="text-white/50">Subtotal</span>
+                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                      <span className="text-muted-foreground">Subtotal</span>
                       <div className="flex items-center gap-2">
-                        <span className="text-white/40">$</span>
+                        <span className="text-muted-foreground">$</span>
                         <input
                           type="number"
                           step="0.01"
                           value={editSubtotal}
                           onChange={(e) => setEditSubtotal(parseFloat(e.target.value) || 0)}
-                          className="w-24 h-8 px-2 bg-white/10 border border-white/20 rounded-lg text-white text-right focus:outline-none focus:border-white/40"
+                          className="w-24 h-8 px-2 bg-foreground/10 border border-border rounded-lg text-foreground text-right focus:outline-none focus:border-border"
                         />
                       </div>
                     </div>
@@ -1006,36 +1006,36 @@ export default function OrderDetailEditPage() {
                         />
                       </div>
                     </div>
-                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-white/[0.03]">
-                      <span className="text-white/50">Tax</span>
+                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                      <span className="text-muted-foreground">Tax</span>
                       <div className="flex items-center gap-2">
-                        <span className="text-white/40">$</span>
+                        <span className="text-muted-foreground">$</span>
                         <input
                           type="number"
                           step="0.01"
                           value={editTax}
                           onChange={(e) => setEditTax(parseFloat(e.target.value) || 0)}
-                          className="w-24 h-8 px-2 bg-white/10 border border-white/20 rounded-lg text-white text-right focus:outline-none focus:border-white/40"
+                          className="w-24 h-8 px-2 bg-foreground/10 border border-border rounded-lg text-foreground text-right focus:outline-none focus:border-border"
                         />
                       </div>
                     </div>
-                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-white/[0.03]">
-                      <span className="text-white/50">Shipping</span>
+                    <div className="flex justify-between items-center text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                      <span className="text-muted-foreground">Shipping</span>
                       <div className="flex items-center gap-2">
-                        <span className="text-white/40">$</span>
+                        <span className="text-muted-foreground">$</span>
                         <input
                           type="number"
                           step="0.01"
                           value={editShipping}
                           onChange={(e) => setEditShipping(parseFloat(e.target.value) || 0)}
-                          className="w-24 h-8 px-2 bg-white/10 border border-white/20 rounded-lg text-white text-right focus:outline-none focus:border-white/40"
+                          className="w-24 h-8 px-2 bg-foreground/10 border border-border rounded-lg text-foreground text-right focus:outline-none focus:border-border"
                         />
                       </div>
                     </div>
-                    <div className="border-t border-white/10 pt-4 mt-4">
+                    <div className="border-t border-border pt-4 mt-4">
                       <div className="flex justify-between items-center p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                         <span className="font-medium text-green-400">New Total</span>
-                        <span className="font-bold text-2xl text-white">
+                        <span className="font-bold text-2xl text-foreground">
                           ${(editSubtotal - editDiscount + editTax + editShipping).toFixed(2)}
                         </span>
                       </div>
@@ -1048,9 +1048,9 @@ export default function OrderDetailEditPage() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="flex justify-between text-sm p-3 rounded-xl bg-white/[0.03]">
-                      <span className="text-white/50">Subtotal</span>
-                      <span className="text-white font-medium">${order?.subtotal?.toFixed(2) || '0.00'}</span>
+                    <div className="flex justify-between text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span className="text-foreground font-medium">${order?.subtotal?.toFixed(2) || '0.00'}</span>
                     </div>
                     {(order?.discount_amount || 0) > 0 && (
                       <div className="flex justify-between text-sm p-3 rounded-xl bg-emerald-500/10">
@@ -1059,21 +1059,21 @@ export default function OrderDetailEditPage() {
                       </div>
                     )}
                     {(order?.tax_amount || 0) > 0 && (
-                      <div className="flex justify-between text-sm p-3 rounded-xl bg-white/[0.03]">
-                        <span className="text-white/50">Tax</span>
-                        <span className="text-white font-medium">${order?.tax_amount?.toFixed(2)}</span>
+                      <div className="flex justify-between text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                        <span className="text-muted-foreground">Tax</span>
+                        <span className="text-foreground font-medium">${order?.tax_amount?.toFixed(2)}</span>
                       </div>
                     )}
                     {(order?.shipping_amount || 0) > 0 && (
-                      <div className="flex justify-between text-sm p-3 rounded-xl bg-white/[0.03]">
-                        <span className="text-white/50">Shipping</span>
-                        <span className="text-white font-medium">${order?.shipping_amount?.toFixed(2)}</span>
+                      <div className="flex justify-between text-sm p-3 rounded-xl bg-foreground/[0.04]">
+                        <span className="text-muted-foreground">Shipping</span>
+                        <span className="text-foreground font-medium">${order?.shipping_amount?.toFixed(2)}</span>
                       </div>
                     )}
-                    <div className="border-t border-white/10 pt-4 mt-4">
+                    <div className="border-t border-border pt-4 mt-4">
                       <div className="flex justify-between items-center p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                         <span className="font-medium text-green-400">Total</span>
-                        <span className="font-bold text-2xl text-white">
+                        <span className="font-bold text-2xl text-foreground">
                           ${order?.total_amount?.toFixed(2) || '0.00'}
                         </span>
                       </div>
@@ -1087,7 +1087,7 @@ export default function OrderDetailEditPage() {
               <div className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-xl p-6 transition-all duration-300">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10">
-                  <h2 className="text-lg font-semibold text-white mb-4 flex items-center">
+                  <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center">
                     <DollarSign className="w-5 h-5 mr-3 text-emerald-400" />
                     Pricing Breakdown
                   </h2>
@@ -1138,12 +1138,12 @@ export default function OrderDetailEditPage() {
                     
                     {/* Rep Commission */}
                     {pricingBreakdown.rep_commission_rate > 0 && (
-                      <div className="border-t border-white/10 pt-3 mt-3">
-                        <div className="flex justify-between text-sm p-3 rounded-xl bg-white/5 border border-white/10">
-                          <span className="text-white/70 flex items-center gap-2">
+                      <div className="border-t border-border pt-3 mt-3">
+                        <div className="flex justify-between text-sm p-3 rounded-xl bg-foreground/5 border border-border">
+                          <span className="text-foreground/70 flex items-center gap-2">
                             <span>👤</span> Rep Commission ({pricingBreakdown.rep_commission_rate}%)
                           </span>
-                          <span className="text-white font-bold">${pricingBreakdown.rep_commission_amount.toFixed(2)}</span>
+                          <span className="text-foreground font-bold">${pricingBreakdown.rep_commission_amount.toFixed(2)}</span>
                         </div>
                       </div>
                     )}
@@ -1153,17 +1153,17 @@ export default function OrderDetailEditPage() {
             )}
 
             {/* Timeline */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 transition-all duration-300 hover:bg-white/[0.07]">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-6 transition-all duration-300 hover:bg-card/[0.07]">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <h2 className="text-lg font-semibold text-white mb-4 flex items-center">
-                  <Calendar className="w-5 h-5 mr-3 text-white/50" />
+                <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center">
+                  <Calendar className="w-5 h-5 mr-3 text-muted-foreground" />
                   Timeline
                 </h2>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between p-3 rounded-xl bg-white/[0.03]">
-                    <span className="text-white/50">Created</span>
-                    <span className="text-white font-medium">{formatDate(order?.created_at)}</span>
+                  <div className="flex justify-between p-3 rounded-xl bg-foreground/[0.04]">
+                    <span className="text-muted-foreground">Created</span>
+                    <span className="text-foreground font-medium">{formatDate(order?.created_at)}</span>
                   </div>
                   {order?.payment_date && (
                     <div className="flex justify-between p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
@@ -1177,9 +1177,9 @@ export default function OrderDetailEditPage() {
                       <span className="text-red-400 font-medium">{formatDate(order.payment_failed_at)}</span>
                     </div>
                   )}
-                  <div className="flex justify-between p-3 rounded-xl bg-white/[0.03]">
-                    <span className="text-white/50">Last Updated</span>
-                    <span className="text-white font-medium">{formatDate(order?.updated_at)}</span>
+                  <div className="flex justify-between p-3 rounded-xl bg-foreground/[0.04]">
+                    <span className="text-muted-foreground">Last Updated</span>
+                    <span className="text-foreground font-medium">{formatDate(order?.updated_at)}</span>
                   </div>
                 </div>
                 
@@ -1198,7 +1198,7 @@ export default function OrderDetailEditPage() {
                       <CreditCard className="h-4 w-4" />
                       <span className="text-xs font-medium">Payment Method</span>
                     </div>
-                    <p className="text-white font-medium">
+                    <p className="text-foreground font-medium">
                       {order.payment_method_details.brand && (
                         <span className="capitalize">{order.payment_method_details.brand} </span>
                       )}
@@ -1225,11 +1225,11 @@ export default function OrderDetailEditPage() {
 
             {/* Shopify Payment Details */}
             {(order?.card_brand || order?.card_last_four || order?.shopify_invoice_id || order?.billing_name) && (
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 transition-all duration-300 hover:bg-white/[0.07]">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-6 transition-all duration-300 hover:bg-card/[0.07]">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10">
-                  <h2 className="text-lg font-semibold text-white mb-4 flex items-center">
-                    <CreditCard className="w-5 h-5 mr-3 text-white/50" />
+                  <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center">
+                    <CreditCard className="w-5 h-5 mr-3 text-muted-foreground" />
                     Payment Details
                   </h2>
                   <div className="space-y-3 text-sm">
@@ -1239,7 +1239,7 @@ export default function OrderDetailEditPage() {
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-purple-400/70 text-xs mb-1">Card</p>
-                            <p className="text-white font-medium">
+                            <p className="text-foreground font-medium">
                               {order.card_brand && <span className="capitalize">{order.card_brand} </span>}
                               {order.card_last_four && <span>•••• {order.card_last_four}</span>}
                             </p>
@@ -1247,7 +1247,7 @@ export default function OrderDetailEditPage() {
                           {order.card_exp_month && order.card_exp_year && (
                             <div className="text-right">
                               <p className="text-purple-400/70 text-xs mb-1">Expires</p>
-                              <p className="text-white font-medium">
+                              <p className="text-foreground font-medium">
                                 {String(order.card_exp_month).padStart(2, '0')}/{order.card_exp_year}
                               </p>
                             </div>
@@ -1265,17 +1265,17 @@ export default function OrderDetailEditPage() {
                     )}
                     
                     {order?.shopify_payment_gateway && (
-                      <div className="flex justify-between p-3 rounded-xl bg-white/[0.03]">
-                        <span className="text-white/50">Gateway</span>
-                        <span className="text-white font-medium capitalize">{order.shopify_payment_gateway}</span>
+                      <div className="flex justify-between p-3 rounded-xl bg-foreground/[0.04]">
+                        <span className="text-muted-foreground">Gateway</span>
+                        <span className="text-foreground font-medium capitalize">{order.shopify_payment_gateway}</span>
                       </div>
                     )}
 
                     {/* Billing Address */}
                     {order?.billing_name && (
-                      <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                        <p className="text-white/40 text-xs mb-2">Billing Address</p>
-                        <div className="text-white/80 space-y-0.5">
+                      <div className="p-4 rounded-xl bg-foreground/[0.04] border border-border">
+                        <p className="text-muted-foreground text-xs mb-2">Billing Address</p>
+                        <div className="text-foreground/80 space-y-0.5">
                           <p className="font-medium">{order.billing_name}</p>
                           {order.billing_address_line1 && <p className="text-sm">{order.billing_address_line1}</p>}
                           {(order.billing_city || order.billing_state || order.billing_zip) && (
@@ -1291,17 +1291,17 @@ export default function OrderDetailEditPage() {
 
                     {/* Transaction IDs */}
                     {(order?.shopify_transaction_id || order?.shopify_order_id) && (
-                      <div className="p-3 rounded-xl bg-white/[0.03] space-y-2">
+                      <div className="p-3 rounded-xl bg-foreground/[0.04] space-y-2">
                         {order.shopify_order_id && (
                           <div className="flex justify-between text-xs">
-                            <span className="text-white/40">Shopify Order</span>
-                            <span className="text-white/70 font-mono">{order.shopify_order_id}</span>
+                            <span className="text-muted-foreground">Shopify Order</span>
+                            <span className="text-foreground/70 font-mono">{order.shopify_order_id}</span>
                           </div>
                         )}
                         {order.shopify_transaction_id && (
                           <div className="flex justify-between text-xs">
-                            <span className="text-white/40">Transaction ID</span>
-                            <span className="text-white/70 font-mono">{order.shopify_transaction_id}</span>
+                            <span className="text-muted-foreground">Transaction ID</span>
+                            <span className="text-foreground/70 font-mono">{order.shopify_transaction_id}</span>
                           </div>
                         )}
                       </div>

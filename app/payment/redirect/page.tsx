@@ -28,8 +28,8 @@ function PaymentRedirectContent() {
   if (!token) {
     return (
       <div className="text-center">
-        <h1 className="text-2xl font-light text-white mb-4">Payment Error</h1>
-        <p className="text-gray-400">No payment token provided.</p>
+        <h1 className="text-2xl font-light text-foreground mb-4">Payment Error</h1>
+        <p className="text-muted-foreground">No payment token provided.</p>
       </div>
     )
   }
@@ -37,8 +37,8 @@ function PaymentRedirectContent() {
   return (
     <>
       <div className="text-center">
-        <div className="animate-spin w-8 h-8 border-2 border-white border-t-transparent rounded-full mx-auto mb-4" />
-        <p className="text-gray-400 font-mono text-sm">Redirecting to secure payment...</p>
+        <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4" />
+        <p className="text-muted-foreground font-mono text-sm">Redirecting to secure payment...</p>
       </div>
 
       {/* Hidden form that auto-submits to Authorize.net */}
@@ -64,11 +64,11 @@ function PaymentRedirectContent() {
  */
 export default function PaymentRedirectPage() {
   return (
-    <div className="min-h-screen bg-[#121212] flex items-center justify-center">
+    <div className="min-h-screen bg-card flex items-center justify-center">
       <Suspense fallback={
         <div className="text-center">
-          <div className="animate-spin w-8 h-8 border-2 border-white border-t-transparent rounded-full mx-auto mb-4" />
-          <p className="text-gray-400 font-mono text-sm">Loading...</p>
+          <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4" />
+          <p className="text-muted-foreground font-mono text-sm">Loading...</p>
         </div>
       }>
         <PaymentRedirectContent />

@@ -253,7 +253,7 @@ export function PaymentFlowWrapper({ children }: PaymentFlowWrapperProps) {
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <button
           onClick={handleBackToPaymentOptions}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Payment Options
@@ -272,8 +272,8 @@ export function PaymentFlowWrapper({ children }: PaymentFlowWrapperProps) {
 
         {/* Debug Log - Visible on Mobile (Production enabled for debugging) */}
         {debugLog.length > 0 && (
-          <div className="mt-8 p-4 bg-gray-900 text-green-400 rounded-lg font-mono text-sm">
-            <h4 className="text-white mb-2 font-bold">Debug Log (Temporary):</h4>
+          <div className="mt-8 p-4 bg-card text-green-400 rounded-lg font-mono text-sm">
+            <h4 className="text-foreground mb-2 font-bold">Debug Log (Temporary):</h4>
             <div className="max-h-32 overflow-y-auto">
               {debugLog.map((log, index) => (
                 <div key={index} className="mb-1">{log}</div>

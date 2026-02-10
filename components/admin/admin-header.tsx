@@ -75,7 +75,7 @@ export function AdminHeader() {
   return (
     <>
       {/* Fixed Header - matching GlobalNav style */}
-      <header className="fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-md border-b border-white/10 shadow-sm z-50">
+      <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border shadow-sm z-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between gap-4">
             {/* Logo and Title */}
@@ -86,17 +86,17 @@ export function AdminHeader() {
                 className="w-8 h-8"
               />
               <div className="hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-white whitespace-nowrap">
+                <h1 className="text-lg md:text-xl font-bold text-foreground whitespace-nowrap">
                   ADMIN PANEL
                 </h1>
               </div>
-              <h1 className="text-base font-bold text-white whitespace-nowrap block sm:hidden">
+              <h1 className="text-base font-bold text-foreground whitespace-nowrap block sm:hidden">
                 ADMIN
               </h1>
             </Link>
 
             {/* Current Page Indicator (desktop only) */}
-            <div className="hidden md:flex items-center gap-2 text-white/50">
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
               <span className="text-sm">
                 {navItems.find(item => 
                   pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href))
@@ -109,7 +109,7 @@ export function AdminHeader() {
               {/* Back to Store Link */}
               <Link 
                 href="/" 
-                className="hidden sm:flex items-center gap-2 text-white/50 hover:text-white transition text-sm"
+                className="hidden sm:flex items-center gap-2 text-muted-foreground hover:text-foreground transition text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Store
@@ -118,7 +118,7 @@ export function AdminHeader() {
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="text-white hover:text-white/80 transition relative flex items-center gap-2"
+                className="text-foreground hover:text-foreground/80 transition relative flex items-center gap-2"
                 aria-label="Menu"
               >
                 <span className="text-sm font-medium hidden sm:block">MENU</span>
@@ -140,12 +140,12 @@ export function AdminHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
+            className="fixed inset-0 z-[9999] bg-background flex items-center justify-center"
           >
             {/* Close Button */}
             <button
               onClick={closeMenu}
-              className="absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-3 text-white/60 hover:text-white transition-colors"
+              className="absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-3 text-foreground/60 hover:text-foreground transition-colors"
               aria-label="Close menu"
             >
               <span className="text-sm font-medium tracking-wide hidden sm:block">CLOSE</span>
@@ -169,7 +169,7 @@ export function AdminHeader() {
                         onClick={closeMenu}
                         className={cn(
                           "text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight transition-all duration-300",
-                          isActive ? "text-white" : "text-white/30 hover:text-white",
+                          isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                         )}
                       >
                         {item.title}
@@ -183,7 +183,7 @@ export function AdminHeader() {
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ delay: 0.5, duration: 0.3 }}
-                  className="w-20 h-px bg-white/10 my-2"
+                  className="w-20 h-px bg-foreground/10 my-2"
                 />
 
                 {/* Back to Site */}
@@ -195,7 +195,7 @@ export function AdminHeader() {
                   <Link
                     href="/"
                     onClick={closeMenu}
-                    className="flex items-center gap-3 text-lg md:text-xl font-medium text-white/30 hover:text-white transition-all duration-300"
+                    className="flex items-center gap-3 text-lg md:text-xl font-medium text-muted-foreground hover:text-foreground transition-all duration-300"
                   >
                     <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
                     Back to Store

@@ -6,7 +6,7 @@ export function GlobalFooter() {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="border-t border-white/10 mt-auto">
+    <footer className="border-t border-border mt-auto">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
@@ -44,7 +44,7 @@ export function GlobalFooter() {
         </div>
         
         {/* Customer Service Contact */}
-        <div className="border-t border-white/10 pt-10 pb-6">
+        <div className="border-t border-border pt-10 pb-6">
           <div className="text-center text-sm text-muted-foreground">
             <span className="font-mono text-xs tracking-widest uppercase">Customer Service: </span>
             <a 
@@ -57,7 +57,7 @@ export function GlobalFooter() {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
               © {currentYear} Modern Health Pro

@@ -86,7 +86,7 @@ export function MobileWalletConnect({ onConnect, showEducation = true }: MobileW
           <Card className="p-3 border-2 border-green-accent bg-green-accent/10">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-bold">T</span>
+                <span className="text-foreground text-sm font-bold">T</span>
               </div>
               <div>
                 <div className="font-medium">Trust Wallet</div>
@@ -98,7 +98,7 @@ export function MobileWalletConnect({ onConnect, showEducation = true }: MobileW
           <Card className="p-3">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-bold">M</span>
+                <span className="text-foreground text-sm font-bold">M</span>
               </div>
               <div>
                 <div className="font-medium">MetaMask</div>
@@ -109,7 +109,7 @@ export function MobileWalletConnect({ onConnect, showEducation = true }: MobileW
           <Card className="p-3">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-bold">C</span>
+                <span className="text-foreground text-sm font-bold">C</span>
               </div>
               <div>
                 <div className="font-medium">Coinbase Wallet</div>

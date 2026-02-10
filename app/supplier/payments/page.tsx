@@ -192,7 +192,7 @@ export default function SupplierPaymentsPage() {
         {/* Back Navigation */}
         <Link
           href="/supplier"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Dashboard</span>
@@ -201,10 +201,10 @@ export default function SupplierPaymentsPage() {
         {/* Header */}
         <div className="mb-10 md:mb-12">
           <div className="mb-6">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2 md:mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2 md:mb-4">
               Payment Records
             </h1>
-            <p className="text-lg text-white/50">
+            <p className="text-lg text-muted-foreground">
               View payments, transfers, and communications
             </p>
           </div>
@@ -221,8 +221,8 @@ export default function SupplierPaymentsPage() {
                     className={cn(
                       "rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap flex-shrink-0",
                       activeTab === tab.id 
-                        ? "bg-white text-black" 
-                        : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10"
+                        ? "bg-primary text-primary-foreground" 
+                        : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border"
                     )}
                   >
                     <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
@@ -230,7 +230,7 @@ export default function SupplierPaymentsPage() {
                     {tab.badge && (
                       <span className={cn(
                         "ml-0.5 sm:ml-1 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-full",
-                        activeTab === tab.id ? "bg-black/20" : "bg-red-500 text-white"
+                        activeTab === tab.id ? "bg-foreground/20" : "bg-red-500 text-white"
                       )}>
                         {tab.badge}
                       </span>
@@ -250,17 +250,17 @@ export default function SupplierPaymentsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6"
+                className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-green-500/20">
                     <DollarSign className="h-6 w-6 text-green-400" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-2xl font-bold text-white truncate">
+                    <p className="text-2xl font-bold text-foreground truncate">
                       ${paymentStats.totalReceived.toLocaleString()}
                     </p>
-                    <p className="text-sm text-white/50">Total Received</p>
+                    <p className="text-sm text-muted-foreground">Total Received</p>
                   </div>
                 </div>
               </motion.div>
@@ -275,7 +275,7 @@ export default function SupplierPaymentsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: (index + 1) * 0.05 }}
-                  className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6"
+                  className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6"
                 >
                   <div className="flex items-center gap-4">
                     <div className={cn(
@@ -292,8 +292,8 @@ export default function SupplierPaymentsPage() {
                       )} />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-2xl font-bold text-white truncate">{stat.value}</p>
-                      <p className="text-sm text-white/50">{stat.label}</p>
+                      <p className="text-2xl font-bold text-foreground truncate">{stat.value}</p>
+                      <p className="text-sm text-muted-foreground">{stat.label}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -304,10 +304,10 @@ export default function SupplierPaymentsPage() {
             <div className={`rounded-2xl backdrop-blur-xl border p-6 transition-all ${
               (dateRange.start || dateRange.end) 
                 ? 'bg-blue-500/10 border-blue-500/30' 
-                : 'bg-white/5 border-white/10'
+                : 'bg-foreground/5 border-border'
             }`}>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <Calendar className={`h-5 w-5 ${(dateRange.start || dateRange.end) ? 'text-blue-400' : ''}`} />
                   Date Range Filter
                 </h3>
@@ -319,22 +319,22 @@ export default function SupplierPaymentsPage() {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs text-white/50 uppercase tracking-wider">From</label>
+                  <label className="text-xs text-muted-foreground uppercase tracking-wider">From</label>
                   <Input
                     type="date"
                     value={dateRange.start}
                     onChange={(e) => setDateRange(d => ({ ...d, start: e.target.value }))}
-                    className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                    className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                   />
                 </div>
-                <span className="text-white/30 hidden sm:block mt-6">to</span>
+                <span className="text-muted-foreground hidden sm:block mt-6">to</span>
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs text-white/50 uppercase tracking-wider">To</label>
+                  <label className="text-xs text-muted-foreground uppercase tracking-wider">To</label>
                   <Input
                     type="date"
                     value={dateRange.end}
                     onChange={(e) => setDateRange(d => ({ ...d, end: e.target.value }))}
-                    className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                    className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                   />
                 </div>
                 {(dateRange.start || dateRange.end) && (
@@ -356,9 +356,9 @@ export default function SupplierPaymentsPage() {
             </div>
 
             {/* Recent Payments */}
-            <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
+            <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <CreditCard className="h-5 w-5" />
                   {(dateRange.start || dateRange.end) ? 'Filtered Payments' : 'Recent Payments'}
                   {(dateRange.start || dateRange.end) && (
@@ -369,12 +369,12 @@ export default function SupplierPaymentsPage() {
                 </h3>
               </div>
               {loading ? (
-                <div className="text-center py-20 text-white/40">
+                <div className="text-center py-20 text-muted-foreground">
                   <RefreshCw className="h-8 w-8 mx-auto mb-4 animate-spin opacity-50" />
                   <p>Loading payments...</p>
                 </div>
               ) : payments.length === 0 ? (
-                <div className="text-center py-20 text-white/40">
+                <div className="text-center py-20 text-muted-foreground">
                   <CreditCard className="h-8 w-8 mx-auto mb-4 opacity-50" />
                   <p>No payments found{(dateRange.start || dateRange.end) ? ' for the selected date range' : ''}</p>
                 </div>
@@ -398,9 +398,9 @@ export default function SupplierPaymentsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search customers..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
                 />
-                <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden max-h-[70vh] lg:max-h-[calc(100vh-300px)] overflow-y-auto">
+                <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border overflow-hidden max-h-[70vh] lg:max-h-[calc(100vh-300px)] overflow-y-auto">
                   {filteredContacts.map((contact, index) => (
                     <motion.div
                       key={contact.id}
@@ -409,20 +409,20 @@ export default function SupplierPaymentsPage() {
                       transition={{ delay: index * 0.02 }}
                       onClick={() => setSelectedContact(contact)}
                       className={cn(
-                        "p-4 cursor-pointer transition-all duration-300 border-b border-white/5 last:border-0 group",
+                        "p-4 cursor-pointer transition-all duration-300 border-b border-border last:border-0 group",
                         selectedContact?.id === contact.id 
-                          ? "bg-white/10" 
-                          : "hover:bg-white/5"
+                          ? "bg-foreground/10" 
+                          : "hover:bg-foreground/5"
                       )}
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white font-semibold">{contact.name.charAt(0).toUpperCase()}</span>
+                          <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                            <span className="text-foreground font-semibold">{contact.name.charAt(0).toUpperCase()}</span>
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="text-white font-medium truncate">{contact.name}</p>
-                            <p className="text-sm text-white/50">
+                            <p className="text-foreground font-medium truncate">{contact.name}</p>
+                            <p className="text-sm text-muted-foreground">
                               {contact.payment_count_in_range} payment{contact.payment_count_in_range !== 1 ? 's' : ''}
                             </p>
                           </div>
@@ -431,13 +431,13 @@ export default function SupplierPaymentsPage() {
                           <p className="text-green-400 font-semibold">
                             ${contact.display_total.toLocaleString()}
                           </p>
-                          <ChevronRight className="h-4 w-4 text-white/30 group-hover:text-white/60 transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                         </div>
                       </div>
                     </motion.div>
                   ))}
                   {filteredContacts.length === 0 && (
-                    <div className="text-center py-12 text-white/40">
+                    <div className="text-center py-12 text-muted-foreground">
                       <Users className="h-8 w-8 mx-auto mb-3 opacity-50" />
                       <p>No customers found</p>
                     </div>
@@ -455,7 +455,7 @@ export default function SupplierPaymentsPage() {
                 <div className="space-y-6">
                   <button
                     onClick={() => setSelectedContact(null)}
-                    className="lg:hidden flex items-center gap-3 text-white/70 hover:text-white transition-colors rounded-xl bg-white/5 border border-white/10 px-4 py-3 w-full"
+                    className="lg:hidden flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors rounded-xl bg-foreground/5 border border-border px-4 py-3 w-full"
                   >
                     <ArrowLeft className="h-5 w-5" />
                     <span className="font-medium">Back to Customers</span>
@@ -465,16 +465,16 @@ export default function SupplierPaymentsPage() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 sm:p-8"
+                    className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6 sm:p-8"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 flex items-center justify-center">
-                          <span className="text-xl sm:text-2xl font-bold text-white">{selectedContact.name.charAt(0).toUpperCase()}</span>
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-foreground/10 flex items-center justify-center">
+                          <span className="text-xl sm:text-2xl font-bold text-foreground">{selectedContact.name.charAt(0).toUpperCase()}</span>
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white">{selectedContact.name}</h3>
-                          <p className="text-sm sm:text-base text-white/50">
+                          <h3 className="text-xl sm:text-2xl font-bold text-foreground">{selectedContact.name}</h3>
+                          <p className="text-sm sm:text-base text-muted-foreground">
                             Customer since {selectedContact.first_payment_date 
                               ? new Date(selectedContact.first_payment_date).toLocaleDateString() 
                               : 'N/A'}
@@ -485,7 +485,7 @@ export default function SupplierPaymentsPage() {
                         <p className="text-2xl sm:text-3xl font-bold text-green-400">
                           ${selectedContactPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString()}
                         </p>
-                        <p className="text-xs sm:text-sm text-white/50">
+                        <p className="text-xs sm:text-sm text-muted-foreground">
                           {selectedContactPayments.length} payment{selectedContactPayments.length !== 1 ? 's' : ''} total
                         </p>
                       </div>
@@ -493,13 +493,13 @@ export default function SupplierPaymentsPage() {
                   </motion.div>
 
                   {/* Payment History */}
-                  <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
-                    <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
+                    <h4 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <DollarSign className="h-5 w-5" />
                       Payment History
                     </h4>
                     {loadingContactPayments ? (
-                      <div className="text-center py-12 text-white/40">
+                      <div className="text-center py-12 text-muted-foreground">
                         <RefreshCw className="h-6 w-6 mx-auto mb-3 animate-spin opacity-50" />
                         <p>Loading payment history...</p>
                       </div>
@@ -509,9 +509,9 @@ export default function SupplierPaymentsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-12 text-center">
-                  <Users className="h-12 w-12 mx-auto text-white/20 mb-4" />
-                  <p className="text-white/50">Select a customer to view their payment history</p>
+                <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-12 text-center">
+                  <Users className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" />
+                  <p className="text-muted-foreground">Select a customer to view their payment history</p>
                 </div>
               )}
             </div>
@@ -534,22 +534,22 @@ export default function SupplierPaymentsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6"
+                  className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6"
                 >
                   <p className={cn(
                     "text-2xl font-bold",
-                    stat.color === 'white' && "text-white",
+                    stat.color === 'white' && "text-foreground",
                     stat.color === 'yellow' && "text-yellow-400",
                     stat.color === 'green' && "text-green-400"
                   )}>{stat.value}</p>
-                  <p className="text-sm text-white/50">{stat.label}</p>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
 
             {/* Wire Transfer List */}
-            <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-6">
+            <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-6">
                 <Building className="h-5 w-5" />
                 Wire Transfers
               </h3>
@@ -560,7 +560,7 @@ export default function SupplierPaymentsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.03 }}
-                    className="rounded-2xl bg-white/5 border border-white/10 p-4"
+                    className="rounded-2xl bg-foreground/5 border border-border p-4"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2 md:gap-4 min-w-0 flex-1">
@@ -579,7 +579,7 @@ export default function SupplierPaymentsPage() {
                           )}
                         </div>
                         <div className="min-w-0">
-                          <p className="text-white font-medium text-sm md:text-base truncate">
+                          <p className="text-foreground font-medium text-sm md:text-base truncate">
                             {new Date(transfer.transfer_date).toLocaleDateString('en-US', {
                               month: 'short',
                               day: 'numeric',
@@ -600,11 +600,11 @@ export default function SupplierPaymentsPage() {
                         </div>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <p className="text-base md:text-xl font-bold text-white">
+                        <p className="text-base md:text-xl font-bold text-foreground">
                           ${transfer.amount.toLocaleString()}
                         </p>
                         {transfer.total_left_to_transfer !== null && (
-                          <p className="text-[10px] md:text-xs text-white/40">
+                          <p className="text-[10px] md:text-xs text-muted-foreground">
                             Bal: ${transfer.total_left_to_transfer.toLocaleString()}
                           </p>
                         )}
@@ -613,7 +613,7 @@ export default function SupplierPaymentsPage() {
                   </motion.div>
                 ))}
                 {wireTransfers.length === 0 && (
-                  <div className="text-center py-12 text-white/40">
+                  <div className="text-center py-12 text-muted-foreground">
                     <Building className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p>No wire transfers found</p>
                   </div>
@@ -628,24 +628,24 @@ export default function SupplierPaymentsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden"
+            className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border overflow-hidden"
           >
             {/* Message Header */}
-            <div className="p-6 border-b border-white/10 flex items-center justify-between">
+            <div className="p-6 border-b border-border flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
                   <span className="text-green-400 font-bold text-lg">A</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-lg">Admin</p>
-                  <p className="text-sm text-white/50">Store Administrator</p>
+                  <p className="text-foreground font-semibold text-lg">Admin</p>
+                  <p className="text-sm text-muted-foreground">Store Administrator</p>
                 </div>
               </div>
               {unreadCount > 0 && (
                 <Button
                   variant="outline"
                   onClick={handleMarkRead}
-                  className="rounded-xl border-white/20 text-white hover:bg-white/10"
+                  className="rounded-xl border-border text-foreground hover:bg-foreground/10"
                 >
                   Mark all read
                 </Button>
@@ -655,7 +655,7 @@ export default function SupplierPaymentsPage() {
             {/* Messages */}
             <div className="h-[50vh] md:h-[450px] overflow-y-auto p-6 space-y-4">
               {messages.length === 0 ? (
-                <div className="text-center py-12 text-white/40">
+                <div className="text-center py-12 text-muted-foreground">
                   <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
                   <p>No messages yet</p>
                 </div>
@@ -676,13 +676,13 @@ export default function SupplierPaymentsPage() {
                         "max-w-[80%] md:max-w-[65%] rounded-2xl px-5 py-3",
                         msg.sender === 'johnny' 
                           ? "bg-green-500 text-white" 
-                          : "bg-white/10 text-white"
+                          : "bg-foreground/10 text-foreground"
                       )}
                     >
                       <p className="text-sm leading-relaxed">{msg.message}</p>
                       <p className={cn(
                         "text-xs mt-2",
-                        msg.sender === 'johnny' ? "text-green-200" : "text-white/40"
+                        msg.sender === 'johnny' ? "text-green-200" : "text-muted-foreground"
                       )}>
                         {new Date(msg.created_at).toLocaleString()}
                       </p>
@@ -693,13 +693,13 @@ export default function SupplierPaymentsPage() {
             </div>
 
             {/* Message Input */}
-            <div className="p-6 border-t border-white/10">
+            <div className="p-6 border-t border-border">
               <div className="flex gap-4">
                 <Textarea
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type a message..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[60px]"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none min-h-[60px]"
                   rows={2}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
@@ -744,7 +744,7 @@ function PaymentsList({
     if (m.includes('venmo')) return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
     if (m.includes('cashapp') || m.includes('cash app')) return 'bg-green-500/20 text-green-400 border-green-500/30'
     if (m.includes('paypal')) return 'bg-blue-600/20 text-blue-300 border-blue-600/30'
-    return 'bg-white/10 text-white/60 border-white/20'
+    return 'bg-foreground/10 text-foreground/60 border-border'
   }
 
   return (
@@ -758,24 +758,24 @@ function PaymentsList({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.03 }}
-            className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden transition-all hover:bg-white/[0.07]"
+            className="rounded-2xl bg-foreground/5 border border-border overflow-hidden transition-all hover:bg-card/[0.07]"
           >
             <div
               onClick={() => toggleExpand(payment.id)}
-              className="flex items-center justify-between p-3 md:p-4 cursor-pointer hover:bg-white/5 transition-colors gap-2"
+              className="flex items-center justify-between p-3 md:p-4 cursor-pointer hover:bg-foreground/5 transition-colors gap-2"
             >
               <div className="flex items-center gap-2 md:gap-4 min-w-0 flex-1">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-semibold text-sm md:text-base">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-foreground font-semibold text-sm md:text-base">
                     {payment.contact_name.charAt(0).toUpperCase()}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1">
                   {showContactName && (
-                    <p className="text-white font-medium text-sm md:text-base truncate">{payment.contact_name}</p>
+                    <p className="text-foreground font-medium text-sm md:text-base truncate">{payment.contact_name}</p>
                   )}
                   <div className="flex flex-wrap items-center gap-1 md:gap-2 text-xs md:text-sm">
-                    <span className="text-white/50">
+                    <span className="text-muted-foreground">
                       {new Date(payment.payment_date).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
@@ -851,7 +851,7 @@ function PaymentsList({
                 </div>
                 <ChevronRight 
                   className={cn(
-                    "h-4 w-4 text-white/40 transition-transform flex-shrink-0",
+                    "h-4 w-4 text-muted-foreground transition-transform flex-shrink-0",
                     isExpanded && "rotate-90"
                   )} 
                 />
@@ -868,34 +868,34 @@ function PaymentsList({
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-white/10">
+                  <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-border">
                     {/* Payment Details Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Amount Sent</p>
-                        <p className="text-white font-semibold text-sm md:text-base">${payment.amount.toLocaleString()}</p>
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Amount Sent</p>
+                        <p className="text-foreground font-semibold text-sm md:text-base">${payment.amount.toLocaleString()}</p>
                       </div>
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Received (minus fee)</p>
-                        <p className="text-white font-semibold text-sm md:text-base">
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Received (minus fee)</p>
+                        <p className="text-foreground font-semibold text-sm md:text-base">
                           {payment.received_minus_fee 
                             ? `$${payment.received_minus_fee.toLocaleString()}` 
                             : '—'}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Fee</p>
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Fee</p>
                         <p className={cn(
                           "font-semibold text-sm md:text-base",
-                          payment.received_minus_fee ? "text-red-400" : "text-white/40"
+                          payment.received_minus_fee ? "text-red-400" : "text-muted-foreground"
                         )}>
                           {payment.received_minus_fee 
                             ? `-$${(payment.amount - payment.received_minus_fee).toFixed(2)}` 
                             : '—'}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Status</p>
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Status</p>
                         <p className={cn(
                           "font-semibold text-sm md:text-base",
                           payment.confirmation_status === 'refunded' && "text-red-400",
@@ -923,8 +923,8 @@ function PaymentsList({
 
                     {/* Tracking Numbers */}
                     {payment.tracking_numbers && payment.tracking_numbers.length > 0 && (
-                      <div className="pt-2 md:pt-3 border-t border-white/5 mb-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-2">Tracking Numbers</p>
+                      <div className="pt-2 md:pt-3 border-t border-border mb-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-2">Tracking Numbers</p>
                         <div className="flex flex-wrap gap-2">
                           {payment.tracking_numbers.map((num, i) => (
                             <span 
@@ -940,9 +940,9 @@ function PaymentsList({
 
                     {/* Wire Transfer Notes */}
                     {payment.wire_transfer_notes && (
-                      <div className="pt-2 md:pt-3 border-t border-white/5 mb-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-2">Wire Transfer Notes</p>
-                        <p className="text-white/80 text-xs md:text-sm bg-purple-500/10 border border-purple-500/20 rounded-lg p-2 md:p-3">
+                      <div className="pt-2 md:pt-3 border-t border-border mb-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-2">Wire Transfer Notes</p>
+                        <p className="text-foreground/80 text-xs md:text-sm bg-purple-500/10 border border-purple-500/20 rounded-lg p-2 md:p-3">
                           {payment.wire_transfer_notes}
                         </p>
                       </div>
@@ -950,9 +950,9 @@ function PaymentsList({
 
                     {/* General Notes */}
                     {payment.notes && (
-                      <div className="pt-2 md:pt-3 border-t border-white/5">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-2">Notes</p>
-                        <p className="text-white/80 text-xs md:text-sm bg-white/5 rounded-lg p-2 md:p-3">
+                      <div className="pt-2 md:pt-3 border-t border-border">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-2">Notes</p>
+                        <p className="text-foreground/80 text-xs md:text-sm bg-foreground/5 rounded-lg p-2 md:p-3">
                           {payment.notes}
                         </p>
                       </div>
@@ -965,7 +965,7 @@ function PaymentsList({
         )
       })}
       {payments.length === 0 && (
-        <div className="text-center py-12 text-white/40">
+        <div className="text-center py-12 text-muted-foreground">
           <CreditCard className="h-12 w-12 mx-auto mb-4 opacity-50" />
           <p>No payments found</p>
         </div>

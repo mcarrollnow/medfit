@@ -288,7 +288,7 @@ export function AdminPaymentOptionsModal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+        className="fixed inset-0 z-[100] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
         onClick={handleClose}
       >
         <motion.div
@@ -296,40 +296,40 @@ export function AdminPaymentOptionsModal({
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full max-w-lg max-h-[90vh] overflow-y-auto bg-zinc-900 border border-white/10 rounded-2xl"
+          className="w-full max-w-lg max-h-[90vh] overflow-y-auto bg-card border border-border rounded-2xl"
         >
           {/* Header */}
-          <div className="sticky top-0 bg-zinc-900 border-b border-white/10 p-6 flex items-center justify-between">
+          <div className="sticky top-0 bg-card border-b border-border p-6 flex items-center justify-between">
             <div className="flex items-center gap-3">
               {selectedMethod && (
                 <button
                   onClick={handleBack}
-                  className="p-2 -ml-2 rounded-full hover:bg-white/10 text-white/60"
+                  className="p-2 -ml-2 rounded-full hover:bg-foreground/10 text-foreground/60"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </button>
               )}
               <div>
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-foreground">
                   {selectedMethod ? paymentOptions.find(o => o.id === selectedMethod)?.name : 'Payment Method'}
                 </h2>
-                <p className="text-white/50 text-sm">
+                <p className="text-muted-foreground text-sm">
                   {selectedMethod ? `Order ${orderNumber || orderId}` : 'Choose how to collect payment'}
                 </p>
               </div>
             </div>
             <button
               onClick={handleClose}
-              className="p-2 rounded-full hover:bg-white/10 text-white/60"
+              className="p-2 rounded-full hover:bg-foreground/10 text-foreground/60"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Amount display */}
-          <div className="px-6 py-4 border-b border-white/10 text-center">
-            <p className="text-white/50 text-sm">Total Amount</p>
-            <p className="text-4xl font-bold text-white">${amount.toFixed(2)}</p>
+          <div className="px-6 py-4 border-b border-border text-center">
+            <p className="text-muted-foreground text-sm">Total Amount</p>
+            <p className="text-4xl font-bold text-foreground">${amount.toFixed(2)}</p>
           </div>
 
           {/* Content */}
@@ -365,12 +365,12 @@ export function AdminPaymentOptionsModal({
                       option.bgColor
                     )}
                   >
-                    <div className={cn("p-3 rounded-xl bg-black/20", option.color)}>
+                    <div className={cn("p-3 rounded-xl bg-foreground/20", option.color)}>
                       {option.icon}
                     </div>
                     <div>
-                      <p className="text-white font-semibold">{option.name}</p>
-                      <p className="text-white/50 text-sm">{option.description}</p>
+                      <p className="text-foreground font-semibold">{option.name}</p>
+                      <p className="text-muted-foreground text-sm">{option.description}</p>
                     </div>
                   </button>
                 ))}
@@ -379,7 +379,7 @@ export function AdminPaymentOptionsModal({
               /* Loading state */
               <div className="flex flex-col items-center justify-center py-12">
                 <Loader2 className="w-10 h-10 animate-spin text-blue-500 mb-4" />
-                <p className="text-white/50">Initializing payment...</p>
+                <p className="text-muted-foreground">Initializing payment...</p>
               </div>
             ) : selectedMethod === 'cashapp' && generatedLink ? (
               /* Cash App link display */
@@ -388,15 +388,15 @@ export function AdminPaymentOptionsModal({
                   <div className="w-16 h-16 mx-auto mb-4 bg-green-500/20 rounded-2xl flex items-center justify-center text-green-400">
                     <CashAppIcon />
                   </div>
-                  <p className="text-white font-semibold mb-2">Cash App Payment Link</p>
-                  <p className="text-white/50 text-sm mb-4">Share this link with the customer</p>
+                  <p className="text-foreground font-semibold mb-2">Cash App Payment Link</p>
+                  <p className="text-muted-foreground text-sm mb-4">Share this link with the customer</p>
 
-                  <div className="flex items-center gap-2 p-3 bg-black/30 rounded-lg">
+                  <div className="flex items-center gap-2 p-3 bg-foreground/30 rounded-lg">
                     <input
                       type="text"
                       value={generatedLink}
                       readOnly
-                      className="flex-1 bg-transparent text-white/80 text-sm outline-none"
+                      className="flex-1 bg-transparent text-foreground/80 text-sm outline-none"
                     />
                     <button
                       onClick={() => copyToClipboard(generatedLink)}
@@ -414,7 +414,7 @@ export function AdminPaymentOptionsModal({
                       value={smsPhone}
                       onChange={(e) => setSmsPhone(e.target.value)}
                       placeholder="Phone number to send link"
-                      className="flex-1 h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="flex-1 h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
                     <Button
                       onClick={() => sendSMS(generatedLink)}
@@ -430,7 +430,7 @@ export function AdminPaymentOptionsModal({
                     href={generatedLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full h-12 rounded-xl border border-white/20 text-white hover:bg-white/5 transition"
+                    className="flex items-center justify-center gap-2 w-full h-12 rounded-xl border border-border text-foreground hover:bg-foreground/5 transition"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Open in Cash App
@@ -441,7 +441,7 @@ export function AdminPaymentOptionsModal({
               /* Ethereum payment display */
               <div className="space-y-6">
                 {/* Currency Toggle */}
-                <div className="flex gap-2 p-1 bg-white/5 rounded-xl">
+                <div className="flex gap-2 p-1 bg-foreground/5 rounded-xl">
                   <button
                     onClick={() => initializeEthereumPayment('ETH')}
                     disabled={loading}
@@ -449,7 +449,7 @@ export function AdminPaymentOptionsModal({
                       "flex-1 py-3 px-4 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2",
                       selectedCrypto === 'ETH'
                         ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
-                        : "text-white/50 hover:text-white hover:bg-white/5"
+                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                     )}
                   >
                     <EthereumIcon />
@@ -462,7 +462,7 @@ export function AdminPaymentOptionsModal({
                       "flex-1 py-3 px-4 rounded-lg text-sm font-medium transition flex items-center justify-center gap-2",
                       selectedCrypto === 'USDC'
                         ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
-                        : "text-white/50 hover:text-white hover:bg-white/5"
+                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                     )}
                   >
                     <span className="text-lg font-bold">$</span>
@@ -482,14 +482,14 @@ export function AdminPaymentOptionsModal({
                   )}>
                     {selectedCrypto === 'ETH' ? <EthereumIcon /> : <span className="text-2xl font-bold">$</span>}
                   </div>
-                  <p className="text-white font-semibold mb-1">{selectedCrypto} Payment</p>
-                  <p className="text-white/50 text-sm mb-4">
+                  <p className="text-foreground font-semibold mb-1">{selectedCrypto} Payment</p>
+                  <p className="text-muted-foreground text-sm mb-4">
                     {assignedWallet.label && <span>{assignedWallet.label}</span>}
                   </p>
 
-                  <div className="p-4 bg-black/30 rounded-lg mb-4">
-                    <p className="text-xs text-white/40 mb-2">Wallet Address</p>
-                    <p className="text-white font-mono text-sm break-all">{assignedWallet.address}</p>
+                  <div className="p-4 bg-foreground/30 rounded-lg mb-4">
+                    <p className="text-xs text-muted-foreground mb-2">Wallet Address</p>
+                    <p className="text-foreground font-mono text-sm break-all">{assignedWallet.address}</p>
                   </div>
 
                   <div className="flex items-center justify-center gap-2">
@@ -509,18 +509,18 @@ export function AdminPaymentOptionsModal({
                 </div>
 
                 {cryptoPayment && (
-                  <div className="p-4 bg-white/5 rounded-xl">
+                  <div className="p-4 bg-foreground/5 rounded-xl">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="text-white/60 text-sm">Amount Due</p>
+                      <p className="text-foreground/60 text-sm">Amount Due</p>
                       {cryptoPayment.ethPrice && (
-                        <p className="text-white/40 text-xs">1 ETH = ${cryptoPayment.ethPrice.toFixed(2)}</p>
+                        <p className="text-muted-foreground text-xs">1 ETH = ${cryptoPayment.ethPrice.toFixed(2)}</p>
                       )}
                     </div>
                     <div className="flex items-baseline gap-3">
-                      <p className="text-3xl font-bold text-white">{cryptoPayment.cryptoAmount}</p>
-                      <p className="text-xl text-white/50">{selectedCrypto}</p>
+                      <p className="text-3xl font-bold text-foreground">{cryptoPayment.cryptoAmount}</p>
+                      <p className="text-xl text-muted-foreground">{selectedCrypto}</p>
                     </div>
-                    <p className="text-white/40 text-sm mt-1">${amount.toFixed(2)} USD</p>
+                    <p className="text-muted-foreground text-sm mt-1">${amount.toFixed(2)} USD</p>
                   </div>
                 )}
 
@@ -531,7 +531,7 @@ export function AdminPaymentOptionsModal({
                       value={smsPhone}
                       onChange={(e) => setSmsPhone(e.target.value)}
                       placeholder="Phone number to send address"
-                      className="flex-1 h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="flex-1 h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
                     <Button
                       onClick={() => sendSMS(
@@ -539,7 +539,7 @@ export function AdminPaymentOptionsModal({
                       )}
                       disabled={loading || !smsPhone}
                       className={cn(
-                        "h-12 px-6 rounded-xl text-white",
+                        "h-12 px-6 rounded-xl text-foreground",
                         selectedCrypto === 'ETH' ? "bg-purple-500 hover:bg-purple-600" : "bg-blue-500 hover:bg-blue-600"
                       )}
                     >
@@ -551,7 +551,7 @@ export function AdminPaymentOptionsModal({
                   {cryptoPayment?.paymentUrl && (
                     <button
                       onClick={() => copyToClipboard(cryptoPayment.paymentUrl)}
-                      className="flex items-center justify-center gap-2 w-full h-12 rounded-xl border border-white/20 text-white hover:bg-white/5 transition"
+                      className="flex items-center justify-center gap-2 w-full h-12 rounded-xl border border-border text-foreground hover:bg-foreground/5 transition"
                     >
                       <QrCode className="w-4 h-4" />
                       Copy Payment URI
@@ -559,7 +559,7 @@ export function AdminPaymentOptionsModal({
                   )}
                 </div>
 
-                <p className="text-xs text-center text-white/30">
+                <p className="text-xs text-center text-muted-foreground">
                   Customer should send exact amount to avoid payment issues
                 </p>
               </div>
@@ -571,7 +571,7 @@ export function AdminPaymentOptionsModal({
             <div className="px-6 pb-6">
               <button
                 onClick={handleClose}
-                className="w-full text-center text-white/40 hover:text-white/60 text-sm py-2"
+                className="w-full text-center text-muted-foreground hover:text-foreground/60 text-sm py-2"
               >
                 {selectedMethod ? 'Cancel' : 'Skip payment - collect later'}
               </button>

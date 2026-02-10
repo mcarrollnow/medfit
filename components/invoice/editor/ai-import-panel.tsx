@@ -713,7 +713,7 @@ export function AIImportPanel({ onImport, customers = [], products = [], onCusto
             className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-2.5 md:py-3 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-wider transition-all ${
               mode === m.id
                 ? "bg-foreground text-background"
-                : "bg-white/5 text-muted-foreground hover:text-foreground hover:bg-white/10"
+                : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
             }`}
           >
             {m.icon}
@@ -764,13 +764,13 @@ export function AIImportPanel({ onImport, customers = [], products = [], onCusto
 Examples:
 • @John Smith @@BPC-157 #2 $75
 • @@Tirzepatide 10mg #3 $120 $$350`}
-                    className="w-full h-48 bg-black/40 border border-white/15 rounded-2xl p-6 pr-16 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-colors"
+                    className="w-full h-48 bg-foreground/40 border border-primary/15 rounded-2xl p-6 pr-16 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-border focus:ring-1 focus:ring-foreground/20 transition-colors"
                   />
                   <div className="absolute top-3 right-3 flex flex-col gap-2">
                     {promptText && (
                       <button
                         onClick={() => setPromptText("")}
-                        className="p-2 rounded-full hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
+                        className="p-2 rounded-full hover:bg-foreground/10 transition-colors text-muted-foreground hover:text-foreground"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -780,7 +780,7 @@ Examples:
                       className={`p-2 rounded-full transition-colors ${
                         isListening
                           ? "bg-red-500/20 text-red-400 hover:bg-red-500/30"
-                          : "hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                          : "hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
                       }`}
                       title={isListening ? "Stop listening" : "Start voice input"}
                     >
@@ -790,12 +790,12 @@ Examples:
 
                   {/* @ Customer Mention Dropdown */}
                   {showAtMention && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-white/10 rounded-xl max-h-80 overflow-y-auto z-[300] shadow-2xl">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl max-h-80 overflow-y-auto z-[300] shadow-2xl">
                       {atMentionCustomers.length === 0 ? (
                         <div className="p-4 text-center text-muted-foreground font-mono text-sm">No customers found</div>
                       ) : (
                         <>
-                          <div className="px-4 py-2 text-xs font-mono text-emerald-400 uppercase tracking-wider border-b border-white/10 flex items-center gap-2">
+                          <div className="px-4 py-2 text-xs font-mono text-emerald-400 uppercase tracking-wider border-b border-border flex items-center gap-2">
                             <User className="w-3 h-3" />
                             Select Customer
                           </div>
@@ -803,7 +803,7 @@ Examples:
                             <button
                               key={customer.id}
                               onClick={() => selectAtMentionCustomer(customer)}
-                              className="w-full p-4 text-left hover:bg-white/5 transition-colors border-b border-white/5 last:border-0"
+                              className="w-full p-4 text-left hover:bg-foreground/5 transition-colors border-b border-border last:border-0"
                             >
                               <p className="font-medium text-foreground">{customer.name}</p>
                               <p className="text-sm text-muted-foreground">{customer.email}</p>
@@ -819,19 +819,19 @@ Examples:
 
                   {/* @@ Product Mention Dropdown */}
                   {showProductMention && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-white/10 rounded-xl max-h-96 overflow-y-auto z-[300] shadow-2xl">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl max-h-96 overflow-y-auto z-[300] shadow-2xl">
                       {productMentionProducts.length === 0 ? (
                         <div className="p-4 text-center text-muted-foreground font-mono text-sm">No products found</div>
                       ) : (
                         <>
-                          <div className="px-4 py-2 text-xs font-mono text-emerald-400 uppercase tracking-wider border-b border-white/10 flex items-center gap-2">
+                          <div className="px-4 py-2 text-xs font-mono text-emerald-400 uppercase tracking-wider border-b border-border flex items-center gap-2">
                             <Package className="w-3 h-3" />
                             Select Product & Price
                           </div>
                           {productMentionProducts.map((product) => (
                             <div
                               key={product.id}
-                              className="p-4 border-b border-white/10 last:border-0"
+                              className="p-4 border-b border-border last:border-0"
                             >
                               <p className="font-medium text-foreground mb-3">{product.name}</p>
                               <div className="flex gap-2">
@@ -895,12 +895,12 @@ Examples:
 
 Example:
 'Hey, can you send me an invoice for the website redesign project? It's for Acme Corp, $2,500 for the design work and $1,000 for development. Due in 30 days.'"
-                    className="w-full h-48 bg-black/40 border border-white/15 rounded-2xl p-6 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-colors"
+                    className="w-full h-48 bg-foreground/40 border border-primary/15 rounded-2xl p-6 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-border focus:ring-1 focus:ring-foreground/20 transition-colors"
                   />
                   {pastedText && (
                     <button
                       onClick={() => setPastedText("")}
-                      className="absolute top-3 right-3 p-2 rounded-full hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
+                      className="absolute top-3 right-3 p-2 rounded-full hover:bg-foreground/10 transition-colors text-muted-foreground hover:text-foreground"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -934,8 +934,8 @@ Example:
                     onClick={() => fileInputRef.current?.click()}
                     className={`relative border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ${
                       dragActive
-                        ? "border-foreground/40 bg-white/5"
-                        : "border-white/10 hover:border-white/20 hover:bg-white/[0.02]"
+                        ? "border-foreground/40 bg-foreground/5"
+                        : "border-border hover:border-border hover:bg-foreground/[0.03]"
                     }`}
                   >
                     <input
@@ -946,7 +946,7 @@ Example:
                       className="hidden"
                     />
                     <div className="flex flex-col items-center gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-2xl bg-foreground/5 flex items-center justify-center">
                         <Upload className="w-7 h-7 text-muted-foreground" />
                       </div>
                       <div>
@@ -956,16 +956,16 @@ Example:
                     </div>
                   </div>
                 ) : (
-                  <div className="relative rounded-2xl overflow-hidden bg-white/5">
+                  <div className="relative rounded-2xl overflow-hidden bg-foreground/5">
                     <img src={preview} alt="Preview" className="w-full max-h-64 object-contain" />
                     <button
                       onClick={clearFile}
-                      className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/80 transition-colors text-white"
+                      className="absolute top-3 right-3 p-2 rounded-full bg-foreground/60 hover:bg-background/80 transition-colors text-foreground"
                     >
                       <X className="w-4 h-4" />
                     </button>
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                      <p className="font-mono text-xs text-white/80 truncate">{file?.name}</p>
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/60 to-transparent p-4">
+                      <p className="font-mono text-xs text-foreground/80 truncate">{file?.name}</p>
                     </div>
                   </div>
                 )}
@@ -996,7 +996,7 @@ Example:
                         className={`w-24 h-24 rounded-full flex items-center justify-center transition-all ${
                           isRecording
                             ? "bg-red-500/20 border-2 border-red-500 hover:bg-red-500/30"
-                            : "bg-white/5 border-2 border-white/20 hover:bg-white/10 hover:border-white/30"
+                            : "bg-foreground/5 border-2 border-border hover:bg-foreground/10 hover:border-border"
                         }`}
                       >
                         {isRecording ? (
@@ -1037,7 +1037,7 @@ Example:
                     </div>
                   ) : (
                     <div className="w-full">
-                      <div className="flex items-center justify-between bg-black/40 border border-white/10 rounded-2xl p-4">
+                      <div className="flex items-center justify-between bg-foreground/40 border border-border rounded-2xl p-4">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
                             <Mic className="w-5 h-5 text-emerald-400" />
@@ -1049,14 +1049,14 @@ Example:
                         </div>
                         <button
                           onClick={clearRecording}
-                          className="p-2 rounded-full hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
+                          className="p-2 rounded-full hover:bg-foreground/10 transition-colors text-muted-foreground hover:text-foreground"
                         >
                           <X className="w-5 h-5" />
                         </button>
                       </div>
 
                       {voiceTranscript && (
-                        <div className="mt-4 p-4 bg-black/40 border border-white/10 rounded-xl">
+                        <div className="mt-4 p-4 bg-foreground/40 border border-border rounded-xl">
                           <p className="font-mono text-[10px] uppercase tracking-wider text-emerald-400 mb-2">
                             AI Transcript (editable)
                           </p>
@@ -1122,7 +1122,7 @@ Example:
           >
             {/* Backdrop */}
             <div 
-              className="fixed inset-0 bg-black/90 backdrop-blur-md"
+              className="fixed inset-0 bg-background/90 backdrop-blur-md"
               onClick={cancelImport}
             />
             
@@ -1133,7 +1133,7 @@ Example:
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative z-10 w-full max-w-lg"
             >
-              <div className="glass-card rounded-2xl p-6 bg-background/95 border border-white/10">
+              <div className="glass-card rounded-2xl p-6 bg-background/95 border border-border">
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
@@ -1147,7 +1147,7 @@ Example:
 
                 {/* Customer */}
                 {pendingImportData.customer && (
-                  <div className="mb-4 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="mb-4 p-3 rounded-xl bg-foreground/5 border border-border">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Customer</span>
                       {pendingImportData.customer.matched_confidence && (
@@ -1180,7 +1180,7 @@ Example:
 
                 {/* Items */}
                 {pendingImportData.items.length > 0 && (
-                  <div className="mb-4 p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="mb-4 p-3 rounded-xl bg-foreground/5 border border-border">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
                       Items ({pendingImportData.items.length})
                     </span>
@@ -1211,7 +1211,7 @@ Example:
                 )}
 
                 {/* Total */}
-                <div className="mb-5 p-3 rounded-xl bg-white/5 border border-white/10">
+                <div className="mb-5 p-3 rounded-xl bg-foreground/5 border border-border">
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Subtotal</span>
                     <span className="font-mono text-foreground">
@@ -1239,7 +1239,7 @@ Example:
                 <div className="flex gap-3">
                   <button
                     onClick={cancelImport}
-                    className="flex-1 px-4 py-2.5 rounded-xl border border-white/20 text-muted-foreground hover:text-foreground hover:border-white/40 transition-colors font-mono text-xs"
+                    className="flex-1 px-4 py-2.5 rounded-xl border border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors font-mono text-xs"
                   >
                     Cancel
                   </button>

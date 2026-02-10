@@ -46,11 +46,11 @@ const statusColors: Record<string, { bg: string; text: string; label: string }> 
   in_progress: { bg: "bg-blue-500/20", text: "text-blue-400", label: "In Progress" },
   waiting_on_customer: { bg: "bg-purple-500/20", text: "text-purple-400", label: "Waiting" },
   resolved: { bg: "bg-green-500/20", text: "text-green-400", label: "Resolved" },
-  closed: { bg: "bg-zinc-500/20", text: "text-zinc-400", label: "Closed" },
+  closed: { bg: "bg-zinc-500/20", text: "text-muted-foreground", label: "Closed" },
 }
 
 const priorityColors: Record<string, { bg: string; text: string }> = {
-  low: { bg: "bg-zinc-500/20", text: "text-zinc-400" },
+  low: { bg: "bg-zinc-500/20", text: "text-muted-foreground" },
   medium: { bg: "bg-blue-500/20", text: "text-blue-400" },
   high: { bg: "bg-orange-500/20", text: "text-orange-400" },
   urgent: { bg: "bg-red-500/20", text: "text-red-400" },
@@ -441,7 +441,7 @@ export default function TicketDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/40" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -452,16 +452,16 @@ export default function TicketDetailPage() {
         <div className="max-w-4xl mx-auto">
           <Link
             href="/admin/support"
-            className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+            className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="text-base font-medium">Back to Support</span>
           </Link>
           
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-12 text-center">
-            <MessageSquare className="h-16 w-16 text-white/20 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-white mb-2">Ticket not found</h2>
-            <p className="text-white/50">This ticket may have been deleted or doesn't exist.</p>
+          <div className="rounded-2xl bg-foreground/5 border border-border p-12 text-center">
+            <MessageSquare className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-foreground mb-2">Ticket not found</h2>
+            <p className="text-muted-foreground">This ticket may have been deleted or doesn't exist.</p>
           </div>
         </div>
       </div>
@@ -477,14 +477,14 @@ export default function TicketDetailPage() {
         {/* Back Navigation */}
         <Link
           href="/admin/support"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Support</span>
         </Link>
 
         {/* Header */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 p-8 mb-6">
+        <div className="rounded-2xl bg-foreground/5 border border-border p-8 mb-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
@@ -496,9 +496,9 @@ export default function TicketDetailPage() {
                 </Badge>
               </div>
               
-              <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">{ticket.subject}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{ticket.subject}</h1>
               
-              <div className="flex flex-wrap items-center gap-4 text-sm text-white/50">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
                   <span>{getCustomerName()}</span>
@@ -506,7 +506,7 @@ export default function TicketDetailPage() {
                 {ticket.order && (
                   <Link 
                     href={`/admin/orders/${ticket.order.id}`}
-                    className="flex items-center gap-2 hover:text-white transition-colors"
+                    className="flex items-center gap-2 hover:text-foreground transition-colors"
                   >
                     <Package className="h-4 w-4" />
                     <span>Order #{ticket.order.order_number}</span>
@@ -526,24 +526,24 @@ export default function TicketDetailPage() {
                   value={ticket.status}
                   onChange={(e) => handleStatusChange(e.target.value as SupportTicket['status'])}
                   disabled={updatingStatus}
-                  className="h-10 px-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                  className="h-10 px-3 rounded-xl bg-foreground/5 border border-border text-foreground text-sm focus:outline-none focus:border-border"
                 >
-                  <option value="open" className="bg-zinc-900">Open</option>
-                  <option value="in_progress" className="bg-zinc-900">In Progress</option>
-                  <option value="waiting_on_customer" className="bg-zinc-900">Waiting on Customer</option>
-                  <option value="resolved" className="bg-zinc-900">Resolved</option>
-                  <option value="closed" className="bg-zinc-900">Closed</option>
+                  <option value="open" className="bg-card">Open</option>
+                  <option value="in_progress" className="bg-card">In Progress</option>
+                  <option value="waiting_on_customer" className="bg-card">Waiting on Customer</option>
+                  <option value="resolved" className="bg-card">Resolved</option>
+                  <option value="closed" className="bg-card">Closed</option>
                 </select>
                 
                 <select
                   value={ticket.priority}
                   onChange={(e) => handlePriorityChange(e.target.value as SupportTicket['priority'])}
-                  className="h-10 px-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                  className="h-10 px-3 rounded-xl bg-foreground/5 border border-border text-foreground text-sm focus:outline-none focus:border-border"
                 >
-                  <option value="low" className="bg-zinc-900">Low</option>
-                  <option value="medium" className="bg-zinc-900">Medium</option>
-                  <option value="high" className="bg-zinc-900">High</option>
-                  <option value="urgent" className="bg-zinc-900">Urgent</option>
+                  <option value="low" className="bg-card">Low</option>
+                  <option value="medium" className="bg-card">Medium</option>
+                  <option value="high" className="bg-card">High</option>
+                  <option value="urgent" className="bg-card">Urgent</option>
                 </select>
               </div>
               
@@ -551,7 +551,7 @@ export default function TicketDetailPage() {
                 onClick={loadTicket}
                 variant="outline"
                 size="sm"
-                className="rounded-xl border-white/10 text-white/60 hover:text-white hover:bg-white/5"
+                className="rounded-xl border-border text-foreground/60 hover:text-foreground hover:bg-foreground/5"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Refresh
@@ -576,11 +576,11 @@ export default function TicketDetailPage() {
                   <Info className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white">Customer's Issue Summary</h3>
-                  <p className="text-sm text-white/50">Information from support request form</p>
+                  <h3 className="text-lg font-semibold text-foreground">Customer's Issue Summary</h3>
+                  <p className="text-sm text-muted-foreground">Information from support request form</p>
                 </div>
               </div>
-              <ChevronDown className={`h-5 w-5 text-white/40 transition-transform ${showSummary ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${showSummary ? 'rotate-180' : ''}`} />
             </button>
             
             <AnimatePresence>
@@ -593,8 +593,8 @@ export default function TicketDetailPage() {
                 >
                   {/* AI-generated readable summary */}
                   {customerSummary && (
-                    <div className="mt-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-white/80 leading-relaxed">{customerSummary}</p>
+                    <div className="mt-4 p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-foreground/80 leading-relaxed">{customerSummary}</p>
                     </div>
                   )}
                   
@@ -603,12 +603,12 @@ export default function TicketDetailPage() {
                     {Object.entries(wizardAnswers).map(([key, value]) => (
                       <div 
                         key={key} 
-                        className="p-3 rounded-xl bg-white/5 border border-white/10"
+                        className="p-3 rounded-xl bg-foreground/5 border border-border"
                       >
-                        <p className="text-xs text-white/40 uppercase tracking-wide mb-1">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
                           {LABEL_MAP[key] || key.replace(/_/g, ' ')}
                         </p>
-                        <p className="text-white font-medium">{value}</p>
+                        <p className="text-foreground font-medium">{value}</p>
                       </div>
                     ))}
                   </div>
@@ -619,9 +619,9 @@ export default function TicketDetailPage() {
         )}
 
         {/* Messages */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
-          <div className="p-4 border-b border-white/10">
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+        <div className="rounded-2xl bg-foreground/5 border border-border overflow-hidden">
+          <div className="p-4 border-b border-border">
+            <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
               <MessageSquare className="h-5 w-5" />
               Conversation
             </h2>
@@ -642,7 +642,7 @@ export default function TicketDetailPage() {
                 if (isSystem) {
                   return (
                     <div key={message.id} className="text-center py-2">
-                      <span className="text-sm text-white/40 bg-white/5 px-3 py-1 rounded-full">
+                      <span className="text-sm text-muted-foreground bg-foreground/5 px-3 py-1 rounded-full">
                         {message.message}
                       </span>
                     </div>
@@ -661,8 +661,8 @@ export default function TicketDetailPage() {
                       <div
                         className={`rounded-2xl p-4 ${
                           isAdmin || isAI
-                            ? 'bg-white/10 text-white border border-white/20 rounded-br-md'
-                            : 'bg-white/5 text-white rounded-bl-md'
+                            ? 'bg-foreground/10 text-foreground border border-border rounded-br-md'
+                            : 'bg-foreground/5 text-foreground rounded-bl-md'
                         }`}
                       >
                         {wizardAnswers ? (
@@ -694,7 +694,7 @@ export default function TicketDetailPage() {
                                     <img 
                                       src={url}
                                       alt="Attachment"
-                                      className="max-w-full max-h-48 rounded-lg border border-white/10 hover:border-white/30 transition-colors"
+                                      className="max-w-full max-h-48 rounded-lg border border-border hover:border-border transition-colors"
                                     />
                                   </a>
                                 )
@@ -707,7 +707,7 @@ export default function TicketDetailPage() {
                           </div>
                         )}
                       </div>
-                      <div className={`mt-1 text-xs text-white/40 ${isAdmin || isAI ? 'text-right' : ''}`}>
+                      <div className={`mt-1 text-xs text-muted-foreground ${isAdmin || isAI ? 'text-right' : ''}`}>
                         {isAI ? (
                           <span className="inline-flex items-center gap-1">
                             <Sparkles className="h-3 w-3" />
@@ -724,7 +724,7 @@ export default function TicketDetailPage() {
                 )
               })
             ) : (
-              <div className="text-center py-12 text-white/40">
+              <div className="text-center py-12 text-muted-foreground">
                 <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p>No messages yet</p>
               </div>
@@ -733,11 +733,11 @@ export default function TicketDetailPage() {
           </div>
 
           {/* AI Response Generator */}
-          <div className="p-4 border-t border-white/10 bg-gradient-to-r from-purple-500/5 to-blue-500/5">
+          <div className="p-4 border-t border-border bg-gradient-to-r from-purple-500/5 to-blue-500/5">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-purple-400" />
-                <span className="text-sm font-medium text-white">AI Response Generator</span>
+                <span className="text-sm font-medium text-foreground">AI Response Generator</span>
               </div>
               {aiLoading && (
                 <button
@@ -758,7 +758,7 @@ export default function TicketDetailPage() {
                   className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all
                     ${selectedIntent === option.id && aiLoading
                       ? 'bg-purple-500/30 text-purple-300 border border-purple-500/50'
-                      : `${option.color.split(' ')[0]} ${option.color.split(' ')[1]} border border-transparent hover:border-white/20`
+                      : `${option.color.split(' ')[0]} ${option.color.split(' ')[1]} border border-transparent hover:border-border`
                     }
                     disabled:opacity-50 disabled:cursor-not-allowed
                   `}
@@ -778,20 +778,20 @@ export default function TicketDetailPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="relative"
               >
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-3">
+                <div className="p-4 rounded-xl bg-foreground/5 border border-border mb-3">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-white/40">AI Suggested Response:</span>
+                    <span className="text-xs text-muted-foreground">AI Suggested Response:</span>
                     <button
                       onClick={handleCopyResponse}
-                      className="flex items-center gap-1 text-xs text-white/40 hover:text-white transition-colors"
+                      className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                       {copied ? 'Copied!' : 'Copy'}
                     </button>
                   </div>
-                  <p className="text-white/80 text-sm whitespace-pre-wrap">{aiResponse}</p>
+                  <p className="text-foreground/80 text-sm whitespace-pre-wrap">{aiResponse}</p>
                 </div>
-                <p className="text-xs text-white/30 mb-2">
+                <p className="text-xs text-muted-foreground mb-2">
                   Review and edit the response below before sending
                 </p>
               </motion.div>
@@ -799,14 +799,14 @@ export default function TicketDetailPage() {
           </div>
 
           {/* Reply Box */}
-          <div className="p-4 border-t border-white/10 bg-white/[0.02]">
+          <div className="p-4 border-t border-border bg-foreground/[0.03]">
             {/* Attachment Preview */}
             {attachments.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
                 {attachments.map((file, index) => (
                   <div 
                     key={index}
-                    className="relative group rounded-lg overflow-hidden bg-white/10 border border-white/20"
+                    className="relative group rounded-lg overflow-hidden bg-foreground/10 border border-border"
                   >
                     <img 
                       src={URL.createObjectURL(file)} 
@@ -817,9 +817,9 @@ export default function TicketDetailPage() {
                       onClick={() => removeAttachment(index)}
                       className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      <X className="h-3 w-3 text-white" />
+                      <X className="h-3 w-3 text-foreground" />
                     </button>
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-[10px] text-white px-1 truncate">
+                    <div className="absolute bottom-0 left-0 right-0 bg-foreground/60 text-[10px] text-foreground px-1 truncate">
                       {file.name}
                     </div>
                   </div>
@@ -842,7 +842,7 @@ export default function TicketDetailPage() {
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
                 placeholder="Type your reply..."
-                className="flex-1 min-h-[80px] rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none"
+                className="flex-1 min-h-[80px] rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
                     handleSendReply()
@@ -853,7 +853,7 @@ export default function TicketDetailPage() {
               {/* Attach Button */}
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="h-10 w-10 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white flex items-center justify-center transition-all hover:border-white/40"
+                className="h-10 w-10 rounded-xl border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground/60 hover:text-foreground flex items-center justify-center transition-all hover:border-border"
                 title="Attach images"
               >
                 <Paperclip className="h-5 w-5" />
@@ -863,7 +863,7 @@ export default function TicketDetailPage() {
               <Button
                 onClick={handleSendReply}
                 disabled={sending || (!replyText.trim() && attachments.length === 0)}
-                className="rounded-xl bg-white text-black hover:bg-white/90 px-6 h-10"
+                className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6 h-10"
               >
                 {sending ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -876,7 +876,7 @@ export default function TicketDetailPage() {
               </Button>
             </div>
             
-            <p className="text-xs text-white/30 mt-2">
+            <p className="text-xs text-muted-foreground mt-2">
               Press ⌘+Enter to send
               {attachments.length > 0 && ` • ${attachments.length} file(s) attached`}
             </p>

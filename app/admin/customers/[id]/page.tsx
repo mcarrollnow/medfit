@@ -506,8 +506,8 @@ export default function CustomerDetailPage() {
     return (
       <div className="min-h-screen overflow-x-hidden px-6 md:px-12 py-24 md:py-32">
         <div className="max-w-7xl mx-auto space-y-12 md:space-y-16">
-          <div className="h-8 w-40 animate-pulse rounded bg-white/10" />
-          <div className="h-16 w-96 animate-pulse rounded bg-white/10" />
+          <div className="h-8 w-40 animate-pulse rounded bg-foreground/10" />
+          <div className="h-16 w-96 animate-pulse rounded bg-foreground/10" />
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-5">
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} className="h-32 animate-pulse rounded-3xl glass-card" />
@@ -565,7 +565,7 @@ export default function CustomerDetailPage() {
             <div className="space-y-4">
               <div className="flex flex-wrap items-center gap-3 md:gap-4">
                 <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground">{getDisplayName()}</h1>
-                <span className="glass-button rounded-2xl px-4 py-2 text-sm md:text-base font-mono text-muted-foreground border border-white/10">
+                <span className="glass-button rounded-2xl px-4 py-2 text-sm md:text-base font-mono text-muted-foreground border border-border">
                   {typeLabels[customer.customer_type] || customer.customer_type}
                 </span>
               </div>
@@ -577,7 +577,7 @@ export default function CustomerDetailPage() {
               <Button
                 onClick={() => setShowPromoteToRep(true)}
                 variant="outline"
-                className="h-14 px-6 rounded-2xl border-white/10 text-white hover:bg-white/10 bg-transparent gap-3 text-base font-semibold"
+                className="h-14 px-6 rounded-2xl border-border text-foreground hover:bg-foreground/10 bg-transparent gap-3 text-base font-semibold"
               >
                 <UserPlus className="h-5 w-5" />
                 Make Rep
@@ -587,7 +587,7 @@ export default function CustomerDetailPage() {
               <Button
                 onClick={() => setSmsOpen(true)}
                 variant="outline"
-                className="h-14 px-6 rounded-2xl border-white/10 text-white hover:bg-white/10 bg-transparent gap-3 text-base font-semibold"
+                className="h-14 px-6 rounded-2xl border-border text-foreground hover:bg-foreground/10 bg-transparent gap-3 text-base font-semibold"
               >
                 <MessageSquare className="h-5 w-5" />
                 Send SMS
@@ -601,7 +601,7 @@ export default function CustomerDetailPage() {
               <Trash2 className="h-5 w-5" />
               Delete
             </Button>
-            <Button onClick={handleSave} disabled={saving} className="h-12 md:h-14 px-6 md:px-8 rounded-2xl gap-2 md:gap-3 text-sm md:text-base font-light glass-button border-white/10 text-foreground hover:border-white/20">
+            <Button onClick={handleSave} disabled={saving} className="h-12 md:h-14 px-6 md:px-8 rounded-2xl gap-2 md:gap-3 text-sm md:text-base font-light glass-button border-border text-foreground hover:border-border">
               {saved ? (
                 <>
                   <Check className="h-4 w-4 md:h-5 md:w-5" />
@@ -609,7 +609,7 @@ export default function CustomerDetailPage() {
                 </>
               ) : saving ? (
                 <>
-                  <div className="h-4 w-4 md:h-5 md:w-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                  <div className="h-4 w-4 md:h-5 md:w-5 border-2 border-border border-t-white rounded-full animate-spin" />
                   Saving...
                 </>
               ) : (
@@ -658,8 +658,8 @@ export default function CustomerDetailPage() {
                 flex items-center justify-center gap-2 rounded-2xl px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-light transition-all duration-300
                 ${
                   activeTab === tab.id
-                    ? "glass-button bg-white/10 border-white/20 text-foreground"
-                    : "glass-button text-muted-foreground hover:text-foreground hover:border-white/20"
+                    ? "glass-button bg-foreground/10 border-border text-foreground"
+                    : "glass-button text-muted-foreground hover:text-foreground hover:border-border"
                 }
               `}
             >
@@ -683,7 +683,7 @@ export default function CustomerDetailPage() {
                       <Input
                         value={customer.user?.email || ""}
                         readOnly
-                        className="h-14 rounded-xl bg-white/5 border-white/10 text-white text-base"
+                        className="h-14 rounded-xl bg-foreground/5 border-border text-foreground text-base"
                       />
                     </div>
                     <div className="space-y-3">
@@ -692,7 +692,7 @@ export default function CustomerDetailPage() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+1 (555) 123-4567"
-                        className="h-14 rounded-xl bg-white/5 border border-white/10 text-white text-base placeholder:text-white/30"
+                        className="h-14 rounded-xl bg-foreground/5 border border-border text-foreground text-base placeholder:text-muted-foreground"
                       />
                     </div>
                     {customer.company_name && (
@@ -701,7 +701,7 @@ export default function CustomerDetailPage() {
                         <Input
                           value={customer.company_name}
                           readOnly
-                          className="h-14 rounded-xl bg-white/5 border border-white/10 text-white text-base"
+                          className="h-14 rounded-xl bg-foreground/5 border border-border text-foreground text-base"
                         />
                       </div>
                     )}
@@ -714,7 +714,7 @@ export default function CustomerDetailPage() {
                             : "No address on file"
                         }
                         readOnly
-                        className="h-14 rounded-xl bg-white/5 border border-white/10 text-white text-base"
+                        className="h-14 rounded-xl bg-foreground/5 border border-border text-foreground text-base"
                       />
                     </div>
                     <div className="space-y-3">
@@ -722,7 +722,7 @@ export default function CustomerDetailPage() {
                       <Input
                         value={new Date(customer.created_at).toLocaleDateString()}
                         readOnly
-                        className="h-14 rounded-xl bg-white/5 border border-white/10 text-white text-base"
+                        className="h-14 rounded-xl bg-foreground/5 border border-border text-foreground text-base"
                       />
                     </div>
                   </div>
@@ -744,7 +744,7 @@ export default function CustomerDetailPage() {
                               value={editReferralCodeValue}
                               onChange={(e) => setEditReferralCodeValue(e.target.value.toUpperCase())}
                               placeholder="Enter new code (4-12 characters)"
-                              className="flex-1 h-14 rounded-xl bg-white/5 border border-purple-500/50 text-white text-xl font-bold tracking-wider uppercase"
+                              className="flex-1 h-14 rounded-xl bg-foreground/5 border border-purple-500/50 text-foreground text-xl font-bold tracking-wider uppercase"
                               maxLength={12}
                             />
                             <Button
@@ -766,7 +766,7 @@ export default function CustomerDetailPage() {
                                 setReferralCodeError(null)
                               }}
                               variant="outline"
-                              className="h-14 px-4 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                              className="h-14 px-4 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                             >
                               <X className="h-5 w-5" />
                             </Button>
@@ -778,12 +778,12 @@ export default function CustomerDetailPage() {
                       ) : customer.referral_code ? (
                         <div className="flex items-center gap-3">
                           <div className="flex-1 h-14 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center px-4">
-                            <code className="text-xl font-bold text-white tracking-wider">{customer.referral_code}</code>
+                            <code className="text-xl font-bold text-foreground tracking-wider">{customer.referral_code}</code>
                           </div>
                           <Button
                             onClick={handleCopyReferralCode}
                             variant="outline"
-                            className="h-14 px-4 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                            className="h-14 px-4 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                             title="Copy code"
                           >
                             {referralCodeCopied ? (
@@ -799,7 +799,7 @@ export default function CustomerDetailPage() {
                               setReferralCodeError(null)
                             }}
                             variant="outline"
-                            className="h-14 px-4 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                            className="h-14 px-4 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                             title="Edit code"
                           >
                             <Edit2 className="h-5 w-5" />
@@ -808,11 +808,11 @@ export default function CustomerDetailPage() {
                             onClick={handleRegenerateReferralCode}
                             disabled={generatingReferralCode}
                             variant="outline"
-                            className="h-14 px-4 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                            className="h-14 px-4 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                             title="Regenerate random code"
                           >
                             {generatingReferralCode ? (
-                              <div className="h-4 w-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                              <div className="h-4 w-4 border-2 border-border border-t-white rounded-full animate-spin" />
                             ) : (
                               <RefreshCw className="h-5 w-5" />
                             )}
@@ -820,8 +820,8 @@ export default function CustomerDetailPage() {
                         </div>
                       ) : (
                         <div className="flex items-center gap-3">
-                          <div className="flex-1 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center px-4">
-                            <span className="text-white/40">No referral code generated</span>
+                          <div className="flex-1 h-14 rounded-xl bg-foreground/5 border border-border flex items-center px-4">
+                            <span className="text-muted-foreground">No referral code generated</span>
                           </div>
                           <Button
                             onClick={handleGenerateReferralCode}
@@ -842,7 +842,7 @@ export default function CustomerDetailPage() {
                           </Button>
                         </div>
                       )}
-                      <p className="text-sm text-white/40">
+                      <p className="text-sm text-muted-foreground">
                         This code can be shared with friends to give them a discount on their first order
                       </p>
                     </div>
@@ -853,14 +853,14 @@ export default function CustomerDetailPage() {
                         <div className="h-14 rounded-xl bg-green-500/10 border border-green-500/30 flex items-center px-4">
                           <code className="text-lg font-semibold text-green-400">{customer.referred_by_code}</code>
                         </div>
-                        <p className="text-sm text-white/40">
+                        <p className="text-sm text-muted-foreground">
                           This customer signed up using another customer&apos;s referral code
                         </p>
                       </div>
                     ) : (
                       <div className="space-y-3">
                         <Label className="text-sm md:text-base font-mono tracking-wider text-muted-foreground uppercase">Add Referral Code</Label>
-                        <p className="text-sm text-white/40 mb-2">
+                        <p className="text-sm text-muted-foreground mb-2">
                           Apply a referral code to this customer (one-time only)
                         </p>
                         {referralApplyError && (
@@ -877,7 +877,7 @@ export default function CustomerDetailPage() {
                             }}
                             placeholder="Enter referral code (e.g. JOHN1234)"
                             maxLength={10}
-                            className="flex-1 h-14 rounded-xl bg-white/5 border-white/10 text-white font-mono tracking-wider placeholder:text-white/30"
+                            className="flex-1 h-14 rounded-xl bg-foreground/5 border-border text-foreground font-mono tracking-wider placeholder:text-muted-foreground"
                           />
                           <Button
                             onClick={handleApplyReferralCode}
@@ -925,16 +925,16 @@ export default function CustomerDetailPage() {
                           <span className="text-2xl font-bold text-amber-400">
                             {(customer.reward_points || 0).toLocaleString()}
                           </span>
-                          <span className="text-sm text-white/50">pts</span>
+                          <span className="text-sm text-muted-foreground">pts</span>
                         </div>
                       </div>
                       <div className="space-y-3">
                         <Label className="text-sm md:text-base font-mono tracking-wider text-muted-foreground uppercase">Lifetime Earned</Label>
-                        <div className="h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between px-4">
-                          <span className="text-2xl font-bold text-white/70">
+                        <div className="h-14 rounded-xl bg-foreground/5 border border-border flex items-center justify-between px-4">
+                          <span className="text-2xl font-bold text-foreground/70">
                             {(customer.lifetime_points_earned || 0).toLocaleString()}
                           </span>
-                          <span className="text-sm text-white/50">pts</span>
+                          <span className="text-sm text-muted-foreground">pts</span>
                         </div>
                       </div>
                     </div>
@@ -948,7 +948,7 @@ export default function CustomerDetailPage() {
                       Adjust Points
                     </Button>
                     
-                    <p className="text-sm text-white/40">
+                    <p className="text-sm text-muted-foreground">
                       Add or subtract reward points for this customer. Points adjustments are logged for audit purposes.
                     </p>
                   </div>
@@ -961,10 +961,10 @@ export default function CustomerDetailPage() {
                       {customer.wallet_addresses.map((wallet, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10"
+                          className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border"
                         >
-                          <code className="text-sm text-white/70 font-mono">{wallet.address}</code>
-                          <span className="text-xs text-white/40">
+                          <code className="text-sm text-foreground/70 font-mono">{wallet.address}</code>
+                          <span className="text-xs text-muted-foreground">
                             Last used: {new Date(wallet.last_used).toLocaleDateString()}
                           </span>
                         </div>
@@ -980,18 +980,18 @@ export default function CustomerDetailPage() {
                     <select
                       value={selectedWalletId || ""}
                       onChange={(e) => setSelectedWalletId(e.target.value || null)}
-                      className="w-full h-14 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                      className="w-full h-14 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                     >
-                      <option value="" className="bg-black">
+                      <option value="" className="bg-background">
                         No wallet assigned
                       </option>
                       {wallets.map((wallet) => (
-                        <option key={wallet.id} value={wallet.id} className="bg-black">
+                        <option key={wallet.id} value={wallet.id} className="bg-background">
                           {wallet.label}
                         </option>
                       ))}
                     </select>
-                    <p className="text-sm text-white/40">
+                    <p className="text-sm text-muted-foreground">
                       Select a business wallet to receive crypto payments from this customer
                     </p>
                   </div>
@@ -1004,13 +1004,13 @@ export default function CustomerDetailPage() {
                     <select
                       value={selectedRepId || ""}
                       onChange={(e) => setSelectedRepId(e.target.value || null)}
-                      className="w-full h-14 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                      className="w-full h-14 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                     >
-                      <option value="" className="bg-black">
+                      <option value="" className="bg-background">
                         Unassigned
                       </option>
                       {reps.map((rep) => (
-                        <option key={rep.id} value={rep.id} className="bg-black">
+                        <option key={rep.id} value={rep.id} className="bg-background">
                           {rep.first_name && rep.last_name ? `${rep.first_name} ${rep.last_name}` : rep.email}
                         </option>
                       ))}
@@ -1025,7 +1025,7 @@ export default function CustomerDetailPage() {
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="Add notes about this customer..."
                     rows={5}
-                    className="rounded-xl bg-white/5 border-white/10 text-white text-base placeholder:text-white/30 resize-none"
+                    className="rounded-xl bg-foreground/5 border-border text-foreground text-base placeholder:text-muted-foreground resize-none"
                   />
                 </div>
               </div>
@@ -1041,8 +1041,8 @@ export default function CustomerDetailPage() {
                 <div className="space-y-4">
                   {orders.length === 0 ? (
                     <div className="text-center py-12">
-                      <Package className="h-12 w-12 text-white/20 mx-auto mb-4" />
-                      <p className="text-white/40">No orders yet</p>
+                      <Package className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                      <p className="text-muted-foreground">No orders yet</p>
                     </div>
                   ) : (
                     orders.map((order) => (
@@ -1070,14 +1070,14 @@ export default function CustomerDetailPage() {
                 <div className="space-y-4">
                   {tickets.length === 0 ? (
                     <div className="text-center py-12">
-                      <Ticket className="h-12 w-12 text-white/20 mx-auto mb-4" />
-                      <p className="text-white/40">No support tickets</p>
+                      <Ticket className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                      <p className="text-muted-foreground">No support tickets</p>
                     </div>
                   ) : (
                     tickets.map((ticket) => (
                       <div
                         key={ticket.id}
-                        className="glass-card rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer"
+                        className="glass-card rounded-2xl p-6 hover:bg-foreground/[0.05] transition-all duration-500 cursor-pointer"
                       >
                         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                           <div className="flex items-start gap-4 min-w-0">
@@ -1094,7 +1094,7 @@ export default function CustomerDetailPage() {
                             </div>
                           </div>
                           <div className="flex flex-col items-end gap-2">
-                            <span className="glass-button rounded-xl px-3 py-1.5 text-xs md:text-sm font-mono text-muted-foreground border border-white/10">
+                            <span className="glass-button rounded-xl px-3 py-1.5 text-xs md:text-sm font-mono text-muted-foreground border border-border">
                               {ticket.status.replace("_", " ").charAt(0).toUpperCase() +
                                 ticket.status.replace("_", " ").slice(1)}
                             </span>
@@ -1131,14 +1131,14 @@ export default function CustomerDetailPage() {
                 <div className="space-y-4">
                   {assignedDiscounts.filter(d => d.status === "active").length === 0 ? (
                     <div className="text-center py-12">
-                      <Gift className="h-12 w-12 text-white/20 mx-auto mb-4" />
-                      <p className="text-white/40">No active discounts assigned</p>
+                      <Gift className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                      <p className="text-muted-foreground">No active discounts assigned</p>
                     </div>
                   ) : (
                     assignedDiscounts.filter(d => d.status === "active").map((discount) => (
                       <div
                         key={discount.id}
-                        className="glass-card rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-500"
+                        className="glass-card rounded-2xl p-6 hover:bg-foreground/[0.05] transition-all duration-500"
                       >
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                           <div className="flex items-center gap-4 min-w-0">
@@ -1151,7 +1151,7 @@ export default function CustomerDetailPage() {
                                   ? `${discount.custom_discount_value}% Off`
                                   : `$${discount.custom_discount_value} Off`}
                               </p>
-                              <p className="text-sm text-white/50">
+                              <p className="text-sm text-muted-foreground">
                                 {discount.custom_description || (discount.discount_code ? `Code: ${discount.discount_code}` : "Custom discount")}
                               </p>
                             </div>
@@ -1163,7 +1163,7 @@ export default function CustomerDetailPage() {
                                 Expires: {new Date(discount.expires_at).toLocaleDateString()}
                               </div>
                             )}
-                            <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-white/10">Active</span>
+                            <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-border">Active</span>
                             <Button
                               variant="ghost"
                               size="sm"
@@ -1181,25 +1181,25 @@ export default function CustomerDetailPage() {
 
                 {/* Past Discounts */}
                 {assignedDiscounts.filter(d => d.status !== "active").length > 0 && (
-                  <div className="space-y-4 pt-6 border-t border-white/10">
-                    <h4 className="text-lg font-semibold text-white/60">Discount History</h4>
+                  <div className="space-y-4 pt-6 border-t border-border">
+                    <h4 className="text-lg font-semibold text-foreground/60">Discount History</h4>
                     {assignedDiscounts.filter(d => d.status !== "active").map((discount) => (
                       <div
                         key={discount.id}
-                        className="rounded-xl border border-white/5 bg-white/[0.02] p-4 opacity-60"
+                        className="rounded-xl border border-border bg-foreground/[0.03] p-4 opacity-60"
                       >
                         <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                           <div>
-                            <p className="font-medium text-white">
+                            <p className="font-medium text-foreground">
                               {discount.custom_discount_type === "percentage" 
                                 ? `${discount.custom_discount_value}% Off`
                                 : `$${discount.custom_discount_value} Off`}
                             </p>
-                            <p className="text-sm text-white/40">
+                            <p className="text-sm text-muted-foreground">
                               {discount.custom_description || "Custom discount"}
                             </p>
                           </div>
-                          <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-white/10">
+                          <span className="glass-button rounded-xl px-3 py-1.5 text-xs font-mono text-muted-foreground border border-border">
                             {discount.status.charAt(0).toUpperCase() + discount.status.slice(1)}
                           </span>
                         </div>
@@ -1219,7 +1219,7 @@ export default function CustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setShowAssignDiscount(false)}
             >
               <motion.div
@@ -1228,16 +1228,16 @@ export default function CustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Assign Discount</h3>
-                    <p className="text-sm text-white/50 mt-1">This discount will auto-apply at checkout</p>
+                    <h3 className="text-xl font-bold text-foreground">Assign Discount</h3>
+                    <p className="text-sm text-muted-foreground mt-1">This discount will auto-apply at checkout</p>
                   </div>
                   <button
                     onClick={() => setShowAssignDiscount(false)}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1245,13 +1245,13 @@ export default function CustomerDetailPage() {
 
                 <div className="space-y-4">
                   {/* Discount Type Toggle */}
-                  <div className="flex gap-2 p-1 bg-white/5 rounded-xl">
+                  <div className="flex gap-2 p-1 bg-foreground/5 rounded-xl">
                     <button
                       onClick={() => setNewDiscount(prev => ({ ...prev, type: "custom" }))}
                       className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                         newDiscount.type === "custom" 
-                          ? "bg-white text-black" 
-                          : "text-white/60 hover:text-white"
+                          ? "bg-primary text-primary-foreground" 
+                          : "text-foreground/60 hover:text-foreground"
                       }`}
                     >
                       Custom Discount
@@ -1260,8 +1260,8 @@ export default function CustomerDetailPage() {
                       onClick={() => setNewDiscount(prev => ({ ...prev, type: "existing" }))}
                       className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                         newDiscount.type === "existing" 
-                          ? "bg-white text-black" 
-                          : "text-white/60 hover:text-white"
+                          ? "bg-primary text-primary-foreground" 
+                          : "text-foreground/60 hover:text-foreground"
                       }`}
                     >
                       Existing Code
@@ -1272,14 +1272,14 @@ export default function CustomerDetailPage() {
                     <>
                       {/* Custom Discount Type */}
                       <div className="space-y-2">
-                        <Label className="text-white">Discount Type</Label>
+                        <Label className="text-foreground">Discount Type</Label>
                         <div className="flex gap-2">
                           <button
                             onClick={() => setNewDiscount(prev => ({ ...prev, customType: "percentage" }))}
                             className={`flex-1 py-3 rounded-lg font-medium border transition-all ${
                               newDiscount.customType === "percentage" 
                                 ? "bg-purple-500/20 border-purple-500/50 text-purple-300" 
-                                : "border-white/10 text-white/60 hover:text-white"
+                                : "border-border text-foreground/60 hover:text-foreground"
                             }`}
                           >
                             Percentage %
@@ -1289,7 +1289,7 @@ export default function CustomerDetailPage() {
                             className={`flex-1 py-3 rounded-lg font-medium border transition-all ${
                               newDiscount.customType === "fixed" 
                                 ? "bg-green-500/20 border-green-500/50 text-green-300" 
-                                : "border-white/10 text-white/60 hover:text-white"
+                                : "border-border text-foreground/60 hover:text-foreground"
                             }`}
                           >
                             Fixed Amount $
@@ -1299,7 +1299,7 @@ export default function CustomerDetailPage() {
 
                       {/* Discount Value */}
                       <div className="space-y-2">
-                        <Label className="text-white">
+                        <Label className="text-foreground">
                           {newDiscount.customType === "percentage" ? "Percentage" : "Amount"}
                         </Label>
                         <Input
@@ -1307,21 +1307,21 @@ export default function CustomerDetailPage() {
                           value={newDiscount.customValue}
                           onChange={(e) => setNewDiscount(prev => ({ ...prev, customValue: e.target.value }))}
                           placeholder={newDiscount.customType === "percentage" ? "e.g. 15" : "e.g. 10.00"}
-                          className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                          className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                         />
                       </div>
                     </>
                   ) : (
                     <div className="space-y-2">
-                      <Label className="text-white">Select Discount Code</Label>
+                      <Label className="text-foreground">Select Discount Code</Label>
                       <select
                         value={newDiscount.discountCodeId}
                         onChange={(e) => setNewDiscount(prev => ({ ...prev, discountCodeId: e.target.value }))}
-                        className="w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                        className="w-full h-12 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                       >
-                        <option value="" className="bg-black">Select a discount code...</option>
+                        <option value="" className="bg-background">Select a discount code...</option>
                         {availableDiscounts.filter(d => d.is_active).map((discount) => (
-                          <option key={discount.id} value={discount.id} className="bg-black">
+                          <option key={discount.id} value={discount.id} className="bg-background">
                             {discount.code} - {discount.discount_type === "percentage" ? `${discount.discount_value}%` : discount.discount_type === "set_price" ? "Custom pricing" : `$${discount.discount_value}`}
                           </option>
                         ))}
@@ -1331,23 +1331,23 @@ export default function CustomerDetailPage() {
 
                   {/* Description */}
                   <div className="space-y-2">
-                    <Label className="text-white">Description (Optional)</Label>
+                    <Label className="text-foreground">Description (Optional)</Label>
                     <Input
                       value={newDiscount.description}
                       onChange={(e) => setNewDiscount(prev => ({ ...prev, description: e.target.value }))}
                       placeholder="e.g. Loyalty reward, First order discount"
-                      className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
                   </div>
 
                   {/* Expiration */}
                   <div className="space-y-2">
-                    <Label className="text-white">Expires (Optional)</Label>
+                    <Label className="text-foreground">Expires (Optional)</Label>
                     <Input
                       type="date"
                       value={newDiscount.expiresAt}
                       onChange={(e) => setNewDiscount(prev => ({ ...prev, expiresAt: e.target.value }))}
-                      className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                      className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                     />
                   </div>
                 </div>
@@ -1356,7 +1356,7 @@ export default function CustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => setShowAssignDiscount(false)}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
@@ -1390,7 +1390,7 @@ export default function CustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setSmsOpen(false)}
             >
               <motion.div
@@ -1399,16 +1399,16 @@ export default function CustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Send SMS</h3>
-                    <p className="text-sm text-white/50 mt-1">To: {customer.phone}</p>
+                    <h3 className="text-xl font-bold text-foreground">Send SMS</h3>
+                    <p className="text-sm text-muted-foreground mt-1">To: {customer.phone}</p>
                   </div>
                   <button
                     onClick={() => setSmsOpen(false)}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1419,7 +1419,7 @@ export default function CustomerDetailPage() {
                   onChange={(e) => setSmsMessage(e.target.value)}
                   placeholder="Type your message here..."
                   rows={5}
-                  className="rounded-xl bg-white/5 border-white/10 text-white text-base placeholder:text-white/30 resize-none"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground text-base placeholder:text-muted-foreground resize-none"
                   autoFocus
                 />
 
@@ -1427,7 +1427,7 @@ export default function CustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => setSmsOpen(false)}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
@@ -1461,7 +1461,7 @@ export default function CustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setShowAdjustPoints(false)}
             >
               <motion.div
@@ -1470,18 +1470,18 @@ export default function CustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Adjust Reward Points</h3>
-                    <p className="text-sm text-white/50 mt-1">
+                    <h3 className="text-xl font-bold text-foreground">Adjust Reward Points</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
                       Current balance: {(customer?.reward_points || 0).toLocaleString()} pts
                     </p>
                   </div>
                   <button
                     onClick={() => setShowAdjustPoints(false)}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1489,13 +1489,13 @@ export default function CustomerDetailPage() {
 
                 <div className="space-y-4">
                   {/* Add/Subtract Toggle */}
-                  <div className="flex gap-2 p-1 bg-white/5 rounded-xl">
+                  <div className="flex gap-2 p-1 bg-foreground/5 rounded-xl">
                     <button
                       onClick={() => setPointsAdjustment(prev => ({ ...prev, type: "add" }))}
                       className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                         pointsAdjustment.type === "add" 
                           ? "bg-emerald-500 text-white" 
-                          : "text-white/60 hover:text-white"
+                          : "text-foreground/60 hover:text-foreground"
                       }`}
                     >
                       <Plus className="h-4 w-4 inline mr-2" />
@@ -1506,7 +1506,7 @@ export default function CustomerDetailPage() {
                       className={`flex-1 py-3 rounded-lg font-medium transition-all ${
                         pointsAdjustment.type === "subtract" 
                           ? "bg-red-500 text-white" 
-                          : "text-white/60 hover:text-white"
+                          : "text-foreground/60 hover:text-foreground"
                       }`}
                     >
                       <span className="mr-2">−</span>
@@ -1516,36 +1516,36 @@ export default function CustomerDetailPage() {
 
                   {/* Points Amount */}
                   <div className="space-y-2">
-                    <Label className="text-white">Points Amount</Label>
+                    <Label className="text-foreground">Points Amount</Label>
                     <Input
                       type="number"
                       value={pointsAdjustment.amount}
                       onChange={(e) => setPointsAdjustment(prev => ({ ...prev, amount: e.target.value }))}
                       placeholder="Enter points amount"
                       min="1"
-                      className="h-12 rounded-xl bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30"
+                      className="h-12 rounded-xl bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground"
                     />
                   </div>
 
                   {/* Reason */}
                   <div className="space-y-2">
-                    <Label className="text-white">Reason *</Label>
+                    <Label className="text-foreground">Reason *</Label>
                     <select
                       value={pointsAdjustment.reason}
                       onChange={(e) => setPointsAdjustment(prev => ({ ...prev, reason: e.target.value }))}
-                      className="w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                      className="w-full h-12 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                     >
-                      <option value="" className="bg-black">Select a reason...</option>
-                      <option value="Loyalty bonus" className="bg-black">Loyalty bonus</option>
-                      <option value="Customer service credit" className="bg-black">Customer service credit</option>
-                      <option value="Promotional reward" className="bg-black">Promotional reward</option>
-                      <option value="Referral bonus" className="bg-black">Referral bonus</option>
-                      <option value="Purchase reward" className="bg-black">Purchase reward</option>
-                      <option value="Birthday bonus" className="bg-black">Birthday bonus</option>
-                      <option value="Manual correction" className="bg-black">Manual correction</option>
-                      <option value="Points redemption" className="bg-black">Points redemption</option>
-                      <option value="Points expiration" className="bg-black">Points expiration</option>
-                      <option value="Other" className="bg-black">Other</option>
+                      <option value="" className="bg-background">Select a reason...</option>
+                      <option value="Loyalty bonus" className="bg-background">Loyalty bonus</option>
+                      <option value="Customer service credit" className="bg-background">Customer service credit</option>
+                      <option value="Promotional reward" className="bg-background">Promotional reward</option>
+                      <option value="Referral bonus" className="bg-background">Referral bonus</option>
+                      <option value="Purchase reward" className="bg-background">Purchase reward</option>
+                      <option value="Birthday bonus" className="bg-background">Birthday bonus</option>
+                      <option value="Manual correction" className="bg-background">Manual correction</option>
+                      <option value="Points redemption" className="bg-background">Points redemption</option>
+                      <option value="Points expiration" className="bg-background">Points expiration</option>
+                      <option value="Other" className="bg-background">Other</option>
                     </select>
                   </div>
 
@@ -1556,7 +1556,7 @@ export default function CustomerDetailPage() {
                         ? "bg-emerald-500/10 border border-emerald-500/20" 
                         : "bg-red-500/10 border border-red-500/20"
                     }`}>
-                      <p className="text-sm text-white/70 mb-1">New Balance Preview</p>
+                      <p className="text-sm text-foreground/70 mb-1">New Balance Preview</p>
                       <p className={`text-2xl font-bold ${
                         pointsAdjustment.type === "add" ? "text-emerald-400" : "text-red-400"
                       }`}>
@@ -1566,7 +1566,7 @@ export default function CustomerDetailPage() {
                             : -(parseInt(pointsAdjustment.amount) || 0)
                         )).toLocaleString()} pts
                       </p>
-                      <p className="text-xs text-white/50 mt-1">
+                      <p className="text-xs text-muted-foreground mt-1">
                         {pointsAdjustment.type === "add" ? "+" : "-"}
                         {parseInt(pointsAdjustment.amount) || 0} from current {(customer?.reward_points || 0).toLocaleString()}
                       </p>
@@ -1578,7 +1578,7 @@ export default function CustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => setShowAdjustPoints(false)}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
@@ -1593,7 +1593,7 @@ export default function CustomerDetailPage() {
                   >
                     {adjustingPoints ? (
                       <>
-                        <div className="h-4 w-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                        <div className="h-4 w-4 border-2 border-border border-t-white rounded-full animate-spin" />
                         Adjusting...
                       </>
                     ) : (
@@ -1616,7 +1616,7 @@ export default function CustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setShowPromoteToRep(false)}
             >
               <motion.div
@@ -1625,18 +1625,18 @@ export default function CustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-white/10 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-border p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Promote to Rep</h3>
-                    <p className="text-sm text-white/50 mt-1">
+                    <h3 className="text-xl font-bold text-foreground">Promote to Rep</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
                       Make {getDisplayName()} a sales representative
                     </p>
                   </div>
                   <button
                     onClick={() => setShowPromoteToRep(false)}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1651,7 +1651,7 @@ export default function CustomerDetailPage() {
                 <div className="space-y-3">
                   <Label className="text-sm md:text-base font-mono tracking-wider text-muted-foreground uppercase">Commission Rate (%)</Label>
                   <div className="relative">
-                    <Percent className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                    <Percent className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                       type="number"
                       value={promoteCommissionRate}
@@ -1660,10 +1660,10 @@ export default function CustomerDetailPage() {
                       min="0"
                       max="100"
                       step="0.1"
-                      className="h-14 pl-12 rounded-xl bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30"
+                      className="h-14 pl-12 rounded-xl bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground"
                     />
                   </div>
-                  <p className="text-sm text-white/40">
+                  <p className="text-sm text-muted-foreground">
                     The percentage of each sale this rep will earn as commission
                   </p>
                 </div>
@@ -1672,7 +1672,7 @@ export default function CustomerDetailPage() {
                   <Button
                     variant="outline"
                     onClick={() => setShowPromoteToRep(false)}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
@@ -1683,7 +1683,7 @@ export default function CustomerDetailPage() {
                   >
                     {promoting ? (
                       <>
-                        <div className="h-4 w-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                        <div className="h-4 w-4 border-2 border-border border-t-white rounded-full animate-spin" />
                         Promoting...
                       </>
                     ) : (
@@ -1706,7 +1706,7 @@ export default function CustomerDetailPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => {
                 setShowDeleteConfirm(false)
                 setDeleteConfirmText("")
@@ -1718,12 +1718,12 @@ export default function CustomerDetailPage() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-red-500/30 p-8 space-y-6"
+                className="w-full max-w-lg rounded-2xl bg-card border border-red-500/30 p-8 space-y-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-xl font-bold text-red-400">Delete Customer</h3>
-                    <p className="text-sm text-white/50 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       This action cannot be undone
                     </p>
                   </div>
@@ -1732,7 +1732,7 @@ export default function CustomerDetailPage() {
                       setShowDeleteConfirm(false)
                       setDeleteConfirmText("")
                     }}
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -1742,10 +1742,10 @@ export default function CustomerDetailPage() {
                   <p className="text-red-400 text-sm font-medium">
                     You are about to permanently delete:
                   </p>
-                  <ul className="text-sm text-white/70 space-y-1 ml-4">
+                  <ul className="text-sm text-foreground/70 space-y-1 ml-4">
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
-                      Customer record for <strong className="text-white">{getDisplayName()}</strong>
+                      Customer record for <strong className="text-foreground">{getDisplayName()}</strong>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
@@ -1760,7 +1760,7 @@ export default function CustomerDetailPage() {
                       All assigned discounts and reward points
                     </li>
                   </ul>
-                  <p className="text-xs text-white/50 pt-2 border-t border-red-500/20">
+                  <p className="text-xs text-muted-foreground pt-2 border-t border-red-500/20">
                     Note: Order history will be preserved but unlinked from this customer.
                   </p>
                 </div>
@@ -1774,7 +1774,7 @@ export default function CustomerDetailPage() {
                     value={deleteConfirmText}
                     onChange={(e) => setDeleteConfirmText(e.target.value.toUpperCase())}
                     placeholder="Type DELETE here"
-                    className="h-14 rounded-xl bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 font-mono tracking-wider"
+                    className="h-14 rounded-xl bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground font-mono tracking-wider"
                     autoComplete="off"
                   />
                 </div>
@@ -1786,7 +1786,7 @@ export default function CustomerDetailPage() {
                       setShowDeleteConfirm(false)
                       setDeleteConfirmText("")
                     }}
-                    className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                    className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                   >
                     Cancel
                   </Button>
@@ -1797,7 +1797,7 @@ export default function CustomerDetailPage() {
                   >
                     {deleting ? (
                       <>
-                        <div className="h-4 w-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                        <div className="h-4 w-4 border-2 border-border border-t-white rounded-full animate-spin" />
                         Deleting...
                       </>
                     ) : (

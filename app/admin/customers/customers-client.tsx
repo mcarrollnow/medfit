@@ -156,8 +156,8 @@ function GlassDropdown({
         disabled={loading}
         className={cn(
           "w-full h-12 px-4 rounded-xl text-left flex items-center justify-between",
-          "bg-white/5 border border-white/10 transition-all",
-          isOpen ? "border-white/30" : "hover:border-white/20",
+          "bg-foreground/5 border border-border transition-all",
+          isOpen ? "border-border" : "hover:border-border",
           loading ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         )}
       >
@@ -177,14 +177,14 @@ function GlassDropdown({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-50 w-full mt-2 py-2 rounded-xl glass-card border border-white/10 shadow-2xl max-h-60 overflow-y-auto"
+            className="absolute z-50 w-full mt-2 py-2 rounded-xl glass-card border border-border shadow-2xl max-h-60 overflow-y-auto"
           >
             <button
               type="button"
               onClick={() => { onChange(null); setIsOpen(false) }}
               className={cn(
                 "w-full px-4 py-3 text-left text-sm transition-colors",
-                !value ? "text-foreground bg-white/5" : "text-muted-foreground hover:bg-white/5"
+                !value ? "text-foreground bg-foreground/5" : "text-muted-foreground hover:bg-foreground/5"
               )}
             >
               {placeholder}
@@ -197,8 +197,8 @@ function GlassDropdown({
                 className={cn(
                   "w-full px-4 py-3 text-left text-sm transition-colors",
                   value === option.id 
-                    ? "text-foreground bg-white/5" 
-                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                    ? "text-foreground bg-foreground/5" 
+                    : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
                 )}
               >
                 {option.label}
@@ -671,7 +671,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
             </h1>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="glass-button rounded-2xl px-6 md:px-8 py-3 md:py-4 flex items-center gap-2 md:gap-3 text-foreground font-light text-sm md:text-base hover:border-white/20 transition-all"
+              className="glass-button rounded-2xl px-6 md:px-8 py-3 md:py-4 flex items-center gap-2 md:gap-3 text-foreground font-light text-sm md:text-base hover:border-border transition-all"
             >
               <Plus className="w-5 h-5 flex-shrink-0" />
               Create Customer
@@ -694,7 +694,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, email, phone, company, or city..."
-              className="w-full pl-12 pr-4 h-12 md:h-14 text-base md:text-lg glass-button border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30 rounded-xl transition-colors"
+              className="w-full pl-12 pr-4 h-12 md:h-14 text-base md:text-lg glass-button border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border rounded-xl transition-colors"
             />
           </div>
           <p className="text-sm md:text-base text-muted-foreground mt-4">
@@ -720,7 +720,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                   transition={{ duration: 0.6, delay: index * 0.03 }}
                   viewport={{ once: true }}
                   className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${
-                    isExpanded ? 'bg-white/[0.04]' : 'hover:bg-white/[0.04]'
+                    isExpanded ? 'bg-foreground/[0.05]' : 'hover:bg-foreground/[0.05]'
                   }`}
                 >
                   {/* Card Header */}
@@ -743,7 +743,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                             <h3 className="font-serif text-xl md:text-2xl lg:text-3xl font-light text-foreground truncate">
                               {getDisplayName(customer)}
                             </h3>
-                            <span className="glass-button rounded-xl px-3 py-1 text-xs font-mono tracking-wider uppercase text-muted-foreground border border-white/10 flex-shrink-0">
+                            <span className="glass-button rounded-xl px-3 py-1 text-xs font-mono tracking-wider uppercase text-muted-foreground border border-border flex-shrink-0">
                               {typeLabels[customer.customer_type] || customer.customer_type}
                             </span>
                           </div>
@@ -792,7 +792,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="border-t border-white/10 p-8 md:p-10 space-y-8">
+                          <div className="border-t border-border p-8 md:p-10 space-y-8">
                             {/* Stats Row */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                               {[
@@ -801,7 +801,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                 { label: 'Wallets', value: (customer.wallet_addresses?.length || 0).toString(), icon: Wallet },
                                 { label: 'Member Since', value: new Date(customer.created_at).toLocaleDateString(), icon: User },
                               ].map((stat) => (
-                                <div key={stat.label} className="rounded-2xl p-4 text-center bg-white/[0.03] border border-white/[0.08]">
+                                <div key={stat.label} className="rounded-2xl p-4 text-center bg-foreground/[0.04] border border-border">
                                   <stat.icon className="w-5 h-5 mx-auto mb-2 text-muted-foreground" />
                                   <p className="font-mono text-lg font-light text-foreground">{stat.value}</p>
                                   <p className="text-xs text-muted-foreground">{stat.label}</p>
@@ -818,7 +818,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                     <input
                                       value={customer.user?.email || ''}
                                       readOnly
-                                      className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-muted-foreground"
+                                      className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-muted-foreground"
                                     />
                                   </div>
                                   <div>
@@ -827,7 +827,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                       value={data.phone}
                                       onChange={(e) => updateEditField(customer.id, 'phone', e.target.value)}
                                       placeholder="(555) 555-5555"
-                                      className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                      className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                     />
                                   </div>
                                   <div>
@@ -840,8 +840,8 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                           className={cn(
                                             "flex-1 h-12 rounded-xl border text-sm font-medium transition-all",
                                             data.customer_type === type
-                                              ? "bg-white text-black border-white"
-                                              : "bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10"
+                                              ? "bg-primary text-primary-foreground border-primary"
+                                              : "bg-foreground/5 border-border text-muted-foreground hover:bg-foreground/10"
                                           )}
                                         >
                                           {typeLabels[type]}
@@ -858,7 +858,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                     value={data.company_name}
                                     onChange={(e) => updateEditField(customer.id, 'company_name', e.target.value)}
                                     placeholder="Company name"
-                                    className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                    className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                   />
                                 </div>
 
@@ -869,26 +869,26 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                     value={data.shipping_address_line1}
                                     onChange={(e) => updateEditField(customer.id, 'shipping_address_line1', e.target.value)}
                                     placeholder="Street address"
-                                    className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                    className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                   />
                                   <div className="grid grid-cols-6 gap-2">
                                     <input
                                       value={data.shipping_city}
                                       onChange={(e) => updateEditField(customer.id, 'shipping_city', e.target.value)}
                                       placeholder="City"
-                                      className="col-span-3 h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                      className="col-span-3 h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                     />
                                     <input
                                       value={data.shipping_state}
                                       onChange={(e) => updateEditField(customer.id, 'shipping_state', e.target.value)}
                                       placeholder="State"
-                                      className="col-span-1 h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                      className="col-span-1 h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                     />
                                     <input
                                       value={data.shipping_zip}
                                       onChange={(e) => updateEditField(customer.id, 'shipping_zip', e.target.value)}
                                       placeholder="ZIP"
-                                      className="col-span-2 h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                      className="col-span-2 h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                     />
                                   </div>
                                 </div>
@@ -929,12 +929,12 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                     onChange={(e) => updateEditField(customer.id, 'notes', e.target.value)}
                                     placeholder="Internal notes about this customer..."
                                     rows={3}
-                                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30 resize-none"
+                                    className="w-full px-4 py-3 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border resize-none"
                                   />
                                 </div>
 
                                 {/* Referral Code Section */}
-                                <div className="pt-6 border-t border-white/10">
+                                <div className="pt-6 border-t border-border">
                                   <h4 className="font-serif text-xl font-light text-foreground flex items-center gap-2 mb-4">
                                     <Gift className="w-5 h-5 text-muted-foreground" />
                                     Referral Code
@@ -966,12 +966,12 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                           }}
                                           placeholder="Enter code (e.g. JOHN1234)"
                                           maxLength={10}
-                                          className="flex-1 h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground font-mono tracking-wider placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                                          className="flex-1 h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground font-mono tracking-wider placeholder:text-muted-foreground focus:outline-none focus:border-border"
                                         />
                                         <button
                                           onClick={() => handleApplyReferralCode(customer.id)}
                                           disabled={applyingReferral === customer.id || !referralInputs[customer.id]?.trim()}
-                                          className="h-12 px-6 rounded-xl bg-white text-black font-medium hover:bg-white/90 disabled:opacity-50 flex items-center gap-2 transition-all"
+                                          className="h-12 px-6 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-card/90 disabled:opacity-50 flex items-center gap-2 transition-all"
                                         >
                                           {applyingReferral === customer.id ? (
                                             <>
@@ -991,7 +991,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                 </div>
 
                                 {/* Recent Orders */}
-                                <div className="pt-6 border-t border-white/10">
+                                <div className="pt-6 border-t border-border">
                                   <div className="flex items-center justify-between mb-6">
                                     <h4 className="font-serif text-xl font-light text-foreground flex items-center gap-2">
                                       <Package className="w-5 h-5 text-muted-foreground" />
@@ -1044,15 +1044,15 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                 </div>
 
                                 {/* Actions */}
-                                <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-white/10">
+                                <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
                                   <button
                                     onClick={() => handleSaveCustomer(customer.id)}
                                     disabled={savingId === customer.id}
                                     className={cn(
                                       "h-14 px-8 rounded-2xl font-medium flex items-center justify-center gap-2 flex-1 sm:flex-none transition-all",
                                       savedId === customer.id
-                                        ? "bg-white/20 text-foreground"
-                                        : "bg-white text-black hover:bg-white/90"
+                                        ? "bg-foreground/20 text-foreground"
+                                        : "bg-primary text-primary-foreground hover:bg-card/90"
                                     )}
                                   >
                                     {savingId === customer.id ? (
@@ -1075,7 +1075,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
 
                                   <Link
                                     href={`/admin/customers/${customer.id}`}
-                                    className="h-14 px-6 rounded-2xl glass-button text-foreground font-medium flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
+                                    className="h-14 px-6 rounded-2xl glass-button text-foreground font-medium flex items-center justify-center gap-2 hover:bg-foreground/10 transition-all"
                                   >
                                     <ExternalLink className="h-4 w-4" />
                                     Full Profile
@@ -1089,12 +1089,12 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                                         value={deleteConfirmText}
                                         onChange={(e) => setDeleteConfirmText(e.target.value.toUpperCase())}
                                         placeholder="Type DELETE"
-                                        className="h-14 w-32 px-4 rounded-xl bg-white/5 border border-white/20 text-foreground font-mono text-sm focus:outline-none focus:border-white/40"
+                                        className="h-14 w-32 px-4 rounded-xl bg-foreground/5 border border-border text-foreground font-mono text-sm focus:outline-none focus:border-border"
                                       />
                                       <button
                                         onClick={() => handleDeleteCustomer(customer.id)}
                                         disabled={deleteConfirmText !== 'DELETE' || deletingId === customer.id}
-                                        className="h-14 px-4 rounded-xl bg-white/10 text-foreground hover:bg-white/20 disabled:opacity-50 transition-all"
+                                        className="h-14 px-4 rounded-xl bg-foreground/10 text-foreground hover:bg-foreground/20 disabled:opacity-50 transition-all"
                                       >
                                         {deletingId === customer.id ? (
                                           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -1150,7 +1150,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
             onClick={(e) => e.target === e.currentTarget && resetCreateModal()}
           >
             <motion.div
@@ -1161,7 +1161,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
             >
               <button
                 onClick={resetCreateModal}
-                className="absolute right-4 top-4 p-2 rounded-xl hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute right-4 top-4 p-2 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -1191,15 +1191,15 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           type="text"
                           readOnly
                           value={createdCustomer.invite_link}
-                          className="flex-1 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-foreground text-xs font-mono truncate"
+                          className="flex-1 px-3 py-2 rounded-lg bg-foreground/5 border border-border text-foreground text-xs font-mono truncate"
                         />
                         <button
                           onClick={copyInviteLink}
                           className={cn(
                             "h-10 px-4 rounded-lg transition-all flex items-center gap-1",
                             linkCopied 
-                              ? "bg-white/20 text-foreground" 
-                              : "bg-white/10 text-foreground hover:bg-white/20"
+                              ? "bg-foreground/20 text-foreground" 
+                              : "bg-foreground/10 text-foreground hover:bg-foreground/20"
                           )}
                         >
                           {linkCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -1212,7 +1212,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                   <div className="flex gap-3">
                     <button
                       onClick={resetCreateModal}
-                      className="flex-1 h-14 rounded-2xl bg-white text-black font-medium hover:bg-white/90 transition-all"
+                      className="flex-1 h-14 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-card/90 transition-all"
                     >
                       Done
                     </button>
@@ -1231,7 +1231,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                   <p className="text-muted-foreground mb-8">Add a new customer to your database.</p>
 
                   {createError && (
-                    <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/20 text-foreground text-sm">
+                    <div className="mb-6 p-4 rounded-xl bg-foreground/5 border border-border text-foreground text-sm">
                       {createError}
                     </div>
                   )}
@@ -1244,7 +1244,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           value={newCustomer.first_name}
                           onChange={(e) => setNewCustomer({ ...newCustomer, first_name: e.target.value })}
                           placeholder="John"
-                          className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                          className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                         />
                       </div>
                       <div>
@@ -1253,7 +1253,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           value={newCustomer.last_name}
                           onChange={(e) => setNewCustomer({ ...newCustomer, last_name: e.target.value })}
                           placeholder="Doe"
-                          className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                          className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                         />
                       </div>
                     </div>
@@ -1265,7 +1265,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                         value={newCustomer.email}
                         onChange={(e) => setNewCustomer({ ...newCustomer, email: e.target.value })}
                         placeholder="john@example.com"
-                        className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                        className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                       />
                       <p className="text-xs text-muted-foreground mt-1">
                         If provided, a login invite link will be generated.
@@ -1279,7 +1279,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                         value={newCustomer.phone}
                         onChange={(e) => setNewCustomer({ ...newCustomer, phone: e.target.value })}
                         placeholder="(555) 555-5555"
-                        className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                        className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                       />
                     </div>
 
@@ -1289,7 +1289,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                         value={newCustomer.company_name}
                         onChange={(e) => setNewCustomer({ ...newCustomer, company_name: e.target.value })}
                         placeholder="Acme Inc."
-                        className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-white/30"
+                        className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border"
                       />
                     </div>
 
@@ -1302,8 +1302,8 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           className={cn(
                             "flex-1 h-12 rounded-xl border font-medium transition-all",
                             newCustomer.customer_type === 'retail'
-                              ? "bg-white text-black border-white"
-                              : "bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10"
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "bg-foreground/5 border-border text-muted-foreground hover:bg-foreground/10"
                           )}
                         >
                           Retail
@@ -1314,8 +1314,8 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                           className={cn(
                             "flex-1 h-12 rounded-xl border font-medium transition-all",
                             newCustomer.customer_type === 'b2b'
-                              ? "bg-white text-black border-white"
-                              : "bg-white/5 border-white/10 text-muted-foreground hover:bg-white/10"
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "bg-foreground/5 border-border text-muted-foreground hover:bg-foreground/10"
                           )}
                         >
                           B2B
@@ -1334,7 +1334,7 @@ export default function CustomersClient({ initialCustomers }: CustomersClientPro
                     <button
                       onClick={handleCreateCustomer}
                       disabled={isCreating || (!newCustomer.first_name.trim() && !newCustomer.company_name.trim())}
-                      className="flex-1 h-14 rounded-2xl bg-white text-black font-medium hover:bg-white/90 disabled:opacity-50 flex items-center justify-center gap-2 transition-all"
+                      className="flex-1 h-14 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-card/90 disabled:opacity-50 flex items-center justify-center gap-2 transition-all"
                     >
                       {isCreating ? (
                         <>

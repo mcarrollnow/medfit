@@ -33,7 +33,7 @@ export function InvoiceSummary({ subtotal, tax = 0, discount = 0, total }: Invoi
       className="flex justify-end mb-12 md:mb-16"
     >
       <div className="w-full md:w-80">
-        <div className="space-y-4 pb-6 border-b border-white/10">
+        <div className="space-y-4 pb-6 border-b border-border">
           <div className="flex justify-between items-center">
             <span className="text-sm text-[#999999]">Subtotal</span>
             <span className="font-mono text-[#f0f0f0]">{formatCurrency(subtotal)}</span>

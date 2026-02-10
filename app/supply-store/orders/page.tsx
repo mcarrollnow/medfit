@@ -54,9 +54,9 @@ export default function SupplyStoreOrdersPage() {
       <div className="min-h-screen px-6 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="animate-pulse space-y-4">
-            <div className="h-12 bg-white/5 rounded-xl w-48 mb-8" />
+            <div className="h-12 bg-foreground/5 rounded-xl w-48 mb-8" />
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-32 bg-white/5 rounded-3xl" />
+              <div key={i} className="h-32 bg-foreground/5 rounded-3xl" />
             ))}
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function SupplyStoreOrdersPage() {
     return (
       <div className="min-h-screen px-6 py-24 flex items-center justify-center">
         <GlassCard padding="lg" className="max-w-md text-center">
-          <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 rounded-full bg-foreground/10 flex items-center justify-center mx-auto mb-6">
             <Package className="w-10 h-10 text-muted-foreground" />
           </div>
           <h1 className="text-3xl font-bold mb-4">No Orders Yet</h1>
@@ -104,7 +104,7 @@ export default function SupplyStoreOrdersPage() {
               <Link key={order.id} href={`/supply-store/orders/${order.id}`}>
                 <GlassCard hover padding="lg" className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl bg-white/5 ${statusColor}`}>
+                    <div className={`p-3 rounded-xl bg-foreground/5 ${statusColor}`}>
                       <StatusIcon className="w-6 h-6" />
                     </div>
                     <div>
@@ -117,7 +117,7 @@ export default function SupplyStoreOrdersPage() {
                         })}
                       </p>
                       <div className="flex items-center gap-2 mt-2">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColor} bg-white/5`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColor} bg-foreground/5`}>
                           {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                         </span>
                       </div>

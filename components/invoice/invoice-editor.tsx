@@ -189,14 +189,14 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
                     setTimeout(() => setShowCustomerDropdown(false), 200)
                   }}
                   placeholder="Type to search customers..."
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/20"
+                  className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/30 focus:border-border"
                 />
                 <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
 
                 {/* Customer Dropdown */}
                 {showCustomerDropdown && customerSearch.length > 0 && filteredCustomers.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-white/10 rounded-xl max-h-64 overflow-y-auto z-[200] shadow-2xl">
-                    <div className="px-3 py-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider border-b border-white/10 flex items-center gap-2">
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-xl max-h-64 overflow-y-auto z-[200] shadow-2xl">
+                    <div className="px-3 py-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider border-b border-border flex items-center gap-2">
                       <User className="w-3 h-3" />
                       Select Customer
                     </div>
@@ -205,7 +205,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
                         key={customer.id}
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={() => handleCustomerSelect(customer)}
-                        className="w-full p-3 text-left hover:bg-white/5 transition-colors border-b border-white/5 last:border-0"
+                        className="w-full p-3 text-left hover:bg-foreground/5 transition-colors border-b border-border last:border-0"
                       >
                         <p className="font-medium text-foreground text-sm">{customer.name}</p>
                         <p className="text-xs text-muted-foreground">{customer.email}</p>
@@ -229,7 +229,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
                 value={data.to.email}
                 onChange={(e) => onChange({ ...data, to: { ...data.to, email: e.target.value } })}
                 placeholder="customer@email.com"
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/20"
+                className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/30 focus:border-border"
               />
             </div>
           </div>
@@ -248,7 +248,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
             onChange={(e) => onChange({ ...data, notes: e.target.value })}
             placeholder="Payment terms, special instructions, or messages..."
             rows={3}
-            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/20 resize-none"
+            className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/30 focus:border-border resize-none"
           />
         </div>
 
@@ -288,7 +288,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
                       }
                     }}
                     placeholder="0.00"
-                    className="w-24 bg-black/40 border border-emerald-500/30 rounded-lg px-2 py-1.5 text-emerald-400 text-right font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500/50"
+                    className="w-24 bg-foreground/40 border border-emerald-500/30 rounded-lg px-2 py-1.5 text-emerald-400 text-right font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500/50"
                     min="0"
                     step="0.01"
                   />
@@ -301,7 +301,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
               </div>
               
               {/* Total Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between pt-4 border-t border-border">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   Total Due
                 </span>
@@ -319,10 +319,10 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
             </div>
             
             {/* Actions */}
-            <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3 pt-4 border-t border-white/10">
+            <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3 pt-4 border-t border-border">
               <button
                 onClick={onPreview}
-                className="bg-white/10 border border-white/20 hover:bg-white/20 px-4 md:px-5 py-3 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors"
+                className="bg-foreground/10 border border-border hover:bg-foreground/20 px-4 md:px-5 py-3 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors"
               >
                 <Eye className="w-4 h-4" />
                 Preview
@@ -333,7 +333,7 @@ export function InvoiceEditor({ data, onChange, onPreview, onSend, onSave, isSen
                 <button
                   onClick={onSave}
                   disabled={isSending || !data.to.email || data.items.length === 0}
-                  className="bg-white/10 border border-white/20 hover:bg-white/20 px-4 md:px-5 py-3 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors disabled:opacity-40"
+                  className="bg-foreground/10 border border-border hover:bg-foreground/20 px-4 md:px-5 py-3 rounded-full flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground transition-colors disabled:opacity-40"
                 >
                   {isSending ? (
                     <>

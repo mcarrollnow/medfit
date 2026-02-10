@@ -314,12 +314,12 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
 
   return (
     <Card
-      className="@container group relative overflow-hidden border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl transition-all duration-500 ease-out cursor-pointer shadow-[0_8px_32px_rgba(0,0,0,0.4)] aspect-[6/9]"
+      className="@container group relative overflow-hidden border border-border bg-card backdrop-blur-xl rounded-2xl transition-all duration-500 ease-out cursor-pointer aspect-[6/9]"
       style={{
         transform: isHovering ? "scale(1.03) translateY(-4px)" : "scale(1)",
         boxShadow: isHovering
-          ? `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${primaryProduct.color}, 0 0 40px ${primaryProduct.color}40`
-          : "0 8px 32px rgba(0,0,0,0.4)",
+          ? `0 20px 60px ${primaryProduct.color}35, 0 0 0 1px ${primaryProduct.color}, 0 0 80px ${primaryProduct.color}25, 0 8px 30px rgba(58,66,51,0.10)`
+          : `0 4px 30px ${primaryProduct.color}18, 0 8px 20px rgba(58,66,51,0.06)`,
       }}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
@@ -327,7 +327,7 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
     >
         {/* Radial gradient background */}
         <div
-          className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-40 pointer-events-none"
+          className="absolute inset-0 opacity-15 transition-opacity duration-500 group-hover:opacity-30 pointer-events-none"
           style={{
             background: `radial-gradient(circle at center, ${primaryProduct.color}, transparent 70%)`,
           }}
@@ -336,10 +336,10 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
         <div className="relative z-10 h-full flex flex-col p-[5%]">
           {/* Top section - Category & Research Grade */}
           <div className="text-center flex-[1.2] flex flex-col justify-center">
-            <h4 className="font-bold tracking-tight truncate text-[clamp(0.85rem,4cqmin,1.5rem)] leading-tight">
+            <h4 className="font-bold tracking-tight truncate text-[clamp(0.85rem,4cqmin,1.5rem)] leading-tight text-foreground">
               {category}
             </h4>
-            <p className="text-white/50 uppercase tracking-[0.15em] text-[clamp(0.55rem,2.2cqmin,0.9rem)] mt-[2%]">
+            <p className="text-muted-foreground uppercase tracking-[0.15em] text-[clamp(0.55rem,2.2cqmin,0.9rem)] mt-[2%]">
               Research Grade
             </p>
           </div>
@@ -347,13 +347,13 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
           {/* Ratings section - largest portion */}
           <div className="flex-[5] py-[2%]">
             <div
-              className="h-full bg-black/70 backdrop-blur-md border border-white/10 flex flex-col justify-evenly p-[4%]"
+              className="h-full bg-secondary/80 backdrop-blur-md border border-border flex flex-col justify-evenly p-[4%]"
               style={{ borderRadius: "clamp(8px, 3cqmin, 16px)" }}
             >
               {ratings.slice(0, 3).map((rating, index) => (
                 <div key={index} className="flex-1 flex flex-col justify-center">
                   <div className="flex items-center justify-between gap-[4%]">
-                    <span className="font-semibold tracking-wide text-white/80 truncate text-[clamp(0.7rem,2.8cqmin,1.15rem)]">
+                    <span className="font-semibold tracking-wide text-foreground/80 truncate text-[clamp(0.7rem,2.8cqmin,1.15rem)]">
                       {rating.label}
                     </span>
                     <span
@@ -364,11 +364,11 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
                     </span>
                   </div>
                   <div
-                    className="relative w-full overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 shadow-[inset_0_2px_8px_rgba(0,0,0,0.3)] h-[clamp(4px,1.5cqmin,8px)] mt-[3%]"
+                    className="relative w-full overflow-hidden bg-background/60 backdrop-blur-md border border-border shadow-[inset_0_1px_4px_rgba(58,66,51,0.1)] h-[clamp(4px,1.5cqmin,8px)] mt-[3%]"
                     style={{ borderRadius: "clamp(2px, 1cqmin, 9999px)" }}
                   >
                     <div
-                      className="h-full rounded-full shadow-[0_0_20px_currentColor,0_2px_8px_rgba(0,0,0,0.4)] transition-all duration-1000 ease-out"
+                      className="h-full rounded-full shadow-[0_0_12px_currentColor] transition-all duration-1000 ease-out"
                       style={{
                         width: `${(rating.value / 10) * 100}%`,
                         backgroundColor: primaryProduct.color,
@@ -381,37 +381,37 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
           </div>
 
           {/* Stock status */}
-          <div className="flex-[0.8] flex items-center border-b border-white/10">
-            <span className="font-mono text-white/50 text-[clamp(0.6rem,2.2cqmin,0.9rem)]">
+          <div className="flex-[0.8] flex items-center border-b border-border">
+            <span className="font-mono text-muted-foreground text-[clamp(0.6rem,2.2cqmin,0.9rem)]">
               {getStockStatus(totalStock)}
             </span>
           </div>
 
           {/* Product name and variants */}
           <div className="flex-[2] flex flex-col justify-center py-[1%]">
-            <h3 className="font-bold tracking-tight text-white group-hover:text-primary transition-colors truncate text-[clamp(1.2rem,5.5cqmin,2.2rem)]">
+            <h3 className="font-bold tracking-tight text-foreground group-hover:text-accent transition-colors truncate text-[clamp(1.2rem,5.5cqmin,2.2rem)]">
               {primaryProduct.base_name}
             </h3>
-            <p className="font-medium text-white/50 truncate text-[clamp(0.6rem,2.5cqmin,1.05rem)] mt-[2%]">
+            <p className="font-medium text-muted-foreground truncate text-[clamp(0.6rem,2.5cqmin,1.05rem)] mt-[2%]">
               {groupedProduct.variants.map((v) => v.variant).join(" • ")}
             </p>
           </div>
 
           {/* Footer with price and view button */}
-          <div className="flex-[1.2] flex w-full items-center justify-between border-t border-white/10 pt-[2%]">
+          <div className="flex-[1.2] flex w-full items-center justify-between border-t border-border pt-[2%]">
             <div className="flex flex-col justify-center">
               {groupedProduct.variants.length > 1 && (
-                <span className="text-white/40 block leading-none text-[clamp(0.5rem,1.8cqmin,0.8rem)] mb-[0.5cqmin]">
+                <span className="text-muted-foreground block leading-none text-[clamp(0.5rem,1.8cqmin,0.8rem)] mb-[0.5cqmin]">
                   From
                 </span>
               )}
-              <span className="font-bold text-white leading-tight text-[clamp(1.1rem,5cqmin,2.1rem)]">
+              <span className="font-bold text-foreground leading-tight text-[clamp(1.1rem,5cqmin,2.1rem)]">
                 ${price.toFixed(2)}
               </span>
             </div>
             <Button
               variant="ghost"
-              className="group/btn p-0 text-white/70 hover:bg-transparent hover:text-white h-auto text-[clamp(0.7rem,2.5cqmin,1.05rem)]"
+              className="group/btn p-0 text-muted-foreground hover:bg-transparent hover:text-foreground h-auto text-[clamp(0.7rem,2.5cqmin,1.05rem)]"
             >
               VIEW
               <ArrowRight

@@ -178,7 +178,7 @@ export default function RepWalletPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -189,7 +189,7 @@ export default function RepWalletPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -197,8 +197,8 @@ export default function RepWalletPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Wallet</h1>
-          <p className="text-xl text-white/50">Manage your commission payments and withdrawals.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Wallet</h1>
+          <p className="text-xl text-muted-foreground">Manage your commission payments and withdrawals.</p>
         </div>
 
         {/* Wallet/PIN Setup Notification Banner */}
@@ -247,47 +247,47 @@ export default function RepWalletPage() {
         {/* Earnings Overview */}
         {stats && (
           <section className="space-y-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Earnings Overview</h2>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Earnings Overview</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <DollarSign className="h-5 w-5 text-emerald-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Earned</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Earned</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">${stats.totalEarnings.toFixed(2)}</p>
-                  <p className="text-sm text-white/40">All time earnings</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">${stats.totalEarnings.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground">All time earnings</p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                       <Clock className="h-5 w-5 text-amber-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Pending</p>
+                    <p className="text-sm font-medium text-muted-foreground">Pending</p>
                   </div>
                   <p className="text-3xl font-bold tracking-tight text-amber-400">${stats.pendingCommission.toFixed(2)}</p>
-                  <p className="text-sm text-white/40">Processing orders</p>
+                  <p className="text-sm text-muted-foreground">Processing orders</p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                       <TrendingUp className="h-5 w-5 text-blue-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Active Orders</p>
+                    <p className="text-sm font-medium text-muted-foreground">Active Orders</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">{stats.activeOrders}</p>
-                  <p className="text-sm text-white/40">In progress</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">{stats.activeOrders}</p>
+                  <p className="text-sm text-muted-foreground">In progress</p>
                 </div>
               </div>
             </div>
@@ -296,10 +296,10 @@ export default function RepWalletPage() {
 
         {/* Main Wallet Section */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">My Wallet</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">My Wallet</h2>
           <div
-            className="relative overflow-hidden rounded-3xl border border-white/10 p-8 backdrop-blur-xl"
-            style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+            className="relative overflow-hidden rounded-3xl border border-border p-8 backdrop-blur-xl"
+            style={{ backgroundColor: 'rgba(58,66,51,0.15)' }}
           >
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
@@ -313,7 +313,7 @@ export default function RepWalletPage() {
                   <p className="text-amber-200/80 text-sm mb-4">
                     This is the only way to recover your wallet. Write it down and store it safely. Never share it with anyone.
                   </p>
-                  <div className="p-4 rounded-xl bg-black/30 font-mono text-amber-200 leading-relaxed break-all mb-4">
+                  <div className="p-4 rounded-xl bg-foreground/30 font-mono text-amber-200 leading-relaxed break-all mb-4">
                     {createdMnemonic}
                   </div>
                   <div className="flex gap-3">
@@ -329,7 +329,7 @@ export default function RepWalletPage() {
                     </Button>
                     <Button
                       onClick={() => setCreatedMnemonic(null)}
-                      className="h-10 bg-white text-black hover:bg-white/90 rounded-xl"
+                      className="h-10 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl"
                     >
                       I've Saved It
                     </Button>
@@ -353,12 +353,12 @@ export default function RepWalletPage() {
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center">
-                        <Wallet className="h-8 w-8 text-white" />
+                      <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-border flex items-center justify-center">
+                        <Wallet className="h-8 w-8 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-2xl font-bold text-white">Commission Wallet</p>
-                        <p className="font-mono text-white/50">
+                        <p className="text-2xl font-bold text-foreground">Commission Wallet</p>
+                        <p className="font-mono text-muted-foreground">
                           {wallet.address.slice(0, 12)}...{wallet.address.slice(-10)}
                         </p>
                       </div>
@@ -375,32 +375,32 @@ export default function RepWalletPage() {
 
                   {/* Balances */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">ETH Balance</p>
-                      <p className="text-3xl font-bold text-white">
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">ETH Balance</p>
+                      <p className="text-3xl font-bold text-foreground">
                         {parseFloat(wallet.balance_eth || "0").toFixed(6)}
                       </p>
-                      <p className="text-sm text-white/40 mt-1">Ethereum</p>
+                      <p className="text-sm text-muted-foreground mt-1">Ethereum</p>
                     </div>
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">USDC Balance</p>
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">USDC Balance</p>
                       <p className="text-3xl font-bold text-emerald-400">
                         ${parseFloat(wallet.balance_usdc || "0").toFixed(2)}
                       </p>
-                      <p className="text-sm text-white/40 mt-1">USD Coin</p>
+                      <p className="text-sm text-muted-foreground mt-1">USD Coin</p>
                     </div>
                   </div>
 
                   {/* Full Address */}
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Wallet Address</p>
+                  <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Wallet Address</p>
                     <div className="flex items-center gap-3">
-                      <code className="flex-1 bg-black/30 px-4 py-3 rounded-lg text-white font-mono text-sm break-all">
+                      <code className="flex-1 bg-foreground/30 px-4 py-3 rounded-lg text-foreground font-mono text-sm break-all">
                         {wallet.address}
                       </code>
                       <Button
                         onClick={() => copyToClipboard(wallet.address, "address")}
-                        className="h-11 bg-white/10 hover:bg-white/20 rounded-xl shrink-0"
+                        className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl shrink-0"
                       >
                         {copiedText === "address" ? (
                           <Check className="w-4 h-4" />
@@ -412,7 +412,7 @@ export default function RepWalletPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
+                  <div className="flex flex-wrap gap-3 pt-4 border-t border-border">
                     {wallet.has_pin ? (
                       // View Recovery Phrase
                       <div className="flex items-center gap-2">
@@ -421,12 +421,12 @@ export default function RepWalletPage() {
                           value={mnemonicPin}
                           onChange={(e) => setMnemonicPin(e.target.value.replace(/\D/g, "").slice(0, 12))}
                           placeholder="Enter PIN"
-                          className="h-11 w-36 bg-white/5 border-white/10 rounded-xl text-white text-center"
+                          className="h-11 w-36 bg-foreground/5 border-border rounded-xl text-foreground text-center"
                         />
                         <Button
                           onClick={handleViewMnemonic}
                           disabled={walletLoading || !mnemonicPin}
-                          className="h-11 bg-white/10 hover:bg-white/20 rounded-xl disabled:opacity-50"
+                          className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl disabled:opacity-50"
                         >
                           {walletLoading ? (
                             <RefreshCw className="w-4 h-4 animate-spin" />
@@ -449,39 +449,39 @@ export default function RepWalletPage() {
 
                   {/* Security Setup Form */}
                   {showWalletSetup && !wallet.has_pin && (
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
-                      <h4 className="font-semibold text-white text-lg">Set Up Wallet Security</h4>
-                      <p className="text-sm text-white/50">
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
+                      <h4 className="font-semibold text-foreground text-lg">Set Up Wallet Security</h4>
+                      <p className="text-sm text-muted-foreground">
                         Create a PIN to secure your wallet and access your recovery phrase.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Create PIN</label>
+                          <label className="text-sm text-foreground/60">Create PIN</label>
                           <div className="relative">
                             <Input
                               type={showPin ? "text" : "password"}
                               value={walletPin}
                               onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))}
                               placeholder="4-12 digits"
-                              className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em] pr-10"
+                              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em] pr-10"
                             />
                             <button
                               type="button"
                               onClick={() => setShowPin(!showPin)}
                               className="absolute right-3 top-1/2 -translate-y-1/2"
                             >
-                              {showPin ? <EyeOff className="h-4 w-4 text-white/40" /> : <Eye className="h-4 w-4 text-white/40" />}
+                              {showPin ? <EyeOff className="h-4 w-4 text-muted-foreground" /> : <Eye className="h-4 w-4 text-muted-foreground" />}
                             </button>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Confirm PIN</label>
+                          <label className="text-sm text-foreground/60">Confirm PIN</label>
                           <Input
                             type="password"
                             value={walletPinConfirm}
                             onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))}
                             placeholder="Confirm PIN"
-                            className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em]"
+                            className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em]"
                           />
                         </div>
                       </div>
@@ -489,7 +489,7 @@ export default function RepWalletPage() {
                         <Button
                           onClick={handleSetupSecurity}
                           disabled={walletLoading || !walletPin || walletPin !== walletPinConfirm}
-                          className="h-11 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                          className="h-11 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                         >
                           {walletLoading ? (
                             <RefreshCw className="w-4 h-4 animate-spin mr-2" />
@@ -504,7 +504,7 @@ export default function RepWalletPage() {
                             setWalletPin("")
                             setWalletPinConfirm("")
                           }}
-                          className="h-11 bg-white/5 hover:bg-white/10 rounded-xl"
+                          className="h-11 bg-foreground/5 hover:bg-foreground/10 rounded-xl"
                         >
                           Cancel
                         </Button>
@@ -516,50 +516,50 @@ export default function RepWalletPage() {
                 // No Wallet - Create One
                 <div className="space-y-6">
                   <div className="text-center py-8">
-                    <div className="mx-auto h-20 w-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mb-4">
-                      <Wallet className="h-10 w-10 text-white/30" />
+                    <div className="mx-auto h-20 w-20 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mb-4">
+                      <Wallet className="h-10 w-10 text-muted-foreground" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">No Wallet Yet</h3>
-                    <p className="text-white/50 max-w-md mx-auto">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">No Wallet Yet</h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
                       Create a wallet to receive commission payments in cryptocurrency. Your wallet will be secured with a PIN.
                     </p>
                   </div>
 
                   {showWalletSetup ? (
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
-                      <h4 className="font-semibold text-white text-lg">Create Your Wallet</h4>
-                      <p className="text-sm text-white/50">
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
+                      <h4 className="font-semibold text-foreground text-lg">Create Your Wallet</h4>
+                      <p className="text-sm text-muted-foreground">
                         Set up a PIN to secure your wallet. You can skip this and add it later, but we recommend securing it now.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Create PIN (optional)</label>
+                          <label className="text-sm text-foreground/60">Create PIN (optional)</label>
                           <div className="relative">
                             <Input
                               type={showPin ? "text" : "password"}
                               value={walletPin}
                               onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))}
                               placeholder="4-12 digits"
-                              className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em] pr-10"
+                              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em] pr-10"
                             />
                             <button
                               type="button"
                               onClick={() => setShowPin(!showPin)}
                               className="absolute right-3 top-1/2 -translate-y-1/2"
                             >
-                              {showPin ? <EyeOff className="h-4 w-4 text-white/40" /> : <Eye className="h-4 w-4 text-white/40" />}
+                              {showPin ? <EyeOff className="h-4 w-4 text-muted-foreground" /> : <Eye className="h-4 w-4 text-muted-foreground" />}
                             </button>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Confirm PIN</label>
+                          <label className="text-sm text-foreground/60">Confirm PIN</label>
                           <Input
                             type="password"
                             value={walletPinConfirm}
                             onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))}
                             placeholder="Confirm PIN"
                             className={cn(
-                              "h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em]",
+                              "h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em]",
                               walletPinConfirm && walletPin !== walletPinConfirm && "border-red-500/50"
                             )}
                           />
@@ -569,7 +569,7 @@ export default function RepWalletPage() {
                         <Button
                           onClick={handleCreateWallet}
                           disabled={walletLoading || (walletPin !== "" && walletPin !== walletPinConfirm)}
-                          className="h-11 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                          className="h-11 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                         >
                           {walletLoading ? (
                             <RefreshCw className="w-4 h-4 animate-spin mr-2" />
@@ -584,7 +584,7 @@ export default function RepWalletPage() {
                             setWalletPin("")
                             setWalletPinConfirm("")
                           }}
-                          className="h-11 bg-white/5 hover:bg-white/10 rounded-xl"
+                          className="h-11 bg-foreground/5 hover:bg-foreground/10 rounded-xl"
                         >
                           Cancel
                         </Button>
@@ -593,7 +593,7 @@ export default function RepWalletPage() {
                   ) : (
                     <Button
                       onClick={() => setShowWalletSetup(true)}
-                      className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-xl font-semibold text-lg"
+                      className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold text-lg"
                     >
                       <Wallet className="w-5 h-5 mr-2" />
                       Create Wallet
@@ -607,15 +607,15 @@ export default function RepWalletPage() {
 
         {/* Transaction History Placeholder */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Transaction History</h2>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Transaction History</h2>
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 text-center py-8">
-              <div className="mx-auto h-16 w-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mb-4">
-                <Clock className="h-8 w-8 text-white/30" />
+              <div className="mx-auto h-16 w-16 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mb-4">
+                <Clock className="h-8 w-8 text-muted-foreground" />
               </div>
-              <p className="text-white/50">No transactions yet</p>
-              <p className="text-sm text-white/30 mt-2">Your commission payouts will appear here</p>
+              <p className="text-muted-foreground">No transactions yet</p>
+              <p className="text-sm text-muted-foreground mt-2">Your commission payouts will appear here</p>
             </div>
           </div>
         </section>

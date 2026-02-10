@@ -106,7 +106,7 @@ export function NumericKeypad({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+            className="fixed inset-0 bg-foreground/60 backdrop-blur-sm z-[100]"
             onClick={onClose}
           />
 
@@ -119,18 +119,18 @@ export function NumericKeypad({
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed bottom-0 left-0 right-0 sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[101] w-full sm:w-[360px] sm:max-w-[90vw]"
           >
-            <div className="bg-zinc-900 border border-white/10 rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl">
+            <div className="bg-card border border-border rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl">
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border">
                 <div>
-                  {label && <p className="text-sm text-white/50">{label}</p>}
-                  <p className="text-3xl font-bold text-white">
+                  {label && <p className="text-sm text-muted-foreground">{label}</p>}
+                  <p className="text-3xl font-bold text-foreground">
                     {prefix}{value || '0'}
                   </p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-xl hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                  className="p-2 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -146,8 +146,8 @@ export function NumericKeypad({
                       className={cn(
                         "h-16 sm:h-14 rounded-2xl text-2xl font-semibold transition-all active:scale-95",
                         key === 'backspace' || key === 'clear'
-                          ? "bg-white/10 text-white/70 hover:bg-white/20 active:bg-white/30"
-                          : "bg-white/5 text-white hover:bg-white/10 active:bg-white/20"
+                          ? "bg-foreground/10 text-foreground/70 hover:bg-foreground/20 active:bg-foreground/30"
+                          : "bg-foreground/5 text-foreground hover:bg-foreground/10 active:bg-foreground/20"
                       )}
                     >
                       {key === 'backspace' ? (
@@ -166,7 +166,7 @@ export function NumericKeypad({
               <div className="p-4 pt-0">
                 <button
                   onClick={handleDone}
-                  className="w-full h-14 rounded-2xl bg-white text-black text-lg font-semibold flex items-center justify-center gap-2 hover:bg-white/90 active:bg-white/80 transition-all active:scale-[0.98]"
+                  className="w-full h-14 rounded-2xl bg-primary text-primary-foreground text-lg font-semibold flex items-center justify-center gap-2 hover:bg-card/90 active:bg-foreground/80 transition-all active:scale-[0.98]"
                 >
                   <Check className="w-5 h-5" />
                   Done

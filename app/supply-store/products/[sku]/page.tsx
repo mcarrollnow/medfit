@@ -43,13 +43,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ sku: s
       <div className="min-h-screen px-6 md:px-12 py-24 md:py-32">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse">
-            <div className="h-8 bg-[rgba(255,255,255,0.03)] rounded w-32 mb-8" />
+            <div className="h-8 bg-foreground/[0.04] rounded w-32 mb-8" />
             <div className="grid lg:grid-cols-2 gap-12">
-              <div className="aspect-square bg-[rgba(255,255,255,0.03)] rounded-3xl" />
+              <div className="aspect-square bg-foreground/[0.04] rounded-3xl" />
               <div className="space-y-4">
-                <div className="h-8 bg-[rgba(255,255,255,0.03)] rounded w-3/4" />
-                <div className="h-4 bg-[rgba(255,255,255,0.03)] rounded w-1/2" />
-                <div className="h-32 bg-[rgba(255,255,255,0.03)] rounded" />
+                <div className="h-8 bg-foreground/[0.04] rounded w-3/4" />
+                <div className="h-4 bg-foreground/[0.04] rounded w-1/2" />
+                <div className="h-32 bg-foreground/[0.04] rounded" />
               </div>
             </div>
           </div>
@@ -143,10 +143,10 @@ function ProductDetail({ product, relatedProducts }: { product: SupplyStoreProdu
             {/* Header */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-sm font-mono tracking-wider text-muted-foreground uppercase">
+                <span className="px-3 py-1 rounded-full bg-foreground/[0.06] border border-border text-sm font-mono tracking-wider text-muted-foreground uppercase">
                   {product.category}
                 </span>
-                <span className="px-3 py-1 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] text-sm font-mono tracking-wider text-muted-foreground uppercase">
+                <span className="px-3 py-1 rounded-full bg-foreground/[0.06] border border-border text-sm font-mono tracking-wider text-muted-foreground uppercase">
                   {product.brand}
                 </span>
               </div>
@@ -248,7 +248,7 @@ function ProductDetail({ product, relatedProducts }: { product: SupplyStoreProdu
             {product.specs && Object.keys(product.specs).length > 0 && (
               <GlassCard padding="lg">
                 <h3 className="font-serif text-xl md:text-2xl font-light mb-4">Specifications</h3>
-                <div className="divide-y divide-[rgba(255,255,255,0.08)]">
+                <div className="divide-y divide-border">
                   {Object.entries(product.specs).map(([key, value]) => (
                     <div key={key} className="flex justify-between py-3">
                       <span className="text-muted-foreground capitalize">{key.replace(/_/g, " ")}</span>

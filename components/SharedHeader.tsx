@@ -93,7 +93,7 @@ export default function SharedHeader({
   return (
     <>
       {/* Fixed Header - Full Width */}
-      <header className="fixed top-0 left-0 right-0 bg-[#0a0a0a] border-b border-gray-800 shadow-sm z-30">
+      <header className="fixed top-0 left-0 right-0 bg-card border-b border-border shadow-sm z-30">
         <div className="w-full px-4 py-3">
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Logo and Title */}
@@ -103,23 +103,23 @@ export default function SharedHeader({
                 alt="MHP Logo" 
                 className="w-10 h-10 object-contain flex-shrink-0"
               />
-              <h1 className="text-xl md:text-2xl font-bold text-white whitespace-nowrap hidden md:block">
+              <h1 className="text-xl md:text-2xl font-bold text-foreground whitespace-nowrap hidden md:block">
                 MODERN HEALTH PRO
               </h1>
-              <h1 className="text-lg font-bold text-white whitespace-nowrap block md:hidden">
+              <h1 className="text-lg font-bold text-foreground whitespace-nowrap block md:hidden">
                 MHP
               </h1>
             </LinkComponent>
 
             {/* Search Bar */}
             <div className="flex-1 relative hidden sm:block max-w-md mx-4">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 bg-gray-900 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition text-sm"
+                className="w-full pl-10 pr-4 py-2 bg-card text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition text-sm"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     handleSearch();
@@ -129,7 +129,7 @@ export default function SharedHeader({
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -138,7 +138,7 @@ export default function SharedHeader({
 
             {/* Search Icon for Mobile */}
             <button 
-              className="sm:hidden text-white hover:text-primary transition p-2"
+              className="sm:hidden text-foreground hover:text-primary transition p-2"
               onClick={() => {
                 if (environment === 'react') {
                   navigate?.('/search');
@@ -158,7 +158,7 @@ export default function SharedHeader({
               {/* Messages Icon */}
               <LinkComponent 
                 href={environment === 'react' ? '/support' : `${mainAppUrl}/support`}
-                className="hidden sm:block text-white hover:text-primary transition p-2"
+                className="hidden sm:block text-foreground hover:text-primary transition p-2"
               >
                 <MessageSquare className="w-6 h-6" />
               </LinkComponent>
@@ -167,7 +167,7 @@ export default function SharedHeader({
               {showCart && (
                 <LinkComponent 
                   href={environment === 'react' ? '/cart' : '/cart'}
-                  className="text-white hover:text-primary transition relative p-2"
+                  className="text-foreground hover:text-primary transition relative p-2"
                 >
                   <ShoppingCart className="w-6 h-6" />
                   {cartCount > 0 && (
@@ -181,7 +181,7 @@ export default function SharedHeader({
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="text-white hover:text-primary transition p-2"
+                className="text-foreground hover:text-primary transition p-2"
                 aria-label="Menu"
               >
                 {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -196,11 +196,11 @@ export default function SharedHeader({
 
       {/* Overlay Menu - Identical for both */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center">
           {/* Close Button */}
           <button
             onClick={closeMenu}
-            className="absolute top-6 right-6 text-white hover:text-primary transition"
+            className="absolute top-6 right-6 text-foreground hover:text-primary transition"
           >
             <X className="w-8 h-8" />
           </button>
@@ -208,15 +208,15 @@ export default function SharedHeader({
           <div className="max-w-md w-full px-8">
             {/* User Profile Section */}
             {user && (
-              <div className="flex items-center space-x-4 mb-12 pb-8 border-b border-gray-800">
-                <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center border-2 border-primary">
-                  <User className="w-7 h-7 text-gray-400" />
+              <div className="flex items-center space-x-4 mb-12 pb-8 border-b border-border">
+                <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center border-2 border-primary">
+                  <User className="w-7 h-7 text-muted-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-white">
+                  <h2 className="text-xl font-bold text-foreground">
                     {user.firstName} {user.lastName?.charAt(0)}
                   </h2>
-                  <p className="text-gray-400 text-sm">{user.email}</p>
+                  <p className="text-muted-foreground text-sm">{user.email}</p>
                   <p className="text-primary text-xs font-bold uppercase mt-1">{user.role}</p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function SharedHeader({
                 <>
                   <LinkComponent
                     href={environment === 'react' ? '/dashboard' : `${mainAppUrl}/dashboard`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <User className="w-6 h-6" />
@@ -236,7 +236,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/support' : `${mainAppUrl}/support`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <MessageSquare className="w-6 h-6" />
@@ -245,7 +245,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/support-chat' : `${mainAppUrl}/support-chat`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <Headphones className="w-6 h-6" />
@@ -256,7 +256,7 @@ export default function SharedHeader({
                     <>
                       <LinkComponent
                         href={environment === 'react' ? '/admin' : `${mainAppUrl}/admin/dashboard`}
-                        className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                        className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                         onClick={closeMenu}
                       >
                         <Settings className="w-6 h-6" />
@@ -264,7 +264,7 @@ export default function SharedHeader({
                       </LinkComponent>
                       <LinkComponent
                         href={environment === 'react' ? '/admin/support-ui' : `${mainAppUrl}/supportui`}
-                        className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                        className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                         onClick={closeMenu}
                       >
                         <Headphones className="w-6 h-6" />
@@ -276,7 +276,7 @@ export default function SharedHeader({
                   {user.role === 'rep' && (
                     <LinkComponent
                       href={environment === 'react' ? '/rep/dashboard' : `${mainAppUrl}/rep/dashboard`}
-                      className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                      className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                       onClick={closeMenu}
                     >
                       <Settings className="w-6 h-6" />
@@ -286,7 +286,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/profile' : `${mainAppUrl}/profile`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <Settings className="w-6 h-6" />
@@ -295,7 +295,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/' : mainAppUrl}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <ShoppingBag className="w-6 h-6" />
@@ -307,7 +307,7 @@ export default function SharedHeader({
                       closeMenu();
                       handleLogout();
                     }}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group w-full text-left"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group w-full text-left"
                   >
                     <LogOut className="w-6 h-6" />
                     <span className="text-xl">Logout</span>
@@ -317,7 +317,7 @@ export default function SharedHeader({
                 <>
                   <LinkComponent
                     href={environment === 'react' ? '/' : mainAppUrl}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <ShoppingBag className="w-6 h-6" />
@@ -326,7 +326,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/login' : `${mainAppUrl}/login`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <User className="w-6 h-6" />
@@ -335,7 +335,7 @@ export default function SharedHeader({
 
                   <LinkComponent
                     href={environment === 'react' ? '/register' : `${mainAppUrl}/register`}
-                    className="flex items-center space-x-4 text-white hover:text-primary transition group"
+                    className="flex items-center space-x-4 text-foreground hover:text-primary transition group"
                     onClick={closeMenu}
                   >
                     <User className="w-6 h-6" />

@@ -337,7 +337,7 @@ export default function CheckoutPage() {
         {/* Back to Cart */}
         <Link 
           href="/cart" 
-          className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Cart</span>
@@ -345,8 +345,8 @@ export default function CheckoutPage() {
 
         {/* Page Header */}
         <div className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">Checkout</h1>
-          <p className="text-lg text-white/50">Complete your order</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-3">Checkout</h1>
+          <p className="text-lg text-muted-foreground">Complete your order</p>
         </div>
 
         {/* Two Column Layout on Desktop, Single Column on Mobile */}
@@ -355,8 +355,8 @@ export default function CheckoutPage() {
           {/* LEFT COLUMN: Promo Code + Shipping */}
           <div className="space-y-6">
             {/* Promo Code Section */}
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-xl">
-              <h3 className="text-sm font-medium uppercase tracking-wider text-white/50 mb-4">Promo Code</h3>
+            <div className="rounded-2xl bg-foreground/5 border border-border p-6 backdrop-blur-xl">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-4">Promo Code</h3>
               
               {/* Assigned Discount Banner */}
               {assignedDiscountApplied && assignedDiscount && (
@@ -424,8 +424,8 @@ export default function CheckoutPage() {
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-500" />
                     <div>
-                      <p className="font-medium text-white">{promoCode}</p>
-                      <p className="text-sm text-white/50">
+                      <p className="font-medium text-foreground">{promoCode}</p>
+                      <p className="text-sm text-muted-foreground">
                         {customProductPrices && Object.keys(customProductPrices).length > 0
                           ? `Special pricing applied - Save $${discountAmount.toFixed(2)}`
                           : discount > 0 
@@ -440,7 +440,7 @@ export default function CheckoutPage() {
                     variant="ghost"
                     size="sm"
                     onClick={handleRemovePromo}
-                    className="text-white/50 hover:text-white hover:bg-white/10 rounded-xl"
+                    className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl"
                   >
                     Remove
                   </Button>
@@ -451,13 +451,13 @@ export default function CheckoutPage() {
                     placeholder="Enter promo code"
                     value={promoInput}
                     onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
-                    className={`rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12 pr-10 ${promoError ? 'border-red-500' : ''}`}
+                    className={`rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12 pr-10 ${promoError ? 'border-red-500' : ''}`}
                   />
                   <div className="absolute inset-y-0 right-0 flex items-center pr-4">
                     {isValidatingPromo ? (
-                      <Loader2 className="h-4 w-4 animate-spin text-white/40" />
+                      <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
                     ) : promoInput && !promoCode && !promoError ? (
-                      <Tag className="h-4 w-4 text-white/40" />
+                      <Tag className="h-4 w-4 text-muted-foreground" />
                     ) : null}
                   </div>
                 </div>
@@ -468,8 +468,8 @@ export default function CheckoutPage() {
             </div>
 
             {/* Shipping Information */}
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-xl">
-              <h3 className="text-sm font-medium uppercase tracking-wider text-white/50 mb-4">Shipping Information</h3>
+            <div className="rounded-2xl bg-foreground/5 border border-border p-6 backdrop-blur-xl">
+              <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-4">Shipping Information</h3>
               <ShippingAddressForm onAddressChange={setShippingAddress} />
             </div>
           </div>

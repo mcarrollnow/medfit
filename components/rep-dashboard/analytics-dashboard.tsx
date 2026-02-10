@@ -104,23 +104,23 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
       <CardHeader className="pb-4 px-0">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <CardTitle className="text-2xl font-light tracking-tight text-white">Analytics</CardTitle>
-            <CardDescription className="text-white/50">Performance metrics and insights</CardDescription>
+            <CardTitle className="text-2xl font-light tracking-tight text-foreground">Analytics</CardTitle>
+            <CardDescription className="text-muted-foreground">Performance metrics and insights</CardDescription>
           </div>
           
           {/* Period Selector */}
           <div className="relative">
             <button
               onClick={() => setShowPeriodDropdown(!showPeriodDropdown)}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 transition-all"
+              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-foreground/[0.06] hover:bg-card/[0.1] border border-border transition-all"
             >
-              <Calendar className="w-4 h-4 text-white/50" />
-              <span className="text-white font-medium">{getPeriodLabel()}</span>
-              <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${showPeriodDropdown ? 'rotate-180' : ''}`} />
+              <Calendar className="w-4 h-4 text-muted-foreground" />
+              <span className="text-foreground font-medium">{getPeriodLabel()}</span>
+              <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showPeriodDropdown ? 'rotate-180' : ''}`} />
             </button>
             
             {showPeriodDropdown && (
-              <div className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-black/95 border border-white/10 backdrop-blur-xl shadow-2xl z-50 overflow-hidden">
+              <div className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-background/95 border border-border backdrop-blur-xl shadow-2xl z-50 overflow-hidden">
                 {PERIODS.map((period) => (
                   <button
                     key={period.value}
@@ -130,8 +130,8 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                     }}
                     className={`w-full px-4 py-3 text-left text-sm transition-colors ${
                       selectedPeriod === period.value 
-                        ? 'bg-white/10 text-white' 
-                        : 'text-white/70 hover:bg-white/5 hover:text-white'
+                        ? 'bg-foreground/10 text-foreground' 
+                        : 'text-foreground/70 hover:bg-foreground/5 hover:text-foreground'
                     }`}
                   >
                     {period.label}
@@ -152,8 +152,8 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
                   activeTab === tab.id
-                    ? 'bg-white/[0.15] text-white border border-white/20'
-                    : 'bg-white/[0.03] text-white/50 hover:bg-white/[0.08] hover:text-white/80 border border-transparent'
+                    ? 'bg-foreground/[0.15] text-foreground border border-border'
+                    : 'bg-foreground/[0.04] text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground/80 border border-transparent'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -169,7 +169,7 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
         {activeTab === "earnings" && (
           <div className="h-[350px] bg-transparent">
             {earningsHistory.length === 0 ? (
-              <div className="h-full flex items-center justify-center text-white/40">
+              <div className="h-full flex items-center justify-center text-muted-foreground">
                 <p>No earnings data yet</p>
               </div>
             ) : (
@@ -181,13 +181,13 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                       <stop offset="95%" stopColor="#10b981" stopOpacity={0.05} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid vertical={false} stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }} />
-                  <YAxis tickLine={false} axisLine={false} tickFormatter={(v) => `$${v}`} tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }} />
+                  <CartesianGrid vertical={false} stroke="rgba(58,66,51,0.06)" />
+                  <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} tick={{ fill: "rgba(58,66,51,0.5)", fontSize: 12 }} />
+                  <YAxis tickLine={false} axisLine={false} tickFormatter={(v) => `$${v}`} tick={{ fill: "rgba(58,66,51,0.5)", fontSize: 12 }} />
                   <Tooltip 
                     contentStyle={{ 
                       backgroundColor: '#18181b', 
-                      border: '1px solid rgba(255,255,255,0.1)', 
+                      border: '1px solid rgba(58,66,51,0.08)', 
                       borderRadius: '8px',
                       color: 'white'
                     }} 
@@ -205,10 +205,10 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
               {/* Commission Stats */}
               <div className="flex flex-col justify-center space-y-6">
-                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
-                  <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Total Commission</p>
-                  <p className="text-4xl font-bold text-white">${totalCommission.toFixed(2)}</p>
-                  <p className="text-sm text-white/40 mt-1">From {totalOrders} orders</p>
+                <div className="p-5 rounded-2xl bg-foreground/[0.04] border border-border">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Total Commission</p>
+                  <p className="text-4xl font-bold text-foreground">${totalCommission.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground mt-1">From {totalOrders} orders</p>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -222,12 +222,12 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                <div className="p-4 rounded-xl bg-foreground/[0.04] border border-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-white/60">Commission Rate</span>
-                    <span className="text-xl font-bold text-white">{(commissionRate * 100).toFixed(0)}%</span>
+                    <span className="text-foreground/60">Commission Rate</span>
+                    <span className="text-xl font-bold text-foreground">{(commissionRate * 100).toFixed(0)}%</span>
                   </div>
-                  <div className="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div className="mt-2 h-2 rounded-full bg-foreground/10 overflow-hidden">
                     <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${commissionRate * 100}%` }} />
                   </div>
                 </div>
@@ -254,7 +254,7 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                       <Tooltip 
                         contentStyle={{ 
                           backgroundColor: '#18181b', 
-                          border: '1px solid rgba(255,255,255,0.1)', 
+                          border: '1px solid rgba(58,66,51,0.08)', 
                           borderRadius: '8px',
                           color: 'white'
                         }}
@@ -264,8 +264,8 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                   </ResponsiveContainer>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-white">{totalCommission > 0 ? `${((paidCommission / totalCommission) * 100).toFixed(0)}%` : '0%'}</p>
-                      <p className="text-xs text-white/50 uppercase tracking-wider">Earned</p>
+                      <p className="text-2xl font-bold text-foreground">{totalCommission > 0 ? `${((paidCommission / totalCommission) * 100).toFixed(0)}%` : '0%'}</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">Earned</p>
                     </div>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                     <Tooltip 
                       contentStyle={{ 
                         backgroundColor: '#18181b', 
-                        border: '1px solid rgba(255,255,255,0.1)', 
+                        border: '1px solid rgba(58,66,51,0.08)', 
                         borderRadius: '8px',
                         color: 'white'
                       }} 
@@ -306,8 +306,8 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-4xl font-bold text-white">{paymentCompletionRate.toFixed(0)}%</p>
-                    <p className="text-xs text-white/50 uppercase tracking-wider">Completion</p>
+                    <p className="text-4xl font-bold text-foreground">{paymentCompletionRate.toFixed(0)}%</p>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider">Completion</p>
                   </div>
                 </div>
               </div>
@@ -315,26 +315,26 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-emerald-500" />
-                  <span className="text-white/80">Paid: {paidOrders} orders</span>
+                  <span className="text-foreground/80">Paid: {paidOrders} orders</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-4 h-4 rounded-full bg-amber-500" />
-                  <span className="text-white/80">Pending: {pendingOrders} orders</span>
+                  <span className="text-foreground/80">Pending: {pendingOrders} orders</span>
                 </div>
                 {shippedOrders > 0 && (
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded-full bg-blue-500" />
-                    <span className="text-white/80">Shipped: {shippedOrders} orders</span>
+                    <span className="text-foreground/80">Shipped: {shippedOrders} orders</span>
                   </div>
                 )}
                 {cancelledOrders > 0 && (
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 rounded-full bg-red-500" />
-                    <span className="text-white/80">Cancelled: {cancelledOrders} orders</span>
+                    <span className="text-foreground/80">Cancelled: {cancelledOrders} orders</span>
                   </div>
                 )}
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-sm text-white/50">Total Orders: {totalOrders}</p>
+                <div className="pt-4 border-t border-border">
+                  <p className="text-sm text-muted-foreground">Total Orders: {totalOrders}</p>
                 </div>
               </div>
             </div>
@@ -348,27 +348,27 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
               <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-amber-500/10 border-4 border-amber-500/30">
                 <div>
                   <p className="text-5xl font-bold text-amber-400">{pendingOrders}</p>
-                  <p className="text-xs text-white/50 uppercase tracking-wider mt-1">Pending</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Pending</p>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <p className="text-lg text-white/80">
+                <p className="text-lg text-foreground/80">
                   <span className="text-amber-400 font-semibold">{pendingRate.toFixed(1)}%</span> of orders awaiting payment
                 </p>
-                <p className="text-sm text-white/50">
+                <p className="text-sm text-muted-foreground">
                   {paidOrders} of {totalOrders} orders have been paid
                 </p>
               </div>
 
               <div className="w-full max-w-xs mx-auto">
-                <div className="h-3 rounded-full bg-white/10 overflow-hidden">
+                <div className="h-3 rounded-full bg-foreground/10 overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full"
                     style={{ width: `${paymentCompletionRate}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-xs text-white/40 mt-2">
+                <div className="flex justify-between text-xs text-muted-foreground mt-2">
                   <span>0%</span>
                   <span>Payment Progress</span>
                   <span>100%</span>
@@ -382,44 +382,44 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
         {activeTab === "customers" && (
           <div className="h-[350px] overflow-y-auto space-y-6 pr-2">
             {/* Return Rate */}
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-5 rounded-2xl bg-foreground/[0.04] border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Repeat className="w-5 h-5 text-purple-400" />
-                <h4 className="text-lg font-semibold text-white">Return Customers</h4>
+                <h4 className="text-lg font-semibold text-foreground">Return Customers</h4>
               </div>
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-4xl font-bold text-purple-400">{repeatRate.toFixed(0)}%</p>
-                  <p className="text-sm text-white/50">{repeatCustomers.length} of {customers.length} customers returned</p>
+                  <p className="text-sm text-muted-foreground">{repeatCustomers.length} of {customers.length} customers returned</p>
                 </div>
-                <div className="w-24 h-2 rounded-full bg-white/10 overflow-hidden">
+                <div className="w-24 h-2 rounded-full bg-foreground/10 overflow-hidden">
                   <div className="h-full bg-purple-500 rounded-full" style={{ width: `${repeatRate}%` }} />
                 </div>
               </div>
             </div>
 
             {/* Top Customers by Spend */}
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-5 rounded-2xl bg-foreground/[0.04] border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Award className="w-5 h-5 text-emerald-400" />
-                <h4 className="text-lg font-semibold text-white">Top Customers by Spend</h4>
+                <h4 className="text-lg font-semibold text-foreground">Top Customers by Spend</h4>
               </div>
               <div className="space-y-3">
                 {topBySpend.length === 0 ? (
-                  <p className="text-white/40 text-sm">No customer data yet</p>
+                  <p className="text-muted-foreground text-sm">No customer data yet</p>
                 ) : (
                   topBySpend.map((customer, index) => (
                     <div key={customer.id} className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                           index === 0 ? 'bg-amber-500/20 text-amber-400' :
-                          index === 1 ? 'bg-gray-400/20 text-gray-300' :
+                          index === 1 ? 'bg-gray-400/20 text-foreground/70' :
                           index === 2 ? 'bg-orange-600/20 text-orange-400' :
-                          'bg-white/10 text-white/50'
+                          'bg-foreground/10 text-muted-foreground'
                         }`}>
                           {index + 1}
                         </span>
-                        <span className="text-white/80">{customer.name}</span>
+                        <span className="text-foreground/80">{customer.name}</span>
                       </div>
                       <span className="text-emerald-400 font-mono font-semibold">${customer.totalSpent.toFixed(2)}</span>
                     </div>
@@ -429,25 +429,25 @@ export function AnalyticsDashboard({ earningsHistory, orders, customers }: Analy
             </div>
 
             {/* Most Frequent Customers */}
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="p-5 rounded-2xl bg-foreground/[0.04] border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <TrendingUp className="w-5 h-5 text-blue-400" />
-                <h4 className="text-lg font-semibold text-white">Most Frequent Customers</h4>
+                <h4 className="text-lg font-semibold text-foreground">Most Frequent Customers</h4>
               </div>
               <div className="space-y-3">
                 {topByFrequency.length === 0 ? (
-                  <p className="text-white/40 text-sm">No customer data yet</p>
+                  <p className="text-muted-foreground text-sm">No customer data yet</p>
                 ) : (
                   topByFrequency.map((customer, index) => (
                     <div key={customer.id} className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                           index === 0 ? 'bg-blue-500/20 text-blue-400' :
-                          'bg-white/10 text-white/50'
+                          'bg-foreground/10 text-muted-foreground'
                         }`}>
                           {index + 1}
                         </span>
-                        <span className="text-white/80">{customer.name}</span>
+                        <span className="text-foreground/80">{customer.name}</span>
                       </div>
                       <span className="text-blue-400 font-mono">{customer.orderCount} orders</span>
                     </div>

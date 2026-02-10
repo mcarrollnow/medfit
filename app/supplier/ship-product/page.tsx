@@ -96,7 +96,7 @@ function CalculatorKeypad({
                 ? "bg-foreground text-background hover:bg-foreground/90 flex items-center justify-center"
                 : isClear
                 ? "glass-button text-muted-foreground hover:text-foreground flex items-center justify-center"
-                : "glass-button hover:bg-white/[0.1] text-foreground"
+                : "glass-button hover:bg-card/[0.1] text-foreground"
             )}
           >
             {isEnter ? (
@@ -416,7 +416,7 @@ export default function ShipProductPage() {
                           setTimeout(() => setIsSearchFocused(false), 200)
                         }}
                         placeholder="Type to search products..."
-                        className="w-full pl-10 pr-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                        className="w-full pl-10 pr-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors"
                         autoComplete="off"
                       />
                     </div>
@@ -424,7 +424,7 @@ export default function ShipProductPage() {
                     {/* Search Results Dropdown */}
                     <AnimatePresence>
                       {searchResults.length > 0 && (
-                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-4 max-h-60 overflow-y-auto rounded-xl border border-white/[0.08]">
+                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mb-4 max-h-60 overflow-y-auto rounded-xl border border-border">
                           {searchResults.map((product) => (
                             <button
                               key={product.id}
@@ -434,7 +434,7 @@ export default function ShipProductPage() {
                                 setIsSearchFocused(false)
                                 setQuantityInput("1")
                               }}
-                              className="w-full text-left px-4 py-3 hover:bg-white/[0.04] transition-colors border-b border-white/[0.04] last:border-0"
+                              className="w-full text-left px-4 py-3 hover:bg-foreground/[0.05] transition-colors border-b border-primary/[0.04] last:border-0"
                             >
                               <div className="flex items-center justify-between">
                                 <div>
@@ -513,7 +513,7 @@ export default function ShipProductPage() {
                   {activeShipment.items?.length ? (
                     <div className="space-y-3">
                       {activeShipment.items.map((item) => (
-                        <div key={item.id} className="flex items-center justify-between bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                        <div key={item.id} className="flex items-center justify-between bg-foreground/[0.03] border border-border rounded-xl p-4">
                           <div className="flex items-center gap-3">
                             <div className="glass-button rounded-lg p-2"><Box className="h-4 w-4" /></div>
                             <div>
@@ -525,7 +525,7 @@ export default function ShipProductPage() {
                             </div>
                           </div>
                           {activeShipment.status === "building" && (
-                            <button onClick={() => handleRemoveItem(item.id)} className="p-2 rounded-lg hover:bg-white/[0.06] text-muted-foreground hover:text-foreground transition-colors">
+                            <button onClick={() => handleRemoveItem(item.id)} className="p-2 rounded-lg hover:bg-foreground/[0.07] text-muted-foreground hover:text-foreground transition-colors">
                               <Trash2 className="h-4 w-4" />
                             </button>
                           )}
@@ -557,18 +557,18 @@ export default function ShipProductPage() {
                   {activeShipment.photos?.length ? (
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {activeShipment.photos.map((photo) => (
-                        <div key={photo.id} className="relative group rounded-xl overflow-hidden aspect-square border border-white/[0.08]">
+                        <div key={photo.id} className="relative group rounded-xl overflow-hidden aspect-square border border-border">
                           <img src={photo.photo_url} alt={photo.caption || "Shipment photo"} className="w-full h-full object-cover" />
                           {photo.caption && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-3 py-2">
-                              <p className="text-xs text-white font-mono truncate">{photo.caption}</p>
+                            <div className="absolute bottom-0 left-0 right-0 bg-foreground/60 px-3 py-2">
+                              <p className="text-xs text-foreground font-mono truncate">{photo.caption}</p>
                             </div>
                           )}
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-8 border border-dashed border-white/[0.1] rounded-xl">
+                    <div className="text-center py-8 border border-dashed border-border rounded-xl">
                       <ImageIcon className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
                       <p className="text-sm text-muted-foreground font-mono">Take photos of the box contents before sealing</p>
                     </div>
@@ -578,7 +578,7 @@ export default function ShipProductPage() {
                 {/* Action Buttons */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-col gap-4">
                   {activeShipment.status === "building" && (
-                    <button onClick={handleSealBox} className="w-full py-4 rounded-2xl glass-button border-white/[0.15] font-mono hover:bg-white/[0.08] transition-colors flex items-center justify-center gap-2">
+                    <button onClick={handleSealBox} className="w-full py-4 rounded-2xl glass-button border-border font-mono hover:bg-foreground/[0.08] transition-colors flex items-center justify-center gap-2">
                       <Lock className="h-5 w-5" />
                       Seal Box
                     </button>
@@ -590,11 +590,11 @@ export default function ShipProductPage() {
                       <div className="grid md:grid-cols-2 gap-4 mb-6">
                         <div>
                           <label className="block text-xs font-mono tracking-widest text-muted-foreground uppercase mb-2">Tracking Number</label>
-                          <input value={trackingNumber} onChange={(e) => setTrackingNumber(e.target.value)} placeholder="Enter tracking number..." className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors" />
+                          <input value={trackingNumber} onChange={(e) => setTrackingNumber(e.target.value)} placeholder="Enter tracking number..." className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs font-mono tracking-widest text-muted-foreground uppercase mb-2">Carrier</label>
-                          <input value={carrier} onChange={(e) => setCarrier(e.target.value)} placeholder="DHL, FedEx, UPS..." className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors" />
+                          <input value={carrier} onChange={(e) => setCarrier(e.target.value)} placeholder="DHL, FedEx, UPS..." className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors" />
                         </div>
                       </div>
                       <button onClick={handleMarkShipped} className="w-full py-4 rounded-2xl bg-foreground text-background font-mono hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2">
@@ -623,8 +623,8 @@ export default function ShipProductPage() {
                       key={shipment.id}
                       onClick={() => setActiveShipment(shipment)}
                       className={cn(
-                        "w-full text-left glass-card rounded-2xl p-5 transition-all hover:bg-white/[0.04]",
-                        isActive && "border-white/20 bg-white/[0.04]"
+                        "w-full text-left glass-card rounded-2xl p-5 transition-all hover:bg-foreground/[0.05]",
+                        isActive && "border-border bg-foreground/[0.05]"
                       )}
                     >
                       <div className="flex items-center justify-between">

@@ -3,45 +3,45 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Chronicles-style theme */
+/* Modern Medic Invoice - Warm light, charcoal text, blue accent */
 :root {
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.08 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.95 0 0);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.15 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.15 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.15 0 0);
-  --accent-foreground: oklch(0.95 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.5 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --background: oklch(0.93 0.01 60);
+  --foreground: oklch(0.28 0.02 130);
+  --card: oklch(0.96 0.008 60);
+  --card-foreground: oklch(0.28 0.02 130);
+  --popover: oklch(0.96 0.008 60);
+  --popover-foreground: oklch(0.28 0.02 130);
+  --primary: oklch(0.28 0.02 130);
+  --primary-foreground: oklch(0.93 0.01 60);
+  --secondary: oklch(0.90 0.008 60);
+  --secondary-foreground: oklch(0.28 0.02 130);
+  --muted: oklch(0.90 0.008 60);
+  --muted-foreground: oklch(0.50 0.01 130);
+  --accent: oklch(0.44 0.12 255);
+  --accent-foreground: oklch(0.96 0.008 60);
+  --destructive: oklch(0.50 0.18 25);
+  --destructive-foreground: oklch(0.96 0.008 60);
+  --border: oklch(0.86 0.01 60);
+  --input: oklch(0.90 0.008 60);
+  --ring: oklch(0.44 0.12 255);
+  --chart-1: oklch(0.44 0.12 255);
+  --chart-2: oklch(0.50 0.18 25);
+  --chart-3: oklch(0.50 0.01 130);
+  --chart-4: oklch(0.60 0.10 255);
+  --chart-5: oklch(0.35 0.02 130);
   --radius: 0.625rem;
-  --sidebar: oklch(0.1 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.95 0 0);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.15 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.5 0 0);
+  --sidebar: oklch(0.28 0.02 130);
+  --sidebar-foreground: oklch(0.93 0.01 60);
+  --sidebar-primary: oklch(0.93 0.01 60);
+  --sidebar-primary-foreground: oklch(0.28 0.02 130);
+  --sidebar-accent: oklch(0.34 0.02 130);
+  --sidebar-accent-foreground: oklch(0.93 0.01 60);
+  --sidebar-border: oklch(0.38 0.02 130);
+  --sidebar-ring: oklch(0.44 0.12 255);
 
-  /* Glass morphism */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Glass morphism for light bg */
+  --glass-bg: rgba(58, 66, 51, 0.04);
+  --glass-border: rgba(58, 66, 51, 0.08);
 }
 
 @theme inline {
@@ -95,39 +95,39 @@
   }
 }
 
-/* Glass morphism utilities */
+/* Glass morphism utilities for light bg */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(58, 66, 51, 0.04);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(58, 66, 51, 0.08);
+  box-shadow: 0 8px 32px rgba(58, 66, 51, 0.06);
 }
 
 .glass-button {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(58, 66, 51, 0.06);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(58, 66, 51, 0.10);
   transition: all 0.3s ease;
 }
 
 .glass-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(58, 66, 51, 0.10);
+  border-color: rgba(58, 66, 51, 0.18);
 }
 
-/* Add print styles for invoice */
+/* Print styles for invoice */
 @media print {
   body {
-    background: #121212 !important;
+    background: #F1E6DE !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(58, 66, 51, 0.04) !important;
     box-shadow: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(58, 66, 51, 0.08) !important;
   }
 
   .print\:hidden {

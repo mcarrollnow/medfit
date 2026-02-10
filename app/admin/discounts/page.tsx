@@ -444,7 +444,7 @@ export default function DiscountsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -462,12 +462,12 @@ export default function DiscountsPage() {
               {/* Header */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="space-y-4">
-                  <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Discount Codes</h1>
-                  <p className="text-xl text-white/50">Manage promotional codes and rep pricing.</p>
+                  <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Discount Codes</h1>
+                  <p className="text-xl text-muted-foreground">Manage promotional codes and rep pricing.</p>
                 </div>
                 <Button
                   onClick={handleCreateNew}
-                  className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                  className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                 >
                   <Plus className="w-5 h-5 mr-2" />
                   Create Code
@@ -476,41 +476,41 @@ export default function DiscountsPage() {
 
               {/* Stats */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                         <Ticket className="h-6 w-6 text-emerald-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">Active Codes</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">{activeCodesCount}</p>
+                        <p className="text-sm font-medium text-muted-foreground">Active Codes</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{activeCodesCount}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
                         <TrendingUp className="h-6 w-6 text-blue-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">Total Usage</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">{totalUsage}</p>
+                        <p className="text-sm font-medium text-muted-foreground">Total Usage</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{totalUsage}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
                         <Tag className="h-6 w-6 text-purple-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">Total Codes</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">{discountCodes.length}</p>
+                        <p className="text-sm font-medium text-muted-foreground">Total Codes</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{discountCodes.length}</p>
                       </div>
                     </div>
                   </div>
@@ -519,8 +519,8 @@ export default function DiscountsPage() {
 
               {/* Rep Pricing Section */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Rep Management</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Rep Management</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-8">
@@ -528,36 +528,36 @@ export default function DiscountsPage() {
                         <UserCheck className="h-7 w-7 text-amber-400" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold tracking-tight text-white">Rep Pricing & Permissions</h3>
-                        <p className="text-white/50">Assign automatic pricing and control rep discount code creation</p>
+                        <h3 className="text-2xl font-bold tracking-tight text-foreground">Rep Pricing & Permissions</h3>
+                        <p className="text-muted-foreground">Assign automatic pricing and control rep discount code creation</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {reps.map((rep) => (
                         <div
                           key={rep.id}
-                          className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 transition-all hover:bg-white/[0.08] hover:border-white/20"
+                          className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-5 transition-all hover:bg-foreground/[0.08] hover:border-border"
                         >
                           <div className="flex items-start justify-between gap-3">
                             <button
                               onClick={() => handleSelectRep(rep)}
                               className="flex-1 text-left hover:opacity-80 transition-opacity"
                             >
-                              <p className="font-semibold text-white">
+                              <p className="font-semibold text-foreground">
                                 {rep.first_name} {rep.last_name}
                               </p>
-                              <p className="text-white/50 text-sm">{rep.email}</p>
+                              <p className="text-muted-foreground text-sm">{rep.email}</p>
                             </button>
                             <ChevronRight 
                               onClick={() => handleSelectRep(rep)}
-                              className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors cursor-pointer flex-shrink-0 mt-1" 
+                              className="w-5 h-5 text-muted-foreground group-hover:text-foreground/60 transition-colors cursor-pointer flex-shrink-0 mt-1" 
                             />
                           </div>
-                          <div className="mt-4 pt-4 border-t border-white/10">
+                          <div className="mt-4 pt-4 border-t border-border">
                             <div className="flex items-center justify-between">
                               <div>
-                                <p className="text-sm font-medium text-white">Can Create Codes</p>
-                                <p className="text-xs text-white/40">Allow discount code creation</p>
+                                <p className="text-sm font-medium text-foreground">Can Create Codes</p>
+                                <p className="text-xs text-muted-foreground">Allow discount code creation</p>
                               </div>
                               <Switch
                                 checked={rep.can_create_discount_codes || false}
@@ -570,7 +570,7 @@ export default function DiscountsPage() {
                           </div>
                         </div>
                       ))}
-                      {reps.length === 0 && <p className="text-white/40 col-span-full text-center py-8">No reps found</p>}
+                      {reps.length === 0 && <p className="text-muted-foreground col-span-full text-center py-8">No reps found</p>}
                     </div>
                   </div>
                 </div>
@@ -578,8 +578,8 @@ export default function DiscountsPage() {
 
               {/* Customer Assigned Discounts Section */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Customer Assignments</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Customer Assignments</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -588,13 +588,13 @@ export default function DiscountsPage() {
                           <Users className="h-7 w-7 text-purple-400" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold tracking-tight text-white">Customer Discounts</h3>
-                          <p className="text-white/50">Auto-apply discounts to customer's next order</p>
+                          <h3 className="text-2xl font-bold tracking-tight text-foreground">Customer Discounts</h3>
+                          <p className="text-muted-foreground">Auto-apply discounts to customer's next order</p>
                         </div>
                       </div>
                       <Button
                         onClick={() => setViewMode("customer-discounts")}
-                        className="h-11 px-5 bg-white/10 hover:bg-white/20 rounded-xl font-medium"
+                        className="h-11 px-5 bg-foreground/10 hover:bg-foreground/20 rounded-xl font-medium"
                       >
                         Manage All
                         <ChevronRight className="w-4 h-4 ml-2" />
@@ -604,10 +604,10 @@ export default function DiscountsPage() {
                     {/* Active discounts preview */}
                     <div className="space-y-3">
                       {assignedDiscounts.filter(d => d.status === "active").slice(0, 3).map((discount) => (
-                        <div key={discount.id} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl">
+                        <div key={discount.id} className="flex items-center justify-between p-4 bg-foreground/5 border border-border rounded-2xl">
                           <div>
-                            <p className="font-semibold text-white">{discount.customer_name}</p>
-                            <p className="text-sm text-white/50">
+                            <p className="font-semibold text-foreground">{discount.customer_name}</p>
+                            <p className="text-sm text-muted-foreground">
                               {discount.discount_code 
                                 ? `Code: ${discount.discount_code}` 
                                 : `${discount.custom_discount_type === "percentage" ? `${discount.custom_discount_value}%` : `$${discount.custom_discount_value}`} off`
@@ -620,12 +620,12 @@ export default function DiscountsPage() {
                         </div>
                       ))}
                       {assignedDiscounts.filter(d => d.status === "active").length === 0 && (
-                        <p className="text-white/40 text-center py-6">No active customer discounts</p>
+                        <p className="text-muted-foreground text-center py-6">No active customer discounts</p>
                       )}
                       {assignedDiscounts.filter(d => d.status === "active").length > 3 && (
                         <button
                           onClick={() => setViewMode("customer-discounts")}
-                          className="w-full text-center text-white/50 hover:text-white text-sm py-3 transition-colors"
+                          className="w-full text-center text-muted-foreground hover:text-foreground text-sm py-3 transition-colors"
                         >
                           View all {assignedDiscounts.filter(d => d.status === "active").length} active discounts →
                         </button>
@@ -637,27 +637,27 @@ export default function DiscountsPage() {
 
               {/* Discount Codes List */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">All Discount Codes</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">All Discount Codes</h2>
                 {isLoading ? (
                   <div className="space-y-4">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 animate-pulse">
-                        <div className="h-6 bg-white/10 rounded w-1/3 mb-2" />
-                        <div className="h-4 bg-white/10 rounded w-1/2" />
+                      <div key={i} className="rounded-2xl border border-border bg-foreground/5 p-6 animate-pulse">
+                        <div className="h-6 bg-foreground/10 rounded w-1/3 mb-2" />
+                        <div className="h-4 bg-foreground/10 rounded w-1/2" />
                       </div>
                     ))}
                   </div>
                 ) : discountCodes.length === 0 ? (
-                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+                  <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10">
-                      <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                        <Ticket className="w-8 h-8 text-white/30" />
+                      <div className="h-16 w-16 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mx-auto mb-4">
+                        <Ticket className="w-8 h-8 text-muted-foreground" />
                       </div>
-                      <p className="text-white/50 text-lg">No discount codes yet</p>
+                      <p className="text-muted-foreground text-lg">No discount codes yet</p>
                       <Button
                         onClick={handleCreateNew}
-                        className="mt-6 h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                        className="mt-6 h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                       >
                         Create Your First Code
                       </Button>
@@ -670,7 +670,7 @@ export default function DiscountsPage() {
                         key={code.id}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all cursor-pointer hover:bg-white/[0.08] hover:border-white/20"
+                        className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all cursor-pointer hover:bg-foreground/[0.08] hover:border-border"
                         onClick={() => handleSelectCode(code)}
                       >
                         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -696,22 +696,22 @@ export default function DiscountsPage() {
                             </div>
                             <div>
                               <div className="flex items-center gap-3">
-                                <span className="font-mono text-xl font-bold tracking-wider text-white">{code.code}</span>
+                                <span className="font-mono text-xl font-bold tracking-wider text-foreground">{code.code}</span>
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     copyToClipboard(code.code)
                                   }}
-                                  className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                                  className="p-1.5 rounded-lg hover:bg-foreground/10 transition-colors"
                                 >
                                   {copiedCode === code.code ? (
                                     <Check className="w-4 h-4 text-emerald-400" />
                                   ) : (
-                                    <Copy className="w-4 h-4 text-white/40" />
+                                    <Copy className="w-4 h-4 text-muted-foreground" />
                                   )}
                                 </button>
                               </div>
-                              <p className="text-white/50 text-sm mt-1">
+                              <p className="text-muted-foreground text-sm mt-1">
                                 {code.discount_type === "percentage"
                                   ? `${code.discount_value}% off`
                                   : code.discount_type === "set_price"
@@ -722,7 +722,7 @@ export default function DiscountsPage() {
                             </div>
                           </div>
                           <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2 text-sm text-white/50">
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
                               <Users className="w-4 h-4" />
                               <span>{code.current_uses} uses</span>
                             </div>
@@ -731,12 +731,12 @@ export default function DiscountsPage() {
                                 "rounded-full px-3 py-1",
                                 code.is_active
                                   ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                                  : "bg-white/10 text-white/40 border-white/10",
+                                  : "bg-foreground/10 text-muted-foreground border-border",
                               )}
                             >
                               {code.is_active ? "Active" : "Inactive"}
                             </Badge>
-                            <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                            <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                           </div>
                         </div>
                       </motion.div>
@@ -758,21 +758,21 @@ export default function DiscountsPage() {
                 <div className="flex items-center gap-4">
                   <button 
                     onClick={handleBack} 
-                    className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="h-12 w-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition-colors"
                   >
-                    <ArrowLeft className="w-5 h-5 text-white" />
+                    <ArrowLeft className="w-5 h-5 text-foreground" />
                   </button>
                   <div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">
                       {selectedRep.first_name} {selectedRep.last_name}
                     </h1>
-                    <p className="text-xl text-white/50">{selectedRep.email}</p>
+                    <p className="text-xl text-muted-foreground">{selectedRep.email}</p>
                   </div>
                 </div>
                 <Button
                   onClick={handleSaveRepPricing}
                   disabled={isSaving}
-                  className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold w-full md:w-auto"
+                  className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold w-full md:w-auto"
                 >
                   {isSaving ? (
                     <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -796,25 +796,25 @@ export default function DiscountsPage() {
 
               {/* Product Pricing Table */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Product Pricing</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Product Pricing</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
-                    <div className="p-6 border-b border-white/10">
-                      <h3 className="text-xl font-bold text-white">Custom Prices</h3>
-                      <p className="text-white/50 text-sm mt-1">
+                    <div className="p-6 border-b border-border">
+                      <h3 className="text-xl font-bold text-foreground">Custom Prices</h3>
+                      <p className="text-muted-foreground text-sm mt-1">
                         Set custom prices for each product. Leave blank to use regular pricing.
                       </p>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="w-full">
                         <thead>
-                          <tr className="border-b border-white/10 bg-black/20">
-                            <th className="text-left p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Product</th>
-                            <th className="text-left p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Variant</th>
-                            <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Retail Price</th>
-                            <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Custom Price</th>
-                            <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Discount</th>
+                          <tr className="border-b border-border bg-foreground/20">
+                            <th className="text-left p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Product</th>
+                            <th className="text-left p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Variant</th>
+                            <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Retail Price</th>
+                            <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Custom Price</th>
+                            <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Discount</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -823,8 +823,8 @@ export default function DiscountsPage() {
                               <tr
                                 key={product.id}
                                 className={cn(
-                                  "border-b border-white/5 hover:bg-white/5 transition-colors",
-                                  idx === 0 && "border-t border-white/10",
+                                  "border-b border-border hover:bg-foreground/5 transition-colors",
+                                  idx === 0 && "border-t border-border",
                                 )}
                               >
                                 <td className="p-4">
@@ -833,11 +833,11 @@ export default function DiscountsPage() {
                                       className="w-3 h-3 rounded-full flex-shrink-0"
                                       style={{ backgroundColor: product.color || "#888" }}
                                     />
-                                    <span className="font-medium text-white">{product.base_name}</span>
+                                    <span className="font-medium text-foreground">{product.base_name}</span>
                                   </div>
                                 </td>
-                                <td className="p-4 text-white/50">{product.variant || "—"}</td>
-                                <td className="p-4 text-right text-white/50">
+                                <td className="p-4 text-muted-foreground">{product.variant || "—"}</td>
+                                <td className="p-4 text-right text-muted-foreground">
                                   ${Number(product.retail_price || 0).toFixed(2)}
                                 </td>
                                 <td className="p-4 text-right">
@@ -854,7 +854,7 @@ export default function DiscountsPage() {
                                         [product.id]: value,
                                       }))
                                     }}
-                                    className="w-28 h-10 bg-white/5 border-white/10 rounded-xl text-right ml-auto"
+                                    className="w-28 h-10 bg-foreground/5 border-border rounded-xl text-right ml-auto"
                                   />
                                 </td>
                                 <td className="p-4 text-right">
@@ -863,7 +863,7 @@ export default function DiscountsPage() {
                                       {Math.round((1 - repProductPrices[product.id]! / product.retail_price) * 100)}% off
                                     </Badge>
                                   ) : (
-                                    <span className="text-white/30">—</span>
+                                    <span className="text-muted-foreground">—</span>
                                   )}
                                 </td>
                               </tr>
@@ -889,16 +889,16 @@ export default function DiscountsPage() {
                 <div className="flex items-center gap-4">
                   <button 
                     onClick={handleBack} 
-                    className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="h-12 w-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition-colors"
                   >
-                    <ArrowLeft className="w-5 h-5 text-white" />
+                    <ArrowLeft className="w-5 h-5 text-foreground" />
                   </button>
                   <div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">
                       {viewMode === "create" ? "Create Discount Code" : editingCode.code}
                     </h1>
                     {viewMode !== "create" && selectedCode && (
-                      <p className="text-xl text-white/50">{selectedCode.current_uses || 0} uses</p>
+                      <p className="text-xl text-muted-foreground">{selectedCode.current_uses || 0} uses</p>
                     )}
                   </div>
                 </div>
@@ -914,7 +914,7 @@ export default function DiscountsPage() {
                   <Button
                     onClick={handleSaveCode}
                     disabled={saving}
-                    className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                    className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                   >
                     {saving ? (
                       <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -932,20 +932,20 @@ export default function DiscountsPage() {
               <div className="space-y-8">
                 {/* Code Details Card */}
                 <section className="space-y-6">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Code Details</h2>
-                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Code Details</h2>
+                  <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 space-y-6">
 
                       {/* Code Input */}
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Code</label>
+                        <label className="text-sm font-medium text-foreground/60">Code</label>
                         <div className="flex flex-col sm:flex-row gap-3">
                           <Input
                             value={editingCode.code || ""}
                             onChange={(e) => setEditingCode({ ...editingCode, code: e.target.value.toUpperCase() })}
                             placeholder="SUMMER20"
-                            className="h-14 bg-white/5 border-white/10 rounded-xl font-mono text-lg tracking-wider flex-1"
+                            className="h-14 bg-foreground/5 border-border rounded-xl font-mono text-lg tracking-wider flex-1"
                           />
                           <Button
                             onClick={() =>
@@ -955,7 +955,7 @@ export default function DiscountsPage() {
                               })
                             }
                             variant="ghost"
-                            className="h-14 px-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10"
+                            className="h-14 px-6 rounded-xl bg-foreground/5 border border-border hover:bg-foreground/10"
                           >
                             Generate
                           </Button>
@@ -964,27 +964,27 @@ export default function DiscountsPage() {
 
                       {/* Description */}
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Description</label>
+                        <label className="text-sm font-medium text-foreground/60">Description</label>
                         <Textarea
                           value={editingCode.description || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, description: e.target.value })}
                           placeholder="Summer sale promotion..."
-                          className="bg-white/5 border-white/10 rounded-xl resize-none"
+                          className="bg-foreground/5 border-border rounded-xl resize-none"
                           rows={3}
                         />
                       </div>
 
                       <div className="space-y-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Discount Type</label>
+                          <label className="text-sm font-medium text-foreground/60">Discount Type</label>
                           <div className="flex gap-3">
                             <button
                               onClick={() => setEditingCode({ ...editingCode, discount_type: "percentage" })}
                               className={cn(
                                 "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 text-base font-medium",
                                 editingCode.discount_type === "percentage"
-                                  ? "bg-white/10 border-white/20 text-white"
-                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white",
+                                  ? "bg-foreground/10 border-border text-foreground"
+                                  : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground",
                               )}
                             >
                               <Percent className="w-5 h-5" />
@@ -995,8 +995,8 @@ export default function DiscountsPage() {
                               className={cn(
                                 "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 text-base font-medium",
                                 editingCode.discount_type === "fixed"
-                                  ? "bg-white/10 border-white/20 text-white"
-                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white",
+                                  ? "bg-foreground/10 border-border text-foreground"
+                                  : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground",
                               )}
                             >
                               <DollarSign className="w-5 h-5" />
@@ -1007,8 +1007,8 @@ export default function DiscountsPage() {
                               className={cn(
                                 "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 text-base font-medium",
                                 editingCode.discount_type === "set_price"
-                                  ? "bg-white/10 border-white/20 text-white"
-                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white",
+                                  ? "bg-foreground/10 border-border text-foreground"
+                                  : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground",
                               )}
                             >
                               <Tag className="w-5 h-5" />
@@ -1023,7 +1023,7 @@ export default function DiscountsPage() {
                         </div>
                         {editingCode.discount_type !== "set_price" && (
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Value</label>
+                            <label className="text-sm font-medium text-foreground/60">Value</label>
                             <Input
                               type="number"
                               value={editingCode.discount_value || ""}
@@ -1031,7 +1031,7 @@ export default function DiscountsPage() {
                                 setEditingCode({ ...editingCode, discount_value: Number.parseFloat(e.target.value) || 0 })
                               }
                               placeholder={editingCode.discount_type === "percentage" ? "20" : "50.00"}
-                              className="h-14 bg-white/5 border-white/10 rounded-xl text-lg"
+                              className="h-14 bg-foreground/5 border-border rounded-xl text-lg"
                             />
                           </div>
                         )}
@@ -1040,7 +1040,7 @@ export default function DiscountsPage() {
                       {/* Min Order & Max Uses */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Min Order ($)</label>
+                          <label className="text-sm font-medium text-foreground/60">Min Order ($)</label>
                           <Input
                             type="number"
                             value={editingCode.min_order_amount || ""}
@@ -1048,11 +1048,11 @@ export default function DiscountsPage() {
                               setEditingCode({ ...editingCode, min_order_amount: Number.parseFloat(e.target.value) || 0 })
                             }
                             placeholder="0"
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Max Uses</label>
+                          <label className="text-sm font-medium text-foreground/60">Max Uses</label>
                           <Input
                             type="number"
                             value={editingCode.max_uses || ""}
@@ -1060,14 +1060,14 @@ export default function DiscountsPage() {
                               setEditingCode({ ...editingCode, max_uses: Number.parseInt(e.target.value) || null })
                             }
                             placeholder="Unlimited"
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                       </div>
 
                       {/* Customer Type */}
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Customer Type</label>
+                        <label className="text-sm font-medium text-foreground/60">Customer Type</label>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                           {["all", "retail", "b2b", "b2bvip"].map((type) => (
                             <button
@@ -1076,8 +1076,8 @@ export default function DiscountsPage() {
                               className={cn(
                                 "h-11 rounded-xl border text-sm font-medium transition-all capitalize",
                                 editingCode.customer_type === type
-                                  ? "bg-white/10 border-white/20 text-white"
-                                  : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white",
+                                  ? "bg-foreground/10 border-border text-foreground"
+                                  : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground",
                               )}
                             >
                               {type}
@@ -1088,41 +1088,41 @@ export default function DiscountsPage() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Valid From</label>
+                          <label className="text-sm font-medium text-foreground/60">Valid From</label>
                           <Input
                             type="date"
                             value={editingCode.valid_from?.split("T")[0] || ""}
                             onChange={(e) => setEditingCode({ ...editingCode, valid_from: e.target.value || null })}
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Valid Until</label>
+                          <label className="text-sm font-medium text-foreground/60">Valid Until</label>
                           <Input
                             type="date"
                             value={editingCode.valid_until?.split("T")[0] || ""}
                             onChange={(e) => setEditingCode({ ...editingCode, valid_until: e.target.value || null })}
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                       </div>
 
                       {/* Toggles */}
-                      <div className="space-y-4 pt-6 border-t border-white/10">
-                        <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="space-y-4 pt-6 border-t border-border">
+                        <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                           <div>
-                            <p className="font-semibold text-white">Active</p>
-                            <p className="text-sm text-white/50">Code can be used</p>
+                            <p className="font-semibold text-foreground">Active</p>
+                            <p className="text-sm text-muted-foreground">Code can be used</p>
                           </div>
                           <Switch
                             checked={editingCode.is_active || false}
                             onCheckedChange={(checked) => setEditingCode({ ...editingCode, is_active: checked })}
                           />
                         </div>
-                        <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                           <div>
-                            <p className="font-semibold text-white">Free Shipping</p>
-                            <p className="text-sm text-white/50">Waive shipping costs</p>
+                            <p className="font-semibold text-foreground">Free Shipping</p>
+                            <p className="text-sm text-muted-foreground">Waive shipping costs</p>
                           </div>
                           <Switch
                             checked={editingCode.free_shipping || false}
@@ -1137,21 +1137,21 @@ export default function DiscountsPage() {
                 {/* Usage History (only in edit mode) */}
                 {viewMode === "detail" && selectedCode && (
                   <section className="space-y-6">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Usage History</h2>
-                    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                    <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Usage History</h2>
+                    <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                       <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                       <div className="relative z-10">
                         {usageHistory.length === 0 ? (
-                          <p className="text-white/40 text-center py-8">No usage yet</p>
+                          <p className="text-muted-foreground text-center py-8">No usage yet</p>
                         ) : (
                           <div className="space-y-3 max-h-64 overflow-y-auto">
                             {usageHistory.map((usage) => (
-                              <div key={usage.id} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl">
+                              <div key={usage.id} className="flex items-center justify-between p-4 bg-foreground/5 border border-border rounded-2xl">
                                 <div>
-                                  <p className="font-semibold text-white">
+                                  <p className="font-semibold text-foreground">
                                     {usage.customer?.user?.first_name} {usage.customer?.user?.last_name}
                                   </p>
-                                  <p className="text-sm text-white/50">{new Date(usage.used_at).toLocaleDateString()}</p>
+                                  <p className="text-sm text-muted-foreground">{new Date(usage.used_at).toLocaleDateString()}</p>
                                 </div>
                                 <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 rounded-full">
                                   -${Number(usage.discount_amount || 0).toFixed(2)}
@@ -1167,25 +1167,25 @@ export default function DiscountsPage() {
 
                 {/* Product Pricing Table */}
                 <section className="space-y-6">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Product Pricing</h2>
-                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Product Pricing</h2>
+                  <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10">
-                      <div className="p-6 border-b border-white/10">
-                        <h3 className="text-xl font-bold text-white">Custom Prices</h3>
-                        <p className="text-white/50 text-sm mt-1">
+                      <div className="p-6 border-b border-border">
+                        <h3 className="text-xl font-bold text-foreground">Custom Prices</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
                           Set custom prices for products when this code is applied. Leave blank for standard discount.
                         </p>
                       </div>
                       <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
                         <table className="w-full">
-                          <thead className="sticky top-0 bg-black/80 backdrop-blur-xl">
-                            <tr className="border-b border-white/10">
-                              <th className="text-left p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Product</th>
-                              <th className="text-left p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Variant</th>
-                              <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Retail</th>
-                              <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Custom Price</th>
-                              <th className="text-right p-4 text-sm font-semibold text-white/60 uppercase tracking-wider">Discount</th>
+                          <thead className="sticky top-0 bg-background/80 backdrop-blur-xl">
+                            <tr className="border-b border-border">
+                              <th className="text-left p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Product</th>
+                              <th className="text-left p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Variant</th>
+                              <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Retail</th>
+                              <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Custom Price</th>
+                              <th className="text-right p-4 text-sm font-semibold text-foreground/60 uppercase tracking-wider">Discount</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -1194,8 +1194,8 @@ export default function DiscountsPage() {
                                 <tr
                                   key={product.id}
                                   className={cn(
-                                    "border-b border-white/5 hover:bg-white/5 transition-colors",
-                                    idx === 0 && "border-t border-white/10",
+                                    "border-b border-border hover:bg-foreground/5 transition-colors",
+                                    idx === 0 && "border-t border-border",
                                   )}
                                 >
                                   <td className="p-4">
@@ -1204,11 +1204,11 @@ export default function DiscountsPage() {
                                         className="w-3 h-3 rounded-full flex-shrink-0"
                                         style={{ backgroundColor: product.color || "#888" }}
                                       />
-                                      <span className="font-medium text-white">{product.base_name}</span>
+                                      <span className="font-medium text-foreground">{product.base_name}</span>
                                     </div>
                                   </td>
-                                  <td className="p-4 text-white/50">{product.variant || "—"}</td>
-                                  <td className="p-4 text-right text-white/50">
+                                  <td className="p-4 text-muted-foreground">{product.variant || "—"}</td>
+                                  <td className="p-4 text-right text-muted-foreground">
                                     ${Number(product.retail_price || 0).toFixed(2)}
                                   </td>
                                   <td className="p-4 text-right">
@@ -1225,7 +1225,7 @@ export default function DiscountsPage() {
                                           [product.id]: value,
                                         }))
                                       }}
-                                      className="w-28 h-10 bg-white/5 border-white/10 rounded-xl text-right ml-auto"
+                                      className="w-28 h-10 bg-foreground/5 border-border rounded-xl text-right ml-auto"
                                     />
                                   </td>
                                   <td className="p-4 text-right">
@@ -1234,7 +1234,7 @@ export default function DiscountsPage() {
                                         {Math.round((1 - productPrices[product.id]! / product.retail_price) * 100)}% off
                                       </Badge>
                                     ) : (
-                                      <span className="text-white/30">—</span>
+                                      <span className="text-muted-foreground">—</span>
                                     )}
                                   </td>
                                 </tr>
@@ -1261,21 +1261,21 @@ export default function DiscountsPage() {
                 <div className="flex items-center gap-4">
                   <button 
                     onClick={handleBack} 
-                    className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="h-12 w-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition-colors"
                   >
-                    <ArrowLeft className="w-5 h-5 text-white" />
+                    <ArrowLeft className="w-5 h-5 text-foreground" />
                   </button>
                   <div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">Customer Discounts</h1>
-                    <p className="text-xl text-white/50">Assign discounts that auto-apply at checkout</p>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">Customer Discounts</h1>
+                    <p className="text-xl text-muted-foreground">Assign discounts that auto-apply at checkout</p>
                   </div>
                 </div>
               </div>
 
               {/* Search Customers */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Assign New Discount</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Assign New Discount</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
                     <div className="relative mb-6">
@@ -1284,7 +1284,7 @@ export default function DiscountsPage() {
                         value={customerSearchQuery}
                         onChange={(e) => setCustomerSearchQuery(e.target.value)}
                         placeholder="Search customers by name or email..."
-                        className="w-full h-14 pl-5 pr-5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 text-lg"
+                        className="w-full h-14 pl-5 pr-5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground text-lg"
                       />
                     </div>
                     
@@ -1300,26 +1300,26 @@ export default function DiscountsPage() {
                               className={cn(
                                 "w-full flex items-center justify-between p-4 rounded-2xl text-left transition-all border",
                                 hasActiveDiscount 
-                                  ? "bg-white/5 border-white/5 opacity-50 cursor-not-allowed"
-                                  : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                  ? "bg-foreground/5 border-border opacity-50 cursor-not-allowed"
+                                  : "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
                               )}
                             >
                               <div>
-                                <p className="font-semibold text-white">{customer.name}</p>
-                                <p className="text-sm text-white/50">{customer.email}</p>
+                                <p className="font-semibold text-foreground">{customer.name}</p>
+                                <p className="text-sm text-muted-foreground">{customer.email}</p>
                               </div>
                               {hasActiveDiscount ? (
                                 <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 rounded-full">
                                   Has Discount
                                 </Badge>
                               ) : (
-                                <ChevronRight className="w-5 h-5 text-white/40" />
+                                <ChevronRight className="w-5 h-5 text-muted-foreground" />
                               )}
                             </button>
                           )
                         })}
                         {filteredCustomers.length === 0 && (
-                          <p className="text-white/40 text-center py-6">No customers found</p>
+                          <p className="text-muted-foreground text-center py-6">No customers found</p>
                         )}
                       </div>
                     )}
@@ -1329,27 +1329,27 @@ export default function DiscountsPage() {
 
               {/* Active Discounts */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Active Discounts</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Active Discounts</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-4">
                     {assignedDiscounts.filter(d => d.status === "active").map((discount) => (
-                      <div key={discount.id} className="flex items-center justify-between p-5 bg-white/5 border border-white/10 rounded-2xl">
+                      <div key={discount.id} className="flex items-center justify-between p-5 bg-foreground/5 border border-border rounded-2xl">
                         <div className="flex-1">
                           <div className="flex items-center gap-3">
-                            <p className="font-semibold text-white">{discount.customer_name}</p>
+                            <p className="font-semibold text-foreground">{discount.customer_name}</p>
                             <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 rounded-full text-xs">
                               Active
                             </Badge>
                           </div>
-                          <p className="text-sm text-white/50 mt-1">
+                          <p className="text-sm text-muted-foreground mt-1">
                             {discount.discount_code 
                               ? `Code: ${discount.discount_code}` 
                               : `${discount.custom_discount_type === "percentage" ? `${discount.custom_discount_value}%` : `$${discount.custom_discount_value}`} off`
                             }
                             {discount.custom_description && ` • ${discount.custom_description}`}
                           </p>
-                          <p className="text-xs text-white/40 mt-2">
+                          <p className="text-xs text-muted-foreground mt-2">
                             Assigned {format(new Date(discount.created_at), "MMM d, yyyy")}
                             {discount.assigned_by_rep_name && ` by ${discount.assigned_by_rep_name}`}
                             {discount.assigned_by_admin_name && ` by ${discount.assigned_by_admin_name}`}
@@ -1365,7 +1365,7 @@ export default function DiscountsPage() {
                       </div>
                     ))}
                     {assignedDiscounts.filter(d => d.status === "active").length === 0 && (
-                      <p className="text-white/40 text-center py-8">No active customer discounts</p>
+                      <p className="text-muted-foreground text-center py-8">No active customer discounts</p>
                     )}
                   </div>
                 </div>
@@ -1373,15 +1373,15 @@ export default function DiscountsPage() {
 
               {/* History */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">History</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">History</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-3 max-h-72 overflow-y-auto">
                     {assignedDiscounts.filter(d => d.status !== "active").map((discount) => (
-                      <div key={discount.id} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl">
+                      <div key={discount.id} className="flex items-center justify-between p-4 bg-foreground/5 border border-border rounded-2xl">
                         <div>
-                          <p className="font-semibold text-white">{discount.customer_name}</p>
-                          <p className="text-sm text-white/50">
+                          <p className="font-semibold text-foreground">{discount.customer_name}</p>
+                          <p className="text-sm text-muted-foreground">
                             {discount.discount_code 
                               ? `Code: ${discount.discount_code}` 
                               : `${discount.custom_discount_type === "percentage" ? `${discount.custom_discount_value}%` : `$${discount.custom_discount_value}`} off`
@@ -1391,7 +1391,7 @@ export default function DiscountsPage() {
                         <Badge className={cn(
                           "rounded-full capitalize",
                           discount.status === "used" && "bg-blue-500/20 text-blue-400 border-blue-500/30",
-                          discount.status === "expired" && "bg-gray-500/20 text-gray-400 border-gray-500/30",
+                          discount.status === "expired" && "bg-gray-500/20 text-muted-foreground border-border",
                           discount.status === "removed" && "bg-red-500/20 text-red-400 border-red-500/30",
                         )}>
                           {discount.status}
@@ -1399,7 +1399,7 @@ export default function DiscountsPage() {
                       </div>
                     ))}
                     {assignedDiscounts.filter(d => d.status !== "active").length === 0 && (
-                      <p className="text-white/40 text-center py-6">No history yet</p>
+                      <p className="text-muted-foreground text-center py-6">No history yet</p>
                     )}
                   </div>
                 </div>
@@ -1418,13 +1418,13 @@ export default function DiscountsPage() {
                 <div className="flex items-center gap-4">
                   <button 
                     onClick={handleBack} 
-                    className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="h-12 w-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition-colors"
                   >
-                    <ArrowLeft className="w-5 h-5 text-white" />
+                    <ArrowLeft className="w-5 h-5 text-foreground" />
                   </button>
                   <div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">Assign Discount</h1>
-                    <p className="text-xl text-white/50">to {selectedCustomer.name} ({selectedCustomer.email})</p>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">Assign Discount</h1>
+                    <p className="text-xl text-muted-foreground">to {selectedCustomer.name} ({selectedCustomer.email})</p>
                   </div>
                 </div>
                 <button
@@ -1434,7 +1434,7 @@ export default function DiscountsPage() {
                     handleSaveCustomerDiscount()
                   }}
                   disabled={isSaving}
-                  className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold flex items-center gap-2 disabled:opacity-50 w-full md:w-auto justify-center"
+                  className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold flex items-center gap-2 disabled:opacity-50 w-full md:w-auto justify-center"
                 >
                   {isSaving ? (
                     <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -1449,20 +1449,20 @@ export default function DiscountsPage() {
 
               {/* Discount Type Selection */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Discount Configuration</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Discount Configuration</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Discount Type</label>
+                      <label className="text-sm font-medium text-foreground/60">Discount Type</label>
                       <div className="flex gap-3">
                         <button
                           onClick={() => setNewCustomerDiscount({ ...newCustomerDiscount, type: "custom" })}
                           className={cn(
                             "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                             newCustomerDiscount.type === "custom"
-                              ? "bg-white/10 border-white/20 text-white"
-                              : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white"
+                              ? "bg-foreground/10 border-border text-foreground"
+                              : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                           )}
                         >
                           <Percent className="w-5 h-5" />
@@ -1473,8 +1473,8 @@ export default function DiscountsPage() {
                           className={cn(
                             "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                             newCustomerDiscount.type === "code"
-                              ? "bg-white/10 border-white/20 text-white"
-                              : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white"
+                              ? "bg-foreground/10 border-border text-foreground"
+                              : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                           )}
                         >
                           <Ticket className="w-5 h-5" />
@@ -1487,15 +1487,15 @@ export default function DiscountsPage() {
                       <>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Discount Amount Type</label>
+                            <label className="text-sm font-medium text-foreground/60">Discount Amount Type</label>
                             <div className="flex gap-3">
                               <button
                                 onClick={() => setNewCustomerDiscount({ ...newCustomerDiscount, customDiscountType: "percentage" })}
                                 className={cn(
                                   "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                                   newCustomerDiscount.customDiscountType === "percentage"
-                                    ? "bg-white/10 border-white/20 text-white"
-                                    : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white"
+                                    ? "bg-foreground/10 border-border text-foreground"
+                                    : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                                 )}
                               >
                                 <Percent className="w-4 h-4" />
@@ -1506,8 +1506,8 @@ export default function DiscountsPage() {
                                 className={cn(
                                   "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                                   newCustomerDiscount.customDiscountType === "fixed"
-                                    ? "bg-white/10 border-white/20 text-white"
-                                    : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white"
+                                    ? "bg-foreground/10 border-border text-foreground"
+                                    : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                                 )}
                               >
                                 <DollarSign className="w-4 h-4" />
@@ -1516,7 +1516,7 @@ export default function DiscountsPage() {
                             </div>
                           </div>
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Value</label>
+                            <label className="text-sm font-medium text-foreground/60">Value</label>
                             <Input
                               type="number"
                               value={newCustomerDiscount.customDiscountValue || ""}
@@ -1525,28 +1525,28 @@ export default function DiscountsPage() {
                                 customDiscountValue: parseFloat(e.target.value) || 0 
                               })}
                               placeholder={newCustomerDiscount.customDiscountType === "percentage" ? "10" : "50.00"}
-                              className="h-12 bg-white/5 border-white/10 rounded-xl"
+                              className="h-12 bg-foreground/5 border-border rounded-xl"
                             />
                           </div>
                         </div>
 
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Description (shown to customer)</label>
+                          <label className="text-sm font-medium text-foreground/60">Description (shown to customer)</label>
                           <Input
                             value={newCustomerDiscount.customDescription}
                             onChange={(e) => setNewCustomerDiscount({ ...newCustomerDiscount, customDescription: e.target.value })}
                             placeholder="Special loyalty discount"
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                       </>
                     ) : (
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Select Discount Code</label>
+                        <label className="text-sm font-medium text-foreground/60">Select Discount Code</label>
                         <select
                           value={newCustomerDiscount.discountCodeId || ""}
                           onChange={(e) => setNewCustomerDiscount({ ...newCustomerDiscount, discountCodeId: e.target.value })}
-                          className="w-full h-12 px-4 bg-white/5 border border-white/10 rounded-xl text-white"
+                          className="w-full h-12 px-4 bg-foreground/5 border border-border rounded-xl text-foreground"
                         >
                           <option value="">Select a code...</option>
                           {discountCodes.filter(c => c.is_active).map((code) => (
@@ -1560,21 +1560,21 @@ export default function DiscountsPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Expires (optional)</label>
+                        <label className="text-sm font-medium text-foreground/60">Expires (optional)</label>
                         <Input
                           type="date"
                           value={newCustomerDiscount.expiresAt}
                           onChange={(e) => setNewCustomerDiscount({ ...newCustomerDiscount, expiresAt: e.target.value })}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Internal Notes</label>
+                        <label className="text-sm font-medium text-foreground/60">Internal Notes</label>
                         <Input
                           value={newCustomerDiscount.notes}
                           onChange={(e) => setNewCustomerDiscount({ ...newCustomerDiscount, notes: e.target.value })}
                           placeholder="For internal reference..."
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>

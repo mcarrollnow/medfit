@@ -87,7 +87,7 @@ export default function InvoicePayPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="animate-pulse text-[#999999]">Loading invoice...</div>
       </div>
     )
@@ -95,7 +95,7 @@ export default function InvoicePayPage() {
 
   if (error && !invoice) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-400" />
           <h1 className="text-2xl font-light text-[#f0f0f0] mb-2">Error</h1>
@@ -124,7 +124,7 @@ export default function InvoicePayPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Background gradient */}
       <div className="fixed inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
       
@@ -132,7 +132,7 @@ export default function InvoicePayPage() {
         {/* Back link */}
         <Link 
           href={`/invoice/${invoiceId}`}
-          className="inline-flex items-center gap-2 text-[#999999] hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-[#999999] hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="font-mono text-sm">Back to Invoice</span>
@@ -149,7 +149,7 @@ export default function InvoicePayPage() {
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
                 <CheckCircle className="w-10 h-10 text-emerald-400" />
               </div>
-              <h1 className="font-serif text-3xl font-light text-white mb-3">Payment Successful</h1>
+              <h1 className="font-serif text-3xl font-light text-foreground mb-3">Payment Successful</h1>
               <p className="text-[#999999] mb-6">
                 Thank you for your payment of ${invoice.total.toFixed(2)}
               </p>
@@ -160,7 +160,7 @@ export default function InvoicePayPage() {
               )}
               <Link 
                 href={`/invoice/${invoiceId}`}
-                className="inline-block bg-white text-black px-8 py-3 rounded-full font-mono text-sm uppercase tracking-wider hover:bg-white/90 transition-colors"
+                className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-full font-mono text-sm uppercase tracking-wider hover:bg-card/90 transition-colors"
               >
                 View Invoice
               </Link>
@@ -200,11 +200,11 @@ export default function InvoicePayPage() {
       {/* Glass styles */}
       <style jsx global>{`
         .glass-card {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(58,66,51,0.04);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(58, 66, 51, 0.08);
+          box-shadow: 0 8px 32px rgba(58,66,51,0.2);
         }
       `}</style>
     </div>

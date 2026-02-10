@@ -46,7 +46,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
   return (
     <>
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 bg-[#0a0a0a] border-b border-gray-800 shadow-sm z-30">
+      <header className="fixed top-0 left-0 right-0 bg-card border-b border-border shadow-sm z-30">
         <div className="w-full px-4 py-3 max-w-full overflow-hidden">
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">
             {/* Logo and Title */}
@@ -56,23 +56,23 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                 alt="MHP Logo"
                 className="w-8 h-8 sm:w-10 sm:h-10"
               />
-              <h1 className="text-xl lg:text-2xl font-bold text-white whitespace-nowrap hidden sm:block">
+              <h1 className="text-xl lg:text-2xl font-bold text-foreground whitespace-nowrap hidden sm:block">
                 MODERN HEALTH PRO
               </h1>
-              <h1 className="text-lg font-bold text-white whitespace-nowrap block sm:hidden">
+              <h1 className="text-lg font-bold text-foreground whitespace-nowrap block sm:hidden">
                 MHP
               </h1>
             </Link>
 
             {/* Search Bar */}
             <div className="flex-1 relative min-w-0">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search..."
-                className="w-full pl-10 pr-3 py-2 bg-transparent border border-gray-700 text-white placeholder-white/40 focus:border-primary focus:outline-none rounded-lg transition text-sm"
+                className="w-full pl-10 pr-3 py-2 bg-transparent border border-border text-foreground placeholder-muted-foreground focus:border-accent focus:outline-none rounded-lg transition text-sm"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && searchQuery) {
                     router.push(`/?search=${encodeURIComponent(searchQuery)}`);
@@ -82,7 +82,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -96,10 +96,10 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
 
               {/* Shopping Cart */}
               {showCart && (
-                <Link href="/cart" className="text-white hover:text-white/80 transition relative">
+                <Link href="/cart" className="text-foreground hover:text-foreground/80 transition relative">
                   <ShoppingCart className="w-8 h-8" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                    <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                       {cartCount}
                     </span>
                   )}
@@ -109,7 +109,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="text-white hover:text-white/80 transition relative"
+                className="text-foreground hover:text-foreground/80 transition relative"
                 aria-label="Menu"
               >
                 {menuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
@@ -121,11 +121,11 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
 
       {/* Overlay Menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-[9999] bg-black overflow-y-auto">
+        <div className="fixed inset-0 z-[9999] bg-background overflow-y-auto">
           {/* Close Button */}
           <button
             onClick={closeMenu}
-            className="fixed top-6 right-6 text-white hover:text-white/80 transition z-[10000]"
+            className="fixed top-6 right-6 text-muted-foreground hover:text-foreground transition z-[10000]"
           >
             <X className="w-8 h-8" />
           </button>
@@ -134,34 +134,34 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
             <div className="max-w-md w-full mx-auto">
             {/* User Profile Section */}
             {user && (
-              <div className="flex items-center space-x-4 mb-12 pb-8 border-b border-gray-800">
+              <div className="flex items-center space-x-4 mb-12 pb-8 border-b border-border">
                 {user.profilePictureUrl ? (
                   <img
                     src={user.profilePictureUrl || "/placeholder.svg"}
                     alt={`${user.firstName} ${user.lastName}`}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-primary"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-accent"
                   />
                 ) : (
-                  <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center border-2 border-primary">
-                    <User className="w-7 h-7 text-gray-400" />
+                  <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center border-2 border-accent">
+                    <User className="w-7 h-7 text-muted-foreground" />
                   </div>
                 )}
                 <div>
-                  <h2 className="text-xl font-bold text-white">
+                  <h2 className="text-xl font-bold text-foreground">
                     {user.firstName} {user.lastName?.charAt(0)}
                   </h2>
-                  <p className="text-gray-400 text-sm">{user.email}</p>
-                  <p className="text-primary text-xs font-bold uppercase mt-1">{user.role}</p>
+                  <p className="text-muted-foreground text-sm">{user.email}</p>
+                  <p className="text-accent text-xs font-bold uppercase mt-1">{user.role}</p>
                 </div>
               </div>
             )}
 
             {/* Action Icons Row */}
-            <div className="flex items-center justify-center gap-8 mb-8 pb-6 border-b border-gray-800">
+            <div className="flex items-center justify-center gap-8 mb-8 pb-6 border-b border-border">
               <Link
                 href="/support"
                 onClick={closeMenu}
-                className="flex flex-col items-center space-y-2 text-white hover:text-white/80 transition group"
+                className="flex flex-col items-center space-y-2 text-foreground hover:text-foreground/80 transition group"
               >
                 <MessageSquare className="w-8 h-8" />
                 <span className="text-sm font-medium">Messages</span>
@@ -170,7 +170,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
               <Link
                 href="/support-chat"
                 onClick={closeMenu}
-                className="flex flex-col items-center space-y-2 text-white hover:text-white/80 transition group"
+                className="flex flex-col items-center space-y-2 text-foreground hover:text-foreground/80 transition group"
               >
                 <Headphones className="w-8 h-8" />
                 <span className="text-sm font-medium">Support</span>
@@ -183,7 +183,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href={(user.role === 'admin' || user.role === 'superadmin') ? '/admin' : '/dashboard'}
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <User className="w-8 h-8" />
                     <span className="text-2xl font-bold">Dashboard</span>
@@ -192,7 +192,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href="/profile"
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <Settings className="w-8 h-8" />
                     <span className="text-2xl font-bold">Profile</span>
@@ -201,7 +201,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href="/"
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <ShoppingBag className="w-8 h-8" />
                     <span className="text-2xl font-bold">Shop</span>
@@ -212,7 +212,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                       closeMenu();
                       await handleLogout();
                     }}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3 w-full text-left"
+                    className="flex items-center space-x-4 text-foreground hover:text-foreground transition group py-3 w-full text-left"
                   >
                     <LogOut className="w-8 h-8" />
                     <span className="text-2xl font-bold">Logout</span>
@@ -223,7 +223,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href="/"
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <ShoppingBag className="w-8 h-8" />
                     <span className="text-2xl font-bold">Shop</span>
@@ -232,7 +232,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href="/login"
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <User className="w-8 h-8" />
                     <span className="text-2xl font-bold">Login</span>
@@ -241,7 +241,7 @@ export default function SiteHeader({ showCart = true }: SiteHeaderProps) {
                   <Link
                     href="/register"
                     onClick={closeMenu}
-                    className="flex items-center space-x-4 text-white hover:text-white transition group py-3"
+                    className="flex items-center space-x-4 text-muted-foreground hover:text-foreground transition group py-3"
                   >
                     <User className="w-8 h-8" />
                     <span className="text-2xl font-bold">Register</span>

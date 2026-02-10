@@ -231,7 +231,7 @@ export default function SupplierShipmentsPage() {
               <div className={cn(
                 "rounded-2xl p-4 md:p-6 inline-block mb-4 transition-all border",
                 statusFilter === stat.key 
-                  ? `${stat.activeBg} border-white/20` 
+                  ? `${stat.activeBg} border-border` 
                   : `${stat.bg} border-transparent`
               )}>
                 <stat.icon className={`w-6 h-6 md:w-8 md:h-8 ${stat.color}`} />
@@ -256,7 +256,7 @@ export default function SupplierShipmentsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by tracking, product, or description..."
-              className="w-full pl-10 pr-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+              className="w-full pl-10 pr-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors"
             />
           </div>
         </motion.div>
@@ -282,7 +282,7 @@ export default function SupplierShipmentsPage() {
                 {/* Header Row */}
                 <div
                   onClick={() => setExpandedId(isExpanded ? null : shipment.id)}
-                  className="p-6 md:p-8 cursor-pointer hover:bg-white/[0.02] transition-colors"
+                  className="p-6 md:p-8 cursor-pointer hover:bg-foreground/[0.03] transition-colors"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
@@ -361,7 +361,7 @@ export default function SupplierShipmentsPage() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 md:px-8 pb-8 pt-2 border-t border-white/[0.08]">
+                      <div className="px-6 md:px-8 pb-8 pt-2 border-t border-border">
                         {/* Tracking Timeline */}
                         {shipment.tracking_number && (
                           <div className="mb-8">
@@ -388,9 +388,9 @@ export default function SupplierShipmentsPage() {
                             )}
 
                             {trackingData[shipment.tracking_number] && (
-                              <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
+                              <div className="bg-foreground/[0.03] border border-border rounded-2xl p-6">
                                 {/* Status Header */}
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/[0.08]">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
                                   <div className="flex items-center gap-3">
                                     <div className={cn(
                                       "rounded-xl p-3",
@@ -400,7 +400,7 @@ export default function SupplierShipmentsPage() {
                                         ? "bg-blue-500/10"
                                         : trackingData[shipment.tracking_number]?.status_code === 'Exception'
                                         ? "bg-red-500/10"
-                                        : "bg-white/5"
+                                        : "bg-foreground/5"
                                     )}>
                                       {trackingData[shipment.tracking_number]?.status_code === 'Delivered' ? (
                                         <CheckCircle className="h-5 w-5 text-green-400" />
@@ -442,7 +442,7 @@ export default function SupplierShipmentsPage() {
                                   {trackingData[shipment.tracking_number]?.events.slice(0, 10).map((event, idx) => (
                                     <div key={idx} className="relative pl-8 pb-6 last:pb-0">
                                       {idx < (trackingData[shipment.tracking_number]?.events.length || 0) - 1 && idx < 9 && (
-                                        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-white/10" />
+                                        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-foreground/10" />
                                       )}
                                       <div className={cn(
                                         "absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center",
@@ -450,16 +450,16 @@ export default function SupplierShipmentsPage() {
                                           ? event.tag === 'Delivered' 
                                             ? "bg-green-500" 
                                             : "bg-blue-500"
-                                          : "bg-white/10 border border-white/20"
+                                          : "bg-foreground/10 border border-border"
                                       )}>
                                         {idx === 0 ? (
                                           event.tag === 'Delivered' ? (
-                                            <CheckCircle className="h-3 w-3 text-white" />
+                                            <CheckCircle className="h-3 w-3 text-foreground" />
                                           ) : (
-                                            <Clock className="h-3 w-3 text-white" />
+                                            <Clock className="h-3 w-3 text-foreground" />
                                           )
                                         ) : (
-                                          <div className="w-2 h-2 rounded-full bg-white/40" />
+                                          <div className="w-2 h-2 rounded-full bg-foreground/40" />
                                         )}
                                       </div>
                                       <div>
@@ -523,7 +523,7 @@ export default function SupplierShipmentsPage() {
 
                         {/* Notes */}
                         {shipment.notes && (
-                          <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 mb-8">
+                          <div className="bg-foreground/[0.03] border border-border rounded-2xl p-6 mb-8">
                             <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-3">Notes</p>
                             <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">{shipment.notes}</p>
                           </div>
@@ -539,7 +539,7 @@ export default function SupplierShipmentsPage() {
                               {shipment.items.map((item) => (
                                 <div
                                   key={item.id}
-                                  className="bg-white/[0.02] border border-white/[0.08] rounded-xl p-4 flex items-center justify-between"
+                                  className="bg-foreground/[0.03] border border-border rounded-xl p-4 flex items-center justify-between"
                                 >
                                   <div className="flex items-center gap-4">
                                     <div className="bg-blue-500/10 rounded-lg p-2">
@@ -580,7 +580,7 @@ export default function SupplierShipmentsPage() {
                           </div>
                         ) : (
                           <div className="text-center py-8">
-                            <div className="bg-white/5 rounded-xl p-4 inline-block mb-4">
+                            <div className="bg-foreground/5 rounded-xl p-4 inline-block mb-4">
                               <Package className="h-6 w-6 text-muted-foreground" />
                             </div>
                             <p className="text-muted-foreground font-mono text-sm">No items recorded for this shipment</p>
@@ -588,12 +588,12 @@ export default function SupplierShipmentsPage() {
                         )}
 
                         {/* Inventory Status */}
-                        <div className="mt-8 pt-6 border-t border-white/[0.08]">
+                        <div className="mt-8 pt-6 border-t border-border">
                           <span className={cn(
                             "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono",
                             shipment.counted_in_inventory
                               ? "bg-green-500/10 text-green-400"
-                              : "bg-white/5 text-muted-foreground"
+                              : "bg-foreground/5 text-muted-foreground"
                           )}>
                             {shipment.counted_in_inventory ? (
                               <>
@@ -615,7 +615,7 @@ export default function SupplierShipmentsPage() {
 
           {filteredShipments.length === 0 && (
             <div className="text-center py-24">
-              <div className="bg-white/5 rounded-2xl p-6 inline-block mb-6">
+              <div className="bg-foreground/5 rounded-2xl p-6 inline-block mb-6">
                 <Package className="h-8 w-8 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground font-mono">No shipments found</p>

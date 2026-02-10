@@ -363,24 +363,24 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
             className="flex flex-col"
           >
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">How can we help?</h3>
-              <p className="text-white/50">Select the issue you're experiencing with order #{orderId}</p>
+              <h3 className="text-2xl font-bold text-foreground mb-2">How can we help?</h3>
+              <p className="text-muted-foreground">Select the issue you're experiencing with order #{orderId}</p>
             </div>
             <div className="flex-1 space-y-3 pr-2">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => handleCategorySelect(cat.id)}
-                  className="w-full group flex items-center gap-4 p-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-200 text-left"
+                  className="w-full group flex items-center gap-4 p-4 rounded-2xl border border-border bg-foreground/5 hover:bg-foreground/10 transition-all duration-200 text-left"
                 >
-                  <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-200 shrink-0">
-                    <cat.icon className="h-6 w-6 text-white" />
+                  <div className="h-12 w-12 rounded-xl bg-foreground/10 flex items-center justify-center group-hover:bg-foreground/20 transition-colors duration-200 shrink-0">
+                    <cat.icon className="h-6 w-6 text-foreground" />
                   </div>
                   <div className="flex-1">
-                    <p className="font-bold text-white text-lg">{cat.title}</p>
-                    <p className="text-sm text-white/50">{cat.description}</p>
+                    <p className="font-bold text-foreground text-lg">{cat.title}</p>
+                    <p className="text-sm text-muted-foreground">{cat.description}</p>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white transition-colors duration-200" />
+                  <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors duration-200" />
                 </button>
               ))}
             </div>
@@ -401,18 +401,18 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
             <div className="flex items-center gap-3 mb-6">
               <button
                 onClick={handleBack}
-                className="p-2 -ml-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-colors duration-200"
+                className="p-2 -ml-2 rounded-full hover:bg-foreground/10 text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 <ArrowLeft className="h-6 w-6" />
               </button>
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-white/50">{currentCategoryData?.title}</span>
-                  <span className="text-sm font-medium text-white/30">
+                  <span className="text-sm font-medium text-muted-foreground">{currentCategoryData?.title}</span>
+                  <span className="text-sm font-medium text-muted-foreground">
                     {currentQuestionIndex + 1} / {currentCategoryData?.questions.length}
                   </span>
                 </div>
-                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                <div className="h-1 w-full bg-foreground/10 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-white"
                     initial={{ width: `${(currentQuestionIndex / currentCategoryData!.questions.length) * 100}%` }}
@@ -426,7 +426,7 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
             </div>
 
             <div className="flex-1 flex flex-col justify-center py-4">
-              <h3 className="text-2xl font-bold text-white mb-8 text-center">{currentQuestion.text}</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{currentQuestion.text}</h3>
 
               <div className="space-y-3 w-full max-w-xs mx-auto">
                 {currentQuestion.type === "options" &&
@@ -434,7 +434,7 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                     <button
                       key={option}
                       onClick={() => handleAnswer(option)}
-                      className="w-full p-4 rounded-xl border border-white/10 bg-white/5 text-white font-medium text-center text-lg transition-colors duration-200 hover:bg-white hover:text-black hover:border-white"
+                      className="w-full p-4 rounded-xl border border-border bg-foreground/5 text-foreground font-medium text-center text-lg transition-colors duration-200 hover:bg-card hover:text-black hover:border-primary"
                     >
                       {option}
                     </button>
@@ -444,23 +444,23 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                   <div className="space-y-5 w-full max-w-sm mx-auto">
                     {/* Date Input */}
                     <div>
-                      <label className="block text-white/50 text-sm mb-2">Date</label>
+                      <label className="block text-muted-foreground text-sm mb-2">Date</label>
                       <input
                         type="date"
                         value={selectedDate}
                         onChange={(e) => setSelectedDate(e.target.value)}
-                        className="w-full py-4 px-4 rounded-xl border border-white/10 bg-white/5 text-white font-medium text-lg transition-colors duration-200 focus:border-white/50 focus:outline-none cursor-pointer [color-scheme:dark]"
+                        className="w-full py-4 px-4 rounded-xl border border-border bg-foreground/5 text-foreground font-medium text-lg transition-colors duration-200 focus:border-border0 focus:outline-none cursor-pointer [color-scheme:dark]"
                       />
                     </div>
 
                     {/* Time Picker */}
                     <div>
-                      <label className="block text-white/50 text-sm mb-2">Time (optional)</label>
+                      <label className="block text-muted-foreground text-sm mb-2">Time (optional)</label>
                       
                       {/* Time Display */}
                       <div className="flex items-center justify-center gap-3 mb-4">
-                        <div className="flex-1 py-4 px-4 rounded-xl border border-white/10 bg-white/5 text-center">
-                          <span className="font-mono text-3xl font-bold text-white tracking-widest">
+                        <div className="flex-1 py-4 px-4 rounded-xl border border-border bg-foreground/5 text-center">
+                          <span className="font-mono text-3xl font-bold text-foreground tracking-widest">
                             {formatTimeDisplay()}
                           </span>
                         </div>
@@ -472,8 +472,8 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                             onClick={() => setTimePeriod("AM")}
                             className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors duration-200 ${
                               timePeriod === "AM" 
-                                ? "bg-white text-black" 
-                                : "bg-white/10 text-white/60 hover:bg-white/20"
+                                ? "bg-primary text-primary-foreground" 
+                                : "bg-foreground/10 text-foreground/60 hover:bg-foreground/20"
                             }`}
                           >
                             AM
@@ -483,8 +483,8 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                             onClick={() => setTimePeriod("PM")}
                             className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors duration-200 ${
                               timePeriod === "PM" 
-                                ? "bg-white text-black" 
-                                : "bg-white/10 text-white/60 hover:bg-white/20"
+                                ? "bg-primary text-primary-foreground" 
+                                : "bg-foreground/10 text-foreground/60 hover:bg-foreground/20"
                             }`}
                           >
                             PM
@@ -499,7 +499,7 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                             key={num}
                             type="button"
                             onClick={() => handleTimeKeyPress(num.toString())}
-                            className="py-4 rounded-xl border border-white/10 bg-white/5 text-white text-xl font-bold transition-colors duration-200 hover:bg-white/20 active:bg-white active:text-black"
+                            className="py-4 rounded-xl border border-border bg-foreground/5 text-foreground text-xl font-bold transition-colors duration-200 hover:bg-foreground/20 active:bg-white active:text-black"
                           >
                             {num}
                           </button>
@@ -507,21 +507,21 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                         <button
                           type="button"
                           onClick={clearTime}
-                          className="py-4 rounded-xl border border-white/10 bg-white/5 text-white/60 text-sm font-bold transition-colors duration-200 hover:bg-white/20"
+                          className="py-4 rounded-xl border border-border bg-foreground/5 text-foreground/60 text-sm font-bold transition-colors duration-200 hover:bg-foreground/20"
                         >
                           Clear
                         </button>
                         <button
                           type="button"
                           onClick={() => handleTimeKeyPress("0")}
-                          className="py-4 rounded-xl border border-white/10 bg-white/5 text-white text-xl font-bold transition-colors duration-200 hover:bg-white/20 active:bg-white active:text-black"
+                          className="py-4 rounded-xl border border-border bg-foreground/5 text-foreground text-xl font-bold transition-colors duration-200 hover:bg-foreground/20 active:bg-white active:text-black"
                         >
                           0
                         </button>
                         <button
                           type="button"
                           onClick={handleTimeBackspace}
-                          className="py-4 rounded-xl border border-white/10 bg-white/5 text-white/60 text-sm font-bold transition-colors duration-200 hover:bg-white/20"
+                          className="py-4 rounded-xl border border-border bg-foreground/5 text-foreground/60 text-sm font-bold transition-colors duration-200 hover:bg-foreground/20"
                         >
                           ←
                       </button>
@@ -565,7 +565,7 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                 {currentQuestion.type === "text" && (
                   <div className="space-y-4">
                     <textarea
-                      className="w-full h-40 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors duration-200 resize-none text-lg"
+                      className="w-full h-40 bg-foreground/5 border border-border rounded-xl p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border0 transition-colors duration-200 resize-none text-lg"
                       placeholder={currentQuestion.placeholder}
                       autoFocus
                       onKeyDown={(e) => {
@@ -591,21 +591,21 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
                   <div className="space-y-4">
                     <button
                       onClick={() => handleAnswer("photo_uploaded")} // Mock upload
-                      className="w-full h-48 rounded-2xl border-2 border-dashed border-white/20 bg-white/5 flex flex-col items-center justify-center gap-4 hover:bg-white/10 transition-colors duration-200 group"
+                      className="w-full h-48 rounded-2xl border-2 border-dashed border-border bg-foreground/5 flex flex-col items-center justify-center gap-4 hover:bg-foreground/10 transition-colors duration-200 group"
                     >
-                      <div className="h-16 w-16 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors duration-200">
-                        <Camera className="h-8 w-8 text-white/50 group-hover:text-white transition-colors duration-200" />
+                      <div className="h-16 w-16 rounded-full bg-foreground/10 flex items-center justify-center group-hover:bg-foreground/20 transition-colors duration-200">
+                        <Camera className="h-8 w-8 text-muted-foreground group-hover:text-foreground transition-colors duration-200" />
                       </div>
                       <div className="text-center">
-                        <p className="text-lg font-medium text-white transition-colors duration-200">
+                        <p className="text-lg font-medium text-foreground transition-colors duration-200">
                           Take a Photo
                         </p>
-                        <p className="text-sm text-white/40">or upload from gallery</p>
+                        <p className="text-sm text-muted-foreground">or upload from gallery</p>
                       </div>
                     </button>
                     <button
                       onClick={() => handleAnswer("skipped")}
-                      className="w-full py-3 text-white/50 hover:text-white transition-colors duration-200"
+                      className="w-full py-3 text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       Skip this step
                     </button>
@@ -623,12 +623,12 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center h-full text-center space-y-6 py-12"
           >
-            <div className="h-24 w-24 rounded-full bg-white text-black flex items-center justify-center mb-4 shadow-[0_0_50px_-12px_rgba(255,255,255,0.5)]">
+            <div className="h-24 w-24 rounded-full bg-primary text-primary-foreground flex items-center justify-center mb-4 shadow-[0_0_50px_-12px_rgba(58,66,51,0.15)]">
               <Check className="h-12 w-12" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-2">Ticket Submitted</h3>
-              <p className="text-white/60 text-lg max-w-xs mx-auto">
+              <h3 className="text-3xl font-bold text-foreground mb-2">Ticket Submitted</h3>
+              <p className="text-foreground/60 text-lg max-w-xs mx-auto">
                 We've received your request and will get back to you shortly.
               </p>
             </div>
@@ -640,10 +640,10 @@ export function SupportTicketFlow({ orderId, onClose }: SupportTicketFlowProps) 
       </AnimatePresence>
 
       {isSubmitting && (
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="flex flex-col items-center gap-4">
-            <div className="h-12 w-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
-            <p className="text-white font-medium">Submitting ticket...</p>
+            <div className="h-12 w-12 border-4 border-border border-t-white rounded-full animate-spin" />
+            <p className="text-foreground font-medium">Submitting ticket...</p>
           </div>
         </div>
       )}

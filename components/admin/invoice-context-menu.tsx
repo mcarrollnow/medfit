@@ -55,7 +55,7 @@ interface ContextMenuProps {
 }
 
 const INVOICE_STATUSES = [
-  { value: 'draft', label: 'Draft', icon: FileText, color: 'text-zinc-400' },
+  { value: 'draft', label: 'Draft', icon: FileText, color: 'text-muted-foreground' },
   { value: 'sent', label: 'Sent', icon: Send, color: 'text-blue-400' },
   { value: 'paid', label: 'Paid', icon: CheckCircle, color: 'text-emerald-400' },
   { value: 'overdue', label: 'Overdue', icon: Clock, color: 'text-orange-400' },
@@ -119,14 +119,14 @@ export function InvoiceContextMenu({
     ? JSON.parse(invoice.items) 
     : invoice.items || []
 
-  const menuItemClass = "w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+  const menuItemClass = "w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-foreground/80 hover:bg-foreground/10 hover:text-foreground"
   
   // Submenu wrapper - includes invisible bridge for hover continuity
   const SubmenuWrapper = ({ children }: { children: React.ReactNode }) => (
     <>
       {/* Invisible bridge to prevent gap */}
       <div className="absolute left-full top-0 w-2 h-full hidden group-hover:block" />
-      <div className="absolute left-full top-0 ml-1 min-w-[200px] rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden hidden group-hover:block z-[101]">
+      <div className="absolute left-full top-0 ml-1 min-w-[200px] rounded-xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden hidden group-hover:block z-[101]">
         {children}
       </div>
     </>
@@ -135,14 +135,14 @@ export function InvoiceContextMenu({
   return (
     <div
       ref={menuRef}
-      className="fixed z-[100] min-w-[220px] rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl"
+      className="fixed z-[100] min-w-[220px] rounded-xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl"
       style={{ left: position.x, top: position.y }}
     >
       {/* Header */}
-      <div className="px-4 py-3 border-b border-white/10 bg-white/[0.02]">
-        <p className="font-semibold text-white text-sm">{invoice.invoice_number}</p>
-        <p className="text-xs text-white/50 truncate">{invoice.customer_name}</p>
-        <p className="text-xs text-white/40 mt-0.5">${invoice.total.toLocaleString()}</p>
+      <div className="px-4 py-3 border-b border-border bg-foreground/[0.03]">
+        <p className="font-semibold text-foreground text-sm">{invoice.invoice_number}</p>
+        <p className="text-xs text-muted-foreground truncate">{invoice.customer_name}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">${invoice.total.toLocaleString()}</p>
       </div>
 
       {/* Menu Items */}
@@ -187,14 +187,14 @@ export function InvoiceContextMenu({
           </>
         )}
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Update Status - with submenu */}
         <div className="relative group">
           <button className={menuItemClass}>
             <Clock className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Update Status</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1">
@@ -208,8 +208,8 @@ export function InvoiceContextMenu({
                       onUpdateStatus(invoice.id, status.value)
                       onClose()
                     }}
-                    className={`w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors hover:bg-white/10 ${
-                      isCurrentStatus ? 'bg-white/5' : ''
+                    className={`w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors hover:bg-foreground/10 ${
+                      isCurrentStatus ? 'bg-foreground/5' : ''
                     }`}
                   >
                     <StatusIcon className={`w-4 h-4 ${status.color}`} />
@@ -228,7 +228,7 @@ export function InvoiceContextMenu({
             <button className={menuItemClass}>
               <Send className="w-4 h-4 flex-shrink-0" />
               <span className="flex-1 text-left">Send Reminder</span>
-              <ChevronRight className="w-4 h-4 text-white/30" />
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
             </button>
             <SubmenuWrapper>
               <div className="py-1">
@@ -251,7 +251,7 @@ export function InvoiceContextMenu({
           </div>
         )}
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Duplicate Invoice - direct action */}
         <button
@@ -271,14 +271,14 @@ export function InvoiceContextMenu({
           <span className="flex-1 text-left">Print Invoice</span>
         </button>
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Show Items - with submenu */}
         <div className="relative group">
           <button className={menuItemClass}>
             <FileText className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Show Items ({items.length})</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1 max-h-[300px] overflow-y-auto">
@@ -286,27 +286,27 @@ export function InvoiceContextMenu({
                 items.map((lineItem, idx) => (
                   <div
                     key={idx}
-                    className="px-4 py-2.5 flex items-center justify-between text-sm border-b border-white/5 last:border-0"
+                    className="px-4 py-2.5 flex items-center justify-between text-sm border-b border-border last:border-0"
                   >
-                    <span className="text-white/80 flex-1 truncate pr-2">{lineItem.name || lineItem.description || 'Item'}</span>
+                    <span className="text-foreground/80 flex-1 truncate pr-2">{lineItem.name || lineItem.description || 'Item'}</span>
                     <div className="flex items-center gap-2">
-                      <span className="text-white/50 font-mono text-xs bg-white/10 px-2 py-0.5 rounded">
+                      <span className="text-muted-foreground font-mono text-xs bg-foreground/10 px-2 py-0.5 rounded">
                         ×{lineItem.quantity}
                       </span>
-                      <span className="text-white/60 font-mono text-xs">
+                      <span className="text-foreground/60 font-mono text-xs">
                         ${(lineItem.quantity * lineItem.unit_price).toFixed(2)}
                       </span>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="px-4 py-3 text-sm text-white/50">No items</div>
+                <div className="px-4 py-3 text-sm text-muted-foreground">No items</div>
               )}
             </div>
           </SubmenuWrapper>
         </div>
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Void Invoice - direct action (only if not paid/void) */}
         {invoice.status !== 'paid' && invoice.status !== 'void' && (
@@ -333,7 +333,7 @@ export function InvoiceContextMenu({
         {/* Archive Invoice - direct action */}
         <button
           onClick={() => { onArchive(invoice.id); onClose() }}
-          className="w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-zinc-400 hover:bg-zinc-500/10"
+          className="w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-muted-foreground hover:bg-zinc-500/10"
         >
           <Archive className="w-4 h-4 flex-shrink-0" />
           <span className="flex-1 text-left">Archive Invoice</span>

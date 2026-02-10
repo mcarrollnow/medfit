@@ -34,7 +34,7 @@ export function InvoiceLineItems({ items }: InvoiceLineItemsProps) {
       <p className="text-xs font-mono tracking-[0.3em] text-[#888888] uppercase mb-6">Services</p>
 
       {/* Header - Desktop */}
-      <div className="hidden md:grid grid-cols-[1fr,80px,120px,120px] gap-4 pb-4 border-b border-white/10 text-xs font-mono tracking-widest text-[#888888] uppercase">
+      <div className="hidden md:grid grid-cols-[1fr,80px,120px,120px] gap-4 pb-4 border-b border-border text-xs font-mono tracking-widest text-[#888888] uppercase">
         <div>Description</div>
         <div className="text-right">Qty</div>
         <div className="text-right">Rate</div>

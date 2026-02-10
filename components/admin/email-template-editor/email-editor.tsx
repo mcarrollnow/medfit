@@ -121,7 +121,7 @@ export function EmailEditor({ content, onChange, className, templateType }: Emai
   }, [htmlContent])
 
   return (
-    <div className={cn("rounded-xl border border-white/10 bg-white/5 overflow-hidden", className)}>
+    <div className={cn("rounded-xl border border-border bg-foreground/5 overflow-hidden", className)}>
       <EmailToolbar 
         editor={editor} 
         viewMode={viewMode}
@@ -132,7 +132,7 @@ export function EmailEditor({ content, onChange, className, templateType }: Emai
       />
       
       {viewMode === 'design' && (
-        <div className="bg-white text-black">
+        <div className="bg-primary text-primary-foreground">
           <EditorContent editor={editor} />
         </div>
       )}
@@ -142,7 +142,7 @@ export function EmailEditor({ content, onChange, className, templateType }: Emai
           <textarea
             value={htmlContent}
             onChange={(e) => handleHtmlChange(e.target.value)}
-            className="w-full h-[400px] p-4 font-mono text-sm bg-black/50 text-green-400 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 resize-none"
+            className="w-full h-[400px] p-4 font-mono text-sm bg-foreground/50 text-green-400 border border-border rounded-lg focus:outline-none focus:border-border resize-none"
             placeholder="Enter HTML code here..."
             spellCheck={false}
           />
@@ -151,7 +151,7 @@ export function EmailEditor({ content, onChange, className, templateType }: Emai
       
       {viewMode === 'preview' && (
         <div className="p-4">
-          <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+          <div className="bg-white rounded-lg border border-border overflow-hidden">
             <div className="bg-gray-100 px-4 py-2 border-b text-sm text-gray-600 flex items-center gap-2">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-400" />

@@ -77,7 +77,7 @@ const statusConfig: Record<string, { color: string; bgColor: string; icon: typeo
   processing: { color: "text-blue-400", bgColor: "bg-blue-500/10 border-blue-500/20", icon: RefreshCw },
   succeeded: { color: "text-emerald-400", bgColor: "bg-emerald-500/10 border-emerald-500/20", icon: Check },
   failed: { color: "text-red-400", bgColor: "bg-red-500/10 border-red-500/20", icon: AlertCircle },
-  cancelled: { color: "text-zinc-400", bgColor: "bg-zinc-500/10 border-zinc-500/20", icon: X },
+  cancelled: { color: "text-muted-foreground", bgColor: "bg-zinc-500/10 border-zinc-500/20", icon: X },
   initiated: { color: "text-blue-400", bgColor: "bg-blue-500/10 border-blue-500/20", icon: RotateCcw },
 }
 
@@ -208,21 +208,21 @@ export function RefundModal({
     if (loadingTimeline) {
       return (
         <div className="flex items-center justify-center py-8">
-          <RefreshCw className="h-6 w-6 animate-spin text-white/40" />
+          <RefreshCw className="h-6 w-6 animate-spin text-muted-foreground" />
         </div>
       )
     }
 
     if (timeline.length === 0) {
       return (
-        <div className="text-center py-8 text-white/40">
+        <div className="text-center py-8 text-muted-foreground">
           No refund activity yet
         </div>
       )
     }
 
     return (
-      <div className="relative pl-8 border-l-2 border-white/10 ml-4 space-y-6">
+      <div className="relative pl-8 border-l-2 border-border ml-4 space-y-6">
         {timeline.map((entry, index) => {
           const config = statusConfig[entry.status] || statusConfig.pending
           const StatusIcon = config.icon
@@ -235,17 +235,17 @@ export function RefundModal({
                   "absolute -left-[25px] top-0 h-5 w-5 rounded-full border-2 flex items-center justify-center",
                   isLatest
                     ? `${config.bgColor} border-current ${config.color}`
-                    : "bg-white/10 border-white/30"
+                    : "bg-foreground/10 border-border"
                 )}
               >
-                <StatusIcon className={cn("h-3 w-3", isLatest ? config.color : "text-white/50")} />
+                <StatusIcon className={cn("h-3 w-3", isLatest ? config.color : "text-muted-foreground")} />
               </div>
               <div className="space-y-1">
-                <p className={cn("text-sm font-semibold capitalize", isLatest ? "text-white" : "text-white/70")}>
+                <p className={cn("text-sm font-semibold capitalize", isLatest ? "text-foreground" : "text-foreground/70")}>
                   {entry.status.replace("_", " ")}
                 </p>
-                <p className="text-sm text-white/50">{entry.description}</p>
-                <p className="text-xs font-mono text-white/40">{formatDate(entry.created_at)}</p>
+                <p className="text-sm text-muted-foreground">{entry.description}</p>
+                <p className="text-xs font-mono text-muted-foreground">{formatDate(entry.created_at)}</p>
               </div>
             </div>
           )
@@ -261,7 +261,7 @@ export function RefundModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
           <motion.div
@@ -270,20 +270,20 @@ export function RefundModal({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-zinc-900 border border-white/10"
+            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-card border border-border"
           >
             {/* Header */}
-            <div className="sticky top-0 bg-zinc-900 border-b border-white/10 p-6 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-card border-b border-border p-6 flex items-center justify-between z-10">
               <div>
-                <h2 className="text-xl font-bold text-white flex items-center gap-3">
+                <h2 className="text-xl font-bold text-foreground flex items-center gap-3">
                   <RotateCcw className="h-5 w-5" />
                   {isAlreadyRefunded ? "Refund Details" : hasPendingRefund ? "Refund in Progress" : "Issue Refund"}
                 </h2>
-                <p className="text-sm text-white/50 mt-1">Order #{orderNumber}</p>
+                <p className="text-sm text-muted-foreground mt-1">Order #{orderNumber}</p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl hover:bg-white/10 transition-colors text-white/60 hover:text-white"
+                className="p-2 rounded-xl hover:bg-foreground/10 transition-colors text-foreground/60 hover:text-foreground"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -317,7 +317,7 @@ export function RefundModal({
                             ? "Refund Completed"
                             : "Refund Processing"}
                         </p>
-                        <p className="text-sm text-white/60">
+                        <p className="text-sm text-foreground/60">
                           ${existingRefund.refund_amount?.toFixed(2)} via{" "}
                           {existingRefund.refund_destination?.replace("_", " ")}
                         </p>
@@ -327,15 +327,15 @@ export function RefundModal({
 
                   {/* Refund Details */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-sm text-white/50 mb-1">Amount</p>
-                      <p className="text-2xl font-bold text-white">
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-sm text-muted-foreground mb-1">Amount</p>
+                      <p className="text-2xl font-bold text-foreground">
                         ${existingRefund.refund_amount?.toFixed(2)}
                       </p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-sm text-white/50 mb-1">Initiated</p>
-                      <p className="text-lg font-medium text-white">
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-sm text-muted-foreground mb-1">Initiated</p>
+                      <p className="text-lg font-medium text-foreground">
                         {existingRefund.refund_initiated_at
                           ? formatDate(existingRefund.refund_initiated_at)
                           : "N/A"}
@@ -344,15 +344,15 @@ export function RefundModal({
                   </div>
 
                   {existingRefund.refund_customer_message && (
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-sm text-white/50 mb-2">Customer Message</p>
-                      <p className="text-white">{existingRefund.refund_customer_message}</p>
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-sm text-muted-foreground mb-2">Customer Message</p>
+                      <p className="text-foreground">{existingRefund.refund_customer_message}</p>
                     </div>
                   )}
 
                   {/* Timeline */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-white">Refund Timeline</h3>
+                    <h3 className="text-lg font-semibold text-foreground">Refund Timeline</h3>
                     {renderTimeline()}
                   </div>
                 </div>
@@ -369,11 +369,11 @@ export function RefundModal({
                   )}
 
                   {/* Order Summary */}
-                  <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="p-5 rounded-2xl bg-foreground/5 border border-border">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-white/50">Order Total</p>
-                        <p className="text-3xl font-bold text-white">${orderTotal.toFixed(2)}</p>
+                        <p className="text-sm text-muted-foreground">Order Total</p>
+                        <p className="text-3xl font-bold text-foreground">${orderTotal.toFixed(2)}</p>
                       </div>
                       {hasStripePayment && (
                         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20">
@@ -386,19 +386,19 @@ export function RefundModal({
 
                   {/* Refund Type */}
                   <div className="space-y-3">
-                    <Label className="text-white font-semibold">Refund Amount</Label>
+                    <Label className="text-foreground font-semibold">Refund Amount</Label>
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         onClick={() => setRefundType("full")}
                         className={cn(
                           "p-4 rounded-xl border transition-all text-left",
                           refundType === "full"
-                            ? "bg-white text-black border-white"
-                            : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-foreground/5 text-foreground border-border hover:bg-foreground/10"
                         )}
                       >
                         <p className="font-semibold">Full Refund</p>
-                        <p className={cn("text-sm", refundType === "full" ? "text-black/60" : "text-white/50")}>
+                        <p className={cn("text-sm", refundType === "full" ? "text-black/60" : "text-muted-foreground")}>
                           ${orderTotal.toFixed(2)}
                         </p>
                       </button>
@@ -407,12 +407,12 @@ export function RefundModal({
                         className={cn(
                           "p-4 rounded-xl border transition-all text-left",
                           refundType === "partial"
-                            ? "bg-white text-black border-white"
-                            : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-foreground/5 text-foreground border-border hover:bg-foreground/10"
                         )}
                       >
                         <p className="font-semibold">Partial Refund</p>
-                        <p className={cn("text-sm", refundType === "partial" ? "text-black/60" : "text-white/50")}>
+                        <p className={cn("text-sm", refundType === "partial" ? "text-black/60" : "text-muted-foreground")}>
                           Custom amount
                         </p>
                       </button>
@@ -420,7 +420,7 @@ export function RefundModal({
 
                     {refundType === "partial" && (
                       <div className="relative mt-4">
-                        <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                        <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input
                           type="number"
                           step="0.01"
@@ -429,7 +429,7 @@ export function RefundModal({
                           value={refundAmount}
                           onChange={(e) => setRefundAmount(e.target.value)}
                           placeholder="Enter amount"
-                          className="h-14 pl-12 rounded-xl bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30"
+                          className="h-14 pl-12 rounded-xl bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground"
                         />
                       </div>
                     )}
@@ -437,7 +437,7 @@ export function RefundModal({
 
                   {/* Refund Destination */}
                   <div className="space-y-3">
-                    <Label className="text-white font-semibold">Refund Destination</Label>
+                    <Label className="text-foreground font-semibold">Refund Destination</Label>
                     <div className="space-y-3">
                       {refundDestinations.map((dest) => {
                         const isDisabled = dest.requiresStripe && !hasStripePayment
@@ -451,20 +451,20 @@ export function RefundModal({
                             className={cn(
                               "w-full p-4 rounded-xl border transition-all text-left flex items-center gap-4",
                               isDisabled
-                                ? "opacity-50 cursor-not-allowed bg-white/[0.02] border-white/5"
+                                ? "opacity-50 cursor-not-allowed bg-foreground/[0.03] border-border"
                                 : refundDestination === dest.id
-                                  ? "bg-white text-black border-white"
-                                  : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                                  ? "bg-primary text-primary-foreground border-primary"
+                                  : "bg-foreground/5 text-foreground border-border hover:bg-foreground/10"
                             )}
                           >
                             <div
                               className={cn(
                                 "h-12 w-12 rounded-xl flex items-center justify-center",
                                 refundDestination === dest.id
-                                  ? "bg-black/10"
+                                  ? "bg-foreground/10"
                                   : isDisabled
-                                    ? "bg-white/5"
-                                    : "bg-white/10"
+                                    ? "bg-foreground/5"
+                                    : "bg-foreground/10"
                               )}
                             >
                               <Icon
@@ -473,8 +473,8 @@ export function RefundModal({
                                   refundDestination === dest.id
                                     ? "text-black"
                                     : isDisabled
-                                      ? "text-white/30"
-                                      : "text-white/60"
+                                      ? "text-muted-foreground"
+                                      : "text-foreground/60"
                                 )}
                               />
                             </div>
@@ -486,8 +486,8 @@ export function RefundModal({
                                   refundDestination === dest.id
                                     ? "text-black/60"
                                     : isDisabled
-                                      ? "text-white/30"
-                                      : "text-white/50"
+                                      ? "text-muted-foreground"
+                                      : "text-muted-foreground"
                                 )}
                               >
                                 {isDisabled ? "Requires card payment" : dest.description}
@@ -504,43 +504,43 @@ export function RefundModal({
 
                   {/* Reason */}
                   <div className="space-y-3">
-                    <Label className="text-white font-semibold">Reason (Internal)</Label>
+                    <Label className="text-foreground font-semibold">Reason (Internal)</Label>
                     <select
                       value={refundReason}
                       onChange={(e) => setRefundReason(e.target.value)}
-                      className="w-full h-14 rounded-xl bg-white/5 border border-white/10 text-white px-4 focus:outline-none focus:border-white/30"
+                      className="w-full h-14 rounded-xl bg-foreground/5 border border-border text-foreground px-4 focus:outline-none focus:border-border"
                     >
-                      <option value="" className="bg-black">Select a reason...</option>
-                      <option value="Customer request" className="bg-black">Customer request</option>
-                      <option value="Order cancelled" className="bg-black">Order cancelled</option>
-                      <option value="Item out of stock" className="bg-black">Item out of stock</option>
-                      <option value="Shipping issue" className="bg-black">Shipping issue</option>
-                      <option value="Product quality issue" className="bg-black">Product quality issue</option>
-                      <option value="Duplicate order" className="bg-black">Duplicate order</option>
-                      <option value="Other" className="bg-black">Other</option>
+                      <option value="" className="bg-background">Select a reason...</option>
+                      <option value="Customer request" className="bg-background">Customer request</option>
+                      <option value="Order cancelled" className="bg-background">Order cancelled</option>
+                      <option value="Item out of stock" className="bg-background">Item out of stock</option>
+                      <option value="Shipping issue" className="bg-background">Shipping issue</option>
+                      <option value="Product quality issue" className="bg-background">Product quality issue</option>
+                      <option value="Duplicate order" className="bg-background">Duplicate order</option>
+                      <option value="Other" className="bg-background">Other</option>
                     </select>
                   </div>
 
                   {/* Customer Message */}
                   <div className="space-y-3">
-                    <Label className="text-white font-semibold">
-                      Message to Customer <span className="text-white/40 font-normal">(Optional)</span>
+                    <Label className="text-foreground font-semibold">
+                      Message to Customer <span className="text-muted-foreground font-normal">(Optional)</span>
                     </Label>
                     <Textarea
                       value={customerMessage}
                       onChange={(e) => setCustomerMessage(e.target.value)}
                       placeholder="This message will be sent to the customer..."
                       rows={3}
-                      className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none"
+                      className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none"
                     />
                   </div>
 
                   {/* Actions */}
-                  <div className="flex justify-end gap-3 pt-4 border-t border-white/10">
+                  <div className="flex justify-end gap-3 pt-4 border-t border-border">
                     <Button
                       variant="outline"
                       onClick={onClose}
-                      className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                      className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                     >
                       Cancel
                     </Button>
@@ -563,7 +563,7 @@ export function RefundModal({
                       <AlertCircle className="h-6 w-6 text-amber-400 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-amber-400">Confirm Refund</p>
-                        <p className="text-sm text-white/60 mt-1">
+                        <p className="text-sm text-foreground/60 mt-1">
                           This action cannot be undone. Please review the details before proceeding.
                         </p>
                       </div>
@@ -571,37 +571,37 @@ export function RefundModal({
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4 rounded-xl bg-white/5">
-                      <span className="text-white/60">Amount</span>
-                      <span className="text-2xl font-bold text-white">
+                    <div className="flex justify-between items-center p-4 rounded-xl bg-foreground/5">
+                      <span className="text-foreground/60">Amount</span>
+                      <span className="text-2xl font-bold text-foreground">
                         ${parseFloat(refundAmount).toFixed(2)}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center p-4 rounded-xl bg-white/5">
-                      <span className="text-white/60">Destination</span>
-                      <span className="font-medium text-white capitalize">
+                    <div className="flex justify-between items-center p-4 rounded-xl bg-foreground/5">
+                      <span className="text-foreground/60">Destination</span>
+                      <span className="font-medium text-foreground capitalize">
                         {refundDestination.replace("_", " ")}
                       </span>
                     </div>
                     {refundReason && (
-                      <div className="flex justify-between items-center p-4 rounded-xl bg-white/5">
-                        <span className="text-white/60">Reason</span>
-                        <span className="font-medium text-white">{refundReason}</span>
+                      <div className="flex justify-between items-center p-4 rounded-xl bg-foreground/5">
+                        <span className="text-foreground/60">Reason</span>
+                        <span className="font-medium text-foreground">{refundReason}</span>
                       </div>
                     )}
                     {customerMessage && (
-                      <div className="p-4 rounded-xl bg-white/5">
-                        <p className="text-sm text-white/60 mb-2">Customer Message</p>
-                        <p className="text-white">{customerMessage}</p>
+                      <div className="p-4 rounded-xl bg-foreground/5">
+                        <p className="text-sm text-foreground/60 mb-2">Customer Message</p>
+                        <p className="text-foreground">{customerMessage}</p>
                       </div>
                     )}
                   </div>
 
-                  <div className="flex justify-end gap-3 pt-4 border-t border-white/10">
+                  <div className="flex justify-end gap-3 pt-4 border-t border-border">
                     <Button
                       variant="outline"
                       onClick={() => setStep("form")}
-                      className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                      className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                     >
                       Back
                     </Button>
@@ -629,12 +629,12 @@ export function RefundModal({
               {/* Processing View */}
               {step === "processing" && (
                 <div className="py-16 text-center space-y-6">
-                  <div className="h-20 w-20 mx-auto rounded-full bg-white/5 flex items-center justify-center">
-                    <RefreshCw className="h-10 w-10 text-white/60 animate-spin" />
+                  <div className="h-20 w-20 mx-auto rounded-full bg-foreground/5 flex items-center justify-center">
+                    <RefreshCw className="h-10 w-10 text-foreground/60 animate-spin" />
                   </div>
                   <div>
-                    <p className="text-xl font-semibold text-white">Processing Refund</p>
-                    <p className="text-white/50 mt-2">Please wait while we process the refund...</p>
+                    <p className="text-xl font-semibold text-foreground">Processing Refund</p>
+                    <p className="text-muted-foreground mt-2">Please wait while we process the refund...</p>
                   </div>
                 </div>
               )}
@@ -647,16 +647,16 @@ export function RefundModal({
                       <Check className="h-10 w-10 text-emerald-400" />
                     </div>
                     <div>
-                      <p className="text-xl font-semibold text-white">Refund Initiated</p>
-                      <p className="text-white/50 mt-2">
+                      <p className="text-xl font-semibold text-foreground">Refund Initiated</p>
+                      <p className="text-muted-foreground mt-2">
                         ${parseFloat(refundAmount).toFixed(2)} refund has been initiated
                       </p>
                     </div>
                   </div>
 
                   {/* Timeline after completion */}
-                  <div className="space-y-4 pt-6 border-t border-white/10">
-                    <h3 className="text-lg font-semibold text-white">Refund Timeline</h3>
+                  <div className="space-y-4 pt-6 border-t border-border">
+                    <h3 className="text-lg font-semibold text-foreground">Refund Timeline</h3>
                     {renderTimeline()}
                   </div>
 

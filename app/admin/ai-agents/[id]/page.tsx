@@ -422,7 +422,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="flex items-center gap-3 text-white/50">
+        <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="w-6 h-6 animate-spin" />
           Loading agent...
         </div>
@@ -437,7 +437,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
         <div className="flex items-center justify-between">
           <Link
             href="/admin/ai-agents"
-            className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+            className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="font-medium">Back to Agents</span>
@@ -462,10 +462,10 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
             <Bot className="w-8 h-8 text-purple-400" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-white">
+            <h1 className="text-3xl font-bold text-foreground">
               {isNew ? 'Create New Agent' : agent.name || 'AI Agent'}
             </h1>
-            <p className="text-white/50">{isNew ? 'Configure your new AI assistant' : 'Edit agent settings and training'}</p>
+            <p className="text-muted-foreground">{isNew ? 'Configure your new AI assistant' : 'Edit agent settings and training'}</p>
           </div>
         </div>
 
@@ -496,124 +496,124 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
         )}
 
         {/* Basic Info */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-6">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-            <Settings className="w-5 h-5 text-white/50" />
+        <div className="rounded-2xl border border-border bg-foreground/5 p-6 space-y-6">
+          <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
+            <Settings className="w-5 h-5 text-muted-foreground" />
             Basic Information
           </h2>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm text-white/50 mb-2">Agent Name *</label>
+              <label className="block text-sm text-muted-foreground mb-2">Agent Name *</label>
               <Input
                 value={agent.name || ''}
                 onChange={(e) => updateField('name', e.target.value)}
                 placeholder="e.g., SMS Support Bot"
-                className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
               />
             </div>
             <div>
-              <label className="block text-sm text-white/50 mb-2">Slug</label>
+              <label className="block text-sm text-muted-foreground mb-2">Slug</label>
               <Input
                 value={agent.slug || ''}
                 onChange={(e) => updateField('slug', e.target.value.toLowerCase().replace(/\s+/g, '-'))}
                 placeholder="sms-support-bot"
-                className="h-12 rounded-xl bg-white/5 border-white/10 text-white font-mono"
+                className="h-12 rounded-xl bg-foreground/5 border-border text-foreground font-mono"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm text-white/50 mb-2">Description</label>
+            <label className="block text-sm text-muted-foreground mb-2">Description</label>
             <Input
               value={agent.description || ''}
               onChange={(e) => updateField('description', e.target.value)}
               placeholder="What does this agent do?"
-              className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+              className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm text-white/50 mb-2">Agent Type</label>
+              <label className="block text-sm text-muted-foreground mb-2">Agent Type</label>
               <select
                 value={agent.agent_type || 'general'}
                 onChange={(e) => updateField('agent_type', e.target.value)}
-                className="w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                className="w-full h-12 rounded-xl bg-foreground/5 border border-border text-foreground px-4"
               >
                 {agentTypes.map(type => (
-                  <option key={type.value} value={type.value} className="bg-zinc-900">
+                  <option key={type.value} value={type.value} className="bg-card">
                     {type.label}
                   </option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="block text-sm text-white/50 mb-2">Model</label>
+              <label className="block text-sm text-muted-foreground mb-2">Model</label>
               <select
                 value={agent.model || 'claude-sonnet-4-20250514'}
                 onChange={(e) => updateField('model', e.target.value)}
-                className="w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                className="w-full h-12 rounded-xl bg-foreground/5 border border-border text-foreground px-4"
               >
-                <option value="claude-sonnet-4-20250514" className="bg-zinc-900">Claude Sonnet 4</option>
-                <option value="claude-3-5-sonnet-20241022" className="bg-zinc-900">Claude 3.5 Sonnet</option>
-                <option value="claude-3-haiku-20240307" className="bg-zinc-900">Claude 3 Haiku (Fast)</option>
+                <option value="claude-sonnet-4-20250514" className="bg-card">Claude Sonnet 4</option>
+                <option value="claude-3-5-sonnet-20241022" className="bg-card">Claude 3.5 Sonnet</option>
+                <option value="claude-3-haiku-20240307" className="bg-card">Claude 3 Haiku (Fast)</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Instructions Section */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+        <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
           <button
             onClick={() => toggleSection('instructions')}
             className="w-full p-6 flex items-center justify-between text-left"
           >
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
               <Brain className="w-5 h-5 text-purple-400" />
               Instructions & Training
             </h2>
-            {expandedSections.instructions ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+            {expandedSections.instructions ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
           </button>
           
           {expandedSections.instructions && (
-            <div className="px-6 pb-6 space-y-4 border-t border-white/5 pt-4">
+            <div className="px-6 pb-6 space-y-4 border-t border-border pt-4">
               <div>
-                <label className="block text-sm text-white/50 mb-2">System Prompt *</label>
+                <label className="block text-sm text-muted-foreground mb-2">System Prompt *</label>
                 <Textarea
                   value={agent.system_prompt || ''}
                   onChange={(e) => updateField('system_prompt', e.target.value)}
                   placeholder="You are a helpful customer support agent..."
                   rows={6}
-                  className="rounded-xl bg-white/5 border-white/10 text-white"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground"
                 />
-                <p className="text-xs text-white/30 mt-2">This is the main instruction that defines how the agent behaves.</p>
+                <p className="text-xs text-muted-foreground mt-2">This is the main instruction that defines how the agent behaves.</p>
               </div>
 
               <div>
-                <label className="block text-sm text-white/50 mb-2">Personality</label>
+                <label className="block text-sm text-muted-foreground mb-2">Personality</label>
                 <Input
                   value={agent.personality || ''}
                   onChange={(e) => updateField('personality', e.target.value)}
                   placeholder="e.g., Friendly, professional, concise"
-                  className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                  className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-white/50 mb-2">Greeting Message</label>
+                <label className="block text-sm text-muted-foreground mb-2">Greeting Message</label>
                 <Textarea
                   value={agent.greeting_message || ''}
                   onChange={(e) => updateField('greeting_message', e.target.value)}
                   placeholder="Hi! How can I help you today?"
                   rows={2}
-                  className="rounded-xl bg-white/5 border-white/10 text-white"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground"
                 />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm text-white/50 mb-2">Temperature ({agent.temperature})</label>
+                  <label className="block text-sm text-muted-foreground mb-2">Temperature ({agent.temperature})</label>
                   <input
                     type="range"
                     min="0"
@@ -623,15 +623,15 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                     onChange={(e) => updateField('temperature', parseFloat(e.target.value))}
                     className="w-full"
                   />
-                  <p className="text-xs text-white/30 mt-1">Lower = more focused, Higher = more creative</p>
+                  <p className="text-xs text-muted-foreground mt-1">Lower = more focused, Higher = more creative</p>
                 </div>
                 <div>
-                  <label className="block text-sm text-white/50 mb-2">Max Tokens</label>
+                  <label className="block text-sm text-muted-foreground mb-2">Max Tokens</label>
                   <Input
                     type="number"
                     value={agent.max_tokens || 1024}
                     onChange={(e) => updateField('max_tokens', parseInt(e.target.value))}
-                    className="h-12 rounded-xl bg-white/5 border-white/10 text-white"
+                    className="h-12 rounded-xl bg-foreground/5 border-border text-foreground"
                   />
                 </div>
               </div>
@@ -640,20 +640,20 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
         </div>
 
         {/* Capabilities Section */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+        <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
           <button
             onClick={() => toggleSection('capabilities')}
             className="w-full p-6 flex items-center justify-between text-left"
           >
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-400" />
               Capabilities
             </h2>
-            {expandedSections.capabilities ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+            {expandedSections.capabilities ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
           </button>
           
           {expandedSections.capabilities && (
-            <div className="px-6 pb-6 border-t border-white/5 pt-4">
+            <div className="px-6 pb-6 border-t border-border pt-4">
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
                   { key: 'can_send_sms', label: 'Send SMS', icon: Phone, color: 'green' },
@@ -675,16 +675,16 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                         "p-4 rounded-xl border transition-all text-left flex items-center gap-3",
                         isEnabled
                           ? `bg-${cap.color}-500/10 border-${cap.color}-500/30`
-                          : "bg-white/5 border-white/10 opacity-50"
+                          : "bg-foreground/5 border-border opacity-50"
                       )}
                     >
                       <div className={cn(
                         "w-10 h-10 rounded-lg flex items-center justify-center",
-                        isEnabled ? `bg-${cap.color}-500/20` : "bg-white/10"
+                        isEnabled ? `bg-${cap.color}-500/20` : "bg-foreground/10"
                       )}>
-                        <Icon className={cn("w-5 h-5", isEnabled ? `text-${cap.color}-400` : "text-white/40")} />
+                        <Icon className={cn("w-5 h-5", isEnabled ? `text-${cap.color}-400` : "text-muted-foreground")} />
                       </div>
-                      <span className={cn("font-medium", isEnabled ? "text-white" : "text-white/50")}>
+                      <span className={cn("font-medium", isEnabled ? "text-foreground" : "text-muted-foreground")}>
                         {cap.label}
                       </span>
                     </button>
@@ -697,25 +697,25 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Webhooks Section - Only for existing agents */}
         {!isNew && (
-          <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+          <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
             <button
               onClick={() => toggleSection('webhooks')}
               className="w-full p-6 flex items-center justify-between text-left"
             >
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+              <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
                 <Zap className="w-5 h-5 text-orange-400" />
                 Webhooks & Triggers ({webhooks.length})
               </h2>
-              {expandedSections.webhooks ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+              {expandedSections.webhooks ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
             </button>
             
             {expandedSections.webhooks && (
-              <div className="px-6 pb-6 border-t border-white/5 pt-4 space-y-4">
-                <p className="text-sm text-white/50">Configure which events trigger this agent and what endpoints it listens to.</p>
+              <div className="px-6 pb-6 border-t border-border pt-4 space-y-4">
+                <p className="text-sm text-muted-foreground">Configure which events trigger this agent and what endpoints it listens to.</p>
                 
                 {/* Existing webhooks */}
                 {webhooks.map(webhook => (
-                  <div key={webhook.id} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div key={webhook.id} className="p-4 rounded-xl bg-foreground/5 border border-border">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
                         <div className={cn(
@@ -733,7 +733,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                           )}
                         </div>
                         <div>
-                          <h4 className="font-medium text-white">{webhook.name}</h4>
+                          <h4 className="font-medium text-foreground">{webhook.name}</h4>
                           <div className="flex items-center gap-2 mt-1">
                             <Badge variant="outline" className="text-xs">
                               {webhook.webhook_type}
@@ -755,29 +755,29 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                     </div>
                     
                     {webhook.description && (
-                      <p className="text-sm text-white/50 mb-3">{webhook.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3">{webhook.description}</p>
                     )}
                     
                     {/* Endpoint Path */}
                     {webhook.endpoint_path && (
-                      <div className="flex items-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10">
-                        <span className="text-xs text-white/40">Endpoint:</span>
+                      <div className="flex items-center gap-2 p-3 rounded-lg bg-foreground/5 border border-border">
+                        <span className="text-xs text-muted-foreground">Endpoint:</span>
                         <code className="text-sm text-green-400 font-mono flex-1">{webhook.endpoint_path}</code>
                         <button
                           onClick={() => copyToClipboard(webhook.endpoint_path!, webhook.id)}
-                          className="p-1.5 rounded hover:bg-white/10"
+                          className="p-1.5 rounded hover:bg-foreground/10"
                         >
                           {copiedField === webhook.id ? (
                             <Check className="w-4 h-4 text-green-400" />
                           ) : (
-                            <Copy className="w-4 h-4 text-white/40" />
+                            <Copy className="w-4 h-4 text-muted-foreground" />
                           )}
                         </button>
                       </div>
                     )}
                     
                     {/* Stats */}
-                    <div className="flex items-center gap-4 mt-3 text-xs text-white/40">
+                    <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
                       <span>Triggered: {webhook.trigger_count} times</span>
                       {webhook.last_triggered_at && (
                         <span>Last: {new Date(webhook.last_triggered_at).toLocaleString()}</span>
@@ -787,7 +787,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                 ))}
                 
                 {webhooks.length === 0 && !showNewWebhook && (
-                  <div className="text-center py-8 text-white/40">
+                  <div className="text-center py-8 text-muted-foreground">
                     <Zap className="w-8 h-8 mx-auto mb-2 opacity-50" />
                     <p>No webhooks configured</p>
                   </div>
@@ -801,43 +801,43 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                         value={newWebhook.name}
                         onChange={(e) => setNewWebhook(prev => ({ ...prev, name: e.target.value }))}
                         placeholder="Webhook name"
-                        className="h-10 rounded-lg bg-white/5 border-white/10 text-white"
+                        className="h-10 rounded-lg bg-foreground/5 border-border text-foreground"
                       />
                       <select
                         value={newWebhook.webhook_type}
                         onChange={(e) => setNewWebhook(prev => ({ ...prev, webhook_type: e.target.value }))}
-                        className="h-10 rounded-lg bg-white/5 border border-white/10 text-white px-3"
+                        className="h-10 rounded-lg bg-foreground/5 border border-border text-foreground px-3"
                       >
-                        <option value="trigger" className="bg-zinc-900">Event Trigger</option>
-                        <option value="incoming" className="bg-zinc-900">Incoming Webhook</option>
-                        <option value="outgoing" className="bg-zinc-900">Outgoing Webhook</option>
+                        <option value="trigger" className="bg-card">Event Trigger</option>
+                        <option value="incoming" className="bg-card">Incoming Webhook</option>
+                        <option value="outgoing" className="bg-card">Outgoing Webhook</option>
                       </select>
                     </div>
                     <Input
                       value={newWebhook.trigger_event}
                       onChange={(e) => setNewWebhook(prev => ({ ...prev, trigger_event: e.target.value }))}
                       placeholder="Trigger event (e.g., sms.incoming, order.created)"
-                      className="h-10 rounded-lg bg-white/5 border-white/10 text-white font-mono"
+                      className="h-10 rounded-lg bg-foreground/5 border-border text-foreground font-mono"
                     />
                     {newWebhook.webhook_type === 'incoming' && (
                       <Input
                         value={newWebhook.endpoint_path}
                         onChange={(e) => setNewWebhook(prev => ({ ...prev, endpoint_path: e.target.value }))}
                         placeholder="Endpoint path (e.g., /api/sms/incoming)"
-                        className="h-10 rounded-lg bg-white/5 border-white/10 text-white font-mono"
+                        className="h-10 rounded-lg bg-foreground/5 border-border text-foreground font-mono"
                       />
                     )}
                     <Input
                       value={newWebhook.description}
                       onChange={(e) => setNewWebhook(prev => ({ ...prev, description: e.target.value }))}
                       placeholder="Description (optional)"
-                      className="h-10 rounded-lg bg-white/5 border-white/10 text-white"
+                      className="h-10 rounded-lg bg-foreground/5 border-border text-foreground"
                     />
                     <div className="flex gap-2">
                       <Button onClick={addWebhook} className="rounded-lg bg-orange-500 hover:bg-orange-600 text-white">
                         <Plus className="w-4 h-4 mr-1" /> Add Webhook
                       </Button>
-                      <Button onClick={() => setShowNewWebhook(false)} variant="outline" className="rounded-lg border-white/20">
+                      <Button onClick={() => setShowNewWebhook(false)} variant="outline" className="rounded-lg border-border">
                         Cancel
                       </Button>
                     </div>
@@ -845,7 +845,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                 ) : (
                   <button
                     onClick={() => setShowNewWebhook(true)}
-                    className="w-full p-4 rounded-xl border border-dashed border-white/20 text-white/50 hover:text-white hover:border-white/40 transition-colors flex items-center justify-center gap-2"
+                    className="w-full p-4 rounded-xl border border-dashed border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Add Webhook / Trigger
@@ -853,14 +853,14 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                 )}
                 
                 {/* Available Events Reference */}
-                <div className="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                  <h4 className="text-sm font-medium text-white/60 mb-2">Available Trigger Events</h4>
+                <div className="mt-4 p-4 rounded-xl bg-foreground/[0.03] border border-border">
+                  <h4 className="text-sm font-medium text-foreground/60 mb-2">Available Trigger Events</h4>
                   <div className="flex flex-wrap gap-2">
                     {['sms.incoming', 'sms.outgoing', 'order.created', 'order.shipped', 'payment.pending', 'payment.received', 'customer.created'].map(event => (
                       <button
                         key={event}
                         onClick={() => setNewWebhook(prev => ({ ...prev, trigger_event: event }))}
-                        className="px-2 py-1 text-xs rounded bg-white/5 text-white/50 hover:text-white hover:bg-white/10 font-mono"
+                        className="px-2 py-1 text-xs rounded bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10 font-mono"
                       >
                         {event}
                       </button>
@@ -874,28 +874,28 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Resources Section - Only for existing agents */}
         {!isNew && (
-          <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+          <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
             <button
               onClick={() => toggleSection('resources')}
               className="w-full p-6 flex items-center justify-between text-left"
             >
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+              <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-blue-400" />
                 Resources ({agent.resources?.length || 0})
               </h2>
-              {expandedSections.resources ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+              {expandedSections.resources ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
             </button>
             
             {expandedSections.resources && (
-              <div className="px-6 pb-6 border-t border-white/5 pt-4 space-y-4">
-                <p className="text-sm text-white/50">Add documents, FAQs, policies, and other reference materials the agent can use.</p>
+              <div className="px-6 pb-6 border-t border-border pt-4 space-y-4">
+                <p className="text-sm text-muted-foreground">Add documents, FAQs, policies, and other reference materials the agent can use.</p>
                 
                 {/* Existing resources */}
                 {agent.resources?.map(resource => (
-                  <div key={resource.id} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div key={resource.id} className="p-4 rounded-xl bg-foreground/5 border border-border">
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h4 className="font-medium text-white">{resource.title}</h4>
+                        <h4 className="font-medium text-foreground">{resource.title}</h4>
                         <Badge variant="outline" className="mt-1 text-xs">{resource.resource_type}</Badge>
                       </div>
                       <button
@@ -905,7 +905,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
-                    <p className="text-sm text-white/50 line-clamp-2">{resource.content}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{resource.content}</p>
                   </div>
                 ))}
 
@@ -917,15 +917,15 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                         value={newResource.title}
                         onChange={(e) => setNewResource(prev => ({ ...prev, title: e.target.value }))}
                         placeholder="Resource title"
-                        className="h-10 rounded-lg bg-white/5 border-white/10 text-white"
+                        className="h-10 rounded-lg bg-foreground/5 border-border text-foreground"
                       />
                       <select
                         value={newResource.resource_type}
                         onChange={(e) => setNewResource(prev => ({ ...prev, resource_type: e.target.value }))}
-                        className="h-10 rounded-lg bg-white/5 border border-white/10 text-white px-3"
+                        className="h-10 rounded-lg bg-foreground/5 border border-border text-foreground px-3"
                       >
                         {resourceTypes.map(type => (
-                          <option key={type.value} value={type.value} className="bg-zinc-900">{type.label}</option>
+                          <option key={type.value} value={type.value} className="bg-card">{type.label}</option>
                         ))}
                       </select>
                     </div>
@@ -934,13 +934,13 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                       onChange={(e) => setNewResource(prev => ({ ...prev, content: e.target.value }))}
                       placeholder="Resource content..."
                       rows={4}
-                      className="rounded-lg bg-white/5 border-white/10 text-white"
+                      className="rounded-lg bg-foreground/5 border-border text-foreground"
                     />
                     <div className="flex gap-2">
                       <Button onClick={addResource} className="rounded-lg bg-blue-500 hover:bg-blue-600 text-white">
                         <Plus className="w-4 h-4 mr-1" /> Add Resource
                       </Button>
-                      <Button onClick={() => setShowNewResource(false)} variant="outline" className="rounded-lg border-white/20">
+                      <Button onClick={() => setShowNewResource(false)} variant="outline" className="rounded-lg border-border">
                         Cancel
                       </Button>
                     </div>
@@ -948,7 +948,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                 ) : (
                   <button
                     onClick={() => setShowNewResource(true)}
-                    className="w-full p-4 rounded-xl border border-dashed border-white/20 text-white/50 hover:text-white hover:border-white/40 transition-colors flex items-center justify-center gap-2"
+                    className="w-full p-4 rounded-xl border border-dashed border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Add Resource
@@ -961,25 +961,25 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Examples Section - Only for existing agents */}
         {!isNew && (
-          <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+          <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
             <button
               onClick={() => toggleSection('examples')}
               className="w-full p-6 flex items-center justify-between text-left"
             >
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+              <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
                 <Lightbulb className="w-5 h-5 text-amber-400" />
                 Training Examples ({agent.examples?.length || 0})
               </h2>
-              {expandedSections.examples ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+              {expandedSections.examples ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
             </button>
             
             {expandedSections.examples && (
-              <div className="px-6 pb-6 border-t border-white/5 pt-4 space-y-4">
-                <p className="text-sm text-white/50">Add example conversations to help the agent learn ideal responses.</p>
+              <div className="px-6 pb-6 border-t border-border pt-4 space-y-4">
+                <p className="text-sm text-muted-foreground">Add example conversations to help the agent learn ideal responses.</p>
                 
                 {/* Existing examples */}
                 {agent.examples?.map(example => (
-                  <div key={example.id} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div key={example.id} className="p-4 rounded-xl bg-foreground/5 border border-border">
                     <div className="flex items-start justify-between mb-3">
                       <Badge variant="outline" className="text-xs">{example.category || 'General'}</Badge>
                       <button
@@ -990,13 +990,13 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                       </button>
                     </div>
                     <div className="space-y-2">
-                      <div className="p-3 rounded-lg bg-white/5">
-                        <p className="text-xs text-white/40 mb-1">Customer:</p>
-                        <p className="text-sm text-white">{example.user_message}</p>
+                      <div className="p-3 rounded-lg bg-foreground/5">
+                        <p className="text-xs text-muted-foreground mb-1">Customer:</p>
+                        <p className="text-sm text-foreground">{example.user_message}</p>
                       </div>
                       <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20">
                         <p className="text-xs text-purple-400 mb-1">Ideal Response:</p>
-                        <p className="text-sm text-white">{example.ideal_response}</p>
+                        <p className="text-sm text-foreground">{example.ideal_response}</p>
                       </div>
                     </div>
                   </div>
@@ -1009,27 +1009,27 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                       value={newExample.category}
                       onChange={(e) => setNewExample(prev => ({ ...prev, category: e.target.value }))}
                       placeholder="Category (e.g., Order Inquiry, Complaint)"
-                      className="h-10 rounded-lg bg-white/5 border-white/10 text-white"
+                      className="h-10 rounded-lg bg-foreground/5 border-border text-foreground"
                     />
                     <Textarea
                       value={newExample.user_message}
                       onChange={(e) => setNewExample(prev => ({ ...prev, user_message: e.target.value }))}
                       placeholder="Customer message..."
                       rows={2}
-                      className="rounded-lg bg-white/5 border-white/10 text-white"
+                      className="rounded-lg bg-foreground/5 border-border text-foreground"
                     />
                     <Textarea
                       value={newExample.ideal_response}
                       onChange={(e) => setNewExample(prev => ({ ...prev, ideal_response: e.target.value }))}
                       placeholder="Ideal agent response..."
                       rows={3}
-                      className="rounded-lg bg-white/5 border-white/10 text-white"
+                      className="rounded-lg bg-foreground/5 border-border text-foreground"
                     />
                     <div className="flex gap-2">
                       <Button onClick={addExample} className="rounded-lg bg-amber-500 hover:bg-amber-600 text-black">
                         <Plus className="w-4 h-4 mr-1" /> Add Example
                       </Button>
-                      <Button onClick={() => setShowNewExample(false)} variant="outline" className="rounded-lg border-white/20">
+                      <Button onClick={() => setShowNewExample(false)} variant="outline" className="rounded-lg border-border">
                         Cancel
                       </Button>
                     </div>
@@ -1037,7 +1037,7 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
                 ) : (
                   <button
                     onClick={() => setShowNewExample(true)}
-                    className="w-full p-4 rounded-xl border border-dashed border-white/20 text-white/50 hover:text-white hover:border-white/40 transition-colors flex items-center justify-center gap-2"
+                    className="w-full p-4 rounded-xl border border-dashed border-border text-muted-foreground hover:text-foreground hover:border-border transition-colors flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Add Training Example
@@ -1049,14 +1049,14 @@ export default function AIAgentDetailPage({ params }: { params: Promise<{ id: st
         )}
 
         {/* Save Button - Fixed at bottom */}
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-black/95 backdrop-blur-xl border-t border-white/10 z-50">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-xl border-t border-border z-50">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className={cn(
                 "w-3 h-3 rounded-full",
-                agent.is_active ? "bg-green-500" : "bg-white/30"
+                agent.is_active ? "bg-green-500" : "bg-foreground/30"
               )} />
-              <span className="text-white/50 text-sm">
+              <span className="text-muted-foreground text-sm">
                 {agent.is_active ? 'Active' : 'Inactive'}
               </span>
               <button

@@ -148,7 +148,7 @@ export default function RepPricingTiersPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -159,7 +159,7 @@ export default function RepPricingTiersPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="font-mono text-sm uppercase tracking-widest">Back to Portal</span>
@@ -170,7 +170,7 @@ export default function RepPricingTiersPage() {
           <h1 className="font-serif text-5xl md:text-6xl font-light tracking-tight">
             Pricing Tiers
           </h1>
-          <p className="text-lg text-white/50 max-w-xl">
+          <p className="text-lg text-muted-foreground max-w-xl">
             Create pricing tiers with base discounts. Assign customers to tiers for automatic discount application at checkout.
           </p>
         </div>
@@ -179,7 +179,7 @@ export default function RepPricingTiersPage() {
         <div>
           <Button
             onClick={openCreate}
-            className="h-14 px-8 rounded-2xl bg-white text-black hover:bg-white/90 gap-3 text-base font-medium"
+            className="h-14 px-8 rounded-2xl bg-primary text-primary-foreground hover:bg-card/90 gap-3 text-base font-medium"
           >
             <Plus className="h-5 w-5" />
             Create Tier
@@ -188,11 +188,11 @@ export default function RepPricingTiersPage() {
 
         {/* Tiers Grid */}
         {tiers.length === 0 ? (
-          <div className="rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-16 text-center space-y-6">
-            <Layers className="h-16 w-16 text-white/20 mx-auto" />
+          <div className="rounded-3xl border border-border bg-foreground/[0.04] backdrop-blur-xl p-16 text-center space-y-6">
+            <Layers className="h-16 w-16 text-muted-foreground/50 mx-auto" />
             <div className="space-y-2">
-              <h3 className="font-serif text-2xl font-light text-white">No Pricing Tiers Yet</h3>
-              <p className="text-white/40 max-w-md mx-auto">
+              <h3 className="font-serif text-2xl font-light text-foreground">No Pricing Tiers Yet</h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
                 Create tiers like Gold, Silver, and Bronze to group customers by discount level.
               </p>
             </div>
@@ -205,7 +205,7 @@ export default function RepPricingTiersPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-8 transition-all duration-500 hover:bg-white/[0.06] hover:border-white/[0.15]"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-foreground/[0.04] backdrop-blur-xl p-8 transition-all duration-500 hover:bg-foreground/[0.07] hover:border-border"
               >
                 {/* Noise */}
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -216,30 +216,30 @@ export default function RepPricingTiersPage() {
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <div className="flex items-center gap-3">
-                        <h3 className="font-serif text-2xl font-light text-white">{tier.name}</h3>
+                        <h3 className="font-serif text-2xl font-light text-foreground">{tier.name}</h3>
                         {tier.is_default && (
-                          <Badge className="bg-white/10 text-white/70 border-0 text-xs font-mono uppercase tracking-wider">
+                          <Badge className="bg-foreground/10 text-foreground/70 border-0 text-xs font-mono uppercase tracking-wider">
                             Default
                           </Badge>
                         )}
                       </div>
                       {tier.description && (
-                        <p className="text-sm text-white/40">{tier.description}</p>
+                        <p className="text-sm text-muted-foreground">{tier.description}</p>
                       )}
                     </div>
                   </div>
 
                   {/* Discount display */}
                   <div className="space-y-1">
-                    <p className="font-mono text-xs uppercase tracking-widest text-white/30">Discount</p>
-                    <p className="font-serif text-4xl font-light text-white">
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Discount</p>
+                    <p className="font-serif text-4xl font-light text-foreground">
                       {tier.discount_percentage}
-                      <span className="text-xl text-white/50">%</span>
+                      <span className="text-xl text-muted-foreground">%</span>
                     </p>
                   </div>
 
                   {/* Customer count */}
-                  <div className="flex items-center gap-2 text-white/40">
+                  <div className="flex items-center gap-2 text-muted-foreground">
                     <Users className="h-4 w-4" />
                     <span className="text-sm">
                       {tier.customer_count || 0} customer{tier.customer_count !== 1 ? "s" : ""}
@@ -247,10 +247,10 @@ export default function RepPricingTiersPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2 pt-2 border-t border-white/[0.06]">
+                  <div className="flex items-center gap-2 pt-2 border-t border-border">
                     <button
                       onClick={() => openEdit(tier)}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/[0.06] transition-all"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/[0.07] transition-all"
                     >
                       <Pencil className="h-3.5 w-3.5" />
                       Edit
@@ -258,7 +258,7 @@ export default function RepPricingTiersPage() {
                     {!tier.is_default && (
                       <button
                         onClick={() => handleSetDefault(tier)}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-white/50 hover:text-white hover:bg-white/[0.06] transition-all"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/[0.07] transition-all"
                       >
                         <Star className="h-3.5 w-3.5" />
                         Set Default
@@ -266,7 +266,7 @@ export default function RepPricingTiersPage() {
                     )}
                     <button
                       onClick={() => handleDelete(tier)}
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-white/30 hover:text-red-400 hover:bg-red-500/10 transition-all ml-auto"
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-red-400 hover:bg-red-500/10 transition-all ml-auto"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -285,7 +285,7 @@ export default function RepPricingTiersPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setShowModal(false)}
           >
             <motion.div
@@ -294,21 +294,21 @@ export default function RepPricingTiersPage() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-lg rounded-3xl bg-zinc-900 border border-white/10 p-8 space-y-8"
+              className="w-full max-w-lg rounded-3xl bg-card border border-border p-8 space-y-8"
             >
               {/* Modal header */}
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif text-2xl font-light text-white">
+                  <h3 className="font-serif text-2xl font-light text-foreground">
                     {editingTier ? "Edit Tier" : "Create Tier"}
                   </h3>
-                  <p className="text-sm text-white/40 mt-1">
+                  <p className="text-sm text-muted-foreground mt-1">
                     {editingTier ? "Update this pricing tier" : "Add a new pricing tier for your customers"}
                   </p>
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-white/40 hover:text-white transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -317,19 +317,19 @@ export default function RepPricingTiersPage() {
               {/* Form */}
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label className="font-mono text-xs uppercase tracking-widest text-white/50">
+                  <Label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     Tier Name
                   </Label>
                   <Input
                     value={form.name}
                     onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
                     placeholder="e.g. Gold, Silver, Bronze"
-                    className="h-14 rounded-2xl bg-white/[0.05] border-white/10 text-white text-lg placeholder:text-white/20"
+                    className="h-14 rounded-2xl bg-foreground/[0.06] border-border text-foreground text-lg placeholder:text-muted-foreground/50"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="font-mono text-xs uppercase tracking-widest text-white/50">
+                  <Label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     Discount Percentage
                   </Label>
                   <div className="relative">
@@ -341,21 +341,21 @@ export default function RepPricingTiersPage() {
                       value={form.discount_percentage}
                       onChange={(e) => setForm((prev) => ({ ...prev, discount_percentage: e.target.value }))}
                       placeholder="e.g. 15"
-                      className="h-14 rounded-2xl bg-white/[0.05] border-white/10 text-white text-lg pr-12 placeholder:text-white/20"
+                      className="h-14 rounded-2xl bg-foreground/[0.06] border-border text-foreground text-lg pr-12 placeholder:text-muted-foreground/50"
                     />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 text-lg">%</span>
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">%</span>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="font-mono text-xs uppercase tracking-widest text-white/50">
-                    Description <span className="text-white/20">(optional)</span>
+                  <Label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    Description <span className="text-muted-foreground/50">(optional)</span>
                   </Label>
                   <Input
                     value={form.description}
                     onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))}
                     placeholder="e.g. Top-tier customers with volume orders"
-                    className="h-14 rounded-2xl bg-white/[0.05] border-white/10 text-white placeholder:text-white/20"
+                    className="h-14 rounded-2xl bg-foreground/[0.06] border-border text-foreground placeholder:text-muted-foreground/50"
                   />
                 </div>
 
@@ -364,11 +364,11 @@ export default function RepPricingTiersPage() {
                     type="checkbox"
                     checked={form.is_default}
                     onChange={(e) => setForm((prev) => ({ ...prev, is_default: e.target.checked }))}
-                    className="w-5 h-5 rounded border-white/20 bg-white/5 text-white accent-white"
+                    className="w-5 h-5 rounded border-border bg-foreground/5 text-foreground accent-white"
                   />
                   <div>
-                    <p className="text-white text-sm font-medium">Set as Default Tier</p>
-                    <p className="text-white/30 text-xs">New customers will automatically be assigned to this tier</p>
+                    <p className="text-foreground text-sm font-medium">Set as Default Tier</p>
+                    <p className="text-muted-foreground text-xs">New customers will automatically be assigned to this tier</p>
                   </div>
                 </label>
               </div>
@@ -378,14 +378,14 @@ export default function RepPricingTiersPage() {
                 <Button
                   variant="outline"
                   onClick={() => setShowModal(false)}
-                  className="h-12 px-6 rounded-xl border-white/10 text-white hover:bg-white/10 bg-transparent"
+                  className="h-12 px-6 rounded-xl border-border text-foreground hover:bg-foreground/10 bg-transparent"
                 >
                   Cancel
                 </Button>
                 <Button
                   onClick={handleSave}
                   disabled={saving || !form.name.trim() || !form.discount_percentage}
-                  className="h-12 px-8 rounded-xl bg-white text-black hover:bg-white/90 gap-2 font-medium"
+                  className="h-12 px-8 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 gap-2 font-medium"
                 >
                   {saving ? (
                     <>

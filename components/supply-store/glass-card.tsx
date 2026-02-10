@@ -24,12 +24,12 @@ export function GlassCard({ children, className, hover = false, padding = "md" }
       className={cn(
         // Chronicles glass-card aesthetic
         "relative rounded-3xl",
-        "bg-[rgba(255,255,255,0.03)]",
+        "bg-foreground/[0.04]",
         "backdrop-blur-[20px]",
-        "border border-[rgba(255,255,255,0.08)]",
-        "shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+        "border border-border",
+        "shadow-[0_8px_32px_rgba(58,66,51,0.2)]",
         // Hover state - subtle lift
-        hover && "transition-all duration-500 hover:bg-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.12)]",
+        hover && "transition-all duration-500 hover:bg-foreground/[0.04] hover:border-border",
         paddingClasses[padding],
         className,
       )}

@@ -76,14 +76,14 @@ export function RedeemDialog({ open, onOpenChange, pointsBalance }: RedeemDialog
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl border-white/10 bg-black/95 text-white backdrop-blur-xl">
+      <DialogContent className="max-w-3xl border-border bg-background/95 text-foreground backdrop-blur-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3 text-3xl font-bold">
             <Gift className="h-8 w-8" />
             Redeem Rewards
           </DialogTitle>
-          <p className="text-lg text-white/60">
-            Available Points: <span className="font-bold text-white">{pointsBalance.toLocaleString()}</span>
+          <p className="text-lg text-foreground/60">
+            Available Points: <span className="font-bold text-foreground">{pointsBalance.toLocaleString()}</span>
           </p>
         </DialogHeader>
 
@@ -95,7 +95,7 @@ export function RedeemDialog({ open, onOpenChange, pointsBalance }: RedeemDialog
               <div
                 key={reward.id}
                 className={`relative overflow-hidden rounded-2xl border p-6 transition-all ${
-                  canAfford ? "border-white/20 bg-white/5 hover:bg-white/10" : "border-white/10 bg-white/5 opacity-50"
+                  canAfford ? "border-border bg-foreground/5 hover:bg-foreground/10" : "border-border bg-foreground/5 opacity-50"
                 }`}
               >
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -103,16 +103,16 @@ export function RedeemDialog({ open, onOpenChange, pointsBalance }: RedeemDialog
                 <div className="relative z-10 flex items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-white/60" />
+                      <Sparkles className="h-5 w-5 text-foreground/60" />
                       <h3 className="text-xl font-bold">{reward.name}</h3>
                     </div>
-                    <p className="mt-1 text-sm text-white/60">{reward.description}</p>
+                    <p className="mt-1 text-sm text-foreground/60">{reward.description}</p>
                   </div>
 
                   <div className="flex flex-col items-end gap-3">
                     <div className="text-right">
                       <div className="text-2xl font-bold">{reward.pointsCost.toLocaleString()}</div>
-                      <p className="text-xs text-white/60">Points</p>
+                      <p className="text-xs text-foreground/60">Points</p>
                     </div>
                     <button
                       onClick={() => handleRedeem(reward.id, reward.pointsCost)}

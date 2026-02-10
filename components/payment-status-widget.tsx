@@ -118,14 +118,14 @@ export function PaymentStatusWidget() {
     <div className="fixed bottom-4 right-4 z-50 w-80 animate-in slide-in-from-bottom-5">
       {/* Minimized View */}
       {isMinimized ? (
-        <div className="bg-gray-900 border-2 border-primary/60 rounded-lg p-3 shadow-2xl">
+        <div className="bg-card border-2 border-primary/60 rounded-lg p-3 shadow-2xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {state === 'waiting' && <Clock className="w-4 h-4 text-primary animate-pulse" />}
               {state === 'detected' && <Loader className="w-4 h-4 text-primary animate-spin" />}
               {state === 'confirmed' && <CheckCircle className="w-4 h-4 text-green-500" />}
               {state === 'failed' && <AlertCircle className="w-4 h-4 text-red-500" />}
-              <span className="text-sm font-medium text-white">
+              <span className="text-sm font-medium text-foreground">
                 {state === 'waiting' && 'Processing Payment'}
                 {state === 'detected' && 'Confirming...'}
                 {state === 'confirmed' && 'Payment Confirmed!'}
@@ -135,16 +135,16 @@ export function PaymentStatusWidget() {
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setIsMinimized(false)}
-                className="p-1 hover:bg-gray-800 rounded transition"
+                className="p-1 hover:bg-secondary rounded transition"
               >
-                <ChevronUp className="w-4 h-4 text-gray-400" />
+                <ChevronUp className="w-4 h-4 text-muted-foreground" />
               </button>
               {(state === 'confirmed' || state === 'failed') && (
                 <button
                   onClick={handleClose}
-                  className="p-1 hover:bg-gray-800 rounded transition"
+                  className="p-1 hover:bg-secondary rounded transition"
                 >
-                  <X className="w-4 h-4 text-gray-400" />
+                  <X className="w-4 h-4 text-muted-foreground" />
                 </button>
               )}
             </div>
@@ -152,23 +152,23 @@ export function PaymentStatusWidget() {
         </div>
       ) : (
         /* Expanded View */
-        <div className="bg-gray-900 border-2 border-primary/60 rounded-lg shadow-2xl overflow-hidden">
+        <div className="bg-card border-2 border-primary/60 rounded-lg shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gray-800/50 px-4 py-2 flex items-center justify-between border-b border-gray-700">
-            <h3 className="text-sm font-semibold text-white">Payment Status</h3>
+          <div className="bg-secondary/50 px-4 py-2 flex items-center justify-between border-b border-border">
+            <h3 className="text-sm font-semibold text-foreground">Payment Status</h3>
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setIsMinimized(true)}
                 className="p-1 hover:bg-gray-700 rounded transition"
               >
-                <ChevronDown className="w-4 h-4 text-gray-400" />
+                <ChevronDown className="w-4 h-4 text-muted-foreground" />
               </button>
               {(state === 'confirmed' || state === 'failed') && (
                 <button
                   onClick={handleClose}
                   className="p-1 hover:bg-gray-700 rounded transition"
                 >
-                  <X className="w-4 h-4 text-gray-400" />
+                  <X className="w-4 h-4 text-muted-foreground" />
                 </button>
               )}
             </div>
@@ -190,36 +190,36 @@ export function PaymentStatusWidget() {
             <div className="text-center">
               {state === 'waiting' && (
                 <>
-                  <p className="text-lg font-semibold text-white mb-1">Checking Blockchain</p>
-                  <p className="text-sm text-gray-400">Waiting for payment...</p>
+                  <p className="text-lg font-semibold text-foreground mb-1">Checking Blockchain</p>
+                  <p className="text-sm text-muted-foreground">Waiting for payment...</p>
                 </>
               )}
               
               {state === 'detected' && (
                 <>
                   <p className="text-lg font-semibold text-primary mb-1">Payment Detected!</p>
-                  <p className="text-sm text-gray-400">Confirming transaction...</p>
+                  <p className="text-sm text-muted-foreground">Confirming transaction...</p>
                 </>
               )}
               
               {state === 'confirmed' && (
                 <>
                   <p className="text-lg font-semibold text-green-500 mb-1">Payment Confirmed!</p>
-                  <p className="text-sm text-gray-400">Order processing...</p>
+                  <p className="text-sm text-muted-foreground">Order processing...</p>
                 </>
               )}
 
               {state === 'failed' && (
                 <>
                   <p className="text-lg font-semibold text-red-500 mb-1">Payment Timeout</p>
-                  <p className="text-sm text-gray-400">Please contact support</p>
+                  <p className="text-sm text-muted-foreground">Please contact support</p>
                 </>
               )}
             </div>
 
             {/* Amount */}
-            <div className="text-center py-2 bg-gray-800/50 rounded-lg">
-              <p className="text-xl font-bold text-white">
+            <div className="text-center py-2 bg-secondary/50 rounded-lg">
+              <p className="text-xl font-bold text-foreground">
                 {paymentData.amount} {paymentData.currency}
               </p>
               <p className="text-xs text-gray-500 mt-1">

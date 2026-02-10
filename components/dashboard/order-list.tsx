@@ -179,8 +179,8 @@ export function OrderList({ orders, loading = false, totalSpent = 0 }: OrderList
   if (loading) {
     return (
       <div className="text-center py-12">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
-        <p className="text-white/60 text-base font-light">Loading orders...</p>
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
+        <p className="text-foreground/60 text-base font-light">Loading orders...</p>
       </div>
     )
   }
@@ -188,11 +188,11 @@ export function OrderList({ orders, loading = false, totalSpent = 0 }: OrderList
   if (orders.length === 0) {
     return (
       <div className="text-center py-16">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/5 border border-white/10 mx-auto mb-6">
-          <Package className="h-10 w-10 text-white/60" strokeWidth={1.5} />
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-foreground/5 border border-border mx-auto mb-6">
+          <Package className="h-10 w-10 text-foreground/60" strokeWidth={1.5} />
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">No orders yet</h3>
-        <p className="text-white/60 font-light">Your orders will appear here once you make a purchase.</p>
+        <h3 className="text-xl font-bold text-foreground mb-2">No orders yet</h3>
+        <p className="text-foreground/60 font-light">Your orders will appear here once you make a purchase.</p>
       </div>
     )
   }

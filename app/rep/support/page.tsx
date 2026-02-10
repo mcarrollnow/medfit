@@ -64,7 +64,7 @@ const STATUS_COLORS = {
   open: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   in_progress: "bg-amber-500/20 text-amber-400 border-amber-500/30",
   resolved: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  closed: "bg-white/10 text-white/40 border-white/10",
+  closed: "bg-foreground/10 text-muted-foreground border-border",
 }
 
 const STATUS_ICONS = {
@@ -186,7 +186,7 @@ export default function RepSupportPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -197,7 +197,7 @@ export default function RepSupportPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -208,12 +208,12 @@ export default function RepSupportPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="space-y-4">
-                <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Support</h1>
-                <p className="text-xl text-white/50">Get help and submit support tickets.</p>
+                <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Support</h1>
+                <p className="text-xl text-muted-foreground">Get help and submit support tickets.</p>
               </div>
               <Button
                 onClick={() => setViewMode("create")}
-                className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
               >
                 <Plus className="w-5 h-5 mr-2" />
                 New Ticket
@@ -222,43 +222,43 @@ export default function RepSupportPage() {
 
             {/* Stats */}
             <section className="space-y-6">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
                       <MessageSquare className="h-6 w-6 text-blue-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-white/50">Open Tickets</p>
-                      <p className="text-3xl font-bold tracking-tight text-white">{openTicketsCount}</p>
+                      <p className="text-sm font-medium text-muted-foreground">Open Tickets</p>
+                      <p className="text-3xl font-bold tracking-tight text-foreground">{openTicketsCount}</p>
                     </div>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <CheckCircle className="h-6 w-6 text-emerald-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-white/50">Resolved</p>
-                      <p className="text-3xl font-bold tracking-tight text-white">
+                      <p className="text-sm font-medium text-muted-foreground">Resolved</p>
+                      <p className="text-3xl font-bold tracking-tight text-foreground">
                         {tickets.filter(t => t.status === "resolved" || t.status === "closed").length}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
                       <HeadphonesIcon className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-white/50">Total Tickets</p>
-                      <p className="text-3xl font-bold tracking-tight text-white">{tickets.length}</p>
+                      <p className="text-sm font-medium text-muted-foreground">Total Tickets</p>
+                      <p className="text-3xl font-bold tracking-tight text-foreground">{tickets.length}</p>
                     </div>
                   </div>
                 </div>
@@ -269,12 +269,12 @@ export default function RepSupportPage() {
             <section className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative flex-1">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search tickets..."
-                    className="h-12 pl-12 bg-white/5 border-white/10 rounded-xl"
+                    className="h-12 pl-12 bg-foreground/5 border-border rounded-xl"
                   />
                 </div>
                 <div className="flex gap-2">
@@ -285,8 +285,8 @@ export default function RepSupportPage() {
                       className={cn(
                         "px-4 py-2 rounded-xl text-sm font-medium transition-all capitalize",
                         statusFilter === status
-                          ? "bg-white text-black"
-                          : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-foreground/5 text-foreground/60 hover:bg-foreground/10 border border-border"
                       )}
                     >
                       {status === "all" ? "All" : status.replace("_", " ")}
@@ -298,19 +298,19 @@ export default function RepSupportPage() {
 
             {/* Tickets List */}
             <section className="space-y-6">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Your Tickets</h2>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Your Tickets</h2>
               {filteredTickets.length === 0 ? (
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
-                    <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                      <HeadphonesIcon className="h-8 w-8 text-white/30" />
+                    <div className="h-16 w-16 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mx-auto mb-4">
+                      <HeadphonesIcon className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-white/50 text-lg">No support tickets yet</p>
-                    <p className="text-white/30 text-sm mt-2">Create a ticket if you need help</p>
+                    <p className="text-muted-foreground text-lg">No support tickets yet</p>
+                    <p className="text-muted-foreground text-sm mt-2">Create a ticket if you need help</p>
                     <Button
                       onClick={() => setViewMode("create")}
-                      className="mt-6 h-11 px-6 bg-white text-black hover:bg-white/90 rounded-xl"
+                      className="mt-6 h-11 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl"
                     >
                       Create Ticket
                     </Button>
@@ -327,7 +327,7 @@ export default function RepSupportPage() {
                           setSelectedTicket(ticket)
                           setViewMode("detail")
                         }}
-                        className="w-full group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all hover:bg-white/[0.08] hover:border-white/20 text-left"
+                        className="w-full group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-5 backdrop-blur-xl transition-all hover:bg-foreground/[0.08] hover:border-border text-left"
                       >
                         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                         <div className="relative z-10 flex items-center justify-between gap-4">
@@ -339,8 +339,8 @@ export default function RepSupportPage() {
                               <StatusIcon className="h-6 w-6" />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-white group-hover:text-white">{ticket.subject}</h3>
-                              <p className="text-sm text-white/50 mt-1">{ticket.category} • {format(new Date(ticket.created_at), "MMM dd, yyyy")}</p>
+                              <h3 className="font-semibold text-foreground group-hover:text-foreground">{ticket.subject}</h3>
+                              <p className="text-sm text-muted-foreground mt-1">{ticket.category} • {format(new Date(ticket.created_at), "MMM dd, yyyy")}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-3">
@@ -350,7 +350,7 @@ export default function RepSupportPage() {
                             <Badge className={cn("rounded-full capitalize", STATUS_COLORS[ticket.status])}>
                               {ticket.status.replace("_", " ")}
                             </Badge>
-                            <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white/60" />
+                            <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground/60" />
                           </div>
                         </div>
                       </button>
@@ -369,32 +369,32 @@ export default function RepSupportPage() {
               <Button
                 onClick={() => setViewMode("list")}
                 variant="ghost"
-                className="h-11 w-11 rounded-full hover:bg-white/10"
+                className="h-11 w-11 rounded-full hover:bg-foreground/10"
               >
                 <ArrowLeft className="w-5 h-5" />
               </Button>
               <div>
-                <h1 className="text-4xl font-bold tracking-tighter text-white">New Support Ticket</h1>
-                <p className="text-xl text-white/50">Describe your issue and we'll help you</p>
+                <h1 className="text-4xl font-bold tracking-tighter text-foreground">New Support Ticket</h1>
+                <p className="text-xl text-muted-foreground">Describe your issue and we'll help you</p>
               </div>
             </div>
 
             {/* Create Form */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white/60">Subject</label>
+                  <label className="text-sm font-medium text-foreground/60">Subject</label>
                   <Input
                     value={newTicket.subject}
                     onChange={(e) => setNewTicket({ ...newTicket, subject: e.target.value })}
                     placeholder="Brief description of your issue"
-                    className="h-12 bg-white/5 border-white/10 rounded-xl"
+                    className="h-12 bg-foreground/5 border-border rounded-xl"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white/60">Category</label>
+                  <label className="text-sm font-medium text-foreground/60">Category</label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {CATEGORIES.map((cat) => (
                       <button
@@ -403,8 +403,8 @@ export default function RepSupportPage() {
                         className={cn(
                           "px-4 py-3 rounded-xl text-sm font-medium transition-all border",
                           newTicket.category === cat
-                            ? "bg-white/10 border-white/20 text-white"
-                            : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:text-white"
+                            ? "bg-foreground/10 border-border text-foreground"
+                            : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                         )}
                       >
                         {cat}
@@ -414,7 +414,7 @@ export default function RepSupportPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white/60">Priority</label>
+                  <label className="text-sm font-medium text-foreground/60">Priority</label>
                   <div className="flex gap-2">
                     {(["low", "medium", "high"] as const).map((p) => (
                       <button
@@ -424,7 +424,7 @@ export default function RepSupportPage() {
                           "flex-1 h-12 rounded-xl text-sm font-medium transition-all border capitalize",
                           newTicket.priority === p
                             ? PRIORITY_COLORS[p]
-                            : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                            : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10"
                         )}
                       >
                         {p}
@@ -434,12 +434,12 @@ export default function RepSupportPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white/60">Description</label>
+                  <label className="text-sm font-medium text-foreground/60">Description</label>
                   <Textarea
                     value={newTicket.description}
                     onChange={(e) => setNewTicket({ ...newTicket, description: e.target.value })}
                     placeholder="Please provide details about your issue..."
-                    className="min-h-[150px] bg-white/5 border-white/10 rounded-xl resize-none"
+                    className="min-h-[150px] bg-foreground/5 border-border rounded-xl resize-none"
                   />
                 </div>
 
@@ -447,7 +447,7 @@ export default function RepSupportPage() {
                   <Button
                     onClick={handleCreateTicket}
                     disabled={submitting || !newTicket.subject || !newTicket.description || !newTicket.category}
-                    className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                    className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                   >
                     {submitting ? (
                       <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -458,7 +458,7 @@ export default function RepSupportPage() {
                   </Button>
                   <Button
                     onClick={() => setViewMode("list")}
-                    className="h-12 px-6 bg-white/5 hover:bg-white/10 rounded-xl"
+                    className="h-12 px-6 bg-foreground/5 hover:bg-foreground/10 rounded-xl"
                   >
                     Cancel
                   </Button>
@@ -479,13 +479,13 @@ export default function RepSupportPage() {
                     setSelectedTicket(null)
                   }}
                   variant="ghost"
-                  className="h-11 w-11 rounded-full hover:bg-white/10"
+                  className="h-11 w-11 rounded-full hover:bg-foreground/10"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </Button>
                 <div>
-                  <h1 className="text-3xl font-bold tracking-tighter text-white">{selectedTicket.subject}</h1>
-                  <p className="text-white/50">{selectedTicket.category} • Created {format(new Date(selectedTicket.created_at), "MMM dd, yyyy")}</p>
+                  <h1 className="text-3xl font-bold tracking-tighter text-foreground">{selectedTicket.subject}</h1>
+                  <p className="text-muted-foreground">{selectedTicket.category} • Created {format(new Date(selectedTicket.created_at), "MMM dd, yyyy")}</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -499,11 +499,11 @@ export default function RepSupportPage() {
             </div>
 
             {/* Original Description */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <p className="text-sm text-white/40 mb-2">Original Message</p>
-                <p className="text-white/80 whitespace-pre-wrap">{selectedTicket.description}</p>
+                <p className="text-sm text-muted-foreground mb-2">Original Message</p>
+                <p className="text-foreground/80 whitespace-pre-wrap">{selectedTicket.description}</p>
               </div>
             </div>
 
@@ -516,20 +516,20 @@ export default function RepSupportPage() {
                     className={cn(
                       "relative overflow-hidden rounded-2xl p-5",
                       msg.sender === "rep"
-                        ? "bg-white/10 border border-white/10 ml-12"
+                        ? "bg-foreground/10 border border-border ml-12"
                         : "bg-blue-500/10 border border-blue-500/20 mr-12"
                     )}
                   >
                     <div className="flex justify-between items-start mb-2">
                       <p className={cn(
                         "text-sm font-medium",
-                        msg.sender === "rep" ? "text-white/60" : "text-blue-400"
+                        msg.sender === "rep" ? "text-foreground/60" : "text-blue-400"
                       )}>
                         {msg.sender === "rep" ? repName : "Support Team"}
                       </p>
-                      <p className="text-xs text-white/40">{format(new Date(msg.timestamp), "MMM dd, h:mm a")}</p>
+                      <p className="text-xs text-muted-foreground">{format(new Date(msg.timestamp), "MMM dd, h:mm a")}</p>
                     </div>
-                    <p className="text-white/80">{msg.content}</p>
+                    <p className="text-foreground/80">{msg.content}</p>
                   </div>
                 ))}
               </div>
@@ -537,21 +537,21 @@ export default function RepSupportPage() {
 
             {/* Reply Form */}
             {(selectedTicket.status === "open" || selectedTicket.status === "in_progress") && (
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-4">
-                  <p className="text-sm text-white/40">Reply to this ticket</p>
+                  <p className="text-sm text-muted-foreground">Reply to this ticket</p>
                   <Textarea
                     value={replyContent}
                     onChange={(e) => setReplyContent(e.target.value)}
                     placeholder="Type your reply..."
-                    className="min-h-[100px] bg-white/5 border-white/10 rounded-xl resize-none"
+                    className="min-h-[100px] bg-foreground/5 border-border rounded-xl resize-none"
                   />
                   <div className="flex justify-end">
                     <Button
                       onClick={handleSendReply}
                       disabled={sendingReply || !replyContent.trim()}
-                      className="h-11 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                      className="h-11 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                     >
                       {sendingReply ? (
                         <Loader2 className="w-4 h-4 animate-spin mr-2" />

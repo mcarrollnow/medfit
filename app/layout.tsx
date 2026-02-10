@@ -63,7 +63,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     manifest: '/manifest.json',
     other: {
-      'msapplication-TileColor': settings.theme_color || '#000000',
+      'msapplication-TileColor': settings.theme_color || '#F1E6DE',
     },
   }
 }
@@ -72,7 +72,7 @@ export async function generateViewport(): Promise<Viewport> {
   const settings = await getSiteSettings()
   
   return {
-    themeColor: settings.theme_color || '#000000',
+    themeColor: settings.theme_color || '#F1E6DE',
     width: 'device-width',
     initialScale: 1,
     minimumScale: 1,
@@ -89,7 +89,7 @@ export default async function RootLayout({
   const settings = await getSiteSettings()
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Explicit viewport meta for Safari compatibility */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -98,12 +98,12 @@ export default async function RootLayout({
           <link 
             rel="mask-icon" 
             href={settings.mask_icon_url} 
-            color={settings.mask_icon_color || '#000000'} 
+            color={settings.mask_icon_color || '#3A4233'} 
           />
         )}
       </head>
       <body className={`font-sans antialiased ${playfairDisplay.variable}`} suppressHydrationWarning>
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <AuthProvider>
             <SiteSettingsHead />
             <AuthRedirectHandler />

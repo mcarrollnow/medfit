@@ -228,7 +228,7 @@ export default function PaymentsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -238,13 +238,13 @@ export default function PaymentsPage() {
         <div className="mb-10 md:mb-12">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2 md:mb-4">Payment Records</h1>
-              <p className="text-lg text-white/50">Track payments, transfers, and communications</p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2 md:mb-4">Payment Records</h1>
+              <p className="text-lg text-muted-foreground">Track payments, transfers, and communications</p>
             </div>
             <Button
               onClick={handleSync}
               disabled={syncing}
-              className="rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/10 w-full sm:w-auto h-12 px-6"
+              className="rounded-xl bg-foreground/10 hover:bg-foreground/20 text-foreground border border-border w-full sm:w-auto h-12 px-6"
             >
               <RefreshCw className={cn("h-4 w-4 mr-2", syncing && "animate-spin")} />
               {syncing ? 'Syncing...' : 'Sync from Sheet'}
@@ -265,8 +265,8 @@ export default function PaymentsPage() {
                     className={cn(
                       "rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap flex-shrink-0",
                       activeTab === tab.id 
-                        ? "bg-white text-black" 
-                        : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10"
+                        ? "bg-primary text-primary-foreground" 
+                        : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border"
                     )}
                   >
                     <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
@@ -275,7 +275,7 @@ export default function PaymentsPage() {
                     {tab.badge && (
                       <span className={cn(
                         "ml-0.5 sm:ml-1 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-full",
-                        activeTab === tab.id ? "bg-black/20" : "bg-red-500 text-white"
+                        activeTab === tab.id ? "bg-foreground/20" : "bg-red-500 text-white"
                       )}>
                         {tab.badge}
                       </span>
@@ -301,15 +301,15 @@ export default function PaymentsPage() {
                   setTotalDetailsRange({ start: "", end: "" })
                   setShowTotalDetails(true)
                 }}
-                className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 text-left transition-all hover:bg-white/10 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)] group"
+                className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6 text-left transition-all hover:bg-foreground/10 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)] group"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-green-500/20 group-hover:bg-green-500/30 transition-colors">
                     <DollarSign className="h-6 w-6 text-green-400" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-2xl font-bold text-white truncate">${paymentStats.totalReceived.toLocaleString()}</p>
-                    <p className="text-sm text-white/50 flex items-center gap-1">
+                    <p className="text-2xl font-bold text-foreground truncate">${paymentStats.totalReceived.toLocaleString()}</p>
+                    <p className="text-sm text-muted-foreground flex items-center gap-1">
                       Total Received
                       <ChevronRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </p>
@@ -328,7 +328,7 @@ export default function PaymentsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: (index + 1) * 0.05 }}
-                  className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6"
+                  className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6"
                 >
                   <div className="flex items-center gap-4">
                     <div className={cn(
@@ -345,8 +345,8 @@ export default function PaymentsPage() {
                       )} />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-2xl font-bold text-white truncate">{stat.value}</p>
-                      <p className="text-sm text-white/50">{stat.label}</p>
+                      <p className="text-2xl font-bold text-foreground truncate">{stat.value}</p>
+                      <p className="text-sm text-muted-foreground">{stat.label}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -354,8 +354,8 @@ export default function PaymentsPage() {
             </div>
 
             {/* Date Range Filter */}
-            <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 Date Range Filter
               </h3>
@@ -364,20 +364,20 @@ export default function PaymentsPage() {
                   type="date"
                   value={dateRange.start}
                   onChange={(e) => setDateRange(d => ({ ...d, start: e.target.value }))}
-                  className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                 />
-                <span className="text-white/30 hidden sm:block">to</span>
+                <span className="text-muted-foreground hidden sm:block">to</span>
                 <Input
                   type="date"
                   value={dateRange.end}
                   onChange={(e) => setDateRange(d => ({ ...d, end: e.target.value }))}
-                  className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                 />
                 {(dateRange.start || dateRange.end) && (
                   <Button
                     variant="outline"
                     onClick={() => setDateRange({ start: "", end: "" })}
-                    className="rounded-xl border-white/20 text-white hover:bg-white/10 h-12"
+                    className="rounded-xl border-border text-foreground hover:bg-foreground/10 h-12"
                   >
                     Clear
                   </Button>
@@ -386,22 +386,22 @@ export default function PaymentsPage() {
             </div>
 
             {/* Recent Payments */}
-            <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
+            <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <CreditCard className="h-5 w-5" />
                   Recent Payments
                 </h3>
                 <Button
                   onClick={() => setShowNewPayment(true)}
-                  className="rounded-xl bg-white text-black hover:bg-white/90 h-12 px-6"
+                  className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 px-6"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Payment
                 </Button>
               </div>
               {loading ? (
-                <div className="text-center py-20 text-white/40">
+                <div className="text-center py-20 text-muted-foreground">
                   <RefreshCw className="h-8 w-8 mx-auto mb-4 animate-spin opacity-50" />
                   <p>Loading payments...</p>
                 </div>
@@ -425,9 +425,9 @@ export default function PaymentsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search customers..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
                 />
-                <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden max-h-[70vh] lg:max-h-[calc(100vh-300px)] overflow-y-auto">
+                <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border overflow-hidden max-h-[70vh] lg:max-h-[calc(100vh-300px)] overflow-y-auto">
                   {filteredContacts.map((contact, index) => (
                     <motion.div
                       key={contact.id}
@@ -436,20 +436,20 @@ export default function PaymentsPage() {
                       transition={{ delay: index * 0.02 }}
                       onClick={() => setSelectedContact(contact)}
                       className={cn(
-                        "p-4 cursor-pointer transition-all duration-300 border-b border-white/5 last:border-0 group",
+                        "p-4 cursor-pointer transition-all duration-300 border-b border-border last:border-0 group",
                         selectedContact?.id === contact.id 
-                          ? "bg-white/10" 
-                          : "hover:bg-white/5"
+                          ? "bg-foreground/10" 
+                          : "hover:bg-foreground/5"
                       )}
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white font-semibold">{contact.name.charAt(0).toUpperCase()}</span>
+                          <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                            <span className="text-foreground font-semibold">{contact.name.charAt(0).toUpperCase()}</span>
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="text-white font-medium truncate">{contact.name}</p>
-                            <p className="text-sm text-white/50">
+                            <p className="text-foreground font-medium truncate">{contact.name}</p>
+                            <p className="text-sm text-muted-foreground">
                               {contact.payment_count_in_range} payment{contact.payment_count_in_range !== 1 ? 's' : ''}
                             </p>
                           </div>
@@ -458,13 +458,13 @@ export default function PaymentsPage() {
                           <p className="text-green-400 font-semibold">
                             ${contact.display_total.toLocaleString()}
                           </p>
-                          <ChevronRight className="h-4 w-4 text-white/30 group-hover:text-white/60 transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                         </div>
                       </div>
                     </motion.div>
                   ))}
                   {filteredContacts.length === 0 && (
-                    <div className="text-center py-12 text-white/40">
+                    <div className="text-center py-12 text-muted-foreground">
                       <Users className="h-8 w-8 mx-auto mb-3 opacity-50" />
                       <p>No customers found</p>
                     </div>
@@ -483,7 +483,7 @@ export default function PaymentsPage() {
                   {/* Back button - prominent on mobile */}
                   <button
                     onClick={() => setSelectedContact(null)}
-                    className="lg:hidden flex items-center gap-3 text-white/70 hover:text-white transition-colors rounded-xl bg-white/5 border border-white/10 px-4 py-3 w-full"
+                    className="lg:hidden flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors rounded-xl bg-foreground/5 border border-border px-4 py-3 w-full"
                   >
                     <ArrowLeft className="h-5 w-5" />
                     <span className="font-medium">Back to Customers</span>
@@ -493,16 +493,16 @@ export default function PaymentsPage() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 sm:p-8"
+                    className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6 sm:p-8"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 flex items-center justify-center">
-                          <span className="text-xl sm:text-2xl font-bold text-white">{selectedContact.name.charAt(0).toUpperCase()}</span>
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-foreground/10 flex items-center justify-center">
+                          <span className="text-xl sm:text-2xl font-bold text-foreground">{selectedContact.name.charAt(0).toUpperCase()}</span>
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white">{selectedContact.name}</h3>
-                          <p className="text-sm sm:text-base text-white/50">
+                          <h3 className="text-xl sm:text-2xl font-bold text-foreground">{selectedContact.name}</h3>
+                          <p className="text-sm sm:text-base text-muted-foreground">
                             Customer since {selectedContact.first_payment_date 
                               ? new Date(selectedContact.first_payment_date).toLocaleDateString() 
                               : 'N/A'}
@@ -513,7 +513,7 @@ export default function PaymentsPage() {
                         <p className="text-2xl sm:text-3xl font-bold text-green-400">
                           ${filteredPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString()}
                         </p>
-                        <p className="text-xs sm:text-sm text-white/50">
+                        <p className="text-xs sm:text-sm text-muted-foreground">
                           {filteredPayments.length} payment{filteredPayments.length !== 1 ? 's' : ''} total
                         </p>
                       </div>
@@ -521,8 +521,8 @@ export default function PaymentsPage() {
                   </motion.div>
 
                   {/* Date Range Filter */}
-                  <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6">
-                    <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6">
+                    <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                       <Calendar className="h-5 w-5" />
                       Filter by Date
                     </h4>
@@ -531,20 +531,20 @@ export default function PaymentsPage() {
                         type="date"
                         value={dateRange.start}
                         onChange={(e) => setDateRange(d => ({ ...d, start: e.target.value }))}
-                        className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                       />
-                      <span className="text-white/30 hidden sm:block">to</span>
+                      <span className="text-muted-foreground hidden sm:block">to</span>
                       <Input
                         type="date"
                         value={dateRange.end}
                         onChange={(e) => setDateRange(d => ({ ...d, end: e.target.value }))}
-                        className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full sm:w-48"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full sm:w-48"
                       />
                       {(dateRange.start || dateRange.end) && (
                         <Button
                           variant="outline"
                           onClick={() => setDateRange({ start: "", end: "" })}
-                          className="rounded-xl border-white/20 text-white hover:bg-white/10 h-12"
+                          className="rounded-xl border-border text-foreground hover:bg-foreground/10 h-12"
                         >
                           Clear
                         </Button>
@@ -553,8 +553,8 @@ export default function PaymentsPage() {
                   </div>
 
                   {/* Payment History */}
-                  <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
-                    <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
+                    <h4 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <DollarSign className="h-5 w-5" />
                       Payment History
                     </h4>
@@ -562,9 +562,9 @@ export default function PaymentsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-12 text-center">
-                  <Users className="h-12 w-12 mx-auto text-white/20 mb-4" />
-                  <p className="text-white/50">Select a customer to view their payment history</p>
+                <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-12 text-center">
+                  <Users className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" />
+                  <p className="text-muted-foreground">Select a customer to view their payment history</p>
                 </div>
               )}
             </div>
@@ -585,24 +585,24 @@ export default function PaymentsPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden"
+            className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border overflow-hidden"
           >
             {/* Message Header */}
-            <div className="p-6 border-b border-white/10 flex items-center justify-between">
+            <div className="p-6 border-b border-border flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
                   <span className="text-blue-400 font-bold text-lg">J</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-lg">Johnny</p>
-                  <p className="text-sm text-white/50">Payment Coordinator</p>
+                  <p className="text-foreground font-semibold text-lg">Johnny</p>
+                  <p className="text-sm text-muted-foreground">Payment Coordinator</p>
                 </div>
               </div>
               {unreadCount > 0 && (
                 <Button
                   variant="outline"
                   onClick={handleMarkRead}
-                  className="rounded-xl border-white/20 text-white hover:bg-white/10"
+                  className="rounded-xl border-border text-foreground hover:bg-foreground/10"
                 >
                   Mark all read
                 </Button>
@@ -612,7 +612,7 @@ export default function PaymentsPage() {
             {/* Messages */}
             <div className="h-[50vh] md:h-[450px] overflow-y-auto p-6 space-y-4">
               {messages.length === 0 ? (
-                <div className="text-center py-12 text-white/40">
+                <div className="text-center py-12 text-muted-foreground">
                   <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
                   <p>No messages yet</p>
                 </div>
@@ -633,13 +633,13 @@ export default function PaymentsPage() {
                         "max-w-[80%] md:max-w-[65%] rounded-2xl px-5 py-3",
                         msg.sender === 'admin' 
                           ? "bg-blue-500 text-white" 
-                          : "bg-white/10 text-white"
+                          : "bg-foreground/10 text-foreground"
                       )}
                     >
                       <p className="text-sm leading-relaxed">{msg.message}</p>
                       <p className={cn(
                         "text-xs mt-2",
-                        msg.sender === 'admin' ? "text-blue-200" : "text-white/40"
+                        msg.sender === 'admin' ? "text-blue-200" : "text-muted-foreground"
                       )}>
                         {new Date(msg.created_at).toLocaleString()}
                       </p>
@@ -650,13 +650,13 @@ export default function PaymentsPage() {
             </div>
 
             {/* Message Input */}
-            <div className="p-6 border-t border-white/10">
+            <div className="p-6 border-t border-border">
               <div className="flex gap-4">
                 <Textarea
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type a message..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[60px]"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none min-h-[60px]"
                   rows={2}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
@@ -679,7 +679,7 @@ export default function PaymentsPage() {
 
         {/* New Payment Dialog */}
         <Dialog open={showNewPayment} onOpenChange={setShowNewPayment}>
-          <DialogContent className="bg-zinc-900/95 backdrop-blur-xl border-white/10 text-white max-w-[95vw] sm:max-w-lg mx-auto rounded-2xl">
+          <DialogContent className="bg-card/95 backdrop-blur-xl border-border text-foreground max-w-[95vw] sm:max-w-lg mx-auto rounded-2xl">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold flex items-center gap-2">
                 <DollarSign className="h-5 w-5" />
@@ -692,7 +692,7 @@ export default function PaymentsPage() {
 
         {/* New Wire Transfer Dialog */}
         <Dialog open={showNewWire} onOpenChange={setShowNewWire}>
-          <DialogContent className="bg-zinc-900/95 backdrop-blur-xl border-white/10 text-white max-w-[95vw] sm:max-w-lg mx-auto rounded-2xl">
+          <DialogContent className="bg-card/95 backdrop-blur-xl border-border text-foreground max-w-[95vw] sm:max-w-lg mx-auto rounded-2xl">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold flex items-center gap-2">
                 <Building className="h-5 w-5" />
@@ -705,7 +705,7 @@ export default function PaymentsPage() {
 
         {/* Total Received Details Dialog */}
         <Dialog open={showTotalDetails} onOpenChange={setShowTotalDetails}>
-          <DialogContent className="bg-zinc-900/95 backdrop-blur-xl border-white/10 text-white max-w-[95vw] sm:max-w-4xl mx-auto rounded-2xl max-h-[90vh] overflow-hidden flex flex-col">
+          <DialogContent className="bg-card/95 backdrop-blur-xl border-border text-foreground max-w-[95vw] sm:max-w-4xl mx-auto rounded-2xl max-h-[90vh] overflow-hidden flex flex-col">
             <DialogHeader className="flex-shrink-0">
               <DialogTitle className="text-xl font-bold flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-green-400" />
@@ -718,7 +718,7 @@ export default function PaymentsPage() {
               <div className="rounded-2xl bg-green-500/10 border border-green-500/20 p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm text-white/50 mb-1">
+                    <p className="text-sm text-muted-foreground mb-1">
                       {totalDetailsRange.start || totalDetailsRange.end 
                         ? 'Total for Selected Period' 
                         : 'All Time Total'}
@@ -726,14 +726,14 @@ export default function PaymentsPage() {
                     <p className="text-4xl font-bold text-green-400">
                       ${totalDetailsAmount.toLocaleString()}
                     </p>
-                    <p className="text-sm text-white/50 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       {totalDetailsPayments.length} transaction{totalDetailsPayments.length !== 1 ? 's' : ''}
                     </p>
                   </div>
                   {(totalDetailsRange.start || totalDetailsRange.end) && (
                     <div className="text-left sm:text-right">
-                      <p className="text-xs text-white/40 mb-1">Date Range</p>
-                      <p className="text-white font-medium">
+                      <p className="text-xs text-muted-foreground mb-1">Date Range</p>
+                      <p className="text-foreground font-medium">
                         {totalDetailsRange.start ? new Date(totalDetailsRange.start).toLocaleDateString() : 'Start'} 
                         {' — '}
                         {totalDetailsRange.end ? new Date(totalDetailsRange.end).toLocaleDateString() : 'End'}
@@ -744,35 +744,35 @@ export default function PaymentsPage() {
               </div>
 
               {/* Date Filter */}
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
-                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="rounded-2xl bg-foreground/5 border border-border p-6">
+                <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
                   Filter by Date
                 </h4>
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                   <div className="flex-1 w-full sm:w-auto">
-                    <label className="block text-xs text-white/50 mb-2">Start Date</label>
+                    <label className="block text-xs text-muted-foreground mb-2">Start Date</label>
                     <Input
                       type="date"
                       value={totalDetailsRange.start}
                       onChange={(e) => setTotalDetailsRange(d => ({ ...d, start: e.target.value }))}
-                      className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full"
+                      className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full"
                     />
                   </div>
                   <div className="flex-1 w-full sm:w-auto">
-                    <label className="block text-xs text-white/50 mb-2">End Date</label>
+                    <label className="block text-xs text-muted-foreground mb-2">End Date</label>
                     <Input
                       type="date"
                       value={totalDetailsRange.end}
                       onChange={(e) => setTotalDetailsRange(d => ({ ...d, end: e.target.value }))}
-                      className="rounded-xl bg-white/5 border-white/10 text-white h-12 w-full"
+                      className="rounded-xl bg-foreground/5 border-border text-foreground h-12 w-full"
                     />
                   </div>
                   {(totalDetailsRange.start || totalDetailsRange.end) && (
                     <Button
                       variant="outline"
                       onClick={() => setTotalDetailsRange({ start: "", end: "" })}
-                      className="rounded-xl border-white/20 text-white hover:bg-white/10 h-12 mt-auto"
+                      className="rounded-xl border-border text-foreground hover:bg-foreground/10 h-12 mt-auto"
                     >
                       Clear
                     </Button>
@@ -781,8 +781,8 @@ export default function PaymentsPage() {
               </div>
 
               {/* Transactions List */}
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
-                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="rounded-2xl bg-foreground/5 border border-border p-6">
+                <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <CreditCard className="h-5 w-5" />
                   Transactions ({totalDetailsPayments.length})
                 </h4>
@@ -794,24 +794,24 @@ export default function PaymentsPage() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.02 }}
-                        className="rounded-xl bg-white/5 border border-white/10 p-4 flex items-center justify-between gap-4"
+                        className="rounded-xl bg-foreground/5 border border-border p-4 flex items-center justify-between gap-4"
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white font-semibold text-sm">
+                          <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                            <span className="text-foreground font-semibold text-sm">
                               {payment.contact_name.charAt(0).toUpperCase()}
                             </span>
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="text-white font-medium truncate">{payment.contact_name}</p>
-                            <p className="text-xs text-white/50">
+                            <p className="text-foreground font-medium truncate">{payment.contact_name}</p>
+                            <p className="text-xs text-muted-foreground">
                               {new Date(payment.payment_date).toLocaleDateString('en-US', {
                                 month: 'short',
                                 day: 'numeric',
                                 year: 'numeric'
                               })}
                               {payment.payment_method && (
-                                <span className="ml-2 text-white/40">• {payment.payment_method}</span>
+                                <span className="ml-2 text-muted-foreground">• {payment.payment_method}</span>
                               )}
                             </p>
                           </div>
@@ -830,7 +830,7 @@ export default function PaymentsPage() {
                       </motion.div>
                     ))
                   ) : (
-                    <div className="text-center py-12 text-white/40">
+                    <div className="text-center py-12 text-muted-foreground">
                       <CreditCard className="h-12 w-12 mx-auto mb-4 opacity-50" />
                       <p>No transactions found for this period</p>
                     </div>
@@ -866,7 +866,7 @@ function ExpandablePaymentsList({
     if (m.includes('venmo')) return 'bg-blue-500/20 text-blue-400 border-blue-500/30'
     if (m.includes('cashapp') || m.includes('cash app')) return 'bg-green-500/20 text-green-400 border-green-500/30'
     if (m.includes('paypal')) return 'bg-blue-600/20 text-blue-300 border-blue-600/30'
-    return 'bg-white/10 text-white/60 border-white/20'
+    return 'bg-foreground/10 text-foreground/60 border-border'
   }
 
   return (
@@ -881,25 +881,25 @@ function ExpandablePaymentsList({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.03 }}
-            className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden transition-all hover:bg-white/[0.07]"
+            className="rounded-2xl bg-foreground/5 border border-border overflow-hidden transition-all hover:bg-card/[0.07]"
           >
             {/* Main Row - Clickable */}
             <div
               onClick={() => toggleExpand(payment.id)}
-              className="flex items-center justify-between p-3 md:p-4 cursor-pointer hover:bg-white/5 transition-colors gap-2"
+              className="flex items-center justify-between p-3 md:p-4 cursor-pointer hover:bg-foreground/5 transition-colors gap-2"
             >
               <div className="flex items-center gap-2 md:gap-4 min-w-0 flex-1">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-semibold text-sm md:text-base">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-foreground font-semibold text-sm md:text-base">
                     {payment.contact_name.charAt(0).toUpperCase()}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1">
                   {showContactName && (
-                    <p className="text-white font-medium text-sm md:text-base truncate">{payment.contact_name}</p>
+                    <p className="text-foreground font-medium text-sm md:text-base truncate">{payment.contact_name}</p>
                   )}
                   <div className="flex flex-wrap items-center gap-1 md:gap-2 text-xs md:text-sm">
-                    <span className="text-white/50">
+                    <span className="text-muted-foreground">
                       {new Date(payment.payment_date).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
@@ -931,7 +931,7 @@ function ExpandablePaymentsList({
                 </div>
                 <ChevronRight 
                   className={cn(
-                    "h-4 w-4 text-white/40 transition-transform flex-shrink-0",
+                    "h-4 w-4 text-muted-foreground transition-transform flex-shrink-0",
                     isExpanded && "rotate-90"
                   )} 
                 />
@@ -948,18 +948,18 @@ function ExpandablePaymentsList({
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-white/10">
+                  <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-border">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4">
                       {/* Amount Details */}
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Amount Sent</p>
-                        <p className="text-white font-semibold text-sm md:text-base">${payment.amount.toLocaleString()}</p>
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Amount Sent</p>
+                        <p className="text-foreground font-semibold text-sm md:text-base">${payment.amount.toLocaleString()}</p>
                       </div>
                       
                       {/* Received Minus Fee */}
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Received (minus fee)</p>
-                        <p className="text-white font-semibold text-sm md:text-base">
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Received (minus fee)</p>
+                        <p className="text-foreground font-semibold text-sm md:text-base">
                           {payment.received_minus_fee 
                             ? `$${payment.received_minus_fee.toLocaleString()}` 
                             : '—'}
@@ -967,11 +967,11 @@ function ExpandablePaymentsList({
                       </div>
                       
                       {/* Fee Amount */}
-                      <div className="rounded-lg bg-white/5 p-2 md:p-3">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Fee</p>
+                      <div className="rounded-lg bg-foreground/5 p-2 md:p-3">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Fee</p>
                         <p className={cn(
                           "font-semibold text-sm md:text-base",
-                          payment.received_minus_fee ? "text-red-400" : "text-white/40"
+                          payment.received_minus_fee ? "text-red-400" : "text-muted-foreground"
                         )}>
                           {payment.received_minus_fee 
                             ? `-$${(payment.amount - payment.received_minus_fee).toFixed(2)}` 
@@ -983,8 +983,8 @@ function ExpandablePaymentsList({
                     {/* Payment Info Row */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
                       <div>
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Date</p>
-                        <p className="text-white text-xs md:text-sm">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Date</p>
+                        <p className="text-foreground text-xs md:text-sm">
                           {new Date(payment.payment_date).toLocaleDateString('en-US', {
                             weekday: 'short',
                             month: 'short',
@@ -994,11 +994,11 @@ function ExpandablePaymentsList({
                         </p>
                       </div>
                       <div>
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Method</p>
-                        <p className="text-white text-xs md:text-sm">{payment.payment_method || 'Unknown'}</p>
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Method</p>
+                        <p className="text-foreground text-xs md:text-sm">{payment.payment_method || 'Unknown'}</p>
                       </div>
                       <div>
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Status</p>
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Status</p>
                         <div className="flex items-center gap-1">
                           {payment.confirmed ? (
                             <>
@@ -1015,17 +1015,17 @@ function ExpandablePaymentsList({
                       </div>
                       {showContactName && (
                         <div>
-                          <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">Customer</p>
-                          <p className="text-white text-xs md:text-sm">{payment.contact_name}</p>
+                          <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">Customer</p>
+                          <p className="text-foreground text-xs md:text-sm">{payment.contact_name}</p>
                         </div>
                       )}
                     </div>
 
                     {/* Notes */}
                     {payment.notes && (
-                      <div className="pt-2 md:pt-3 border-t border-white/5">
-                        <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-2">Notes</p>
-                        <p className="text-white/80 text-xs md:text-sm bg-white/5 rounded-lg p-2 md:p-3">
+                      <div className="pt-2 md:pt-3 border-t border-border">
+                        <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-2">Notes</p>
+                        <p className="text-foreground/80 text-xs md:text-sm bg-foreground/5 rounded-lg p-2 md:p-3">
                           {payment.notes}
                         </p>
                       </div>
@@ -1038,7 +1038,7 @@ function ExpandablePaymentsList({
         )
       })}
       {payments.length === 0 && (
-        <div className="text-center py-12 text-white/40">
+        <div className="text-center py-12 text-muted-foreground">
           <CreditCard className="h-12 w-12 mx-auto mb-4 opacity-50" />
           <p>No payments found</p>
         </div>
@@ -1078,29 +1078,29 @@ function WireTransfersTab({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6"
+            className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-6"
           >
             <p className={cn(
               "text-2xl font-bold",
-              stat.color === 'white' && "text-white",
+              stat.color === 'white' && "text-foreground",
               stat.color === 'yellow' && "text-yellow-400",
               stat.color === 'green' && "text-green-400"
             )}>{stat.value}</p>
-            <p className="text-sm text-white/50">{stat.label}</p>
+            <p className="text-sm text-muted-foreground">{stat.label}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Wire Transfer List */}
-      <div className="rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
+      <div className="rounded-2xl bg-foreground/5 backdrop-blur-xl border border-border p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <Building className="h-5 w-5" />
             Wire Transfers to Johnny
           </h3>
           <Button
             onClick={onNewTransfer}
-            className="rounded-xl bg-white text-black hover:bg-white/90 h-12 px-6"
+            className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 px-6"
           >
             <Plus className="h-4 w-4 mr-2" />
             New Transfer
@@ -1121,14 +1121,14 @@ function WireTransfersTab({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}
-                className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden transition-all hover:bg-white/[0.07]"
+                className="rounded-2xl bg-foreground/5 border border-border overflow-hidden transition-all hover:bg-card/[0.07]"
               >
                 {/* Main Row - Clickable */}
                 <div
                   onClick={() => hasDetails && toggleExpand(transfer.id)}
                   className={cn(
                     "flex items-center justify-between p-3 md:p-4 gap-2",
-                    hasDetails && "cursor-pointer hover:bg-white/5"
+                    hasDetails && "cursor-pointer hover:bg-foreground/5"
                   )}
                 >
                   <div className="flex items-center gap-2 md:gap-4 min-w-0 flex-1">
@@ -1147,7 +1147,7 @@ function WireTransfersTab({
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-white font-medium text-sm md:text-base truncate">
+                      <p className="text-foreground font-medium text-sm md:text-base truncate">
                         {new Date(transfer.transfer_date).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -1169,7 +1169,7 @@ function WireTransfersTab({
                         {hasDetails && (
                           <ChevronRight 
                             className={cn(
-                              "h-3 w-3 md:h-4 md:w-4 text-white/40 transition-transform",
+                              "h-3 w-3 md:h-4 md:w-4 text-muted-foreground transition-transform",
                               isExpanded && "rotate-90"
                             )} 
                           />
@@ -1178,11 +1178,11 @@ function WireTransfersTab({
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <p className="text-base md:text-xl font-bold text-white">
+                    <p className="text-base md:text-xl font-bold text-foreground">
                       ${transfer.amount.toLocaleString()}
                     </p>
                     {transfer.total_left_to_transfer !== null && (
-                      <p className="text-[10px] md:text-xs text-white/40">
+                      <p className="text-[10px] md:text-xs text-muted-foreground">
                         Bal: ${transfer.total_left_to_transfer.toLocaleString()}
                       </p>
                     )}
@@ -1199,11 +1199,11 @@ function WireTransfersTab({
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-white/10 space-y-3 md:space-y-4">
+                      <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-border space-y-3 md:space-y-4">
                         {/* Transaction Numbers */}
                         {transfer.transaction_numbers && transfer.transaction_numbers.length > 0 && (
                           <div>
-                            <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-2">
+                            <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-2">
                               Transaction Numbers
                             </p>
                             <div className="flex flex-wrap gap-1 md:gap-2">
@@ -1211,7 +1211,7 @@ function WireTransfersTab({
                                 <Badge 
                                   key={idx} 
                                   variant="outline" 
-                                  className="font-mono text-white/80 border-white/20 text-[10px] md:text-xs"
+                                  className="font-mono text-foreground/80 border-border text-[10px] md:text-xs"
                                 >
                                   {num}
                                 </Badge>
@@ -1225,20 +1225,20 @@ function WireTransfersTab({
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                             {transfer.tariff_cost && (
                               <div>
-                                <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">
+                                <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">
                                   Tariff Cost
                                 </p>
-                                <p className="text-white font-semibold text-sm md:text-base">
+                                <p className="text-foreground font-semibold text-sm md:text-base">
                                   ${transfer.tariff_cost.toLocaleString()}
                                 </p>
                               </div>
                             )}
                             {transfer.tariff_notes && (
                               <div>
-                                <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">
+                                <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">
                                   Tariff Notes
                                 </p>
-                                <p className="text-white/80 text-xs md:text-sm">
+                                <p className="text-foreground/80 text-xs md:text-sm">
                                   {transfer.tariff_notes}
                                 </p>
                               </div>
@@ -1249,10 +1249,10 @@ function WireTransfersTab({
                         {/* Bank Reference */}
                         {transfer.bank_reference && (
                           <div>
-                            <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">
+                            <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">
                               Bank Reference
                             </p>
-                            <p className="text-white/80 font-mono text-xs md:text-sm break-all">
+                            <p className="text-foreground/80 font-mono text-xs md:text-sm break-all">
                               {transfer.bank_reference}
                             </p>
                           </div>
@@ -1261,10 +1261,10 @@ function WireTransfersTab({
                         {/* Notes */}
                         {transfer.notes && (
                           <div>
-                            <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-wider mb-1">
+                            <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mb-1">
                               Notes
                             </p>
-                            <p className="text-white/80 text-xs md:text-sm">
+                            <p className="text-foreground/80 text-xs md:text-sm">
                               {transfer.notes}
                             </p>
                           </div>
@@ -1272,10 +1272,10 @@ function WireTransfersTab({
 
                         {/* Balance Info */}
                         {transfer.total_left_to_transfer !== null && (
-                          <div className="pt-2 border-t border-white/5">
+                          <div className="pt-2 border-t border-border">
                             <div className="flex items-center justify-between">
-                              <span className="text-white/50 text-xs md:text-sm">Remaining Balance</span>
-                              <span className="text-white font-semibold text-sm md:text-base">
+                              <span className="text-muted-foreground text-xs md:text-sm">Remaining Balance</span>
+                              <span className="text-foreground font-semibold text-sm md:text-base">
                                 ${transfer.total_left_to_transfer.toLocaleString()}
                               </span>
                             </div>
@@ -1289,7 +1289,7 @@ function WireTransfersTab({
             )
           })}
           {wireTransfers.length === 0 && (
-            <div className="text-center py-12 text-white/40">
+            <div className="text-center py-12 text-muted-foreground">
               <Building className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No wire transfers found</p>
             </div>
@@ -1332,28 +1332,28 @@ function NewPaymentForm({ onSuccess }: { onSuccess: () => void }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm text-white/50 mb-2">Customer Name</label>
+        <label className="block text-sm text-muted-foreground mb-2">Customer Name</label>
         <Input
           value={formData.contact_name}
           onChange={(e) => setFormData(d => ({ ...d, contact_name: e.target.value }))}
           required
           placeholder="Enter customer name..."
-          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-white/50 mb-2">Date</label>
+          <label className="block text-sm text-muted-foreground mb-2">Date</label>
           <Input
             type="date"
             value={formData.payment_date}
             onChange={(e) => setFormData(d => ({ ...d, payment_date: e.target.value }))}
             required
-            className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+            className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
           />
         </div>
         <div>
-          <label className="block text-sm text-white/50 mb-2">Amount</label>
+          <label className="block text-sm text-muted-foreground mb-2">Amount</label>
           <Input
             type="number"
             step="0.01"
@@ -1361,17 +1361,17 @@ function NewPaymentForm({ onSuccess }: { onSuccess: () => void }) {
             onChange={(e) => setFormData(d => ({ ...d, amount: e.target.value }))}
             required
             placeholder="0.00"
-            className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+            className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
           />
         </div>
       </div>
       <div>
-        <label className="block text-sm text-white/50 mb-2">Payment Method</label>
+        <label className="block text-sm text-muted-foreground mb-2">Payment Method</label>
         <Select 
           value={formData.payment_method} 
           onValueChange={(v) => setFormData(d => ({ ...d, payment_method: v }))}
         >
-          <SelectTrigger className="rounded-xl bg-white/5 border-white/10 text-white h-12">
+          <SelectTrigger className="rounded-xl bg-foreground/5 border-border text-foreground h-12">
             <SelectValue placeholder="Select method" />
           </SelectTrigger>
           <SelectContent>
@@ -1385,19 +1385,19 @@ function NewPaymentForm({ onSuccess }: { onSuccess: () => void }) {
         </Select>
       </div>
       <div>
-        <label className="block text-sm text-white/50 mb-2">Notes</label>
+        <label className="block text-sm text-muted-foreground mb-2">Notes</label>
         <Textarea
           value={formData.notes}
           onChange={(e) => setFormData(d => ({ ...d, notes: e.target.value }))}
           placeholder="Optional notes..."
-          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[80px]"
+          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none min-h-[80px]"
           rows={3}
         />
       </div>
       <Button 
         type="submit" 
         disabled={saving}
-        className="w-full rounded-xl bg-white text-black hover:bg-white/90 h-12 font-medium"
+        className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 font-medium"
       >
         {saving ? 'Saving...' : 'Add Payment'}
       </Button>
@@ -1436,7 +1436,7 @@ function NewWireForm({ onSuccess }: { onSuccess: () => void }) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-white/50 mb-2">Amount</label>
+          <label className="block text-sm text-muted-foreground mb-2">Amount</label>
           <Input
             type="number"
             step="0.01"
@@ -1444,35 +1444,35 @@ function NewWireForm({ onSuccess }: { onSuccess: () => void }) {
             onChange={(e) => setFormData(d => ({ ...d, amount: e.target.value }))}
             required
             placeholder="0.00"
-            className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+            className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
           />
         </div>
         <div>
-          <label className="block text-sm text-white/50 mb-2">Date</label>
+          <label className="block text-sm text-muted-foreground mb-2">Date</label>
           <Input
             type="date"
             value={formData.transfer_date}
             onChange={(e) => setFormData(d => ({ ...d, transfer_date: e.target.value }))}
             required
-            className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+            className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
           />
         </div>
       </div>
       <div>
-        <label className="block text-sm text-white/50 mb-2">Bank Reference</label>
+        <label className="block text-sm text-muted-foreground mb-2">Bank Reference</label>
         <Input
           value={formData.bank_reference}
           onChange={(e) => setFormData(d => ({ ...d, bank_reference: e.target.value }))}
-          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
           placeholder="Optional reference number..."
         />
       </div>
       <div>
-        <label className="block text-sm text-white/50 mb-2">Notes</label>
+        <label className="block text-sm text-muted-foreground mb-2">Notes</label>
         <Textarea
           value={formData.notes}
           onChange={(e) => setFormData(d => ({ ...d, notes: e.target.value }))}
-          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[80px]"
+          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none min-h-[80px]"
           placeholder="Optional notes..."
           rows={3}
         />
@@ -1480,7 +1480,7 @@ function NewWireForm({ onSuccess }: { onSuccess: () => void }) {
       <Button 
         type="submit" 
         disabled={saving}
-        className="w-full rounded-xl bg-white text-black hover:bg-white/90 h-12 font-medium"
+        className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 font-medium"
       >
         {saving ? 'Saving...' : 'Record Transfer'}
       </Button>

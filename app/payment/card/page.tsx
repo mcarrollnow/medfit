@@ -156,7 +156,7 @@ function CardPaymentContent() {
       <div className="max-w-lg mx-auto">
         <Link
           href={`/payment?orderId=${orderData.orderId}&total=${orderData.orderTotal}&wallet=`}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Payment Options
@@ -169,18 +169,18 @@ function CardPaymentContent() {
               <CreditCard className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
                 Card Payment
               </h1>
-              <p className="text-white/50">
-                Total: <span className="font-semibold text-white">${orderData.orderTotal.toFixed(2)}</span>
+              <p className="text-muted-foreground">
+                Total: <span className="font-semibold text-foreground">${orderData.orderTotal.toFixed(2)}</span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Payment Form Card */}
-        <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
           <CardContent className="p-6 sm:p-8">
             <AuthorizeNetCheckout
               orderId={orderData.orderId}
@@ -198,7 +198,7 @@ function CardPaymentContent() {
 
         {/* Security Note */}
         <div className="mt-6 text-center">
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-muted-foreground">
             Your payment is secured with industry-standard encryption
           </p>
         </div>

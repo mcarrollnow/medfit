@@ -181,7 +181,7 @@ export function PolicyContentRenderer({ content }: PolicyContentRendererProps) {
                     {section.items?.map((item: any, itemIndex: number) => {
                       const ItemIcon = item.icon ? iconMap[item.icon] || Database : Database
                       return (
-                        <div key={itemIndex} className="bg-white/[0.03] rounded-xl p-5 border border-white/5">
+                        <div key={itemIndex} className="bg-foreground/[0.04] rounded-xl p-5 border border-border">
                           <div className="flex items-center gap-3 mb-3">
                             <ItemIcon className="w-4 h-4" />
                             <h4 className="font-medium">{item.title}</h4>
@@ -222,7 +222,7 @@ export function PolicyContentRenderer({ content }: PolicyContentRendererProps) {
                       const iconColorClass = column.iconColor === 'red' ? 'text-red-400' : 
                                             column.iconColor === 'green' ? 'text-green-400' : ''
                       return (
-                        <div key={colIndex} className="bg-white/[0.03] rounded-xl p-5 border border-white/5">
+                        <div key={colIndex} className="bg-foreground/[0.04] rounded-xl p-5 border border-border">
                           <h4 className="font-medium mb-3 flex items-center gap-2">
                             <ColIcon className={`w-4 h-4 ${iconColorClass}`} />
                             {column.title}
@@ -264,7 +264,7 @@ export function PolicyContentRenderer({ content }: PolicyContentRendererProps) {
                   <ul className="space-y-3 text-muted-foreground">
                     {section.items?.map((item: any, itemIndex: number) => (
                       <li key={itemIndex} className="flex items-start gap-3">
-                        <span className="font-mono text-sm bg-white/10 rounded px-2 py-0.5 mt-0.5">{itemIndex + 1}</span>
+                        <span className="font-mono text-sm bg-foreground/10 rounded px-2 py-0.5 mt-0.5">{itemIndex + 1}</span>
                         <span>
                           {item.label ? (
                             <>
@@ -370,7 +370,7 @@ export function PolicyContentRenderer({ content }: PolicyContentRendererProps) {
                   )}
                   <div className="grid md:grid-cols-2 gap-4">
                     {section.items?.map((item: any, itemIndex: number) => (
-                      <div key={itemIndex} className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                      <div key={itemIndex} className="bg-foreground/[0.04] rounded-xl p-4 border border-border">
                         <h4 className="font-medium mb-1">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">{item.text}</p>
                       </div>
@@ -433,7 +433,7 @@ export function PolicyContentRenderer({ content }: PolicyContentRendererProps) {
                     <p className="text-muted-foreground leading-relaxed">{section.content}</p>
                   )}
                   {section.metadata && (
-                    <div className="bg-white/[0.03] rounded-xl p-5 border border-white/5">
+                    <div className="bg-foreground/[0.04] rounded-xl p-5 border border-border">
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <p className="text-muted-foreground">Policy Owner</p>

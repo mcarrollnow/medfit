@@ -181,7 +181,7 @@ export default function RepSettingsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -192,7 +192,7 @@ export default function RepSettingsPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -200,8 +200,8 @@ export default function RepSettingsPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Settings</h1>
-          <p className="text-xl text-white/50">Manage your account settings and preferences.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Settings</h1>
+          <p className="text-xl text-muted-foreground">Manage your account settings and preferences.</p>
         </div>
 
         {/* Success/Error Messages */}
@@ -222,7 +222,7 @@ export default function RepSettingsPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Navigation */}
           <div className="lg:w-64 flex-shrink-0">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/[0.07] backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 p-3 space-y-1">
                 <button
@@ -230,8 +230,8 @@ export default function RepSettingsPage() {
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-left",
                     activeSection === "profile"
-                      ? "bg-white text-black"
-                      : "text-white/60 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                   )}
                 >
                   <User className="w-5 h-5" />
@@ -242,8 +242,8 @@ export default function RepSettingsPage() {
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-left",
                     activeSection === "password"
-                      ? "bg-white text-black"
-                      : "text-white/60 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                   )}
                 >
                   <Lock className="w-5 h-5" />
@@ -254,8 +254,8 @@ export default function RepSettingsPage() {
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-left",
                     activeSection === "notifications"
-                      ? "bg-white text-black"
-                      : "text-white/60 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                   )}
                 >
                   <Bell className="w-5 h-5" />
@@ -270,108 +270,108 @@ export default function RepSettingsPage() {
             {/* Profile Section */}
             {activeSection === "profile" && (
               <div className="space-y-8">
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-6">
-                    <h2 className="text-2xl font-bold text-white">Profile Information</h2>
-                    <p className="text-white/50">Update your personal information and contact details.</p>
+                    <h2 className="text-2xl font-bold text-foreground">Profile Information</h2>
+                    <p className="text-muted-foreground">Update your personal information and contact details.</p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">First Name</label>
+                        <label className="text-sm font-medium text-foreground/60">First Name</label>
                         <Input
                           value={profile.first_name}
                           onChange={(e) => setProfile({ ...profile, first_name: e.target.value })}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Last Name</label>
+                        <label className="text-sm font-medium text-foreground/60">Last Name</label>
                         <Input
                           value={profile.last_name}
                           onChange={(e) => setProfile({ ...profile, last_name: e.target.value })}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Email</label>
+                      <label className="text-sm font-medium text-foreground/60">Email</label>
                       <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input
                           type="email"
                           value={profile.email}
                           onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                          className="h-12 pl-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 pl-12 bg-foreground/5 border-border rounded-xl"
                           disabled
                         />
                       </div>
-                      <p className="text-xs text-white/40">Contact support to change your email address</p>
+                      <p className="text-xs text-muted-foreground">Contact support to change your email address</p>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Phone</label>
+                      <label className="text-sm font-medium text-foreground/60">Phone</label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input
                           type="tel"
                           value={profile.phone}
                           onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
                           placeholder="(555) 555-5555"
-                          className="h-12 pl-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 pl-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Company Name</label>
+                      <label className="text-sm font-medium text-foreground/60">Company Name</label>
                       <div className="relative">
-                        <Building className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                        <Building className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input
                           value={profile.company_name}
                           onChange={(e) => setProfile({ ...profile, company_name: e.target.value })}
                           placeholder="Your company"
-                          className="h-12 pl-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 pl-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
 
-                    <div className="border-t border-white/10 pt-6">
-                      <h3 className="text-lg font-semibold text-white mb-4">Address</h3>
+                    <div className="border-t border-border pt-6">
+                      <h3 className="text-lg font-semibold text-foreground mb-4">Address</h3>
                       <div className="space-y-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Street Address</label>
+                          <label className="text-sm font-medium text-foreground/60">Street Address</label>
                           <Input
                             value={profile.address}
                             onChange={(e) => setProfile({ ...profile, address: e.target.value })}
                             placeholder="123 Main St"
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                           <div className="col-span-2 space-y-2">
-                            <label className="text-sm font-medium text-white/60">City</label>
+                            <label className="text-sm font-medium text-foreground/60">City</label>
                             <Input
                               value={profile.city}
                               onChange={(e) => setProfile({ ...profile, city: e.target.value })}
-                              className="h-12 bg-white/5 border-white/10 rounded-xl"
+                              className="h-12 bg-foreground/5 border-border rounded-xl"
                             />
                           </div>
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">State</label>
+                            <label className="text-sm font-medium text-foreground/60">State</label>
                             <Input
                               value={profile.state}
                               onChange={(e) => setProfile({ ...profile, state: e.target.value })}
-                              className="h-12 bg-white/5 border-white/10 rounded-xl"
+                              className="h-12 bg-foreground/5 border-border rounded-xl"
                             />
                           </div>
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">ZIP</label>
+                            <label className="text-sm font-medium text-foreground/60">ZIP</label>
                             <Input
                               value={profile.zip}
                               onChange={(e) => setProfile({ ...profile, zip: e.target.value })}
-                              className="h-12 bg-white/5 border-white/10 rounded-xl"
+                              className="h-12 bg-foreground/5 border-border rounded-xl"
                             />
                           </div>
                         </div>
@@ -382,7 +382,7 @@ export default function RepSettingsPage() {
                       <Button
                         onClick={handleSaveProfile}
                         disabled={saving}
-                        className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                        className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                       >
                         {saving ? (
                           <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -400,21 +400,21 @@ export default function RepSettingsPage() {
             {/* Password Section */}
             {activeSection === "password" && (
               <div className="space-y-8">
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-6">
-                    <h2 className="text-2xl font-bold text-white">Change Password</h2>
-                    <p className="text-white/50">Update your password to keep your account secure.</p>
+                    <h2 className="text-2xl font-bold text-foreground">Change Password</h2>
+                    <p className="text-muted-foreground">Update your password to keep your account secure.</p>
 
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Current Password</label>
+                        <label className="text-sm font-medium text-foreground/60">Current Password</label>
                         <div className="relative">
                           <Input
                             type={showPasswords.current ? "text" : "password"}
                             value={passwordForm.current}
                             onChange={(e) => setPasswordForm({ ...passwordForm, current: e.target.value })}
-                            className="h-12 bg-white/5 border-white/10 rounded-xl pr-12"
+                            className="h-12 bg-foreground/5 border-border rounded-xl pr-12"
                           />
                           <button
                             type="button"
@@ -422,22 +422,22 @@ export default function RepSettingsPage() {
                             className="absolute right-4 top-1/2 -translate-y-1/2"
                           >
                             {showPasswords.current ? (
-                              <EyeOff className="h-5 w-5 text-white/40" />
+                              <EyeOff className="h-5 w-5 text-muted-foreground" />
                             ) : (
-                              <Eye className="h-5 w-5 text-white/40" />
+                              <Eye className="h-5 w-5 text-muted-foreground" />
                             )}
                           </button>
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">New Password</label>
+                        <label className="text-sm font-medium text-foreground/60">New Password</label>
                         <div className="relative">
                           <Input
                             type={showPasswords.new ? "text" : "password"}
                             value={passwordForm.new}
                             onChange={(e) => setPasswordForm({ ...passwordForm, new: e.target.value })}
-                            className="h-12 bg-white/5 border-white/10 rounded-xl pr-12"
+                            className="h-12 bg-foreground/5 border-border rounded-xl pr-12"
                           />
                           <button
                             type="button"
@@ -445,24 +445,24 @@ export default function RepSettingsPage() {
                             className="absolute right-4 top-1/2 -translate-y-1/2"
                           >
                             {showPasswords.new ? (
-                              <EyeOff className="h-5 w-5 text-white/40" />
+                              <EyeOff className="h-5 w-5 text-muted-foreground" />
                             ) : (
-                              <Eye className="h-5 w-5 text-white/40" />
+                              <Eye className="h-5 w-5 text-muted-foreground" />
                             )}
                           </button>
                         </div>
-                        <p className="text-xs text-white/40">Must be at least 8 characters</p>
+                        <p className="text-xs text-muted-foreground">Must be at least 8 characters</p>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-white/60">Confirm New Password</label>
+                        <label className="text-sm font-medium text-foreground/60">Confirm New Password</label>
                         <div className="relative">
                           <Input
                             type={showPasswords.confirm ? "text" : "password"}
                             value={passwordForm.confirm}
                             onChange={(e) => setPasswordForm({ ...passwordForm, confirm: e.target.value })}
                             className={cn(
-                              "h-12 bg-white/5 border-white/10 rounded-xl pr-12",
+                              "h-12 bg-foreground/5 border-border rounded-xl pr-12",
                               passwordForm.confirm && passwordForm.new !== passwordForm.confirm && "border-red-500/50"
                             )}
                           />
@@ -472,9 +472,9 @@ export default function RepSettingsPage() {
                             className="absolute right-4 top-1/2 -translate-y-1/2"
                           >
                             {showPasswords.confirm ? (
-                              <EyeOff className="h-5 w-5 text-white/40" />
+                              <EyeOff className="h-5 w-5 text-muted-foreground" />
                             ) : (
-                              <Eye className="h-5 w-5 text-white/40" />
+                              <Eye className="h-5 w-5 text-muted-foreground" />
                             )}
                           </button>
                         </div>
@@ -485,7 +485,7 @@ export default function RepSettingsPage() {
                       <Button
                         onClick={handleChangePassword}
                         disabled={saving || !passwordForm.current || !passwordForm.new || !passwordForm.confirm}
-                        className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                        className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                       >
                         {saving ? (
                           <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -503,17 +503,17 @@ export default function RepSettingsPage() {
             {/* Notifications Section */}
             {activeSection === "notifications" && (
               <div className="space-y-8">
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-6">
-                    <h2 className="text-2xl font-bold text-white">Email Notifications</h2>
-                    <p className="text-white/50">Choose what emails you want to receive.</p>
+                    <h2 className="text-2xl font-bold text-foreground">Email Notifications</h2>
+                    <p className="text-muted-foreground">Choose what emails you want to receive.</p>
 
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                         <div>
-                          <p className="font-semibold text-white">New Order Alerts</p>
-                          <p className="text-sm text-white/50">Get notified when a customer places an order</p>
+                          <p className="font-semibold text-foreground">New Order Alerts</p>
+                          <p className="text-sm text-muted-foreground">Get notified when a customer places an order</p>
                         </div>
                         <Switch
                           checked={notifications.email_new_order}
@@ -521,10 +521,10 @@ export default function RepSettingsPage() {
                         />
                       </div>
 
-                      <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                         <div>
-                          <p className="font-semibold text-white">Commission Paid</p>
-                          <p className="text-sm text-white/50">Get notified when commission is paid to your wallet</p>
+                          <p className="font-semibold text-foreground">Commission Paid</p>
+                          <p className="text-sm text-muted-foreground">Get notified when commission is paid to your wallet</p>
                         </div>
                         <Switch
                           checked={notifications.email_commission_paid}
@@ -532,10 +532,10 @@ export default function RepSettingsPage() {
                         />
                       </div>
 
-                      <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                         <div>
-                          <p className="font-semibold text-white">New Customer Signup</p>
-                          <p className="text-sm text-white/50">Get notified when a new customer is assigned to you</p>
+                          <p className="font-semibold text-foreground">New Customer Signup</p>
+                          <p className="text-sm text-muted-foreground">Get notified when a new customer is assigned to you</p>
                         </div>
                         <Switch
                           checked={notifications.email_customer_signup}
@@ -543,10 +543,10 @@ export default function RepSettingsPage() {
                         />
                       </div>
 
-                      <div className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5 border border-border">
                         <div>
-                          <p className="font-semibold text-white">Weekly Summary</p>
-                          <p className="text-sm text-white/50">Receive a weekly summary of your sales and commission</p>
+                          <p className="font-semibold text-foreground">Weekly Summary</p>
+                          <p className="text-sm text-muted-foreground">Receive a weekly summary of your sales and commission</p>
                         </div>
                         <Switch
                           checked={notifications.email_weekly_summary}
@@ -559,7 +559,7 @@ export default function RepSettingsPage() {
                       <Button
                         onClick={handleSaveNotifications}
                         disabled={saving}
-                        className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                        className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                       >
                         {saving ? (
                           <Loader2 className="w-5 h-5 animate-spin mr-2" />

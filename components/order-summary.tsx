@@ -83,7 +83,7 @@ export function OrderSummary({ items, discount = 0, promoCode, freeShipping, shi
   const isFixedDiscount = fixedDiscountAmount !== undefined && fixedDiscountAmount > 0
 
   return (
-    <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+    <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
       <CardHeader>
         <CardTitle>Order Summary</CardTitle>
       </CardHeader>
@@ -97,7 +97,7 @@ export function OrderSummary({ items, discount = 0, promoCode, freeShipping, shi
             
             return (
                 <div key={item.id} className="flex items-start gap-3">
-                  <div className="relative w-14 h-20 bg-black rounded overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#010202' }}>
+                  <div className="relative w-14 h-20 bg-background rounded overflow-hidden flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#010202' }}>
                     {item.cart_image ? (
                       // Render SVG directly from cart_image preserving aspect ratio
                       <div 

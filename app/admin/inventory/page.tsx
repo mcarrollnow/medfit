@@ -681,7 +681,7 @@ export default function InventoryPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-white/50">Loading inventory...</div>
+        <div className="text-muted-foreground">Loading inventory...</div>
       </div>
     )
   }
@@ -694,15 +694,15 @@ export default function InventoryPage() {
           {/* Back Navigation */}
           <Link
             href="/admin"
-            className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+            className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="text-base font-medium">Back to Admin</span>
           </Link>
 
           <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Categories</h1>
-            <p className="text-lg text-white/50">Manage product categories and their display colors</p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">Categories</h1>
+            <p className="text-lg text-muted-foreground">Manage product categories and their display colors</p>
           </div>
 
           <div className="flex gap-3 mb-10">
@@ -710,7 +710,7 @@ export default function InventoryPage() {
               onClick={() => setInventoryTab("products")}
               className={cn(
                 "rounded-2xl px-5 py-3 text-sm font-medium transition-all duration-300 flex items-center gap-2",
-                "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10",
+                "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border",
               )}
             >
               <Package className="h-4 w-4" />
@@ -720,7 +720,7 @@ export default function InventoryPage() {
               onClick={() => setInventoryTab("categories")}
               className={cn(
                 "rounded-2xl px-5 py-3 text-sm font-medium transition-all duration-300 flex items-center gap-2",
-                "bg-white text-black",
+                "bg-primary text-primary-foreground",
               )}
             >
               <FolderOpen className="h-4 w-4" />
@@ -728,35 +728,35 @@ export default function InventoryPage() {
             </button>
           </div>
 
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8 mb-8">
-            <h3 className="text-lg font-semibold text-white mb-6">Add New Category</h3>
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8 mb-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6">Add New Category</h3>
             <div className="flex gap-4 items-end flex-wrap">
               <div className="flex-1 min-w-[200px]">
-                <label className="block text-sm text-white/50 mb-2">Category Name</label>
+                <label className="block text-sm text-muted-foreground mb-2">Category Name</label>
                 <Input
                   value={newCategoryName}
                   onChange={(e) => setNewCategoryName(e.target.value)}
                   placeholder="Enter category name..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
                 />
               </div>
               <div className="w-48">
-                <label className="block text-sm text-white/50 mb-2">Color</label>
+                <label className="block text-sm text-muted-foreground mb-2">Color</label>
                 <div className="flex gap-2">
                   <input
                     type="color"
                     value={newCategoryColor}
                     onChange={(e) => setNewCategoryColor(e.target.value)}
-                    className="h-12 w-12 rounded-xl cursor-pointer bg-transparent border border-white/10"
+                    className="h-12 w-12 rounded-xl cursor-pointer bg-transparent border border-border"
                   />
                   <Input
                     value={newCategoryColor}
                     onChange={(e) => setNewCategoryColor(e.target.value)}
-                    className="rounded-xl bg-white/5 border-white/10 text-white h-12 font-mono"
+                    className="rounded-xl bg-foreground/5 border-border text-foreground h-12 font-mono"
                   />
                 </div>
               </div>
-              <Button onClick={handleCreateCategory} className="rounded-xl h-12 px-6 bg-white text-black hover:bg-white/90">
+              <Button onClick={handleCreateCategory} className="rounded-xl h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90">
                 <Plus className="h-4 w-4 mr-2" />
                 Add
               </Button>
@@ -767,54 +767,54 @@ export default function InventoryPage() {
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="rounded-2xl bg-white/5 border border-white/10 p-6"
+                className="rounded-2xl bg-foreground/5 border border-border p-6"
               >
                 {editingCategory?.id === category.id ? (
                   <div className="space-y-4">
                     <div className="flex gap-4 items-end flex-wrap">
                       <div className="flex-1 min-w-[200px]">
-                        <label className="block text-sm text-white/50 mb-2">Name</label>
+                        <label className="block text-sm text-muted-foreground mb-2">Name</label>
                         <Input
                           value={editingCategory.name}
                           onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })}
-                          className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
                         />
                       </div>
                       <div className="w-48">
-                        <label className="block text-sm text-white/50 mb-2">Color</label>
+                        <label className="block text-sm text-muted-foreground mb-2">Color</label>
                         <div className="flex gap-2">
                           <input
                             type="color"
                             value={editingCategory.color || "#FFFFFF"}
                             onChange={(e) => setEditingCategory({ ...editingCategory, color: e.target.value })}
-                            className="h-12 w-12 rounded-xl cursor-pointer bg-transparent border border-white/10"
+                            className="h-12 w-12 rounded-xl cursor-pointer bg-transparent border border-border"
                           />
                           <Input
                             value={editingCategory.color || ""}
                             onChange={(e) => setEditingCategory({ ...editingCategory, color: e.target.value })}
-                            className="rounded-xl bg-white/5 border-white/10 text-white h-12 font-mono"
+                            className="rounded-xl bg-foreground/5 border-border text-foreground h-12 font-mono"
                           />
                         </div>
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm text-white/50 mb-2">Description</label>
+                      <label className="block text-sm text-muted-foreground mb-2">Description</label>
                       <Textarea
                         value={editingCategory.description || ""}
                         onChange={(e) => setEditingCategory({ ...editingCategory, description: e.target.value })}
-                        className="rounded-xl bg-white/5 border-white/10 text-white min-h-[80px]"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground min-h-[80px]"
                       />
                     </div>
                     <div className="flex gap-3 pt-2">
-                      <Button onClick={() => handleSaveCategory(editingCategory)} className="rounded-xl bg-white text-black hover:bg-white/90">
+                      <Button onClick={() => handleSaveCategory(editingCategory)} className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90">
                         <Save className="h-4 w-4 mr-2" />
                         Save
                       </Button>
-                      <Button onClick={() => setEditingCategory(null)} variant="outline" className="rounded-xl border-white/20 text-white hover:bg-white/10">
+                      <Button onClick={() => setEditingCategory(null)} variant="outline" className="rounded-xl border-border text-foreground hover:bg-foreground/10">
                         Cancel
                       </Button>
                     </div>
-                    <p className="text-xs text-white/40 flex items-center gap-2">
+                    <p className="text-xs text-muted-foreground flex items-center gap-2">
                       <RefreshCw className="h-3 w-3" />
                       Saving will update the color of all products in this category
                     </p>
@@ -824,16 +824,16 @@ export default function InventoryPage() {
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl" style={{ backgroundColor: category.color || "#666" }} />
                       <div>
-                        <h3 className="text-lg font-semibold text-white">{category.name}</h3>
-                        <p className="text-sm text-white/50">
+                        <h3 className="text-lg font-semibold text-foreground">{category.name}</h3>
+                        <p className="text-sm text-muted-foreground">
                           {groupedProducts.filter((p) => p.category_id === category.id).length} products
                           {category.description && ` • ${category.description}`}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-mono text-white/40 mr-4">{category.color || "No color"}</span>
-                      <Button onClick={() => setEditingCategory(category)} variant="outline" size="sm" className="rounded-xl border-white/20 text-white hover:bg-white/10">
+                      <span className="text-sm font-mono text-muted-foreground mr-4">{category.color || "No color"}</span>
+                      <Button onClick={() => setEditingCategory(category)} variant="outline" size="sm" className="rounded-xl border-border text-foreground hover:bg-foreground/10">
                         Edit
                       </Button>
                       <Button onClick={() => handleDeleteCategory(category.id)} variant="outline" size="sm" className="rounded-xl border-red-500/30 text-red-400 hover:bg-red-500/10">
@@ -847,7 +847,7 @@ export default function InventoryPage() {
           </div>
 
           {categories.length === 0 && (
-            <div className="text-center py-20 text-white/40">
+            <div className="text-center py-20 text-muted-foreground">
               <FolderOpen className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No categories found. Add one above to get started.</p>
             </div>
@@ -864,7 +864,7 @@ export default function InventoryPage() {
     return (
       <div className="min-h-screen overflow-x-hidden">
         <div className="max-w-6xl mx-auto px-4 md:px-0">
-          <button onClick={handleBackToList} className="flex items-center gap-2 text-white/50 hover:text-white transition-colors mb-8">
+          <button onClick={handleBackToList} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ArrowLeft className="h-5 w-5" />
             <span>Back to Inventory</span>
           </button>
@@ -873,17 +873,17 @@ export default function InventoryPage() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-4 h-4 rounded-full" style={{ backgroundColor: displayColor }} />
-                <span className="text-white/50">{getCategoryName(editingProduct, categories)}</span>
+                <span className="text-muted-foreground">{getCategoryName(editingProduct, categories)}</span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">{editingProduct.base_name}</h1>
-              <p className="text-white/50 mt-2">
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">{editingProduct.base_name}</h1>
+              <p className="text-muted-foreground mt-2">
                 {editingProduct.variants.length} variant{editingProduct.variants.length !== 1 ? "s" : ""}
               </p>
             </div>
             <Button 
               onClick={handleSave} 
               disabled={isSavingProduct}
-              className="rounded-xl bg-white text-black hover:bg-white/90 px-6 h-12 w-full md:w-auto shrink-0 disabled:opacity-70"
+              className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6 h-12 w-full md:w-auto shrink-0 disabled:opacity-70"
             >
               {isSavingProduct ? (
                 <>
@@ -911,12 +911,12 @@ export default function InventoryPage() {
             <div className="mt-4">
               {activeTab === "card" ? (
                 <div className="space-y-8">
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-                    <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <Eye className="h-5 w-5" />
                       Live Card Preview
                     </h3>
-                    <p className="text-sm text-white/50 mb-6">This is how the product card appears on the store</p>
+                    <p className="text-sm text-muted-foreground mb-6">This is how the product card appears on the store</p>
                     <div className="flex justify-center">
                       <div className="w-full max-w-[320px]">
                         <ProductCard
@@ -985,29 +985,29 @@ export default function InventoryPage() {
                     }}
                   />
 
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-                    <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <FolderOpen className="h-5 w-5" />
                       Product Details
                     </h3>
                     <div className="space-y-6">
                       <div>
-                        <label className="block text-sm text-white/50 mb-2">Product Name</label>
+                        <label className="block text-sm text-muted-foreground mb-2">Product Name</label>
                         <Input
                           type="text"
                           value={editingProduct.base_name}
                           onChange={(e) => setEditingProduct({ ...editingProduct, base_name: e.target.value })}
                           placeholder="Enter product name..."
-                          className="rounded-xl bg-white/5 border-white/10 text-white h-12"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground h-12"
                         />
-                        <p className="text-xs text-white/40 mt-2">This is the main product name displayed on the store</p>
+                        <p className="text-xs text-muted-foreground mt-2">This is the main product name displayed on the store</p>
                       </div>
                       <div>
-                        <label className="block text-sm text-white/50 mb-2">Category</label>
+                        <label className="block text-sm text-muted-foreground mb-2">Category</label>
                         <select
                           value={editingProduct.category_id || ""}
                           onChange={(e) => handleProductCategoryChange(e.target.value)}
-                          className="rounded-xl w-full bg-white/5 border border-white/10 text-white h-12 px-4"
+                          className="rounded-xl w-full bg-foreground/5 border border-border text-foreground h-12 px-4"
                         >
                           <option value="">No Category</option>
                           {categories.map((cat) => (
@@ -1016,14 +1016,14 @@ export default function InventoryPage() {
                             </option>
                           ))}
                         </select>
-                        <p className="text-xs text-white/40 mt-2">Changing category will update the product&apos;s display color</p>
+                        <p className="text-xs text-muted-foreground mt-2">Changing category will update the product&apos;s display color</p>
                       </div>
                       <div>
-                        <label className="block text-sm text-white/50 mb-2">Display Color</label>
+                        <label className="block text-sm text-muted-foreground mb-2">Display Color</label>
                         <div className="flex gap-3 items-center">
-                          <div className="w-12 h-12 rounded-xl border border-white/20" style={{ backgroundColor: displayColor }} />
-                          <span className="font-mono text-white/60">{displayColor}</span>
-                          <span className="text-white/40 text-sm">(inherited from category)</span>
+                          <div className="w-12 h-12 rounded-xl border border-border" style={{ backgroundColor: displayColor }} />
+                          <span className="font-mono text-foreground/60">{displayColor}</span>
+                          <span className="text-muted-foreground text-sm">(inherited from category)</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -1032,18 +1032,18 @@ export default function InventoryPage() {
                           id="is_active"
                           checked={editingProduct.is_active}
                           onChange={(e) => setEditingProduct({ ...editingProduct, is_active: e.target.checked })}
-                          className="w-5 h-5 rounded bg-white/5 border-white/20"
+                          className="w-5 h-5 rounded bg-foreground/5 border-border"
                         />
-                        <label htmlFor="is_active" className="text-white">
+                        <label htmlFor="is_active" className="text-foreground">
                           Product is active and visible on store
                         </label>
                       </div>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
                     <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                         <DollarSign className="h-5 w-5" />
                         Variants & Pricing
                       </h3>
@@ -1051,8 +1051,8 @@ export default function InventoryPage() {
                         variant="outline"
                         onClick={() => setShowAddVariant(!showAddVariant)}
                         className={cn(
-                          "rounded-xl border-white/20 hover:bg-white/10",
-                          showAddVariant ? "bg-white/10 text-white" : "text-white/70"
+                          "rounded-xl border-border hover:bg-foreground/10",
+                          showAddVariant ? "bg-foreground/10 text-foreground" : "text-foreground/70"
                         )}
                       >
                         <Plus className="h-4 w-4 mr-2" />
@@ -1071,17 +1071,17 @@ export default function InventoryPage() {
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">Variant Name *</label>
+                            <label className="block text-xs text-muted-foreground mb-1">Variant Name *</label>
                             <Input
                               type="text"
                               value={newVariant.variant}
                               onChange={(e) => handleNewVariantNameChange(e.target.value)}
                               placeholder="e.g., 15mg, 20mg"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs text-white/40 mb-1 flex items-center gap-1">
+                            <label className="block text-xs text-muted-foreground mb-1 flex items-center gap-1">
                               <Barcode className="h-3 w-3" />
                               Barcode (Auto-Generated)
                             </label>
@@ -1090,10 +1090,10 @@ export default function InventoryPage() {
                               value={newVariant.barcode}
                               readOnly
                               placeholder="Enter variant name to generate"
-                              className="rounded-xl bg-white/5 border-white/10 text-white/60 font-mono"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground/60 font-mono"
                             />
                             {newVariant.barcode && (
-                              <p className="text-xs text-white/30 mt-1 font-mono">
+                              <p className="text-xs text-muted-foreground mt-1 font-mono">
                                 Decrypts to: {decryptBarcode(newVariant.barcode)}
                               </p>
                             )}
@@ -1101,33 +1101,33 @@ export default function InventoryPage() {
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-4">
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">Cost Price</label>
+                            <label className="block text-xs text-muted-foreground mb-1">Cost Price</label>
                             <Input
                               type="text"
                               value={newVariant.cost_price}
                               onChange={(e) => setNewVariant({ ...newVariant, cost_price: e.target.value })}
                               placeholder="0.00"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">B2B Price</label>
+                            <label className="block text-xs text-muted-foreground mb-1">B2B Price</label>
                             <Input
                               type="text"
                               value={newVariant.b2b_price}
                               onChange={(e) => setNewVariant({ ...newVariant, b2b_price: e.target.value })}
                               placeholder="0.00"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">Retail Price *</label>
+                            <label className="block text-xs text-muted-foreground mb-1">Retail Price *</label>
                             <Input
                               type="text"
                               value={newVariant.retail_price}
                               onChange={(e) => setNewVariant({ ...newVariant, retail_price: e.target.value })}
                               placeholder="0.00"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                           <div>
@@ -1137,27 +1137,27 @@ export default function InventoryPage() {
                               value={newVariant.supplier_price}
                               onChange={(e) => setNewVariant({ ...newVariant, supplier_price: e.target.value })}
                               placeholder="0.00"
-                              className="rounded-xl bg-amber-500/10 border-amber-500/30 text-white"
+                              className="rounded-xl bg-amber-500/10 border-amber-500/30 text-foreground"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">Initial Stock</label>
+                            <label className="block text-xs text-muted-foreground mb-1">Initial Stock</label>
                             <Input
                               type="number"
                               value={newVariant.initial_stock}
                               onChange={(e) => setNewVariant({ ...newVariant, initial_stock: parseInt(e.target.value) || 0 })}
                               placeholder="0"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs text-white/40 mb-1">Restock Level</label>
+                            <label className="block text-xs text-muted-foreground mb-1">Restock Level</label>
                             <Input
                               type="number"
                               value={newVariant.restock_level}
                               onChange={(e) => setNewVariant({ ...newVariant, restock_level: parseInt(e.target.value) || 10 })}
                               placeholder="10"
-                              className="rounded-xl bg-white/5 border-white/10 text-white"
+                              className="rounded-xl bg-foreground/5 border-border text-foreground"
                             />
                           </div>
                         </div>
@@ -1184,7 +1184,7 @@ export default function InventoryPage() {
                                 restock_level: 10,
                               })
                             }}
-                            className="rounded-xl border-white/20 text-white hover:bg-white/10"
+                            className="rounded-xl border-border text-foreground hover:bg-foreground/10"
                           >
                             Cancel
                           </Button>
@@ -1194,7 +1194,7 @@ export default function InventoryPage() {
 
                     <div className="space-y-4">
                       {editingProduct.variants.map((variant) => (
-                        <div key={variant.id} className="rounded-xl bg-white/5 border border-white/10 p-6">
+                        <div key={variant.id} className="rounded-xl bg-foreground/5 border border-border p-6">
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-3">
                               {editingVariantId === variant.id ? (
@@ -1203,7 +1203,7 @@ export default function InventoryPage() {
                                     type="text"
                                     value={variant.variant}
                                     onChange={(e) => handleEditVariantField(variant.id, "variant", e.target.value)}
-                                    className="rounded-lg bg-white/5 border-white/10 text-white w-24 h-8 text-sm"
+                                    className="rounded-lg bg-foreground/5 border-border text-foreground w-24 h-8 text-sm"
                                   />
                                 </div>
                               ) : (
@@ -1215,9 +1215,9 @@ export default function InventoryPage() {
                                 </span>
                               )}
                               <div className="flex flex-col">
-                                <span className="text-white/40 font-mono text-xs">{variant.barcode}</span>
+                                <span className="text-muted-foreground font-mono text-xs">{variant.barcode}</span>
                                 {editingVariantId === variant.id && (
-                                  <span className="text-white/30 font-mono text-xs">
+                                  <span className="text-muted-foreground font-mono text-xs">
                                     → {decryptBarcode(variant.barcode)}
                                   </span>
                                 )}
@@ -1247,7 +1247,7 @@ export default function InventoryPage() {
                                     variant="ghost"
                                     size="sm"
                                     onClick={() => setEditingVariantId(null)}
-                                    className="text-white/40 hover:text-white hover:bg-white/10 rounded-lg h-8 w-8 p-0"
+                                    className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-lg h-8 w-8 p-0"
                                   >
                                     <X className="h-4 w-4" />
                                   </Button>
@@ -1258,7 +1258,7 @@ export default function InventoryPage() {
                                     variant="ghost"
                                     size="sm"
                                     onClick={() => setEditingVariantId(variant.id)}
-                                    className="text-white/40 hover:text-white hover:bg-white/10 rounded-lg h-8 w-8 p-0"
+                                    className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-lg h-8 w-8 p-0"
                                   >
                                     <Pencil className="h-4 w-4" />
                                   </Button>
@@ -1283,7 +1283,7 @@ export default function InventoryPage() {
                           </div>
                           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                             <div>
-                              <label className="block text-xs text-white/40 mb-1">Cost Price</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Cost Price</label>
                               <Input
                                 type="text"
                                 value={variant.cost_price}
@@ -1293,11 +1293,11 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "cost_price", e.target.value)
                                   }
                                 }}
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                             <div>
-                              <label className="block text-xs text-white/40 mb-1">B2B Price</label>
+                              <label className="block text-xs text-muted-foreground mb-1">B2B Price</label>
                               <Input
                                 type="text"
                                 value={variant.b2b_price}
@@ -1307,11 +1307,11 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "b2b_price", e.target.value)
                                   }
                                 }}
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                             <div>
-                              <label className="block text-xs text-white/40 mb-1">Retail Price</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Retail Price</label>
                               <Input
                                 type="text"
                                 value={variant.retail_price}
@@ -1321,7 +1321,7 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "retail_price", e.target.value)
                                   }
                                 }}
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                             <div>
@@ -1335,11 +1335,11 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "supplier_price", e.target.value)
                                   }
                                 }}
-                                className="rounded-xl bg-amber-500/10 border-amber-500/30 text-white"
+                                className="rounded-xl bg-amber-500/10 border-amber-500/30 text-foreground"
                               />
                             </div>
                             <div>
-                              <label className="block text-xs text-white/40 mb-1">Stock</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Stock</label>
                               <Input
                                 type="number"
                                 value={variant.current_stock}
@@ -1350,11 +1350,11 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "current_stock", val)
                                   }
                                 }}
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                             <div>
-                              <label className="block text-xs text-white/40 mb-1">Restock Level</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Restock Level</label>
                               <Input
                                 type="number"
                                 value={variant.restock_level}
@@ -1365,7 +1365,7 @@ export default function InventoryPage() {
                                     handleEditVariantField(variant.id, "restock_level", val)
                                   }
                                 }}
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                           </div>
@@ -1375,20 +1375,20 @@ export default function InventoryPage() {
                   </div>
 
                   {/* Efficacy Ratings Editor */}
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-                    <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <BarChart3 className="h-5 w-5" />
                       Efficacy Ratings
                     </h3>
-                    <p className="text-sm text-white/50 mb-6">
+                    <p className="text-sm text-muted-foreground mb-6">
                       Edit the rating bars displayed on the product card. Values should be between 0-10.
                     </p>
                     <div className="space-y-4">
                       {editingProduct.ratings?.map((rating, index) => (
-                        <div key={index} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                        <div key={index} className="rounded-xl bg-foreground/5 border border-border p-4">
                           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                             <div className="md:col-span-6">
-                              <label className="block text-xs text-white/40 mb-1">Label</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Label</label>
                               <Input
                                 type="text"
                                 value={rating.label}
@@ -1398,11 +1398,11 @@ export default function InventoryPage() {
                                   setEditingProduct({ ...editingProduct, ratings: newRatings })
                                 }}
                                 placeholder="e.g., Weight Loss Efficacy"
-                                className="rounded-xl bg-white/5 border-white/10 text-white"
+                                className="rounded-xl bg-foreground/5 border-border text-foreground"
                               />
                             </div>
                             <div className="md:col-span-4">
-                              <label className="block text-xs text-white/40 mb-1">Value (0-10)</label>
+                              <label className="block text-xs text-muted-foreground mb-1">Value (0-10)</label>
                               <div className="flex items-center gap-3">
                                 <Input
                                   type="number"
@@ -1415,7 +1415,7 @@ export default function InventoryPage() {
                                     newRatings[index] = { ...newRatings[index], value: Math.min(10, Math.max(0, parseFloat(e.target.value) || 0)) }
                                     setEditingProduct({ ...editingProduct, ratings: newRatings })
                                   }}
-                                  className="rounded-xl bg-white/5 border-white/10 text-white"
+                                  className="rounded-xl bg-foreground/5 border-border text-foreground"
                                 />
                                 <span className="font-mono font-bold text-lg" style={{ color: displayColor }}>
                                   {rating.value.toFixed(1)}
@@ -1441,7 +1441,7 @@ export default function InventoryPage() {
                           </div>
                           {/* Preview bar */}
                           <div className="mt-3">
-                            <div className="relative h-2 w-full overflow-hidden rounded-full bg-white/10">
+                            <div className="relative h-2 w-full overflow-hidden rounded-full bg-foreground/10">
                               <div
                                 className="h-full rounded-full transition-all duration-300"
                                 style={{
@@ -1462,7 +1462,7 @@ export default function InventoryPage() {
                             newRatings.push({ label: "New Rating", value: 7.0 })
                             setEditingProduct({ ...editingProduct, ratings: newRatings })
                           }}
-                          className="w-full rounded-xl border-white/20 text-white hover:bg-white/10 h-12"
+                          className="w-full rounded-xl border-border text-foreground hover:bg-foreground/10 h-12"
                         >
                           <Plus className="h-4 w-4 mr-2" />
                           Add Rating
@@ -1472,12 +1472,12 @@ export default function InventoryPage() {
                   </div>
 
                   {/* Product Description with AI Generator */}
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-                    <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <Eye className="h-5 w-5" />
                       Product Description
                     </h3>
-                    <p className="text-sm text-white/50 mb-4">
+                    <p className="text-sm text-muted-foreground mb-4">
                       This description appears in the expanded product view when customers click on a product
                     </p>
                     <div className="space-y-4">
@@ -1494,7 +1494,7 @@ export default function InventoryPage() {
                           value={editingProduct.description || ""}
                           onChange={(e) => setEditingProduct({ ...editingProduct, description: e.target.value })}
                           placeholder="Detailed product description for the expanded view..."
-                          className="rounded-xl bg-white/5 border-white/10 text-white min-h-[150px]"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground min-h-[150px]"
                         />
                         {/* Live Character/Word Counter */}
                         <div className="flex items-center justify-between mt-2 px-1">
@@ -1508,7 +1508,7 @@ export default function InventoryPage() {
                                   : "text-green-400"
                             )}>
                               {editingProduct.description?.split(/\s+/).filter(Boolean).length || 0}
-                              <span className="text-white/40 font-normal"> / 80 words</span>
+                              <span className="text-muted-foreground font-normal"> / 80 words</span>
                             </span>
                             <span className={cn(
                               "font-medium",
@@ -1519,7 +1519,7 @@ export default function InventoryPage() {
                                   : "text-green-400"
                             )}>
                               {editingProduct.description?.length || 0}
-                              <span className="text-white/40 font-normal"> / 600 chars</span>
+                              <span className="text-muted-foreground font-normal"> / 600 chars</span>
                             </span>
                           </div>
                           {((editingProduct.description?.split(/\s+/).filter(Boolean).length || 0) > 80 || 
@@ -1531,8 +1531,8 @@ export default function InventoryPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-                    <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+                  <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+                    <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
                       <ShoppingCart className="h-5 w-5" />
                       Cart Preview Text
                     </h3>
@@ -1540,7 +1540,7 @@ export default function InventoryPage() {
                       value={editingProduct.cart_product_detail || ""}
                       onChange={(e) => setEditingProduct({ ...editingProduct, cart_product_detail: e.target.value })}
                       placeholder="Short description shown in cart..."
-                      className="rounded-xl bg-white/5 border-white/10 text-white min-h-[100px]"
+                      className="rounded-xl bg-foreground/5 border-border text-foreground min-h-[100px]"
                     />
                   </div>
                 </div>
@@ -1591,15 +1591,15 @@ export default function InventoryPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
         </Link>
 
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Inventory</h1>
-          <p className="text-lg text-white/50">Manage your products, variants, and categories</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">Inventory</h1>
+          <p className="text-lg text-muted-foreground">Manage your products, variants, and categories</p>
         </div>
 
         <div className="flex gap-3 mb-10">
@@ -1607,7 +1607,7 @@ export default function InventoryPage() {
             onClick={() => setInventoryTab("products")}
             className={cn(
               "rounded-2xl px-5 py-3 text-sm font-medium transition-all duration-300 flex items-center gap-2",
-              "bg-white text-black",
+              "bg-primary text-primary-foreground",
             )}
           >
             <Package className="h-4 w-4" />
@@ -1617,7 +1617,7 @@ export default function InventoryPage() {
             onClick={() => setInventoryTab("categories")}
             className={cn(
               "rounded-2xl px-5 py-3 text-sm font-medium transition-all duration-300 flex items-center gap-2",
-              "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10",
+              "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground border border-border",
             )}
           >
             <FolderOpen className="h-4 w-4" />
@@ -1630,7 +1630,7 @@ export default function InventoryPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search products or categories..."
-            className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12 max-w-md"
+            className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12 max-w-md"
           />
           <div className="flex gap-3 flex-wrap">
             <Button
@@ -1648,7 +1648,7 @@ export default function InventoryPage() {
               Import Prices
             </Button>
             <Link href="/admin/inventory/add">
-              <Button className="rounded-xl bg-white text-black hover:bg-white/90 h-12 px-6">
+              <Button className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 px-6">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Product
               </Button>
@@ -1675,7 +1675,7 @@ export default function InventoryPage() {
                 variant="ghost"
                 size="sm"
                 onClick={clearSelection}
-                className="text-white/50 hover:text-white hover:bg-white/10"
+                className="text-muted-foreground hover:text-foreground hover:bg-foreground/10"
               >
                 Clear
               </Button>
@@ -1700,7 +1700,7 @@ export default function InventoryPage() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMultiSelectMode(true)}
-              className="text-white/40 hover:text-white/60 hover:bg-white/5 text-xs"
+              className="text-muted-foreground hover:text-foreground/60 hover:bg-foreground/5 text-xs"
             >
               <Check className="h-3 w-3 mr-1" />
               Enable multi-select
@@ -1730,7 +1730,7 @@ export default function InventoryPage() {
                   "rounded-2xl border p-6 cursor-pointer transition-all duration-300 group",
                   isSelected 
                     ? "bg-purple-500/10 border-purple-500/40 hover:bg-purple-500/15" 
-                    : "bg-white/5 border-white/10 hover:bg-white/10"
+                    : "bg-foreground/5 border-border hover:bg-foreground/10"
                 )}
               >
                 <div className="flex items-center justify-between">
@@ -1743,10 +1743,10 @@ export default function InventoryPage() {
                           "w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all",
                           isSelected
                             ? "bg-purple-500 border-purple-500"
-                            : "border-white/30 hover:border-white/50"
+                            : "border-border hover:border-border0"
                         )}
                       >
-                        {isSelected && <Check className="h-4 w-4 text-white" />}
+                        {isSelected && <Check className="h-4 w-4 text-foreground" />}
                       </button>
                     )}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${productColor}20` }}>
@@ -1754,14 +1754,14 @@ export default function InventoryPage() {
                     </div>
                     <div>
                       <div className="flex items-center gap-3">
-                        <h3 className="text-lg font-semibold text-white">{product.base_name}</h3>
+                        <h3 className="text-lg font-semibold text-foreground">{product.base_name}</h3>
                         {!product.is_active && (
-                          <Badge variant="outline" className="border-white/20 text-white/40">
+                          <Badge variant="outline" className="border-border text-muted-foreground">
                             Inactive
                           </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-white/50">{getCategoryName(product, categories)}</p>
+                      <p className="text-sm text-muted-foreground">{getCategoryName(product, categories)}</p>
                     </div>
                   </div>
 
@@ -1771,24 +1771,24 @@ export default function InventoryPage() {
                         <Badge
                           key={v.id}
                           variant="outline"
-                          className={cn("border", v.current_stock <= v.restock_level ? "border-red-500/50 text-red-400" : "border-white/20 text-white/60")}
+                          className={cn("border", v.current_stock <= v.restock_level ? "border-red-500/50 text-red-400" : "border-border text-foreground/60")}
                         >
                           {v.variant}
                         </Badge>
                       ))}
                       {product.variants.length > 3 && (
-                        <Badge variant="outline" className="border-white/20 text-white/40">
+                        <Badge variant="outline" className="border-border text-muted-foreground">
                           +{product.variants.length - 3}
                         </Badge>
                       )}
                     </div>
 
                     <div className="text-right">
-                      <p className={cn("font-semibold", lowStock ? "text-red-400" : "text-white")}>{totalStock} units</p>
-                      <p className="text-xs text-white/40">From ${lowestPrice.toFixed(2)}</p>
+                      <p className={cn("font-semibold", lowStock ? "text-red-400" : "text-foreground")}>{totalStock} units</p>
+                      <p className="text-xs text-muted-foreground">From ${lowestPrice.toFixed(2)}</p>
                     </div>
 
-                    <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                    <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                   </div>
                 </div>
               </div>
@@ -1797,7 +1797,7 @@ export default function InventoryPage() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <div className="text-center py-20 text-white/40">
+          <div className="text-center py-20 text-muted-foreground">
             <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p>No products found.</p>
           </div>

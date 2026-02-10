@@ -156,7 +156,7 @@ export default function OrderTrackingPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-white">Loading tracking information...</div>
+        <div className="text-foreground">Loading tracking information...</div>
       </div>
     );
   }
@@ -164,9 +164,9 @@ export default function OrderTrackingPage() {
   if (error || !order) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center">
-        <h1 className="text-2xl text-white mb-4">{error || 'Order not found'}</h1>
-        <p className="text-white/50 mb-6">Please check your order number and try again.</p>
-        <Link href="/" className="text-white/50 hover:text-white transition-colors">
+        <h1 className="text-2xl text-foreground mb-4">{error || 'Order not found'}</h1>
+        <p className="text-muted-foreground mb-6">Please check your order number and try again.</p>
+        <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
           ← Back to Shop
         </Link>
       </div>
@@ -178,11 +178,11 @@ export default function OrderTrackingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-border">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <Link
             href="/"
-            className="inline-flex items-center text-white/50 hover:text-white transition-colors"
+            className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Shop
@@ -194,27 +194,27 @@ export default function OrderTrackingPage() {
       <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Order Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-bold tracking-tight text-white mb-3">Order Tracking</h1>
-          <p className="text-white/50">Order #{order.order_number}</p>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground mb-3">Order Tracking</h1>
+          <p className="text-muted-foreground">Order #{order.order_number}</p>
         </div>
 
         {/* Tracking Number */}
         {tracking?.tracking_number && (
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 mb-6">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl p-6 mb-6">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 flex items-center justify-between">
               <div>
-                <p className="text-sm text-white/50 mb-1">Tracking Number</p>
-                <p className="text-xl font-mono text-white">{tracking.tracking_number}</p>
+                <p className="text-sm text-muted-foreground mb-1">Tracking Number</p>
+                <p className="text-xl font-mono text-foreground">{tracking.tracking_number}</p>
                 {tracking.carrier && (
-                  <p className="text-sm text-white/50 mt-2">Carrier: {tracking.carrier}</p>
+                  <p className="text-sm text-muted-foreground mt-2">Carrier: {tracking.carrier}</p>
                 )}
               </div>
               <button
                 onClick={copyTrackingNumber}
-                className="p-3 hover:bg-white/10 rounded-xl transition-colors"
+                className="p-3 hover:bg-foreground/10 rounded-xl transition-colors"
               >
-                <Copy className="w-5 h-5 text-white/50" />
+                <Copy className="w-5 h-5 text-muted-foreground" />
               </button>
             </div>
             {copied && (
@@ -235,23 +235,23 @@ export default function OrderTrackingPage() {
 
         {/* Estimated Delivery */}
         {tracking?.estimated_delivery && (
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 mb-6">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl p-6 mb-6">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 flex items-center space-x-4">
-              <Calendar className="w-5 h-5 text-white/50" />
+              <Calendar className="w-5 h-5 text-muted-foreground" />
               <div>
-                <p className="text-sm text-white/50">Estimated Delivery</p>
-                <p className="text-lg text-white">{formatDate(tracking.estimated_delivery)}</p>
+                <p className="text-sm text-muted-foreground">Estimated Delivery</p>
+                <p className="text-lg text-foreground">{formatDate(tracking.estimated_delivery)}</p>
               </div>
             </div>
           </div>
         )}
 
         {/* Visual Timeline */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 mb-6">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl p-8 mb-6">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
-            <h2 className="text-xl font-semibold text-white mb-8">Shipment Progress</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-8">Shipment Progress</h2>
             <div className="space-y-6">
               {timelineSteps.map((step, index) => {
                 const isCompleted = isStepCompleted(step.status);
@@ -265,13 +265,13 @@ export default function OrderTrackingPage() {
                         <div className={`p-2 rounded-xl ${
                           isCompleted
                             ? 'bg-green-500/20 text-green-400'
-                            : 'bg-white/10 text-white/40'
+                            : 'bg-foreground/10 text-muted-foreground'
                         }`}>
                           {isCompleted ? step.icon : <Circle className="w-5 h-5" />}
                         </div>
                         {!isLast && (
                           <div className={`w-0.5 h-16 mt-2 ${
-                            isCompleted ? 'bg-green-500/50' : 'bg-white/10'
+                            isCompleted ? 'bg-green-500/50' : 'bg-foreground/10'
                           }`} />
                         )}
                       </div>
@@ -280,18 +280,18 @@ export default function OrderTrackingPage() {
                       <div className="flex-1 pb-8">
                         <div className="flex items-center justify-between">
                           <h3 className={`font-medium ${
-                            isCompleted ? 'text-white' : 'text-white/40'
+                            isCompleted ? 'text-foreground' : 'text-muted-foreground'
                           }`}>
                             {step.label}
                           </h3>
                           {step.timestamp && (
-                            <span className="text-sm text-white/50">
+                            <span className="text-sm text-muted-foreground">
                               {formatDate(step.timestamp)}
                             </span>
                           )}
                         </div>
                         {step.description && (
-                          <p className="text-sm text-white/50 mt-1">
+                          <p className="text-sm text-muted-foreground mt-1">
                             {step.description}
                           </p>
                         )}
@@ -306,24 +306,24 @@ export default function OrderTrackingPage() {
 
         {/* Tracking Events */}
         {tracking?.events && tracking.events.length > 0 && (
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 mb-6">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl p-8 mb-6">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
-              <h2 className="text-xl font-semibold text-white mb-6">Tracking History</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-6">Tracking History</h2>
               <div className="space-y-4">
                 {tracking.events.map((event) => (
-                  <div key={event.id} className="border-l-2 border-white/20 pl-4">
+                  <div key={event.id} className="border-l-2 border-border pl-4">
                     <div className="flex items-start justify-between">
                       <div>
-                        <p className="text-white font-medium">{event.description}</p>
+                        <p className="text-foreground font-medium">{event.description}</p>
                         {event.location && (
-                          <p className="text-sm text-white/50 mt-1 flex items-center">
+                          <p className="text-sm text-muted-foreground mt-1 flex items-center">
                             <MapPin className="w-4 h-4 mr-1" />
                             {event.location}
                           </p>
                         )}
                       </div>
-                      <span className="text-sm text-white/50">
+                      <span className="text-sm text-muted-foreground">
                         {formatDate(event.event_date)}
                       </span>
                     </div>
@@ -335,21 +335,21 @@ export default function OrderTrackingPage() {
         )}
 
         {/* Order Summary */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl p-8">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
-            <h2 className="text-xl font-semibold text-white mb-6">Order Summary</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-6">Order Summary</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-white/50">Order Date</span>
-                <span className="text-white">{formatDate(order.created_at)}</span>
+                <span className="text-muted-foreground">Order Date</span>
+                <span className="text-foreground">{formatDate(order.created_at)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/50">Total Amount</span>
-                <span className="text-white">${order.total_amount.toFixed(2)}</span>
+                <span className="text-muted-foreground">Total Amount</span>
+                <span className="text-foreground">${order.total_amount.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-white/50">Payment Status</span>
+                <span className="text-muted-foreground">Payment Status</span>
                 <span className={`capitalize ${
                   order.payment_status === 'paid' ? 'text-green-400' : 'text-yellow-400'
                 }`}>

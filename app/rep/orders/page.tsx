@@ -18,7 +18,7 @@ interface OrderStats {
 
 const getStatusColor = (status: string) => {
   const colors: Record<string, string> = {
-    created: 'bg-white/10 text-white border-white/20',
+    created: 'bg-foreground/10 text-foreground border-border',
     pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
     payment_received: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
     payment_pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
@@ -98,7 +98,7 @@ export default function RepOrdersPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -106,68 +106,68 @@ export default function RepOrdersPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Orders</h1>
-          <p className="text-xl text-white/50">Track and manage your customer orders.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Orders</h1>
+          <p className="text-xl text-muted-foreground">Track and manage your customer orders.</p>
         </div>
 
         {/* Stats Cards */}
         {!loading && stats && (
           <section className="space-y-6">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <DollarSign className="h-5 w-5 text-emerald-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Revenue</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Revenue</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">${stats.totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                  <p className="text-sm text-white/40">From your customers</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">${stats.totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                  <p className="text-sm text-muted-foreground">From your customers</p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                       <Package className="h-5 w-5 text-blue-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Orders</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Orders</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">{stats.totalOrders}</p>
-                  <p className="text-sm text-white/40">All time</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">{stats.totalOrders}</p>
+                  <p className="text-sm text-muted-foreground">All time</p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                       <TrendingUp className="h-5 w-5 text-purple-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Total Commission</p>
+                    <p className="text-sm font-medium text-muted-foreground">Total Commission</p>
                   </div>
                   <p className="text-3xl font-bold tracking-tight text-emerald-400">${stats.totalCommission.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                  <p className="text-sm text-white/40">Your earnings</p>
+                  <p className="text-sm text-muted-foreground">Your earnings</p>
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
                       <Clock className="h-5 w-5 text-orange-400" />
                     </div>
-                    <p className="text-sm font-medium text-white/50">Pending Orders</p>
+                    <p className="text-sm font-medium text-muted-foreground">Pending Orders</p>
                   </div>
-                  <p className="text-3xl font-bold tracking-tight text-white">{stats.pendingOrders}</p>
-                  <p className="text-sm text-white/40">Awaiting fulfillment</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">{stats.pendingOrders}</p>
+                  <p className="text-sm text-muted-foreground">Awaiting fulfillment</p>
                 </div>
               </div>
             </div>
@@ -176,17 +176,17 @@ export default function RepOrdersPage() {
 
         {/* Search and Filters */}
         <section className="space-y-6">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 space-y-6">
               {/* Search */}
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/30" />
+                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Search by order ID, customer, or email..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-14 text-lg bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30 rounded-xl"
+                  className="pl-12 h-14 text-lg bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border rounded-xl"
                 />
               </div>
 
@@ -198,8 +198,8 @@ export default function RepOrdersPage() {
                     onClick={() => setStatusFilter(tab.value)}
                     className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                       statusFilter === tab.value
-                        ? 'bg-white text-black'
-                        : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-foreground/5 text-foreground/60 hover:bg-foreground/10 hover:text-foreground border border-border'
                     }`}
                   >
                     {tab.label}
@@ -212,12 +212,12 @@ export default function RepOrdersPage() {
 
         {/* Orders List */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Orders</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Orders</h2>
           
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3].map(i => (
-                <div key={i} className="h-32 animate-pulse rounded-2xl bg-white/5" />
+                <div key={i} className="h-32 animate-pulse rounded-2xl bg-foreground/5" />
               ))}
             </div>
           ) : (
@@ -230,8 +230,8 @@ export default function RepOrdersPage() {
                     key={order.id} 
                     className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-300 ${
                       isExpanded 
-                        ? 'border-white/20 bg-white/[0.08]' 
-                        : 'border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/15'
+                        ? 'border-border bg-foreground/[0.08]' 
+                        : 'border-border bg-foreground/5 hover:bg-foreground/[0.08] hover:border-primary/15'
                     }`}
                   >
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -245,29 +245,29 @@ export default function RepOrdersPage() {
                         <div className="flex flex-col gap-4">
                           <div className="flex items-center justify-between gap-4 flex-wrap">
                             <div className="flex items-center gap-4 flex-wrap">
-                              <h3 className="font-bold text-2xl tracking-tight text-white">#{order.id.slice(0, 8)}</h3>
+                              <h3 className="font-bold text-2xl tracking-tight text-foreground">#{order.id.slice(0, 8)}</h3>
                               <Badge className={`${getStatusColor(order.status)} text-xs font-bold px-3 py-1 uppercase tracking-wider border`}>
                                 {order.status.replace('_', ' ')}
                               </Badge>
                             </div>
-                            <ChevronDown className="h-6 w-6 text-white/30 group-hover:text-white/50 transition-colors" />
+                            <ChevronDown className="h-6 w-6 text-muted-foreground group-hover:text-muted-foreground transition-colors" />
                           </div>
                           
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div>
-                              <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Customer</p>
-                              <p className="font-medium text-white">{order.customer.name}</p>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Customer</p>
+                              <p className="font-medium text-foreground">{order.customer.name}</p>
                             </div>
                             <div>
-                              <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Date</p>
-                              <p className="font-medium text-white">{format(new Date(order.date), 'MMM dd, yyyy')}</p>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Date</p>
+                              <p className="font-medium text-foreground">{format(new Date(order.date), 'MMM dd, yyyy')}</p>
                             </div>
                             <div>
-                              <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Total</p>
-                              <p className="font-bold text-lg text-white">${order.total.toFixed(2)}</p>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Total</p>
+                              <p className="font-bold text-lg text-foreground">${order.total.toFixed(2)}</p>
                             </div>
                             <div>
-                              <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Commission</p>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Commission</p>
                               <p className="font-bold text-lg text-emerald-400">${order.commission.toFixed(2)}</p>
                             </div>
                           </div>
@@ -282,18 +282,18 @@ export default function RepOrdersPage() {
                         <div className="flex items-start justify-between gap-6">
                           <div className="space-y-3">
                             <div className="flex items-center gap-4 flex-wrap">
-                              <h3 className="font-bold text-4xl tracking-tight text-white">#{order.id.slice(0, 8)}</h3>
+                              <h3 className="font-bold text-4xl tracking-tight text-foreground">#{order.id.slice(0, 8)}</h3>
                               <Badge className={`${getStatusColor(order.status)} text-sm font-bold px-4 py-1.5 uppercase tracking-wider border`}>
                                 {order.status.replace('_', ' ')}
                               </Badge>
                             </div>
-                            <p className="text-white/50 text-lg">{order.customer.name} • {order.customer.email}</p>
+                            <p className="text-muted-foreground text-lg">{order.customer.name} • {order.customer.email}</p>
                           </div>
                           <Button
                             size="lg"
                             variant="ghost"
                             onClick={() => setExpandedOrderId(null)}
-                            className="h-12 w-12 p-0 hover:bg-white/10 text-white/50 hover:text-white"
+                            className="h-12 w-12 p-0 hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
                           >
                             <ChevronUp className="h-6 w-6" />
                           </Button>
@@ -301,18 +301,18 @@ export default function RepOrdersPage() {
 
                         {/* Order Items */}
                         <div className="space-y-4">
-                          <h5 className="font-bold text-xl text-white">Items</h5>
+                          <h5 className="font-bold text-xl text-foreground">Items</h5>
                           {order.items.map((item, idx) => (
-                            <div key={idx} className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
-                              <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center">
-                                <Package className="w-8 h-8 text-white/30" />
+                            <div key={idx} className="flex items-center gap-4 p-4 bg-foreground/5 rounded-xl border border-border">
+                              <div className="w-16 h-16 bg-foreground/10 rounded-lg flex items-center justify-center">
+                                <Package className="w-8 h-8 text-muted-foreground" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="font-semibold text-white truncate">{item.productName}</p>
-                                <p className="text-sm text-white/50">Qty: {item.quantity}</p>
+                                <p className="font-semibold text-foreground truncate">{item.productName}</p>
+                                <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
                               </div>
                               <div className="text-right">
-                                <p className="font-bold text-lg text-white">${item.price.toFixed(2)}</p>
+                                <p className="font-bold text-lg text-foreground">${item.price.toFixed(2)}</p>
                                 <p className="text-sm text-emerald-400">+${item.commission.toFixed(2)} commission</p>
                               </div>
                             </div>
@@ -322,34 +322,34 @@ export default function RepOrdersPage() {
                         {/* Details Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           {/* Customer Info */}
-                          <div className="space-y-4 p-6 bg-white/5 rounded-xl border border-white/10">
-                            <h5 className="font-bold text-lg text-white">Customer</h5>
+                          <div className="space-y-4 p-6 bg-foreground/5 rounded-xl border border-border">
+                            <h5 className="font-bold text-lg text-foreground">Customer</h5>
                             <div className="flex items-center gap-3">
-                              <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center">
-                                <User className="h-6 w-6 text-white/60" />
+                              <div className="h-12 w-12 rounded-full bg-foreground/10 flex items-center justify-center">
+                                <User className="h-6 w-6 text-foreground/60" />
                               </div>
                               <div>
-                                <p className="font-bold text-white">{order.customer.name}</p>
-                                <p className="text-sm text-white/50">{order.customer.email}</p>
+                                <p className="font-bold text-foreground">{order.customer.name}</p>
+                                <p className="text-sm text-muted-foreground">{order.customer.email}</p>
                               </div>
                             </div>
                           </div>
 
                           {/* Commission Summary */}
-                          <div className="space-y-4 p-6 bg-white/5 rounded-xl border border-white/10">
-                            <h5 className="font-bold text-lg text-white">Your Earnings</h5>
+                          <div className="space-y-4 p-6 bg-foreground/5 rounded-xl border border-border">
+                            <h5 className="font-bold text-lg text-foreground">Your Earnings</h5>
                             <div className="space-y-3">
                               <div className="flex justify-between">
-                                <span className="text-white/50">Order Total</span>
-                                <span className="font-semibold text-white">${order.total.toFixed(2)}</span>
+                                <span className="text-muted-foreground">Order Total</span>
+                                <span className="font-semibold text-foreground">${order.total.toFixed(2)}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-white/50">Commission Rate</span>
-                                <span className="font-semibold text-white">10%</span>
+                                <span className="text-muted-foreground">Commission Rate</span>
+                                <span className="font-semibold text-foreground">10%</span>
                               </div>
-                              <div className="pt-3 border-t border-white/10">
+                              <div className="pt-3 border-t border-border">
                                 <div className="flex justify-between">
-                                  <span className="text-white/50">Your Commission</span>
+                                  <span className="text-muted-foreground">Your Commission</span>
                                   <span className="text-2xl font-bold text-emerald-400">${order.commission.toFixed(2)}</span>
                                 </div>
                               </div>
@@ -359,24 +359,24 @@ export default function RepOrdersPage() {
 
                         {/* Tracking Info */}
                         {order.tracking && (
-                          <div className="space-y-4 p-6 bg-white/5 rounded-xl border border-white/10">
-                            <h5 className="font-bold text-lg text-white">Shipping</h5>
+                          <div className="space-y-4 p-6 bg-foreground/5 rounded-xl border border-border">
+                            <h5 className="font-bold text-lg text-foreground">Shipping</h5>
                             <div className="space-y-3">
                               <div className="flex justify-between">
-                                <span className="text-white/50">Carrier</span>
-                                <span className="font-semibold text-white">{order.tracking.carrier}</span>
+                                <span className="text-muted-foreground">Carrier</span>
+                                <span className="font-semibold text-foreground">{order.tracking.carrier}</span>
                               </div>
                               {order.tracking.trackingNumber && (
                                 <>
-                                  <p className="text-sm text-white/40">Tracking Number</p>
-                                  <code className="bg-black/30 px-3 py-2 rounded-lg text-white font-mono text-sm block break-all">
+                                  <p className="text-sm text-muted-foreground">Tracking Number</p>
+                                  <code className="bg-foreground/30 px-3 py-2 rounded-lg text-foreground font-mono text-sm block break-all">
                                     {order.tracking.trackingNumber}
                                   </code>
                                   <div className="grid grid-cols-2 gap-3">
                                     <Button 
                                       variant="outline"
                                       onClick={() => copyToClipboard(order.tracking!.trackingNumber)}
-                                      className="h-11 bg-white/5 border-white/10 text-white hover:bg-white/10"
+                                      className="h-11 bg-foreground/5 border-border text-foreground hover:bg-foreground/10"
                                     >
                                       <Copy className="h-4 w-4 mr-2" />
                                       Copy
@@ -384,7 +384,7 @@ export default function RepOrdersPage() {
                                     <Button 
                                       variant="outline"
                                       onClick={() => window.open(`https://track.example.com/${order.tracking!.trackingNumber}`, '_blank')}
-                                      className="h-11 bg-white/5 border-white/10 text-white hover:bg-white/10"
+                                      className="h-11 bg-foreground/5 border-border text-foreground hover:bg-foreground/10"
                                     >
                                       <ExternalLink className="h-4 w-4 mr-2" />
                                       Track
@@ -393,8 +393,8 @@ export default function RepOrdersPage() {
                                 </>
                               )}
                               {order.tracking.estimatedDelivery && (
-                                <div className="flex justify-between pt-3 border-t border-white/10">
-                                  <span className="text-white/50">Est. Delivery</span>
+                                <div className="flex justify-between pt-3 border-t border-border">
+                                  <span className="text-muted-foreground">Est. Delivery</span>
                                   <span className="font-semibold text-emerald-400">{order.tracking.estimatedDelivery}</span>
                                 </div>
                               )}
@@ -405,32 +405,32 @@ export default function RepOrdersPage() {
                         {/* Timeline */}
                         {order.tracking?.timeline && order.tracking.timeline.length > 0 && (
                           <div className="space-y-4">
-                            <h5 className="font-bold text-xl text-white">Order Timeline</h5>
+                            <h5 className="font-bold text-xl text-foreground">Order Timeline</h5>
                             <div className="relative ml-4">
-                              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/10" />
+                              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-foreground/10" />
                               <div className="space-y-6">
                                 {order.tracking.timeline.map((step, idx) => (
                                   <div key={idx} className="relative pl-10">
                                     <div 
                                       className={`absolute left-[-8px] top-[6px] w-[18px] h-[18px] rounded-full border-2 transition-all ${
-                                        step.status ? 'bg-white border-white' : 'bg-black border-white/20'
+                                        step.status ? 'bg-white border-primary' : 'bg-background border-border'
                                       }`} 
                                     />
                                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-                                      <span className="font-medium text-white">
+                                      <span className="font-medium text-foreground">
                                         {step.status}
                                       </span>
                                       {step.date && (
-                                        <span className="text-sm font-mono text-white/60">
+                                        <span className="text-sm font-mono text-foreground/60">
                                           {step.date}
                                         </span>
                                       )}
                                     </div>
                                     {step.description && (
-                                      <p className="text-sm text-white/40 mt-1">{step.description}</p>
+                                      <p className="text-sm text-muted-foreground mt-1">{step.description}</p>
                                     )}
                                     {step.location && (
-                                      <p className="text-sm text-white/40">{step.location}</p>
+                                      <p className="text-sm text-muted-foreground">{step.location}</p>
                                     )}
                                   </div>
                                 ))}
@@ -447,13 +447,13 @@ export default function RepOrdersPage() {
           )}
 
           {!loading && filteredOrders.length === 0 && (
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-              <Package className="h-12 w-12 text-white/20 mx-auto mb-4 relative z-10" />
-              <p className="relative z-10 text-2xl font-light text-white/50">
+              <Package className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+              <p className="relative z-10 text-2xl font-light text-muted-foreground">
                 {orders.length === 0 ? 'No orders yet' : 'No orders found'}
               </p>
-              <p className="relative z-10 text-white/30 mt-2">
+              <p className="relative z-10 text-muted-foreground mt-2">
                 {orders.length === 0 ? 'Orders from your customers will appear here' : 'Try adjusting your search or filters'}
               </p>
             </div>

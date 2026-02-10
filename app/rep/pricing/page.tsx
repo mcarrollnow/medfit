@@ -61,7 +61,7 @@ export default function RepPricingPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -72,7 +72,7 @@ export default function RepPricingPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -80,63 +80,63 @@ export default function RepPricingPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Pricing</h1>
-          <p className="text-xl text-white/50">View your product pricing and compare rates.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Pricing</h1>
+          <p className="text-xl text-muted-foreground">View your product pricing and compare rates.</p>
         </div>
 
         {/* Search */}
         <div className="relative max-w-xl">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search products..."
-            className="h-14 pl-12 bg-white/[0.05] border-white/10 rounded-2xl text-lg"
+            className="h-14 pl-12 bg-foreground/[0.06] border-border rounded-2xl text-lg"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-white/10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-foreground/10"
             >
-              <X className="w-5 h-5 text-white/40" />
+              <X className="w-5 h-5 text-muted-foreground" />
             </button>
           )}
         </div>
 
         {/* Pricing Legend */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Legend</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Legend</h2>
           <div className="flex flex-wrap gap-4 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-emerald-500" />
-              <span className="text-white/60">Your Rep Price</span>
+              <span className="text-foreground/60">Your Rep Price</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-500" />
-              <span className="text-white/60">B2B Price</span>
+              <span className="text-foreground/60">B2B Price</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-white/30" />
-              <span className="text-white/60">Retail Price</span>
+              <div className="w-3 h-3 rounded-full bg-foreground/30" />
+              <span className="text-foreground/60">Retail Price</span>
             </div>
           </div>
         </section>
 
         {/* Products Table */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Product Catalog</h2>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Product Catalog</h2>
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left p-4 text-white/60 font-medium">Product</th>
-                    <th className="text-left p-4 text-white/60 font-medium">Variant</th>
-                    <th className="text-right p-4 text-white/60 font-medium">Retail</th>
-                    <th className="text-right p-4 text-white/60 font-medium">B2B</th>
-                    <th className="text-right p-4 text-white/60 font-medium">Your Price</th>
-                    <th className="text-right p-4 text-white/60 font-medium">Savings</th>
+                  <tr className="border-b border-border">
+                    <th className="text-left p-4 text-foreground/60 font-medium">Product</th>
+                    <th className="text-left p-4 text-foreground/60 font-medium">Variant</th>
+                    <th className="text-right p-4 text-foreground/60 font-medium">Retail</th>
+                    <th className="text-right p-4 text-foreground/60 font-medium">B2B</th>
+                    <th className="text-right p-4 text-foreground/60 font-medium">Your Price</th>
+                    <th className="text-right p-4 text-foreground/60 font-medium">Savings</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -152,8 +152,8 @@ export default function RepPricingPage() {
                         <tr
                           key={product.id}
                           className={cn(
-                            "border-b border-white/5 hover:bg-white/[0.03] transition-colors relative",
-                            idx === 0 && "border-t border-white/10"
+                            "border-b border-border hover:bg-foreground/[0.04] transition-colors relative",
+                            idx === 0 && "border-t border-border"
                           )}
                           style={{
                             background: `linear-gradient(90deg, ${product.color}08 0%, transparent 20%)`,
@@ -171,8 +171,8 @@ export default function RepPricingPage() {
                               <span className="font-medium">{product.base_name}</span>
                             </div>
                           </td>
-                          <td className="p-4 text-white/60">{product.variant || "—"}</td>
-                          <td className="p-4 text-right text-white/40 line-through">
+                          <td className="p-4 text-foreground/60">{product.variant || "—"}</td>
+                          <td className="p-4 text-right text-muted-foreground line-through">
                             ${Number(product.retail_price || 0).toFixed(2)}
                           </td>
                           <td className="p-4 text-right text-blue-400">
@@ -181,7 +181,7 @@ export default function RepPricingPage() {
                           <td className="p-4 text-right">
                             <span className={cn(
                               "font-semibold text-lg",
-                              product.rep_price ? "text-emerald-400" : "text-white/80"
+                              product.rep_price ? "text-emerald-400" : "text-foreground/80"
                             )}>
                               ${Number(effectivePrice).toFixed(2)}
                             </span>
@@ -192,7 +192,7 @@ export default function RepPricingPage() {
                                 {savingsPercent}% off
                               </Badge>
                             ) : (
-                              <span className="text-white/30">—</span>
+                              <span className="text-muted-foreground">—</span>
                             )}
                           </td>
                         </tr>
@@ -203,8 +203,8 @@ export default function RepPricingPage() {
               </table>
               {filteredProducts.length === 0 && (
                 <div className="p-12 text-center">
-                  <Package className="w-12 h-12 text-white/20 mx-auto mb-4" />
-                  <p className="text-white/40">No products found</p>
+                  <Package className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4" />
+                  <p className="text-muted-foreground">No products found</p>
                 </div>
               )}
             </div>

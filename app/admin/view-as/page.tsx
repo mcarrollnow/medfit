@@ -183,7 +183,7 @@ export default function ViewAsPage() {
       case 'wellnessowner':
         return 'bg-pink-500/20 text-pink-400'
       default:
-        return 'bg-white/10 text-white/70'
+        return 'bg-foreground/10 text-foreground/70'
     }
   }
 
@@ -197,7 +197,7 @@ export default function ViewAsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -214,13 +214,13 @@ export default function ViewAsPage() {
           <div className="flex items-center gap-4">
             <Link
               href="/admin"
-              className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition"
+              className="h-10 w-10 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition"
             >
-              <ArrowLeft className="h-5 w-5 text-white/70" />
+              <ArrowLeft className="h-5 w-5 text-foreground/70" />
             </Link>
             <div>
-              <h1 className="text-4xl font-bold tracking-tight text-white">View As</h1>
-              <p className="text-lg text-white/50">Experience the site from different perspectives</p>
+              <h1 className="text-4xl font-bold tracking-tight text-foreground">View As</h1>
+              <p className="text-lg text-muted-foreground">Experience the site from different perspectives</p>
             </div>
           </div>
           
@@ -245,8 +245,8 @@ export default function ViewAsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <h2 className="text-xl font-semibold text-white mb-4">Quick View</h2>
-          <p className="text-white/50 mb-6">Quickly switch to see the site as a specific role type</p>
+          <h2 className="text-xl font-semibold text-foreground mb-4">Quick View</h2>
+          <p className="text-muted-foreground mb-6">Quickly switch to see the site as a specific role type</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {viewModes.map((mode) => {
@@ -258,7 +258,7 @@ export default function ViewAsPage() {
                   className={`group p-6 rounded-2xl border ${mode.color} hover:scale-[1.02] transition-all duration-200 text-left`}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="p-3 rounded-xl bg-white/10">
+                    <div className="p-3 rounded-xl bg-foreground/10">
                       <Icon className="h-6 w-6" />
                     </div>
                     <ChevronRight className="h-5 w-5 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -279,29 +279,29 @@ export default function ViewAsPage() {
           className="space-y-6"
         >
           <div>
-            <h2 className="text-xl font-semibold text-white mb-2">Impersonate User</h2>
-            <p className="text-white/50">Select a specific user to see exactly what they see</p>
+            <h2 className="text-xl font-semibold text-foreground mb-2">Impersonate User</h2>
+            <p className="text-muted-foreground">Select a specific user to see exactly what they see</p>
           </div>
 
           {/* Search */}
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name or email..."
-              className="h-12 pl-12 bg-white/5 border-white/10 text-white rounded-xl"
+              className="h-12 pl-12 bg-foreground/5 border-border text-foreground rounded-xl"
             />
             {searching && (
-              <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/50 animate-spin" />
+              <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground animate-spin" />
             )}
           </div>
 
           {/* Users List */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+          <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
             <div className="divide-y divide-white/5">
               {users.length === 0 ? (
-                <div className="p-8 text-center text-white/40">
+                <div className="p-8 text-center text-muted-foreground">
                   {searchQuery ? 'No users found matching your search' : 'No users found'}
                 </div>
               ) : (
@@ -309,7 +309,7 @@ export default function ViewAsPage() {
                   <button
                     key={user.id}
                     onClick={() => handleImpersonateUser(user)}
-                    className="w-full p-4 hover:bg-white/5 transition-colors flex items-center justify-between group"
+                    className="w-full p-4 hover:bg-foreground/5 transition-colors flex items-center justify-between group"
                   >
                     <div className="flex items-center gap-4">
                       {/* Avatar */}
@@ -317,25 +317,25 @@ export default function ViewAsPage() {
                         <img
                           src={user.profile_picture_url}
                           alt={getUserDisplayName(user)}
-                          className="w-12 h-12 rounded-full object-cover border border-white/10"
+                          className="w-12 h-12 rounded-full object-cover border border-border"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                          <User className="h-6 w-6 text-white/50" />
+                        <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center">
+                          <User className="h-6 w-6 text-muted-foreground" />
                         </div>
                       )}
                       
                       {/* User Info */}
                       <div className="text-left">
                         <div className="flex items-center gap-2">
-                          <span className="text-white font-medium">
+                          <span className="text-foreground font-medium">
                             {getUserDisplayName(user)}
                           </span>
                           <span className={`px-2 py-0.5 text-xs rounded-full ${getRoleBadgeClass(user.role)}`}>
                             {user.role || 'customer'}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4 mt-1 text-sm text-white/50">
+                        <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                           <span className="flex items-center gap-1">
                             <Mail className="h-3 w-3" />
                             {user.email}
@@ -357,7 +357,7 @@ export default function ViewAsPage() {
                     </div>
                     
                     {/* View Button */}
-                    <div className="flex items-center gap-2 text-white/50 group-hover:text-white transition-colors">
+                    <div className="flex items-center gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
                       <span className="text-sm font-medium">View as</span>
                       <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -369,8 +369,8 @@ export default function ViewAsPage() {
 
           {/* Help Text */}
           <div className="rounded-xl bg-blue-500/10 border border-blue-500/20 p-4">
-            <p className="text-sm text-white/70">
-              <strong className="text-white">Tip:</strong> When impersonating a user, you'll see a banner at the top of the screen. 
+            <p className="text-sm text-foreground/70">
+              <strong className="text-foreground">Tip:</strong> When impersonating a user, you'll see a banner at the top of the screen. 
               Click "Exit" to return to your admin view. Your actual session remains secure - this only changes what you see.
             </p>
           </div>

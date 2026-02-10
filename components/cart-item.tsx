@@ -35,8 +35,8 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
   if (!product) {
     const fallbackName = getProductName(item.product_id)
     return (
-      <div className="flex gap-4 py-6 border-b border-white/10">
-        <div className="relative w-28 h-40 bg-black rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#010202' }}>
+      <div className="flex gap-4 py-6 border-b border-border">
+        <div className="relative w-28 h-40 bg-background rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#010202' }}>
           <div className="text-xs text-muted-foreground">No Image</div>
         </div>
         <div className="flex-1 flex flex-col justify-between">
@@ -50,7 +50,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/40"
+                className="h-8 w-8 bg-foreground/[0.06] hover:bg-card/[0.1] border-border hover:border-border"
                 onClick={() => onUpdateQuantity(item.product_id, item.quantity - 1)}
                 disabled={item.quantity <= 1}
               >
@@ -60,7 +60,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/40"
+                className="h-8 w-8 bg-foreground/[0.06] hover:bg-card/[0.1] border-border hover:border-border"
                 onClick={() => onUpdateQuantity(item.product_id, item.quantity + 1)}
               >
                 <Plus className="h-3 w-3" />
@@ -71,7 +71,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 text-white/50 hover:text-red-400 hover:bg-white/[0.05]"
+                className="h-8 w-8 text-muted-foreground hover:text-red-400 hover:bg-foreground/[0.06]"
                 onClick={() => onRemove(item.product_id)}
               >
                 <Trash2 className="h-4 w-4" />
@@ -84,8 +84,8 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
   }
 
   return (
-    <div className="flex gap-4 py-6 border-b border-white/10">
-      <div className="relative w-28 h-40 bg-black rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
+    <div className="flex gap-4 py-6 border-b border-border">
+      <div className="relative w-28 h-40 bg-background rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
         {product.cart_image ? (
           // Render SVG directly preserving aspect ratio (0.7:1 for vials)
           <div 
@@ -119,7 +119,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8 bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/40"
+              className="h-8 w-8 bg-foreground/[0.06] hover:bg-card/[0.1] border-border hover:border-border"
               onClick={() => onUpdateQuantity(item.product_id, item.quantity - 1)}
               disabled={item.quantity <= 1}
             >
@@ -131,7 +131,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8 bg-white/[0.05] hover:bg-white/[0.1] border-white/20 hover:border-white/40"
+              className="h-8 w-8 bg-foreground/[0.06] hover:bg-card/[0.1] border-border hover:border-border"
               onClick={() => onUpdateQuantity(item.product_id, item.quantity + 1)}
             >
               <Plus className="h-3 w-3" />
@@ -144,7 +144,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8 text-white/50 hover:text-red-400 hover:bg-white/[0.05]"
+              className="h-8 w-8 text-muted-foreground hover:text-red-400 hover:bg-foreground/[0.06]"
               onClick={() => onRemove(item.product_id)}
             >
               <Trash2 className="h-4 w-4" />

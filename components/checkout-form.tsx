@@ -467,7 +467,7 @@ export function CheckoutFormSimplified({ total, onDiscountChange }: CheckoutForm
 
             <Button
               onClick={handlePayment}
-              className="w-full !bg-black !text-white hover:!bg-gray-900 border border-white"
+              className="w-full !bg-background !text-foreground hover:!bg-card border border-primary"
               size="lg"
               disabled={isProcessing || success || isCreatingOrder}
             >

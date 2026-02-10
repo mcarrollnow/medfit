@@ -10,17 +10,17 @@ export function RevenueChart({ data }: RevenueChartProps) {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(58,66,51,0.08)" />
         <XAxis 
           dataKey="month" 
           className="text-xs"
-          tick={{ fill: 'rgba(255, 255, 255, 0.6)' }}
+          tick={{ fill: 'rgba(58, 66, 51, 0.6)' }}
           axisLine={false}
           tickLine={false}
         />
         <YAxis 
           className="text-xs"
-          tick={{ fill: 'rgba(255, 255, 255, 0.6)' }}
+          tick={{ fill: 'rgba(58, 66, 51, 0.6)' }}
           axisLine={false}
           tickLine={false}
           tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
@@ -29,10 +29,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
           content={({ active, payload }) => {
             if (active && payload && payload.length) {
               return (
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl p-4">
-                  <p className="text-sm font-semibold mb-1.5 text-white">{payload[0].payload.month}</p>
-                  <p className="text-sm text-white/70">
-                    Revenue: <span className="text-white font-bold text-base">${payload[0].value?.toLocaleString()}</span>
+                <div className="bg-foreground/10 backdrop-blur-md border border-border rounded-lg shadow-2xl p-4">
+                  <p className="text-sm font-semibold mb-1.5 text-foreground">{payload[0].payload.month}</p>
+                  <p className="text-sm text-foreground/70">
+                    Revenue: <span className="text-foreground font-bold text-base">${payload[0].value?.toLocaleString()}</span>
                   </p>
                 </div>
               )

@@ -640,7 +640,7 @@ export default function SupabaseAdminPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -657,13 +657,13 @@ export default function SupabaseAdminPage() {
           <div className="flex items-center gap-4">
             <Link
               href="/admin"
-              className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition"
+              className="h-10 w-10 rounded-xl bg-foreground/5 border border-border flex items-center justify-center hover:bg-foreground/10 transition"
             >
-              <ArrowLeft className="h-5 w-5 text-white/70" />
+              <ArrowLeft className="h-5 w-5 text-foreground/70" />
             </Link>
             <div>
-              <h1 className="text-4xl font-bold tracking-tight text-white">Supabase Admin</h1>
-              <p className="text-lg text-white/50">Manage users, customers, auth, and email templates</p>
+              <h1 className="text-4xl font-bold tracking-tight text-foreground">Supabase Admin</h1>
+              <p className="text-lg text-muted-foreground">Manage users, customers, auth, and email templates</p>
             </div>
           </div>
           <Button
@@ -674,7 +674,7 @@ export default function SupabaseAdminPage() {
               fetchTemplates()
             }}
             variant="outline"
-            className="h-10 px-4 rounded-xl border-white/10 bg-white/5 text-white hover:bg-white/10"
+            className="h-10 px-4 rounded-xl border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
           >
             <RefreshCw className="h-4 w-4 mr-2" />
             Refresh
@@ -683,38 +683,38 @@ export default function SupabaseAdminPage() {
 
         {/* Main Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-white/5 border border-white/10 rounded-xl p-1 h-auto">
+          <TabsList className="bg-foreground/5 border border-border rounded-xl p-1 h-auto">
             <TabsTrigger 
               value="users" 
-              className="data-[state=active]:bg-white/10 rounded-lg px-4 py-2.5"
+              className="data-[state=active]:bg-foreground/10 rounded-lg px-4 py-2.5"
             >
               <Users className="h-4 w-4 mr-2" />
               Users Table
             </TabsTrigger>
             <TabsTrigger 
               value="customers" 
-              className="data-[state=active]:bg-white/10 rounded-lg px-4 py-2.5"
+              className="data-[state=active]:bg-foreground/10 rounded-lg px-4 py-2.5"
             >
               <UserCircle className="h-4 w-4 mr-2" />
               Customers
             </TabsTrigger>
             <TabsTrigger 
               value="auth" 
-              className="data-[state=active]:bg-white/10 rounded-lg px-4 py-2.5"
+              className="data-[state=active]:bg-foreground/10 rounded-lg px-4 py-2.5"
             >
               <Shield className="h-4 w-4 mr-2" />
               Auth Users
             </TabsTrigger>
             <TabsTrigger 
               value="providers" 
-              className="data-[state=active]:bg-white/10 rounded-lg px-4 py-2.5"
+              className="data-[state=active]:bg-foreground/10 rounded-lg px-4 py-2.5"
             >
               <Settings className="h-4 w-4 mr-2" />
               Providers
             </TabsTrigger>
             <TabsTrigger 
               value="templates" 
-              className="data-[state=active]:bg-white/10 rounded-lg px-4 py-2.5"
+              className="data-[state=active]:bg-foreground/10 rounded-lg px-4 py-2.5"
             >
               <Mail className="h-4 w-4 mr-2" />
               Email Templates
@@ -730,36 +730,36 @@ export default function SupabaseAdminPage() {
             >
               {/* Search */}
               <div className="relative max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search users..."
-                  className="h-12 pl-12 bg-white/5 border-white/10 text-white rounded-xl"
+                  className="h-12 pl-12 bg-foreground/5 border-border text-foreground rounded-xl"
                 />
               </div>
 
               {/* Users Count */}
-              <div className="text-sm text-white/50">
+              <div className="text-sm text-muted-foreground">
                 {filteredUsers.length} user{filteredUsers.length !== 1 ? 's' : ''} found
               </div>
 
               {/* Users List */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+              <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left p-4 text-sm font-medium text-white/50">User ID</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Email</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">First Name</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Last Name</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Role</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Phone</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Signed Up</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Last Access</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Verified</th>
-                        <th className="text-right p-4 text-sm font-medium text-white/50">Actions</th>
+                      <tr className="border-b border-border">
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">User ID</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Email</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">First Name</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Last Name</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Role</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Phone</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Signed Up</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Last Access</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Verified</th>
+                        <th className="text-right p-4 text-sm font-medium text-muted-foreground">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -768,18 +768,18 @@ export default function SupabaseAdminPage() {
                         return (
                           <tr 
                             key={user.id} 
-                            className="border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors"
+                            className="border-b border-border hover:bg-foreground/5 cursor-pointer transition-colors"
                             onClick={() => handleEditUser(user)}
                           >
                             <td className="p-4">
                               <div className="flex items-center gap-2">
-                                <span className="text-white/50 text-xs font-mono truncate max-w-[80px]" title={user.id}>
+                                <span className="text-muted-foreground text-xs font-mono truncate max-w-[80px]" title={user.id}>
                                   {user.id.slice(0, 8)}...
                                 </span>
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="h-6 w-6 p-0 text-white/30 hover:text-white/70"
+                                  className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground/70"
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     copyToClipboard(user.id)
@@ -789,9 +789,9 @@ export default function SupabaseAdminPage() {
                                 </Button>
                               </div>
                             </td>
-                            <td className="p-4 text-white">{user.email}</td>
-                            <td className="p-4 text-white/70">{user.first_name || '-'}</td>
-                            <td className="p-4 text-white/70">{user.last_name || '-'}</td>
+                            <td className="p-4 text-foreground">{user.email}</td>
+                            <td className="p-4 text-foreground/70">{user.first_name || '-'}</td>
+                            <td className="p-4 text-foreground/70">{user.last_name || '-'}</td>
                             <td className="p-4">
                               <span className={`px-2 py-1 text-xs rounded-full ${
                                 user.role === 'admin' || user.role === 'superadmin'
@@ -800,19 +800,19 @@ export default function SupabaseAdminPage() {
                                   ? 'bg-blue-500/20 text-blue-400'
                                   : user.role === 'gymowner' || user.role === 'spaowner' || user.role === 'wellnessowner'
                                   ? 'bg-amber-500/20 text-amber-400'
-                                  : 'bg-white/10 text-white/70'
+                                  : 'bg-foreground/10 text-foreground/70'
                               }`}>
                                 {USER_ROLES.find(r => r.value === user.role)?.label || user.role || 'customer'}
                               </span>
                             </td>
-                            <td className="p-4 text-white/70 text-sm">{user.phone || '—'}</td>
-                            <td className="p-4 text-white/50 text-xs">
+                            <td className="p-4 text-foreground/70 text-sm">{user.phone || '—'}</td>
+                            <td className="p-4 text-muted-foreground text-xs">
                               <div className="flex items-center gap-1">
                                 <Calendar className="h-3 w-3" />
                                 {formatDateTime(user.created_at)}
                               </div>
                             </td>
-                            <td className="p-4 text-white/50 text-xs">
+                            <td className="p-4 text-muted-foreground text-xs">
                               <div className="flex items-center gap-1">
                                 <Clock className="h-3 w-3" />
                                 {formatDateTime(authUser?.last_sign_in_at)}
@@ -836,7 +836,7 @@ export default function SupabaseAdminPage() {
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="h-8 w-8 p-0 text-white/50 hover:text-white hover:bg-white/10"
+                                  className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     handleEditUser(user)
@@ -862,7 +862,7 @@ export default function SupabaseAdminPage() {
                       })}
                       {filteredUsers.length === 0 && (
                         <tr>
-                          <td colSpan={10} className="p-8 text-center text-white/40">
+                          <td colSpan={10} className="p-8 text-center text-muted-foreground">
                             No users found
                           </td>
                         </tr>
@@ -883,54 +883,54 @@ export default function SupabaseAdminPage() {
             >
               {/* Search */}
               <div className="relative max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   value={customerSearchQuery}
                   onChange={(e) => setCustomerSearchQuery(e.target.value)}
                   placeholder="Search by name, email, phone, company, city..."
-                  className="h-12 pl-12 bg-white/5 border-white/10 text-white rounded-xl"
+                  className="h-12 pl-12 bg-foreground/5 border-border text-foreground rounded-xl"
                 />
               </div>
 
               {/* Customers Count */}
-              <div className="text-sm text-white/50">
+              <div className="text-sm text-muted-foreground">
                 {filteredCustomers.length} customer{filteredCustomers.length !== 1 ? 's' : ''} found
               </div>
 
               {/* Customers List */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+              <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Customer ID</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">First Name</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Last Name</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Email</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Company</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Type</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Phone</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">City</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Created</th>
-                        <th className="text-right p-4 text-sm font-medium text-white/50">Actions</th>
+                      <tr className="border-b border-border">
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Customer ID</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">First Name</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Last Name</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Email</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Company</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Type</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Phone</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">City</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Created</th>
+                        <th className="text-right p-4 text-sm font-medium text-muted-foreground">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                       {filteredCustomers.map((customer) => (
                         <tr 
                           key={customer.id} 
-                          className="border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors"
+                          className="border-b border-border hover:bg-foreground/5 cursor-pointer transition-colors"
                           onClick={() => handleEditCustomer(customer)}
                         >
                           <td className="p-4">
                             <div className="flex items-center gap-2">
-                              <span className="text-white/50 text-xs font-mono truncate max-w-[80px]" title={customer.id}>
+                              <span className="text-muted-foreground text-xs font-mono truncate max-w-[80px]" title={customer.id}>
                                 {customer.id.slice(0, 8)}...
                               </span>
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-6 w-6 p-0 text-white/30 hover:text-white/70"
+                                className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground/70"
                                 onClick={(e) => {
                                   e.stopPropagation()
                                   copyToClipboard(customer.id)
@@ -941,31 +941,31 @@ export default function SupabaseAdminPage() {
                             </div>
                           </td>
                           <td className="p-4">
-                            <span className={customer.first_name ? 'text-white' : 'text-white/30 italic'}>
+                            <span className={customer.first_name ? 'text-foreground' : 'text-muted-foreground italic'}>
                               {customer.first_name || '—'}
                             </span>
                           </td>
                           <td className="p-4">
-                            <span className={customer.last_name ? 'text-white' : 'text-white/30 italic'}>
+                            <span className={customer.last_name ? 'text-foreground' : 'text-muted-foreground italic'}>
                               {customer.last_name || '—'}
                             </span>
                           </td>
-                          <td className="p-4 text-white/70">{customer.user_email || '—'}</td>
-                          <td className="p-4 text-white/70">{customer.company_name || '—'}</td>
+                          <td className="p-4 text-foreground/70">{customer.user_email || '—'}</td>
+                          <td className="p-4 text-foreground/70">{customer.company_name || '—'}</td>
                           <td className="p-4">
                             <span className={`px-2 py-1 text-xs rounded-full ${
                               customer.customer_type === 'b2bvip'
                                 ? 'bg-amber-500/20 text-amber-400'
                                 : customer.customer_type === 'b2b'
                                 ? 'bg-blue-500/20 text-blue-400'
-                                : 'bg-white/10 text-white/70'
+                                : 'bg-foreground/10 text-foreground/70'
                             }`}>
                               {CUSTOMER_TYPES.find(t => t.value === customer.customer_type)?.label || customer.customer_type}
                             </span>
                           </td>
-                          <td className="p-4 text-white/70 text-sm">{customer.phone || '—'}</td>
-                          <td className="p-4 text-white/50 text-sm">{customer.shipping_city || '—'}</td>
-                          <td className="p-4 text-white/50 text-xs">
+                          <td className="p-4 text-foreground/70 text-sm">{customer.phone || '—'}</td>
+                          <td className="p-4 text-muted-foreground text-sm">{customer.shipping_city || '—'}</td>
+                          <td className="p-4 text-muted-foreground text-xs">
                             <div className="flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {formatDateTime(customer.created_at)}
@@ -976,7 +976,7 @@ export default function SupabaseAdminPage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-8 w-8 p-0 text-white/50 hover:text-white hover:bg-white/10"
+                                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                                 onClick={(e) => {
                                   e.stopPropagation()
                                   handleEditCustomer(customer)
@@ -1001,7 +1001,7 @@ export default function SupabaseAdminPage() {
                       ))}
                       {filteredCustomers.length === 0 && (
                         <tr>
-                          <td colSpan={10} className="p-8 text-center text-white/40">
+                          <td colSpan={10} className="p-8 text-center text-muted-foreground">
                             No customers found
                           </td>
                         </tr>
@@ -1024,7 +1024,7 @@ export default function SupabaseAdminPage() {
               <div className="rounded-xl bg-blue-500/10 border border-blue-500/20 p-4 flex items-start gap-3">
                 <AlertCircle className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm text-white/80">
+                  <p className="text-sm text-foreground/80">
                     Auth users are managed by Supabase Auth. Click on a user to send password reset or magic link emails.
                   </p>
                 </div>
@@ -1032,36 +1032,36 @@ export default function SupabaseAdminPage() {
 
               {/* Search */}
               <div className="relative max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search auth users..."
-                  className="h-12 pl-12 bg-white/5 border-white/10 text-white rounded-xl"
+                  className="h-12 pl-12 bg-foreground/5 border-border text-foreground rounded-xl"
                 />
               </div>
 
               {/* Auth Users List */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+              <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Email</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Created</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Last Sign In</th>
-                        <th className="text-left p-4 text-sm font-medium text-white/50">Status</th>
-                        <th className="text-right p-4 text-sm font-medium text-white/50">Actions</th>
+                      <tr className="border-b border-border">
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Email</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Created</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Last Sign In</th>
+                        <th className="text-left p-4 text-sm font-medium text-muted-foreground">Status</th>
+                        <th className="text-right p-4 text-sm font-medium text-muted-foreground">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                       {filteredAuthUsers.map((user) => (
-                        <tr key={user.id} className="border-b border-white/5 hover:bg-white/5">
-                          <td className="p-4 text-white">{user.email}</td>
-                          <td className="p-4 text-white/50 text-sm">
+                        <tr key={user.id} className="border-b border-border hover:bg-foreground/5">
+                          <td className="p-4 text-foreground">{user.email}</td>
+                          <td className="p-4 text-muted-foreground text-sm">
                             {new Date(user.created_at).toLocaleDateString()}
                           </td>
-                          <td className="p-4 text-white/50 text-sm">
+                          <td className="p-4 text-muted-foreground text-sm">
                             {user.last_sign_in_at 
                               ? new Date(user.last_sign_in_at).toLocaleDateString()
                               : 'Never'}
@@ -1086,9 +1086,9 @@ export default function SupabaseAdminPage() {
                                   <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end" className="bg-[#1a1a1a] border-white/10">
+                              <DropdownMenuContent align="end" className="bg-card border-border">
                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                <DropdownMenuSeparator className="bg-white/10" />
+                                <DropdownMenuSeparator className="bg-foreground/10" />
                                 <DropdownMenuItem
                                   onClick={() => {
                                     setSelectedAuthUser(user)
@@ -1111,7 +1111,7 @@ export default function SupabaseAdminPage() {
                                   <Link2 className="h-4 w-4 mr-2" />
                                   Send Magic Link
                                 </DropdownMenuItem>
-                                <DropdownMenuSeparator className="bg-white/10" />
+                                <DropdownMenuSeparator className="bg-foreground/10" />
                                 <DropdownMenuItem
                                   onClick={() => {
                                     setSelectedAuthUser(user)
@@ -1130,7 +1130,7 @@ export default function SupabaseAdminPage() {
                       ))}
                       {filteredAuthUsers.length === 0 && (
                         <tr>
-                          <td colSpan={5} className="p-8 text-center text-white/40">
+                          <td colSpan={5} className="p-8 text-center text-muted-foreground">
                             No auth users found. Make sure the API route is configured correctly.
                           </td>
                         </tr>
@@ -1150,61 +1150,61 @@ export default function SupabaseAdminPage() {
               className="space-y-6"
             >
               {/* User Signups */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
-                <div className="p-6 border-b border-white/10">
-                  <h3 className="text-lg font-semibold text-white">User Signups</h3>
-                  <p className="text-sm text-white/50">Configure how users can sign up to your application</p>
+              <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
+                <div className="p-6 border-b border-border">
+                  <h3 className="text-lg font-semibold text-foreground">User Signups</h3>
+                  <p className="text-sm text-muted-foreground">Configure how users can sign up to your application</p>
                 </div>
                 <div className="p-6 space-y-4">
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                  <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                     <div>
-                      <Label className="text-white font-medium">Allow new users to sign up</Label>
-                      <p className="text-sm text-white/50">If disabled, new users will not be able to sign up</p>
+                      <Label className="text-foreground font-medium">Allow new users to sign up</Label>
+                      <p className="text-sm text-muted-foreground">If disabled, new users will not be able to sign up</p>
                     </div>
                     <Switch checked={allowSignups} onCheckedChange={setAllowSignups} />
                   </div>
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
+                  <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
                     <div>
-                      <Label className="text-white font-medium">Confirm email</Label>
-                      <p className="text-sm text-white/50">Users need to confirm their email before signing in</p>
+                      <Label className="text-foreground font-medium">Confirm email</Label>
+                      <p className="text-sm text-muted-foreground">Users need to confirm their email before signing in</p>
                     </div>
                     <Switch checked={confirmEmail} onCheckedChange={setConfirmEmail} />
                   </div>
                 </div>
-                <div className="p-6 border-t border-white/10">
-                  <p className="text-xs text-white/40">
+                <div className="p-6 border-t border-border">
+                  <p className="text-xs text-muted-foreground">
                     Note: These settings are for display only. To change them, go to your Supabase Dashboard → Authentication → Providers
                   </p>
                 </div>
               </div>
 
               {/* Auth Providers */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
-                <div className="p-6 border-b border-white/10">
-                  <h3 className="text-lg font-semibold text-white">Auth Providers</h3>
-                  <p className="text-sm text-white/50">Enable different authentication methods for your users</p>
+              <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl overflow-hidden">
+                <div className="p-6 border-b border-border">
+                  <h3 className="text-lg font-semibold text-foreground">Auth Providers</h3>
+                  <p className="text-sm text-muted-foreground">Enable different authentication methods for your users</p>
                 </div>
                 <div className="divide-y divide-white/5">
                   {providers.map((provider) => (
-                    <div key={provider.name} className="flex items-center justify-between p-4 hover:bg-white/5">
+                    <div key={provider.name} className="flex items-center justify-between p-4 hover:bg-foreground/5">
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
+                        <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
                           {provider.icon}
                         </div>
-                        <span className="text-white font-medium">{provider.name}</span>
+                        <span className="text-foreground font-medium">{provider.name}</span>
                       </div>
                       <span className={`px-3 py-1 text-xs rounded-full ${
                         provider.enabled 
                           ? 'bg-emerald-500/20 text-emerald-400' 
-                          : 'bg-white/10 text-white/40'
+                          : 'bg-foreground/10 text-muted-foreground'
                       }`}>
                         {provider.enabled ? 'Enabled' : 'Disabled'}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="p-6 border-t border-white/10">
-                  <p className="text-xs text-white/40">
+                <div className="p-6 border-t border-border">
+                  <p className="text-xs text-muted-foreground">
                     To enable or configure providers, go to your Supabase Dashboard → Authentication → Providers
                   </p>
                 </div>
@@ -1226,8 +1226,8 @@ export default function SupabaseAdminPage() {
                     key={type.id}
                     variant={activeTemplateType === type.id ? 'default' : 'outline'}
                     className={activeTemplateType === type.id 
-                      ? 'bg-white text-black hover:bg-white/90' 
-                      : 'border-white/10 bg-white/5 text-white hover:bg-white/10'
+                      ? 'bg-primary text-primary-foreground hover:bg-card/90' 
+                      : 'border-border bg-foreground/5 text-foreground hover:bg-foreground/10'
                     }
                     onClick={() => setActiveTemplateType(type.id)}
                   >
@@ -1237,26 +1237,26 @@ export default function SupabaseAdminPage() {
               </div>
 
               {/* Template Info */}
-              <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                <p className="text-sm text-white/70">
+              <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                <p className="text-sm text-foreground/70">
                   {EMAIL_TEMPLATE_TYPES.find(t => t.id === activeTemplateType)?.description}
                 </p>
               </div>
 
               {/* Subject Line */}
               <div className="space-y-2">
-                <Label className="text-white/70">Email Subject</Label>
+                <Label className="text-foreground/70">Email Subject</Label>
                 <Input
                   value={templateSubject}
                   onChange={(e) => setTemplateSubject(e.target.value)}
                   placeholder="Enter email subject..."
-                  className="h-12 bg-white/5 border-white/10 text-white rounded-xl"
+                  className="h-12 bg-foreground/5 border-border text-foreground rounded-xl"
                 />
               </div>
 
               {/* Email Editor */}
               <div className="space-y-2">
-                <Label className="text-white/70">Email Body</Label>
+                <Label className="text-foreground/70">Email Body</Label>
                 <EmailEditor
                   content={templateContent}
                   onChange={(content, html) => {
@@ -1272,7 +1272,7 @@ export default function SupabaseAdminPage() {
                 <Button
                   onClick={handleSaveTemplate}
                   disabled={savingTemplate}
-                  className="h-12 px-6 rounded-xl bg-white text-black hover:bg-white/90 font-semibold"
+                  className="h-12 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90 font-semibold"
                 >
                   {savingTemplate ? (
                     <>
@@ -1293,14 +1293,14 @@ export default function SupabaseAdminPage() {
 
         {/* Action Dialog */}
         <Dialog open={actionDialogOpen} onOpenChange={setActionDialogOpen}>
-          <DialogContent className="bg-[#1a1a1a] border-white/10">
+          <DialogContent className="bg-card border-border">
             <DialogHeader>
-              <DialogTitle className="text-white">
+              <DialogTitle className="text-foreground">
                 {actionType === 'reset' && 'Send Password Reset'}
                 {actionType === 'magic' && 'Send Magic Link'}
                 {actionType === 'delete' && 'Delete User'}
               </DialogTitle>
-              <DialogDescription className="text-white/60">
+              <DialogDescription className="text-foreground/60">
                 {actionType === 'reset' && `Send a password reset email to ${selectedAuthUser?.email}`}
                 {actionType === 'magic' && `Send a magic link to ${selectedAuthUser?.email}`}
                 {actionType === 'delete' && `Are you sure you want to delete ${selectedAuthUser?.email}? This action cannot be undone.`}
@@ -1310,7 +1310,7 @@ export default function SupabaseAdminPage() {
               <Button
                 variant="outline"
                 onClick={() => setActionDialogOpen(false)}
-                className="border-white/10 bg-white/5 text-white hover:bg-white/10"
+                className="border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
                 Cancel
               </Button>
@@ -1335,13 +1335,13 @@ export default function SupabaseAdminPage() {
 
         {/* Edit User Dialog */}
         <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
-          <DialogContent className="bg-[#1a1a1a] border-white/10 max-w-lg">
+          <DialogContent className="bg-card border-border max-w-lg">
             <DialogHeader>
-              <DialogTitle className="text-white flex items-center gap-2">
+              <DialogTitle className="text-foreground flex items-center gap-2">
                 <Pencil className="h-5 w-5" />
                 Edit User
               </DialogTitle>
-              <DialogDescription className="text-white/60">
+              <DialogDescription className="text-foreground/60">
                 Update user information and role
               </DialogDescription>
             </DialogHeader>
@@ -1350,17 +1350,17 @@ export default function SupabaseAdminPage() {
               <div className="space-y-4 py-4 max-h-[70vh] overflow-y-auto pr-2">
                 {/* User ID */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">User ID</Label>
+                  <Label className="text-foreground/70">User ID</Label>
                   <div className="flex items-center gap-2">
                     <Input
                       value={selectedUser.id}
                       disabled
-                      className="h-10 bg-white/5 border-white/10 text-white/50 rounded-lg font-mono text-sm"
+                      className="h-10 bg-foreground/5 border-border text-muted-foreground rounded-lg font-mono text-sm"
                     />
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-10 px-3 border-white/10 bg-white/5 text-white hover:bg-white/10"
+                      className="h-10 px-3 border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
                       onClick={() => copyToClipboard(selectedUser.id)}
                     >
                       <Copy className="h-4 w-4" />
@@ -1370,60 +1370,60 @@ export default function SupabaseAdminPage() {
 
                 {/* Email */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Email</Label>
+                  <Label className="text-foreground/70">Email</Label>
                   <Input
                     value={editEmail}
                     onChange={(e) => setEditEmail(e.target.value)}
-                    className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                    className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                   />
                 </div>
 
                 {/* First Name / Last Name */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label className="text-white/70">First Name</Label>
+                    <Label className="text-foreground/70">First Name</Label>
                     <Input
                       value={editFirstName}
                       onChange={(e) => setEditFirstName(e.target.value)}
                       placeholder="Enter first name..."
-                      className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-white/70">Last Name</Label>
+                    <Label className="text-foreground/70">Last Name</Label>
                     <Input
                       value={editLastName}
                       onChange={(e) => setEditLastName(e.target.value)}
                       placeholder="Enter last name..."
-                      className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                   </div>
                 </div>
 
                 {/* Phone */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Phone</Label>
+                  <Label className="text-foreground/70">Phone</Label>
                   <Input
                     value={editPhone}
                     onChange={(e) => setEditPhone(e.target.value)}
                     placeholder="Enter phone number..."
-                    className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                    className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                   />
                 </div>
 
                 {/* Role */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Role</Label>
+                  <Label className="text-foreground/70">Role</Label>
                   <Select value={editRole} onValueChange={setEditRole}>
-                    <SelectTrigger className="h-10 bg-white/5 border-white/10 text-white rounded-lg">
+                    <SelectTrigger className="h-10 bg-foreground/5 border-border text-foreground rounded-lg">
                       <SelectValue placeholder="Select a role" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1a1a1a] border-white/10">
+                    <SelectContent className="bg-card border-border">
                       {USER_ROLES.map((role) => (
                         <SelectItem 
                           key={role.value} 
                           value={role.value}
-                          className="text-white hover:bg-white/10 focus:bg-white/10"
+                          className="text-foreground hover:bg-foreground/10 focus:bg-foreground/10"
                         >
                           {role.label}
                         </SelectItem>
@@ -1433,14 +1433,14 @@ export default function SupabaseAdminPage() {
                 </div>
 
                 {/* Timestamps */}
-                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border">
                   <div>
-                    <Label className="text-white/50 text-xs">Created</Label>
-                    <p className="text-white/70 text-sm mt-1">{formatDateTime(selectedUser.created_at)}</p>
+                    <Label className="text-muted-foreground text-xs">Created</Label>
+                    <p className="text-foreground/70 text-sm mt-1">{formatDateTime(selectedUser.created_at)}</p>
                   </div>
                   <div>
-                    <Label className="text-white/50 text-xs">Last Updated</Label>
-                    <p className="text-white/70 text-sm mt-1">{formatDateTime(selectedUser.updated_at)}</p>
+                    <Label className="text-muted-foreground text-xs">Last Updated</Label>
+                    <p className="text-foreground/70 text-sm mt-1">{formatDateTime(selectedUser.updated_at)}</p>
                   </div>
                 </div>
 
@@ -1448,13 +1448,13 @@ export default function SupabaseAdminPage() {
                 {(() => {
                   const authUser = getAuthUserForUser(selectedUser)
                   return authUser ? (
-                    <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                    <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border">
                       <div>
-                        <Label className="text-white/50 text-xs">Last Sign In</Label>
-                        <p className="text-white/70 text-sm mt-1">{formatDateTime(authUser.last_sign_in_at)}</p>
+                        <Label className="text-muted-foreground text-xs">Last Sign In</Label>
+                        <p className="text-foreground/70 text-sm mt-1">{formatDateTime(authUser.last_sign_in_at)}</p>
                       </div>
                       <div>
-                        <Label className="text-white/50 text-xs">Email Verified</Label>
+                        <Label className="text-muted-foreground text-xs">Email Verified</Label>
                         <p className="text-sm mt-1">
                           {authUser.email_confirmed_at ? (
                             <span className="text-emerald-400 flex items-center gap-1">
@@ -1477,14 +1477,14 @@ export default function SupabaseAdminPage() {
               <Button
                 variant="outline"
                 onClick={() => setEditDialogOpen(false)}
-                className="border-white/10 bg-white/5 text-white hover:bg-white/10"
+                className="border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleSaveUser}
                 disabled={editLoading}
-                className="bg-white text-black hover:bg-white/90"
+                className="bg-primary text-primary-foreground hover:bg-card/90"
               >
                 {editLoading ? (
                   <>
@@ -1504,13 +1504,13 @@ export default function SupabaseAdminPage() {
 
         {/* Edit Customer Dialog */}
         <Dialog open={editCustomerDialogOpen} onOpenChange={setEditCustomerDialogOpen}>
-          <DialogContent className="bg-[#1a1a1a] border-white/10 max-w-lg">
+          <DialogContent className="bg-card border-border max-w-lg">
             <DialogHeader>
-              <DialogTitle className="text-white flex items-center gap-2">
+              <DialogTitle className="text-foreground flex items-center gap-2">
                 <UserCircle className="h-5 w-5" />
                 Edit Customer
               </DialogTitle>
-              <DialogDescription className="text-white/60">
+              <DialogDescription className="text-foreground/60">
                 Update customer details, name, and address
               </DialogDescription>
             </DialogHeader>
@@ -1519,17 +1519,17 @@ export default function SupabaseAdminPage() {
               <div className="space-y-4 py-4 max-h-[70vh] overflow-y-auto pr-2">
                 {/* Customer ID */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Customer ID</Label>
+                  <Label className="text-foreground/70">Customer ID</Label>
                   <div className="flex items-center gap-2">
                     <Input
                       value={selectedCustomer.id}
                       disabled
-                      className="h-10 bg-white/5 border-white/10 text-white/50 rounded-lg font-mono text-sm"
+                      className="h-10 bg-foreground/5 border-border text-muted-foreground rounded-lg font-mono text-sm"
                     />
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-10 px-3 border-white/10 bg-white/5 text-white hover:bg-white/10"
+                      className="h-10 px-3 border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
                       onClick={() => copyToClipboard(selectedCustomer.id)}
                     >
                       <Copy className="h-4 w-4" />
@@ -1540,11 +1540,11 @@ export default function SupabaseAdminPage() {
                 {/* Email (read-only - comes from users table) */}
                 {selectedCustomer.user_email && (
                   <div className="space-y-2">
-                    <Label className="text-white/70">Email (from Users)</Label>
+                    <Label className="text-foreground/70">Email (from Users)</Label>
                     <Input
                       value={selectedCustomer.user_email}
                       disabled
-                      className="h-10 bg-white/5 border-white/10 text-white/50 rounded-lg"
+                      className="h-10 bg-foreground/5 border-border text-muted-foreground rounded-lg"
                     />
                   </div>
                 )}
@@ -1552,60 +1552,60 @@ export default function SupabaseAdminPage() {
                 {/* First Name / Last Name */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label className="text-white/70">First Name</Label>
+                    <Label className="text-foreground/70">First Name</Label>
                     <Input
                       value={editCustomerFirstName}
                       onChange={(e) => setEditCustomerFirstName(e.target.value)}
                       placeholder="Enter first name..."
-                      className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-white/70">Last Name</Label>
+                    <Label className="text-foreground/70">Last Name</Label>
                     <Input
                       value={editCustomerLastName}
                       onChange={(e) => setEditCustomerLastName(e.target.value)}
                       placeholder="Enter last name..."
-                      className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                   </div>
                 </div>
 
                 {/* Company */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Company</Label>
+                  <Label className="text-foreground/70">Company</Label>
                   <Input
                     value={editCustomerCompany}
                     onChange={(e) => setEditCustomerCompany(e.target.value)}
                     placeholder="Company name..."
-                    className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                    className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Phone</Label>
+                  <Label className="text-foreground/70">Phone</Label>
                   <Input
                     value={editCustomerPhone}
                     onChange={(e) => setEditCustomerPhone(e.target.value)}
                     placeholder="(555) 555-5555"
-                    className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                    className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                   />
                 </div>
 
                 {/* Customer Type */}
                 <div className="space-y-2">
-                  <Label className="text-white/70">Customer Type</Label>
+                  <Label className="text-foreground/70">Customer Type</Label>
                   <Select value={editCustomerType} onValueChange={setEditCustomerType}>
-                    <SelectTrigger className="h-10 bg-white/5 border-white/10 text-white rounded-lg">
+                    <SelectTrigger className="h-10 bg-foreground/5 border-border text-foreground rounded-lg">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1a1a1a] border-white/10">
+                    <SelectContent className="bg-card border-border">
                       {CUSTOMER_TYPES.map((type) => (
                         <SelectItem 
                           key={type.value} 
                           value={type.value}
-                          className="text-white hover:bg-white/10 focus:bg-white/10"
+                          className="text-foreground hover:bg-foreground/10 focus:bg-foreground/10"
                         >
                           {type.label}
                         </SelectItem>
@@ -1615,8 +1615,8 @@ export default function SupabaseAdminPage() {
                 </div>
 
                 {/* Shipping Address */}
-                <div className="space-y-3 pt-2 border-t border-white/10">
-                  <Label className="text-white/70 flex items-center gap-2">
+                <div className="space-y-3 pt-2 border-t border-border">
+                  <Label className="text-foreground/70 flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
                     Shipping Address
                   </Label>
@@ -1624,64 +1624,64 @@ export default function SupabaseAdminPage() {
                     value={editCustomerAddress}
                     onChange={(e) => setEditCustomerAddress(e.target.value)}
                     placeholder="Street address..."
-                    className="h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                    className="h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                   />
                   <div className="grid grid-cols-6 gap-2">
                     <Input
                       value={editCustomerCity}
                       onChange={(e) => setEditCustomerCity(e.target.value)}
                       placeholder="City"
-                      className="col-span-3 h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="col-span-3 h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                     <Input
                       value={editCustomerState}
                       onChange={(e) => setEditCustomerState(e.target.value)}
                       placeholder="ST"
-                      className="col-span-1 h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="col-span-1 h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                     <Input
                       value={editCustomerZip}
                       onChange={(e) => setEditCustomerZip(e.target.value)}
                       placeholder="ZIP"
-                      className="col-span-2 h-10 bg-white/5 border-white/10 text-white rounded-lg"
+                      className="col-span-2 h-10 bg-foreground/5 border-border text-foreground rounded-lg"
                     />
                   </div>
                 </div>
 
                 {/* Notes */}
-                <div className="space-y-2 pt-2 border-t border-white/10">
-                  <Label className="text-white/70">Notes</Label>
+                <div className="space-y-2 pt-2 border-t border-border">
+                  <Label className="text-foreground/70">Notes</Label>
                   <textarea
                     value={editCustomerNotes}
                     onChange={(e) => setEditCustomerNotes(e.target.value)}
                     placeholder="Internal notes..."
                     rows={3}
-                    className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 resize-none text-sm"
+                    className="w-full px-3 py-2 rounded-lg bg-foreground/5 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-border resize-none text-sm"
                   />
                 </div>
 
                 {/* Timestamps */}
-                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border">
                   <div>
-                    <Label className="text-white/50 text-xs">Created</Label>
-                    <p className="text-white/70 text-sm mt-1">{formatDateTime(selectedCustomer.created_at)}</p>
+                    <Label className="text-muted-foreground text-xs">Created</Label>
+                    <p className="text-foreground/70 text-sm mt-1">{formatDateTime(selectedCustomer.created_at)}</p>
                   </div>
                   <div>
-                    <Label className="text-white/50 text-xs">Last Updated</Label>
-                    <p className="text-white/70 text-sm mt-1">{formatDateTime(selectedCustomer.updated_at)}</p>
+                    <Label className="text-muted-foreground text-xs">Last Updated</Label>
+                    <p className="text-foreground/70 text-sm mt-1">{formatDateTime(selectedCustomer.updated_at)}</p>
                   </div>
                 </div>
 
                 {/* Linked User */}
                 {selectedCustomer.user_id && (
-                  <div className="pt-2 border-t border-white/10">
-                    <Label className="text-white/50 text-xs">Linked User ID</Label>
+                  <div className="pt-2 border-t border-border">
+                    <Label className="text-muted-foreground text-xs">Linked User ID</Label>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-white/70 text-xs font-mono">{selectedCustomer.user_id}</span>
+                      <span className="text-foreground/70 text-xs font-mono">{selectedCustomer.user_id}</span>
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-6 w-6 p-0 text-white/30 hover:text-white/70"
+                        className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground/70"
                         onClick={() => copyToClipboard(selectedCustomer.user_id!)}
                       >
                         <Copy className="h-3 w-3" />
@@ -1696,14 +1696,14 @@ export default function SupabaseAdminPage() {
               <Button
                 variant="outline"
                 onClick={() => setEditCustomerDialogOpen(false)}
-                className="border-white/10 bg-white/5 text-white hover:bg-white/10"
+                className="border-border bg-foreground/5 text-foreground hover:bg-foreground/10"
               >
                 Cancel
               </Button>
               <Button
                 onClick={handleSaveCustomer}
                 disabled={editCustomerLoading}
-                className="bg-white text-black hover:bg-white/90"
+                className="bg-primary text-primary-foreground hover:bg-card/90"
               >
                 {editCustomerLoading ? (
                   <>

@@ -147,21 +147,21 @@ export function BulkProfileGenerator({
 
   if (productsToProcess.length === 0) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-lg mx-4 rounded-2xl bg-[#0a0a0a] border border-white/10 p-8"
+          className="w-full max-w-lg mx-4 rounded-2xl bg-background border border-border p-8"
         >
           <div className="text-center">
             <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center mx-auto mb-4">
               <Check className="h-8 w-8 text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-2">All Products Complete</h2>
-            <p className="text-white/50 mb-6">All products already have complete profiles.</p>
+            <h2 className="text-2xl font-bold text-foreground mb-2">All Products Complete</h2>
+            <p className="text-muted-foreground mb-6">All products already have complete profiles.</p>
             <Button
               onClick={onClose}
-              className="rounded-xl bg-white text-black hover:bg-white/90 h-12 px-8"
+              className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 px-8"
             >
               Close
             </Button>
@@ -172,23 +172,23 @@ export function BulkProfileGenerator({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-2xl mx-4 rounded-2xl bg-[#0a0a0a] border border-white/10 overflow-hidden"
+        className="w-full max-w-2xl mx-4 rounded-2xl bg-background border border-border overflow-hidden"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
+        <div className="flex items-center justify-between p-6 border-b border-border">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
               <Sparkles className="h-5 w-5 text-purple-400" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-foreground">
                 {isFullMode ? 'Generate Full Profiles' : 'Bulk Profile Generator'}
               </h2>
-              <p className="text-sm text-white/50">
+              <p className="text-sm text-muted-foreground">
                 {hasSelection 
                   ? `${productsToProcess.length} selected product${productsToProcess.length !== 1 ? 's' : ''}`
                   : `${productsToProcess.length} product${productsToProcess.length !== 1 ? 's' : ''} need updates`
@@ -199,7 +199,7 @@ export function BulkProfileGenerator({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:bg-white/10 transition-colors text-white/50 hover:text-white"
+            className="p-2 rounded-lg hover:bg-foreground/10 transition-colors text-muted-foreground hover:text-foreground"
           >
             <X className="h-5 w-5" />
           </button>
@@ -209,7 +209,7 @@ export function BulkProfileGenerator({
         <div className="p-6 max-h-[60vh] overflow-y-auto">
           {!isGenerating && !completed && (
             <div className="space-y-4">
-              <p className="text-white/60 text-sm">
+              <p className="text-foreground/60 text-sm">
                 {isFullMode 
                   ? 'This will generate NEW profiles for all selected products, replacing existing content:'
                   : 'This will generate missing profile content (category, ratings, description, cart text) for the following products:'
@@ -227,10 +227,10 @@ export function BulkProfileGenerator({
                   return (
                     <div
                       key={product.base_name}
-                      className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10"
+                      className="flex items-center justify-between p-3 rounded-xl bg-foreground/5 border border-border"
                     >
-                      <span className="text-sm text-white font-medium">{product.base_name}</span>
-                      <span className="text-xs text-white/40">
+                      <span className="text-sm text-foreground font-medium">{product.base_name}</span>
+                      <span className="text-xs text-muted-foreground">
                         {isFullMode ? 'Full regeneration' : (missing.length > 0 ? missing.join(', ') : 'Complete')}
                       </span>
                     </div>
@@ -246,10 +246,10 @@ export function BulkProfileGenerator({
               {isGenerating && (
                 <div className="mb-4">
                   <div className="flex items-center justify-between text-sm mb-2">
-                    <span className="text-white/60">Progress</span>
-                    <span className="text-white/60">{currentIndex + 1} / {productsToProcess.length}</span>
+                    <span className="text-foreground/60">Progress</span>
+                    <span className="text-foreground/60">{currentIndex + 1} / {productsToProcess.length}</span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-purple-500 rounded-full transition-all duration-300"
                       style={{ width: `${((currentIndex + 1) / productsToProcess.length) * 100}%` }}
@@ -268,13 +268,13 @@ export function BulkProfileGenerator({
                       status.status === 'generating' && "bg-purple-500/10 border-purple-500/30",
                       status.status === 'success' && "bg-green-500/10 border-green-500/30",
                       status.status === 'error' && "bg-red-500/10 border-red-500/30",
-                      status.status === 'pending' && "bg-white/5 border-white/10"
+                      status.status === 'pending' && "bg-foreground/5 border-border"
                     )}
                   >
-                    <span className="text-sm text-white font-medium">{status.baseName}</span>
+                    <span className="text-sm text-foreground font-medium">{status.baseName}</span>
                     <div className="flex items-center gap-2">
                       {status.status === 'pending' && (
-                        <span className="text-xs text-white/40">Waiting...</span>
+                        <span className="text-xs text-muted-foreground">Waiting...</span>
                       )}
                       {status.status === 'generating' && (
                         <>
@@ -301,14 +301,14 @@ export function BulkProfileGenerator({
 
               {/* Summary */}
               {completed && (
-                <div className="mt-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="mt-4 p-4 rounded-xl bg-foreground/5 border border-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-white/60">Completed:</span>
+                    <span className="text-foreground/60">Completed:</span>
                     <span className="text-green-400 font-medium">{successCount} successful</span>
                   </div>
                   {errorCount > 0 && (
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-white/60">Failed:</span>
+                      <span className="text-foreground/60">Failed:</span>
                       <span className="text-red-400 font-medium">{errorCount} errors</span>
                     </div>
                   )}
@@ -319,13 +319,13 @@ export function BulkProfileGenerator({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 p-6 border-t border-white/10">
+        <div className="flex items-center justify-end gap-3 p-6 border-t border-border">
           {!isGenerating && !completed && (
             <>
               <Button
                 variant="outline"
                 onClick={onClose}
-                className="rounded-xl border-white/20 text-white hover:bg-white/10 h-12 px-6"
+                className="rounded-xl border-border text-foreground hover:bg-foreground/10 h-12 px-6"
               >
                 Cancel
               </Button>
@@ -341,7 +341,7 @@ export function BulkProfileGenerator({
           {isGenerating && (
             <Button
               disabled
-              className="rounded-xl bg-white/10 text-white h-12 px-6"
+              className="rounded-xl bg-foreground/10 text-foreground h-12 px-6"
             >
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
               Generating...
@@ -350,7 +350,7 @@ export function BulkProfileGenerator({
           {completed && (
             <Button
               onClick={onClose}
-              className="rounded-xl bg-white text-black hover:bg-white/90 h-12 px-6"
+              className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 h-12 px-6"
             >
               Done
             </Button>

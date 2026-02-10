@@ -97,7 +97,7 @@ export default function MiniProductCard({ product, onClick }: MiniProductCardPro
   return (
     <button
       onClick={onClick}
-      className="group relative w-full h-80 flex flex-col justify-between items-center bg-black rounded-lg p-4 sm:p-6 border border-neutral-800 transition-all duration-300 cursor-pointer font-mono hover:-translate-y-1 hover:rotate-1"
+      className="group relative w-full h-80 flex flex-col justify-between items-center bg-background rounded-lg p-4 sm:p-6 border border-border transition-all duration-300 cursor-pointer font-mono hover:-translate-y-1 hover:rotate-1"
       style={{
         boxShadow: `0 4px 16px ${hexToRgba(labelColor, 0.2)}, 0 0 40px ${hexToRgba(labelColor, 0.1)}`,
       }}
@@ -110,7 +110,7 @@ export default function MiniProductCard({ product, onClick }: MiniProductCardPro
     >
       {/* Product Name - Top Centered */}
       <div className="w-full text-center px-2">
-        <h3 className="text-lg sm:text-xl font-extrabold tracking-wider text-white uppercase leading-tight">
+        <h3 className="text-lg sm:text-xl font-extrabold tracking-wider text-foreground uppercase leading-tight">
           {baseName}
         </h3>
       </div>
@@ -120,10 +120,10 @@ export default function MiniProductCard({ product, onClick }: MiniProductCardPro
         <div className="w-full flex flex-col gap-2 sm:gap-3 px-2">
           {efficacyBars.map((bar, index) => (
             <div key={index} className="w-full space-y-1">
-              <div className="w-full text-center text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-wide">
+              <div className="w-full text-center text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide">
                 {abbreviateLabel(bar.label)}
               </div>
-              <div className="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-300"
                   style={{
@@ -142,7 +142,7 @@ export default function MiniProductCard({ product, onClick }: MiniProductCardPro
       {/* Dosage - Bottom Centered */}
       {variant && (
         <div className="w-full text-center px-2">
-          <p className="text-lg sm:text-xl font-black text-white tracking-widest uppercase">
+          <p className="text-lg sm:text-xl font-black text-foreground tracking-widest uppercase">
             {variant}
           </p>
         </div>

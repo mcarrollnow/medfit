@@ -205,7 +205,7 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
           />
 
           {/* Modal */}
@@ -216,16 +216,16 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-x-4 top-[10%] z-50 mx-auto max-w-lg md:inset-x-auto"
           >
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/95 shadow-2xl backdrop-blur-xl">
+            <div className="overflow-hidden rounded-3xl border border-border bg-background/95 shadow-2xl backdrop-blur-xl">
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+              <div className="flex items-center justify-between border-b border-border px-6 py-4">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Rate Your Experience</h2>
-                  <p className="text-sm text-white/60">with {repName}</p>
+                  <h2 className="text-xl font-bold text-foreground">Rate Your Experience</h2>
+                  <p className="text-sm text-foreground/60">with {repName}</p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="rounded-full p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+                  className="rounded-full p-2 text-foreground/60 transition-colors hover:bg-foreground/10 hover:text-foreground"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -243,7 +243,7 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       exit={{ opacity: 0, x: 20 }}
                       className="space-y-8"
                     >
-                      <p className="text-center text-lg text-white/80">How would you rate your experience?</p>
+                      <p className="text-center text-lg text-foreground/80">How would you rate your experience?</p>
 
                       {/* Stars */}
                       <div className="flex justify-center gap-3">
@@ -260,7 +260,7 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                                 "h-12 w-12 transition-all duration-200 md:h-14 md:w-14",
                                 (hoveredRating || selectedRating) >= star
                                   ? "fill-yellow-400 text-yellow-400"
-                                  : "fill-transparent text-white/30",
+                                  : "fill-transparent text-muted-foreground",
                               )}
                             />
                           </button>
@@ -268,7 +268,7 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       </div>
 
                       {/* Rating Label */}
-                      <p className="text-center text-lg font-medium text-white/60">
+                      <p className="text-center text-lg font-medium text-foreground/60">
                         {hoveredRating ? getRatingLabel(hoveredRating) : "Tap a star to rate"}
                       </p>
                     </motion.div>
@@ -293,15 +293,15 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                                 "h-6 w-6",
                                 star <= selectedRating
                                   ? "fill-yellow-400 text-yellow-400"
-                                  : "fill-transparent text-white/20",
+                                  : "fill-transparent text-muted-foreground/50",
                               )}
                             />
                           ))}
                         </div>
-                        <span className="text-lg font-medium text-white">{getRatingLabel(selectedRating)}</span>
+                        <span className="text-lg font-medium text-foreground">{getRatingLabel(selectedRating)}</span>
                       </div>
 
-                      <p className="text-center text-white/60">What describes your experience? (tap all that apply)</p>
+                      <p className="text-center text-foreground/60">What describes your experience? (tap all that apply)</p>
 
                       {/* Feedback Categories */}
                       <div className="max-h-[40vh] space-y-4 overflow-y-auto pr-2">
@@ -311,14 +311,14 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                               onClick={() =>
                                 setExpandedCategory(expandedCategory === category.category ? null : category.category)
                               }
-                              className="flex w-full items-center justify-between rounded-xl bg-white/5 px-4 py-3 text-left transition-colors hover:bg-white/10"
+                              className="flex w-full items-center justify-between rounded-xl bg-foreground/5 px-4 py-3 text-left transition-colors hover:bg-foreground/10"
                             >
-                              <span className="text-sm font-medium uppercase tracking-wider text-white/60">
+                              <span className="text-sm font-medium uppercase tracking-wider text-foreground/60">
                                 {category.category}
                               </span>
                               <ChevronRight
                                 className={cn(
-                                  "h-4 w-4 text-white/40 transition-transform",
+                                  "h-4 w-4 text-muted-foreground transition-transform",
                                   expandedCategory === category.category && "rotate-90",
                                 )}
                               />
@@ -345,8 +345,8 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                                             className={cn(
                                               "flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-all",
                                               isSelected
-                                                ? "border-white bg-white text-black"
-                                                : "border-white/20 bg-white/5 text-white hover:bg-white/10",
+                                                ? "border-primary bg-primary text-primary-foreground"
+                                                : "border-border bg-foreground/5 text-foreground hover:bg-foreground/10",
                                             )}
                                           >
                                             {option}
@@ -368,13 +368,13 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -10 }}
-                                                className="absolute left-0 top-full z-10 mt-2 min-w-[200px] rounded-xl border border-white/10 bg-black/95 p-2 shadow-xl backdrop-blur-xl"
+                                                className="absolute left-0 top-full z-10 mt-2 min-w-[200px] rounded-xl border border-border bg-background/95 p-2 shadow-xl backdrop-blur-xl"
                                               >
                                                 {category.subcategories?.[option]?.map((sub) => (
                                                   <button
                                                     key={sub}
                                                     onClick={() => handleSubcategorySelect(option, sub)}
-                                                    className="block w-full rounded-lg px-3 py-2 text-left text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                                                    className="block w-full rounded-lg px-3 py-2 text-left text-sm text-foreground/80 transition-colors hover:bg-foreground/10 hover:text-foreground"
                                                   >
                                                     {sub}
                                                   </button>
@@ -395,13 +395,13 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
 
                       {/* Selected Tags Display */}
                       {selectedTags.length > 0 && (
-                        <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-white/40">
+                        <div className="rounded-xl border border-border bg-foreground/5 p-4">
+                          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                             Selected Feedback
                           </p>
                           <div className="flex flex-wrap gap-2">
                             {selectedTags.map((tag) => (
-                              <span key={tag} className="rounded-full bg-white/10 px-3 py-1 text-sm text-white">
+                              <span key={tag} className="rounded-full bg-foreground/10 px-3 py-1 text-sm text-foreground">
                                 {tag}
                               </span>
                             ))}
@@ -413,13 +413,13 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       <div className="flex gap-3 pt-2">
                         <button
                           onClick={() => setStep("rating")}
-                          className="flex-1 rounded-xl border border-white/20 py-4 text-base font-medium text-white transition-colors hover:bg-white/10"
+                          className="flex-1 rounded-xl border border-border py-4 text-base font-medium text-foreground transition-colors hover:bg-foreground/10"
                         >
                           Back
                         </button>
                         <button
                           onClick={() => setStep("additional")}
-                          className="flex-1 rounded-xl bg-white py-4 text-base font-bold text-black transition-colors hover:bg-white/90"
+                          className="flex-1 rounded-xl bg-white py-4 text-base font-bold text-black transition-colors hover:bg-card/90"
                         >
                           Continue
                         </button>
@@ -437,11 +437,11 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       className="space-y-6"
                     >
                       <div className="flex items-center justify-center gap-3">
-                        <MessageSquare className="h-6 w-6 text-white/60" />
-                        <span className="text-lg font-medium text-white">Anything else to add?</span>
+                        <MessageSquare className="h-6 w-6 text-foreground/60" />
+                        <span className="text-lg font-medium text-foreground">Anything else to add?</span>
                       </div>
 
-                      <p className="text-center text-sm text-white/60">
+                      <p className="text-center text-sm text-foreground/60">
                         Optional: Share any additional thoughts or details
                       </p>
 
@@ -449,12 +449,12 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                         value={additionalFeedback}
                         onChange={(e) => setAdditionalFeedback(e.target.value)}
                         placeholder="Type your feedback here... (optional)"
-                        className="h-32 w-full resize-none rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none focus:ring-0"
+                        className="h-32 w-full resize-none rounded-xl border border-border bg-foreground/5 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-border focus:outline-none focus:ring-0"
                       />
 
                       {/* Summary */}
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-white/40">
+                      <div className="rounded-xl border border-border bg-foreground/5 p-4">
+                        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                           Your Rating Summary
                         </p>
                         <div className="flex items-center gap-2">
@@ -466,12 +466,12 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                                   "h-5 w-5",
                                   star <= selectedRating
                                     ? "fill-yellow-400 text-yellow-400"
-                                    : "fill-transparent text-white/20",
+                                    : "fill-transparent text-muted-foreground/50",
                                 )}
                               />
                             ))}
                           </div>
-                          <span className="text-sm text-white/60">{selectedTags.length} feedback items selected</span>
+                          <span className="text-sm text-foreground/60">{selectedTags.length} feedback items selected</span>
                         </div>
                       </div>
 
@@ -479,14 +479,14 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       <div className="flex gap-3 pt-2">
                         <button
                           onClick={() => setStep("feedback")}
-                          className="flex-1 rounded-xl border border-white/20 py-4 text-base font-medium text-white transition-colors hover:bg-white/10"
+                          className="flex-1 rounded-xl border border-border py-4 text-base font-medium text-foreground transition-colors hover:bg-foreground/10"
                         >
                           Back
                         </button>
                         <button
                           onClick={handleSubmit}
                           disabled={isSubmitting}
-                          className="flex-1 rounded-xl bg-white py-4 text-base font-bold text-black transition-colors hover:bg-white/90 disabled:opacity-50"
+                          className="flex-1 rounded-xl bg-white py-4 text-base font-bold text-black transition-colors hover:bg-card/90 disabled:opacity-50"
                         >
                           {isSubmitting ? "Submitting..." : "Submit Rating"}
                         </button>
@@ -510,8 +510,8 @@ export function RepRatingPopup({ isOpen, onClose, repName, repId, customerId, or
                       >
                         <Check className="h-10 w-10 text-green-400" />
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-white">Thank You!</h3>
-                      <p className="mt-2 text-center text-white/60">Your feedback helps us improve our service</p>
+                      <h3 className="text-2xl font-bold text-foreground">Thank You!</h3>
+                      <p className="mt-2 text-center text-foreground/60">Your feedback helps us improve our service</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

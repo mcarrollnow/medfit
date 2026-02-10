@@ -244,7 +244,7 @@ export default function InvoicePage() {
   // Loading state
   if (pageState === 'loading') {
     return (
-      <div className="min-h-screen bg-[#121212] flex items-center justify-center">
+      <div className="min-h-screen bg-card flex items-center justify-center">
         <div className="animate-pulse text-[#999999]">Loading invoice...</div>
       </div>
     )
@@ -253,7 +253,7 @@ export default function InvoicePage() {
   // Error state
   if (pageState === 'error') {
     return (
-      <div className="min-h-screen bg-[#121212] flex items-center justify-center">
+      <div className="min-h-screen bg-card flex items-center justify-center">
         <div className="text-center">
           <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-400" />
           <h1 className="text-2xl font-light text-[#f0f0f0] mb-2">Invoice Not Found</h1>
@@ -266,7 +266,7 @@ export default function InvoicePage() {
   // Account Setup state (new customer)
   if (pageState === 'setup' && setupInfo) {
     return (
-      <div className="min-h-screen bg-[#121212] dark text-white">
+      <div className="min-h-screen bg-card dark text-foreground">
         <div className="fixed inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
         
         <div className="relative z-10 max-w-md mx-auto px-6 py-16 md:py-24 flex items-center min-h-screen">
@@ -289,7 +289,7 @@ export default function InvoicePage() {
               ) : (
                 <>
                   <div className="text-center mb-8">
-                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 border border-white/10 mb-5">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground/5 border border-border mb-5">
                       <FileText className="h-7 w-7 text-[#999]" />
                     </div>
                     <p className="text-xs font-mono tracking-[0.3em] text-[#999] uppercase mb-3">
@@ -335,12 +335,12 @@ export default function InvoicePage() {
                           required
                           minLength={8}
                           placeholder="••••••••"
-                          className="w-full pl-12 pr-12 py-3.5 bg-black/50 border border-white/10 rounded-xl text-white placeholder-[#666] focus:border-white/20 focus:outline-none transition-colors"
+                          className="w-full pl-12 pr-12 py-3.5 bg-foreground/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                         />
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#666] hover:text-white transition-colors"
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#666] hover:text-foreground transition-colors"
                         >
                           {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                         </button>
@@ -360,7 +360,7 @@ export default function InvoicePage() {
                           onChange={(e) => setConfirmPassword(e.target.value)}
                           required
                           placeholder="••••••••"
-                          className="w-full pl-12 pr-4 py-3.5 bg-black/50 border border-white/10 rounded-xl text-white placeholder-[#666] focus:border-white/20 focus:outline-none transition-colors"
+                          className="w-full pl-12 pr-4 py-3.5 bg-foreground/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -368,7 +368,7 @@ export default function InvoicePage() {
                     <button
                       type="submit"
                       disabled={setupLoading}
-                      className="w-full py-4 bg-white text-black rounded-xl font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-light text-lg tracking-wide hover:bg-card/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {setupLoading ? 'Setting up...' : (
                         <>
@@ -386,16 +386,16 @@ export default function InvoicePage() {
 
         <style jsx global>{`
           .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(58,66,51,0.04);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(58, 66, 51, 0.08);
+            box-shadow: 0 8px 32px rgba(58,66,51,0.2);
           }
           .glass-button {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(58,66,51,0.06);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(58,66,51,0.08);
           }
         `}</style>
       </div>
@@ -405,7 +405,7 @@ export default function InvoicePage() {
   // Login state (existing customer or setup-completed customer)
   if (pageState === 'login') {
     return (
-      <div className="min-h-screen bg-[#121212] dark text-white">
+      <div className="min-h-screen bg-card dark text-foreground">
         <div className="fixed inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
         
         <div className="relative z-10 max-w-md mx-auto px-6 py-16 md:py-24 flex items-center min-h-screen">
@@ -417,7 +417,7 @@ export default function InvoicePage() {
           >
             <div className="glass-card rounded-3xl p-8 md:p-12">
               <div className="text-center mb-8">
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 border border-white/10 mb-5">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground/5 border border-border mb-5">
                   <Lock className="h-7 w-7 text-[#999]" />
                 </div>
                 <h2 className="font-serif text-2xl font-light mb-3">Sign In to View Invoice</h2>
@@ -443,7 +443,7 @@ export default function InvoicePage() {
                       onChange={(e) => setLoginEmail(e.target.value)}
                       required
                       placeholder="you@example.com"
-                      className="w-full pl-12 pr-4 py-3.5 bg-black/50 border border-white/10 rounded-xl text-white placeholder-[#666] focus:border-white/20 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3.5 bg-foreground/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -458,7 +458,7 @@ export default function InvoicePage() {
                       onChange={(e) => setLoginPassword(e.target.value)}
                       required
                       placeholder="••••••••"
-                      className="w-full pl-12 pr-4 py-3.5 bg-black/50 border border-white/10 rounded-xl text-white placeholder-[#666] focus:border-white/20 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3.5 bg-foreground/50 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -466,7 +466,7 @@ export default function InvoicePage() {
                 <button
                   type="submit"
                   disabled={loginLoading}
-                  className="w-full py-4 bg-white text-black rounded-xl font-light text-lg tracking-wide hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-primary text-primary-foreground rounded-xl font-light text-lg tracking-wide hover:bg-card/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {loginLoading ? 'Signing in...' : (
                     <>
@@ -482,11 +482,11 @@ export default function InvoicePage() {
 
         <style jsx global>{`
           .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(58,66,51,0.04);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(58, 66, 51, 0.08);
+            box-shadow: 0 8px 32px rgba(58,66,51,0.2);
           }
         `}</style>
       </div>
@@ -496,7 +496,7 @@ export default function InvoicePage() {
   // Invoice view (authenticated)
   if (!invoice) {
     return (
-      <div className="min-h-screen bg-[#121212] flex items-center justify-center">
+      <div className="min-h-screen bg-card flex items-center justify-center">
         <div className="text-center">
           <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-400" />
           <h1 className="text-2xl font-light text-[#f0f0f0] mb-2">Invoice Not Found</h1>
@@ -531,7 +531,7 @@ export default function InvoicePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#121212] dark text-white">
+    <div className="min-h-screen bg-card dark text-foreground">
       <div className="fixed inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-16 md:py-24">
@@ -581,21 +581,21 @@ export default function InvoicePage() {
 
       <style jsx global>{`
         .glass-card {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(58,66,51,0.04);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(58, 66, 51, 0.08);
+          box-shadow: 0 8px 32px rgba(58,66,51,0.2);
         }
         .glass-button {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(58,66,51,0.06);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(58,66,51,0.08);
           transition: all 0.3s ease;
         }
         .glass-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+          background: rgba(58,66,51,0.08);
+          border-color: rgba(58,66,51,0.12);
         }
       `}</style>
     </div>

@@ -55,7 +55,7 @@ export default function RewardsPage() {
         {/* Back Navigation */}
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-border text-foreground/70 hover:text-foreground hover:bg-foreground/10 hover:border-border transition-all mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="font-medium">Back to Dashboard</span>
@@ -63,8 +63,8 @@ export default function RewardsPage() {
 
         {/* Header */}
         <div className="mb-16 md:mb-24 space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white">Rewards</h1>
-          <p className="text-xl text-white/50">View your points balance, tier status, and redeem rewards.</p>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">Rewards</h1>
+          <p className="text-xl text-muted-foreground">View your points balance, tier status, and redeem rewards.</p>
         </div>
 
         {/* Rewards Card */}

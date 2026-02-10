@@ -170,7 +170,7 @@ export default function PrivacyPage() {
                 </p>
                 <a 
                   href={`mailto:${contactEmail}`}
-                  className="glass-button px-6 py-3 rounded-full inline-block hover:bg-white/10 transition-all duration-300"
+                  className="glass-button px-6 py-3 rounded-full inline-block hover:bg-foreground/10 transition-all duration-300"
                 >
                   <span className="font-mono tracking-wider text-sm">{contactEmail}</span>
                 </a>
@@ -184,23 +184,23 @@ export default function PrivacyPage() {
 
       <style jsx global>{`
         .glass-card {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(58,66,51,0.04);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(58, 66, 51, 0.08);
         }
         
         .glass-button {
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(58,66,51,0.06);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(58,66,51,0.08);
           transition: all 0.3s ease;
         }
         
         .glass-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+          background: rgba(58,66,51,0.08);
+          border-color: rgba(58,66,51,0.12);
         }
         
         .font-serif {

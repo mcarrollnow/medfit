@@ -127,9 +127,9 @@ export function PaymentTracker({
         
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="text-xs font-medium uppercase tracking-widest text-white/40 mb-3">Payment Verification</p>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Order #{orderId.slice(0, 8)}</h1>
-          <p className="mt-2 text-sm text-white/50">
+          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">Payment Verification</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">Order #{orderId.slice(0, 8)}</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
             {new Date(timestamp).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} at {new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </p>
       </div>
@@ -137,7 +137,7 @@ export function PaymentTracker({
         {/* Status Tracker Card */}
         <div
         ref={statusCardRef}
-          className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 md:p-8 mb-6"
+          className="rounded-2xl bg-foreground/5 border border-border backdrop-blur-xl p-6 md:p-8 mb-6"
       >
           {/* Desktop Status */}
             <div className="hidden md:block">
@@ -152,7 +152,7 @@ export function PaymentTracker({
                       <div className="relative flex w-full items-center justify-center">
                         {index > 0 && (
                           <div className="absolute right-1/2 h-0.5 w-1/2">
-                          <div className="absolute inset-0 bg-white/10" />
+                          <div className="absolute inset-0 bg-foreground/10" />
                             <div
                               className={cn(
                               "absolute inset-0 bg-emerald-400 transition-all duration-700",
@@ -165,7 +165,7 @@ export function PaymentTracker({
                         <div
                           className={cn(
                           "relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-500",
-                          isActive ? "bg-emerald-400" : "bg-white/10",
+                          isActive ? "bg-emerald-400" : "bg-foreground/10",
                         )}
                       >
                         {isCurrent && s === "verifying" && status !== "complete" ? (
@@ -173,13 +173,13 @@ export function PaymentTracker({
                         ) : isActive ? (
                           <Check className="h-5 w-5 text-black" strokeWidth={2.5} />
                         ) : (
-                          <span className="text-sm font-medium text-white/40">{index + 1}</span>
+                          <span className="text-sm font-medium text-muted-foreground">{index + 1}</span>
                         )}
                         </div>
 
                         {isNotLast && (
                           <div className="absolute left-1/2 h-0.5 w-1/2">
-                          <div className="absolute inset-0 bg-white/10" />
+                          <div className="absolute inset-0 bg-foreground/10" />
                             <div
                               className={cn(
                               "absolute inset-0 bg-emerald-400 transition-all duration-700",
@@ -193,7 +193,7 @@ export function PaymentTracker({
                       <div className="mt-4 text-center">
                       <p className={cn(
                         "text-sm font-semibold transition-colors",
-                        isActive ? "text-white" : "text-white/40",
+                        isActive ? "text-foreground" : "text-muted-foreground",
                       )}>
                           {statusConfig[s].label}
                         </p>
@@ -217,7 +217,7 @@ export function PaymentTracker({
                           <div
                             className={cn(
                         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-500",
-                        isActive ? "bg-emerald-400" : "bg-white/10",
+                        isActive ? "bg-emerald-400" : "bg-foreground/10",
                       )}
                     >
                       {isCurrent && s === "verifying" && status !== "complete" ? (
@@ -225,24 +225,24 @@ export function PaymentTracker({
                       ) : isActive ? (
                         <Check className="h-4 w-4 text-black" strokeWidth={2.5} />
                       ) : (
-                        <span className="text-xs font-medium text-white/40">{index + 1}</span>
+                        <span className="text-xs font-medium text-muted-foreground">{index + 1}</span>
                       )}
                           </div>
                           {isNotLast && (
                       <div className={cn(
                         "w-0.5 h-4 mt-1",
-                        index < currentIndex ? "bg-emerald-400" : "bg-white/10"
+                        index < currentIndex ? "bg-emerald-400" : "bg-foreground/10"
                       )} />
                           )}
                         </div>
                   <div className="flex-1">
                     <p className={cn(
                       "text-sm font-semibold",
-                      isActive ? "text-white" : "text-white/40",
+                      isActive ? "text-foreground" : "text-muted-foreground",
                     )}>
                             {statusConfig[s].label}
                           </p>
-                    <p className="text-xs text-white/40">{statusConfig[s].description}</p>
+                    <p className="text-xs text-muted-foreground">{statusConfig[s].description}</p>
                       </div>
                     </div>
                   )
@@ -251,28 +251,28 @@ export function PaymentTracker({
 
           {/* Complete Message */}
           {status === "complete" && (
-            <div className="mt-6 pt-6 border-t border-white/10 text-center">
+            <div className="mt-6 pt-6 border-t border-border text-center">
               <p className="text-emerald-400 font-semibold">✓ Payment Verified</p>
-              <p className="text-sm text-white/50 mt-1">Your order is being processed</p>
+              <p className="text-sm text-muted-foreground mt-1">Your order is being processed</p>
             </div>
           )}
         </div>
 
         {/* Transaction Details */}
         {(transactionHash || fromWallet || toWallet) && (
-          <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 mb-6">
-            <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-4">Transaction Details</p>
+          <div className="rounded-2xl bg-foreground/5 border border-border backdrop-blur-xl p-6 mb-6">
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">Transaction Details</p>
             
             <div className="space-y-4">
               {/* Transaction Hash */}
               {transactionHash && (
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-xs text-white/40">Transaction Hash</p>
+                    <p className="text-xs text-muted-foreground">Transaction Hash</p>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-6 px-2 text-xs text-white/40 hover:text-white hover:bg-white/10"
+                      className="h-6 px-2 text-xs text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                       onClick={() => {
                         navigator.clipboard.writeText(transactionHash)
                         toast({ title: "Copied to clipboard" })
@@ -286,7 +286,7 @@ export function PaymentTracker({
                     href={`https://etherscan.io/tx/${transactionHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-xs text-white/60 break-all hover:text-emerald-400 transition-colors leading-relaxed"
+                    className="font-mono text-xs text-foreground/60 break-all hover:text-emerald-400 transition-colors leading-relaxed"
                   >
                     {transactionHash}
                   </a>
@@ -296,20 +296,20 @@ export function PaymentTracker({
               {/* From Wallet */}
               {fromWallet && (
                 <div>
-                  <p className="text-xs text-white/40 mb-1">From</p>
+                  <p className="text-xs text-muted-foreground mb-1">From</p>
                   <div className="flex items-center gap-2">
                     <a
                       href={`https://etherscan.io/address/${fromWallet}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono text-xs text-white/60 break-all hover:text-emerald-400 transition-colors"
+                      className="font-mono text-xs text-foreground/60 break-all hover:text-emerald-400 transition-colors"
                     >
                       {fromWallet}
                     </a>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-6 w-6 text-white/40 hover:text-white hover:bg-white/10 flex-shrink-0"
+                      className="h-6 w-6 text-muted-foreground hover:text-foreground hover:bg-foreground/10 flex-shrink-0"
                       onClick={() => {
                         navigator.clipboard.writeText(fromWallet)
                         toast({ title: "Copied to clipboard" })
@@ -324,20 +324,20 @@ export function PaymentTracker({
               {/* To Wallet */}
               {toWallet && (
                 <div>
-                  <p className="text-xs text-white/40 mb-1">To</p>
+                  <p className="text-xs text-muted-foreground mb-1">To</p>
                   <div className="flex items-center gap-2">
                     <a
                       href={`https://etherscan.io/address/${toWallet}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono text-xs text-white/60 break-all hover:text-emerald-400 transition-colors"
+                      className="font-mono text-xs text-foreground/60 break-all hover:text-emerald-400 transition-colors"
                     >
                       {toWallet}
                     </a>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-6 w-6 text-white/40 hover:text-white hover:bg-white/10 flex-shrink-0"
+                      className="h-6 w-6 text-muted-foreground hover:text-foreground hover:bg-foreground/10 flex-shrink-0"
                       onClick={() => {
                         navigator.clipboard.writeText(toWallet)
                         toast({ title: "Copied to clipboard" })
@@ -351,22 +351,22 @@ export function PaymentTracker({
 
               {/* Fees */}
               {(gasFee || networkFee) && (
-                <div className="pt-4 border-t border-white/10 space-y-2">
+                <div className="pt-4 border-t border-border space-y-2">
                   {gasFee && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-white/50">Gas Fee</span>
+                      <span className="text-muted-foreground">Gas Fee</span>
                       <div className="text-right">
-                        <span className="font-mono text-white">{gasFee.eth} ETH</span>
-                        <span className="text-white/40 text-xs ml-2">(${gasFee.usd.toFixed(2)})</span>
+                        <span className="font-mono text-foreground">{gasFee.eth} ETH</span>
+                        <span className="text-muted-foreground text-xs ml-2">(${gasFee.usd.toFixed(2)})</span>
                       </div>
                     </div>
                   )}
                   {networkFee && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-white/50">Network Fee</span>
+                      <span className="text-muted-foreground">Network Fee</span>
                       <div className="text-right">
-                        <span className="font-mono text-white">{networkFee.eth} ETH</span>
-                        <span className="text-white/40 text-xs ml-2">(${networkFee.usd.toFixed(2)})</span>
+                        <span className="font-mono text-foreground">{networkFee.eth} ETH</span>
+                        <span className="text-muted-foreground text-xs ml-2">(${networkFee.usd.toFixed(2)})</span>
                       </div>
                     </div>
                   )}
@@ -377,62 +377,62 @@ export function PaymentTracker({
         )}
 
         {/* Order Details */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 mb-6">
-          <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-4">Order Details</p>
+        <div className="rounded-2xl bg-foreground/5 border border-border backdrop-blur-xl p-6 mb-6">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">Order Details</p>
           
           <div className="space-y-4 mb-6">
             <div>
-              <p className="text-xs text-white/40 mb-1">Customer</p>
-              <p className="text-white font-medium">{customerName}</p>
+              <p className="text-xs text-muted-foreground mb-1">Customer</p>
+              <p className="text-foreground font-medium">{customerName}</p>
             </div>
             <div>
-              <p className="text-xs text-white/40 mb-1">Items</p>
-              <p className="text-white font-medium">{orderName}</p>
+              <p className="text-xs text-muted-foreground mb-1">Items</p>
+              <p className="text-foreground font-medium">{orderName}</p>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/10 space-y-3 text-sm">
+          <div className="pt-4 border-t border-border space-y-3 text-sm">
             <div className="flex justify-between">
-              <span className="text-white/50">Subtotal</span>
-              <span className="font-mono text-white">${priceDetails.subtotal.toFixed(2)}</span>
+              <span className="text-muted-foreground">Subtotal</span>
+              <span className="font-mono text-foreground">${priceDetails.subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-white/50">Shipping</span>
-              <span className="font-mono text-white">${priceDetails.shipping.toFixed(2)}</span>
+              <span className="text-muted-foreground">Shipping</span>
+              <span className="font-mono text-foreground">${priceDetails.shipping.toFixed(2)}</span>
             </div>
             {priceDetails.discount > 0 && (
               <div className="flex justify-between">
-                <span className="text-white/50">Discount</span>
+                <span className="text-muted-foreground">Discount</span>
                 <span className="font-mono text-emerald-400">-${priceDetails.discount.toFixed(2)}</span>
               </div>
             )}
-            <div className="flex justify-between pt-3 border-t border-white/10">
-              <span className="font-semibold text-white">Total</span>
-              <span className="font-mono font-semibold text-white">${priceDetails.total.toFixed(2)}</span>
+            <div className="flex justify-between pt-3 border-t border-border">
+              <span className="font-semibold text-foreground">Total</span>
+              <span className="font-mono font-semibold text-foreground">${priceDetails.total.toFixed(2)}</span>
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
+          <div className="mt-4 pt-4 border-t border-border space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-xs text-white/40">Order Amount</span>
-              <span className="font-mono text-sm text-white/60">{cryptoAmount.eth} ETH</span>
+              <span className="text-xs text-muted-foreground">Order Amount</span>
+              <span className="font-mono text-sm text-foreground/60">{cryptoAmount.eth} ETH</span>
             </div>
             {gasFee && (
               <div className="flex justify-between items-center">
-                <span className="text-xs text-white/40">+ Gas Fee</span>
-                <span className="font-mono text-sm text-white/60">{gasFee.eth} ETH</span>
+                <span className="text-xs text-muted-foreground">+ Gas Fee</span>
+                <span className="font-mono text-sm text-foreground/60">{gasFee.eth} ETH</span>
               </div>
             )}
             {networkFee && (
               <div className="flex justify-between items-center">
-                <span className="text-xs text-white/40">+ Network Fee</span>
-                <span className="font-mono text-sm text-white/60">{networkFee.eth} ETH</span>
+                <span className="text-xs text-muted-foreground">+ Network Fee</span>
+                <span className="font-mono text-sm text-foreground/60">{networkFee.eth} ETH</span>
               </div>
             )}
             {(gasFee || networkFee) && (
-              <div className="flex justify-between items-center pt-2 border-t border-white/10">
-                <span className="text-xs text-white/50 font-medium">Total Paid</span>
-                <span className="font-mono text-sm text-white font-medium">
+              <div className="flex justify-between items-center pt-2 border-t border-border">
+                <span className="text-xs text-muted-foreground font-medium">Total Paid</span>
+                <span className="font-mono text-sm text-foreground font-medium">
                   {(
                     parseFloat(cryptoAmount.eth) + 
                     (gasFee ? parseFloat(gasFee.eth) : 0) + 
@@ -445,10 +445,10 @@ export function PaymentTracker({
         </div>
 
         {/* Shipping Details */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6">
-          <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-4">Shipping To</p>
-          <div className="text-sm text-white/70 space-y-1">
-            <p className="font-medium text-white">{shippingAddress.name}</p>
+        <div className="rounded-2xl bg-foreground/5 border border-border backdrop-blur-xl p-6">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">Shipping To</p>
+          <div className="text-sm text-foreground/70 space-y-1">
+            <p className="font-medium text-foreground">{shippingAddress.name}</p>
             <p>{shippingAddress.street}</p>
             <p>{shippingAddress.city}, {shippingAddress.state} {shippingAddress.zip}</p>
           </div>
@@ -456,7 +456,7 @@ export function PaymentTracker({
 
         {/* Footer */}
         <div className="mt-12 text-center">
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-muted-foreground">
             Questions? Contact support@modernhealthpro.com
           </p>
         </div>

@@ -65,7 +65,7 @@ interface Customer {
 type ViewMode = "customers" | "discounts" | "assign-discount"
 
 const typeColors: Record<string, { bg: string; text: string; glow: string }> = {
-  retail: { bg: "bg-zinc-500/20", text: "text-zinc-400", glow: "rgba(161,161,170,0.3)" },
+  retail: { bg: "bg-zinc-500/20", text: "text-muted-foreground", glow: "rgba(161,161,170,0.3)" },
   b2b: { bg: "bg-blue-500/20", text: "text-blue-400", glow: "rgba(59,130,246,0.3)" },
   b2bvip: { bg: "bg-purple-500/20", text: "text-purple-400", glow: "rgba(192,132,252,0.3)" },
 }
@@ -344,12 +344,12 @@ export default function RepCustomersPage() {
       <div className="px-6 py-12 md:px-12 lg:px-24 md:py-16">
         <div className="mx-auto max-w-5xl space-y-12">
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Customers</h1>
-            <p className="text-xl text-white/50">Loading customers...</p>
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Customers</h1>
+            <p className="text-xl text-muted-foreground">Loading customers...</p>
           </div>
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-32 animate-pulse rounded-2xl bg-white/5" />
+              <div key={i} className="h-32 animate-pulse rounded-2xl bg-foreground/5" />
             ))}
           </div>
         </div>
@@ -363,7 +363,7 @@ export default function RepCustomersPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -371,12 +371,12 @@ export default function RepCustomersPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Customers</h1>
-          <p className="text-xl text-white/50">View and manage your assigned customers.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Customers</h1>
+          <p className="text-xl text-muted-foreground">View and manage your assigned customers.</p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/[0.07] backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10 p-3">
             <div className="flex gap-2">
@@ -385,8 +385,8 @@ export default function RepCustomersPage() {
                 className={cn(
                   "flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all",
                   viewMode === "customers"
-                    ? "bg-white text-black"
-                    : "text-white/60 hover:bg-white/10 hover:text-white"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                 )}
               >
                 <Users className="w-5 h-5" />
@@ -397,8 +397,8 @@ export default function RepCustomersPage() {
                 className={cn(
                   "flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition-all",
                   viewMode === "discounts" || viewMode === "assign-discount"
-                    ? "bg-white text-black"
-                    : "text-white/60 hover:bg-white/10 hover:text-white"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                 )}
               >
                 <Gift className="w-5 h-5" />
@@ -420,20 +420,20 @@ export default function RepCustomersPage() {
             >
               {/* Search */}
               <div className="relative max-w-xl">
-                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/30" />
+                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by name, email, phone, or company..."
-                  className="h-14 pl-12 pr-6 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-white/30 focus:ring-0 rounded-xl"
+                  className="h-14 pl-12 pr-6 bg-foreground/5 border-border text-foreground text-lg placeholder:text-muted-foreground focus:border-border focus:ring-0 rounded-xl"
                 />
               </div>
 
               {/* Customer Cards */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Customers</h2>
-                  <p className="text-sm text-white/40">
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Customers</h2>
+                  <p className="text-sm text-muted-foreground">
                     {filteredCustomers.length} of {customers.length}
                   </p>
                 </div>
@@ -447,7 +447,7 @@ export default function RepCustomersPage() {
                       <motion.div
                         key={customer.id}
                         layout
-                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]"
+                        className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]"
                       >
                         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
 
@@ -460,18 +460,18 @@ export default function RepCustomersPage() {
                             {/* Customer Info */}
                             <div className="flex items-center gap-4">
                               <div
-                                className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10"
+                                className="flex h-14 w-14 items-center justify-center rounded-xl border border-border"
                                 style={{ backgroundColor: `${typeStyle.glow}` }}
                               >
                                 {customer.company_name ? (
-                                  <Building className="h-6 w-6 text-white" />
+                                  <Building className="h-6 w-6 text-foreground" />
                                 ) : (
-                                  <User className="h-6 w-6 text-white" />
+                                  <User className="h-6 w-6 text-foreground" />
                                 )}
                               </div>
                               <div className="space-y-1">
                                 <div className="flex items-center gap-3 flex-wrap">
-                                  <h3 className="text-xl font-bold tracking-tight text-white">{getDisplayName(customer)}</h3>
+                                  <h3 className="text-xl font-bold tracking-tight text-foreground">{getDisplayName(customer)}</h3>
                                   <Badge className={`${typeStyle.bg} ${typeStyle.text} border-0 px-2 py-0.5 text-xs font-semibold`}>
                                     {typeLabels[customer.customer_type] || customer.customer_type}
                                   </Badge>
@@ -482,7 +482,7 @@ export default function RepCustomersPage() {
                                     </Badge>
                                   )}
                                 </div>
-                                <p className="text-sm text-white/50">{customer.user?.email || "No email"}</p>
+                                <p className="text-sm text-muted-foreground">{customer.user?.email || "No email"}</p>
                               </div>
                             </div>
 
@@ -490,22 +490,22 @@ export default function RepCustomersPage() {
                             <div className="flex items-center gap-4 md:gap-6">
                               <div className="flex gap-4 md:gap-6 flex-wrap">
                                 <div className="text-center min-w-[50px]">
-                                  <p className="text-lg font-bold text-white">{customer.total_orders || 0}</p>
-                                  <p className="text-xs text-white/40">Orders</p>
+                                  <p className="text-lg font-bold text-foreground">{customer.total_orders || 0}</p>
+                                  <p className="text-xs text-muted-foreground">Orders</p>
                                 </div>
                                 <div className="text-center min-w-[70px]">
                                   <p className="text-lg font-bold text-emerald-400">
                                     ${(customer.total_spent || 0).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                                   </p>
-                                  <p className="text-xs text-white/40">Spent</p>
+                                  <p className="text-xs text-muted-foreground">Spent</p>
                                 </div>
                                 <div className="text-center min-w-[50px]">
-                                  <p className="text-lg font-bold text-white">{customer.shipping_city || "—"}</p>
-                                  <p className="text-xs text-white/40">City</p>
+                                  <p className="text-lg font-bold text-foreground">{customer.shipping_city || "—"}</p>
+                                  <p className="text-xs text-muted-foreground">City</p>
                                 </div>
                               </div>
                               <ChevronDown
-                                className={`h-5 w-5 text-white/30 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                                className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
                               />
                             </div>
                           </div>
@@ -521,22 +521,22 @@ export default function RepCustomersPage() {
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
                             >
-                              <div className="relative z-10 border-t border-white/10 p-6">
+                              <div className="relative z-10 border-t border-border p-6">
                                 <div className="grid gap-6 md:grid-cols-3">
                                   {/* Contact Info */}
                                   <div className="space-y-4">
-                                    <h4 className="text-sm font-bold uppercase tracking-wider text-white/40">Contact</h4>
+                                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Contact</h4>
                                     <div className="space-y-3">
-                                      <div className="flex items-center gap-3 text-white/70">
-                                        <Mail className="h-4 w-4 text-white/40" />
+                                      <div className="flex items-center gap-3 text-foreground/70">
+                                        <Mail className="h-4 w-4 text-muted-foreground" />
                                         {customer.user?.email || "No email"}
                                       </div>
-                                      <div className="flex items-center gap-3 text-white/70">
-                                        <Phone className="h-4 w-4 text-white/40" />
-                                        {customer.phone || <span className="text-white/30">No phone</span>}
+                                      <div className="flex items-center gap-3 text-foreground/70">
+                                        <Phone className="h-4 w-4 text-muted-foreground" />
+                                        {customer.phone || <span className="text-muted-foreground">No phone</span>}
                                       </div>
                                       {customer.shipping_address_line1 && (
-                                        <p className="text-white/50 text-sm">
+                                        <p className="text-muted-foreground text-sm">
                                           {customer.shipping_address_line1}, {customer.shipping_city},{" "}
                                           {customer.shipping_state} {customer.shipping_zip}
                                         </p>
@@ -546,14 +546,14 @@ export default function RepCustomersPage() {
 
                                   {/* Stats */}
                                   <div className="space-y-4">
-                                    <h4 className="text-sm font-bold uppercase tracking-wider text-white/40">Stats</h4>
+                                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Stats</h4>
                                     <div className="space-y-3">
-                                      <div className="flex items-center gap-3 text-white/70">
-                                        <ShoppingCart className="h-4 w-4 text-white/40" />
+                                      <div className="flex items-center gap-3 text-foreground/70">
+                                        <ShoppingCart className="h-4 w-4 text-muted-foreground" />
                                         {customer.total_orders || 0} orders placed
                                       </div>
-                                      <div className="flex items-center gap-3 text-white/70">
-                                        <DollarSign className="h-4 w-4 text-white/40" />
+                                      <div className="flex items-center gap-3 text-foreground/70">
+                                        <DollarSign className="h-4 w-4 text-muted-foreground" />
                                         ${(customer.total_spent || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })} total spent
                                       </div>
                                       {customer.has_active_discount && (
@@ -567,10 +567,10 @@ export default function RepCustomersPage() {
 
                                   {/* Actions */}
                                   <div className="space-y-4">
-                                    <h4 className="text-sm font-bold uppercase tracking-wider text-white/40">Actions</h4>
+                                    <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Actions</h4>
                                     <Link
                                       href={`/rep/customers/${customer.id}`}
-                                      className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-black transition-all hover:bg-white/90"
+                                      className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-black transition-all hover:bg-card/90"
                                     >
                                       View Full Profile
                                       <ArrowRight className="h-4 w-4" />
@@ -586,10 +586,10 @@ export default function RepCustomersPage() {
                   })}
 
                   {filteredCustomers.length === 0 && (
-                    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+                    <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                       <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                      <User className="h-12 w-12 text-white/20 mx-auto mb-4 relative z-10" />
-                      <p className="text-lg text-white/40 relative z-10">
+                      <User className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+                      <p className="text-lg text-muted-foreground relative z-10">
                         {customers.length === 0 
                           ? "No customers assigned to you yet" 
                           : "No customers found matching your search"}
@@ -613,31 +613,31 @@ export default function RepCustomersPage() {
               {/* Active Discounts */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Active Customer Discounts</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Active Customer Discounts</h2>
                   <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 rounded-full">
                     {assignedDiscounts.filter(d => d.status === "active").length} active
                   </Badge>
                 </div>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-3">
                     {assignedDiscounts.filter(d => d.status === "active").map((discount) => (
-                      <div key={discount.id} className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl border border-white/5">
+                      <div key={discount.id} className="flex items-center justify-between p-4 bg-foreground/[0.04] rounded-xl border border-border">
                         <div className="flex-1">
                           <div className="flex items-center gap-3">
-                            <p className="font-medium text-white">{discount.customer_name}</p>
+                            <p className="font-medium text-foreground">{discount.customer_name}</p>
                             <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 rounded-full text-xs">
                               Active
                             </Badge>
                           </div>
-                          <p className="text-sm text-white/60 mt-1">
+                          <p className="text-sm text-foreground/60 mt-1">
                             {discount.discount_code 
                               ? `Code: ${discount.discount_code}` 
                               : `${discount.custom_discount_type === "percentage" ? `${discount.custom_discount_value}%` : `$${discount.custom_discount_value}`} off`
                             }
                             {discount.custom_description && ` • ${discount.custom_description}`}
                           </p>
-                          <p className="text-xs text-white/40 mt-1">
+                          <p className="text-xs text-muted-foreground mt-1">
                             Assigned {format(new Date(discount.created_at), "MMM d, yyyy")}
                             {discount.expires_at && ` • Expires ${format(new Date(discount.expires_at), "MMM d, yyyy")}`}
                           </p>
@@ -652,7 +652,7 @@ export default function RepCustomersPage() {
                       </div>
                     ))}
                     {assignedDiscounts.filter(d => d.status === "active").length === 0 && (
-                      <p className="text-white/40 text-center py-8">No active customer discounts</p>
+                      <p className="text-muted-foreground text-center py-8">No active customer discounts</p>
                     )}
                   </div>
                 </div>
@@ -660,11 +660,11 @@ export default function RepCustomersPage() {
 
               {/* Assign New Discount */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Assign New Discount</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Assign New Discount</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
-                    <p className="text-white/60 text-sm mb-4">Select a customer to assign a discount to their next order</p>
+                    <p className="text-foreground/60 text-sm mb-4">Select a customer to assign a discount to their next order</p>
                     <div className="space-y-3">
                       {repCustomers.map((customer) => {
                         const hasActiveDiscount = assignedDiscounts.some(d => d.customer_id === customer.id && d.status === "active")
@@ -676,14 +676,14 @@ export default function RepCustomersPage() {
                             className={cn(
                               "w-full flex items-center justify-between p-4 rounded-xl text-left transition-all",
                               hasActiveDiscount 
-                                ? "bg-white/[0.02] opacity-50 cursor-not-allowed"
-                                : "bg-white/[0.03] hover:bg-white/[0.06]"
+                                ? "bg-foreground/[0.03] opacity-50 cursor-not-allowed"
+                                : "bg-foreground/[0.04] hover:bg-foreground/[0.07]"
                             )}
                           >
                             <div>
-                              <p className="font-medium text-white">{customer.name}</p>
-                              <p className="text-sm text-white/60">{customer.email}</p>
-                              <p className="text-xs text-white/40 mt-1">
+                              <p className="font-medium text-foreground">{customer.name}</p>
+                              <p className="text-sm text-foreground/60">{customer.email}</p>
+                              <p className="text-xs text-muted-foreground mt-1">
                                 {customer.total_orders} orders • ${customer.total_spent.toFixed(2)} spent
                               </p>
                             </div>
@@ -692,13 +692,13 @@ export default function RepCustomersPage() {
                                 Has Discount
                               </Badge>
                             ) : (
-                              <ChevronRight className="w-5 h-5 text-white/40" />
+                              <ChevronRight className="w-5 h-5 text-muted-foreground" />
                             )}
                           </button>
                         )
                       })}
                       {repCustomers.length === 0 && (
-                        <p className="text-white/40 text-center py-8">No customers assigned to you</p>
+                        <p className="text-muted-foreground text-center py-8">No customers assigned to you</p>
                       )}
                     </div>
                   </div>
@@ -707,15 +707,15 @@ export default function RepCustomersPage() {
 
               {/* History */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">History</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">History</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-3 max-h-64 overflow-y-auto">
                     {assignedDiscounts.filter(d => d.status !== "active").map((discount) => (
-                      <div key={discount.id} className="flex items-center justify-between p-3 bg-white/[0.03] rounded-xl">
+                      <div key={discount.id} className="flex items-center justify-between p-3 bg-foreground/[0.04] rounded-xl">
                         <div>
-                          <p className="font-medium text-white">{discount.customer_name}</p>
-                          <p className="text-sm text-white/60">
+                          <p className="font-medium text-foreground">{discount.customer_name}</p>
+                          <p className="text-sm text-foreground/60">
                             {discount.discount_code 
                               ? `Code: ${discount.discount_code}` 
                               : `${discount.custom_discount_type === "percentage" ? `${discount.custom_discount_value}%` : `$${discount.custom_discount_value}`} off`
@@ -725,7 +725,7 @@ export default function RepCustomersPage() {
                         <Badge className={cn(
                           "rounded-full",
                           discount.status === "used" && "bg-blue-500/20 text-blue-400 border-blue-500/30",
-                          discount.status === "expired" && "bg-gray-500/20 text-gray-400 border-gray-500/30",
+                          discount.status === "expired" && "bg-gray-500/20 text-muted-foreground border-border",
                           discount.status === "removed" && "bg-red-500/20 text-red-400 border-red-500/30",
                         )}>
                           {discount.status}
@@ -733,7 +733,7 @@ export default function RepCustomersPage() {
                       </div>
                     ))}
                     {assignedDiscounts.filter(d => d.status !== "active").length === 0 && (
-                      <p className="text-white/40 text-center py-4">No history yet</p>
+                      <p className="text-muted-foreground text-center py-4">No history yet</p>
                     )}
                   </div>
                 </div>
@@ -759,19 +759,19 @@ export default function RepCustomersPage() {
                       setSelectedCustomer(null)
                     }} 
                     variant="ghost" 
-                    className="h-11 w-11 rounded-full hover:bg-white/10"
+                    className="h-11 w-11 rounded-full hover:bg-foreground/10"
                   >
                     <ArrowLeft className="w-5 h-5" />
                   </Button>
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white">Assign Discount</h2>
-                    <p className="text-xl text-white/60">to {selectedCustomer.name}</p>
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground">Assign Discount</h2>
+                    <p className="text-xl text-foreground/60">to {selectedCustomer.name}</p>
                   </div>
                 </div>
                 <Button
                   onClick={handleSaveAssignment}
                   disabled={isSaving}
-                  className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-medium"
+                  className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-medium"
                 >
                   {isSaving ? (
                     <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -784,20 +784,20 @@ export default function RepCustomersPage() {
                 </Button>
               </div>
 
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-6">
                   {/* Discount Type Selection */}
                   <div className="space-y-2">
-                    <label className="text-sm text-white/60">Discount Type</label>
+                    <label className="text-sm text-foreground/60">Discount Type</label>
                     <div className="flex gap-3">
                       <button
                         onClick={() => setNewDiscount({ ...newDiscount, type: "custom" })}
                         className={cn(
                           "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2",
                           newDiscount.type === "custom"
-                            ? "bg-white/10 border-white/20"
-                            : "bg-white/5 border-white/10 hover:bg-white/10"
+                            ? "bg-foreground/10 border-border"
+                            : "bg-foreground/5 border-border hover:bg-foreground/10"
                         )}
                       >
                         <Percent className="w-5 h-5" />
@@ -808,8 +808,8 @@ export default function RepCustomersPage() {
                         className={cn(
                           "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2",
                           newDiscount.type === "code"
-                            ? "bg-white/10 border-white/20"
-                            : "bg-white/5 border-white/10 hover:bg-white/10"
+                            ? "bg-foreground/10 border-border"
+                            : "bg-foreground/5 border-border hover:bg-foreground/10"
                         )}
                       >
                         <Ticket className="w-5 h-5" />
@@ -822,15 +822,15 @@ export default function RepCustomersPage() {
                     <>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Amount Type</label>
+                          <label className="text-sm text-foreground/60">Amount Type</label>
                           <div className="flex gap-3">
                             <button
                               onClick={() => setNewDiscount({ ...newDiscount, customDiscountType: "percentage" })}
                               className={cn(
                                 "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2",
                                 newDiscount.customDiscountType === "percentage"
-                                  ? "bg-white/10 border-white/20"
-                                  : "bg-white/5 border-white/10 hover:bg-white/10"
+                                  ? "bg-foreground/10 border-border"
+                                  : "bg-foreground/5 border-border hover:bg-foreground/10"
                               )}
                             >
                               <Percent className="w-4 h-4" />
@@ -841,8 +841,8 @@ export default function RepCustomersPage() {
                               className={cn(
                                 "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2",
                                 newDiscount.customDiscountType === "fixed"
-                                  ? "bg-white/10 border-white/20"
-                                  : "bg-white/5 border-white/10 hover:bg-white/10"
+                                  ? "bg-foreground/10 border-border"
+                                  : "bg-foreground/5 border-border hover:bg-foreground/10"
                               )}
                             >
                               <DollarSign className="w-4 h-4" />
@@ -851,7 +851,7 @@ export default function RepCustomersPage() {
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Value</label>
+                          <label className="text-sm text-foreground/60">Value</label>
                           <Input
                             type="number"
                             value={newDiscount.customDiscountValue || ""}
@@ -860,28 +860,28 @@ export default function RepCustomersPage() {
                               customDiscountValue: parseFloat(e.target.value) || 0 
                             })}
                             placeholder={newDiscount.customDiscountType === "percentage" ? "10" : "50.00"}
-                            className="h-12 bg-white/5 border-white/10 rounded-xl"
+                            className="h-12 bg-foreground/5 border-border rounded-xl"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Description (shown to customer)</label>
+                        <label className="text-sm text-foreground/60">Description (shown to customer)</label>
                         <Input
                           value={newDiscount.customDescription}
                           onChange={(e) => setNewDiscount({ ...newDiscount, customDescription: e.target.value })}
                           placeholder="Special loyalty discount"
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </>
                   ) : (
                     <div className="space-y-2">
-                      <label className="text-sm text-white/60">Select Discount Code</label>
+                      <label className="text-sm text-foreground/60">Select Discount Code</label>
                       <select
                         value={newDiscount.discountCodeId || ""}
                         onChange={(e) => setNewDiscount({ ...newDiscount, discountCodeId: e.target.value })}
-                        className="w-full h-12 px-4 bg-white/5 border border-white/10 rounded-xl text-white"
+                        className="w-full h-12 px-4 bg-foreground/5 border border-border rounded-xl text-foreground"
                       >
                         <option value="">Select a code...</option>
                         {discountCodes.filter(c => c.is_active).map((code) => (
@@ -895,21 +895,21 @@ export default function RepCustomersPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm text-white/60">Expires (optional)</label>
+                      <label className="text-sm text-foreground/60">Expires (optional)</label>
                       <Input
                         type="date"
                         value={newDiscount.expiresAt}
                         onChange={(e) => setNewDiscount({ ...newDiscount, expiresAt: e.target.value })}
-                        className="h-12 bg-white/5 border-white/10 rounded-xl"
+                        className="h-12 bg-foreground/5 border-border rounded-xl"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm text-white/60">Notes</label>
+                      <label className="text-sm text-foreground/60">Notes</label>
                       <Input
                         value={newDiscount.notes}
                         onChange={(e) => setNewDiscount({ ...newDiscount, notes: e.target.value })}
                         placeholder="Internal notes..."
-                        className="h-12 bg-white/5 border-white/10 rounded-xl"
+                        className="h-12 bg-foreground/5 border-border rounded-xl"
                       />
                     </div>
                   </div>

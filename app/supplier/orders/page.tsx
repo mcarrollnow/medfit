@@ -188,7 +188,7 @@ export default function SupplierOrdersPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by order number or customer..."
-              className="w-full pl-10 pr-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+              className="w-full pl-10 pr-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors"
             />
           </div>
           <div className="flex gap-2 overflow-x-auto pb-2">
@@ -227,7 +227,7 @@ export default function SupplierOrdersPage() {
                 {/* Order Header */}
                 <button
                   onClick={() => setExpandedOrder(isExpanded ? null : order.id)}
-                  className="w-full p-6 md:p-8 text-left hover:bg-white/[0.02] transition-colors"
+                  className="w-full p-6 md:p-8 text-left hover:bg-foreground/[0.03] transition-colors"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
@@ -237,7 +237,7 @@ export default function SupplierOrdersPage() {
                       <div>
                         <div className="flex items-center gap-3 flex-wrap">
                           <h3 className="font-mono text-lg font-light">{order.order_number}</h3>
-                          <span className="px-3 py-1 rounded-full text-xs font-mono bg-white/[0.06] border border-white/[0.1]">
+                          <span className="px-3 py-1 rounded-full text-xs font-mono bg-foreground/[0.07] border border-border">
                             {STATUS_LABELS[order.status] || order.status}
                           </span>
                         </div>
@@ -276,7 +276,7 @@ export default function SupplierOrdersPage() {
 
                 {/* Expanded Details */}
                 {isExpanded && (
-                  <div className="border-t border-white/[0.08] p-6 md:p-8 space-y-8">
+                  <div className="border-t border-border p-6 md:p-8 space-y-8">
                     {/* Order Items */}
                     <div>
                       <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
@@ -286,7 +286,7 @@ export default function SupplierOrdersPage() {
                         {order.order_items?.map((item) => (
                           <div
                             key={item.id}
-                            className="flex items-center justify-between bg-white/[0.02] border border-white/[0.06] rounded-xl p-4"
+                            className="flex items-center justify-between bg-foreground/[0.03] border border-border rounded-xl p-4"
                           >
                             <div>
                               <p className="text-foreground">{item.product_name}</p>
@@ -304,7 +304,7 @@ export default function SupplierOrdersPage() {
                         <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
                           Tracking
                         </p>
-                        <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                        <div className="bg-foreground/[0.03] border border-border rounded-xl p-4">
                           <div className="flex items-center gap-3">
                             <Truck className="h-5 w-5 text-muted-foreground" />
                             <div>
@@ -321,7 +321,7 @@ export default function SupplierOrdersPage() {
                       <p className="text-xs font-mono tracking-widest text-muted-foreground uppercase mb-4">
                         Payment
                       </p>
-                      <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                      <div className="bg-foreground/[0.03] border border-border rounded-xl p-4">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <DollarSign className="h-5 w-5 text-muted-foreground" />
@@ -357,7 +357,7 @@ export default function SupplierOrdersPage() {
                           <div className="flex gap-3">
                             <button
                               onClick={() => handleSaveNotes(order.id)}
-                              className="flex items-center gap-1 text-sm text-foreground hover:text-white transition-colors"
+                              className="flex items-center gap-1 text-sm text-foreground hover:text-foreground transition-colors"
                             >
                               <Save className="h-4 w-4" />
                               Save
@@ -377,11 +377,11 @@ export default function SupplierOrdersPage() {
                           value={editNotes}
                           onChange={(e) => setEditNotes(e.target.value)}
                           rows={3}
-                          className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors resize-none"
+                          className="w-full bg-foreground/[0.04] border border-border rounded-xl p-4 text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors resize-none"
                           placeholder="Add notes..."
                         />
                       ) : (
-                        <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+                        <div className="bg-foreground/[0.03] border border-border rounded-xl p-4">
                           <p className="text-muted-foreground font-mono text-sm">
                             {order.notes || "No notes"}
                           </p>
@@ -390,7 +390,7 @@ export default function SupplierOrdersPage() {
                     </div>
 
                     {/* Order Summary */}
-                    <div className="border-t border-white/[0.08] pt-6">
+                    <div className="border-t border-border pt-6">
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Subtotal</span>
                         <span className="font-mono">${Number(order.subtotal).toFixed(2)}</span>
@@ -401,7 +401,7 @@ export default function SupplierOrdersPage() {
                           <span className="font-mono">-${Number(order.discount_amount).toFixed(2)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between items-center mt-4 pt-4 border-t border-white/[0.08]">
+                      <div className="flex justify-between items-center mt-4 pt-4 border-t border-border">
                         <span className="text-foreground font-light">Total</span>
                         <span className="font-mono text-xl font-light">${Number(order.total_amount).toFixed(2)}</span>
                       </div>

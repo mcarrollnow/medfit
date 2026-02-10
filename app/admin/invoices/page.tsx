@@ -554,11 +554,11 @@ export default function InvoicesPage() {
       case 'overdue':
         return 'bg-orange-500/10 text-orange-400 border-orange-500/20'
       case 'archived':
-        return 'bg-zinc-500/10 text-zinc-400 border-zinc-500/20'
+        return 'bg-zinc-500/10 text-muted-foreground border-zinc-500/20'
       case 'draft':
-        return 'bg-white/5 text-[oklch(0.65_0_0)] border-white/10'
+        return 'bg-foreground/5 text-[oklch(0.65_0_0)] border-border'
       default:
-        return 'bg-white/5 text-[oklch(0.5_0_0)] border-white/10'
+        return 'bg-foreground/5 text-[oklch(0.5_0_0)] border-border'
     }
   }
 
@@ -673,7 +673,7 @@ export default function InvoicesPage() {
                   onClick={() => setMode('view')}
                   className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all ${
                     mode === 'view' 
-                      ? 'bg-white text-black' 
+                      ? 'bg-primary text-primary-foreground' 
                       : 'text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                   }`}
                 >
@@ -684,7 +684,7 @@ export default function InvoicesPage() {
                   onClick={() => setMode('create')}
                   className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all ${
                     mode === 'create' 
-                      ? 'bg-white text-black' 
+                      ? 'bg-primary text-primary-foreground' 
                       : 'text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                   }`}
                 >
@@ -754,7 +754,7 @@ export default function InvoicesPage() {
                       placeholder="Search by email, name, or invoice number..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-12 pr-4 h-14 text-lg bg-white/5 border border-white/10 text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.65_0_0)] focus:outline-none focus:border-white/30 rounded-xl transition-colors"
+                      className="w-full pl-12 pr-4 h-14 text-lg bg-foreground/5 border border-border text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.65_0_0)] focus:outline-none focus:border-border rounded-xl transition-colors"
                     />
                   </div>
                   
@@ -776,15 +776,15 @@ export default function InvoicesPage() {
                       onClick={() => setStatusFilter(tab.value)}
                       className={`px-5 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
                         statusFilter === tab.value
-                          ? 'bg-white text-black'
+                          ? 'bg-primary text-primary-foreground'
                           : 'glass-button text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                       }`}
                     >
                       {tab.label}
                       <span className={`px-2 py-0.5 rounded-full text-xs ${
                         statusFilter === tab.value
-                          ? 'bg-black/10 text-black'
-                          : 'bg-white/10 text-[oklch(0.65_0_0)]'
+                          ? 'bg-foreground/10 text-foreground'
+                          : 'bg-foreground/10 text-[oklch(0.65_0_0)]'
                       }`}>
                         {tab.count}
                       </span>
@@ -802,7 +802,7 @@ export default function InvoicesPage() {
                 {loading ? (
                   <div className="space-y-4">
                     {[1, 2, 3].map(i => (
-                      <div key={i} className="h-32 animate-pulse rounded-3xl bg-white/5" />
+                      <div key={i} className="h-32 animate-pulse rounded-3xl bg-foreground/5" />
                     ))}
                   </div>
                 ) : filteredInvoices.length === 0 ? (
@@ -812,7 +812,7 @@ export default function InvoicesPage() {
                     <p className="text-[oklch(0.65_0_0)] mt-4 mb-8">Create your first invoice to get started</p>
                     <button
                       onClick={() => setMode('create')}
-                      className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-black font-medium hover:bg-white/90 transition-colors"
+                      className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-medium hover:bg-card/90 transition-colors"
                     >
                       <Plus className="w-5 h-5" />
                       Create Invoice
@@ -836,7 +836,7 @@ export default function InvoicesPage() {
                             viewport={{ once: true }}
                             onContextMenu={(e) => handleContextMenu(e, invoice)}
                             className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${
-                              isExpanded ? 'bg-white/[0.04]' : 'hover:bg-white/[0.04]'
+                              isExpanded ? 'bg-foreground/[0.05]' : 'hover:bg-foreground/[0.05]'
                             }`}
                           >
                             {/* Main Card Content */}
@@ -856,7 +856,7 @@ export default function InvoicesPage() {
                                       {invoice.status}
                                     </span>
                                     {invoice.is_hidden && (
-                                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-mono tracking-wider uppercase bg-white/5 text-[oklch(0.5_0_0)] border border-white/10">
+                                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-mono tracking-wider uppercase bg-foreground/5 text-[oklch(0.5_0_0)] border border-border">
                                         No Order
                                       </span>
                                     )}
@@ -903,7 +903,7 @@ export default function InvoicesPage() {
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
                                   transition={{ duration: 0.3 }}
-                                  className="border-t border-white/10 overflow-hidden"
+                                  className="border-t border-border overflow-hidden"
                                 >
                                   <div className="p-8 md:p-10 space-y-8">
                                     {/* Line Items */}
@@ -914,7 +914,7 @@ export default function InvoicesPage() {
                                       </h4>
                                       <div className="space-y-4">
                                         {items.map((item, idx) => (
-                                          <div key={idx} className="flex justify-between items-center py-3 border-b border-white/10 last:border-0">
+                                          <div key={idx} className="flex justify-between items-center py-3 border-b border-border last:border-0">
                                             <div>
                                               <p className="text-[oklch(0.95_0_0)]">{item.name || item.description || 'Item'}</p>
                                               <p className="text-sm text-[oklch(0.65_0_0)]">Qty: {item.quantity} × {formatCurrency(item.unit_price)}</p>
@@ -922,7 +922,7 @@ export default function InvoicesPage() {
                                             <p className="font-mono text-[oklch(0.95_0_0)]">{formatCurrency(item.quantity * item.unit_price)}</p>
                                           </div>
                                         ))}
-                                        <div className="flex justify-between items-center pt-4 border-t border-white/20">
+                                        <div className="flex justify-between items-center pt-4 border-t border-border">
                                           <p className="font-medium text-[oklch(0.95_0_0)]">Total</p>
                                           <p className="font-mono text-xl text-[oklch(0.95_0_0)]">{formatCurrency(invoice.total)}</p>
                                         </div>
@@ -938,7 +938,7 @@ export default function InvoicesPage() {
                                           navigator.clipboard.writeText(url)
                                           alert('Invoice link copied!')
                                         }}
-                                        className="bg-white text-black rounded-xl px-6 py-4 flex items-center gap-3 font-medium hover:bg-white/90 transition-all"
+                                        className="bg-primary text-primary-foreground rounded-xl px-6 py-4 flex items-center gap-3 font-medium hover:bg-card/90 transition-all"
                                       >
                                         <Copy className="w-5 h-5" />
                                         Copy Link
@@ -984,7 +984,7 @@ export default function InvoicesPage() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="glass-card rounded-3xl p-8 mb-12 border-white/20"
+                    className="glass-card rounded-3xl p-8 mb-12 border-border"
                   >
                     <div className="flex items-center justify-between gap-6">
                       <div className="flex items-center gap-6">
@@ -1012,7 +1012,7 @@ export default function InvoicesPage() {
                             navigator.clipboard.writeText(lastInvoiceUrl)
                             alert('Link copied!')
                           }}
-                          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-medium hover:bg-white/90 transition-colors"
+                          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-card/90 transition-colors"
                         >
                           <Copy className="w-4 h-4" />
                           Copy Link
@@ -1034,8 +1034,8 @@ export default function InvoicesPage() {
                     onClick={() => setIsHiddenInvoice(!isHiddenInvoice)}
                     className={`flex items-center gap-3 px-6 py-4 rounded-2xl text-sm font-medium transition-all border ${
                       isHiddenInvoice
-                        ? 'bg-white text-black border-white'
-                        : 'glass-button border-white/10 text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'glass-button border-border text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                     }`}
                   >
                     {isHiddenInvoice ? (
@@ -1056,7 +1056,7 @@ export default function InvoicesPage() {
                       onClick={() => setEditorMode('edit')}
                       className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all ${
                         editorMode === 'edit' 
-                          ? 'bg-white text-black' 
+                          ? 'bg-primary text-primary-foreground' 
                           : 'text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                       }`}
                     >
@@ -1067,7 +1067,7 @@ export default function InvoicesPage() {
                       onClick={() => setEditorMode('preview')}
                       className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all ${
                         editorMode === 'preview' 
-                          ? 'bg-white text-black' 
+                          ? 'bg-primary text-primary-foreground' 
                           : 'text-[oklch(0.65_0_0)] hover:text-[oklch(0.95_0_0)]'
                       }`}
                     >

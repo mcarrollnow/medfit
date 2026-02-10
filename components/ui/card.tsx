@@ -13,7 +13,7 @@ function Card({ className, variant = 'default', ...props }: CardProps) {
       className={cn(
         'text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
         variant === 'default' && 'bg-card',
-        variant === 'glass' && 'bg-white/5 backdrop-blur-xl border-white/10',
+        variant === 'glass' && 'bg-foreground/5 backdrop-blur-xl border-border',
         variant === 'transparent' && 'bg-transparent border-transparent shadow-none',
         className,
       )}

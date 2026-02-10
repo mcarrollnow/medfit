@@ -110,7 +110,7 @@ export function SupplyStoreNavbar() {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="lg:hidden border-t border-[rgba(255,255,255,0.08)] px-6 py-4">
+            <div className="lg:hidden border-t border-border px-6 py-4">
               <div className="flex flex-col gap-4">
                 <SupplyStoreBusinessTypeSwitcher />
                 <div className="flex flex-col gap-2">
@@ -123,7 +123,7 @@ export function SupplyStoreNavbar() {
                         "px-4 py-3 rounded-xl text-sm font-light transition-all duration-300",
                         pathname === link.href
                           ? "bg-foreground text-background"
-                          : "text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)]",
+                          : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06]",
                       )}
                     >
                       {link.label}
@@ -131,7 +131,7 @@ export function SupplyStoreNavbar() {
                   ))}
                   <button
                     onClick={handleLogout}
-                    className="px-4 py-3 rounded-xl text-sm font-light text-muted-foreground hover:text-foreground hover:bg-[rgba(255,255,255,0.05)] text-left flex items-center gap-2 transition-all duration-300"
+                    className="px-4 py-3 rounded-xl text-sm font-light text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06] text-left flex items-center gap-2 transition-all duration-300"
                   >
                     <LogOut className="w-4 h-4" />
                     Logout

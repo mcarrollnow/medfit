@@ -54,12 +54,12 @@ interface ContextMenuProps {
 }
 
 const ORDER_STATUSES = [
-  { value: 'pending', label: 'Pending', icon: Clock, color: 'text-white/70' },
+  { value: 'pending', label: 'Pending', icon: Clock, color: 'text-foreground/70' },
   { value: 'payment_requested', label: 'Payment Requested', icon: CreditCard, color: 'text-yellow-400' },
   { value: 'paid', label: 'Paid', icon: CheckCircle, color: 'text-emerald-400' },
   { value: 'processing', label: 'Processing', icon: Package, color: 'text-blue-400' },
   { value: 'shipped', label: 'Shipped', icon: Truck, color: 'text-purple-400' },
-  { value: 'delivered', label: 'Delivered', icon: CheckCircle, color: 'text-zinc-400' },
+  { value: 'delivered', label: 'Delivered', icon: CheckCircle, color: 'text-muted-foreground' },
   { value: 'cancelled', label: 'Cancelled', icon: XCircle, color: 'text-red-400' },
   { value: 'archived', label: 'Archived (Incomplete)', icon: AlertCircle, color: 'text-orange-400' },
 ]
@@ -133,14 +133,14 @@ export function OrderContextMenu({
     }
   }
 
-  const menuItemClass = "w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-white/80 hover:bg-white/10 hover:text-white"
+  const menuItemClass = "w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-foreground/80 hover:bg-foreground/10 hover:text-foreground"
   
   // Submenu wrapper - includes invisible bridge for hover continuity
   const SubmenuWrapper = ({ children }: { children: React.ReactNode }) => (
     <>
       {/* Invisible bridge to prevent gap */}
       <div className="absolute left-full top-0 w-2 h-full hidden group-hover:block" />
-      <div className="absolute left-full top-0 ml-1 min-w-[200px] rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl overflow-hidden hidden group-hover:block z-[101]">
+      <div className="absolute left-full top-0 ml-1 min-w-[200px] rounded-xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden hidden group-hover:block z-[101]">
         {children}
       </div>
     </>
@@ -149,13 +149,13 @@ export function OrderContextMenu({
   return (
     <div
       ref={menuRef}
-      className="fixed z-[100] min-w-[220px] rounded-xl border border-white/10 bg-zinc-900/95 backdrop-blur-xl shadow-2xl"
+      className="fixed z-[100] min-w-[220px] rounded-xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl"
       style={{ left: position.x, top: position.y }}
     >
       {/* Header */}
-      <div className="px-4 py-3 border-b border-white/10 bg-white/[0.02]">
-        <p className="font-semibold text-white text-sm">{order.order_number}</p>
-        <p className="text-xs text-white/50 truncate">{order.customer_name}</p>
+      <div className="px-4 py-3 border-b border-border bg-foreground/[0.03]">
+        <p className="font-semibold text-foreground text-sm">{order.order_number}</p>
+        <p className="text-xs text-muted-foreground truncate">{order.customer_name}</p>
       </div>
 
       {/* Menu Items */}
@@ -165,7 +165,7 @@ export function OrderContextMenu({
           <button className={menuItemClass}>
             <Clock className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Update Status</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1">
@@ -179,8 +179,8 @@ export function OrderContextMenu({
                       onUpdateStatus(order.id, status.value)
                       onClose()
                     }}
-                    className={`w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors hover:bg-white/10 ${
-                      isCurrentStatus ? 'bg-white/5' : ''
+                    className={`w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors hover:bg-foreground/10 ${
+                      isCurrentStatus ? 'bg-foreground/5' : ''
                     }`}
                   >
                     <StatusIcon className={`w-4 h-4 ${status.color}`} />
@@ -198,7 +198,7 @@ export function OrderContextMenu({
           <button className={menuItemClass}>
             <Printer className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Print</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1">
@@ -216,7 +216,7 @@ export function OrderContextMenu({
                 <Package className="w-4 h-4" />
                 <span>Print Packing Slip</span>
               </button>
-              <div className="my-1 border-t border-white/10" />
+              <div className="my-1 border-t border-border" />
               <button
                 onClick={() => { onPrint(order.id, 'both'); onClose() }}
                 className={menuItemClass}
@@ -237,14 +237,14 @@ export function OrderContextMenu({
           <span className="flex-1 text-left">Save as PDF</span>
         </button>
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Send Payment Reminder - with submenu */}
         <div className="relative group">
           <button className={menuItemClass}>
             <Send className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Send Payment Reminder</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1">
@@ -275,39 +275,39 @@ export function OrderContextMenu({
           <span className="flex-1 text-left">View Customer Profile</span>
         </button>
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Show Products - with submenu */}
         <div className="relative group" onMouseEnter={handleLoadProducts}>
           <button className={menuItemClass}>
             <Package className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 text-left">Show Products</span>
-            <ChevronRight className="w-4 h-4 text-white/30" />
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
           <SubmenuWrapper>
             <div className="py-1 max-h-[300px] overflow-y-auto">
               {loadingProducts ? (
-                <div className="px-4 py-3 text-sm text-white/50">Loading...</div>
+                <div className="px-4 py-3 text-sm text-muted-foreground">Loading...</div>
               ) : products.length > 0 ? (
                 products.map((product, idx) => (
                   <div
                     key={idx}
-                    className="px-4 py-2.5 flex items-center justify-between text-sm border-b border-white/5 last:border-0"
+                    className="px-4 py-2.5 flex items-center justify-between text-sm border-b border-border last:border-0"
                   >
-                    <span className="text-white/80 flex-1 truncate pr-2">{product.product_name}</span>
-                    <span className="text-white/50 font-mono text-xs bg-white/10 px-2 py-0.5 rounded">
+                    <span className="text-foreground/80 flex-1 truncate pr-2">{product.product_name}</span>
+                    <span className="text-muted-foreground font-mono text-xs bg-foreground/10 px-2 py-0.5 rounded">
                       ×{product.quantity}
                     </span>
                   </div>
                 ))
               ) : (
-                <div className="px-4 py-3 text-sm text-white/50">No products</div>
+                <div className="px-4 py-3 text-sm text-muted-foreground">No products</div>
               )}
             </div>
           </SubmenuWrapper>
         </div>
 
-        <div className="my-1 border-t border-white/10" />
+        <div className="my-1 border-t border-border" />
 
         {/* Refund Order - direct action */}
         <button
@@ -321,7 +321,7 @@ export function OrderContextMenu({
         {/* Archive Order - direct action */}
         <button
           onClick={() => { onArchive(order.id); onClose() }}
-          className="w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-zinc-400 hover:bg-zinc-500/10"
+          className="w-full px-4 py-2.5 flex items-center gap-3 text-sm transition-colors text-muted-foreground hover:bg-zinc-500/10"
         >
           <Archive className="w-4 h-4 flex-shrink-0" />
           <span className="flex-1 text-left">Archive Order</span>

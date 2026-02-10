@@ -55,7 +55,7 @@ export function InvoicePreview({ data, onEdit }: InvoicePreviewProps) {
 
   return (
     <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-      <div ref={invoiceRef} className="print:bg-[#121212] print:p-8">
+      <div ref={invoiceRef} className="print:bg-card print:p-8">
         <div className="glass-card rounded-3xl p-8 md:p-12 lg:p-16">
           <InvoiceHeader
             invoiceNumber={data.invoiceNumber}

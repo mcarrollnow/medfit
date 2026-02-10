@@ -26,7 +26,7 @@ export default function ImpersonationBanner() {
         <div className="flex items-center justify-between gap-4">
           {/* Left side - Info */}
           <div className="flex items-center gap-3">
-            <div className="p-1.5 rounded-lg bg-black/10">
+            <div className="p-1.5 rounded-lg bg-foreground/10">
               <Eye className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 text-sm font-medium">
@@ -38,13 +38,13 @@ export default function ImpersonationBanner() {
                   className="w-6 h-6 rounded-full object-cover border border-black/20"
                 />
               ) : isSpecificUser ? (
-                <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center">
                   <User className="h-3 w-3" />
                 </div>
               ) : null}
               <span className="font-semibold">{displayName}</span>
               {isSpecificUser && impersonatedUser?.role && (
-                <span className="px-2 py-0.5 text-xs rounded-full bg-black/10 font-medium">
+                <span className="px-2 py-0.5 text-xs rounded-full bg-foreground/10 font-medium">
                   {impersonatedUser.role}
                 </span>
               )}
@@ -55,7 +55,7 @@ export default function ImpersonationBanner() {
           <div className="flex items-center gap-2">
             <button
               onClick={handleExit}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/10 hover:bg-black/20 transition-colors text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-foreground/10 hover:bg-foreground/20 transition-colors text-sm font-medium"
             >
               <ArrowLeft className="h-4 w-4" />
               <span className="hidden sm:inline">Exit to Admin</span>

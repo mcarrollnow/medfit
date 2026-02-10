@@ -451,7 +451,7 @@ export default function CustomerProfilePage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-8">Profile Settings</h1>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-8">Profile Settings</h1>
 
         {/* Success/Error Messages */}
         {success && (
@@ -466,7 +466,7 @@ export default function CustomerProfilePage() {
         )}
 
         {/* Profile Form */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-8">
           {/* Noise texture overlay */}
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
@@ -477,16 +477,16 @@ export default function CustomerProfilePage() {
                   <img
                     src={profileData.profilePictureUrl}
                     alt="Profile"
-                    className="w-32 h-32 rounded-full object-cover border-4 border-white/20"
+                    className="w-32 h-32 rounded-full object-cover border-4 border-border"
                   />
                 ) : (
-                  <div className="w-32 h-32 rounded-full bg-white/10 flex items-center justify-center border-4 border-white/20">
-                    <User className="w-16 h-16 text-white/40" />
+                  <div className="w-32 h-32 rounded-full bg-foreground/10 flex items-center justify-center border-4 border-border">
+                    <User className="w-16 h-16 text-muted-foreground" />
                   </div>
                 )}
                 <label
                   htmlFor="profile-picture"
-                  className="absolute bottom-0 right-0 p-2 bg-white text-black rounded-full cursor-pointer hover:bg-white/90 transition-colors"
+                  className="absolute bottom-0 right-0 p-2 bg-primary text-primary-foreground rounded-full cursor-pointer hover:bg-card/90 transition-colors"
                 >
                   <Camera className="w-5 h-5" />
                   <input
@@ -500,43 +500,43 @@ export default function CustomerProfilePage() {
                 </label>
               </div>
               {uploading && (
-                <p className="text-sm text-white/50">Uploading...</p>
+                <p className="text-sm text-muted-foreground">Uploading...</p>
               )}
-              <p className="text-sm text-white/40">Click the camera icon to upload a profile picture</p>
+              <p className="text-sm text-muted-foreground">Click the camera icon to upload a profile picture</p>
             </div>
 
             {/* Personal Information */}
             <div>
-              <h2 className="text-xl font-semibold text-white mb-4">Personal Information</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-4">Personal Information</h2>
 
               {/* Name Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-foreground/70 mb-2">
                     First Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                     <input
                       type="text"
                       value={profileData.firstName}
                       onChange={(e) => setProfileData({ ...profileData, firstName: e.target.value })}
                       required
-                      className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-foreground/70 mb-2">
                     Last Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                     <input
                       type="text"
                       value={profileData.lastName}
                       onChange={(e) => setProfileData({ ...profileData, lastName: e.target.value })}
-                      className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
                 </div>
@@ -544,35 +544,35 @@ export default function CustomerProfilePage() {
 
               {/* Email (Read-only) */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-white/70 mb-2">
+                <label className="block text-sm font-medium text-foreground/70 mb-2">
                   Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/30 w-5 h-5" />
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                   <input
                     type="email"
                     value={profileData.email}
                     disabled
-                    className="w-full pl-12 pr-4 py-3.5 bg-white/[0.02] border border-white/10 rounded-xl text-white/50 cursor-not-allowed"
+                    className="w-full pl-12 pr-4 py-3.5 bg-foreground/[0.03] border border-border rounded-xl text-muted-foreground cursor-not-allowed"
                   />
                 </div>
-                <p className="text-xs text-white/40 mt-1">Email cannot be changed</p>
+                <p className="text-xs text-muted-foreground mt-1">Email cannot be changed</p>
               </div>
 
               {/* Phone Number */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-white/70 mb-2">
+                <label className="block text-sm font-medium text-foreground/70 mb-2">
                   Phone Number
                 </label>
                 <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                  <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                   <input
                     type="tel"
                     value={profileData.phone}
                     onChange={handlePhoneChange}
                     placeholder="(555) 123-4567"
                     maxLength={14}
-                    className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                    className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                   />
                 </div>
               </div>
@@ -580,16 +580,16 @@ export default function CustomerProfilePage() {
               {/* Company Name (for B2B) */}
               {profileData.customerType === 'b2b' && (
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-foreground/70 mb-2">
                     Company Name
                   </label>
                   <div className="relative">
-                    <Building className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                    <Building className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                     <input
                       type="text"
                       value={profileData.companyName}
                       onChange={(e) => setProfileData({ ...profileData, companyName: e.target.value })}
-                      className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
                 </div>
@@ -598,14 +598,14 @@ export default function CustomerProfilePage() {
 
             {/* Shipping Address */}
             <div>
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                 <MapPin className="w-5 h-5 mr-2" />
                 Shipping Address
               </h2>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-foreground/70 mb-2">
                     Address Line 1
                   </label>
                   <input
@@ -613,38 +613,38 @@ export default function CustomerProfilePage() {
                     value={profileData.shippingAddressLine1}
                     onChange={(e) => setProfileData({ ...profileData, shippingAddressLine1: e.target.value })}
                     placeholder="123 Main Street"
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
-                    Address Line 2 <span className="text-white/40 text-xs">(optional)</span>
+                  <label className="block text-sm font-medium text-foreground/70 mb-2">
+                    Address Line 2 <span className="text-muted-foreground text-xs">(optional)</span>
                   </label>
                   <input
                     type="text"
                     value={profileData.shippingAddressLine2}
                     onChange={(e) => setProfileData({ ...profileData, shippingAddressLine2: e.target.value })}
                     placeholder="Apartment, suite, etc."
-                    className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                    className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-white/70 mb-2">
+                    <label className="block text-sm font-medium text-foreground/70 mb-2">
                       City
                     </label>
                     <input
                       type="text"
                       value={profileData.shippingCity}
                       onChange={(e) => setProfileData({ ...profileData, shippingCity: e.target.value })}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-white/70 mb-2">
+                    <label className="block text-sm font-medium text-foreground/70 mb-2">
                       State
                     </label>
                     <input
@@ -653,12 +653,12 @@ export default function CustomerProfilePage() {
                       onChange={(e) => setProfileData({ ...profileData, shippingState: e.target.value })}
                       maxLength={2}
                       placeholder="AZ"
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-white/70 mb-2">
+                    <label className="block text-sm font-medium text-foreground/70 mb-2">
                       ZIP Code
                     </label>
                     <input
@@ -666,7 +666,7 @@ export default function CustomerProfilePage() {
                       value={profileData.shippingZip}
                       onChange={(e) => setProfileData({ ...profileData, shippingZip: e.target.value })}
                       maxLength={10}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                      className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                     />
                   </div>
                 </div>
@@ -677,7 +677,7 @@ export default function CustomerProfilePage() {
             <button
               type="submit"
               disabled={loading || uploading}
-              className="w-full flex items-center justify-center space-x-2 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center space-x-2 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Save className="w-5 h-5" />
               <span>{loading ? 'Saving...' : 'Save Changes'}</span>
@@ -686,21 +686,21 @@ export default function CustomerProfilePage() {
         </div>
 
         {/* Referral Code */}
-        <div id="referral" className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 mt-6 scroll-mt-24">
+        <div id="referral" className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-8 mt-6 scroll-mt-24">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                <Gift className="w-5 h-5 text-white" />
+              <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                <Gift className="w-5 h-5 text-foreground" />
               </div>
-              <h2 className="text-2xl font-bold text-white">Referral Program</h2>
+              <h2 className="text-2xl font-bold text-foreground">Referral Program</h2>
             </div>
 
             {/* Add a friend's referral code (one-time) */}
             {!referredByCode ? (
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10 mb-4">
-                <h3 className="text-lg font-semibold text-white mb-2">Add a Friend's Referral Code</h3>
-                <p className="text-sm text-white/50 mb-4">
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border mb-4">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Add a Friend's Referral Code</h3>
+                <p className="text-sm text-muted-foreground mb-4">
                   Have a friend's referral code? Enter it here to get a discount on your orders. You can only add a referral code once.
                 </p>
                 {referralApplySuccess && (
@@ -720,37 +720,37 @@ export default function CustomerProfilePage() {
                     onChange={(e) => setReferredByInput(e.target.value.toUpperCase())}
                     placeholder="Enter code (e.g. JOHN1234)"
                     maxLength={10}
-                    className="flex-1 px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl font-mono text-white placeholder-white/30 tracking-wider focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                    className="flex-1 px-4 py-3.5 bg-foreground/5 border border-border rounded-xl font-mono text-foreground placeholder-muted-foreground tracking-wider focus:outline-none focus:border-border focus:ring-0 transition-colors"
                   />
                   <button
                     onClick={handleApplyReferralCode}
                     disabled={applyingReferral || !referredByInput.trim()}
-                    className="px-6 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-6 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {applyingReferral ? 'Applying...' : 'Apply'}
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10 mb-4">
-                <h3 className="text-lg font-semibold text-white mb-2">Referred By</h3>
-                <p className="text-sm text-white/50 mb-2">
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border mb-4">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Referred By</h3>
+                <p className="text-sm text-muted-foreground mb-2">
                   You were referred with this code:
                 </p>
-                <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-lg text-white tracking-wider inline-block">
+                <div className="px-4 py-3 bg-foreground/5 border border-border rounded-xl font-mono text-lg text-foreground tracking-wider inline-block">
                   {referredByCode}
                 </div>
               </div>
             )}
 
             {profileData.referralCode ? (
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-                <h3 className="text-lg font-semibold text-white mb-2">Your Referral Code</h3>
-                <p className="text-sm text-white/50 mb-4">
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Your Referral Code</h3>
+                <p className="text-sm text-muted-foreground mb-4">
                   Share this code with friends and earn rewards when they make a purchase.
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="flex-1 px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl font-mono text-xl text-white tracking-wider">
+                  <div className="flex-1 px-4 py-3.5 bg-foreground/5 border border-border rounded-xl font-mono text-xl text-foreground tracking-wider">
                     {profileData.referralCode}
                   </div>
                   <button
@@ -759,7 +759,7 @@ export default function CustomerProfilePage() {
                       setReferralCopied(true);
                       setTimeout(() => setReferralCopied(false), 2000);
                     }}
-                    className="px-4 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 flex items-center gap-2 font-medium"
+                    className="px-4 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 flex items-center gap-2 font-medium"
                   >
                     {referralCopied ? (
                       <>
@@ -776,15 +776,15 @@ export default function CustomerProfilePage() {
                 </div>
               </div>
             ) : (
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-                <h3 className="text-lg font-semibold text-white mb-2">Get Your Referral Code</h3>
-                <p className="text-sm text-white/50 mb-4">
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Get Your Referral Code</h3>
+                <p className="text-sm text-muted-foreground mb-4">
                   Share your unique code with friends. They'll get a discount on their first order, and you'll earn rewards when they make a purchase.
                 </p>
                 <button
                   onClick={handleGenerateReferralCode}
                   disabled={generatingReferral}
-                  className="px-6 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {generatingReferral ? 'Generating...' : 'Generate My Referral Code'}
                 </button>
@@ -794,22 +794,22 @@ export default function CustomerProfilePage() {
         </div>
 
         {/* Security Settings */}
-        <div id="security" className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 mt-6 scroll-mt-24">
+        <div id="security" className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-8 mt-6 scroll-mt-24">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
           <div className="relative z-10">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
+              <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-foreground" />
               </div>
-              <h2 className="text-2xl font-bold text-white">Security Settings</h2>
+              <h2 className="text-2xl font-bold text-foreground">Security Settings</h2>
             </div>
 
             <div className="space-y-4">
               {/* Mobile Authentication */}
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border">
                 <div className="flex items-center gap-3 mb-4">
-                  <Smartphone className="w-5 h-5 text-white" />
-                  <h3 className="text-lg font-semibold text-white">Mobile Authentication</h3>
+                  <Smartphone className="w-5 h-5 text-foreground" />
+                  <h3 className="text-lg font-semibold text-foreground">Mobile Authentication</h3>
                   {phoneVerified && (
                     <span className="px-2 py-1 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-xs font-medium">
                       Verified
@@ -819,11 +819,11 @@ export default function CustomerProfilePage() {
 
                 {phoneVerified ? (
                   <div>
-                    <p className="text-sm text-white/50 mb-3">
+                    <p className="text-sm text-muted-foreground mb-3">
                       Your phone number is verified. You can sign in using SMS verification.
                     </p>
                     <div className="flex items-center gap-3">
-                      <div className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-white">
+                      <div className="px-4 py-3 bg-foreground/5 border border-border rounded-xl font-mono text-foreground">
                         {verifiedPhone}
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
@@ -833,19 +833,19 @@ export default function CustomerProfilePage() {
                         setMobileAuthStep('phone');
                         setMobileAuthError(null);
                       }}
-                      className="mt-4 text-sm text-white/50 hover:text-white transition-colors"
+                      className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       Change phone number
                     </button>
                   </div>
                 ) : mobileAuthStep === 'idle' ? (
                   <div>
-                    <p className="text-sm text-white/50 mb-4">
+                    <p className="text-sm text-muted-foreground mb-4">
                       Add your phone number for faster, more secure sign-in with SMS verification codes.
                     </p>
                     <button
                       onClick={() => setMobileAuthStep('phone')}
-                      className="px-4 py-2.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 text-sm font-medium flex items-center gap-2"
+                      className="px-4 py-2.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 text-sm font-medium flex items-center gap-2"
                     >
                       <Phone className="w-4 h-4" />
                       Add Phone Number
@@ -853,7 +853,7 @@ export default function CustomerProfilePage() {
                   </div>
                 ) : mobileAuthStep === 'phone' ? (
                   <div className="space-y-4">
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-muted-foreground">
                       Enter your phone number to receive a verification code.
                     </p>
                     
@@ -865,20 +865,20 @@ export default function CustomerProfilePage() {
 
                     <div className="flex items-center gap-3">
                       <div className="relative flex-1">
-                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 w-5 h-5" />
+                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                         <input
                           type="tel"
                           value={newPhone}
                           onChange={handleNewPhoneChange}
                           placeholder="(555) 123-4567"
                           maxLength={14}
-                          className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors"
+                          className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors"
                         />
                       </div>
                       <button
                         onClick={sendMobileAuthOtp}
                         disabled={mobileAuthLoading || newPhone.replace(/\D/g, '').length < 10}
-                        className="px-6 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                        className="px-6 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                       >
                         {mobileAuthLoading ? 'Sending...' : (
                           <>
@@ -895,14 +895,14 @@ export default function CustomerProfilePage() {
                         setNewPhone('');
                         setMobileAuthError(null);
                       }}
-                      className="text-sm text-white/50 hover:text-white transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       Cancel
                     </button>
                   </div>
                 ) : mobileAuthStep === 'verify' ? (
                   <div className="space-y-4">
-                    <p className="text-sm text-white/50">
+                    <p className="text-sm text-muted-foreground">
                       Enter the 6-digit code sent to {newPhone}
                     </p>
                     
@@ -918,7 +918,7 @@ export default function CustomerProfilePage() {
                       onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                       placeholder="123456"
                       maxLength={6}
-                      className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-0 transition-colors text-center text-2xl font-mono tracking-[0.5em]"
+                      className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-border focus:ring-0 transition-colors text-center text-2xl font-mono tracking-[0.5em]"
                       autoFocus
                     />
 
@@ -926,7 +926,7 @@ export default function CustomerProfilePage() {
                       <button
                         onClick={verifyMobileAuthOtp}
                         disabled={mobileAuthLoading || otpCode.length !== 6}
-                        className="flex-1 py-3.5 bg-white text-black rounded-xl hover:bg-white/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        className="flex-1 py-3.5 bg-primary text-primary-foreground rounded-xl hover:bg-card/90 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                       >
                         {mobileAuthLoading ? 'Verifying...' : (
                           <>
@@ -944,14 +944,14 @@ export default function CustomerProfilePage() {
                           setOtpCode('');
                           setMobileAuthError(null);
                         }}
-                        className="text-sm text-white/50 hover:text-white transition-colors"
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         Back
                       </button>
                       <button
                         onClick={sendMobileAuthOtp}
                         disabled={resendCountdown > 0 || mobileAuthLoading}
-                        className="text-sm text-white/50 hover:text-white transition-colors disabled:opacity-50"
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
                       >
                         {resendCountdown > 0 ? `Resend in ${resendCountdown}s` : 'Resend code'}
                       </button>
@@ -962,8 +962,8 @@ export default function CustomerProfilePage() {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500/20 border border-green-500/30 mb-4">
                       <CheckCircle className="w-6 h-6 text-green-400" />
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Phone Verified</h4>
-                    <p className="text-sm text-white/50">
+                    <h4 className="text-lg font-semibold text-foreground mb-2">Phone Verified</h4>
+                    <p className="text-sm text-muted-foreground">
                       You can now sign in using your phone number.
                     </p>
                   </div>
@@ -971,10 +971,10 @@ export default function CustomerProfilePage() {
               </div>
 
               {/* Account Type */}
-              <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-                <h3 className="text-lg font-semibold text-white mb-2">Account Type</h3>
-                <p className="text-sm text-white/50 mb-2">
-                  You are registered as a <span className="font-semibold text-white">{profileData.customerType === 'b2b' ? 'Business' : 'Retail'}</span> customer.
+              <div className="p-5 bg-foreground/5 rounded-2xl border border-border">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Account Type</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  You are registered as a <span className="font-semibold text-foreground">{profileData.customerType === 'b2b' ? 'Business' : 'Retail'}</span> customer.
                 </p>
                 {profileData.customerType === 'b2b' && (
                   <p className="text-sm text-green-400">You have access to wholesale pricing.</p>

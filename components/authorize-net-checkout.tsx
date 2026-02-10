@@ -315,8 +315,8 @@ export function AuthorizeNetCheckout({
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-12 space-y-4">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
-        <p className="text-white/50 text-sm">Loading secure payment form...</p>
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <p className="text-muted-foreground text-sm">Loading secure payment form...</p>
       </div>
     )
   }
@@ -346,10 +346,10 @@ export function AuthorizeNetCheckout({
       )}
       
       {/* Order summary */}
-      <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+      <div className="p-4 rounded-xl bg-foreground/5 border border-border">
         <div className="flex justify-between items-center">
-          <span className="text-white/70">Order Total</span>
-          <span className="text-2xl font-bold text-white">${amount.toFixed(2)}</span>
+          <span className="text-foreground/70">Order Total</span>
+          <span className="text-2xl font-bold text-foreground">${amount.toFixed(2)}</span>
         </div>
       </div>
       
@@ -357,14 +357,14 @@ export function AuthorizeNetCheckout({
       <div className="space-y-4">
         {/* Cardholder Name */}
         <div className="space-y-2">
-          <Label htmlFor="cardholderName" className="text-white/70">Cardholder Name</Label>
+          <Label htmlFor="cardholderName" className="text-foreground/70">Cardholder Name</Label>
           <Input
             id="cardholderName"
             type="text"
             placeholder="John Doe"
             value={cardholderName}
             onChange={(e) => setCardholderName(e.target.value)}
-            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+            className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
             disabled={processing}
           />
           {formErrors.cardholderName && (
@@ -374,7 +374,7 @@ export function AuthorizeNetCheckout({
         
         {/* Card Number */}
         <div className="space-y-2">
-          <Label htmlFor="cardNumber" className="text-white/70">Card Number</Label>
+          <Label htmlFor="cardNumber" className="text-foreground/70">Card Number</Label>
           <div className="relative">
             <Input
               id="cardNumber"
@@ -383,10 +383,10 @@ export function AuthorizeNetCheckout({
               value={cardNumber}
               onChange={(e) => setCardNumber(formatCardNumber(e.target.value))}
               maxLength={19}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30 pr-12"
+              className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border pr-12"
               disabled={processing}
             />
-            <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+            <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           </div>
           {formErrors.cardNumber && (
             <p className="text-red-400 text-xs">{formErrors.cardNumber}</p>
@@ -396,7 +396,7 @@ export function AuthorizeNetCheckout({
         {/* Expiry and CVV */}
         <div className="grid grid-cols-3 gap-3">
           <div className="space-y-2">
-            <Label htmlFor="expiryMonth" className="text-white/70">Month</Label>
+            <Label htmlFor="expiryMonth" className="text-foreground/70">Month</Label>
             <Input
               id="expiryMonth"
               type="text"
@@ -404,7 +404,7 @@ export function AuthorizeNetCheckout({
               value={expiryMonth}
               onChange={(e) => setExpiryMonth(e.target.value.replace(/\D/g, '').slice(0, 2))}
               maxLength={2}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30 text-center"
+              className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border text-center"
               disabled={processing}
             />
             {formErrors.expiryMonth && (
@@ -413,7 +413,7 @@ export function AuthorizeNetCheckout({
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="expiryYear" className="text-white/70">Year</Label>
+            <Label htmlFor="expiryYear" className="text-foreground/70">Year</Label>
             <Input
               id="expiryYear"
               type="text"
@@ -421,7 +421,7 @@ export function AuthorizeNetCheckout({
               value={expiryYear}
               onChange={(e) => setExpiryYear(e.target.value.replace(/\D/g, '').slice(0, 2))}
               maxLength={2}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30 text-center"
+              className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border text-center"
               disabled={processing}
             />
             {formErrors.expiryYear && (
@@ -430,7 +430,7 @@ export function AuthorizeNetCheckout({
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="cvv" className="text-white/70">CVV</Label>
+            <Label htmlFor="cvv" className="text-foreground/70">CVV</Label>
             <Input
               id="cvv"
               type="text"
@@ -438,7 +438,7 @@ export function AuthorizeNetCheckout({
               value={cvv}
               onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
               maxLength={4}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30 text-center"
+              className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border text-center"
               disabled={processing}
             />
             {formErrors.cvv && (
@@ -456,71 +456,71 @@ export function AuthorizeNetCheckout({
             id="differentBilling"
             checked={differentBillingAddress}
             onChange={(e) => setDifferentBillingAddress(e.target.checked)}
-            className="w-4 h-4 rounded border-white/20 bg-white/5 text-green-500 focus:ring-green-500/20"
+            className="w-4 h-4 rounded border-border bg-foreground/5 text-green-500 focus:ring-green-500/20"
             disabled={processing}
           />
-          <Label htmlFor="differentBilling" className="text-white/70 cursor-pointer">
+          <Label htmlFor="differentBilling" className="text-foreground/70 cursor-pointer">
             Use a different billing address
           </Label>
         </div>
         
         {differentBillingAddress && (
-          <div className="space-y-4 p-4 rounded-xl bg-white/5 border border-white/10">
+          <div className="space-y-4 p-4 rounded-xl bg-foreground/5 border border-border">
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="billingFirstName" className="text-white/70">First Name</Label>
+                <Label htmlFor="billingFirstName" className="text-foreground/70">First Name</Label>
                 <Input
                   id="billingFirstName"
                   type="text"
                   placeholder="John"
                   value={billingAddress.firstName}
                   onChange={(e) => setBillingAddress(prev => ({ ...prev, firstName: e.target.value }))}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                  className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                   disabled={processing}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="billingLastName" className="text-white/70">Last Name</Label>
+                <Label htmlFor="billingLastName" className="text-foreground/70">Last Name</Label>
                 <Input
                   id="billingLastName"
                   type="text"
                   placeholder="Doe"
                   value={billingAddress.lastName}
                   onChange={(e) => setBillingAddress(prev => ({ ...prev, lastName: e.target.value }))}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                  className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                   disabled={processing}
                 />
               </div>
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="billingAddress" className="text-white/70">Street Address</Label>
+              <Label htmlFor="billingAddress" className="text-foreground/70">Street Address</Label>
               <Input
                 id="billingAddress"
                 type="text"
                 placeholder="123 Main St"
                 value={billingAddress.address}
                 onChange={(e) => setBillingAddress(prev => ({ ...prev, address: e.target.value }))}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                 disabled={processing}
               />
             </div>
             
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="billingCity" className="text-white/70">City</Label>
+                <Label htmlFor="billingCity" className="text-foreground/70">City</Label>
                 <Input
                   id="billingCity"
                   type="text"
                   placeholder="New York"
                   value={billingAddress.city}
                   onChange={(e) => setBillingAddress(prev => ({ ...prev, city: e.target.value }))}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                  className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                   disabled={processing}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="billingState" className="text-white/70">State</Label>
+                <Label htmlFor="billingState" className="text-foreground/70">State</Label>
                 <Input
                   id="billingState"
                   type="text"
@@ -528,7 +528,7 @@ export function AuthorizeNetCheckout({
                   value={billingAddress.state}
                   onChange={(e) => setBillingAddress(prev => ({ ...prev, state: e.target.value.toUpperCase().slice(0, 2) }))}
                   maxLength={2}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                  className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                   disabled={processing}
                 />
               </div>
@@ -536,7 +536,7 @@ export function AuthorizeNetCheckout({
             
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="billingZip" className="text-white/70">ZIP Code</Label>
+                <Label htmlFor="billingZip" className="text-foreground/70">ZIP Code</Label>
                 <Input
                   id="billingZip"
                   type="text"
@@ -544,18 +544,18 @@ export function AuthorizeNetCheckout({
                   value={billingAddress.zip}
                   onChange={(e) => setBillingAddress(prev => ({ ...prev, zip: e.target.value.replace(/\D/g, '').slice(0, 5) }))}
                   maxLength={5}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-white/30"
+                  className="bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground focus:border-border"
                   disabled={processing}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="billingCountry" className="text-white/70">Country</Label>
+                <Label htmlFor="billingCountry" className="text-foreground/70">Country</Label>
                 <Input
                   id="billingCountry"
                   type="text"
                   value="United States"
                   disabled
-                  className="bg-white/5 border-white/10 text-white/50"
+                  className="bg-foreground/5 border-border text-muted-foreground"
                 />
               </div>
             </div>
@@ -583,7 +583,7 @@ export function AuthorizeNetCheckout({
       </Button>
       
       {/* Security note */}
-      <div className="flex items-center justify-center gap-2 text-xs text-white/40">
+      <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
         <Lock className="w-3 h-3" />
         <span>256-bit SSL encrypted • PCI compliant</span>
       </div>
@@ -594,7 +594,7 @@ export function AuthorizeNetCheckout({
           type="button"
           onClick={onCancel}
           variant="ghost"
-          className="w-full text-white/50 hover:text-white"
+          className="w-full text-muted-foreground hover:text-foreground"
           disabled={processing}
         >
           Cancel Payment

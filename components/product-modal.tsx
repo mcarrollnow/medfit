@@ -58,12 +58,12 @@ function MobileFlipCard({
               background: `radial-gradient(circle at center, ${selectedVariant.color}, transparent 70%)`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent pointer-events-none" />
 
           <div className="flex-shrink-0 p-8 relative z-10">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold mb-2 tracking-tight">{groupedProduct.category}</h3>
-              <p className="text-white/60 text-xs uppercase tracking-widest">Research Grade Analysis</p>
+              <p className="text-foreground/60 text-xs uppercase tracking-widest">Research Grade Analysis</p>
             </div>
             <div className="space-y-5">
               {ratings.map((rating: any, index: number) => (
@@ -74,7 +74,7 @@ function MobileFlipCard({
                       {rating.value.toFixed(1)}
                     </span>
                   </div>
-                  <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+                  <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-foreground/5 backdrop-blur-md border border-border">
                     <div
                       className="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_20px_currentColor]"
                       style={{
@@ -124,12 +124,12 @@ function MobileFlipCard({
               <h2 className="text-2xl font-bold tracking-tight break-words leading-tight">
                 {selectedVariant.base_name}
               </h2>
-              <p className="text-base font-medium text-white/70">{selectedVariant.variant}</p>
+              <p className="text-base font-medium text-foreground/70">{selectedVariant.variant}</p>
             </div>
 
             {groupedProduct.variants.length > 1 && (
               <div className="mb-auto">
-                <p className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-2">Select Variant</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Select Variant</p>
                 <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
                   {groupedProduct.variants.map((variant: any) => (
                     <button
@@ -140,8 +140,8 @@ function MobileFlipCard({
                       }}
                       className={`px-4 py-3 rounded-xl text-sm font-medium transition-all border flex-1 justify-center text-center min-w-[100px] ${
                         selectedVariant.id === variant.id
-                          ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                          : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:border-white/30"
+                          ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_rgba(58,66,51,0.2)]"
+                          : "bg-foreground/5 text-foreground/70 border-border hover:bg-foreground/10 hover:border-border"
                       }`}
                     >
                       <span className="block text-xs opacity-70 mb-0.5">Variant</span>
@@ -157,19 +157,19 @@ function MobileFlipCard({
 
             <div className="space-y-4 pt-4 mt-2">
               <div
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-4 py-3 justify-between"
+                className="flex items-center gap-3 rounded-xl border border-border bg-foreground/5 backdrop-blur-md px-4 py-3 justify-between"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="text-white/60 hover:text-white transition-colors p-1 text-xl"
+                  className="text-foreground/60 hover:text-foreground transition-colors p-1 text-xl"
                 >
                   −
                 </button>
                 <span className="w-12 text-center font-mono text-xl font-bold">{quantity}</span>
                 <button
                   onClick={() => setQuantity(Math.min(selectedVariant.current_stock, quantity + 1))}
-                  className="text-white/60 hover:text-white transition-colors p-1 text-xl"
+                  className="text-foreground/60 hover:text-foreground transition-colors p-1 text-xl"
                   disabled={quantity >= selectedVariant.current_stock}
                 >
                   +
@@ -177,13 +177,13 @@ function MobileFlipCard({
               </div>
 
               <div className="text-center">
-                <p className="text-xs text-white/40 uppercase tracking-wider mb-1">Total Price</p>
-                <p className="text-4xl font-bold text-white tracking-tight">${(retailPrice * quantity).toFixed(2)}</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Total Price</p>
+                <p className="text-4xl font-bold text-foreground tracking-tight">${(retailPrice * quantity).toFixed(2)}</p>
               </div>
 
               <Button
                 size="lg"
-                className="h-14 w-full bg-white text-black hover:bg-white/90 text-lg font-bold tracking-widest disabled:opacity-50 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="h-14 w-full bg-primary text-primary-foreground hover:bg-card/90 text-lg font-bold tracking-widest disabled:opacity-50 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                 disabled={selectedVariant.current_stock === 0}
                 onClick={async (e) => {
                   e.stopPropagation()
@@ -219,7 +219,7 @@ function MobileFlipCard({
           style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
           onClick={() => setIsFlipped(!isFlipped)}
         >
-          <div className="absolute inset-0 bg-black/90 rounded-[2.5rem]" />
+          <div className="absolute inset-0 bg-background/90 rounded-[2.5rem]" />
           <div
             className="absolute inset-0 opacity-20 rounded-[2.5rem]"
             style={{
@@ -227,13 +227,13 @@ function MobileFlipCard({
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl rounded-[2.5rem]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent rounded-[2.5rem]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent rounded-[2.5rem]" />
 
           {/* Content layer - scrollable */}
           <div className="relative z-10 h-full w-full overflow-y-auto">
             <div className="min-h-full flex flex-col p-8">
               <div className="mb-8">
-                <h3 className="text-3xl font-bold tracking-tight leading-none text-white mb-4">
+                <h3 className="text-3xl font-bold tracking-tight leading-none text-foreground mb-4">
                   {selectedVariant.base_name}
                 </h3>
                 <div className="h-0.5 w-20 bg-gradient-to-r from-white/60 to-transparent" />
@@ -569,7 +569,7 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] md:max-w-6xl h-[80vh] md:h-[85vh] overflow-hidden border-white/10 bg-black/90 p-0 text-white backdrop-blur-2xl sm:rounded-[2.5rem] duration-500 data-[state=open]:zoom-in-90 data-[state=open]:slide-in-from-bottom-10">
+      <DialogContent className="max-w-[95vw] md:max-w-6xl h-[80vh] md:h-[85vh] overflow-hidden border-border bg-background/90 p-0 text-foreground backdrop-blur-2xl sm:rounded-[2.5rem] duration-500 data-[state=open]:zoom-in-90 data-[state=open]:slide-in-from-bottom-10">
         <DialogDescription className="sr-only">
           Product details and purchase options for {selectedVariant.base_name}
         </DialogDescription>
@@ -591,7 +591,7 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
 
           {/* Desktop: Carousel Slide */}
           <div className="hidden md:grid h-full gap-0 grid-cols-2">
-            <div className="relative w-full h-full overflow-hidden cursor-pointer bg-black" onClick={handleSlide}>
+            <div className="relative w-full h-full overflow-hidden cursor-pointer bg-background" onClick={handleSlide}>
               {/* Ratings Panel */}
               <div
                 className="absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl transition-transform ease-in-out"
@@ -611,19 +611,19 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
                 <div className="w-full max-w-md space-y-6 relative z-10 p-8">
                   <div className="text-center mb-8">
                     <h3 className="text-3xl font-bold mb-2 tracking-tight">{groupedProduct.category}</h3>
-                    <p className="text-white/60 text-sm uppercase tracking-widest">Research Grade Analysis</p>
+                    <p className="text-foreground/60 text-sm uppercase tracking-widest">Research Grade Analysis</p>
                   </div>
 
                   <div className="space-y-6">
                     {ratings.map((rating, index) => (
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-semibold tracking-wide text-white/80">{rating.label}</span>
+                          <span className="text-sm font-semibold tracking-wide text-foreground/80">{rating.label}</span>
                           <span className="font-mono text-lg font-bold" style={{ color: selectedVariant.color }}>
                             {rating.value.toFixed(1)}
                           </span>
                         </div>
-                        <div className="relative h-4 w-full overflow-hidden rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+                        <div className="relative h-4 w-full overflow-hidden rounded-full bg-foreground/5 backdrop-blur-md border border-border">
                           <div
                             className="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_20px_currentColor]"
                             style={{
@@ -637,7 +637,7 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
                     ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Description Panel */}
@@ -658,16 +658,16 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
 
                 <div className="w-full max-w-md space-y-6 text-center relative z-10">
                   <h3 className="text-3xl font-bold tracking-tight">{selectedVariant.base_name}</h3>
-                  <div className="h-1 w-20 bg-white/20 mx-auto rounded-full" />
+                  <div className="h-1 w-20 bg-foreground/20 mx-auto rounded-full" />
                   <p className="text-lg leading-relaxed text-white/90">{description}</p>
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
 
             {/* Desktop Right Panel */}
-            <div className="flex flex-col p-8 h-full overflow-hidden bg-black/90 relative">
+            <div className="flex flex-col p-8 h-full overflow-hidden bg-background/90 relative">
               <DialogHeader className="mb-6 space-y-4 text-left flex-shrink-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="outline" className="border-primary/50 text-primary px-3 py-0.5 text-xs rounded-full">
@@ -703,13 +703,13 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
                   <DialogTitle className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
                     {selectedVariant.base_name}
                   </DialogTitle>
-                  <p className="text-lg md:text-xl font-medium text-white/70">{selectedVariant.variant}</p>
+                  <p className="text-lg md:text-xl font-medium text-foreground/70">{selectedVariant.variant}</p>
                 </div>
               </DialogHeader>
 
               {groupedProduct.variants.length > 1 && (
                 <div className="mb-4 flex-shrink-0">
-                  <p className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-2">Select Variant</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Select Variant</p>
                   <div className="flex flex-wrap gap-2 md:gap-3">
                     {groupedProduct.variants.map((variant) => (
                       <button
@@ -720,8 +720,8 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
                         }}
                         className={`px-4 py-3 md:px-5 md:py-2 rounded-xl text-sm font-medium transition-all border flex-1 md:flex-none justify-center text-center min-w-[100px] ${
                           selectedVariant.id === variant.id
-                            ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                            : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:border-white/30"
+                            ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_rgba(58,66,51,0.2)]"
+                            : "bg-foreground/5 text-foreground/70 border-border hover:bg-foreground/10 hover:border-border"
                         }`}
                       >
                         <span className="block text-xs opacity-70 mb-0.5 md:hidden">Variant</span>
@@ -736,33 +736,33 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
               )}
 
               <div className="space-y-4 flex-shrink-0">
-                <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-4 md:p-6 flex items-center justify-between">
-                  <span className="text-sm text-white/60">Price</span>
-                  <span className="font-mono text-3xl font-bold text-white">${retailPrice.toFixed(2)}</span>
+                <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-md p-4 md:p-6 flex items-center justify-between">
+                  <span className="text-sm text-foreground/60">Price</span>
+                  <span className="font-mono text-3xl font-bold text-foreground">${retailPrice.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="mt-auto space-y-4 border-t border-white/10 pt-4 flex-shrink-0">
+              <div className="mt-auto space-y-4 border-t border-border pt-4 flex-shrink-0">
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-4 py-2 w-full sm:w-auto justify-between">
+                  <div className="flex items-center gap-3 rounded-xl border border-border bg-foreground/5 backdrop-blur-md px-4 py-2 w-full sm:w-auto justify-between">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="text-white/60 hover:text-white transition-colors p-1 text-lg"
+                      className="text-foreground/60 hover:text-foreground transition-colors p-1 text-lg"
                     >
                       −
                     </button>
                     <span className="w-10 text-center font-mono text-lg font-bold">{quantity}</span>
                     <button
                       onClick={() => setQuantity(Math.min(selectedVariant.current_stock, quantity + 1))}
-                      className="text-white/60 hover:text-white transition-colors p-1 text-lg"
+                      className="text-foreground/60 hover:text-foreground transition-colors p-1 text-lg"
                       disabled={quantity >= selectedVariant.current_stock}
                     >
                       +
                     </button>
                   </div>
                   <div className="flex-1 text-center sm:text-right w-full sm:w-auto">
-                    <p className="text-[10px] text-white/40 uppercase tracking-wider mb-0.5">Total Price</p>
-                    <p className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Total Price</p>
+                    <p className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
                       ${(retailPrice * quantity).toFixed(2)}
                     </p>
                   </div>
@@ -770,7 +770,7 @@ export function ProductModal({ groupedProduct, isOpen, onClose }: ProductModalPr
 
                 <Button
                   size="lg"
-                  className="h-12 md:h-14 w-full bg-white text-black hover:bg-white/90 text-base md:text-lg font-bold tracking-widest disabled:opacity-50 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="h-12 md:h-14 w-full bg-primary text-primary-foreground hover:bg-card/90 text-base md:text-lg font-bold tracking-widest disabled:opacity-50 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                   disabled={selectedVariant.current_stock === 0}
                   onClick={async () => {
                     try {

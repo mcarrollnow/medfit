@@ -283,7 +283,7 @@ export function InvoicePaymentForm({
       </div>
 
       {/* Totals */}
-      <div className="border-t border-white/10 pt-6">
+      <div className="border-t border-border pt-6">
         <div className="space-y-3">
           <div className="flex justify-between items-center">
             <span className="text-sm text-[#999999]">Subtotal</span>
@@ -296,7 +296,7 @@ export function InvoicePaymentForm({
             </div>
           )}
         </div>
-        <div className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center">
+        <div className="mt-6 pt-6 border-t border-border flex justify-between items-center">
           <span className="font-mono text-xs tracking-[0.3em] text-[#888888] uppercase">Total Due</span>
           <div className="text-right">
             {hasDiscount && (
@@ -325,7 +325,7 @@ export function InvoicePaymentForm({
               onChange={(e) => setCardholderName(e.target.value)}
               placeholder="John Doe"
               disabled={processing}
-              className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 font-serif text-lg text-[#f0f0f0] placeholder:text-[#555555] focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50"
+              className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3.5 font-serif text-lg text-[#f0f0f0] placeholder:text-[#555555] focus:outline-none focus:border-border transition-colors disabled:opacity-50"
             />
             {formErrors.cardholderName && (
               <p className="text-red-400 text-xs mt-1.5">{formErrors.cardholderName}</p>
@@ -345,7 +345,7 @@ export function InvoicePaymentForm({
                 placeholder="4242 4242 4242 4242"
                 maxLength={19}
                 disabled={processing}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 pr-12 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] focus:outline-none focus:border-white/30 tracking-wider transition-colors disabled:opacity-50"
+                className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3.5 pr-12 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] focus:outline-none focus:border-border tracking-wider transition-colors disabled:opacity-50"
               />
               <CreditCard className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#555555]" />
             </div>
@@ -367,7 +367,7 @@ export function InvoicePaymentForm({
                 placeholder="MM"
                 maxLength={2}
                 disabled={processing}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50"
+                className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-border transition-colors disabled:opacity-50"
               />
             </div>
             <div>
@@ -381,7 +381,7 @@ export function InvoicePaymentForm({
                 placeholder="YY"
                 maxLength={2}
                 disabled={processing}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50"
+                className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-border transition-colors disabled:opacity-50"
               />
             </div>
             <div>
@@ -395,7 +395,7 @@ export function InvoicePaymentForm({
                 placeholder="123"
                 maxLength={4}
                 disabled={processing}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50"
+                className="w-full bg-foreground/40 border border-border rounded-xl px-4 py-3.5 font-mono text-lg text-[#f0f0f0] placeholder:text-[#555555] text-center focus:outline-none focus:border-border transition-colors disabled:opacity-50"
               />
               {formErrors.cvv && (
                 <p className="text-red-400 text-xs mt-1.5">{formErrors.cvv}</p>
@@ -413,7 +413,7 @@ export function InvoicePaymentForm({
         <button
           type="submit"
           disabled={processing || !scriptLoaded || !credentials}
-          className="w-full bg-[#f0f0f0] text-[#0a0a0a] rounded-full py-4 font-mono text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-[#f0f0f0] text-[#0a0a0a] rounded-full py-4 font-mono text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-3 hover:bg-card transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {processing ? (
             <>

@@ -266,7 +266,7 @@ export default function AddProductPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-white/50">Loading...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -277,7 +277,7 @@ export default function AddProductPage() {
         {/* Back Navigation */}
         <Link
           href="/admin/inventory"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Inventory</span>
@@ -287,19 +287,19 @@ export default function AddProductPage() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-4 h-4 rounded-full" style={{ backgroundColor: displayColor }} />
-              <span className="text-white/50">{getCategoryName()}</span>
+              <span className="text-muted-foreground">{getCategoryName()}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
               {baseName || "New Product"}
             </h1>
-            <p className="text-white/50 mt-2">
+            <p className="text-muted-foreground mt-2">
               {variants.length} variant{variants.length !== 1 ? "s" : ""}
             </p>
           </div>
           <Button
             onClick={handleSave}
             disabled={isSaving}
-            className="rounded-xl bg-white text-black hover:bg-white/90 px-6 h-12 w-full md:w-auto shrink-0"
+            className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6 h-12 w-full md:w-auto shrink-0"
           >
             <Save className="h-4 w-4 mr-2" />
             {isSaving ? "Saving..." : "Save Product"}
@@ -308,21 +308,21 @@ export default function AddProductPage() {
 
         <div className="space-y-8">
           {/* Basic Information */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <Package className="h-5 w-5" />
               Basic Information
             </h3>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm text-white/50 mb-2">Product Name *</label>
+                <label className="block text-sm text-muted-foreground mb-2">Product Name *</label>
                 <Input
                   value={baseName}
                   onChange={(e) => handleBaseNameChange(e.target.value)}
                   placeholder="e.g., Semaglutide"
-                  className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
                 />
-                <p className="text-xs text-white/40 mt-2">
+                <p className="text-xs text-muted-foreground mt-2">
                   This is the base name that will be combined with variant names
                 </p>
               </div>
@@ -330,19 +330,19 @@ export default function AddProductPage() {
           </div>
 
           {/* Category & Display */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <FolderOpen className="h-5 w-5" />
               Category & Display
             </h3>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm text-white/50 mb-2">Category</label>
+                <label className="block text-sm text-muted-foreground mb-2">Category</label>
                 <div className="flex gap-2">
                   <select
                     value={categoryId || ""}
                     onChange={(e) => setCategoryId(e.target.value || null)}
-                    className="rounded-xl flex-1 bg-white/5 border border-white/10 text-white h-12 px-4"
+                    className="rounded-xl flex-1 bg-foreground/5 border border-border text-foreground h-12 px-4"
                   >
                     <option value="">No Category</option>
                     {categories.map((cat) => (
@@ -356,15 +356,15 @@ export default function AddProductPage() {
                     variant="outline"
                     onClick={() => setShowNewCategory(!showNewCategory)}
                     className={cn(
-                      "rounded-xl h-12 px-4 border-white/20 hover:bg-white/10",
-                      showNewCategory ? "bg-white/10 text-white" : "text-white/70"
+                      "rounded-xl h-12 px-4 border-border hover:bg-foreground/10",
+                      showNewCategory ? "bg-foreground/10 text-foreground" : "text-foreground/70"
                     )}
                   >
                     <PlusCircle className="h-4 w-4 mr-2" />
                     New
                   </Button>
                 </div>
-                <p className="text-xs text-white/40 mt-2">
+                <p className="text-xs text-muted-foreground mt-2">
                   Category determines the product&apos;s display color
                 </p>
 
@@ -374,39 +374,39 @@ export default function AddProductPage() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 p-4 rounded-xl bg-white/5 border border-white/10"
+                    className="mt-4 p-4 rounded-xl bg-foreground/5 border border-border"
                   >
-                    <h4 className="text-sm font-semibold text-white mb-4">Create New Category</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-4">Create New Category</h4>
                     <div className="flex gap-4 items-end flex-wrap">
                       <div className="flex-1 min-w-[200px]">
-                        <label className="block text-xs text-white/40 mb-1">Category Name</label>
+                        <label className="block text-xs text-muted-foreground mb-1">Category Name</label>
                         <Input
                           value={newCategoryName}
                           onChange={(e) => setNewCategoryName(e.target.value)}
                           placeholder="Enter category name..."
-                          className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-10"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-10"
                         />
                       </div>
                       <div className="w-40">
-                        <label className="block text-xs text-white/40 mb-1">Color</label>
+                        <label className="block text-xs text-muted-foreground mb-1">Color</label>
                         <div className="flex gap-2">
                           <input
                             type="color"
                             value={newCategoryColor}
                             onChange={(e) => setNewCategoryColor(e.target.value)}
-                            className="h-10 w-10 rounded-lg cursor-pointer bg-transparent border border-white/10"
+                            className="h-10 w-10 rounded-lg cursor-pointer bg-transparent border border-border"
                           />
                           <Input
                             value={newCategoryColor}
                             onChange={(e) => setNewCategoryColor(e.target.value)}
-                            className="rounded-xl bg-white/5 border-white/10 text-white h-10 font-mono text-sm"
+                            className="rounded-xl bg-foreground/5 border-border text-foreground h-10 font-mono text-sm"
                           />
                         </div>
                       </div>
                       <Button
                         onClick={handleCreateCategory}
                         disabled={isCreatingCategory || !newCategoryName.trim()}
-                        className="rounded-xl h-10 px-4 bg-white text-black hover:bg-white/90"
+                        className="rounded-xl h-10 px-4 bg-primary text-primary-foreground hover:bg-card/90"
                       >
                         {isCreatingCategory ? "Creating..." : "Create"}
                       </Button>
@@ -415,14 +415,14 @@ export default function AddProductPage() {
                 )}
               </div>
               <div>
-                <label className="block text-sm text-white/50 mb-2">Display Color</label>
+                <label className="block text-sm text-muted-foreground mb-2">Display Color</label>
                 <div className="flex gap-3 items-center">
                   <div
-                    className="w-12 h-12 rounded-xl border border-white/20"
+                    className="w-12 h-12 rounded-xl border border-border"
                     style={{ backgroundColor: displayColor }}
                   />
-                  <span className="font-mono text-white/60">{displayColor}</span>
-                  <span className="text-white/40 text-sm">(inherited from category)</span>
+                  <span className="font-mono text-foreground/60">{displayColor}</span>
+                  <span className="text-muted-foreground text-sm">(inherited from category)</span>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -431,9 +431,9 @@ export default function AddProductPage() {
                   id="is_active"
                   checked={isActive}
                   onChange={(e) => setIsActive(e.target.checked)}
-                  className="w-5 h-5 rounded bg-white/5 border-white/20"
+                  className="w-5 h-5 rounded bg-foreground/5 border-border"
                 />
-                <label htmlFor="is_active" className="text-white">
+                <label htmlFor="is_active" className="text-foreground">
                   Product is active and visible on store
                 </label>
               </div>
@@ -441,12 +441,12 @@ export default function AddProductPage() {
           </div>
 
           {/* Variants & Pricing */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <DollarSign className="h-5 w-5" />
               Variants & Pricing
             </h3>
-            <p className="text-sm text-white/50 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Add variants like different dosages (5mg, 10mg, etc.). Barcodes are auto-generated using the Vigenère cipher.
             </p>
             <div className="space-y-4">
@@ -456,11 +456,11 @@ export default function AddProductPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="rounded-xl bg-white/5 border border-white/10 p-6"
+                  className="rounded-xl bg-foreground/5 border border-border p-6"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <GripVertical className="h-5 w-5 text-white/30 cursor-grab" />
+                      <GripVertical className="h-5 w-5 text-muted-foreground cursor-grab" />
                       <Badge
                         className="text-black font-semibold"
                         style={{ backgroundColor: displayColor }}
@@ -482,17 +482,17 @@ export default function AddProductPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">Variant Name *</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Variant Name *</label>
                       <Input
                         type="text"
                         value={variant.variant}
                         onChange={(e) => handleVariantChange(variant.id, "variant", e.target.value)}
                         placeholder="e.g., 5mg, 10mg, 15mg"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/40 mb-1 flex items-center gap-1">
+                      <label className="block text-xs text-muted-foreground mb-1 flex items-center gap-1">
                         <Barcode className="h-3 w-3" />
                         Barcode (Auto-Generated)
                       </label>
@@ -502,11 +502,11 @@ export default function AddProductPage() {
                           value={variant.barcode}
                           readOnly
                           placeholder="Enter variant name to generate"
-                          className="rounded-xl bg-white/5 border-white/10 text-white/60 font-mono"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground/60 font-mono"
                         />
                       </div>
                       {variant.barcode && (
-                        <p className="text-xs text-white/30 mt-1 font-mono">
+                        <p className="text-xs text-muted-foreground mt-1 font-mono">
                           Decrypts to: {decryptBarcode(variant.barcode)}
                         </p>
                       )}
@@ -515,33 +515,33 @@ export default function AddProductPage() {
 
                   <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">Cost Price</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Cost Price</label>
                       <Input
                         type="text"
                         value={variant.cost_price}
                         onChange={(e) => handleVariantChange(variant.id, "cost_price", e.target.value)}
                         placeholder="0.00"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">B2B Price</label>
+                      <label className="block text-xs text-muted-foreground mb-1">B2B Price</label>
                       <Input
                         type="text"
                         value={variant.b2b_price}
                         onChange={(e) => handleVariantChange(variant.id, "b2b_price", e.target.value)}
                         placeholder="0.00"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">Retail Price *</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Retail Price *</label>
                       <Input
                         type="text"
                         value={variant.retail_price}
                         onChange={(e) => handleVariantChange(variant.id, "retail_price", e.target.value)}
                         placeholder="0.00"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div>
@@ -551,11 +551,11 @@ export default function AddProductPage() {
                         value={variant.supplier_price}
                         onChange={(e) => handleVariantChange(variant.id, "supplier_price", e.target.value)}
                         placeholder="0.00"
-                        className="rounded-xl bg-amber-500/10 border-amber-500/30 text-white"
+                        className="rounded-xl bg-amber-500/10 border-amber-500/30 text-foreground"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">Initial Stock</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Initial Stock</label>
                       <Input
                         type="number"
                         value={variant.initial_stock}
@@ -563,11 +563,11 @@ export default function AddProductPage() {
                           handleVariantChange(variant.id, "initial_stock", Number.parseInt(e.target.value) || 0)
                         }
                         placeholder="0"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/40 mb-1">Restock Level</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Restock Level</label>
                       <Input
                         type="number"
                         value={variant.restock_level}
@@ -575,7 +575,7 @@ export default function AddProductPage() {
                           handleVariantChange(variant.id, "restock_level", Number.parseInt(e.target.value) || 10)
                         }
                         placeholder="10"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                   </div>
@@ -585,7 +585,7 @@ export default function AddProductPage() {
               <Button
                 variant="outline"
                 onClick={addVariant}
-                className="w-full rounded-xl border-white/20 text-white hover:bg-white/10 h-12"
+                className="w-full rounded-xl border-border text-foreground hover:bg-foreground/10 h-12"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Variant
@@ -594,20 +594,20 @@ export default function AddProductPage() {
           </div>
 
           {/* Efficacy Ratings */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
               Efficacy Ratings
             </h3>
-            <p className="text-sm text-white/50 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               These rating bars are displayed on the product card. Values should be between 0-10.
             </p>
             <div className="space-y-4">
               {ratings.map((rating, index) => (
-                <div key={index} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <div key={index} className="rounded-xl bg-foreground/5 border border-border p-4">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                     <div className="md:col-span-6">
-                      <label className="block text-xs text-white/40 mb-1">Label</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Label</label>
                       <Input
                         type="text"
                         value={rating.label}
@@ -617,11 +617,11 @@ export default function AddProductPage() {
                           setRatings(newRatings)
                         }}
                         placeholder="e.g., Weight Loss Efficacy"
-                        className="rounded-xl bg-white/5 border-white/10 text-white"
+                        className="rounded-xl bg-foreground/5 border-border text-foreground"
                       />
                     </div>
                     <div className="md:col-span-4">
-                      <label className="block text-xs text-white/40 mb-1">Value (0-10)</label>
+                      <label className="block text-xs text-muted-foreground mb-1">Value (0-10)</label>
                       <div className="flex items-center gap-3">
                         <Input
                           type="number"
@@ -637,7 +637,7 @@ export default function AddProductPage() {
                             }
                             setRatings(newRatings)
                           }}
-                          className="rounded-xl bg-white/5 border-white/10 text-white"
+                          className="rounded-xl bg-foreground/5 border-border text-foreground"
                         />
                         <span className="font-mono font-bold text-lg" style={{ color: displayColor }}>
                           {rating.value.toFixed(1)}
@@ -663,7 +663,7 @@ export default function AddProductPage() {
                   </div>
                   {/* Preview bar */}
                   <div className="mt-3">
-                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-white/10">
+                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-foreground/10">
                       <div
                         className="h-full rounded-full transition-all duration-300"
                         style={{
@@ -682,7 +682,7 @@ export default function AddProductPage() {
                   onClick={() => {
                     setRatings([...ratings, { label: "New Rating", value: 7.0 }])
                   }}
-                  className="w-full rounded-xl border-white/20 text-white hover:bg-white/10 h-12"
+                  className="w-full rounded-xl border-border text-foreground hover:bg-foreground/10 h-12"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Rating
@@ -692,12 +692,12 @@ export default function AddProductPage() {
           </div>
 
           {/* Product Description */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <Eye className="h-5 w-5" />
               Product Description
             </h3>
-            <p className="text-sm text-white/50 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               This description appears in the expanded product view when customers click on a product
             </p>
             <div className="space-y-4">
@@ -714,7 +714,7 @@ export default function AddProductPage() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Detailed product description for the expanded view..."
-                  className="rounded-xl bg-white/5 border-white/10 text-white min-h-[150px]"
+                  className="rounded-xl bg-foreground/5 border-border text-foreground min-h-[150px]"
                 />
                 {/* Live Character/Word Counter */}
                 <div className="flex items-center justify-between mt-2 px-1">
@@ -728,7 +728,7 @@ export default function AddProductPage() {
                           : "text-green-400"
                     )}>
                       {description?.split(/\s+/).filter(Boolean).length || 0}
-                      <span className="text-white/40 font-normal"> / 80 words</span>
+                      <span className="text-muted-foreground font-normal"> / 80 words</span>
                     </span>
                     <span className={cn(
                       "font-medium",
@@ -739,7 +739,7 @@ export default function AddProductPage() {
                           : "text-green-400"
                     )}>
                       {description?.length || 0}
-                      <span className="text-white/40 font-normal"> / 600 chars</span>
+                      <span className="text-muted-foreground font-normal"> / 600 chars</span>
                     </span>
                   </div>
                   {((description?.split(/\s+/).filter(Boolean).length || 0) > 80 || 
@@ -752,32 +752,32 @@ export default function AddProductPage() {
           </div>
 
           {/* Cart Preview Text */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <ShoppingCart className="h-5 w-5" />
               Cart Preview Text
             </h3>
-            <p className="text-sm text-white/50 mb-4">
+            <p className="text-sm text-muted-foreground mb-4">
               Short description shown in the shopping cart
             </p>
             <Textarea
               value={cartProductDetail}
               onChange={(e) => setCartProductDetail(e.target.value)}
               placeholder="Brief description for cart display..."
-              className="rounded-xl bg-white/5 border-white/10 text-white min-h-[100px]"
+              className="rounded-xl bg-foreground/5 border-border text-foreground min-h-[100px]"
             />
           </div>
 
           {/* Live Preview */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <Eye className="h-5 w-5" />
               Live Preview
             </h3>
-            <p className="text-sm text-white/50 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Preview of how the product will appear in inventory list
             </p>
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+            <div className="rounded-2xl bg-foreground/5 border border-border p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div
@@ -788,16 +788,16 @@ export default function AddProductPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-foreground">
                         {baseName || "Product Name"}
                       </h3>
                       {!isActive && (
-                        <Badge variant="outline" className="border-white/20 text-white/40">
+                        <Badge variant="outline" className="border-border text-muted-foreground">
                           Inactive
                         </Badge>
                       )}
                     </div>
-                    <p className="text-sm text-white/50">{getCategoryName()}</p>
+                    <p className="text-sm text-muted-foreground">{getCategoryName()}</p>
                   </div>
                 </div>
 
@@ -807,23 +807,23 @@ export default function AddProductPage() {
                       <Badge
                         key={v.id}
                         variant="outline"
-                        className="border-white/20 text-white/60"
+                        className="border-border text-foreground/60"
                       >
                         {v.variant || "Variant"}
                       </Badge>
                     ))}
                     {variants.length > 3 && (
-                      <Badge variant="outline" className="border-white/20 text-white/40">
+                      <Badge variant="outline" className="border-border text-muted-foreground">
                         +{variants.length - 3}
                       </Badge>
                     )}
                   </div>
 
                   <div className="text-right">
-                    <p className="font-semibold text-white">
+                    <p className="font-semibold text-foreground">
                       {variants.reduce((sum, v) => sum + (v.initial_stock || 0), 0)} units
                     </p>
-                    <p className="text-xs text-white/40">
+                    <p className="text-xs text-muted-foreground">
                       From $
                       {Math.min(
                         ...variants.map((v) => Number.parseFloat(v.retail_price) || 0)
@@ -837,17 +837,17 @@ export default function AddProductPage() {
         </div>
 
         {/* Sticky Footer */}
-        <div className="sticky bottom-0 -mx-4 border-t border-white/10 bg-black/90 backdrop-blur-md px-4 py-4 mt-8">
+        <div className="sticky bottom-0 -mx-4 border-t border-border bg-background/90 backdrop-blur-md px-4 py-4 mt-8">
           <div className="max-w-6xl mx-auto flex flex-col gap-3 sm:flex-row sm:justify-end">
             <Link href="/admin/inventory">
-              <Button variant="outline" className="h-10 w-full sm:w-auto rounded-xl border-white/20 text-white hover:bg-white/10">
+              <Button variant="outline" className="h-10 w-full sm:w-auto rounded-xl border-border text-foreground hover:bg-foreground/10">
                 Cancel
               </Button>
             </Link>
             <Button
               onClick={handleSave}
               disabled={isSaving}
-              className="h-10 w-full sm:w-auto rounded-xl bg-white text-black hover:bg-white/90"
+              className="h-10 w-full sm:w-auto rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
             >
               <Save className="h-4 w-4 mr-2" />
               {isSaving ? "Saving..." : "Save Product"}

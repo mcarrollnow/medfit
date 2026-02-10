@@ -74,8 +74,8 @@ export function RevolutPayButton({
       disabled={disabled || loading || amount <= 0}
       className={cn(
         "w-full h-14 text-base font-semibold rounded-xl",
-        "bg-[#191C1F] hover:bg-[#2D3138] text-white",
-        "border border-white/10",
+        "bg-card hover:bg-secondary text-foreground",
+        "border border-border",
         "flex items-center justify-center gap-3",
         className
       )}
@@ -168,7 +168,7 @@ export function RevolutPayWidget({
       <div className={cn("space-y-3", className)}>
         <Button
           onClick={() => window.location.href = checkoutUrl}
-          className="w-full h-14 bg-[#0075EB] hover:bg-[#0066CC] text-white font-semibold rounded-xl"
+          className="w-full h-14 bg-[#0075EB] hover:bg-[#0066CC] text-foreground font-semibold rounded-xl"
         >
           <RevolutLogo className="h-5 w-5 mr-2" />
           Continue to Revolut Pay
@@ -185,7 +185,7 @@ export function RevolutPayWidget({
       onClick={createOrder}
       disabled={loading || amount <= 0}
       className={cn(
-        "w-full h-14 bg-[#0075EB] hover:bg-[#0066CC] text-white font-semibold rounded-xl",
+        "w-full h-14 bg-[#0075EB] hover:bg-[#0066CC] text-foreground font-semibold rounded-xl",
         className
       )}
     >

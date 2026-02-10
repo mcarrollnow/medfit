@@ -163,7 +163,7 @@ function MobileFlipPreview({
       >
         {/* Front Face - Ratings + Product Info */}
         <div
-          className="absolute inset-0 w-full rounded-xl overflow-y-auto bg-black/90 border border-white/10"
+          className="absolute inset-0 w-full rounded-xl overflow-y-auto bg-background/90 border border-border"
           style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
           {/* Ratings Section - Tappable */}
@@ -182,19 +182,19 @@ function MobileFlipPreview({
             />
             <div className="relative z-10">
               <div className="text-center mb-2">
-                <h3 className="text-base font-bold tracking-tight text-white">{categoryName}</h3>
-                <p className="text-white/60 text-[9px] uppercase tracking-widest">Tap for description</p>
+                <h3 className="text-base font-bold tracking-tight text-foreground">{categoryName}</h3>
+                <p className="text-foreground/60 text-[9px] uppercase tracking-widest">Tap for description</p>
               </div>
               <div className="space-y-2">
                 {ratings.map((rating, index) => (
                   <div key={index} className="space-y-0.5">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold tracking-wide text-white/80">{rating.label}</span>
+                      <span className="text-[10px] font-semibold tracking-wide text-foreground/80">{rating.label}</span>
                       <span className="font-mono text-xs font-bold" style={{ color: displayColor }}>
                         {rating.value.toFixed(1)}
                       </span>
                     </div>
-                    <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-white/5 border border-white/10">
+                    <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-foreground/5 border border-border">
                       <div
                         className="h-full rounded-full"
                         style={{
@@ -210,7 +210,7 @@ function MobileFlipPreview({
           </div>
 
           {/* Product Info Section */}
-          <div className="p-3 space-y-2.5 bg-black/90">
+          <div className="p-3 space-y-2.5 bg-background/90">
             <div className="flex flex-wrap items-center gap-1">
               <Badge variant="outline" className="border-primary/50 text-primary px-1.5 py-0 text-[8px] rounded-full">
                 RESEARCH USE ONLY
@@ -233,16 +233,16 @@ function MobileFlipPreview({
             </div>
 
             <div>
-              <h2 className="text-lg font-bold tracking-tight text-white leading-tight">
+              <h2 className="text-lg font-bold tracking-tight text-foreground leading-tight">
                 {productData.base_name}
               </h2>
-              <p className="text-xs font-medium text-white/70">{selectedVariant.variant}</p>
+              <p className="text-xs font-medium text-foreground/70">{selectedVariant.variant}</p>
             </div>
 
             {/* Variant Selector */}
             {productData.variants.length > 1 && (
               <div>
-                <p className="text-[8px] uppercase tracking-widest text-white/40 font-semibold mb-1">Select Variant</p>
+                <p className="text-[8px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Select Variant</p>
                 <div className="flex flex-wrap gap-1">
                   {productData.variants.map((variant, index) => (
                     <button
@@ -250,8 +250,8 @@ function MobileFlipPreview({
                       onClick={() => setPreviewSelectedVariant(index)}
                       className={`px-2 py-1 rounded-md text-[10px] font-medium transition-all border flex-1 text-center min-w-[60px] ${
                         previewSelectedVariant === index
-                          ? "bg-white text-black border-white"
-                          : "bg-white/5 text-white/70 border-white/10"
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "bg-foreground/5 text-foreground/70 border-border"
                       }`}
                     >
                       {variant.variant}
@@ -265,34 +265,34 @@ function MobileFlipPreview({
             )}
 
             {/* Price */}
-            <div className="rounded-lg border border-white/10 bg-white/5 p-2 flex items-center justify-between">
-              <span className="text-[10px] text-white/60">Price</span>
-              <span className="font-mono text-lg font-bold text-white">
+            <div className="rounded-lg border border-border bg-foreground/5 p-2 flex items-center justify-between">
+              <span className="text-[10px] text-foreground/60">Price</span>
+              <span className="font-mono text-lg font-bold text-foreground">
                 ${Number.parseFloat(selectedVariant.retail_price).toFixed(2)}
               </span>
             </div>
 
             {/* Quantity and Cart */}
-            <div className="space-y-2 border-t border-white/10 pt-2">
+            <div className="space-y-2 border-t border-border pt-2">
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2 py-1">
+                <div className="flex items-center gap-1.5 rounded-md border border-border bg-foreground/5 px-2 py-1">
                   <button
                     onClick={() => !previewMode && setQuantity(Math.max(1, quantity - 1))}
-                    className="text-white/60 hover:text-white"
+                    className="text-foreground/60 hover:text-foreground"
                   >
                     <Minus className="h-3 w-3" />
                   </button>
-                  <span className="w-5 text-center font-mono text-xs font-bold text-white">{quantity}</span>
+                  <span className="w-5 text-center font-mono text-xs font-bold text-foreground">{quantity}</span>
                   <button
                     onClick={() => !previewMode && setQuantity(quantity + 1)}
-                    className="text-white/60 hover:text-white"
+                    className="text-foreground/60 hover:text-foreground"
                   >
                     <Plus className="h-3 w-3" />
                   </button>
                 </div>
                 <div className="flex-1 text-right">
-                  <p className="text-[8px] text-white/40 uppercase tracking-wider">Total</p>
-                  <p className="text-base font-bold text-white">
+                  <p className="text-[8px] text-muted-foreground uppercase tracking-wider">Total</p>
+                  <p className="text-base font-bold text-foreground">
                     ${(Number.parseFloat(selectedVariant.retail_price) * quantity).toFixed(2)}
                   </p>
                 </div>
@@ -300,7 +300,7 @@ function MobileFlipPreview({
 
               <Button
                 size="sm"
-                className="h-8 w-full bg-white text-black hover:bg-white/90 text-[10px] font-bold tracking-widest rounded-md"
+                className="h-8 w-full bg-primary text-primary-foreground hover:bg-card/90 text-[10px] font-bold tracking-widest rounded-md"
                 disabled={previewMode || selectedVariant.current_stock === 0}
               >
                 <ShoppingCart className="mr-1.5 h-3 w-3" />
@@ -320,7 +320,7 @@ function MobileFlipPreview({
           }}
           onClick={() => setIsFlipped(false)}
         >
-          <div className="absolute inset-0 bg-black/95 rounded-xl border border-white/10" />
+          <div className="absolute inset-0 bg-background/95 rounded-xl border border-border" />
           <div
             className="absolute inset-0 opacity-20 rounded-xl"
             style={{
@@ -329,7 +329,7 @@ function MobileFlipPreview({
           />
           <div className="relative z-10 h-full w-full overflow-y-auto p-4">
             <div className="mb-4">
-              <h3 className="text-lg font-bold tracking-tight text-white mb-2">
+              <h3 className="text-lg font-bold tracking-tight text-foreground mb-2">
                 {productData.base_name}
               </h3>
               <div className="h-0.5 w-12 bg-gradient-to-r from-white/60 to-transparent" />
@@ -337,7 +337,7 @@ function MobileFlipPreview({
             <p className="text-sm leading-relaxed text-white/90">
               {productData.description || "No description available. Add a description in the Card View tab."}
             </p>
-            <p className="mt-4 text-[10px] text-white/40 text-center">Tap to go back</p>
+            <p className="mt-4 text-[10px] text-muted-foreground text-center">Tap to go back</p>
           </div>
         </div>
       </div>
@@ -372,12 +372,12 @@ export function ProductExpandedPreview({
   return (
     <div className="space-y-6 md:space-y-8 overflow-x-hidden">
       {/* Live Preview */}
-      <div className="admin-container bg-white/5 border border-white/10 p-3 md:p-8 rounded-2xl overflow-hidden">
-        <h3 className="text-base md:text-lg font-semibold text-white mb-4 md:mb-6 flex items-center gap-2">
+      <div className="admin-container bg-foreground/5 border border-border p-3 md:p-8 rounded-2xl overflow-hidden">
+        <h3 className="text-base md:text-lg font-semibold text-foreground mb-4 md:mb-6 flex items-center gap-2">
           <FileText className="h-4 w-4 md:h-5 md:w-5" />
           Live Expanded View Preview
         </h3>
-        <p className="text-xs md:text-sm text-white/50 mb-4 md:mb-6">
+        <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">
           <span className="md:hidden">Tap the ratings section to flip and see the description</span>
           <span className="hidden md:inline">Click the left panel to slide between ratings and description</span>
         </p>
@@ -397,11 +397,11 @@ export function ProductExpandedPreview({
         />
 
         {/* Desktop Slide Preview */}
-        <div className="hidden md:block md:aspect-[16/10] w-full rounded-2xl overflow-hidden border border-white/10 bg-black/90">
+        <div className="hidden md:block md:aspect-[16/10] w-full rounded-2xl overflow-hidden border border-border bg-background/90">
           <div className="grid h-full grid-cols-2">
             {/* Left Panel - Sliding Carousel */}
             <div
-              className="relative w-full h-full overflow-hidden cursor-pointer bg-black"
+              className="relative w-full h-full overflow-hidden cursor-pointer bg-background"
               onClick={handlePreviewSlide}
             >
               {/* Ratings Panel */}
@@ -422,20 +422,20 @@ export function ProductExpandedPreview({
 
                 <div className="w-full max-w-md space-y-6 relative z-10 p-8">
                   <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold mb-2 tracking-tight text-white">{categoryName}</h3>
-                    <p className="text-white/60 text-sm uppercase tracking-widest">Research Grade Analysis</p>
+                    <h3 className="text-3xl font-bold mb-2 tracking-tight text-foreground">{categoryName}</h3>
+                    <p className="text-foreground/60 text-sm uppercase tracking-widest">Research Grade Analysis</p>
                   </div>
 
                   <div className="space-y-6">
                     {ratings.map((rating, index) => (
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-semibold tracking-wide text-white/80">{rating.label}</span>
+                          <span className="text-sm font-semibold tracking-wide text-foreground/80">{rating.label}</span>
                           <span className="font-mono text-lg font-bold" style={{ color: displayColor }}>
                             {rating.value.toFixed(1)}
                           </span>
                         </div>
-                        <div className="relative h-4 w-full overflow-hidden rounded-full bg-white/5 backdrop-blur-md border border-white/10">
+                        <div className="relative h-4 w-full overflow-hidden rounded-full bg-foreground/5 backdrop-blur-md border border-border">
                           <div
                             className="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_20px_currentColor]"
                             style={{
@@ -449,7 +449,7 @@ export function ProductExpandedPreview({
                     ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Description Panel */}
@@ -469,19 +469,19 @@ export function ProductExpandedPreview({
                 />
 
                 <div className="w-full max-w-md space-y-6 text-center relative z-10">
-                  <h3 className="text-3xl font-bold tracking-tight text-white">{productData.base_name}</h3>
-                  <div className="h-1 w-20 bg-white/20 mx-auto rounded-full" />
+                  <h3 className="text-3xl font-bold tracking-tight text-foreground">{productData.base_name}</h3>
+                  <div className="h-1 w-20 bg-foreground/20 mx-auto rounded-full" />
                   <p className="text-lg leading-relaxed text-white/90">
                     {productData.description || "No description available"}
                   </p>
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
 
             {/* Right Panel - Product Info */}
-            <div className="flex flex-col p-8 h-full overflow-hidden bg-black/90 relative">
+            <div className="flex flex-col p-8 h-full overflow-hidden bg-background/90 relative">
               <div className="mb-6 space-y-4 text-left flex-shrink-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="outline" className="border-primary/50 text-primary px-3 py-0.5 text-xs rounded-full">
@@ -514,17 +514,17 @@ export function ProductExpandedPreview({
                 </div>
 
                 <div className="space-y-2">
-                  <h2 className="text-4xl font-bold tracking-tight leading-tight text-white">
+                  <h2 className="text-4xl font-bold tracking-tight leading-tight text-foreground">
                     {productData.base_name}
                   </h2>
-                  <p className="text-xl font-medium text-white/70">{selectedVariant.variant}</p>
+                  <p className="text-xl font-medium text-foreground/70">{selectedVariant.variant}</p>
                 </div>
               </div>
 
               {/* Variant Selector */}
               {productData.variants.length > 1 && (
                 <div className="mb-4 flex-shrink-0">
-                  <p className="text-xs uppercase tracking-widest text-white/40 font-semibold mb-2">Select Variant</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">Select Variant</p>
                   <div className="flex flex-wrap gap-3">
                     {productData.variants.map((variant, index) => (
                       <button
@@ -532,8 +532,8 @@ export function ProductExpandedPreview({
                         onClick={() => setPreviewSelectedVariant(index)}
                         className={`px-5 py-2 rounded-xl text-sm font-medium transition-all border min-w-[100px] ${
                           previewSelectedVariant === index
-                            ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                            : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:border-white/30"
+                            ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_rgba(58,66,51,0.2)]"
+                            : "bg-foreground/5 text-foreground/70 border-border hover:bg-foreground/10 hover:border-border"
                         }`}
                       >
                         {variant.variant}
@@ -548,35 +548,35 @@ export function ProductExpandedPreview({
 
               {/* Price Card */}
               <div className="space-y-4 flex-shrink-0">
-                <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 flex items-center justify-between">
-                  <span className="text-sm text-white/60">Price</span>
-                  <span className="font-mono text-3xl font-bold text-white">
+                <div className="rounded-2xl border border-border bg-foreground/5 backdrop-blur-md p-6 flex items-center justify-between">
+                  <span className="text-sm text-foreground/60">Price</span>
+                  <span className="font-mono text-3xl font-bold text-foreground">
                     ${Number.parseFloat(selectedVariant.retail_price).toFixed(2)}
                   </span>
                 </div>
               </div>
 
               {/* Quantity and Add to Cart */}
-              <div className="mt-auto space-y-4 border-t border-white/10 pt-4 flex-shrink-0">
+              <div className="mt-auto space-y-4 border-t border-border pt-4 flex-shrink-0">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-4 py-2">
+                  <div className="flex items-center gap-3 rounded-xl border border-border bg-foreground/5 backdrop-blur-md px-4 py-2">
                     <button
                       onClick={() => !previewMode && setQuantity(Math.max(1, quantity - 1))}
-                      className="text-white/60 hover:text-white transition-colors p-1"
+                      className="text-foreground/60 hover:text-foreground transition-colors p-1"
                     >
                       <Minus className="h-4 w-4" />
                     </button>
-                    <span className="w-10 text-center font-mono text-lg font-bold text-white">{quantity}</span>
+                    <span className="w-10 text-center font-mono text-lg font-bold text-foreground">{quantity}</span>
                     <button
                       onClick={() => !previewMode && setQuantity(quantity + 1)}
-                      className="text-white/60 hover:text-white transition-colors p-1"
+                      className="text-foreground/60 hover:text-foreground transition-colors p-1"
                     >
                       <Plus className="h-4 w-4" />
                     </button>
                   </div>
                   <div className="flex-1 text-right">
-                    <p className="text-[10px] text-white/40 uppercase tracking-wider mb-0.5">Total Price</p>
-                    <p className="text-3xl font-bold text-white tracking-tight">
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">Total Price</p>
+                    <p className="text-3xl font-bold text-foreground tracking-tight">
                       ${(Number.parseFloat(selectedVariant.retail_price) * quantity).toFixed(2)}
                     </p>
                   </div>
@@ -584,7 +584,7 @@ export function ProductExpandedPreview({
 
                 <Button
                   size="lg"
-                  className="h-14 w-full bg-white text-black hover:bg-white/90 text-lg font-bold tracking-widest disabled:opacity-50 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="h-14 w-full bg-primary text-primary-foreground hover:bg-card/90 text-lg font-bold tracking-widest disabled:opacity-50 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                   disabled={previewMode || selectedVariant.current_stock === 0}
                 >
                   <ShoppingCart className="mr-2 h-5 w-5" />
@@ -598,19 +598,19 @@ export function ProductExpandedPreview({
 
       {/* Description Editor */}
       {onDescriptionChange && (
-        <div className="admin-container bg-white/5 border border-white/10 p-4 md:p-8 rounded-2xl">
-          <h3 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-6 flex items-center gap-2">
+        <div className="admin-container bg-foreground/5 border border-border p-4 md:p-8 rounded-2xl">
+          <h3 className="text-base md:text-lg font-semibold text-foreground mb-3 md:mb-6 flex items-center gap-2">
             <FileText className="h-4 w-4 md:h-5 md:w-5" />
             Product Description
           </h3>
-          <p className="text-xs md:text-sm text-white/50 mb-3 md:mb-4">
+          <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
             This description appears when customers tap/click to flip/slide the card
           </p>
           <Textarea
             value={productData.description || ""}
             onChange={(e) => onDescriptionChange(e.target.value)}
             placeholder="Enter product description..."
-            className="admin-input bg-white/5 border-white/10 text-white min-h-[280px] md:min-h-[200px] text-sm md:text-lg leading-relaxed rounded-xl"
+            className="admin-input bg-foreground/5 border-border text-foreground min-h-[280px] md:min-h-[200px] text-sm md:text-lg leading-relaxed rounded-xl"
           />
         </div>
       )}

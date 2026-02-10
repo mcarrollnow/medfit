@@ -230,7 +230,7 @@ export default function RepDashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white/40" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -290,12 +290,12 @@ export default function RepDashboardPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2">
-            <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Rep Dashboard</h1>
-            <p className="text-xl text-white/50">Welcome back, {repName}.</p>
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Rep Dashboard</h1>
+            <p className="text-xl text-muted-foreground">Welcome back, {repName}.</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Link href="/">
-              <Button className="h-11 px-5 bg-white text-black hover:bg-white/90 rounded-xl font-semibold">
+              <Button className="h-11 px-5 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold">
                 <ShoppingBag className="w-4 h-4 mr-2" />
                 Shop
               </Button>
@@ -305,62 +305,62 @@ export default function RepDashboardPage() {
 
         {/* Stats Grid */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                     <DollarSign className="h-5 w-5 text-emerald-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Total Earnings</p>
+                  <p className="text-sm font-medium text-muted-foreground">Total Earnings</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">${stats.totalEarnings.toFixed(2)}</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">${stats.totalEarnings.toFixed(2)}</p>
                 {stats.totalEarnings > 0 && (
                   <p className="text-sm text-emerald-400">+12.5% from last month</p>
                 )}
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                     <Wallet className="h-5 w-5 text-amber-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Pending Payout</p>
+                  <p className="text-sm font-medium text-muted-foreground">Pending Payout</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">${stats.pendingCommission.toFixed(2)}</p>
-                <p className="text-sm text-white/40">Processing orders</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">${stats.pendingCommission.toFixed(2)}</p>
+                <p className="text-sm text-muted-foreground">Processing orders</p>
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                     <TrendingUp className="h-5 w-5 text-blue-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Active Orders</p>
+                  <p className="text-sm font-medium text-muted-foreground">Active Orders</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">{stats.activeOrders}</p>
-                <p className="text-sm text-white/40">Orders in progress</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">{stats.activeOrders}</p>
+                <p className="text-sm text-muted-foreground">Orders in progress</p>
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                     <Users className="h-5 w-5 text-purple-400" />
                   </div>
-                  <p className="text-sm font-medium text-white/50">Total Customers</p>
+                  <p className="text-sm font-medium text-muted-foreground">Total Customers</p>
                 </div>
-                <p className="text-3xl font-bold tracking-tight text-white">{stats.totalCustomers}</p>
+                <p className="text-3xl font-bold tracking-tight text-foreground">{stats.totalCustomers}</p>
                 {stats.totalCustomers > 0 && (
                   <p className="text-sm text-emerald-400">+{Math.min(stats.totalCustomers, 4)} this month</p>
                 )}
@@ -371,10 +371,10 @@ export default function RepDashboardPage() {
 
         {/* Wallet Section */}
         <section id="wallet-section" className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">My Wallet</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">My Wallet</h2>
           <div 
-            className="relative overflow-hidden rounded-3xl border border-white/10 p-8 backdrop-blur-xl"
-            style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+            className="relative overflow-hidden rounded-3xl border border-border p-8 backdrop-blur-xl"
+            style={{ backgroundColor: 'rgba(58,66,51,0.15)' }}
           >
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10">
@@ -387,7 +387,7 @@ export default function RepDashboardPage() {
                   <p className="text-amber-200/80 text-sm mb-4">
                     This is the only way to recover your wallet. Write it down and store it safely.
                   </p>
-                  <div className="p-4 rounded-xl bg-black/30 font-mono text-amber-200 leading-relaxed break-all mb-4">
+                  <div className="p-4 rounded-xl bg-foreground/30 font-mono text-amber-200 leading-relaxed break-all mb-4">
                     {createdMnemonic}
                   </div>
                   <div className="flex gap-3">
@@ -397,7 +397,7 @@ export default function RepDashboardPage() {
                     >
                       {copiedText === "mnemonic" ? <><Check className="w-4 h-4 mr-2" /> Copied!</> : <><Copy className="w-4 h-4 mr-2" /> Copy</>}
                     </Button>
-                    <Button onClick={() => setCreatedMnemonic(null)} className="h-10 bg-white text-black hover:bg-white/90 rounded-xl">
+                    <Button onClick={() => setCreatedMnemonic(null)} className="h-10 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl">
                       I've Saved It
                     </Button>
                   </div>
@@ -418,12 +418,12 @@ export default function RepDashboardPage() {
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center">
-                        <Wallet className="h-7 w-7 text-white" />
+                      <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-border flex items-center justify-center">
+                        <Wallet className="h-7 w-7 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-xl font-bold text-white">Commission Wallet</p>
-                        <p className="font-mono text-white/50 text-sm">{wallet.address.slice(0, 10)}...{wallet.address.slice(-8)}</p>
+                        <p className="text-xl font-bold text-foreground">Commission Wallet</p>
+                        <p className="font-mono text-muted-foreground text-sm">{wallet.address.slice(0, 10)}...{wallet.address.slice(-8)}</p>
                       </div>
                     </div>
                     {wallet.has_pin && (
@@ -435,25 +435,25 @@ export default function RepDashboardPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">ETH Balance</p>
-                      <p className="text-2xl font-bold text-white">{parseFloat(wallet.balance_eth || "0").toFixed(6)}</p>
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">ETH Balance</p>
+                      <p className="text-2xl font-bold text-foreground">{parseFloat(wallet.balance_eth || "0").toFixed(6)}</p>
                     </div>
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">USDC Balance</p>
-                      <p className="text-2xl font-bold text-white">${parseFloat(wallet.balance_usdc || "0").toFixed(2)}</p>
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">USDC Balance</p>
+                      <p className="text-2xl font-bold text-foreground">${parseFloat(wallet.balance_usdc || "0").toFixed(2)}</p>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-3">
-                    <Button onClick={() => copyToClipboard(wallet.address, "address")} className="h-11 bg-white/10 hover:bg-white/20 rounded-xl">
+                    <Button onClick={() => copyToClipboard(wallet.address, "address")} className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl">
                       {copiedText === "address" ? <><Check className="w-4 h-4 mr-2" /> Copied!</> : <><Copy className="w-4 h-4 mr-2" /> Copy Address</>}
                     </Button>
                     
                     {wallet.has_pin ? (
                       <div className="flex items-center gap-2">
-                        <Input type="password" value={mnemonicPin} onChange={(e) => setMnemonicPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Enter PIN" className="h-11 w-32 bg-white/5 border-white/10 rounded-xl text-white text-center" />
-                        <Button onClick={handleViewMnemonic} disabled={walletLoading || !mnemonicPin} className="h-11 bg-white/10 hover:bg-white/20 rounded-xl disabled:opacity-50">
+                        <Input type="password" value={mnemonicPin} onChange={(e) => setMnemonicPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Enter PIN" className="h-11 w-32 bg-foreground/5 border-border rounded-xl text-foreground text-center" />
+                        <Button onClick={handleViewMnemonic} disabled={walletLoading || !mnemonicPin} className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl disabled:opacity-50">
                           {walletLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <><Key className="w-4 h-4 mr-2" /> View Recovery</>}
                         </Button>
                       </div>
@@ -465,29 +465,29 @@ export default function RepDashboardPage() {
                   </div>
 
                   {showWalletSetup && !wallet.has_pin && (
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
-                      <h4 className="font-semibold text-white">Set Up Wallet Security</h4>
-                      <p className="text-sm text-white/50">Create a PIN to secure your wallet and access your recovery phrase.</p>
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
+                      <h4 className="font-semibold text-foreground">Set Up Wallet Security</h4>
+                      <p className="text-sm text-muted-foreground">Create a PIN to secure your wallet and access your recovery phrase.</p>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Create PIN</label>
+                          <label className="text-sm text-foreground/60">Create PIN</label>
                           <div className="relative">
-                            <Input type={showPin ? "text" : "password"} value={walletPin} onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="4-12 digits" className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em] pr-10" />
+                            <Input type={showPin ? "text" : "password"} value={walletPin} onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="4-12 digits" className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em] pr-10" />
                             <button type="button" onClick={() => setShowPin(!showPin)} className="absolute right-3 top-1/2 -translate-y-1/2">
-                              {showPin ? <EyeOff className="h-4 w-4 text-white/40" /> : <Eye className="h-4 w-4 text-white/40" />}
+                              {showPin ? <EyeOff className="h-4 w-4 text-muted-foreground" /> : <Eye className="h-4 w-4 text-muted-foreground" />}
                             </button>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Confirm PIN</label>
-                          <Input type="password" value={walletPinConfirm} onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Confirm PIN" className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em]" />
+                          <label className="text-sm text-foreground/60">Confirm PIN</label>
+                          <Input type="password" value={walletPinConfirm} onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Confirm PIN" className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em]" />
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button onClick={handleSetupSecurity} disabled={walletLoading || !walletPin || walletPin !== walletPinConfirm} className="h-11 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50">
+                        <Button onClick={handleSetupSecurity} disabled={walletLoading || !walletPin || walletPin !== walletPinConfirm} className="h-11 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50">
                           {walletLoading ? <RefreshCw className="w-4 h-4 animate-spin mr-2" /> : <Lock className="w-4 h-4 mr-2" />} Save PIN
                         </Button>
-                        <Button onClick={() => { setShowWalletSetup(false); setWalletPin(""); setWalletPinConfirm("") }} className="h-11 bg-white/5 hover:bg-white/10 rounded-xl">Cancel</Button>
+                        <Button onClick={() => { setShowWalletSetup(false); setWalletPin(""); setWalletPinConfirm("") }} className="h-11 bg-foreground/5 hover:bg-foreground/10 rounded-xl">Cancel</Button>
                       </div>
                     </div>
                   )}
@@ -495,41 +495,41 @@ export default function RepDashboardPage() {
               ) : (
                 <div className="space-y-6">
                   <div className="text-center py-6">
-                    <div className="mx-auto h-16 w-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mb-4">
-                      <Wallet className="h-8 w-8 text-white/30" />
+                    <div className="mx-auto h-16 w-16 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mb-4">
+                      <Wallet className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">No Wallet Yet</h3>
-                    <p className="text-white/50 max-w-md mx-auto">Create a wallet to receive commission payments in cryptocurrency.</p>
+                    <h3 className="text-xl font-bold text-foreground mb-2">No Wallet Yet</h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">Create a wallet to receive commission payments in cryptocurrency.</p>
                   </div>
 
                   {showWalletSetup ? (
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
-                      <h4 className="font-semibold text-white">Create Your Wallet</h4>
-                      <p className="text-sm text-white/50">Set up a PIN to secure your wallet. You can skip this and add it later.</p>
+                    <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
+                      <h4 className="font-semibold text-foreground">Create Your Wallet</h4>
+                      <p className="text-sm text-muted-foreground">Set up a PIN to secure your wallet. You can skip this and add it later.</p>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Create PIN (optional)</label>
+                          <label className="text-sm text-foreground/60">Create PIN (optional)</label>
                           <div className="relative">
-                            <Input type={showPin ? "text" : "password"} value={walletPin} onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="4-12 digits" className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em] pr-10" />
+                            <Input type={showPin ? "text" : "password"} value={walletPin} onChange={(e) => setWalletPin(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="4-12 digits" className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em] pr-10" />
                             <button type="button" onClick={() => setShowPin(!showPin)} className="absolute right-3 top-1/2 -translate-y-1/2">
-                              {showPin ? <EyeOff className="h-4 w-4 text-white/40" /> : <Eye className="h-4 w-4 text-white/40" />}
+                              {showPin ? <EyeOff className="h-4 w-4 text-muted-foreground" /> : <Eye className="h-4 w-4 text-muted-foreground" />}
                             </button>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm text-white/60">Confirm PIN</label>
-                          <Input type="password" value={walletPinConfirm} onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Confirm PIN" className={cn("h-12 bg-white/5 border-white/10 rounded-xl text-white text-center tracking-[0.3em]", walletPinConfirm && walletPin !== walletPinConfirm && "border-red-500/50")} />
+                          <label className="text-sm text-foreground/60">Confirm PIN</label>
+                          <Input type="password" value={walletPinConfirm} onChange={(e) => setWalletPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 12))} placeholder="Confirm PIN" className={cn("h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center tracking-[0.3em]", walletPinConfirm && walletPin !== walletPinConfirm && "border-red-500/50")} />
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button onClick={handleCreateWallet} disabled={walletLoading || (walletPin !== "" && walletPin !== walletPinConfirm)} className="h-11 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50">
+                        <Button onClick={handleCreateWallet} disabled={walletLoading || (walletPin !== "" && walletPin !== walletPinConfirm)} className="h-11 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50">
                           {walletLoading ? <RefreshCw className="w-4 h-4 animate-spin mr-2" /> : <Wallet className="w-4 h-4 mr-2" />} Create Wallet
                         </Button>
-                        <Button onClick={() => { setShowWalletSetup(false); setWalletPin(""); setWalletPinConfirm("") }} className="h-11 bg-white/5 hover:bg-white/10 rounded-xl">Cancel</Button>
+                        <Button onClick={() => { setShowWalletSetup(false); setWalletPin(""); setWalletPinConfirm("") }} className="h-11 bg-foreground/5 hover:bg-foreground/10 rounded-xl">Cancel</Button>
                       </div>
                     </div>
                   ) : (
-                    <Button onClick={() => setShowWalletSetup(true)} className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-xl font-semibold text-lg">
+                    <Button onClick={() => setShowWalletSetup(true)} className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold text-lg">
                       <Wallet className="w-5 h-5 mr-2" /> Create Wallet
                     </Button>
                   )}
@@ -541,10 +541,10 @@ export default function RepDashboardPage() {
 
         {/* Analytics Dashboard */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Analytics</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Analytics</h2>
           <div 
-            className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-xl"
-            style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+            className="relative overflow-hidden rounded-2xl border border-border backdrop-blur-xl"
+            style={{ backgroundColor: 'rgba(58,66,51,0.15)' }}
           >
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-6">
@@ -560,20 +560,20 @@ export default function RepDashboardPage() {
         {/* Quick Access Navigation Cards */}
         <section className="space-y-6">
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Quick Access</h2>
-            <p className="text-sm text-white/30 mt-1">Navigate to your most used sections</p>
+            <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Quick Access</h2>
+            <p className="text-sm text-muted-foreground mt-1">Navigate to your most used sections</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {dashboardSections.map((section) => (
               <Link key={section.title} href={section.href} className="group">
-                <div className="h-full rounded-xl border border-[#1a1a1a] bg-[#0f0f0f] p-5 transition-all duration-200 hover:border-[#22c55e]/30 hover:bg-[#111111]">
+                <div className="h-full rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:border-[#22c55e]/30 hover:bg-card">
                   <div className="flex items-start justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#141414] border border-[#1a1a1a] group-hover:bg-[#22c55e]/10 group-hover:border-[#22c55e]/20 transition-colors">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-card border border-border group-hover:bg-[#22c55e]/10 group-hover:border-[#22c55e]/20 transition-colors">
                       <section.icon className="h-5 w-5 text-[#737373] group-hover:text-[#22c55e] transition-colors" />
                     </div>
                     <ChevronRight className="h-5 w-5 text-[#525252] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </div>
-                  <h3 className="mt-4 font-medium text-white group-hover:text-[#22c55e] transition-colors">
+                  <h3 className="mt-4 font-medium text-foreground group-hover:text-[#22c55e] transition-colors">
                     {section.title}
                   </h3>
                   <p className="mt-1 text-sm text-[#737373] line-clamp-2">{section.description}</p>

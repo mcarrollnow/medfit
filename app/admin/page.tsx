@@ -258,8 +258,8 @@ export default function AdminDashboard() {
               key={stat.label}
               className="glass-card rounded-2xl md:rounded-3xl p-4 md:p-8 text-center"
             >
-              <div className="rounded-xl md:rounded-2xl p-3 md:p-4 inline-block mb-3 md:mb-4 bg-white/5 border border-white/10">
-                <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-white/60" />
+              <div className="rounded-xl md:rounded-2xl p-3 md:p-4 inline-block mb-3 md:mb-4 bg-foreground/5 border border-border">
+                <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-foreground/60" />
               </div>
               <p className="font-mono text-2xl md:text-4xl font-light text-[oklch(0.95_0_0)] mb-1">{stat.value}</p>
               <p className="text-xs md:text-sm text-[oklch(0.65_0_0)]">{stat.label}</p>
@@ -306,10 +306,10 @@ export default function AdminDashboard() {
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="group glass-card rounded-2xl md:rounded-3xl p-6 md:p-8 block h-full hover:bg-white/[0.04] transition-all duration-500"
+                      className="group glass-card rounded-2xl md:rounded-3xl p-6 md:p-8 block h-full hover:bg-foreground/[0.05] transition-all duration-500"
                     >
                       <div className="flex flex-col h-full">
-                        <div className="glass-button rounded-xl md:rounded-2xl p-3 md:p-4 inline-flex w-fit mb-4 md:mb-6 group-hover:bg-white/10 transition-colors">
+                        <div className="glass-button rounded-xl md:rounded-2xl p-3 md:p-4 inline-flex w-fit mb-4 md:mb-6 group-hover:bg-foreground/10 transition-colors">
                           <item.icon className="w-5 h-5 md:w-6 md:h-6 text-[oklch(0.95_0_0)]" />
                         </div>
                         <h3 className="font-serif text-lg md:text-xl font-light text-[oklch(0.95_0_0)] mb-1 md:mb-2">

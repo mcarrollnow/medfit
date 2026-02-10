@@ -47,13 +47,13 @@ export default function CartPage() {
       <>
         <GlobalNav />
         <div className="min-h-screen bg-background flex items-center justify-center p-4">
-          <div className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.1] mb-4">
-              <ShoppingBag className="h-8 w-8 text-white/50" />
+          <div className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] p-12 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-foreground/[0.1] mb-4">
+              <ShoppingBag className="h-8 w-8 text-muted-foreground" />
             </div>
-            <h2 className="text-2xl font-semibold mb-2 text-white">Your cart is empty</h2>
-            <p className="text-white/50 mb-6">Add some products to get started</p>
-            <Button className="bg-white/[0.08] hover:bg-white/[0.15] border border-white/20 hover:border-white/40 text-white backdrop-blur-sm" asChild>
+            <h2 className="text-2xl font-semibold mb-2 text-foreground">Your cart is empty</h2>
+            <p className="text-muted-foreground mb-6">Add some products to get started</p>
+            <Button className="bg-foreground/[0.08] hover:bg-foreground/[0.15] border border-border hover:border-border text-foreground backdrop-blur-sm" asChild>
               <Link href="/">Continue Shopping</Link>
             </Button>
           </div>
@@ -77,7 +77,7 @@ export default function CartPage() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <div className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-6">
+            <div className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] p-6">
               {items.map((item) => (
                 <CartItem key={item.id} item={item} onUpdateQuantity={updateQuantity} onRemove={removeItem} />
               ))}
@@ -85,7 +85,7 @@ export default function CartPage() {
           </div>
 
           <div className="lg:col-span-1">
-            <div className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-6 sticky top-6">
+            <div className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)] p-6 sticky top-6">
               <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
 
               <div className="space-y-3 mb-6">
@@ -94,7 +94,7 @@ export default function CartPage() {
                   <span className="font-medium">${total.toFixed(2)}</span>
                 </div>
 
-                <div className="border-t border-white/10 pt-3 mt-3">
+                <div className="border-t border-border pt-3 mt-3">
                   <div className="flex justify-between">
                     <span className="font-semibold">Total</span>
                     <span className="font-bold text-xl">${total.toFixed(2)}</span>
@@ -113,7 +113,7 @@ export default function CartPage() {
                 </Link>
               </Button>
 
-              <Button variant="ghost" className="w-full mt-3 text-white/60 hover:text-white hover:bg-white/[0.08]" asChild>
+              <Button variant="ghost" className="w-full mt-3 text-foreground/60 hover:text-foreground hover:bg-foreground/[0.08]" asChild>
                 <Link href="/">Continue Shopping</Link>
               </Button>
 

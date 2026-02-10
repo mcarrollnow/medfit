@@ -331,63 +331,63 @@ export function ProductCard({ groupedProduct }: ProductCardProps) {
   return (
     <>
       <Card 
-        className="group relative cursor-pointer overflow-hidden border-white/10 bg-gradient-to-b from-zinc-900 to-black transition-all hover:border-white/20 hover:shadow-2xl"
+        className="group relative cursor-pointer overflow-hidden border-border bg-gradient-to-b from-zinc-900 to-background transition-all hover:border-border hover:shadow-2xl"
         onClick={() => setIsModalOpen(true)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <CardHeader className="relative h-48 md:h-64 p-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/50" />
           <div className="relative flex h-full items-center justify-center p-8">
             <div 
               className={`h-24 w-24 md:h-32 md:w-32 rounded-full bg-gradient-to-br ${primaryProduct.color || 'from-purple-600 to-blue-600'} p-[2px]`}
             >
-              <div className="flex h-full w-full items-center justify-center rounded-full bg-zinc-900">
-                <span className="text-2xl md:text-3xl font-bold text-white">
+              <div className="flex h-full w-full items-center justify-center rounded-full bg-card">
+                <span className="text-2xl md:text-3xl font-bold text-foreground">
                   {primaryProduct.base_name.slice(0, 3).toUpperCase()}
                 </span>
               </div>
             </div>
           </div>
           {groupedProduct.variants.length > 1 && (
-            <Badge className="absolute right-2 top-2 bg-white/10 text-white backdrop-blur">
+            <Badge className="absolute right-2 top-2 bg-foreground/10 text-foreground backdrop-blur">
               {groupedProduct.variants.length} variants
             </Badge>
           )}
         </CardHeader>
         <CardContent className="space-y-4 p-4 md:p-6">
           <div>
-            <h3 className="text-lg md:text-xl font-bold text-white">{primaryProduct.base_name}</h3>
-            <p className="text-sm text-white/60">{primaryProduct.description || "Premium research compound"}</p>
+            <h3 className="text-lg md:text-xl font-bold text-foreground">{primaryProduct.base_name}</h3>
+            <p className="text-sm text-foreground/60">{primaryProduct.description || "Premium research compound"}</p>
           </div>
           
           {getProductRatings(primaryProduct.base_name).length > 0 && (
             <div className="space-y-2">
               {getProductRatings(primaryProduct.base_name).map((rating) => (
                 <div key={rating.label} className="flex items-center justify-between">
-                  <span className="text-xs text-white/60">{rating.label}</span>
+                  <span className="text-xs text-foreground/60">{rating.label}</span>
                   <div className="flex items-center gap-1">
-                    <div className="relative h-1.5 w-16 overflow-hidden rounded-full bg-white/10">
+                    <div className="relative h-1.5 w-16 overflow-hidden rounded-full bg-foreground/10">
                       <div
                         className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-400 to-emerald-400"
                         style={{ width: `${(rating.value / 10) * 100}%` }}
                       />
                     </div>
-                    <span className="text-xs text-white/80">{rating.value}</span>
+                    <span className="text-xs text-foreground/80">{rating.value}</span>
                   </div>
                 </div>
               ))}
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex items-center justify-between border-t border-white/10 p-4 md:p-6">
+        <CardFooter className="flex items-center justify-between border-t border-border p-4 md:p-6">
           <div>
-            <p className="text-xs text-white/60">Starting at</p>
-            <p className="text-2xl font-bold text-white">${price.toFixed(2)}</p>
+            <p className="text-xs text-foreground/60">Starting at</p>
+            <p className="text-2xl font-bold text-foreground">${price.toFixed(2)}</p>
           </div>
           <Button 
             size="sm" 
-            className="group/button bg-white text-black hover:bg-white/90"
+            className="group/button bg-primary text-primary-foreground hover:bg-card/90"
             onClick={(e) => {
               e.stopPropagation()
               setIsModalOpen(true)

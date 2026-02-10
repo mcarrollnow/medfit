@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Medic - Color Palette</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .subtitle { color: #888; font-size: 16px; margin-bottom: 40px; }
+    .section-title {
+      font-family: monospace;
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .section { margin-bottom: 48px; }
+    
+    /* Color Swatches */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px; }
+    .swatch { cursor: pointer; transition: transform 0.2s; position: relative; }
+    .swatch:hover { transform: scale(1.05); }
+    .swatch-color {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .swatch-name { font-size: 12px; margin-top: 8px; color: #fff; }
+    .swatch-hex { font-family: monospace; font-size: 11px; color: #888; }
+    
+    /* Buttons */
+    .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s;
+      border: none;
+    }
+    .btn:hover { transform: scale(1.02); }
+    .btn-primary { background: #235A9D; color: #ffffff; }
+    .btn-secondary { background: transparent; border: 2px solid #235A9D; color: #235A9D; }
+    .btn-subtle { background: #235A9D20; color: #235A9D; }
+    
+    /* Typography */
+    .headline { font-family: 'Playfair Display', serif; font-size: 32px; color: #235A9D; margin-bottom: 12px; }
+    .paragraph { color: #ccc; line-height: 1.6; }
+    .highlight { color: #235A9D; font-weight: 500; }
+    .muted { color: #888; }
+    .link { color: #235A9D; text-decoration: underline; text-underline-offset: 4px; }
+    
+    /* Card */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border-left: 4px solid #235A9D;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 400px;
+    }
+    .card-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .card-text { color: #888; font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
+    .card-link { color: #235A9D; font-size: 14px; text-decoration: none; }
+    .card-link:hover { text-decoration: underline; }
+    
+    /* Harmonies */
+    .harmonies-grid { display: grid; gap: 32px; }
+    .color-harmonies { margin-bottom: 32px; }
+    .color-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .color-dot { width: 12px; height: 12px; border-radius: 4px; }
+    .color-name { font-size: 18px; font-weight: 600; }
+    .color-hex-label { font-family: monospace; color: #888; font-size: 12px; }
+    .harmony-row { margin-bottom: 24px; }
+    .harmony-label { font-size: 14px; color: #ccc; margin-bottom: 8px; font-weight: 500; }
+    .harmony-desc { font-size: 12px; color: #666; margin-bottom: 12px; }
+    .harmony-swatches { display: flex; gap: 8px; }
+    .harmony-swatch { width: 50px; }
+    .harmony-swatch-color { width: 50px; height: 50px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+    .harmony-swatch-label { font-size: 9px; color: #888; margin-top: 4px; }
+    .harmony-swatch-hex { font-family: monospace; font-size: 8px; color: #555; }
+    
+    .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #222; text-align: center; color: #444; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Modern Medic</h1>
+    <p class="subtitle">Primary: #235A9D | Mood: Professional, innovative, and trustworthy | Best for: Healthcare dashboards, Clinical research presentations, Professional services pages, B2B marketing materials</p>
+    
+    <div class="section">
+      <p class="section-title">Color Swatches</p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-color" style="background: #235A9D;"></div><p class="swatch-name">Performance Blue</p><p class="swatch-hex">#235A9D</p></div>
+        <div class="swatch"><div class="swatch-color" style="background: #3A4233;"></div><p class="swatch-name">MedFit Charcoal</p><p class="swatch-hex">#3A4233</p></div>
+        <div class="swatch"><div class="swatch-color" style="background: #B13C2D;"></div><p class="swatch-name">MedFit Red</p><p class="swatch-hex">#B13C2D</p></div>
+        <div class="swatch"><div class="swatch-color" style="background: #F1E6DE;"></div><p class="swatch-name">Warm Off-White</p><p class="swatch-hex">#F1E6DE</p></div>
+        <div class="swatch"><div class="swatch-color" style="background: #3A4233;"></div><p class="swatch-name">Charcoal Text</p><p class="swatch-hex">#3A4233</p></div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <p class="section-title">Button Examples</p>
+      <div class="buttons">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-subtle">Subtle</button>
+      </div>
+    </div>
+    
+    <div class="section">
+      <p class="section-title">Typography Examples</p>
+      <h2 class="headline">Headline Text</h2>
+      <p class="paragraph">Regular paragraph text with <span class="highlight">highlighted text</span> and <span class="muted">muted text</span>. You can also include <a href="#" class="link">link text</a> styled with the primary color.</p>
+    </div>
+    
+    <div class="section">
+      <p class="section-title">Card Example</p>
+      <div class="card">
+        <h3 class="card-title">Card Title</h3>
+        <p class="card-text">Card description demonstrating how the color scheme works with content blocks and borders.</p>
+        <a href="#" class="card-link">Learn more →</a>
+      </div>
+    </div>
+    
+    <div class="section">
+      <p class="section-title">Color Harmonies for Each Color</p>
+      <div class="harmonies-grid">
+        
+        <div class="color-harmonies">
+          <div class="color-header">
+            <div class="color-dot" style="background: #235A9D;"></div>
+            <span class="color-name">Performance Blue Harmonies</span>
+            <span class="color-hex-label">#235A9D</span>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Complementary</p>
+            <p class="harmony-desc">Colors opposite on the wheel - high contrast for attention</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #235b9f;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#235B9F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #9f6723;"></div><p class="harmony-swatch-label">Complement</p><p class="harmony-swatch-hex">#9F6723</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #4f8dd8;"></div><p class="harmony-swatch-label">Light</p><p class="harmony-swatch-hex">#4F8DD8</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #d89b4f;"></div><p class="harmony-swatch-label">Light Comp</p><p class="harmony-swatch-hex">#D89B4F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #112b4b;"></div><p class="harmony-swatch-label">Dark</p><p class="harmony-swatch-hex">#112B4B</p></div>
+            </div>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Analogous</p>
+            <p class="harmony-desc">Adjacent colors - harmonious and cohesive designs</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #23999f;"></div><p class="harmony-swatch-label">-30°</p><p class="harmony-swatch-hex">#23999F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #237a9f;"></div><p class="harmony-swatch-label">-15°</p><p class="harmony-swatch-hex">#237A9F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #235b9f;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#235B9F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #233c9f;"></div><p class="harmony-swatch-label">+15°</p><p class="harmony-swatch-hex">#233C9F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #29239f;"></div><p class="harmony-swatch-label">+30°</p><p class="harmony-swatch-hex">#29239F</p></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="color-harmonies">
+          <div class="color-header">
+            <div class="color-dot" style="background: #3A4233;"></div>
+            <span class="color-name">MedFit Charcoal Harmonies</span>
+            <span class="color-hex-label">#3A4233</span>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Complementary</p>
+            <p class="harmony-desc">Colors opposite on the wheel - high contrast for attention</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3a4233;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#3A4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3b3342;"></div><p class="harmony-swatch-label">Complement</p><p class="harmony-swatch-hex">#3B3342</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #6d7c5f;"></div><p class="harmony-swatch-label">Light</p><p class="harmony-swatch-hex">#6D7C5F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #6f5f7c;"></div><p class="harmony-swatch-label">Light Comp</p><p class="harmony-swatch-hex">#6F5F7C</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #080907;"></div><p class="harmony-swatch-label">Dark</p><p class="harmony-swatch-hex">#080907</p></div>
+            </div>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Analogous</p>
+            <p class="harmony-desc">Adjacent colors - harmonious and cohesive designs</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #424233;"></div><p class="harmony-swatch-label">-30°</p><p class="harmony-swatch-hex">#424233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3e4233;"></div><p class="harmony-swatch-label">-15°</p><p class="harmony-swatch-hex">#3E4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3a4233;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#3A4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #364233;"></div><p class="harmony-swatch-label">+15°</p><p class="harmony-swatch-hex">#364233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #334234;"></div><p class="harmony-swatch-label">+30°</p><p class="harmony-swatch-hex">#334234</p></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="color-harmonies">
+          <div class="color-header">
+            <div class="color-dot" style="background: #B13C2D;"></div>
+            <span class="color-name">MedFit Red Harmonies</span>
+            <span class="color-hex-label">#B13C2D</span>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Complementary</p>
+            <p class="harmony-desc">Colors opposite on the wheel - high contrast for attention</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b23d2e;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#B23D2E</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #2ea3b2;"></div><p class="harmony-swatch-label">Complement</p><p class="harmony-swatch-hex">#2EA3B2</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #d97a6d;"></div><p class="harmony-swatch-label">Light</p><p class="harmony-swatch-hex">#D97A6D</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #6dcdd9;"></div><p class="harmony-swatch-label">Light Comp</p><p class="harmony-swatch-hex">#6DCDD9</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #612219;"></div><p class="harmony-swatch-label">Dark</p><p class="harmony-swatch-hex">#612219</p></div>
+            </div>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Analogous</p>
+            <p class="harmony-desc">Adjacent colors - harmonious and cohesive designs</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b22e61;"></div><p class="harmony-swatch-label">-30°</p><p class="harmony-swatch-hex">#B22E61</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b22e40;"></div><p class="harmony-swatch-label">-15°</p><p class="harmony-swatch-hex">#B22E40</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b23d2e;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#B23D2E</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b25f2e;"></div><p class="harmony-swatch-label">+15°</p><p class="harmony-swatch-hex">#B25F2E</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #b2802e;"></div><p class="harmony-swatch-label">+30°</p><p class="harmony-swatch-hex">#B2802E</p></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="color-harmonies">
+          <div class="color-header">
+            <div class="color-dot" style="background: #F1E6DE;"></div>
+            <span class="color-name">Warm Off-White Harmonies</span>
+            <span class="color-hex-label">#F1E6DE</span>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Complementary</p>
+            <p class="harmony-desc">Colors opposite on the wheel - high contrast for attention</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1e7df;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#F1E7DF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #dfeaf1;"></div><p class="harmony-swatch-label">Complement</p><p class="harmony-swatch-hex">#DFEAF1</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #ffffff;"></div><p class="harmony-swatch-label">Light</p><p class="harmony-swatch-hex">#FFFFFF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #ffffff;"></div><p class="harmony-swatch-label">Light Comp</p><p class="harmony-swatch-hex">#FFFFFF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #d3b097;"></div><p class="harmony-swatch-label">Dark</p><p class="harmony-swatch-hex">#D3B097</p></div>
+            </div>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Analogous</p>
+            <p class="harmony-desc">Adjacent colors - harmonious and cohesive designs</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1dfe0;"></div><p class="harmony-swatch-label">-30°</p><p class="harmony-swatch-hex">#F1DFE0</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1e2df;"></div><p class="harmony-swatch-label">-15°</p><p class="harmony-swatch-hex">#F1E2DF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1e7df;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#F1E7DF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1ebdf;"></div><p class="harmony-swatch-label">+15°</p><p class="harmony-swatch-hex">#F1EBDF</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #f1f0df;"></div><p class="harmony-swatch-label">+30°</p><p class="harmony-swatch-hex">#F1F0DF</p></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="color-harmonies">
+          <div class="color-header">
+            <div class="color-dot" style="background: #3A4233;"></div>
+            <span class="color-name">Charcoal Text Harmonies</span>
+            <span class="color-hex-label">#3A4233</span>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Complementary</p>
+            <p class="harmony-desc">Colors opposite on the wheel - high contrast for attention</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3a4233;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#3A4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3b3342;"></div><p class="harmony-swatch-label">Complement</p><p class="harmony-swatch-hex">#3B3342</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #6d7c5f;"></div><p class="harmony-swatch-label">Light</p><p class="harmony-swatch-hex">#6D7C5F</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #6f5f7c;"></div><p class="harmony-swatch-label">Light Comp</p><p class="harmony-swatch-hex">#6F5F7C</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #080907;"></div><p class="harmony-swatch-label">Dark</p><p class="harmony-swatch-hex">#080907</p></div>
+            </div>
+          </div>
+          <div class="harmony-row">
+            <p class="harmony-label">Analogous</p>
+            <p class="harmony-desc">Adjacent colors - harmonious and cohesive designs</p>
+            <div class="harmony-swatches">
+              <div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #424233;"></div><p class="harmony-swatch-label">-30°</p><p class="harmony-swatch-hex">#424233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3e4233;"></div><p class="harmony-swatch-label">-15°</p><p class="harmony-swatch-hex">#3E4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #3a4233;"></div><p class="harmony-swatch-label">Base</p><p class="harmony-swatch-hex">#3A4233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #364233;"></div><p class="harmony-swatch-label">+15°</p><p class="harmony-swatch-hex">#364233</p></div><div class="harmony-swatch"><div class="harmony-swatch-color" style="background: #334234;"></div><p class="harmony-swatch-label">+30°</p><p class="harmony-swatch-hex">#334234</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Generated by easycolor.pro</p>
+    </div>
+  </div>
+</body>
+</html>

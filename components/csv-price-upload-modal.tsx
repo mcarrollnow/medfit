@@ -203,7 +203,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4"
         onClick={handleClose}
       >
         <motion.div
@@ -211,24 +211,24 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-zinc-900 border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+          className="bg-card border border-border rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <div className="flex items-center justify-between p-6 border-b border-border">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                 <FileSpreadsheet className="h-5 w-5 text-amber-400" />
               </div>
               <div>
-                <h2 className="text-xl font-semibold text-white">Import Prices</h2>
-                <p className="text-sm text-white/50">Upload any file with product names and prices</p>
+                <h2 className="text-xl font-semibold text-foreground">Import Prices</h2>
+                <p className="text-sm text-muted-foreground">Upload any file with product names and prices</p>
               </div>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleClose}
-              className="text-white/40 hover:text-white hover:bg-white/10 rounded-xl"
+              className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 rounded-xl"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -240,7 +240,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
               <div className="space-y-6">
                 {/* Price Type Selector */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-white/70">Price Type to Update</label>
+                  <label className="block text-sm font-medium text-foreground/70">Price Type to Update</label>
                   <div className="relative">
                     <button
                       onClick={() => setShowPriceDropdown(!showPriceDropdown)}
@@ -265,7 +265,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
-                          className="absolute top-full left-0 right-0 mt-2 bg-zinc-800 border border-white/10 rounded-xl overflow-hidden z-10"
+                          className="absolute top-full left-0 right-0 mt-2 bg-secondary border border-border rounded-xl overflow-hidden z-10"
                         >
                           {PRICE_TYPES.map((type) => (
                             <button
@@ -275,17 +275,17 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                                 setShowPriceDropdown(false)
                               }}
                               className={cn(
-                                "w-full flex items-center gap-3 p-4 hover:bg-white/5 transition-colors text-left",
-                                priceType === type.value && "bg-white/5"
+                                "w-full flex items-center gap-3 p-4 hover:bg-foreground/5 transition-colors text-left",
+                                priceType === type.value && "bg-foreground/5"
                               )}
                             >
                               <div className={cn("w-3 h-3 rounded-full", type.color.split(" ")[0])} />
                               <div>
-                                <p className="font-medium text-white">{type.label}</p>
-                                <p className="text-xs text-white/50">{type.description}</p>
+                                <p className="font-medium text-foreground">{type.label}</p>
+                                <p className="text-xs text-muted-foreground">{type.description}</p>
                               </div>
                               {priceType === type.value && (
-                                <Check className="h-4 w-4 text-white ml-auto" />
+                                <Check className="h-4 w-4 text-foreground ml-auto" />
                               )}
                             </button>
                           ))}
@@ -302,7 +302,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                     "border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all",
                     csvContent
                       ? "border-green-500/50 bg-green-500/5"
-                      : "border-white/20 hover:border-white/40 hover:bg-white/5"
+                      : "border-border hover:border-border hover:bg-foreground/5"
                   )}
                 >
                   <input
@@ -315,26 +315,26 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                   {csvContent ? (
                     <>
                       <FileSpreadsheet className="h-12 w-12 text-green-400 mx-auto mb-4" />
-                      <p className="text-lg font-medium text-white">{fileName}</p>
-                      <p className="text-sm text-white/50 mt-1">Click to choose a different file</p>
+                      <p className="text-lg font-medium text-foreground">{fileName}</p>
+                      <p className="text-sm text-muted-foreground mt-1">Click to choose a different file</p>
                     </>
                   ) : (
                     <>
-                      <Upload className="h-12 w-12 text-white/30 mx-auto mb-4" />
-                      <p className="text-lg font-medium text-white">Drop your file here</p>
-                      <p className="text-sm text-white/50 mt-1">or click to browse (any format)</p>
+                      <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                      <p className="text-lg font-medium text-foreground">Drop your file here</p>
+                      <p className="text-sm text-muted-foreground mt-1">or click to browse (any format)</p>
                     </>
                   )}
                 </div>
 
                 {/* Format Guide */}
-                <div className="rounded-xl bg-white/5 border border-white/10 p-4">
-                  <p className="text-sm font-medium text-white mb-2">Supported Formats</p>
-                  <p className="text-xs text-white/50 mb-2">
+                <div className="rounded-xl bg-foreground/5 border border-border p-4">
+                  <p className="text-sm font-medium text-foreground mb-2">Supported Formats</p>
+                  <p className="text-xs text-muted-foreground mb-2">
                     Upload any file with product names and prices - AI will parse it automatically.
-                    Works with <span className="text-white/70">PDF, images, CSV, TXT, Excel exports</span>, or any format.
+                    Works with <span className="text-foreground/70">PDF, images, CSV, TXT, Excel exports</span>, or any format.
                   </p>
-                  <div className="bg-black/30 rounded-lg p-3 font-mono text-xs text-white/70">
+                  <div className="bg-foreground/30 rounded-lg p-3 font-mono text-xs text-foreground/70">
                     <p>Product Name, Price</p>
                     <p>Tirzepatide 5mg, $199.99</p>
                     <p>Semaglutide 10mg, 249.00</p>
@@ -354,9 +354,9 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-white/50">Matched Products</p>
-                    <p className="text-2xl font-bold text-white">
-                      {matchedCount} <span className="text-lg text-white/40">of {totalRows}</span>
+                    <p className="text-sm text-muted-foreground">Matched Products</p>
+                    <p className="text-2xl font-bold text-foreground">
+                      {matchedCount} <span className="text-lg text-muted-foreground">of {totalRows}</span>
                     </p>
                   </div>
                   <div className={cn("px-4 py-2 rounded-xl border", selectedPriceType.color)}>
@@ -364,22 +364,22 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-white/10 overflow-hidden">
+                <div className="rounded-xl border border-border overflow-hidden">
                   <table className="w-full">
-                    <thead className="bg-white/5">
+                    <thead className="bg-foreground/5">
                       <tr>
-                        <th className="text-left p-3 text-xs font-medium text-white/50 uppercase">Include</th>
-                        <th className="text-left p-3 text-xs font-medium text-white/50 uppercase">CSV Name</th>
-                        <th className="text-left p-3 text-xs font-medium text-white/50 uppercase">Matched Product</th>
-                        <th className="text-right p-3 text-xs font-medium text-white/50 uppercase">Price</th>
-                        <th className="text-center p-3 text-xs font-medium text-white/50 uppercase">Confidence</th>
+                        <th className="text-left p-3 text-xs font-medium text-muted-foreground uppercase">Include</th>
+                        <th className="text-left p-3 text-xs font-medium text-muted-foreground uppercase">CSV Name</th>
+                        <th className="text-left p-3 text-xs font-medium text-muted-foreground uppercase">Matched Product</th>
+                        <th className="text-right p-3 text-xs font-medium text-muted-foreground uppercase">Price</th>
+                        <th className="text-center p-3 text-xs font-medium text-muted-foreground uppercase">Confidence</th>
                       </tr>
                     </thead>
                     <tbody>
                       {parsedRows.map((row, index) => (
                         <tr key={index} className={cn(
-                          "border-t border-white/5 transition-colors",
-                          row.include ? "bg-transparent" : "bg-white/[0.02] opacity-50"
+                          "border-t border-border transition-colors",
+                          row.include ? "bg-transparent" : "bg-foreground/[0.03] opacity-50"
                         )}>
                           <td className="p-3">
                             <button
@@ -388,21 +388,21 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                                 "w-5 h-5 rounded border flex items-center justify-center transition-all",
                                 row.include 
                                   ? "bg-green-500 border-green-500" 
-                                  : "border-white/30 hover:border-white/50"
+                                  : "border-border hover:border-border0"
                               )}
                             >
-                              {row.include && <Check className="h-3 w-3 text-white" />}
+                              {row.include && <Check className="h-3 w-3 text-foreground" />}
                             </button>
                           </td>
                           <td className="p-3">
-                            <p className="text-sm text-white/80">{row.original_name}</p>
+                            <p className="text-sm text-foreground/80">{row.original_name}</p>
                           </td>
                           <td className="p-3">
                             {row.selected_product_id ? (
                               <div>
-                                <p className="text-sm text-white">{row.matched_product_name}</p>
+                                <p className="text-sm text-foreground">{row.matched_product_name}</p>
                                 {row.matched_variant && (
-                                  <p className="text-xs text-white/50">{row.matched_variant}</p>
+                                  <p className="text-xs text-muted-foreground">{row.matched_variant}</p>
                                 )}
                               </div>
                             ) : row.alternatives && row.alternatives.length > 0 ? (
@@ -423,7 +423,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                             )}
                           </td>
                           <td className="p-3 text-right">
-                            <p className="text-sm font-mono text-white">${row.price.toFixed(2)}</p>
+                            <p className="text-sm font-mono text-foreground">${row.price.toFixed(2)}</p>
                           </td>
                           <td className="p-3 text-center">
                             <span className={cn(
@@ -455,17 +455,17 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
               <div className="text-center py-12">
                 {isApplying ? (
                   <>
-                    <Loader2 className="h-12 w-12 text-white/30 mx-auto mb-4 animate-spin" />
-                    <p className="text-lg font-medium text-white">Applying prices...</p>
-                    <p className="text-sm text-white/50 mt-1">Updating {matchedCount} products</p>
+                    <Loader2 className="h-12 w-12 text-muted-foreground mx-auto mb-4 animate-spin" />
+                    <p className="text-lg font-medium text-foreground">Applying prices...</p>
+                    <p className="text-sm text-muted-foreground mt-1">Updating {matchedCount} products</p>
                   </>
                 ) : result ? (
                   <>
                     <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                       <Check className="h-8 w-8 text-green-400" />
                     </div>
-                    <p className="text-lg font-medium text-white">Prices Updated!</p>
-                    <p className="text-sm text-white/50 mt-1">
+                    <p className="text-lg font-medium text-foreground">Prices Updated!</p>
+                    <p className="text-sm text-muted-foreground mt-1">
                       Successfully updated {result.updated} product{result.updated !== 1 ? "s" : ""}
                     </p>
                   </>
@@ -475,20 +475,20 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/[0.02]">
+          <div className="flex items-center justify-between p-6 border-t border-border bg-foreground/[0.03]">
             {step === "upload" && (
               <>
                 <Button
                   variant="ghost"
                   onClick={handleClose}
-                  className="rounded-xl text-white/60 hover:text-white hover:bg-white/10"
+                  className="rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/10"
                 >
                   Cancel
                 </Button>
                 <Button
                   onClick={handleParse}
                   disabled={!csvContent || isParsing}
-                  className="rounded-xl bg-white text-black hover:bg-white/90 px-6"
+                  className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6"
                 >
                   {isParsing ? (
                     <>
@@ -509,7 +509,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
                 <Button
                   variant="ghost"
                   onClick={() => setStep("upload")}
-                  className="rounded-xl text-white/60 hover:text-white hover:bg-white/10"
+                  className="rounded-xl text-foreground/60 hover:text-foreground hover:bg-foreground/10"
                 >
                   Back
                 </Button>
@@ -526,7 +526,7 @@ export function CSVPriceUploadModal({ isOpen, onClose, onSuccess }: CSVPriceUplo
             {step === "applying" && result && (
               <Button
                 onClick={handleClose}
-                className="rounded-xl bg-white text-black hover:bg-white/90 px-6 ml-auto"
+                className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6 ml-auto"
               >
                 Done
               </Button>

@@ -78,11 +78,11 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
 
   if (loading) {
     return (
-      <div className="admin-container bg-white/5 border border-white/10 p-6">
+      <div className="admin-container bg-foreground/5 border border-border p-6">
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-white/10 rounded w-1/3" />
-          <div className="h-12 bg-white/10 rounded" />
-          <div className="h-4 bg-white/10 rounded w-2/3" />
+          <div className="h-6 bg-foreground/10 rounded w-1/3" />
+          <div className="h-12 bg-foreground/10 rounded" />
+          <div className="h-4 bg-foreground/10 rounded w-2/3" />
         </div>
       </div>
     )
@@ -92,10 +92,10 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="admin-container bg-white/5 border border-white/10 overflow-hidden"
+      className="admin-container bg-foreground/5 border border-border overflow-hidden"
     >
       {/* Header */}
-      <div className="p-6 border-b border-white/10">
+      <div className="p-6 border-b border-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div
@@ -105,8 +105,8 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
               <Gift className="w-6 h-6" style={{ color: tierInfo.color }} />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white">Referral Program</h3>
-              <p className="text-sm text-white/60">Share & earn rewards</p>
+              <h3 className="text-xl font-semibold text-foreground">Referral Program</h3>
+              <p className="text-sm text-foreground/60">Share & earn rewards</p>
             </div>
           </div>
           <div
@@ -124,38 +124,38 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
           <>
             {/* Code Display */}
             <div className="space-y-3">
-              <p className="text-sm text-white/60 uppercase tracking-wider">Your Referral Code</p>
+              <p className="text-sm text-foreground/60 uppercase tracking-wider">Your Referral Code</p>
               <div className="flex items-center gap-3">
-                <div className="flex-1 bg-white/10 border border-white/20 rounded-2xl px-6 py-4 font-mono text-2xl text-white tracking-widest text-center">
+                <div className="flex-1 bg-foreground/10 border border-border rounded-2xl px-6 py-4 font-mono text-2xl text-foreground tracking-widest text-center">
                   {referralCode}
                 </div>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={handleCopy}
-                  className="h-14 w-14 rounded-2xl border-white/20 bg-white/5 hover:bg-white/10"
+                  className="h-14 w-14 rounded-2xl border-border bg-foreground/5 hover:bg-foreground/10"
                 >
-                  {copied ? <Check className="w-5 h-5 text-emerald-400" /> : <Copy className="w-5 h-5 text-white/60" />}
+                  {copied ? <Check className="w-5 h-5 text-emerald-400" /> : <Copy className="w-5 h-5 text-foreground/60" />}
                 </Button>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={handleShare}
-                  className="h-14 w-14 rounded-2xl border-white/20 bg-white/5 hover:bg-white/10"
+                  className="h-14 w-14 rounded-2xl border-border bg-foreground/5 hover:bg-foreground/10"
                 >
-                  <Share2 className="w-5 h-5 text-white/60" />
+                  <Share2 className="w-5 h-5 text-foreground/60" />
                 </Button>
               </div>
-              <p className="text-sm text-white/40 text-center">
+              <p className="text-sm text-muted-foreground text-center">
                 Friends get <span className="text-emerald-400 font-medium">{discountPercentage}% off</span> their first
                 order
               </p>
             </div>
 
             {/* Tier Discount Info */}
-            <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+            <div className="bg-foreground/5 rounded-2xl p-4 border border-border">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-sm text-white/60">Your tier discount power</span>
+                <span className="text-sm text-foreground/60">Your tier discount power</span>
                 <span className="text-sm font-medium" style={{ color: tierInfo.color }}>
                   {currentTier}
                 </span>
@@ -178,7 +178,7 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
                   )
                 })}
               </div>
-              <p className="text-xs text-white/40 mt-2 text-center">
+              <p className="text-xs text-muted-foreground mt-2 text-center">
                 Upgrade your tier to give friends bigger discounts
               </p>
             </div>
@@ -186,17 +186,17 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
             {/* Stats */}
             {stats && (
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <div className="bg-foreground/5 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-2 mb-1">
-                    <Users className="w-4 h-4 text-white/40" />
-                    <span className="text-xs text-white/40 uppercase tracking-wider">Referrals</span>
+                    <Users className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider">Referrals</span>
                   </div>
-                  <p className="text-2xl font-semibold text-white">{stats.totalReferrals}</p>
+                  <p className="text-2xl font-semibold text-foreground">{stats.totalReferrals}</p>
                 </div>
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <div className="bg-foreground/5 rounded-2xl p-4 border border-border">
                   <div className="flex items-center gap-2 mb-1">
-                    <TrendingUp className="w-4 h-4 text-white/40" />
-                    <span className="text-xs text-white/40 uppercase tracking-wider">Sales Generated</span>
+                    <TrendingUp className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider">Sales Generated</span>
                   </div>
                   <p className="text-2xl font-semibold text-emerald-400">${stats.totalReferredSales.toFixed(2)}</p>
                 </div>
@@ -208,7 +208,7 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
               <div className="space-y-3">
                 <button
                   onClick={() => setShowReferrals(!showReferrals)}
-                  className="w-full flex items-center justify-between text-sm text-white/60 hover:text-white/80 transition-colors"
+                  className="w-full flex items-center justify-between text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
                 >
                   <span>Your referred friends ({referredCustomers.length})</span>
                   <ChevronRight className={`w-4 h-4 transition-transform ${showReferrals ? "rotate-90" : ""}`} />
@@ -224,17 +224,17 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
                       {referredCustomers.map((customer) => (
                         <div
                           key={customer.id}
-                          className="flex items-center justify-between bg-white/5 rounded-xl p-3 border border-white/10"
+                          className="flex items-center justify-between bg-foreground/5 rounded-xl p-3 border border-border"
                         >
                           <div>
-                            <p className="text-sm font-medium text-white">{customer.name}</p>
-                            <p className="text-xs text-white/40">
+                            <p className="text-sm font-medium text-foreground">{customer.name}</p>
+                            <p className="text-xs text-muted-foreground">
                               {customer.totalOrders} orders · ${customer.totalSpent.toFixed(2)}
                             </p>
                           </div>
                           <div className="text-right">
-                            <p className="text-xs text-white/40">Joined</p>
-                            <p className="text-xs text-white/60">
+                            <p className="text-xs text-muted-foreground">Joined</p>
+                            <p className="text-xs text-foreground/60">
                               {new Date(customer.signupDate).toLocaleDateString()}
                             </p>
                           </div>
@@ -249,12 +249,12 @@ export function ReferralCard({ customerId, currentTier }: ReferralCardProps) {
         ) : (
           /* Generate Code CTA */
           <div className="text-center space-y-4 py-4">
-            <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto">
-              <Gift className="w-8 h-8 text-white/40" />
+            <div className="w-16 h-16 rounded-full bg-foreground/10 flex items-center justify-center mx-auto">
+              <Gift className="w-8 h-8 text-muted-foreground" />
             </div>
             <div>
-              <h4 className="text-lg font-medium text-white">Start Referring Friends</h4>
-              <p className="text-sm text-white/60 mt-1">
+              <h4 className="text-lg font-medium text-foreground">Start Referring Friends</h4>
+              <p className="text-sm text-foreground/60 mt-1">
                 As a {currentTier} member, your friends get {discountPercentage}% off
               </p>
             </div>

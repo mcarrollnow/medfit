@@ -815,7 +815,7 @@ export default function WalletsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -824,8 +824,8 @@ export default function WalletsPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Wallets</h1>
-            <p className="text-xl text-white/50">Manage cryptocurrency wallets and transactions.</p>
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Wallets</h1>
+            <p className="text-xl text-muted-foreground">Manage cryptocurrency wallets and transactions.</p>
           </div>
           <div className="flex gap-3">
             <Button
@@ -837,7 +837,7 @@ export default function WalletsPage() {
             </Button>
             <Button
               onClick={() => setShowCreateForm(true)}
-              className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+              className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
             >
               <Plus className="w-5 h-5 mr-2" />
               Create Wallet
@@ -847,43 +847,43 @@ export default function WalletsPage() {
 
         {/* Stats */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                   <Wallet className="h-6 w-6 text-emerald-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-white/50">Active Wallets</p>
-                  <p className="text-3xl font-bold tracking-tight text-white">{wallets.length}</p>
+                  <p className="text-sm font-medium text-muted-foreground">Active Wallets</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">{wallets.length}</p>
                 </div>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
                   <Shield className="h-6 w-6 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-white/50">Secured</p>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-sm font-medium text-muted-foreground">Secured</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     {wallets.filter(w => w.has_pin || w.has_password || w.biometric_enabled || w.hardware_key_enabled).length}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
                   <span className="text-purple-400 font-bold text-lg">$</span>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-white/50">Total Value</p>
-                  <p className="text-3xl font-bold tracking-tight text-white">
+                  <p className="text-sm font-medium text-muted-foreground">Total Value</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground">
                     ${wallets.reduce((sum, w) => sum + parseFloat(getTotalUSDValue(w)), 0).toLocaleString()}
                   </p>
                 </div>
@@ -901,8 +901,8 @@ export default function WalletsPage() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Create New Wallet</h2>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Create New Wallet</h2>
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                 <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                 <div className="relative z-10 space-y-8">
                   {createdMnemonic ? (
@@ -913,8 +913,8 @@ export default function WalletsPage() {
                           <AlertCircle className="h-6 w-6 text-amber-400" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold text-white">Save Your Recovery Phrase</h3>
-                          <p className="text-white/50">Write this down and store it safely. This will not be shown again.</p>
+                          <h3 className="text-2xl font-bold text-foreground">Save Your Recovery Phrase</h3>
+                          <p className="text-muted-foreground">Write this down and store it safely. This will not be shown again.</p>
                         </div>
                       </div>
 
@@ -927,7 +927,7 @@ export default function WalletsPage() {
                       <div className="flex gap-3">
                         <Button
                           onClick={() => copyToClipboard(createdMnemonic)}
-                          className="h-12 px-6 bg-white/10 hover:bg-white/20 rounded-xl"
+                          className="h-12 px-6 bg-foreground/10 hover:bg-foreground/20 rounded-xl"
                         >
                           {copiedText === createdMnemonic ? (
                             <><Check className="w-4 h-4 mr-2" /> Copied</>
@@ -941,7 +941,7 @@ export default function WalletsPage() {
                             resetCreateForm()
                             loadWallets()
                           }}
-                          className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                          className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                         >
                           I've Saved It
                         </Button>
@@ -951,15 +951,15 @@ export default function WalletsPage() {
                     // Show create form
                     <>
                       <div className="flex items-center justify-between">
-                        <h3 className="text-2xl font-bold text-white">New Wallet</h3>
+                        <h3 className="text-2xl font-bold text-foreground">New Wallet</h3>
                         <button
                           onClick={() => {
                             setShowCreateForm(false)
                             resetCreateForm()
                           }}
-                          className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                          className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center transition-colors"
                         >
-                          <X className="w-5 h-5 text-white/60" />
+                          <X className="w-5 h-5 text-foreground/60" />
                         </button>
                       </div>
 
@@ -971,23 +971,23 @@ export default function WalletsPage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Wallet Label</label>
+                          <label className="text-sm font-medium text-foreground/60">Wallet Label</label>
                           <Input
                             value={createForm.label}
                             onChange={(e) => setCreateForm({ ...createForm, label: e.target.value })}
                             placeholder="e.g. Main Business Wallet"
-                            className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                            className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-white/60">Currency</label>
+                          <label className="text-sm font-medium text-foreground/60">Currency</label>
                           <select
                             value={createForm.currency}
                             onChange={(e) => setCreateForm({ ...createForm, currency: e.target.value })}
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-4 text-white"
+                            className="w-full h-14 bg-foreground/5 border border-border rounded-xl px-4 text-foreground"
                           >
                             {TOKENS.map((token) => (
-                              <option key={token.symbol} value={token.symbol} className="bg-black">
+                              <option key={token.symbol} value={token.symbol} className="bg-background">
                                 {token.name} ({token.symbol})
                               </option>
                             ))}
@@ -997,15 +997,15 @@ export default function WalletsPage() {
 
                       {/* Generation Mode */}
                       <div className="space-y-4">
-                        <label className="text-sm font-medium text-white/60">Wallet Source</label>
+                        <label className="text-sm font-medium text-foreground/60">Wallet Source</label>
                         <div className="flex gap-3">
                           <button
                             onClick={() => setCreateForm({ ...createForm, generateNew: true })}
                             className={cn(
                               "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                               createForm.generateNew
-                                ? "bg-white/10 border-white/20 text-white"
-                                : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                                ? "bg-foreground/10 border-border text-foreground"
+                                : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10"
                             )}
                           >
                             <Plus className="w-5 h-5" />
@@ -1016,8 +1016,8 @@ export default function WalletsPage() {
                             className={cn(
                               "flex-1 h-14 rounded-xl border transition-all flex items-center justify-center gap-2 font-medium",
                               !createForm.generateNew
-                                ? "bg-white/10 border-white/20 text-white"
-                                : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                                ? "bg-foreground/10 border-border text-foreground"
+                                : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10"
                             )}
                           >
                             <Key className="w-5 h-5" />
@@ -1030,33 +1030,33 @@ export default function WalletsPage() {
                       {!createForm.generateNew && (
                         <div className="space-y-4">
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Private Key (optional)</label>
+                            <label className="text-sm font-medium text-foreground/60">Private Key (optional)</label>
                             <Input
                               type="password"
                               value={createForm.importPrivateKey}
                               onChange={(e) => setCreateForm({ ...createForm, importPrivateKey: e.target.value })}
                               placeholder="0x..."
-                              className="h-14 bg-white/5 border-white/10 rounded-xl text-white font-mono"
+                              className="h-14 bg-foreground/5 border-border rounded-xl text-foreground font-mono"
                             />
                           </div>
-                          <div className="text-center text-white/40">or</div>
+                          <div className="text-center text-muted-foreground">or</div>
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Recovery Phrase (optional)</label>
+                            <label className="text-sm font-medium text-foreground/60">Recovery Phrase (optional)</label>
                             <Input
                               type="password"
                               value={createForm.importMnemonic}
                               onChange={(e) => setCreateForm({ ...createForm, importMnemonic: e.target.value })}
                               placeholder="word1 word2 word3..."
-                              className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                              className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                             />
                           </div>
                         </div>
                       )}
 
                       {/* Security Options */}
-                      <div className="space-y-4 pt-6 border-t border-white/10">
-                        <h4 className="text-lg font-semibold text-white">Security Options</h4>
-                        <p className="text-white/50 text-sm">Tap to select security layers for your wallet.</p>
+                      <div className="space-y-4 pt-6 border-t border-border">
+                        <h4 className="text-lg font-semibold text-foreground">Security Options</h4>
+                        <p className="text-muted-foreground text-sm">Tap to select security layers for your wallet.</p>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                           {/* PIN */}
@@ -1067,15 +1067,15 @@ export default function WalletsPage() {
                               "p-4 rounded-xl border transition-all text-left",
                               createForm.securityPin
                                 ? "bg-emerald-500/20 border-emerald-500/40 ring-2 ring-emerald-500/30"
-                                : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
                             )}
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Lock className={cn("w-5 h-5", createForm.securityPin ? "text-emerald-400" : "text-white/60")} />
+                              <Lock className={cn("w-5 h-5", createForm.securityPin ? "text-emerald-400" : "text-foreground/60")} />
                               {createForm.securityPin && <Check className="w-4 h-4 text-emerald-400 ml-auto" />}
                             </div>
-                            <p className={cn("font-medium", createForm.securityPin ? "text-white" : "text-white/80")}>PIN</p>
-                            <p className="text-xs text-white/40">4-12 digit code</p>
+                            <p className={cn("font-medium", createForm.securityPin ? "text-foreground" : "text-foreground/80")}>PIN</p>
+                            <p className="text-xs text-muted-foreground">4-12 digit code</p>
                           </button>
 
                           {/* Password */}
@@ -1086,15 +1086,15 @@ export default function WalletsPage() {
                               "p-4 rounded-xl border transition-all text-left",
                               createForm.securityPassword
                                 ? "bg-blue-500/20 border-blue-500/40 ring-2 ring-blue-500/30"
-                                : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
                             )}
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Key className={cn("w-5 h-5", createForm.securityPassword ? "text-blue-400" : "text-white/60")} />
+                              <Key className={cn("w-5 h-5", createForm.securityPassword ? "text-blue-400" : "text-foreground/60")} />
                               {createForm.securityPassword && <Check className="w-4 h-4 text-blue-400 ml-auto" />}
                             </div>
-                            <p className={cn("font-medium", createForm.securityPassword ? "text-white" : "text-white/80")}>Password</p>
-                            <p className="text-xs text-white/40">8+ characters</p>
+                            <p className={cn("font-medium", createForm.securityPassword ? "text-foreground" : "text-foreground/80")}>Password</p>
+                            <p className="text-xs text-muted-foreground">8+ characters</p>
                           </button>
 
                           {/* Biometric */}
@@ -1105,15 +1105,15 @@ export default function WalletsPage() {
                               "p-4 rounded-xl border transition-all text-left",
                               createForm.securityBiometric
                                 ? "bg-purple-500/20 border-purple-500/40 ring-2 ring-purple-500/30"
-                                : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
                             )}
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Fingerprint className={cn("w-5 h-5", createForm.securityBiometric ? "text-purple-400" : "text-white/60")} />
+                              <Fingerprint className={cn("w-5 h-5", createForm.securityBiometric ? "text-purple-400" : "text-foreground/60")} />
                               {createForm.securityBiometric && <Check className="w-4 h-4 text-purple-400 ml-auto" />}
                             </div>
-                            <p className={cn("font-medium", createForm.securityBiometric ? "text-white" : "text-white/80")}>Biometric</p>
-                            <p className="text-xs text-white/40">Face ID / Touch</p>
+                            <p className={cn("font-medium", createForm.securityBiometric ? "text-foreground" : "text-foreground/80")}>Biometric</p>
+                            <p className="text-xs text-muted-foreground">Face ID / Touch</p>
                           </button>
 
                           {/* Hardware Key */}
@@ -1124,15 +1124,15 @@ export default function WalletsPage() {
                               "p-4 rounded-xl border transition-all text-left",
                               createForm.securityHardwareKey
                                 ? "bg-amber-500/20 border-amber-500/40 ring-2 ring-amber-500/30"
-                                : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
                             )}
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <Shield className={cn("w-5 h-5", createForm.securityHardwareKey ? "text-amber-400" : "text-white/60")} />
+                              <Shield className={cn("w-5 h-5", createForm.securityHardwareKey ? "text-amber-400" : "text-foreground/60")} />
                               {createForm.securityHardwareKey && <Check className="w-4 h-4 text-amber-400 ml-auto" />}
                             </div>
-                            <p className={cn("font-medium", createForm.securityHardwareKey ? "text-white" : "text-white/80")}>Hardware</p>
-                            <p className="text-xs text-white/40">YubiKey / Key</p>
+                            <p className={cn("font-medium", createForm.securityHardwareKey ? "text-foreground" : "text-foreground/80")}>Hardware</p>
+                            <p className="text-xs text-muted-foreground">YubiKey / Key</p>
                           </button>
                         </div>
 
@@ -1145,12 +1145,12 @@ export default function WalletsPage() {
                               onChange={(e) => setCreateForm({ ...createForm, pin: e.target.value.replace(/\D/g, '').slice(0, 12) })}
                               placeholder="Enter 4-12 digit PIN"
                               maxLength={12}
-                              className="h-12 bg-white/5 border-white/10 rounded-xl text-white text-center text-xl tracking-[0.5em] font-mono pr-12"
+                              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground text-center text-xl tracking-[0.5em] font-mono pr-12"
                             />
                             <button
                               type="button"
                               onClick={() => setShowPin(!showPin)}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                             >
                               {showPin ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                             </button>
@@ -1165,12 +1165,12 @@ export default function WalletsPage() {
                               value={createForm.password}
                               onChange={(e) => setCreateForm({ ...createForm, password: e.target.value })}
                               placeholder="Enter password (8+ characters)"
-                              className="h-12 bg-white/5 border-white/10 rounded-xl text-white pr-12"
+                              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground pr-12"
                             />
                             <button
                               type="button"
                               onClick={() => setShowPassword(!showPassword)}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                             >
                               {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                             </button>
@@ -1183,7 +1183,7 @@ export default function WalletsPage() {
                         <Button
                           onClick={handleCreateWallet}
                           disabled={isCreating || !createForm.label}
-                          className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl font-semibold disabled:opacity-50"
+                          className="h-12 px-8 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold disabled:opacity-50"
                         >
                           {isCreating ? (
                             <RefreshCw className="w-5 h-5 animate-spin mr-2" />
@@ -1197,7 +1197,7 @@ export default function WalletsPage() {
                             setShowCreateForm(false)
                             resetCreateForm()
                           }}
-                          className="h-12 px-6 bg-white/5 hover:bg-white/10 rounded-xl"
+                          className="h-12 px-6 bg-foreground/5 hover:bg-foreground/10 rounded-xl"
                         >
                           Cancel
                         </Button>
@@ -1212,28 +1212,28 @@ export default function WalletsPage() {
 
         {/* Wallets List */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Your Wallets</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Your Wallets</h2>
           
           {isLoading ? (
             <div className="space-y-4">
               {[1, 2].map((i) => (
-                <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 animate-pulse">
-                  <div className="h-8 bg-white/10 rounded w-1/3 mb-4" />
-                  <div className="h-4 bg-white/10 rounded w-1/2" />
+                <div key={i} className="rounded-2xl border border-border bg-foreground/5 p-6 animate-pulse">
+                  <div className="h-8 bg-foreground/10 rounded w-1/3 mb-4" />
+                  <div className="h-4 bg-foreground/10 rounded w-1/2" />
                 </div>
               ))}
             </div>
           ) : wallets.length === 0 ? (
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                  <Wallet className="w-8 h-8 text-white/30" />
+                <div className="h-16 w-16 rounded-2xl bg-foreground/10 border border-border flex items-center justify-center mx-auto mb-4">
+                  <Wallet className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <p className="text-white/50 text-lg mb-6">No wallets yet</p>
+                <p className="text-muted-foreground text-lg mb-6">No wallets yet</p>
                 <Button
                   onClick={() => setShowCreateForm(true)}
-                  className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                  className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                 >
                   Create Your First Wallet
                 </Button>
@@ -1250,23 +1250,23 @@ export default function WalletsPage() {
                     key={wallet.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl"
+                    className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl"
                   >
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     
                     {/* Collapsed Header */}
                     <div
                       onClick={() => handleUnlockWallet(wallet)}
-                      className="relative z-10 p-6 cursor-pointer hover:bg-white/5 transition-colors"
+                      className="relative z-10 p-6 cursor-pointer hover:bg-foreground/5 transition-colors"
                     >
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex items-center gap-4">
-                          <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center">
-                            <Wallet className="w-6 h-6 text-white" />
+                          <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-border flex items-center justify-center">
+                            <Wallet className="w-6 h-6 text-foreground" />
                           </div>
                           <div>
                             <div className="flex items-center gap-3">
-                              <h3 className="text-xl font-bold text-white">{wallet.label}</h3>
+                              <h3 className="text-xl font-bold text-foreground">{wallet.label}</h3>
                               {(wallet.has_pin || wallet.has_password || wallet.biometric_enabled || wallet.hardware_key_enabled) && (
                                 <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 rounded-full">
                                   <Shield className="w-3 h-3 mr-1" />
@@ -1274,19 +1274,19 @@ export default function WalletsPage() {
                                 </Badge>
                               )}
                             </div>
-                            <p className="font-mono text-white/50 text-sm">{formatAddress(wallet.address)}</p>
+                            <p className="font-mono text-muted-foreground text-sm">{formatAddress(wallet.address)}</p>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-6">
                           <div className="text-right">
-                            <p className="text-sm text-white/50">Total Value</p>
-                            <p className="text-2xl font-bold text-white">${totalUSD}</p>
+                            <p className="text-sm text-muted-foreground">Total Value</p>
+                            <p className="text-2xl font-bold text-foreground">${totalUSD}</p>
                           </div>
                           {isExpanded ? (
-                            <ChevronUp className="w-5 h-5 text-white/40" />
+                            <ChevronUp className="w-5 h-5 text-muted-foreground" />
                           ) : (
-                            <ChevronDown className="w-5 h-5 text-white/40" />
+                            <ChevronDown className="w-5 h-5 text-muted-foreground" />
                           )}
                         </div>
                       </div>
@@ -1299,7 +1299,7 @@ export default function WalletsPage() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="relative z-10 border-t border-white/10"
+                          className="relative z-10 border-t border-border"
                         >
                           <div className="p-6 space-y-6">
                             {/* Quick Actions */}
@@ -1309,7 +1309,7 @@ export default function WalletsPage() {
                                   e.stopPropagation()
                                   copyToClipboard(wallet.address)
                                 }}
-                                className="h-11 bg-white text-black hover:bg-white/90 rounded-xl"
+                                className="h-11 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl"
                               >
                                 {copiedText === wallet.address ? (
                                   <><Check className="w-4 h-4 mr-2" /> Copied</>
@@ -1323,7 +1323,7 @@ export default function WalletsPage() {
                                   setSelectedWallet(wallet)
                                   setShowQRModal(true)
                                 }}
-                                className="h-11 bg-white/10 hover:bg-white/20 rounded-xl"
+                                className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl"
                               >
                                 <QrCode className="w-4 h-4 mr-2" />
                                 QR Code
@@ -1334,7 +1334,7 @@ export default function WalletsPage() {
                                   setSelectedWallet(wallet)
                                   setShowSendModal(true)
                                 }}
-                                className="h-11 bg-white/10 hover:bg-white/20 rounded-xl"
+                                className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl"
                               >
                                 <Send className="w-4 h-4 mr-2" />
                                 Send
@@ -1358,7 +1358,7 @@ export default function WalletsPage() {
                                   handleSync(wallet.id, wallet.address)
                                 }}
                                 disabled={isSyncing[wallet.id]}
-                                className="h-11 bg-white/10 hover:bg-white/20 rounded-xl"
+                                className="h-11 bg-foreground/10 hover:bg-foreground/20 rounded-xl"
                               >
                                 <RefreshCw className={cn("w-4 h-4 mr-2", isSyncing[wallet.id] && "animate-spin")} />
                                 {isSyncing[wallet.id] ? 'Syncing...' : 'Sync'}
@@ -1368,31 +1368,31 @@ export default function WalletsPage() {
                             {/* Balances */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                               {wallet.balance_eth && parseFloat(wallet.balance_eth) > 0 && (
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                                  <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">ETH</p>
-                                  <p className="text-2xl font-bold text-white">
+                                <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">ETH</p>
+                                  <p className="text-2xl font-bold text-foreground">
                                     ${calculateUSDValue(wallet.balance_eth, 'ETH')}
                                   </p>
-                                  <p className="text-sm text-white/50">
+                                  <p className="text-sm text-muted-foreground">
                                     {parseFloat(wallet.balance_eth).toFixed(6)} ETH
                                   </p>
                                 </div>
                               )}
                               {wallet.balance_usdc && parseFloat(wallet.balance_usdc) > 0 && (
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                                  <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">USDC</p>
-                                  <p className="text-2xl font-bold text-white">
+                                <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">USDC</p>
+                                  <p className="text-2xl font-bold text-foreground">
                                     ${parseFloat(wallet.balance_usdc).toFixed(2)}
                                   </p>
-                                  <p className="text-sm text-white/50">
+                                  <p className="text-sm text-muted-foreground">
                                     {parseFloat(wallet.balance_usdc).toFixed(2)} USDC
                                   </p>
                                 </div>
                               )}
                               {(!wallet.balance_eth || parseFloat(wallet.balance_eth) === 0) &&
                                (!wallet.balance_usdc || parseFloat(wallet.balance_usdc) === 0) && (
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 col-span-full">
-                                  <p className="text-white/40 text-center">Click "Sync" to fetch balances</p>
+                                <div className="p-4 rounded-xl bg-foreground/5 border border-border col-span-full">
+                                  <p className="text-muted-foreground text-center">Click "Sync" to fetch balances</p>
                                 </div>
                               )}
                             </div>
@@ -1439,7 +1439,7 @@ export default function WalletsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => {
               setShowSendModal(false)
               setSelectedWallet(null)
@@ -1452,12 +1452,12 @@ export default function WalletsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl w-full max-w-md"
+              className="relative overflow-hidden rounded-3xl border border-border bg-background/90 backdrop-blur-xl w-full max-w-md"
             >
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-white">Send {sendForm.currency}</h2>
+                <div className="p-6 border-b border-border flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-foreground">Send {sendForm.currency}</h2>
                   <button
                     onClick={() => {
                       setShowSendModal(false)
@@ -1465,9 +1465,9 @@ export default function WalletsPage() {
                       setSendForm({ to: '', amount: '', currency: 'ETH', pin: '', password: '' })
                       setError(null)
                     }}
-                    className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center"
+                    className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5 text-white/60" />
+                    <X className="w-5 h-5 text-foreground/60" />
                   </button>
                 </div>
 
@@ -1479,43 +1479,43 @@ export default function WalletsPage() {
                   )}
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">From</label>
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <p className="font-semibold text-white">{selectedWallet.label}</p>
-                      <p className="font-mono text-sm text-white/50">{formatAddress(selectedWallet.address)}</p>
+                    <label className="text-sm font-medium text-foreground/60">From</label>
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                      <p className="font-semibold text-foreground">{selectedWallet.label}</p>
+                      <p className="font-mono text-sm text-muted-foreground">{formatAddress(selectedWallet.address)}</p>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">To Address</label>
+                    <label className="text-sm font-medium text-foreground/60">To Address</label>
                     <Input
                       value={sendForm.to}
                       onChange={(e) => setSendForm({ ...sendForm, to: e.target.value })}
                       placeholder="0x..."
-                      className="h-14 bg-white/5 border-white/10 rounded-xl text-white font-mono"
+                      className="h-14 bg-foreground/5 border-border rounded-xl text-foreground font-mono"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Amount</label>
+                      <label className="text-sm font-medium text-foreground/60">Amount</label>
                       <Input
                         type="number"
                         value={sendForm.amount}
                         onChange={(e) => setSendForm({ ...sendForm, amount: e.target.value })}
                         placeholder="0.0"
-                        className="h-14 bg-white/5 border-white/10 rounded-xl text-white text-lg"
+                        className="h-14 bg-foreground/5 border-border rounded-xl text-foreground text-lg"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Currency</label>
+                      <label className="text-sm font-medium text-foreground/60">Currency</label>
                       <select
                         value={sendForm.currency}
                         onChange={(e) => setSendForm({ ...sendForm, currency: e.target.value })}
-                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-4 text-white"
+                        className="w-full h-14 bg-foreground/5 border border-border rounded-xl px-4 text-foreground"
                       >
                         {['ETH', 'USDC', 'USDT', 'DAI'].map((token) => (
-                          <option key={token} value={token} className="bg-black">
+                          <option key={token} value={token} className="bg-background">
                             {token}
                           </option>
                         ))}
@@ -1525,27 +1525,27 @@ export default function WalletsPage() {
 
                   {selectedWallet.has_pin && (
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Enter PIN</label>
+                      <label className="text-sm font-medium text-foreground/60">Enter PIN</label>
                       <Input
                         type="password"
                         value={sendForm.pin}
                         onChange={(e) => setSendForm({ ...sendForm, pin: e.target.value.replace(/\D/g, '').slice(0, 12) })}
                         placeholder="••••"
                         maxLength={12}
-                        className="h-14 bg-white/5 border-white/10 rounded-xl text-white text-center text-2xl tracking-[0.5em]"
+                        className="h-14 bg-foreground/5 border-border rounded-xl text-foreground text-center text-2xl tracking-[0.5em]"
                       />
                     </div>
                   )}
 
                   {selectedWallet.has_password && (
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-white/60">Enter Password</label>
+                      <label className="text-sm font-medium text-foreground/60">Enter Password</label>
                       <Input
                         type="password"
                         value={sendForm.password}
                         onChange={(e) => setSendForm({ ...sendForm, password: e.target.value })}
                         placeholder="••••••••"
-                        className="h-14 bg-white/5 border-white/10 rounded-xl text-white"
+                        className="h-14 bg-foreground/5 border-border rounded-xl text-foreground"
                       />
                     </div>
                   )}
@@ -1577,7 +1577,7 @@ export default function WalletsPage() {
                   <Button
                     onClick={handleSend}
                     disabled={isSending || !sendForm.to || !sendForm.amount}
-                    className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-xl font-semibold text-lg disabled:opacity-50"
+                    className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold text-lg disabled:opacity-50"
                   >
                     {isSending ? (
                       <RefreshCw className="w-5 h-5 animate-spin mr-2" />
@@ -1600,7 +1600,7 @@ export default function WalletsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => {
               setUnlockingWallet(null)
               setUnlockPin('')
@@ -1613,16 +1613,16 @@ export default function WalletsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl w-full max-w-md"
+              className="relative overflow-hidden rounded-3xl border border-border bg-background/90 backdrop-blur-xl w-full max-w-md"
             >
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
+                <div className="p-6 border-b border-border flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <Lock className="h-5 w-5 text-emerald-400" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Unlock Wallet</h2>
+                    <h2 className="text-xl font-bold text-foreground">Unlock Wallet</h2>
                   </div>
                   <button
                     onClick={() => {
@@ -1631,9 +1631,9 @@ export default function WalletsPage() {
                       setUnlockPassword('')
                       setError(null)
                     }}
-                    className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center"
+                    className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5 text-white/60" />
+                    <X className="w-5 h-5 text-foreground/60" />
                   </button>
                 </div>
 
@@ -1652,14 +1652,14 @@ export default function WalletsPage() {
                     return (
                       <>
                         {/* Wallet Info */}
-                        <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                          <p className="font-semibold text-white">{wallet.label}</p>
-                          <p className="font-mono text-sm text-white/50">{formatAddress(wallet.address)}</p>
+                        <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                          <p className="font-semibold text-foreground">{wallet.label}</p>
+                          <p className="font-mono text-sm text-muted-foreground">{formatAddress(wallet.address)}</p>
                         </div>
 
                         {/* Required Security Methods */}
                         <div className="space-y-3">
-                          <p className="text-sm font-medium text-white/60">Security verification required:</p>
+                          <p className="text-sm font-medium text-foreground/60">Security verification required:</p>
                           <div className="flex flex-wrap gap-2">
                             {wallet.hardware_key_enabled && (
                               <div className="px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center gap-2">
@@ -1691,7 +1691,7 @@ export default function WalletsPage() {
                         {/* PIN Input */}
                         {wallet.has_pin && (
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Enter PIN</label>
+                            <label className="text-sm font-medium text-foreground/60">Enter PIN</label>
                             <div className="relative">
                               <Input
                                 type={showUnlockPin ? "text" : "password"}
@@ -1699,12 +1699,12 @@ export default function WalletsPage() {
                                 onChange={(e) => setUnlockPin(e.target.value.replace(/\D/g, '').slice(0, 12))}
                                 placeholder="••••"
                                 maxLength={12}
-                                className="h-14 bg-white/5 border-white/10 rounded-xl text-white text-center text-2xl tracking-[0.5em] font-mono pr-12"
+                                className="h-14 bg-foreground/5 border-border rounded-xl text-foreground text-center text-2xl tracking-[0.5em] font-mono pr-12"
                               />
                               <button
                                 type="button"
                                 onClick={() => setShowUnlockPin(!showUnlockPin)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                               >
                                 {showUnlockPin ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                               </button>
@@ -1715,19 +1715,19 @@ export default function WalletsPage() {
                         {/* Password Input */}
                         {wallet.has_password && (
                           <div className="space-y-2">
-                            <label className="text-sm font-medium text-white/60">Enter Password</label>
+                            <label className="text-sm font-medium text-foreground/60">Enter Password</label>
                             <div className="relative">
                               <Input
                                 type={showUnlockPassword ? "text" : "password"}
                                 value={unlockPassword}
                                 onChange={(e) => setUnlockPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="h-14 bg-white/5 border-white/10 rounded-xl text-white pr-12"
+                                className="h-14 bg-foreground/5 border-border rounded-xl text-foreground pr-12"
                               />
                               <button
                                 type="button"
                                 onClick={() => setShowUnlockPassword(!showUnlockPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                               >
                                 {showUnlockPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                               </button>
@@ -1737,8 +1737,8 @@ export default function WalletsPage() {
 
                         {/* Hardware/Biometric Notice */}
                         {(wallet.hardware_key_enabled || wallet.biometric_enabled) && (
-                          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                            <p className="text-white/60 text-sm">
+                          <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                            <p className="text-foreground/60 text-sm">
                               {wallet.hardware_key_enabled && wallet.biometric_enabled
                                 ? "You'll be prompted for your hardware key first, then biometric."
                                 : wallet.hardware_key_enabled
@@ -1753,7 +1753,7 @@ export default function WalletsPage() {
 
                   <Button
                     onClick={verifyUnlock}
-                    className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-xl font-semibold text-lg"
+                    className="w-full h-14 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold text-lg"
                   >
                     <Lock className="w-5 h-5 mr-2" />
                     Unlock Wallet
@@ -1772,7 +1772,7 @@ export default function WalletsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => {
               setShowQRModal(false)
               setSelectedWallet(null)
@@ -1783,20 +1783,20 @@ export default function WalletsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl w-full max-w-md"
+              className="relative overflow-hidden rounded-3xl border border-border bg-background/90 backdrop-blur-xl w-full max-w-md"
             >
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-white">Receive</h2>
+                <div className="p-6 border-b border-border flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-foreground">Receive</h2>
                   <button
                     onClick={() => {
                       setShowQRModal(false)
                       setSelectedWallet(null)
                     }}
-                    className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center"
+                    className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5 text-white/60" />
+                    <X className="w-5 h-5 text-foreground/60" />
                   </button>
                 </div>
 
@@ -1807,14 +1807,14 @@ export default function WalletsPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                    <p className="text-sm text-white/50 mb-2">Wallet Address</p>
-                    <p className="font-mono text-white break-all">{selectedWallet.address}</p>
+                  <div className="p-4 rounded-xl bg-foreground/5 border border-border">
+                    <p className="text-sm text-muted-foreground mb-2">Wallet Address</p>
+                    <p className="font-mono text-foreground break-all">{selectedWallet.address}</p>
                   </div>
 
                   <Button
                     onClick={() => copyToClipboard(selectedWallet.address)}
-                    className="w-full h-12 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                    className="w-full h-12 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                   >
                     {copiedText === selectedWallet.address ? (
                       <><Check className="w-4 h-4 mr-2" /> Copied!</>
@@ -1836,7 +1836,7 @@ export default function WalletsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => {
               setShowSwapModal(false)
               setSelectedWallet(null)
@@ -1849,16 +1849,16 @@ export default function WalletsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl w-full max-w-md"
+              className="relative overflow-hidden rounded-3xl border border-border bg-background/90 backdrop-blur-xl w-full max-w-md"
             >
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
+                <div className="p-6 border-b border-border flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                       <ArrowLeftRight className="h-5 w-5 text-purple-400" />
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Swap Tokens</h2>
+                    <h2 className="text-2xl font-bold text-foreground">Swap Tokens</h2>
                   </div>
                   <button
                     onClick={() => {
@@ -1867,9 +1867,9 @@ export default function WalletsPage() {
                       setSwapQuote(null)
                       setError(null)
                     }}
-                    className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center"
+                    className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5 text-white/60" />
+                    <X className="w-5 h-5 text-foreground/60" />
                   </button>
                 </div>
 
@@ -1882,7 +1882,7 @@ export default function WalletsPage() {
 
                   {/* From Token */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">From</label>
+                    <label className="text-sm font-medium text-foreground/60">From</label>
                     <div className="flex gap-3">
                       <select
                         value={swapForm.fromToken}
@@ -1890,13 +1890,13 @@ export default function WalletsPage() {
                           setSwapForm({ ...swapForm, fromToken: e.target.value })
                           setSwapQuote(null)
                         }}
-                        className="w-28 h-14 bg-white/5 border border-white/10 rounded-xl px-4 text-white"
+                        className="w-28 h-14 bg-foreground/5 border border-border rounded-xl px-4 text-foreground"
                       >
-                        <option value="ETH" className="bg-black">ETH</option>
-                        <option value="USDC" className="bg-black">USDC</option>
-                        <option value="USDT" className="bg-black">USDT</option>
-                        <option value="DAI" className="bg-black">DAI</option>
-                        <option value="WETH" className="bg-black">WETH</option>
+                        <option value="ETH" className="bg-background">ETH</option>
+                        <option value="USDC" className="bg-background">USDC</option>
+                        <option value="USDT" className="bg-background">USDT</option>
+                        <option value="DAI" className="bg-background">DAI</option>
+                        <option value="WETH" className="bg-background">WETH</option>
                       </select>
                       <Input
                         type="number"
@@ -1906,11 +1906,11 @@ export default function WalletsPage() {
                           setSwapQuote(null)
                         }}
                         placeholder="0.0"
-                        className="flex-1 h-14 bg-white/5 border-white/10 rounded-xl text-white text-lg"
+                        className="flex-1 h-14 bg-foreground/5 border-border rounded-xl text-foreground text-lg"
                       />
                     </div>
                     {selectedWallet && (
-                      <p className="text-xs text-white/40">
+                      <p className="text-xs text-muted-foreground">
                         Balance: {swapForm.fromToken === 'ETH' 
                           ? `${parseFloat(selectedWallet.balance_eth || '0').toFixed(6)} ETH`
                           : `${parseFloat(selectedWallet.balance_usdc || '0').toFixed(2)} USDC`}
@@ -1929,15 +1929,15 @@ export default function WalletsPage() {
                         })
                         setSwapQuote(null)
                       }}
-                      className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                      className="h-10 w-10 rounded-full bg-foreground/10 hover:bg-foreground/20 flex items-center justify-center transition-colors"
                     >
-                      <ArrowLeftRight className="w-5 h-5 text-white/60 rotate-90" />
+                      <ArrowLeftRight className="w-5 h-5 text-foreground/60 rotate-90" />
                     </button>
                   </div>
 
                   {/* To Token */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">To</label>
+                    <label className="text-sm font-medium text-foreground/60">To</label>
                     <div className="flex gap-3">
                       <select
                         value={swapForm.toToken}
@@ -1945,21 +1945,21 @@ export default function WalletsPage() {
                           setSwapForm({ ...swapForm, toToken: e.target.value })
                           setSwapQuote(null)
                         }}
-                        className="w-28 h-14 bg-white/5 border border-white/10 rounded-xl px-4 text-white"
+                        className="w-28 h-14 bg-foreground/5 border border-border rounded-xl px-4 text-foreground"
                       >
-                        <option value="ETH" className="bg-black">ETH</option>
-                        <option value="USDC" className="bg-black">USDC</option>
-                        <option value="USDT" className="bg-black">USDT</option>
-                        <option value="DAI" className="bg-black">DAI</option>
-                        <option value="WETH" className="bg-black">WETH</option>
+                        <option value="ETH" className="bg-background">ETH</option>
+                        <option value="USDC" className="bg-background">USDC</option>
+                        <option value="USDT" className="bg-background">USDT</option>
+                        <option value="DAI" className="bg-background">DAI</option>
+                        <option value="WETH" className="bg-background">WETH</option>
                       </select>
-                      <div className="flex-1 h-14 bg-white/5 border border-white/10 rounded-xl px-4 flex items-center">
+                      <div className="flex-1 h-14 bg-foreground/5 border border-border rounded-xl px-4 flex items-center">
                         {isGettingQuote ? (
-                          <Loader2 className="w-5 h-5 text-white/40 animate-spin" />
+                          <Loader2 className="w-5 h-5 text-muted-foreground animate-spin" />
                         ) : swapQuote ? (
-                          <span className="text-lg text-white">{parseFloat(swapQuote.amountOut).toFixed(6)}</span>
+                          <span className="text-lg text-foreground">{parseFloat(swapQuote.amountOut).toFixed(6)}</span>
                         ) : (
-                          <span className="text-white/40">-</span>
+                          <span className="text-muted-foreground">-</span>
                         )}
                       </div>
                     </div>
@@ -1967,7 +1967,7 @@ export default function WalletsPage() {
 
                   {/* Slippage */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">Slippage Tolerance</label>
+                    <label className="text-sm font-medium text-foreground/60">Slippage Tolerance</label>
                     <div className="flex gap-2">
                       {['0.1', '0.5', '1.0'].map((val) => (
                         <button
@@ -1977,7 +1977,7 @@ export default function WalletsPage() {
                             "flex-1 h-10 rounded-xl border transition-all text-sm font-medium",
                             swapForm.slippage === val
                               ? "bg-purple-500/20 border-purple-500/40 text-purple-400"
-                              : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                              : "bg-foreground/5 border-border text-foreground/60 hover:bg-foreground/10"
                           )}
                         >
                           {val}%
@@ -1988,35 +1988,35 @@ export default function WalletsPage() {
                         value={swapForm.slippage}
                         onChange={(e) => setSwapForm({ ...swapForm, slippage: e.target.value })}
                         placeholder="Custom"
-                        className="w-20 h-10 bg-white/5 border-white/10 rounded-xl text-white text-center text-sm"
+                        className="w-20 h-10 bg-foreground/5 border-border rounded-xl text-foreground text-center text-sm"
                       />
                     </div>
                   </div>
 
                   {/* Quote Details */}
                   {swapQuote && (
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
+                    <div className="p-4 rounded-xl bg-foreground/5 border border-border space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-white/50">Rate</span>
-                        <span className="text-white">
+                        <span className="text-muted-foreground">Rate</span>
+                        <span className="text-foreground">
                           1 {swapForm.fromToken} ≈ {(parseFloat(swapQuote.amountOut) / parseFloat(swapForm.amount)).toFixed(4)} {swapForm.toToken}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-white/50">Price Impact</span>
+                        <span className="text-muted-foreground">Price Impact</span>
                         <span className={cn(
-                          parseFloat(swapQuote.priceImpact) > 5 ? "text-red-400" : "text-white"
+                          parseFloat(swapQuote.priceImpact) > 5 ? "text-red-400" : "text-foreground"
                         )}>
                           {swapQuote.priceImpact}%
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-white/50">Est. Gas</span>
-                        <span className="text-white">{swapQuote.gasEstimate} ETH</span>
+                        <span className="text-muted-foreground">Est. Gas</span>
+                        <span className="text-foreground">{swapQuote.gasEstimate} ETH</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-white/50">Route</span>
-                        <span className="text-white">{swapQuote.route}</span>
+                        <span className="text-muted-foreground">Route</span>
+                        <span className="text-foreground">{swapQuote.route}</span>
                       </div>
                     </div>
                   )}
@@ -2037,7 +2037,7 @@ export default function WalletsPage() {
                     <Button
                       onClick={getSwapQuote}
                       disabled={isGettingQuote || !swapForm.amount || parseFloat(swapForm.amount) <= 0 || swapForm.fromToken === swapForm.toToken}
-                      className="flex-1 h-14 bg-white/10 hover:bg-white/20 rounded-xl font-semibold disabled:opacity-50"
+                      className="flex-1 h-14 bg-foreground/10 hover:bg-foreground/20 rounded-xl font-semibold disabled:opacity-50"
                     >
                       {isGettingQuote ? (
                         <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -2073,7 +2073,7 @@ export default function WalletsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={resetPayRepModal}
           >
             <motion.div
@@ -2081,23 +2081,23 @@ export default function WalletsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/90 backdrop-blur-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              className="relative overflow-hidden rounded-3xl border border-border bg-background/90 backdrop-blur-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
             >
               <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
               <div className="relative z-10">
                 {/* Header */}
-                <div className="sticky top-0 bg-black/80 backdrop-blur-xl p-6 border-b border-white/10 flex items-center justify-between z-10">
+                <div className="sticky top-0 bg-background/80 backdrop-blur-xl p-6 border-b border-border flex items-center justify-between z-10">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                       <UserCheck className="h-5 w-5 text-emerald-400" />
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Pay Rep Commission</h2>
+                    <h2 className="text-2xl font-bold text-foreground">Pay Rep Commission</h2>
                   </div>
                   <button
                     onClick={resetPayRepModal}
-                    className="h-10 w-10 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center"
+                    className="h-10 w-10 rounded-xl bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center"
                   >
-                    <X className="w-5 h-5 text-white/60" />
+                    <X className="w-5 h-5 text-foreground/60" />
                   </button>
                 </div>
 
@@ -2113,12 +2113,12 @@ export default function WalletsPage() {
                   {payRepStep === 'search' && (
                     <div className="space-y-6">
                       <div className="relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/40" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input
                           value={repSearchQuery}
                           onChange={(e) => setRepSearchQuery(e.target.value)}
                           placeholder="Search rep by name or email..."
-                          className="h-14 pl-12 bg-white/5 border-white/10 rounded-xl text-white"
+                          className="h-14 pl-12 bg-foreground/5 border-border rounded-xl text-foreground"
                         />
                       </div>
 
@@ -2131,27 +2131,27 @@ export default function WalletsPage() {
                             className={cn(
                               "w-full p-4 rounded-xl text-left transition-all border",
                               rep.balance_owed > 0
-                                ? "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
-                                : "bg-white/[0.02] border-white/5 opacity-50 cursor-not-allowed"
+                                ? "bg-foreground/5 border-border hover:bg-foreground/10 hover:border-border"
+                                : "bg-foreground/[0.03] border-border opacity-50 cursor-not-allowed"
                             )}
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4">
-                                <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center">
-                                  <Users className="h-6 w-6 text-white/60" />
+                                <div className="h-12 w-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+                                  <Users className="h-6 w-6 text-foreground/60" />
                                 </div>
                                 <div>
-                                  <p className="font-semibold text-white">
+                                  <p className="font-semibold text-foreground">
                                     {rep.first_name} {rep.last_name}
                                   </p>
-                                  <p className="text-sm text-white/50">{rep.email}</p>
+                                  <p className="text-sm text-muted-foreground">{rep.email}</p>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <p className="text-sm text-white/50">Balance Owed</p>
+                                <p className="text-sm text-muted-foreground">Balance Owed</p>
                                 <p className={cn(
                                   "text-xl font-bold",
-                                  rep.balance_owed > 0 ? "text-emerald-400" : "text-white/30"
+                                  rep.balance_owed > 0 ? "text-emerald-400" : "text-muted-foreground"
                                 )}>
                                   ${rep.balance_owed.toFixed(2)}
                                 </p>
@@ -2163,7 +2163,7 @@ export default function WalletsPage() {
                           </button>
                         ))}
                         {filteredReps.length === 0 && (
-                          <p className="text-center text-white/40 py-8">No reps found</p>
+                          <p className="text-center text-muted-foreground py-8">No reps found</p>
                         )}
                       </div>
                     </div>
@@ -2173,18 +2173,18 @@ export default function WalletsPage() {
                   {payRepStep === 'details' && selectedRep && (
                     <div className="space-y-6">
                       {/* Rep Info */}
-                      <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                      <div className="p-4 rounded-xl bg-foreground/5 border border-border">
                         <div className="flex items-center gap-4">
                           <div className="h-14 w-14 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                             <Users className="h-7 w-7 text-emerald-400" />
                           </div>
                           <div>
-                            <p className="text-xl font-bold text-white">
+                            <p className="text-xl font-bold text-foreground">
                               {selectedRep.first_name} {selectedRep.last_name}
                             </p>
-                            <p className="text-white/50">{selectedRep.email}</p>
+                            <p className="text-muted-foreground">{selectedRep.email}</p>
                             {selectedRep.wallet_address && (
-                              <p className="text-xs font-mono text-white/40 mt-1">
+                              <p className="text-xs font-mono text-muted-foreground mt-1">
                                 {selectedRep.wallet_address.slice(0, 10)}...{selectedRep.wallet_address.slice(-8)}
                               </p>
                             )}
@@ -2194,13 +2194,13 @@ export default function WalletsPage() {
 
                       {/* Stats */}
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                          <p className="text-sm text-white/50">Total Earned</p>
-                          <p className="text-xl font-bold text-white">${selectedRep.total_earned.toFixed(2)}</p>
+                        <div className="p-4 rounded-xl bg-foreground/5 border border-border text-center">
+                          <p className="text-sm text-muted-foreground">Total Earned</p>
+                          <p className="text-xl font-bold text-foreground">${selectedRep.total_earned.toFixed(2)}</p>
                         </div>
-                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-                          <p className="text-sm text-white/50">Already Paid</p>
-                          <p className="text-xl font-bold text-white">${selectedRep.total_paid.toFixed(2)}</p>
+                        <div className="p-4 rounded-xl bg-foreground/5 border border-border text-center">
+                          <p className="text-sm text-muted-foreground">Already Paid</p>
+                          <p className="text-xl font-bold text-foreground">${selectedRep.total_paid.toFixed(2)}</p>
                         </div>
                         <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center">
                           <p className="text-sm text-emerald-400">Balance Owed</p>
@@ -2211,7 +2211,7 @@ export default function WalletsPage() {
                       {/* Commissions List */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <p className="font-semibold text-white">Select Commissions to Pay</p>
+                          <p className="font-semibold text-foreground">Select Commissions to Pay</p>
                           <button
                             onClick={() => {
                               if (selectedCommissions.length === repCommissions.length) {
@@ -2220,7 +2220,7 @@ export default function WalletsPage() {
                                 setSelectedCommissions(repCommissions.map(c => c.id))
                               }
                             }}
-                            className="text-sm text-white/50 hover:text-white"
+                            className="text-sm text-muted-foreground hover:text-foreground"
                           >
                             {selectedCommissions.length === repCommissions.length ? 'Deselect All' : 'Select All'}
                           </button>
@@ -2228,10 +2228,10 @@ export default function WalletsPage() {
 
                         {payRepLoading ? (
                           <div className="flex justify-center py-8">
-                            <RefreshCw className="h-6 w-6 animate-spin text-white/40" />
+                            <RefreshCw className="h-6 w-6 animate-spin text-muted-foreground" />
                           </div>
                         ) : repCommissions.length === 0 ? (
-                          <p className="text-center text-white/40 py-8">No approved commissions to pay</p>
+                          <p className="text-center text-muted-foreground py-8">No approved commissions to pay</p>
                         ) : (
                           <div className="space-y-2 max-h-48 overflow-y-auto">
                             {repCommissions.map((commission) => (
@@ -2248,7 +2248,7 @@ export default function WalletsPage() {
                                   "w-full p-3 rounded-xl text-left transition-all border",
                                   selectedCommissions.includes(commission.id)
                                     ? "bg-emerald-500/10 border-emerald-500/30"
-                                    : "bg-white/5 border-white/10"
+                                    : "bg-foreground/5 border-border"
                                 )}
                               >
                                 <div className="flex items-center justify-between">
@@ -2257,17 +2257,17 @@ export default function WalletsPage() {
                                       "h-5 w-5 rounded border-2 flex items-center justify-center",
                                       selectedCommissions.includes(commission.id)
                                         ? "bg-emerald-500 border-emerald-500"
-                                        : "border-white/30"
+                                        : "border-border"
                                     )}>
                                       {selectedCommissions.includes(commission.id) && (
                                         <Check className="h-3 w-3 text-black" />
                                       )}
                                     </div>
                                     <div>
-                                      <p className="text-sm text-white">
+                                      <p className="text-sm text-foreground">
                                         Order #{commission.order?.id?.slice(0, 8) || 'N/A'}
                                       </p>
-                                      <p className="text-xs text-white/50">
+                                      <p className="text-xs text-muted-foreground">
                                         {commission.commission_rate}% of ${commission.order_total?.toFixed(2) || '0'}
                                       </p>
                                     </div>
@@ -2283,10 +2283,10 @@ export default function WalletsPage() {
                       </div>
 
                       {/* Payment Total */}
-                      <div className="p-4 rounded-xl bg-white/10 border border-white/20">
+                      <div className="p-4 rounded-xl bg-foreground/10 border border-border">
                         <div className="flex items-center justify-between">
-                          <p className="text-white/60">Payment Total</p>
-                          <p className="text-3xl font-bold text-white">
+                          <p className="text-foreground/60">Payment Total</p>
+                          <p className="text-3xl font-bold text-foreground">
                             ${repCommissions
                               .filter(c => selectedCommissions.includes(c.id))
                               .reduce((sum, c) => sum + Number(c.commission_amount || 0), 0)
@@ -2297,7 +2297,7 @@ export default function WalletsPage() {
 
                       {/* Notification Method */}
                       <div className="space-y-3">
-                        <p className="text-sm font-medium text-white/60">Send Payment Notification Via</p>
+                        <p className="text-sm font-medium text-foreground/60">Send Payment Notification Via</p>
                         <div className="flex gap-3">
                           {(['sms', 'email', 'both'] as const).map((method) => (
                             <button
@@ -2306,8 +2306,8 @@ export default function WalletsPage() {
                               className={cn(
                                 "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2 capitalize",
                                 notificationMethod === method
-                                  ? "bg-white/10 border-white/20 text-white"
-                                  : "bg-white/5 border-white/10 text-white/60"
+                                  ? "bg-foreground/10 border-border text-foreground"
+                                  : "bg-foreground/5 border-border text-foreground/60"
                               )}
                             >
                               {method === 'sms' && <MessageSquare className="h-4 w-4" />}
@@ -2323,7 +2323,7 @@ export default function WalletsPage() {
                       <div className="flex gap-3">
                         <Button
                           onClick={() => setPayRepStep('search')}
-                          className="h-12 px-6 bg-white/5 hover:bg-white/10 rounded-xl"
+                          className="h-12 px-6 bg-foreground/5 hover:bg-foreground/10 rounded-xl"
                         >
                           Back
                         </Button>
@@ -2352,8 +2352,8 @@ export default function WalletsPage() {
                         <RefreshCw className="h-8 w-8 text-emerald-400 animate-spin" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-white">Processing Payment</h3>
-                        <p className="text-white/50 mt-2">Sending transaction to the blockchain...</p>
+                        <h3 className="text-2xl font-bold text-foreground">Processing Payment</h3>
+                        <p className="text-muted-foreground mt-2">Sending transaction to the blockchain...</p>
                       </div>
                     </div>
                   )}
@@ -2365,48 +2365,48 @@ export default function WalletsPage() {
                         <Check className="h-8 w-8 text-emerald-400" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-white">Payment Sent!</h3>
-                        <p className="text-white/50 mt-2">
+                        <h3 className="text-2xl font-bold text-foreground">Payment Sent!</h3>
+                        <p className="text-muted-foreground mt-2">
                           Commission has been sent to {selectedRep?.first_name} {selectedRep?.last_name}
                         </p>
                       </div>
 
                       {paymentResult.transactionHash && (
-                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-left">
-                          <p className="text-sm text-white/50 mb-2">Transaction Hash</p>
+                        <div className="p-4 rounded-xl bg-foreground/5 border border-border text-left">
+                          <p className="text-sm text-muted-foreground mb-2">Transaction Hash</p>
                           <div className="flex items-center gap-2">
-                            <code className="flex-1 text-sm font-mono text-white break-all">
+                            <code className="flex-1 text-sm font-mono text-foreground break-all">
                               {paymentResult.transactionHash}
                             </code>
                             <button
                               onClick={() => copyToClipboard(paymentResult.transactionHash || '')}
-                              className="p-2 rounded-lg hover:bg-white/10"
+                              className="p-2 rounded-lg hover:bg-foreground/10"
                             >
                               {copiedText === paymentResult.transactionHash ? (
                                 <Check className="h-4 w-4 text-emerald-400" />
                               ) : (
-                                <Copy className="h-4 w-4 text-white/40" />
+                                <Copy className="h-4 w-4 text-muted-foreground" />
                               )}
                             </button>
                             <a
                               href={`https://etherscan.io/tx/${paymentResult.transactionHash}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-2 rounded-lg hover:bg-white/10"
+                              className="p-2 rounded-lg hover:bg-foreground/10"
                             >
-                              <ExternalLink className="h-4 w-4 text-white/40" />
+                              <ExternalLink className="h-4 w-4 text-muted-foreground" />
                             </a>
                           </div>
                         </div>
                       )}
 
-                      <p className="text-sm text-white/40">
+                      <p className="text-sm text-muted-foreground">
                         A payment report link has been sent to the rep via {notificationMethod}.
                       </p>
 
                       <Button
                         onClick={resetPayRepModal}
-                        className="h-12 px-8 bg-white text-black hover:bg-white/90 rounded-xl font-semibold"
+                        className="h-12 px-8 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-semibold"
                       >
                         Done
                       </Button>

@@ -114,9 +114,9 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4 py-8">
       <div className="max-w-md w-full">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 md:p-10">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl p-8 md:p-10">
           <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-foreground/5 blur-3xl" />
 
           <div className="relative z-10">
             {registrationComplete ? (
@@ -126,25 +126,25 @@ export default function RegisterPage() {
                     <CheckCircle className="h-8 w-8 text-green-400" />
                   </div>
                 </div>
-                <h1 className="text-3xl md:text-4xl font-light tracking-tight text-white mb-4">Check Your Email</h1>
-                <p className="text-white/70 mb-4">
-                  We've sent a verification link to <strong className="text-white">{formData.email}</strong>
+                <h1 className="text-3xl md:text-4xl font-light tracking-tight text-foreground mb-4">Check Your Email</h1>
+                <p className="text-foreground/70 mb-4">
+                  We've sent a verification link to <strong className="text-foreground">{formData.email}</strong>
                 </p>
-                <p className="text-sm text-white/50 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   Please check your inbox and click the verification link to complete your registration.
                 </p>
                 <div className="space-y-3">
                   <Link
                     href="/login"
                     prefetch={false}
-                    className="block w-full py-3.5 bg-white text-black rounded-xl font-semibold text-lg hover:bg-white/90 transition-all text-center"
+                    className="block w-full py-3.5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-card/90 transition-all text-center"
                   >
                     Go to Login
                   </Link>
                   <Link
                     href="/"
                     prefetch={false}
-                    className="block text-white/50 hover:text-white/70 text-sm transition-colors text-center"
+                    className="block text-muted-foreground hover:text-foreground/70 text-sm transition-colors text-center"
                   >
                     Back to Shop
                   </Link>
@@ -153,8 +153,8 @@ export default function RegisterPage() {
             ) : (
               <>
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl md:text-4xl font-light tracking-tight text-white mb-2">Create Account</h1>
-                  <p className="text-white/50">Join us today</p>
+                  <h1 className="text-3xl md:text-4xl font-light tracking-tight text-foreground mb-2">Create Account</h1>
+                  <p className="text-muted-foreground">Join us today</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -176,47 +176,47 @@ export default function RegisterPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-white/70">
+                      <label className="block text-sm font-medium text-foreground/70">
                         First Name
                       </label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                         <input
                           type="text"
                           value={formData.firstName}
                           onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                           required
-                          className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                          className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                           autoComplete="given-name"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="block text-sm font-medium text-white/70">
+                      <label className="block text-sm font-medium text-foreground/70">
                         Last Name
                       </label>
                       <input
                         type="text"
                         value={formData.lastName}
                         onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                        className="w-full px-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                         autoComplete="family-name"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-white/70">
+                    <label className="block text-sm font-medium text-foreground/70">
                       Email Address
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                        className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                         autoComplete="email"
                         placeholder="you@example.com"
                       />
@@ -224,82 +224,82 @@ export default function RegisterPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-white/70">
-                      Phone Number <span className="text-white/40 text-xs">(optional)</span>
+                    <label className="block text-sm font-medium text-foreground/70">
+                      Phone Number <span className="text-muted-foreground text-xs">(optional)</span>
                     </label>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
                         type="tel"
                         value={formData.phone}
                         onChange={handlePhoneChange}
                         placeholder="(555) 123-4567"
                         maxLength={14}
-                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                        className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                         autoComplete="tel"
                       />
                     </div>
-                    <p className="text-xs text-white/40">You can enable mobile sign-in later in your profile settings</p>
+                    <p className="text-xs text-muted-foreground">You can enable mobile sign-in later in your profile settings</p>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-white/70">
-                      Referral Code <span className="text-white/40 text-xs">(optional)</span>
+                    <label className="block text-sm font-medium text-foreground/70">
+                      Referral Code <span className="text-muted-foreground text-xs">(optional)</span>
                     </label>
                     <div className="relative">
-                      <Gift className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <Gift className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
                         type="text"
                         value={formData.referralCode}
                         onChange={(e) => setFormData({ ...formData, referralCode: e.target.value.toUpperCase() })}
                         placeholder="XXXX1234"
                         maxLength={10}
-                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors font-mono tracking-wider"
+                        className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors font-mono tracking-wider"
                         autoComplete="off"
                       />
                     </div>
-                    <p className="text-xs text-white/40">Have a friend's code? Enter it to get a discount!</p>
+                    <p className="text-xs text-muted-foreground">Have a friend's code? Enter it to get a discount!</p>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-white/70">
+                    <label className="block text-sm font-medium text-foreground/70">
                       Password
                     </label>
                     <div className="relative">
-                      <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         required
                         minLength={8}
-                        className="w-full pl-12 pr-12 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                        className="w-full pl-12 pr-12 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                         autoComplete="new-password"
                         placeholder="••••••••"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
                     </div>
-                    <p className="text-xs text-white/40">Minimum 8 characters</p>
+                    <p className="text-xs text-muted-foreground">Minimum 8 characters</p>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-white/70">
+                    <label className="block text-sm font-medium text-foreground/70">
                       Confirm Password
                     </label>
                     <div className="relative">
-                      <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+                      <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         value={formData.confirmPassword}
                         onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                         required
-                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:border-white/30 focus:outline-none focus:ring-0 transition-colors"
+                        className="w-full pl-12 pr-4 py-3.5 bg-foreground/5 border border-border rounded-xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none focus:ring-0 transition-colors"
                         autoComplete="new-password"
                         placeholder="••••••••"
                       />
@@ -309,7 +309,7 @@ export default function RegisterPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 bg-white text-black rounded-xl font-semibold text-lg hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-card/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {loading ? 'Creating Account...' : (
                       <>
@@ -321,17 +321,17 @@ export default function RegisterPage() {
                 </form>
 
                 <div className="mt-8 text-center space-y-4">
-                  <p className="text-white/50">
+                  <p className="text-muted-foreground">
                     Already have an account?{' '}
                     <Link
                       href="/login"
                       prefetch={false}
-                      className="text-white hover:text-white/80 font-semibold transition-colors"
+                      className="text-foreground hover:text-foreground/80 font-semibold transition-colors"
                     >
                       Sign In
                     </Link>
                   </p>
-                  <Link href="/" prefetch={false} className="text-sm text-white/40 hover:text-white/60 transition-colors inline-block">
+                  <Link href="/" prefetch={false} className="text-sm text-muted-foreground hover:text-foreground/60 transition-colors inline-block">
                     Back to Shop
                   </Link>
                 </div>

@@ -219,7 +219,7 @@ export default function RepDiscountsPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-border border-t-white rounded-full animate-spin" />
       </div>
     )
   }
@@ -230,7 +230,7 @@ export default function RepDiscountsPage() {
         {/* Back Navigation */}
         <Link
           href="/rep"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Rep Portal</span>
@@ -249,13 +249,13 @@ export default function RepDiscountsPage() {
               {/* Header */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="space-y-4">
-                  <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Discount Codes</h1>
-                  <p className="text-xl text-white/50">Create and manage promotional codes for your customers.</p>
+                  <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Discount Codes</h1>
+                  <p className="text-xl text-muted-foreground">Create and manage promotional codes for your customers.</p>
                 </div>
                 {settings.can_create_discount_codes && (
                   <Button
                     onClick={handleCreateCode}
-                    className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-medium"
+                    className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-medium"
                   >
                     <Plus className="w-5 h-5 mr-2" />
                     Create Discount Code
@@ -265,41 +265,41 @@ export default function RepDiscountsPage() {
 
               {/* Stats */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                         <Ticket className="h-6 w-6 text-emerald-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">Active Codes</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">{activeCodesCount}</p>
+                        <p className="text-sm font-medium text-muted-foreground">Active Codes</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{activeCodesCount}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
                         <Tag className="h-6 w-6 text-blue-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">Total Codes</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">{totalCodes}</p>
+                        <p className="text-sm font-medium text-muted-foreground">Total Codes</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{totalCodes}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                  <div className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                     <div className="relative z-10 flex items-center gap-4">
                       <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
                         <Package className="h-6 w-6 text-purple-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/50">With Fixed Prices</p>
-                        <p className="text-3xl font-bold tracking-tight text-white">
+                        <p className="text-sm font-medium text-muted-foreground">With Fixed Prices</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">
                           {discountCodes.filter(c => c.product_pricing.length > 0).length}
                         </p>
                       </div>
@@ -311,19 +311,19 @@ export default function RepDiscountsPage() {
               {/* Search */}
               <section className="space-y-6">
                 <div className="relative max-w-xl">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search discount codes..."
-                    className="h-14 pl-12 bg-white/[0.05] border-white/10 rounded-2xl text-lg"
+                    className="h-14 pl-12 bg-foreground/[0.06] border-border rounded-2xl text-lg"
                   />
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery("")}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-white/10"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-foreground/10"
                     >
-                      <X className="w-5 h-5 text-white/40" />
+                      <X className="w-5 h-5 text-muted-foreground" />
                     </button>
                   )}
                 </div>
@@ -331,24 +331,24 @@ export default function RepDiscountsPage() {
 
               {/* Codes List */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Your Discount Codes</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Your Discount Codes</h2>
                 {filteredCodes.length === 0 ? (
-                  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl text-center">
+                  <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-12 backdrop-blur-xl text-center">
                     <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
-                    <Ticket className="w-12 h-12 text-white/20 mx-auto mb-4 relative z-10" />
-                    <p className="text-white/60 mb-2 relative z-10">
+                    <Ticket className="w-12 h-12 text-muted-foreground/50 mx-auto mb-4 relative z-10" />
+                    <p className="text-foreground/60 mb-2 relative z-10">
                       {discountCodes.length === 0 ? "No discount codes yet" : "No codes match your search"}
                     </p>
                     {settings.can_create_discount_codes && discountCodes.length === 0 && (
                       <Button
                         onClick={handleCreateCode}
-                        className="mt-4 h-11 px-6 bg-white text-black hover:bg-white/90 rounded-xl relative z-10"
+                        className="mt-4 h-11 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl relative z-10"
                       >
                         Create Your First Code
                       </Button>
                     )}
                     {!settings.can_create_discount_codes && discountCodes.length === 0 && (
-                      <p className="text-white/40 text-sm relative z-10">Contact your admin to get discount codes assigned</p>
+                      <p className="text-muted-foreground text-sm relative z-10">Contact your admin to get discount codes assigned</p>
                     )}
                   </div>
                 ) : (
@@ -358,8 +358,8 @@ export default function RepDiscountsPage() {
                         key={code.id}
                         onClick={() => code.created_by_rep && handleEditCode(code)}
                         className={cn(
-                          "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all",
-                          code.created_by_rep && "cursor-pointer hover:bg-white/[0.08] hover:border-white/20"
+                          "group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-5 backdrop-blur-xl transition-all",
+                          code.created_by_rep && "cursor-pointer hover:bg-foreground/[0.08] hover:border-border"
                         )}
                       >
                         <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
@@ -383,16 +383,16 @@ export default function RepDiscountsPage() {
                                     e.stopPropagation()
                                     copyToClipboard(code.code)
                                   }}
-                                  className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+                                  className="p-1.5 rounded-lg hover:bg-foreground/10 transition-colors"
                                 >
                                   {copiedCode === code.code ? (
                                     <Check className="w-4 h-4 text-emerald-400" />
                                   ) : (
-                                    <Copy className="w-4 h-4 text-white/40" />
+                                    <Copy className="w-4 h-4 text-muted-foreground" />
                                   )}
                                 </button>
                               </div>
-                              <p className="text-white/60 text-sm">
+                              <p className="text-foreground/60 text-sm">
                                 {code.discount_type === "percentage"
                                   ? `${code.discount_value}% off`
                                   : `$${code.discount_value} off`}
@@ -410,12 +410,12 @@ export default function RepDiscountsPage() {
                               "rounded-full px-3 py-1",
                               code.is_active
                                 ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                                : "bg-white/10 text-white/40 border-white/10"
+                                : "bg-foreground/10 text-muted-foreground border-border"
                             )}>
                               {code.is_active ? "Active" : "Inactive"}
                             </Badge>
                             {code.created_by_rep && (
-                              <ChevronRight className="w-5 h-5 text-white/40" />
+                              <ChevronRight className="w-5 h-5 text-muted-foreground" />
                             )}
                           </div>
                         </div>
@@ -439,14 +439,14 @@ export default function RepDiscountsPage() {
               {/* Header */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="flex items-center gap-4">
-                  <Button onClick={handleBack} variant="ghost" className="h-11 w-11 rounded-full hover:bg-white/10">
+                  <Button onClick={handleBack} variant="ghost" className="h-11 w-11 rounded-full hover:bg-foreground/10">
                     <ArrowLeft className="w-5 h-5" />
                   </Button>
                   <div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">
                       {viewMode === "create-code" ? "Create Discount Code" : "Edit Discount Code"}
                     </h1>
-                    <p className="text-xl text-white/50">
+                    <p className="text-xl text-muted-foreground">
                       {viewMode === "create-code" ? "Set up a new promotional code" : editingCode.code}
                     </p>
                   </div>
@@ -464,7 +464,7 @@ export default function RepDiscountsPage() {
                   <Button
                     onClick={handleSaveCode}
                     disabled={isSaving}
-                    className="h-12 px-6 bg-white text-black hover:bg-white/90 rounded-xl font-medium"
+                    className="h-12 px-6 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-medium"
                   >
                     {isSaving ? (
                       <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
@@ -480,19 +480,19 @@ export default function RepDiscountsPage() {
 
               {/* Code Details */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Code Details</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Code Details</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 p-8 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10 space-y-6">
                     {/* Code Input */}
                     <div className="space-y-2">
-                      <label className="text-sm text-white/60">Code</label>
+                      <label className="text-sm text-foreground/60">Code</label>
                       <div className="flex gap-3">
                         <Input
                           value={editingCode.code || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, code: e.target.value.toUpperCase() })}
                           placeholder="MYCODE20"
-                          className="h-14 bg-white/5 border-white/10 rounded-xl font-mono text-lg tracking-wider flex-1"
+                          className="h-14 bg-foreground/5 border-border rounded-xl font-mono text-lg tracking-wider flex-1"
                           disabled={viewMode === "edit-code"}
                         />
                         {viewMode === "create-code" && (
@@ -502,7 +502,7 @@ export default function RepDiscountsPage() {
                               code: `REP${Math.random().toString(36).substring(2, 6).toUpperCase()}`,
                             })}
                             variant="ghost"
-                            className="h-14 px-6 rounded-xl hover:bg-white/10"
+                            className="h-14 px-6 rounded-xl hover:bg-foreground/10"
                           >
                             Generate
                           </Button>
@@ -512,12 +512,12 @@ export default function RepDiscountsPage() {
 
                     {/* Description */}
                     <div className="space-y-2">
-                      <label className="text-sm text-white/60">Description</label>
+                      <label className="text-sm text-foreground/60">Description</label>
                       <Textarea
                         value={editingCode.description || ""}
                         onChange={(e) => setEditingCode({ ...editingCode, description: e.target.value })}
                         placeholder="Special pricing for my customers..."
-                        className="bg-white/5 border-white/10 rounded-xl resize-none"
+                        className="bg-foreground/5 border-border rounded-xl resize-none"
                         rows={2}
                       />
                     </div>
@@ -525,15 +525,15 @@ export default function RepDiscountsPage() {
                     {/* Type and Value */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Discount Type</label>
+                        <label className="text-sm text-foreground/60">Discount Type</label>
                         <div className="flex gap-3">
                           <button
                             onClick={() => setEditingCode({ ...editingCode, discount_type: "percentage" })}
                             className={cn(
                               "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2",
                               editingCode.discount_type === "percentage"
-                                ? "bg-white/10 border-white/20"
-                                : "bg-white/5 border-white/10 hover:bg-white/10"
+                                ? "bg-foreground/10 border-border"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10"
                             )}
                           >
                             <Percent className="w-5 h-5" />
@@ -544,8 +544,8 @@ export default function RepDiscountsPage() {
                             className={cn(
                               "flex-1 h-12 rounded-xl border transition-all flex items-center justify-center gap-2",
                               editingCode.discount_type === "fixed"
-                                ? "bg-white/10 border-white/20"
-                                : "bg-white/5 border-white/10 hover:bg-white/10"
+                                ? "bg-foreground/10 border-border"
+                                : "bg-foreground/5 border-border hover:bg-foreground/10"
                             )}
                           >
                             <DollarSign className="w-5 h-5" />
@@ -554,13 +554,13 @@ export default function RepDiscountsPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Value</label>
+                        <label className="text-sm text-foreground/60">Value</label>
                         <Input
                           type="number"
                           value={editingCode.discount_value || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, discount_value: parseFloat(e.target.value) || 0 })}
                           placeholder={editingCode.discount_type === "percentage" ? "20" : "50.00"}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
@@ -568,23 +568,23 @@ export default function RepDiscountsPage() {
                     {/* Min Order & Max Uses */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Min Order ($)</label>
+                        <label className="text-sm text-foreground/60">Min Order ($)</label>
                         <Input
                           type="number"
                           value={editingCode.min_order_amount || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, min_order_amount: parseFloat(e.target.value) || 0 })}
                           placeholder="0"
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Max Uses</label>
+                        <label className="text-sm text-foreground/60">Max Uses</label>
                         <Input
                           type="number"
                           value={editingCode.max_uses || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, max_uses: parseInt(e.target.value) || null })}
                           placeholder="Unlimited"
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
@@ -592,31 +592,31 @@ export default function RepDiscountsPage() {
                     {/* Validity Dates */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Valid From</label>
+                        <label className="text-sm text-foreground/60">Valid From</label>
                         <Input
                           type="date"
                           value={editingCode.valid_from?.split("T")[0] || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, valid_from: e.target.value || null })}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm text-white/60">Valid Until</label>
+                        <label className="text-sm text-foreground/60">Valid Until</label>
                         <Input
                           type="date"
                           value={editingCode.valid_until?.split("T")[0] || ""}
                           onChange={(e) => setEditingCode({ ...editingCode, valid_until: e.target.value || null })}
-                          className="h-12 bg-white/5 border-white/10 rounded-xl"
+                          className="h-12 bg-foreground/5 border-border rounded-xl"
                         />
                       </div>
                     </div>
 
                     {/* Active Toggle */}
                     {viewMode === "edit-code" && (
-                      <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                      <div className="flex items-center justify-between pt-4 border-t border-border">
                         <div>
                           <p className="font-medium">Active</p>
-                          <p className="text-sm text-white/60">Code can be used by customers</p>
+                          <p className="text-sm text-foreground/60">Code can be used by customers</p>
                         </div>
                         <Switch
                           checked={editingCode.is_active || false}
@@ -630,24 +630,24 @@ export default function RepDiscountsPage() {
 
               {/* Product Fixed Pricing */}
               <section className="space-y-6">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Fixed Product Pricing (Optional)</h2>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Fixed Product Pricing (Optional)</h2>
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-foreground/5 backdrop-blur-xl">
                   <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                   <div className="relative z-10">
-                    <div className="p-6 border-b border-white/10">
-                      <p className="text-white/60 text-sm">
+                    <div className="p-6 border-b border-border">
+                      <p className="text-foreground/60 text-sm">
                         Set specific prices for products when this code is used. Leave blank for standard discount.
                       </p>
                     </div>
                     <div className="overflow-x-auto max-h-[500px] overflow-y-auto">
                       <table className="w-full">
-                        <thead className="sticky top-0 bg-black/80 backdrop-blur-xl">
-                          <tr className="border-b border-white/10">
-                            <th className="text-left p-4 text-white/60 font-medium">Product</th>
-                            <th className="text-left p-4 text-white/60 font-medium">Variant</th>
-                            <th className="text-right p-4 text-white/60 font-medium">Retail</th>
-                            <th className="text-right p-4 text-white/60 font-medium">Fixed Price</th>
-                            <th className="text-right p-4 text-white/60 font-medium">Discount</th>
+                        <thead className="sticky top-0 bg-background/80 backdrop-blur-xl">
+                          <tr className="border-b border-border">
+                            <th className="text-left p-4 text-foreground/60 font-medium">Product</th>
+                            <th className="text-left p-4 text-foreground/60 font-medium">Variant</th>
+                            <th className="text-right p-4 text-foreground/60 font-medium">Retail</th>
+                            <th className="text-right p-4 text-foreground/60 font-medium">Fixed Price</th>
+                            <th className="text-right p-4 text-foreground/60 font-medium">Discount</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -656,8 +656,8 @@ export default function RepDiscountsPage() {
                               <tr
                                 key={product.id}
                                 className={cn(
-                                  "border-b border-white/5 hover:bg-white/[0.03] transition-colors relative",
-                                  idx === 0 && "border-t border-white/10"
+                                  "border-b border-border hover:bg-foreground/[0.04] transition-colors relative",
+                                  idx === 0 && "border-t border-border"
                                 )}
                                 style={{
                                   background: `linear-gradient(90deg, ${product.color}08 0%, transparent 20%)`,
@@ -675,8 +675,8 @@ export default function RepDiscountsPage() {
                                     <span className="font-medium">{product.base_name}</span>
                                   </div>
                                 </td>
-                                <td className="p-4 text-white/60">{product.variant || "—"}</td>
-                                <td className="p-4 text-right text-white/60">
+                                <td className="p-4 text-foreground/60">{product.variant || "—"}</td>
+                                <td className="p-4 text-right text-foreground/60">
                                   ${Number(product.retail_price || 0).toFixed(2)}
                                 </td>
                                 <td className="p-4 text-right">
@@ -693,7 +693,7 @@ export default function RepDiscountsPage() {
                                         [product.id]: value,
                                       }))
                                     }}
-                                    className="w-28 h-10 bg-white/5 border-white/10 rounded-xl text-right ml-auto"
+                                    className="w-28 h-10 bg-foreground/5 border-border rounded-xl text-right ml-auto"
                                   />
                                 </td>
                                 <td className="p-4 text-right">
@@ -702,7 +702,7 @@ export default function RepDiscountsPage() {
                                       {Math.round((1 - productPrices[product.id]! / product.retail_price) * 100)}% off
                                     </Badge>
                                   ) : (
-                                    <span className="text-white/30">—</span>
+                                    <span className="text-muted-foreground">—</span>
                                   )}
                                 </td>
                               </tr>

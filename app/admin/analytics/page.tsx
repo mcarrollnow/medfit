@@ -80,7 +80,7 @@ export default function AnalyticsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -88,18 +88,18 @@ export default function AnalyticsPage() {
 
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tighter text-white md:text-6xl">Analytics</h1>
-          <p className="text-xl text-white/50">Deep insights into your business performance.</p>
+          <h1 className="text-5xl font-bold tracking-tighter text-foreground md:text-6xl">Analytics</h1>
+          <p className="text-xl text-muted-foreground">Deep insights into your business performance.</p>
         </div>
 
         {/* Stats */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Overview</h2>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Overview</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {loading ? (
               <>
                 {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="h-36 animate-pulse rounded-2xl bg-white/5" />
+                  <div key={i} className="h-36 animate-pulse rounded-2xl bg-foreground/5" />
                 ))}
               </>
             ) : (
@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
                   return (
                     <div 
                       key={index} 
-                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]"
+                      className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/5 p-6 backdrop-blur-xl transition-all duration-300 hover:bg-foreground/[0.08]"
                     >
                       <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
                       <div className="relative z-10 space-y-4">
@@ -117,9 +117,9 @@ export default function AnalyticsPage() {
                           <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${metric.color.split(' ')[0]}`}>
                             <Icon className={`h-5 w-5 ${metric.color.split(' ')[1]}`} />
                           </div>
-                          <p className="text-sm font-medium text-white/50">{metric.title}</p>
+                          <p className="text-sm font-medium text-muted-foreground">{metric.title}</p>
                         </div>
-                        <p className="text-3xl font-bold tracking-tight text-white">{metric.value}</p>
+                        <p className="text-3xl font-bold tracking-tight text-foreground">{metric.value}</p>
                       </div>
                     </div>
                   )
@@ -131,16 +131,16 @@ export default function AnalyticsPage() {
 
         {/* Revenue Chart */}
         <section className="space-y-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Revenue Trend</h2>
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Revenue Trend</h2>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-8">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white">Revenue</h3>
-                <p className="text-white/50 mt-1">6-month performance overview</p>
+                <h3 className="text-2xl font-bold text-foreground">Revenue</h3>
+                <p className="text-muted-foreground mt-1">6-month performance overview</p>
               </div>
               {loading ? (
-                <div className="h-[400px] animate-pulse rounded-xl bg-white/5" />
+                <div className="h-[400px] animate-pulse rounded-xl bg-foreground/5" />
               ) : (
                 <RevenueChart data={data?.revenueData || []} />
               )}
@@ -151,24 +151,24 @@ export default function AnalyticsPage() {
         {/* Bottom Grid */}
         <section className="grid gap-6 md:grid-cols-2">
           {/* Top Products */}
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-8">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white">Top Products</h3>
-                <p className="text-white/50 mt-1">By revenue</p>
+                <h3 className="text-2xl font-bold text-foreground">Top Products</h3>
+                <p className="text-muted-foreground mt-1">By revenue</p>
               </div>
               {loading ? (
                 <div className="space-y-4">
                   {[1, 2, 3].map(i => (
-                    <div key={i} className="h-16 animate-pulse rounded-xl bg-white/5" />
+                    <div key={i} className="h-16 animate-pulse rounded-xl bg-foreground/5" />
                   ))}
                 </div>
               ) : (
                 <div className="space-y-4">
                   {['Premium Wireless Headphones', 'Ergonomic Office Chair', 'Smart Fitness Watch'].map((product, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
-                      <p className="font-medium text-white">{product}</p>
+                    <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
+                      <p className="font-medium text-foreground">{product}</p>
                       <p className="font-bold text-lg text-emerald-400">${(Math.random() * 5000 + 2000).toFixed(0)}</p>
                     </div>
                   ))}
@@ -178,24 +178,24 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Top Customers */}
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-foreground/5 backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-0 bg-noise opacity-10" />
             <div className="relative z-10 p-8">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white">Top Customers</h3>
-                <p className="text-white/50 mt-1">By total spent</p>
+                <h3 className="text-2xl font-bold text-foreground">Top Customers</h3>
+                <p className="text-muted-foreground mt-1">By total spent</p>
               </div>
               {loading ? (
                 <div className="space-y-4">
                   {[1, 2, 3].map(i => (
-                    <div key={i} className="h-16 animate-pulse rounded-xl bg-white/5" />
+                    <div key={i} className="h-16 animate-pulse rounded-xl bg-foreground/5" />
                   ))}
                 </div>
               ) : (
                 <div className="space-y-4">
                   {['Emma Davis', 'Carol White', 'Alice Johnson'].map((customer, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5">
-                      <p className="font-medium text-white">{customer}</p>
+                    <div key={i} className="flex items-center justify-between p-4 rounded-xl border border-border bg-foreground/5">
+                      <p className="font-medium text-foreground">{customer}</p>
                       <p className="font-bold text-lg text-emerald-400">${(Math.random() * 3000 + 2000).toFixed(0)}</p>
                     </div>
                   ))}

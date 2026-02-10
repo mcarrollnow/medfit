@@ -101,7 +101,7 @@ export function OrderPhotoGallery({ orderNumber }: OrderPhotoGalleryProps) {
             {photos.map((photo) => (
               <div
                 key={photo.id}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-200 hover:border-white/20"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-foreground/[0.04] transition-all duration-200 hover:border-border"
               >
                 {/* Thumbnail - large, full width */}
                 <button
@@ -116,7 +116,7 @@ export function OrderPhotoGallery({ orderNumber }: OrderPhotoGalleryProps) {
                     className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     sizes="100vw"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-transparent group-hover:bg-foreground/20 transition-all duration-200 flex items-center justify-center">
                     <ZoomIn className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-80 transition-opacity duration-200" />
                   </div>
                 </button>
@@ -139,7 +139,7 @@ export function OrderPhotoGallery({ orderNumber }: OrderPhotoGalleryProps) {
         {/* Lightbox */}
         {lightboxPhoto && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4 sm:p-8"
             onClick={() => setLightboxPhoto(null)}
             role="dialog"
             aria-modal="true"
@@ -168,7 +168,7 @@ export function OrderPhotoGallery({ orderNumber }: OrderPhotoGalleryProps) {
             </div>
 
             <div
-              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-black/60 backdrop-blur-sm rounded-xl text-foreground/70 text-base"
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-foreground/60 backdrop-blur-sm rounded-xl text-foreground/70 text-base"
               onClick={(e) => e.stopPropagation()}
             >
               {lightboxPhoto.filename}

@@ -43,11 +43,11 @@ const statusColors: Record<string, { bg: string; text: string; label: string }> 
   in_progress: { bg: "bg-blue-500/20", text: "text-blue-400", label: "In Progress" },
   waiting_on_customer: { bg: "bg-purple-500/20", text: "text-purple-400", label: "Waiting" },
   resolved: { bg: "bg-green-500/20", text: "text-green-400", label: "Resolved" },
-  closed: { bg: "bg-zinc-500/20", text: "text-zinc-400", label: "Closed" },
+  closed: { bg: "bg-zinc-500/20", text: "text-muted-foreground", label: "Closed" },
 }
 
 const priorityColors: Record<string, { bg: string; text: string }> = {
-  low: { bg: "bg-zinc-500/20", text: "text-zinc-400" },
+  low: { bg: "bg-zinc-500/20", text: "text-muted-foreground" },
   medium: { bg: "bg-blue-500/20", text: "text-blue-400" },
   high: { bg: "bg-orange-500/20", text: "text-orange-400" },
   urgent: { bg: "bg-red-500/20", text: "text-red-400" },
@@ -144,7 +144,7 @@ export default function AdminSupportPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -152,14 +152,14 @@ export default function AdminSupportPage() {
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Support Tickets</h1>
-          <p className="text-lg text-white/50">Manage customer support requests</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">Support Tickets</h1>
+          <p className="text-lg text-muted-foreground">Manage customer support requests</p>
         </div>
 
         {/* Stats */}
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-10">
           {[
-            { label: "Total Tickets", value: stats.total, icon: Ticket, color: "bg-white/10 text-white" },
+            { label: "Total Tickets", value: stats.total, icon: Ticket, color: "bg-foreground/10 text-foreground" },
             { label: "Open", value: stats.open, icon: AlertCircle, color: "bg-yellow-500/20 text-yellow-400" },
             { label: "In Progress", value: stats.inProgress, icon: Clock, color: "bg-blue-500/20 text-blue-400" },
             { label: "Urgent", value: stats.urgent, icon: AlertCircle, color: "bg-red-500/20 text-red-400" },
@@ -169,15 +169,15 @@ export default function AdminSupportPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              className="rounded-2xl border border-border bg-foreground/5 p-6"
             >
               <div className="flex items-center gap-4">
                 <div className={`h-12 w-12 rounded-xl ${stat.color.split(" ")[0]} flex items-center justify-center`}>
                   <stat.icon className={`h-6 w-6 ${stat.color.split(" ")[1]}`} />
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-white">{stat.value}</p>
-                  <p className="text-sm text-white/50">{stat.label}</p>
+                  <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
                 </div>
               </div>
             </motion.div>
@@ -185,15 +185,15 @@ export default function AdminSupportPage() {
         </div>
 
         {/* Filters */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 p-6 mb-8">
+        <div className="rounded-2xl bg-foreground/5 border border-border p-6 mb-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 placeholder="Search by customer, email, or subject..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-12 pl-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                className="h-12 pl-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
               />
             </div>
             
@@ -201,26 +201,26 @@ export default function AdminSupportPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-white/30"
+                className="h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground focus:outline-none focus:border-border"
               >
-                <option value="all" className="bg-zinc-900">All Status</option>
-                <option value="open" className="bg-zinc-900">Open</option>
-                <option value="in_progress" className="bg-zinc-900">In Progress</option>
-                <option value="waiting_on_customer" className="bg-zinc-900">Waiting</option>
-                <option value="resolved" className="bg-zinc-900">Resolved</option>
-                <option value="closed" className="bg-zinc-900">Closed</option>
+                <option value="all" className="bg-card">All Status</option>
+                <option value="open" className="bg-card">Open</option>
+                <option value="in_progress" className="bg-card">In Progress</option>
+                <option value="waiting_on_customer" className="bg-card">Waiting</option>
+                <option value="resolved" className="bg-card">Resolved</option>
+                <option value="closed" className="bg-card">Closed</option>
               </select>
               
               <select
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
-                className="h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-white/30"
+                className="h-12 px-4 rounded-xl bg-foreground/5 border border-border text-foreground focus:outline-none focus:border-border"
               >
-                <option value="all" className="bg-zinc-900">All Priority</option>
-                <option value="urgent" className="bg-zinc-900">Urgent</option>
-                <option value="high" className="bg-zinc-900">High</option>
-                <option value="medium" className="bg-zinc-900">Medium</option>
-                <option value="low" className="bg-zinc-900">Low</option>
+                <option value="all" className="bg-card">All Priority</option>
+                <option value="urgent" className="bg-card">Urgent</option>
+                <option value="high" className="bg-card">High</option>
+                <option value="medium" className="bg-card">Medium</option>
+                <option value="low" className="bg-card">Low</option>
               </select>
             </div>
           </div>
@@ -229,13 +229,13 @@ export default function AdminSupportPage() {
         {/* Tickets List */}
         <div className="space-y-4">
           {loading ? (
-            <div className="rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center py-20">
-              <Loader2 className="h-8 w-8 animate-spin text-white/40" />
+            <div className="rounded-2xl bg-foreground/5 border border-border flex items-center justify-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
             </div>
           ) : error ? (
             <div className="rounded-2xl bg-red-500/10 border border-red-500/20 flex flex-col items-center justify-center py-20 text-center">
               <AlertCircle className="h-16 w-16 text-red-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Error Loading Tickets</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Error Loading Tickets</h3>
               <p className="text-red-400 mb-4">{error}</p>
               <button 
                 onClick={loadTickets}
@@ -245,10 +245,10 @@ export default function AdminSupportPage() {
               </button>
             </div>
           ) : filteredTickets.length === 0 ? (
-            <div className="rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center justify-center py-20 text-center">
-              <Ticket className="h-16 w-16 text-white/20 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">No tickets found</h3>
-              <p className="text-white/50">
+            <div className="rounded-2xl bg-foreground/5 border border-border flex flex-col items-center justify-center py-20 text-center">
+              <Ticket className="h-16 w-16 text-muted-foreground/50 mb-4" />
+              <h3 className="text-xl font-bold text-foreground mb-2">No tickets found</h3>
+              <p className="text-muted-foreground">
                 {searchQuery || statusFilter !== "all" || priorityFilter !== "all"
                   ? "Try adjusting your filters"
                   : "Support tickets will appear here when customers submit them"}
@@ -266,7 +266,7 @@ export default function AdminSupportPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.03 }}
-                  className="w-full rounded-2xl bg-white/5 border border-white/10 p-6 text-left hover:bg-white/[0.07] transition-all group"
+                  className="w-full rounded-2xl bg-foreground/5 border border-border p-6 text-left hover:bg-card/[0.07] transition-all group"
                 >
                   <div className="flex items-start gap-4">
                     {/* Status Indicator */}
@@ -282,14 +282,14 @@ export default function AdminSupportPage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
-                          <h3 className="text-lg font-bold text-white truncate group-hover:text-white/90">{ticket.subject}</h3>
+                          <h3 className="text-lg font-bold text-foreground truncate group-hover:text-foreground/90">{ticket.subject}</h3>
                           <div className="flex items-center gap-3 mt-1 flex-wrap">
-                            <div className="flex items-center gap-1.5 text-white/50">
+                            <div className="flex items-center gap-1.5 text-muted-foreground">
                               <User className="h-4 w-4" />
                               <span className="text-sm">{getCustomerName(ticket)}</span>
                             </div>
                             {ticket.order && (
-                              <div className="flex items-center gap-1.5 text-white/50">
+                              <div className="flex items-center gap-1.5 text-muted-foreground">
                                 <Package className="h-4 w-4" />
                                 <span className="text-sm">Order #{ticket.order.order_number}</span>
                               </div>
@@ -316,7 +316,7 @@ export default function AdminSupportPage() {
                       )}
                       
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 text-sm text-white/40">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1.5">
                             <Clock className="h-4 w-4" />
                             {formatDate(ticket.created_at)}
@@ -329,7 +329,7 @@ export default function AdminSupportPage() {
                           )}
                         </div>
                         
-                        <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                        <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                       </div>
                     </div>
                   </div>

@@ -129,13 +129,13 @@ function ProductFormModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
       <div className="relative glass-card rounded-3xl p-6 md:p-10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-8">
           <h2 className="font-serif text-2xl md:text-3xl font-light">
             {product ? "Edit Product" : "New Product"}
           </h2>
-          <button onClick={onClose} className="p-2 rounded-xl hover:bg-white/[0.06] transition-colors">
+          <button onClick={onClose} className="p-2 rounded-xl hover:bg-foreground/[0.07] transition-colors">
             <X className="h-5 w-5 text-muted-foreground" />
           </button>
         </div>
@@ -150,7 +150,7 @@ function ProductFormModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. BPC-157 5mg"
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
               required
             />
           </div>
@@ -164,7 +164,7 @@ function ProductFormModal({
               value={supplierCode}
               onChange={(e) => setSupplierCode(e.target.value)}
               placeholder="e.g. BPC5"
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
               required
             />
           </div>
@@ -179,7 +179,7 @@ function ProductFormModal({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Optional description..."
               rows={3}
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors resize-none"
             />
           </div>
 
@@ -193,7 +193,7 @@ function ProductFormModal({
                 <select
                   value={category}
                   onChange={(e) => { setCategory(e.target.value); setNewCategory("") }}
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                  className="flex-1 px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
                 >
                   <option value="">Select or type new...</option>
                   {categories.map((cat) => (
@@ -205,7 +205,7 @@ function ProductFormModal({
                 value={newCategory}
                 onChange={(e) => { setNewCategory(e.target.value); setCategory("") }}
                 placeholder={categories.length > 0 ? "Or new category..." : "Category name..."}
-                className="flex-1 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                className="flex-1 px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
               />
             </div>
           </div>
@@ -224,7 +224,7 @@ function ProductFormModal({
                   min="0"
                   value={unitPrice}
                   onChange={(e) => setUnitPrice(e.target.value)}
-                  className="w-full pl-8 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                  className="w-full pl-8 pr-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
                 />
               </div>
             </div>
@@ -237,7 +237,7 @@ function ProductFormModal({
                 min="0"
                 value={currentStock}
                 onChange={(e) => setCurrentStock(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
               />
             </div>
             <div>
@@ -249,20 +249,20 @@ function ProductFormModal({
                 min="0"
                 value={restockLevel}
                 onChange={(e) => setRestockLevel(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
               />
             </div>
           </div>
 
           {/* Active Toggle */}
-          <div className="flex items-center justify-between bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+          <div className="flex items-center justify-between bg-foreground/[0.03] border border-border rounded-xl p-4">
             <span className="text-sm font-mono text-muted-foreground">Active in catalog</span>
             <button
               type="button"
               onClick={() => setIsActive(!isActive)}
               className={cn(
                 "w-12 h-7 rounded-full transition-colors relative",
-                isActive ? "bg-foreground" : "bg-white/10"
+                isActive ? "bg-foreground" : "bg-foreground/10"
               )}
             >
               <div className={cn(
@@ -274,7 +274,7 @@ function ProductFormModal({
 
           {/* Linked Product Info */}
           {product?.linked_product && (
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
+            <div className="bg-foreground/[0.03] border border-border rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Link2 className="h-4 w-4 text-muted-foreground" />
                 <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
@@ -337,7 +337,7 @@ function DeleteConfirmModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
       <div className="relative glass-card rounded-3xl p-8 md:p-10 w-full max-w-md text-center">
         <div className="glass-button rounded-2xl p-4 inline-block mb-6">
           <AlertTriangle className="h-6 w-6" />
@@ -490,7 +490,7 @@ function ProductDetail({
               <Link2 className="h-5 w-5 text-muted-foreground" />
               <h3 className="font-serif text-xl md:text-2xl font-light">Mapped to Our Catalog</h3>
             </div>
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+            <div className="bg-foreground/[0.03] border border-border rounded-2xl p-6">
               <p className="text-foreground font-light text-lg">{product.linked_product.name}</p>
               <div className="flex items-center gap-4 mt-3">
                 <span className="text-sm text-muted-foreground font-mono">
@@ -508,8 +508,8 @@ function ProductDetail({
             <span className={cn(
               "px-4 py-2 rounded-full text-sm font-mono",
               product.is_active
-                ? "bg-white/[0.06] text-foreground"
-                : "bg-white/[0.03] text-muted-foreground"
+                ? "bg-foreground/[0.07] text-foreground"
+                : "bg-foreground/[0.04] text-muted-foreground"
             )}>
               {product.is_active ? "Active" : "Inactive"}
             </span>
@@ -732,7 +732,7 @@ export default function SupplierInventoryPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name, code, or category..."
-                className="w-full pl-10 pr-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                className="w-full pl-10 pr-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground placeholder:text-muted-foreground font-mono focus:outline-none focus:border-border transition-colors"
               />
             </div>
 
@@ -740,7 +740,7 @@ export default function SupplierInventoryPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors min-w-[160px]"
+                className="px-4 py-4 rounded-2xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors min-w-[160px]"
               >
                 <option value="all">All Categories</option>
                 {categories.map((cat) => (
@@ -766,7 +766,7 @@ export default function SupplierInventoryPage() {
               return (
                 <div
                   key={product.id}
-                  className="glass-card rounded-2xl p-6 md:p-8 cursor-pointer hover:bg-white/[0.04] transition-all duration-500 group"
+                  className="glass-card rounded-2xl p-6 md:p-8 cursor-pointer hover:bg-foreground/[0.05] transition-all duration-500 group"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div
@@ -782,7 +782,7 @@ export default function SupplierInventoryPage() {
                             {product.name}
                           </h3>
                           {!product.is_active && (
-                            <span className="text-xs font-mono text-muted-foreground bg-white/[0.04] px-2 py-0.5 rounded">
+                            <span className="text-xs font-mono text-muted-foreground bg-foreground/[0.05] px-2 py-0.5 rounded">
                               Inactive
                             </span>
                           )}
@@ -796,7 +796,7 @@ export default function SupplierInventoryPage() {
                           </span>
                           {product.category && (
                             <>
-                              <span className="text-white/20">·</span>
+                              <span className="text-muted-foreground/50">·</span>
                               <span className="text-sm text-muted-foreground">
                                 {product.category}
                               </span>
@@ -823,14 +823,14 @@ export default function SupplierInventoryPage() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={(e) => { e.stopPropagation(); setEditingProduct(product); setShowForm(true) }}
-                          className="p-2 rounded-lg hover:bg-white/[0.06] text-muted-foreground hover:text-foreground transition-colors"
+                          className="p-2 rounded-lg hover:bg-foreground/[0.07] text-muted-foreground hover:text-foreground transition-colors"
                           title="Edit"
                         >
                           <Pencil className="h-4 w-4" />
                         </button>
                         <button
                           onClick={(e) => { e.stopPropagation(); setDeletingProduct(product) }}
-                          className="p-2 rounded-lg hover:bg-white/[0.06] text-muted-foreground hover:text-destructive-foreground transition-colors"
+                          className="p-2 rounded-lg hover:bg-foreground/[0.07] text-muted-foreground hover:text-destructive-foreground transition-colors"
                           title="Delete"
                         >
                           <Trash2 className="h-4 w-4" />

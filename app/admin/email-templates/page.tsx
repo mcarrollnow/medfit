@@ -207,7 +207,7 @@ export default function EmailTemplatesPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[oklch(0.08_0_0)]">
-        <Loader2 className="h-8 w-8 animate-spin text-white/50" />
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
@@ -259,7 +259,7 @@ export default function EmailTemplatesPage() {
             className="w-80 shrink-0"
           >
             <div className="glass-card rounded-2xl overflow-hidden sticky top-8">
-              <div className="p-6 border-b border-white/10">
+              <div className="p-6 border-b border-border">
                 <h2 className="text-lg font-medium text-[oklch(0.95_0_0)] flex items-center gap-2">
                   <Mail className="h-5 w-5 text-[oklch(0.65_0_0)]" />
                   Templates
@@ -275,8 +275,8 @@ export default function EmailTemplatesPage() {
                     onClick={() => selectTemplate(template)}
                     className={`w-full text-left p-5 transition-all ${
                       selectedTemplate?.id === template.id
-                        ? 'bg-white/10 border-l-2 border-white'
-                        : 'hover:bg-white/5 border-l-2 border-transparent'
+                        ? 'bg-foreground/10 border-l-2 border-primary'
+                        : 'hover:bg-foreground/5 border-l-2 border-transparent'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -334,7 +334,7 @@ export default function EmailTemplatesPage() {
                         className={`h-10 px-4 rounded-xl flex items-center gap-2 text-sm font-medium transition-all ${
                           showAiPanel
                             ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                            : 'bg-white/5 border border-white/10 text-[oklch(0.75_0_0)] hover:bg-white/10'
+                            : 'bg-foreground/5 border border-border text-[oklch(0.75_0_0)] hover:bg-foreground/10'
                         }`}
                       >
                         <Sparkles className="h-4 w-4" />
@@ -343,7 +343,7 @@ export default function EmailTemplatesPage() {
                       {/* Send Test */}
                       <button
                         onClick={() => setShowTestEmail(!showTestEmail)}
-                        className="h-10 px-4 rounded-xl bg-white/5 border border-white/10 text-[oklch(0.75_0_0)] hover:bg-white/10 flex items-center gap-2 text-sm font-medium transition-all"
+                        className="h-10 px-4 rounded-xl bg-foreground/5 border border-border text-[oklch(0.75_0_0)] hover:bg-foreground/10 flex items-center gap-2 text-sm font-medium transition-all"
                       >
                         <Send className="h-4 w-4" />
                         Test
@@ -355,7 +355,7 @@ export default function EmailTemplatesPage() {
                         className={`h-10 px-6 rounded-xl flex items-center gap-2 text-sm font-semibold transition-all ${
                           saved
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                            : 'bg-white text-black hover:bg-white/90'
+                            : 'bg-primary text-primary-foreground hover:bg-card/90'
                         }`}
                       >
                         {saving ? (
@@ -386,7 +386,7 @@ export default function EmailTemplatesPage() {
                     <input
                       value={editSubject}
                       onChange={(e) => setEditSubject(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.4_0_0)] focus:outline-none focus:border-white/30 text-sm"
+                      className="w-full h-12 px-4 rounded-xl bg-foreground/5 border border-border text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.4_0_0)] focus:outline-none focus:border-border text-sm"
                       placeholder="Email subject..."
                     />
                   </div>
@@ -417,12 +417,12 @@ export default function EmailTemplatesPage() {
                             value={testEmailAddress}
                             onChange={(e) => setTestEmailAddress(e.target.value)}
                             placeholder="Enter email address..."
-                            className="flex-1 h-12 px-4 rounded-xl bg-white/5 border border-white/10 text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.4_0_0)] focus:outline-none focus:border-white/30 text-sm"
+                            className="flex-1 h-12 px-4 rounded-xl bg-foreground/5 border border-border text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.4_0_0)] focus:outline-none focus:border-border text-sm"
                           />
                           <button
                             onClick={handleSendTest}
                             disabled={sendingTest || !testEmailAddress || !editHtml}
-                            className="h-12 px-6 rounded-xl bg-white text-black font-medium hover:bg-white/90 disabled:opacity-50 flex items-center gap-2 text-sm"
+                            className="h-12 px-6 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-card/90 disabled:opacity-50 flex items-center gap-2 text-sm"
                           >
                             {sendingTest ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                             Send
@@ -471,7 +471,7 @@ export default function EmailTemplatesPage() {
                                 className={`px-4 py-2 rounded-lg text-xs font-medium transition-all ${
                                   aiStyle === style.value
                                     ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                                    : 'bg-white/5 border border-white/10 text-[oklch(0.65_0_0)] hover:bg-white/10'
+                                    : 'bg-foreground/5 border border-border text-[oklch(0.65_0_0)] hover:bg-foreground/10'
                                 }`}
                               >
                                 {style.label}
@@ -490,7 +490,7 @@ export default function EmailTemplatesPage() {
                             onChange={(e) => setAiPrompt(e.target.value)}
                             placeholder={`e.g. "Make it elegant with a gradient header, include the company logo area, and use a green accent for the CTA button"`}
                             rows={3}
-                            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.35_0_0)] focus:outline-none focus:border-purple-500/30 text-sm resize-none"
+                            className="w-full px-4 py-3 rounded-xl bg-foreground/5 border border-border text-[oklch(0.95_0_0)] placeholder:text-[oklch(0.35_0_0)] focus:outline-none focus:border-purple-500/30 text-sm resize-none"
                           />
                         </div>
 
@@ -533,7 +533,7 @@ export default function EmailTemplatesPage() {
                         <button
                           key={variable}
                           onClick={() => insertVariable(variable)}
-                          className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-[oklch(0.7_0_0)] hover:bg-white/10 hover:text-[oklch(0.95_0_0)] transition-all cursor-pointer"
+                          className="px-3 py-1.5 rounded-lg bg-foreground/5 border border-border text-xs font-mono text-[oklch(0.7_0_0)] hover:bg-foreground/10 hover:text-[oklch(0.95_0_0)] transition-all cursor-pointer"
                           title={`Click to insert ${variable}`}
                         >
                           {variable}
@@ -549,7 +549,7 @@ export default function EmailTemplatesPage() {
                     onClick={() => setViewMode('code')}
                     className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-2 transition-all ${
                       viewMode === 'code'
-                        ? 'bg-white/10 text-[oklch(0.95_0_0)] border border-white/20'
+                        ? 'bg-foreground/10 text-[oklch(0.95_0_0)] border border-border'
                         : 'text-[oklch(0.5_0_0)] hover:text-[oklch(0.75_0_0)]'
                     }`}
                   >
@@ -560,7 +560,7 @@ export default function EmailTemplatesPage() {
                     onClick={() => setViewMode('preview')}
                     className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-2 transition-all ${
                       viewMode === 'preview'
-                        ? 'bg-white/10 text-[oklch(0.95_0_0)] border border-white/20'
+                        ? 'bg-foreground/10 text-[oklch(0.95_0_0)] border border-border'
                         : 'text-[oklch(0.5_0_0)] hover:text-[oklch(0.75_0_0)]'
                     }`}
                   >
@@ -576,7 +576,7 @@ export default function EmailTemplatesPage() {
                       id="html-editor"
                       value={editHtml}
                       onChange={(e) => setEditHtml(e.target.value)}
-                      className="w-full min-h-[600px] p-6 font-mono text-sm bg-black/50 text-green-400 focus:outline-none resize-y"
+                      className="w-full min-h-[600px] p-6 font-mono text-sm bg-foreground/50 text-green-400 focus:outline-none resize-y"
                       placeholder="Paste or write your HTML email template here, or use AI Generate to create one..."
                       spellCheck={false}
                     />
@@ -599,7 +599,7 @@ export default function EmailTemplatesPage() {
                           sandbox="allow-same-origin"
                         />
                       ) : (
-                        <div className="flex items-center justify-center min-h-[400px] text-gray-400">
+                        <div className="flex items-center justify-center min-h-[400px] text-muted-foreground">
                           <div className="text-center">
                             <Mail className="h-12 w-12 mx-auto mb-4 opacity-30" />
                             <p>No HTML content yet</p>

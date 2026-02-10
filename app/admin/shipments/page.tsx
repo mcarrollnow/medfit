@@ -222,7 +222,7 @@ export default function ShipmentsPage() {
         <div className="max-w-6xl mx-auto">
           <button 
             onClick={() => setSelectedShipment(null)} 
-            className="flex items-center gap-2 text-white/50 hover:text-white transition-colors mb-8"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="h-5 w-5" />
             <span>Back to Shipments</span>
@@ -236,15 +236,15 @@ export default function ShipmentsPage() {
                   {statusConfig[selectedShipment.status]?.label}
                 </Badge>
                 {selectedShipment.shipped_date && (
-                  <span className="text-white/50">
+                  <span className="text-muted-foreground">
                     {new Date(selectedShipment.shipped_date).toLocaleDateString()}
                   </span>
                 )}
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white font-mono">
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-mono">
                 {selectedShipment.tracking_number || 'No Tracking'}
               </h1>
-              <p className="text-white/50 mt-2">
+              <p className="text-muted-foreground mt-2">
                 {selectedShipment.carrier || 'Unknown Carrier'} • {selectedShipment.items?.length || 0} items
               </p>
             </div>
@@ -255,7 +255,7 @@ export default function ShipmentsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button variant="outline" className="rounded-xl border-white/20 text-white hover:bg-white/10">
+                  <Button variant="outline" className="rounded-xl border-border text-foreground hover:bg-foreground/10">
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Track Package
                   </Button>
@@ -264,7 +264,7 @@ export default function ShipmentsPage() {
               {selectedShipment.status === 'in_transit' && (
                 <Button 
                   onClick={() => handleMarkDelivered(selectedShipment.id)}
-                  className="rounded-xl bg-white text-black hover:bg-white/90"
+                  className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                 >
                   <CheckCircle className="h-4 w-4 mr-2" />
                   Mark Delivered
@@ -275,13 +275,13 @@ export default function ShipmentsPage() {
 
           {/* Enhanced Tracking Info */}
           {selectedShipment.tracking_number && (
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 mb-8">
+            <div className="rounded-2xl bg-foreground/5 border border-border p-8 mb-8">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <Truck className="h-5 w-5" />
                   Live Tracking
                   {loadingTracking && (
-                    <RefreshCw className="h-4 w-4 animate-spin text-white/40 ml-2" />
+                    <RefreshCw className="h-4 w-4 animate-spin text-muted-foreground ml-2" />
                   )}
                 </h3>
                 <Button
@@ -289,14 +289,14 @@ export default function ShipmentsPage() {
                   size="sm"
                   onClick={() => handleSelectShipment(selectedShipment)}
                   disabled={loadingTracking}
-                  className="text-white/60 hover:text-white"
+                  className="text-foreground/60 hover:text-foreground"
                 >
                   <RefreshCw className={cn("h-4 w-4", loadingTracking && "animate-spin")} />
                 </Button>
               </div>
               
               {loadingTracking ? (
-                <div className="text-center py-8 text-white/40">
+                <div className="text-center py-8 text-muted-foreground">
                   Fetching tracking information...
                 </div>
               ) : trackingInfo ? (
@@ -304,12 +304,12 @@ export default function ShipmentsPage() {
                   {/* Carrier Info */}
                   {trackingInfo.carrier_name && trackingInfo.carrier_name !== 'Unknown' && (
                     <div className="flex items-center gap-3 text-sm">
-                      <span className="text-white/40">Carrier:</span>
-                      <span className="text-white font-medium">{trackingInfo.carrier_name}</span>
+                      <span className="text-muted-foreground">Carrier:</span>
+                      <span className="text-foreground font-medium">{trackingInfo.carrier_name}</span>
                       {trackingInfo.origin_country && trackingInfo.destination_country && (
                         <>
-                          <span className="text-white/30">•</span>
-                          <span className="text-white/60">
+                          <span className="text-muted-foreground">•</span>
+                          <span className="text-foreground/60">
                             {trackingInfo.origin_country} → {trackingInfo.destination_country}
                           </span>
                         </>
@@ -325,7 +325,7 @@ export default function ShipmentsPage() {
                     trackingInfo.status === 'OutForDelivery' ? "bg-cyan-500/10 border-cyan-500/30" :
                     trackingInfo.status === 'Exception' ? "bg-red-500/10 border-red-500/30" :
                     trackingInfo.status === 'AttemptFail' ? "bg-yellow-500/10 border-yellow-500/30" :
-                    "bg-white/5 border-white/10"
+                    "bg-foreground/5 border-border"
                   )}>
                     <div className="flex items-center justify-between">
                       <div>
@@ -333,12 +333,12 @@ export default function ShipmentsPage() {
                           {trackingInfo.status_label}
                         </p>
                         {trackingInfo.last_location && (
-                          <p className="text-white/50 text-sm mt-1">
+                          <p className="text-muted-foreground text-sm mt-1">
                             Last seen: {trackingInfo.last_location}
                           </p>
                         )}
                         {trackingInfo.last_update && (
-                          <p className="text-white/30 text-xs mt-1">
+                          <p className="text-muted-foreground text-xs mt-1">
                             Updated: {new Date(trackingInfo.last_update).toLocaleString()}
                           </p>
                         )}
@@ -346,15 +346,15 @@ export default function ShipmentsPage() {
                       <div className="text-right">
                         {trackingInfo.estimated_delivery && (
                           <div>
-                            <p className="text-xs text-white/40">Est. Delivery</p>
-                            <p className="text-white font-mono">
+                            <p className="text-xs text-muted-foreground">Est. Delivery</p>
+                            <p className="text-foreground font-mono">
                               {new Date(trackingInfo.estimated_delivery).toLocaleDateString()}
                             </p>
                           </div>
                         )}
                         {trackingInfo.status === 'Delivered' && trackingInfo.last_update && (
                           <div>
-                            <p className="text-xs text-white/40">Delivered</p>
+                            <p className="text-xs text-muted-foreground">Delivered</p>
                             <p className="text-green-400 font-mono">
                               {new Date(trackingInfo.last_update).toLocaleDateString()}
                             </p>
@@ -367,28 +367,28 @@ export default function ShipmentsPage() {
                   {/* Tracking Timeline */}
                   {trackingInfo.events && trackingInfo.events.length > 0 && (
                     <div>
-                      <p className="text-sm text-white/50 mb-4">Tracking History</p>
+                      <p className="text-sm text-muted-foreground mb-4">Tracking History</p>
                       <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
                         {trackingInfo.events.slice(0, 10).map((event, idx, eventsArray) => (
                           <div 
                             key={idx} 
                             className={cn(
                               "flex items-start gap-4 relative pl-6",
-                              idx === 0 ? "text-white" : "text-white/50"
+                              idx === 0 ? "text-foreground" : "text-muted-foreground"
                             )}
                           >
                             {/* All dots solid white, only current (first) step has black inner dot */}
-                            <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-white border-2 border-white flex items-center justify-center">
+                            <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-white border-2 border-primary flex items-center justify-center">
                               {idx === 0 && (
-                                <div className="w-1.5 h-1.5 rounded-full bg-black" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-background" />
                               )}
                             </div>
                             {idx < eventsArray.length - 1 && (
-                              <div className="absolute left-[5px] top-5 w-[2px] h-full bg-white/10" />
+                              <div className="absolute left-[5px] top-5 w-[2px] h-full bg-foreground/10" />
                             )}
                             <div className="flex-1 min-w-0">
                               <p className="text-sm font-medium">{event.description}</p>
-                              <div className="flex items-center gap-2 mt-1 text-xs text-white/40">
+                              <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
                                 <span>{new Date(event.date).toLocaleString()}</span>
                                 {event.location && (
                                   <>
@@ -405,7 +405,7 @@ export default function ShipmentsPage() {
                   )}
                 </div>
               ) : (
-                <div className="text-center py-8 text-white/40">
+                <div className="text-center py-8 text-muted-foreground">
                   <p>No tracking data available</p>
                   <p className="text-sm mt-1">The package may not be in the carrier system yet</p>
                 </div>
@@ -414,8 +414,8 @@ export default function ShipmentsPage() {
           )}
 
           {/* Items */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8 mb-8">
-            <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8 mb-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
               <Box className="h-5 w-5" />
               Shipment Items
             </h3>
@@ -424,54 +424,54 @@ export default function ShipmentsPage() {
                 selectedShipment.items.map((item, idx) => (
                   <div 
                     key={idx} 
-                    className="rounded-xl bg-white/5 border border-white/10 p-4 flex items-center justify-between"
+                    className="rounded-xl bg-foreground/5 border border-border p-4 flex items-center justify-between"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                        <Package className="h-6 w-6 text-white/60" />
+                      <div className="w-12 h-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+                        <Package className="h-6 w-6 text-foreground/60" />
                       </div>
                       <div>
                         {item.product ? (
                           <>
-                            <p className="text-white font-semibold">
+                            <p className="text-foreground font-semibold">
                               {item.product.base_name} {item.product.variant}
                             </p>
-                            <p className="text-sm text-white/50 font-mono">{item.product_code}</p>
+                            <p className="text-sm text-muted-foreground font-mono">{item.product_code}</p>
                           </>
                         ) : (
                           <>
-                            <p className="font-mono text-white font-semibold">{item.product_code}</p>
+                            <p className="font-mono text-foreground font-semibold">{item.product_code}</p>
                             <p className="text-sm text-yellow-400/80">Not linked to product</p>
                           </>
                         )}
                         {item.description && (
-                          <p className="text-xs text-white/40 mt-1">{item.description}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{item.description}</p>
                         )}
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-white">{item.quantity}</p>
-                      <p className="text-xs text-white/40">units</p>
+                      <p className="text-2xl font-bold text-foreground">{item.quantity}</p>
+                      <p className="text-xs text-muted-foreground">units</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <p className="text-white/40 text-center py-8">No items listed</p>
+                <p className="text-muted-foreground text-center py-8">No items listed</p>
               )}
             </div>
           </div>
 
           {/* Notes & Status */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
-            <h3 className="text-lg font-semibold text-white mb-6">Status & Notes</h3>
+          <div className="rounded-2xl bg-foreground/5 border border-border p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-6">Status & Notes</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-white/50 mb-2">Status</label>
+                <label className="block text-sm text-muted-foreground mb-2">Status</label>
                 <Select 
                   value={selectedShipment.status} 
                   onValueChange={(v) => handleStatusChange(selectedShipment.id, v)}
                 >
-                  <SelectTrigger className="rounded-xl bg-white/5 border-white/10 text-white w-48">
+                  <SelectTrigger className="rounded-xl bg-foreground/5 border-border text-foreground w-48">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -486,8 +486,8 @@ export default function ShipmentsPage() {
               </div>
               {selectedShipment.notes && (
                 <div>
-                  <label className="block text-sm text-white/50 mb-2">Notes</label>
-                  <p className="text-white/80">{selectedShipment.notes}</p>
+                  <label className="block text-sm text-muted-foreground mb-2">Notes</label>
+                  <p className="text-foreground/80">{selectedShipment.notes}</p>
                 </div>
               )}
               {selectedShipment.counted_in_inventory && (
@@ -509,7 +509,7 @@ export default function ShipmentsPage() {
         {/* Back Navigation */}
         <Link
           href="/admin"
-          className="inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="text-base font-medium">Back to Admin</span>
@@ -517,9 +517,9 @@ export default function ShipmentsPage() {
 
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">Incoming Shipments</h1>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Incoming Shipments</h1>
             {syncing && (
-              <div className="flex items-center gap-2 text-white/50">
+              <div className="flex items-center gap-2 text-muted-foreground">
                 <RefreshCw className="h-4 w-4 animate-spin" />
                 <span className="text-sm">Syncing...</span>
               </div>
@@ -528,41 +528,41 @@ export default function ShipmentsPage() {
               <span className="text-sm text-green-400">✓ Synced {syncResult.synced} shipments</span>
             )}
           </div>
-          <p className="text-lg text-white/50">Track packages and inventory arrivals from Google Sheets</p>
+          <p className="text-lg text-muted-foreground">Track packages and inventory arrivals from Google Sheets</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-10">
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/20">
                 <Truck className="h-6 w-6 text-blue-400" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-white">{stats.inTransit}</p>
-                <p className="text-sm text-white/50">In Transit</p>
+                <p className="text-3xl font-bold text-foreground">{stats.inTransit}</p>
+                <p className="text-sm text-muted-foreground">In Transit</p>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-green-500/20">
                 <CheckCircle className="h-6 w-6 text-green-400" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-white">{stats.delivered}</p>
-                <p className="text-sm text-white/50">Delivered ({dateRange}d)</p>
+                <p className="text-3xl font-bold text-foreground">{stats.delivered}</p>
+                <p className="text-sm text-muted-foreground">Delivered ({dateRange}d)</p>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <div className="rounded-2xl bg-foreground/5 border border-border p-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-500/20">
                 <AlertTriangle className="h-6 w-6 text-red-400" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-white">{stats.issues}</p>
-                <p className="text-sm text-white/50">Issues</p>
+                <p className="text-3xl font-bold text-foreground">{stats.issues}</p>
+                <p className="text-sm text-muted-foreground">Issues</p>
               </div>
             </div>
           </div>
@@ -575,12 +575,12 @@ export default function ShipmentsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search tracking, codes, notes..."
-              className="rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 h-12"
+              className="rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground h-12"
             />
           </div>
           <Select value={dateRange} onValueChange={(v) => setDateRange(v as DateRange)}>
-            <SelectTrigger className="rounded-xl bg-white/5 border-white/10 text-white w-40 h-12">
-              <Calendar className="h-4 w-4 mr-2 text-white/50" />
+            <SelectTrigger className="rounded-xl bg-foreground/5 border-border text-foreground w-40 h-12">
+              <Calendar className="h-4 w-4 mr-2 text-muted-foreground" />
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -592,7 +592,7 @@ export default function ShipmentsPage() {
             </SelectContent>
           </Select>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="rounded-xl bg-white/5 border-white/10 text-white w-40 h-12">
+            <SelectTrigger className="rounded-xl bg-foreground/5 border-border text-foreground w-40 h-12">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -610,10 +610,10 @@ export default function ShipmentsPage() {
         {/* Shipments List */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="text-white/50">Loading shipments...</div>
+            <div className="text-muted-foreground">Loading shipments...</div>
           </div>
         ) : filteredShipments.length === 0 ? (
-          <div className="text-center py-20 text-white/40">
+          <div className="text-center py-20 text-muted-foreground">
             <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p>No shipments found</p>
           </div>
@@ -638,7 +638,7 @@ export default function ShipmentsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.03 }}
                   onClick={() => handleSelectShipment(shipment)}
-                  className="rounded-2xl bg-white/5 border border-white/10 p-6 cursor-pointer hover:bg-white/10 transition-all duration-300 group"
+                  className="rounded-2xl bg-foreground/5 border border-border p-6 cursor-pointer hover:bg-foreground/10 transition-all duration-300 group"
                 >
                   <div className="flex items-start justify-between gap-4">
                     {/* Left: Status icon + Products */}
@@ -666,28 +666,28 @@ export default function ShipmentsPage() {
                           {uniqueProducts.slice(0, 4).map((name, idx) => (
                             <Badge 
                               key={idx} 
-                              className="bg-white/10 border-white/20 text-white font-medium"
+                              className="bg-foreground/10 border-border text-foreground font-medium"
                             >
                               {name}
                             </Badge>
                           ))}
                           {uniqueProducts.length > 4 && (
-                            <Badge className="bg-white/5 border-white/10 text-white/50">
+                            <Badge className="bg-foreground/5 border-border text-muted-foreground">
                               +{uniqueProducts.length - 4} more
                             </Badge>
                           )}
                           {uniqueProducts.length === 0 && (
-                            <span className="text-white/40 text-sm">No items</span>
+                            <span className="text-muted-foreground text-sm">No items</span>
                           )}
                         </div>
                         {/* Secondary info */}
-                        <div className="flex items-center gap-3 text-sm text-white/50">
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
                           <Badge variant="outline" className={cn("text-xs", statusConfig[shipment.status]?.color)}>
                             {statusConfig[shipment.status]?.label}
                           </Badge>
                           <span>{totalItems} units</span>
                           {shipment.tracking_number && (
-                            <span className="font-mono text-xs text-white/30 truncate max-w-[150px]">
+                            <span className="font-mono text-xs text-muted-foreground truncate max-w-[150px]">
                               {shipment.tracking_number.split(/[\n,]/)[0]}
                             </span>
                           )}
@@ -698,7 +698,7 @@ export default function ShipmentsPage() {
                     {/* Right: Date + Arrow */}
                     <div className="flex items-center gap-4 shrink-0">
                       <div className="text-right">
-                        <p className="text-lg font-semibold text-white">
+                        <p className="text-lg font-semibold text-foreground">
                           {shipment.shipped_date 
                             ? new Date(shipment.shipped_date).toLocaleDateString('en-US', { 
                                 month: 'short', 
@@ -707,11 +707,11 @@ export default function ShipmentsPage() {
                             : '—'
                           }
                         </p>
-                        <p className="text-xs text-white/40">
+                        <p className="text-xs text-muted-foreground">
                           {shipment.status === 'delivered' ? 'Delivered' : 'Shipped'}
                         </p>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                      <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                     </div>
                   </div>
                 </motion.div>

@@ -121,26 +121,26 @@ export default function InviteRepPage() {
         <div className="space-y-6">
           <Link
             href="/admin/reps"
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Representatives</span>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold tracking-tighter text-white lg:text-5xl">Add Representative</h1>
-            <p className="mt-3 text-base lg:text-lg text-white/50">Create a new sales rep account</p>
+            <h1 className="text-3xl font-bold tracking-tighter text-foreground lg:text-5xl">Add Representative</h1>
+            <p className="mt-3 text-base lg:text-lg text-muted-foreground">Create a new sales rep account</p>
           </div>
         </div>
 
         {/* Mode Selector */}
-        <div className="flex gap-2 p-1 rounded-2xl border border-white/10 bg-white/5">
+        <div className="flex gap-2 p-1 rounded-2xl border border-border bg-foreground/5">
           <button
             type="button"
             onClick={() => setMode("password")}
             className={`flex-1 py-3 px-4 text-sm font-medium transition-all rounded-xl ${
               mode === "password"
-                ? "bg-white text-black"
-                : "text-white/60 hover:text-white"
+                ? "bg-primary text-primary-foreground"
+                : "text-foreground/60 hover:text-foreground"
             }`}
           >
             <KeyRound className="h-4 w-4 inline-block mr-2" />
@@ -151,8 +151,8 @@ export default function InviteRepPage() {
             onClick={() => setMode("invite")}
             className={`flex-1 py-3 px-4 text-sm font-medium transition-all rounded-xl ${
               mode === "invite"
-                ? "bg-white text-black"
-                : "text-white/60 hover:text-white"
+                ? "bg-primary text-primary-foreground"
+                : "text-foreground/60 hover:text-foreground"
             }`}
           >
             <Mail className="h-4 w-4 inline-block mr-2" />
@@ -161,54 +161,54 @@ export default function InviteRepPage() {
         </div>
 
         {/* Form */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 lg:p-8 backdrop-blur-xl">
+        <div className="rounded-2xl border border-border bg-foreground/5 p-6 lg:p-8 backdrop-blur-xl">
           {success && mode === "password" && createdCredentials ? (
             <div className="space-y-6">
               <div className="text-center">
                 <div className="mx-auto flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl lg:rounded-3xl bg-emerald-500/20">
                   <UserPlus className="h-8 w-8 lg:h-10 lg:w-10 text-emerald-400" />
                 </div>
-                <h3 className="mt-4 lg:mt-6 text-xl lg:text-2xl font-bold text-white">Rep Account Created!</h3>
-                <p className="mt-2 lg:mt-3 text-sm lg:text-base text-white/50">
+                <h3 className="mt-4 lg:mt-6 text-xl lg:text-2xl font-bold text-foreground">Rep Account Created!</h3>
+                <p className="mt-2 lg:mt-3 text-sm lg:text-base text-muted-foreground">
                   Share these login credentials with {firstName}
                 </p>
               </div>
 
               {/* Credentials Display */}
-              <div className="space-y-4 p-4 lg:p-6 rounded-xl border border-white/10 bg-black/30">
+              <div className="space-y-4 p-4 lg:p-6 rounded-xl border border-border bg-foreground/30">
                 <div className="space-y-2">
-                  <Label className="text-white/60 text-sm">Email</Label>
+                  <Label className="text-foreground/60 text-sm">Email</Label>
                   <div className="flex items-center gap-2">
-                    <code className="flex-1 p-3 rounded-lg bg-white/5 text-white font-mono text-sm break-all">
+                    <code className="flex-1 p-3 rounded-lg bg-foreground/5 text-foreground font-mono text-sm break-all">
                       {createdCredentials.email}
                     </code>
                     <button
                       onClick={() => copyToClipboard(createdCredentials.email, "email")}
-                      className="p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                      className="p-3 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 transition-colors"
                     >
                       {copied === "email" ? (
                         <Check className="h-5 w-5 text-emerald-400" />
                       ) : (
-                        <Copy className="h-5 w-5 text-white/60" />
+                        <Copy className="h-5 w-5 text-foreground/60" />
                       )}
                     </button>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white/60 text-sm">Temporary Password</Label>
+                  <Label className="text-foreground/60 text-sm">Temporary Password</Label>
                   <div className="flex items-center gap-2">
-                    <code className="flex-1 p-3 rounded-lg bg-white/5 text-white font-mono text-sm break-all">
+                    <code className="flex-1 p-3 rounded-lg bg-foreground/5 text-foreground font-mono text-sm break-all">
                       {createdCredentials.password}
                     </code>
                     <button
                       onClick={() => copyToClipboard(createdCredentials.password, "password")}
-                      className="p-3 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+                      className="p-3 rounded-lg border border-border bg-foreground/5 hover:bg-foreground/10 transition-colors"
                     >
                       {copied === "password" ? (
                         <Check className="h-5 w-5 text-emerald-400" />
                       ) : (
-                        <Copy className="h-5 w-5 text-white/60" />
+                        <Copy className="h-5 w-5 text-foreground/60" />
                       )}
                     </button>
                   </div>
@@ -219,7 +219,7 @@ export default function InviteRepPage() {
                     `Email: ${createdCredentials.email}\nPassword: ${createdCredentials.password}\n\nLogin at: ${window.location.origin}/login`,
                     "both"
                   )}
-                  className="w-full py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium transition-colors"
+                  className="w-full py-3 rounded-xl border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground font-medium transition-colors"
                 >
                   {copied === "both" ? (
                     <>
@@ -253,8 +253,8 @@ export default function InviteRepPage() {
               <div className="mx-auto flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl lg:rounded-3xl bg-emerald-500/20">
                 <UserPlus className="h-8 w-8 lg:h-10 lg:w-10 text-emerald-400" />
               </div>
-              <h3 className="mt-4 lg:mt-6 text-xl lg:text-2xl font-bold text-white">Invitation Sent!</h3>
-              <p className="mt-2 lg:mt-3 text-sm lg:text-lg text-white/50">
+              <h3 className="mt-4 lg:mt-6 text-xl lg:text-2xl font-bold text-foreground">Invitation Sent!</h3>
+              <p className="mt-2 lg:mt-3 text-sm lg:text-lg text-muted-foreground">
                 An email has been sent to {email} with instructions to set up their account.
               </p>
             </div>
@@ -268,54 +268,54 @@ export default function InviteRepPage() {
 
               <div className="grid gap-4 lg:gap-6 md:grid-cols-2">
                 <div className="space-y-2 lg:space-y-3">
-                  <Label className="text-white/60 text-sm lg:text-base">First Name</Label>
+                  <Label className="text-foreground/60 text-sm lg:text-base">First Name</Label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       placeholder="John"
                       required
-                      className="rounded-xl h-12 lg:h-14 pl-12 bg-white/5 border-white/10 text-white text-base lg:text-lg placeholder:text-white/30"
+                      className="rounded-xl h-12 lg:h-14 pl-12 bg-foreground/5 border-border text-foreground text-base lg:text-lg placeholder:text-muted-foreground"
                     />
                   </div>
                 </div>
                 <div className="space-y-2 lg:space-y-3">
-                  <Label className="text-white/60 text-sm lg:text-base">Last Name</Label>
+                  <Label className="text-foreground/60 text-sm lg:text-base">Last Name</Label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       placeholder="Doe"
                       required
-                      className="rounded-xl h-12 lg:h-14 pl-12 bg-white/5 border-white/10 text-white text-base lg:text-lg placeholder:text-white/30"
+                      className="rounded-xl h-12 lg:h-14 pl-12 bg-foreground/5 border-border text-foreground text-base lg:text-lg placeholder:text-muted-foreground"
                     />
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2 lg:space-y-3">
-                <Label className="text-white/60 text-sm lg:text-base">Email Address</Label>
+                <Label className="text-foreground/60 text-sm lg:text-base">Email Address</Label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="john@example.com"
                     required
-                    className="rounded-xl h-12 lg:h-14 pl-12 bg-white/5 border-white/10 text-white text-base lg:text-lg placeholder:text-white/30"
+                    className="rounded-xl h-12 lg:h-14 pl-12 bg-foreground/5 border-border text-foreground text-base lg:text-lg placeholder:text-muted-foreground"
                   />
                 </div>
               </div>
 
               {mode === "password" && (
                 <div className="space-y-2 lg:space-y-3">
-                  <Label className="text-white/60 text-sm lg:text-base">Temporary Password</Label>
+                  <Label className="text-foreground/60 text-sm lg:text-base">Temporary Password</Label>
                   <div className="flex gap-2">
                     <div className="relative flex-1">
-                      <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                      <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                       <Input
                         type={showPassword ? "text" : "password"}
                         value={password}
@@ -323,12 +323,12 @@ export default function InviteRepPage() {
                         placeholder="Min 8 characters"
                         required
                         minLength={8}
-                        className="rounded-xl h-12 lg:h-14 pl-12 pr-12 bg-white/5 border-white/10 text-white text-base lg:text-lg placeholder:text-white/30"
+                        className="rounded-xl h-12 lg:h-14 pl-12 pr-12 bg-foreground/5 border-border text-foreground text-base lg:text-lg placeholder:text-muted-foreground"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground/60"
                       >
                         {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                       </button>
@@ -336,21 +336,21 @@ export default function InviteRepPage() {
                     <button
                       type="button"
                       onClick={handleGeneratePassword}
-                      className="px-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white text-sm font-medium transition-all whitespace-nowrap"
+                      className="px-4 rounded-xl border border-border bg-foreground/5 hover:bg-foreground/10 text-foreground/70 hover:text-foreground text-sm font-medium transition-all whitespace-nowrap"
                     >
                       Generate
                     </button>
                   </div>
-                  <p className="text-xs lg:text-sm text-white/40">
+                  <p className="text-xs lg:text-sm text-muted-foreground">
                     The rep will use this password to log in. They can change it later.
                   </p>
                 </div>
               )}
 
               <div className="space-y-2 lg:space-y-3">
-                <Label className="text-white/60 text-sm lg:text-base">Commission Rate (%)</Label>
+                <Label className="text-foreground/60 text-sm lg:text-base">Commission Rate (%)</Label>
                 <div className="relative">
-                  <Percent className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                  <Percent className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     type="number"
                     value={commissionRate}
@@ -359,10 +359,10 @@ export default function InviteRepPage() {
                     min="0"
                     max="100"
                     step="0.1"
-                    className="rounded-xl h-12 lg:h-14 pl-12 bg-white/5 border-white/10 text-white text-base lg:text-lg placeholder:text-white/30"
+                    className="rounded-xl h-12 lg:h-14 pl-12 bg-foreground/5 border-border text-foreground text-base lg:text-lg placeholder:text-muted-foreground"
                   />
                 </div>
-                <p className="text-xs lg:text-sm text-white/40">The percentage of each sale this rep will earn as commission</p>
+                <p className="text-xs lg:text-sm text-muted-foreground">The percentage of each sale this rep will earn as commission</p>
               </div>
 
               <button
@@ -381,41 +381,41 @@ export default function InviteRepPage() {
 
         {/* Info */}
         {!success && (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:p-6 backdrop-blur-xl">
-            <h3 className="font-semibold text-white mb-3">
+          <div className="rounded-2xl border border-border bg-foreground/5 p-4 lg:p-6 backdrop-blur-xl">
+            <h3 className="font-semibold text-foreground mb-3">
               {mode === "password" ? "How it works" : "What happens next?"}
             </h3>
             {mode === "password" ? (
-              <ul className="space-y-2 text-white/50 text-sm lg:text-base">
+              <ul className="space-y-2 text-muted-foreground text-sm lg:text-base">
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">1.</span>
+                  <span className="text-muted-foreground font-mono">1.</span>
                   Account is created immediately and ready to use
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">2.</span>
+                  <span className="text-muted-foreground font-mono">2.</span>
                   Share the login credentials with your rep
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">3.</span>
+                  <span className="text-muted-foreground font-mono">3.</span>
                   They can log in at {typeof window !== 'undefined' ? window.location.origin : ''}/login
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">4.</span>
+                  <span className="text-muted-foreground font-mono">4.</span>
                   Recommend they change their password via "Forgot Password"
                 </li>
               </ul>
             ) : (
-              <ul className="space-y-2 text-white/50 text-sm lg:text-base">
+              <ul className="space-y-2 text-muted-foreground text-sm lg:text-base">
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">1.</span>
+                  <span className="text-muted-foreground font-mono">1.</span>
                   An email invitation will be sent to the provided address
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">2.</span>
+                  <span className="text-muted-foreground font-mono">2.</span>
                   The recipient clicks the link to accept and create their account
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-white/30 font-mono">3.</span>
+                  <span className="text-muted-foreground font-mono">3.</span>
                   They'll appear in your rep list once they complete signup
                 </li>
               </ul>

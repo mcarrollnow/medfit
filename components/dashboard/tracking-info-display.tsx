@@ -36,7 +36,7 @@ const statusIcons: Record<string, typeof Package> = {
 }
 
 const statusColors: Record<string, string> = {
-  'Pending': 'text-white/50 bg-white/10 border-white/20',
+  'Pending': 'text-muted-foreground bg-foreground/10 border-border',
   'InfoReceived': 'text-blue-400 bg-blue-500/20 border-blue-500/30',
   'InTransit': 'text-cyan-400 bg-cyan-500/20 border-cyan-500/30',
   'OutForDelivery': 'text-purple-400 bg-purple-500/20 border-purple-500/30',
@@ -44,7 +44,7 @@ const statusColors: Record<string, string> = {
   'Delivered': 'text-green-400 bg-green-500/20 border-green-500/30',
   'AvailableForPickup': 'text-purple-400 bg-purple-500/20 border-purple-500/30',
   'Exception': 'text-red-400 bg-red-500/20 border-red-500/30',
-  'Expired': 'text-white/40 bg-white/5 border-white/10',
+  'Expired': 'text-muted-foreground bg-foreground/5 border-border',
 }
 
 export function TrackingInfoDisplay({ trackingNumber, carrier, className }: TrackingInfoDisplayProps) {
@@ -90,14 +90,14 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
   // No tracking number yet
   if (!trackingNumber || trackingNumber === 'Pending') {
     return (
-      <div className={cn("rounded-2xl border border-white/10 bg-white/5 p-6", className)}>
+      <div className={cn("rounded-2xl border border-border bg-foreground/5 p-6", className)}>
         <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center">
-            <Package className="h-6 w-6 text-white/40" />
+          <div className="h-12 w-12 rounded-xl bg-foreground/10 flex items-center justify-center">
+            <Package className="h-6 w-6 text-muted-foreground" />
           </div>
           <div>
-            <p className="text-lg font-semibold text-white">Tracking Pending</p>
-            <p className="text-sm text-white/50">Tracking number will be available once your order ships</p>
+            <p className="text-lg font-semibold text-foreground">Tracking Pending</p>
+            <p className="text-sm text-muted-foreground">Tracking number will be available once your order ships</p>
           </div>
         </div>
       </div>
@@ -107,10 +107,10 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
   // Loading state
   if (loading && !tracking) {
     return (
-      <div className={cn("rounded-2xl border border-white/10 bg-white/5 p-6", className)}>
+      <div className={cn("rounded-2xl border border-border bg-foreground/5 p-6", className)}>
         <div className="flex items-center justify-center gap-3 py-8">
-          <RefreshCw className="h-5 w-5 text-white/40 animate-spin" />
-          <span className="text-white/50">Loading tracking information...</span>
+          <RefreshCw className="h-5 w-5 text-muted-foreground animate-spin" />
+          <span className="text-muted-foreground">Loading tracking information...</span>
         </div>
       </div>
     )
@@ -120,9 +120,9 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
   const statusColorClass = statusColors[tracking?.status || 'Pending'] || statusColors['Pending']
 
   return (
-    <div className={cn("rounded-2xl border border-white/10 bg-white/5 overflow-hidden", className)}>
+    <div className={cn("rounded-2xl border border-border bg-foreground/5 overflow-hidden", className)}>
       {/* Header with status */}
-      <div className="p-6 border-b border-white/10">
+      <div className="p-6 border-b border-border">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className={cn("h-14 w-14 rounded-xl border flex items-center justify-center", statusColorClass)}>
@@ -130,20 +130,20 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
             </div>
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <span className={cn("text-lg font-bold", tracking?.status_color || 'text-white')}>
+                <span className={cn("text-lg font-bold", tracking?.status_color || 'text-foreground')}>
                   {tracking?.status_label || 'Unknown'}
                 </span>
                 {tracking?.estimated_delivery && (
-                  <span className="text-sm text-white/50">
+                  <span className="text-sm text-muted-foreground">
                     Est. {formatDate(tracking.estimated_delivery)}
                   </span>
                 )}
               </div>
-              <p className="text-sm text-white/60">
+              <p className="text-sm text-foreground/60">
                 {tracking?.carrier_name || carrier || 'Carrier'} • {trackingNumber}
               </p>
               {tracking?.last_location && (
-                <p className="text-sm text-white/40 flex items-center gap-1 mt-1">
+                <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
                   <MapPin className="h-3 w-3" />
                   {tracking.last_location}
                 </p>
@@ -154,7 +154,7 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-colors"
               title="Copy tracking number"
             >
               {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
@@ -162,7 +162,7 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
             <button
               onClick={fetchTracking}
               disabled={loading}
-              className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors disabled:opacity-50"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-colors disabled:opacity-50"
               title="Refresh tracking"
             >
               <RefreshCw className={cn("h-4 w-4", loading && "animate-spin")} />
@@ -174,7 +174,7 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
       {/* Tracking Events Timeline */}
       {tracking?.events && tracking.events.length > 0 ? (
         <div className="p-6">
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-6">
+          <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-6">
             Tracking History
           </h4>
           <div className="space-y-1">
@@ -186,7 +186,7 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
                 <div key={index} className="relative flex gap-4">
                   {/* Timeline line */}
                   {index < eventsArray.length - 1 && (
-                    <div className="absolute left-[11px] top-6 w-0.5 h-full bg-white/10" />
+                    <div className="absolute left-[11px] top-6 w-0.5 h-full bg-foreground/10" />
                   )}
                   
                   {/* Timeline dot - all solid white, only current step has black inner dot */}
@@ -194,13 +194,13 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
                     "relative z-10 h-6 w-6 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5",
                     isCurrent && isDelivered 
                       ? "bg-green-500 border-green-500"
-                      : "bg-white border-white"
+                      : "bg-white border-primary"
                   )}>
                     {isCurrent && isDelivered && (
-                      <CheckCircle2 className="h-4 w-4 text-white" />
+                      <CheckCircle2 className="h-4 w-4 text-foreground" />
                     )}
                     {isCurrent && !isDelivered && (
-                      <div className="h-2 w-2 rounded-full bg-black" />
+                      <div className="h-2 w-2 rounded-full bg-background" />
                     )}
                   </div>
                   
@@ -208,18 +208,18 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
                   <div className="flex-1 pb-6">
                     <p className={cn(
                       "font-medium",
-                      isCurrent ? "text-white" : "text-white/60"
+                      isCurrent ? "text-foreground" : "text-foreground/60"
                     )}>
                       {event.description || 'Status update'}
                     </p>
                     <div className="flex items-center gap-3 mt-1">
-                      <span className="text-sm text-white/40">
+                      <span className="text-sm text-muted-foreground">
                         {formatDate(event.date)}
                       </span>
                       {event.location && (
                         <>
-                          <span className="text-white/20">•</span>
-                          <span className="text-sm text-white/40 flex items-center gap-1">
+                          <span className="text-muted-foreground/50">•</span>
+                          <span className="text-sm text-muted-foreground flex items-center gap-1">
                             <MapPin className="h-3 w-3" />
                             {event.location}
                           </span>
@@ -233,15 +233,15 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
           </div>
           
           {tracking.events.length > 10 && (
-            <p className="text-sm text-white/40 text-center mt-4">
+            <p className="text-sm text-muted-foreground text-center mt-4">
               + {tracking.events.length - 10} more events
             </p>
           )}
         </div>
       ) : (
         <div className="p-6 text-center">
-          <p className="text-white/50">No tracking events available yet</p>
-          <p className="text-sm text-white/30 mt-1">Check back later for updates</p>
+          <p className="text-muted-foreground">No tracking events available yet</p>
+          <p className="text-sm text-muted-foreground mt-1">Check back later for updates</p>
         </div>
       )}
 
@@ -252,7 +252,7 @@ export function TrackingInfoDisplay({ trackingNumber, carrier, className }: Trac
             href={tracking.carrier_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-3 rounded-xl bg-white py-4 text-base font-bold text-black transition-all hover:bg-white/90"
+            className="flex w-full items-center justify-center gap-3 rounded-xl bg-white py-4 text-base font-bold text-black transition-all hover:bg-card/90"
           >
             Track on {tracking.carrier_name} <ExternalLink className="h-5 w-5" />
           </a>

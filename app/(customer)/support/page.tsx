@@ -33,7 +33,7 @@ const statusColors: Record<string, { bg: string; text: string; label: string }> 
   in_progress: { bg: "bg-blue-500/20", text: "text-blue-400", label: "In Progress" },
   waiting_on_customer: { bg: "bg-purple-500/20", text: "text-purple-400", label: "Waiting on You" },
   resolved: { bg: "bg-green-500/20", text: "text-green-400", label: "Resolved" },
-  closed: { bg: "bg-zinc-500/20", text: "text-zinc-400", label: "Closed" },
+  closed: { bg: "bg-zinc-500/20", text: "text-muted-foreground", label: "Closed" },
 }
 
 export default function CustomerSupportPage() {
@@ -173,19 +173,19 @@ export default function CustomerSupportPage() {
 
   if (loading && !userId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <Loader2 className="h-8 w-8 animate-spin text-white/40" />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black pb-20">
+    <div className="min-h-screen bg-background pb-20">
       <div className="max-w-4xl mx-auto px-4 pt-8">
         {/* Back Navigation */}
         <Link
           href="/support-chat"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-border text-foreground/70 hover:text-foreground hover:bg-foreground/10 hover:border-border transition-all mb-6"
         >
           <ArrowLeft className="h-5 w-5" />
           <span className="font-medium">Back</span>
@@ -193,8 +193,8 @@ export default function CustomerSupportPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">My Tickets</h1>
-          <p className="text-white/50">View and respond to your support requests</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-2">My Tickets</h1>
+          <p className="text-muted-foreground">View and respond to your support requests</p>
         </div>
 
         {/* Main Content */}
@@ -210,19 +210,19 @@ export default function CustomerSupportPage() {
               {/* Back Button */}
               <button
                 onClick={() => setSelectedTicket(null)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all mb-6"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 border border-border text-foreground/70 hover:text-foreground hover:bg-foreground/10 hover:border-border transition-all mb-6"
               >
                 <ArrowLeft className="h-5 w-5" />
                 <span className="font-medium">Back to tickets</span>
               </button>
 
               {/* Ticket Header */}
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-6 mb-6">
+              <div className="rounded-2xl bg-foreground/5 border border-border p-6 mb-6">
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div>
-                    <h2 className="text-xl font-bold text-white mb-2">{selectedTicket.subject}</h2>
+                    <h2 className="text-xl font-bold text-foreground mb-2">{selectedTicket.subject}</h2>
                     {selectedTicket.order && (
-                      <div className="flex items-center gap-2 text-white/50 text-sm">
+                      <div className="flex items-center gap-2 text-muted-foreground text-sm">
                         <Package className="h-4 w-4" />
                         <span>Order #{selectedTicket.order.order_number}</span>
                       </div>
@@ -232,7 +232,7 @@ export default function CustomerSupportPage() {
                     {statusColors[selectedTicket.status]?.label}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-white/40">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1.5">
                     <Clock className="h-4 w-4" />
                     Created {formatDate(selectedTicket.created_at)}
@@ -241,9 +241,9 @@ export default function CustomerSupportPage() {
               </div>
 
               {/* Messages */}
-              <div className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
-                <div className="p-4 border-b border-white/10">
-                  <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+              <div className="rounded-2xl bg-foreground/5 border border-border overflow-hidden">
+                <div className="p-4 border-b border-border">
+                  <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                     <MessageSquare className="h-5 w-5" />
                     Conversation
                   </h3>
@@ -258,7 +258,7 @@ export default function CustomerSupportPage() {
                       if (isSystem) {
                         return (
                           <div key={message.id} className="text-center py-2">
-                            <span className="text-sm text-white/40 bg-white/5 px-3 py-1 rounded-full">
+                            <span className="text-sm text-muted-foreground bg-foreground/5 px-3 py-1 rounded-full">
                               {message.message}
                             </span>
                           </div>
@@ -277,13 +277,13 @@ export default function CustomerSupportPage() {
                             <div
                               className={`rounded-2xl p-4 ${
                                 isAdmin
-                                  ? 'bg-white/10 text-white rounded-bl-md'
-                                  : 'bg-white text-black rounded-br-md'
+                                  ? 'bg-foreground/10 text-foreground rounded-bl-md'
+                                  : 'bg-primary text-primary-foreground rounded-br-md'
                               }`}
                             >
                               <p className="text-sm whitespace-pre-wrap">{message.message}</p>
                             </div>
-                            <div className={`mt-1 text-xs text-white/40 ${isAdmin ? '' : 'text-right'}`}>
+                            <div className={`mt-1 text-xs text-muted-foreground ${isAdmin ? '' : 'text-right'}`}>
                               {isAdmin ? 'Support Team' : 'You'} • {formatMessageDate(message.created_at)}
                             </div>
                           </div>
@@ -291,7 +291,7 @@ export default function CustomerSupportPage() {
                       )
                     })
                   ) : (
-                    <div className="text-center py-12 text-white/40">
+                    <div className="text-center py-12 text-muted-foreground">
                       <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
                       <p>No messages yet</p>
                     </div>
@@ -301,13 +301,13 @@ export default function CustomerSupportPage() {
 
                 {/* Reply Box - only if ticket is not closed/resolved */}
                 {selectedTicket.status !== 'closed' && selectedTicket.status !== 'resolved' && (
-                  <div className="p-4 border-t border-white/10 bg-white/[0.02]">
+                  <div className="p-4 border-t border-border bg-foreground/[0.03]">
                     <div className="flex gap-3">
                       <Textarea
                         value={replyText}
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="Type your reply..."
-                        className="flex-1 min-h-[80px] rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none"
+                        className="flex-1 min-h-[80px] rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none"
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
                             handleSendReply()
@@ -317,7 +317,7 @@ export default function CustomerSupportPage() {
                       <Button
                         onClick={handleSendReply}
                         disabled={sending || !replyText.trim()}
-                        className="rounded-xl bg-white text-black hover:bg-white/90 px-6 self-end"
+                        className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90 px-6 self-end"
                       >
                         {sending ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
@@ -329,13 +329,13 @@ export default function CustomerSupportPage() {
                         )}
                       </Button>
                     </div>
-                    <p className="text-xs text-white/30 mt-2">Press ⌘+Enter to send</p>
+                    <p className="text-xs text-muted-foreground mt-2">Press ⌘+Enter to send</p>
                   </div>
                 )}
 
                 {/* Closed/Resolved Notice */}
                 {(selectedTicket.status === 'closed' || selectedTicket.status === 'resolved') && (
-                  <div className="p-4 border-t border-white/10 bg-green-500/5 text-center">
+                  <div className="p-4 border-t border-border bg-green-500/5 text-center">
                     <p className="text-sm text-green-400">
                       This ticket has been {selectedTicket.status}. If you need further assistance, please create a new ticket.
                     </p>
@@ -354,18 +354,18 @@ export default function CustomerSupportPage() {
               {/* Tickets List */}
               <div className="space-y-4">
                 {loading ? (
-                  <div className="rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center py-20">
-                    <Loader2 className="h-8 w-8 animate-spin text-white/40" />
+                  <div className="rounded-2xl bg-foreground/5 border border-border flex items-center justify-center py-20">
+                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                   </div>
                 ) : tickets.length === 0 ? (
-                  <div className="rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center justify-center py-20 text-center px-4">
-                    <MessageSquare className="h-16 w-16 text-white/20 mb-4" />
-                    <h3 className="text-xl font-bold text-white mb-2">No support tickets</h3>
-                    <p className="text-white/50 mb-6">
+                  <div className="rounded-2xl bg-foreground/5 border border-border flex flex-col items-center justify-center py-20 text-center px-4">
+                    <MessageSquare className="h-16 w-16 text-muted-foreground/50 mb-4" />
+                    <h3 className="text-xl font-bold text-foreground mb-2">No support tickets</h3>
+                    <p className="text-muted-foreground mb-6">
                       Need help with an order? Start a support ticket from your order page.
                     </p>
                     <Link href="/dashboard">
-                      <Button className="rounded-xl bg-white text-black hover:bg-white/90">
+                      <Button className="rounded-xl bg-primary text-primary-foreground hover:bg-card/90">
                         View My Orders
                       </Button>
                     </Link>
@@ -382,7 +382,7 @@ export default function CustomerSupportPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.05 }}
-                        className="w-full rounded-2xl bg-white/5 border border-white/10 p-6 text-left hover:bg-white/[0.07] transition-all group"
+                        className="w-full rounded-2xl bg-foreground/5 border border-border p-6 text-left hover:bg-card/[0.07] transition-all group"
                       >
                         <div className="flex items-start gap-4">
                           {/* Status Indicator */}
@@ -403,9 +403,9 @@ export default function CustomerSupportPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start justify-between gap-4 mb-2">
                               <div>
-                                <h3 className="text-lg font-bold text-white truncate group-hover:text-white/90">{ticket.subject}</h3>
+                                <h3 className="text-lg font-bold text-foreground truncate group-hover:text-foreground/90">{ticket.subject}</h3>
                                 {ticket.order && (
-                                  <div className="flex items-center gap-1.5 text-white/50 mt-1">
+                                  <div className="flex items-center gap-1.5 text-muted-foreground mt-1">
                                     <Package className="h-4 w-4" />
                                     <span className="text-sm">Order #{ticket.order.order_number}</span>
                                   </div>
@@ -418,7 +418,7 @@ export default function CustomerSupportPage() {
                             </div>
                             
                             <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-4 text-sm text-white/40">
+                              <div className="flex items-center gap-4 text-sm text-muted-foreground">
                                 <div className="flex items-center gap-1.5">
                                   <Clock className="h-4 w-4" />
                                   {formatDate(ticket.updated_at || ticket.created_at)}
@@ -431,7 +431,7 @@ export default function CustomerSupportPage() {
                                 )}
                               </div>
                               
-                              <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                              <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                             </div>
                           </div>
                         </div>

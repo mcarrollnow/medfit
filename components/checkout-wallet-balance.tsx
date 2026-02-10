@@ -124,14 +124,14 @@ export function CheckoutWalletBalance({
   // No wallet - prompt to create one
   if (!isLoading && !wallet) {
     return (
-      <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
+      <div className="rounded-2xl bg-foreground/[0.04] border border-border p-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-            <Wallet className="w-5 h-5 text-white/50" />
+          <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center">
+            <Wallet className="w-5 h-5 text-muted-foreground" />
           </div>
           <div className="flex-1">
-            <p className="text-white/70 text-sm font-medium">Want faster checkout?</p>
-            <p className="text-white/40 text-xs">Create a wallet for express payments</p>
+            <p className="text-foreground/70 text-sm font-medium">Want faster checkout?</p>
+            <p className="text-muted-foreground text-xs">Create a wallet for express payments</p>
           </div>
           <Button
             variant="outline"
@@ -148,9 +148,9 @@ export function CheckoutWalletBalance({
 
   if (isLoading) {
     return (
-      <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
+      <div className="rounded-2xl bg-foreground/[0.04] border border-border p-4">
         <div className="flex items-center justify-center py-2">
-          <Loader2 className="w-5 h-5 animate-spin text-white/50" />
+          <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
         </div>
       </div>
     )
@@ -183,10 +183,10 @@ export function CheckoutWalletBalance({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-white font-semibold">
+                  <span className="text-foreground font-semibold">
                     ${usdBalance.toFixed(2)}
                   </span>
-                  <span className="text-white/40 text-sm">
+                  <span className="text-muted-foreground text-sm">
                     ({parseFloat(balance).toFixed(4)} {wallet?.currency})
                   </span>
                   <button
@@ -194,12 +194,12 @@ export function CheckoutWalletBalance({
                       e.stopPropagation()
                       handleRefresh()
                     }}
-                    className="text-white/30 hover:text-white/60 transition-colors"
+                    className="text-muted-foreground hover:text-foreground/60 transition-colors"
                   >
                     <RefreshCw className={cn("w-3 h-3", isRefreshing && "animate-spin")} />
                   </button>
                 </div>
-                <p className="text-white/40 text-xs">{wallet?.label}</p>
+                <p className="text-muted-foreground text-xs">{wallet?.label}</p>
               </div>
             </div>
 
@@ -218,9 +218,9 @@ export function CheckoutWalletBalance({
               )}
               
               {isExpanded ? (
-                <ChevronUp className="w-5 h-5 text-white/40" />
+                <ChevronUp className="w-5 h-5 text-muted-foreground" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-white/40" />
+                <ChevronDown className="w-5 h-5 text-muted-foreground" />
               )}
             </div>
           </div>
@@ -236,14 +236,14 @@ export function CheckoutWalletBalance({
               transition={{ duration: 0.2 }}
               className="overflow-hidden"
             >
-              <div className="px-4 pb-4 pt-0 space-y-3 border-t border-white/10">
+              <div className="px-4 pb-4 pt-0 space-y-3 border-t border-border">
                 {/* Progress Bar */}
                 <div className="pt-3">
                   <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="text-white/50">Order Total</span>
-                    <span className="text-white font-medium">${requiredAmount.toFixed(2)}</span>
+                    <span className="text-muted-foreground">Order Total</span>
+                    <span className="text-foreground font-medium">${requiredAmount.toFixed(2)}</span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
                     <div 
                       className={cn(
                         "h-full rounded-full transition-all duration-500",
@@ -292,7 +292,7 @@ export function CheckoutWalletBalance({
                         setShowAddFunds(true)
                       }}
                       variant="outline"
-                      className="h-11 rounded-xl border-white/20 text-white hover:bg-white/10"
+                      className="h-11 rounded-xl border-border text-foreground hover:bg-foreground/10"
                     >
                       <Plus className="w-4 h-4" />
                     </Button>
@@ -300,7 +300,7 @@ export function CheckoutWalletBalance({
                 </div>
 
                 {/* Quick Info */}
-                <p className="text-xs text-white/40 text-center">
+                <p className="text-xs text-muted-foreground text-center">
                   {hasEnoughBalance 
                     ? `Pay instantly with ${wallet?.has_biometric ? 'Face ID' : wallet?.has_pin ? 'PIN' : 'password'}`
                     : 'Add funds with credit card or bank transfer'
@@ -319,7 +319,7 @@ export function CheckoutWalletBalance({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setShowAddFunds(false)}
           >
             <motion.div
@@ -327,18 +327,18 @@ export function CheckoutWalletBalance({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={e => e.stopPropagation()}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 w-full max-w-lg"
+              className="bg-card border border-border rounded-2xl p-6 w-full max-w-lg"
             >
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Add Funds</h2>
-                  <p className="text-white/50 text-sm">
+                  <h2 className="text-xl font-bold text-foreground">Add Funds</h2>
+                  <p className="text-muted-foreground text-sm">
                     Add ${shortfall > 0 ? shortfall.toFixed(2) : 'any amount'} to complete your purchase
                   </p>
                 </div>
                 <button
                   onClick={() => setShowAddFunds(false)}
-                  className="text-zinc-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   <X className="w-5 h-5" />
                 </button>

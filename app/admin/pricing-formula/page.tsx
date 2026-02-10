@@ -123,25 +123,25 @@ export default function PricingFormulaPage() {
       <div className="mx-auto max-w-7xl px-4 py-8 lg:px-0">
         {/* Header */}
         <div className="space-y-4 mb-8">
-          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-white">
+          <h1 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
             Pricing Formula
           </h1>
-          <p className="text-white/50">
+          <p className="text-muted-foreground">
             Your products with cost protection and commission calculation
           </p>
         </div>
 
         {/* Formula Settings */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 mb-8">
+        <div className="rounded-2xl border border-border bg-foreground/5 p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+            <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
               <Shield className="h-5 w-5 text-emerald-400" />
               Active Formula Settings
             </h2>
             {!editing ? (
               <button
                 onClick={() => setEditing(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors"
               >
                 <Edit3 className="h-4 w-4" />
                 Edit
@@ -160,7 +160,7 @@ export default function PricingFormulaPage() {
           
           <div className="grid gap-6 md:grid-cols-4">
             <div className="space-y-2">
-              <Label className="text-white/60">Min Markup (× Cost)</Label>
+              <Label className="text-foreground/60">Min Markup (× Cost)</Label>
               {editing ? (
                 <Input
                   type="number"
@@ -168,16 +168,16 @@ export default function PricingFormulaPage() {
                   min="1"
                   value={minMarkup}
                   onChange={(e) => setMinMarkup(e.target.value)}
-                  className="h-12 rounded-xl bg-white/10 border-white/20 text-white text-lg"
+                  className="h-12 rounded-xl bg-foreground/10 border-border text-foreground text-lg"
                 />
               ) : (
                 <p className="text-2xl font-bold text-amber-400">{minMarkup}×</p>
               )}
-              <p className="text-xs text-white/40">Profit floor - never touched</p>
+              <p className="text-xs text-muted-foreground">Profit floor - never touched</p>
             </div>
             
             <div className="space-y-2">
-              <Label className="text-white/60">Max Markup (× Cost)</Label>
+              <Label className="text-foreground/60">Max Markup (× Cost)</Label>
               {editing ? (
                 <Input
                   type="number"
@@ -185,28 +185,28 @@ export default function PricingFormulaPage() {
                   min="1"
                   value={maxMarkup}
                   onChange={(e) => setMaxMarkup(e.target.value)}
-                  className="h-12 rounded-xl bg-white/10 border-white/20 text-white text-lg"
+                  className="h-12 rounded-xl bg-foreground/10 border-border text-foreground text-lg"
                 />
               ) : (
                 <p className="text-2xl font-bold text-blue-400">{maxMarkup}×</p>
               )}
-              <p className="text-xs text-white/40">Commission ceiling</p>
+              <p className="text-xs text-muted-foreground">Commission ceiling</p>
             </div>
             
             <div className="space-y-2">
-              <Label className="text-white/60">Guaranteed Profit %</Label>
+              <Label className="text-foreground/60">Guaranteed Profit %</Label>
               <p className="text-2xl font-bold text-green-400">
                 {((minMultiplier - 1) * 100).toFixed(0)}%
               </p>
-              <p className="text-xs text-white/40">Minimum profit on every sale</p>
+              <p className="text-xs text-muted-foreground">Minimum profit on every sale</p>
             </div>
             
             <div className="space-y-2">
-              <Label className="text-white/60">Commission Range</Label>
+              <Label className="text-foreground/60">Commission Range</Label>
               <p className="text-2xl font-bold text-purple-400">
                 {minMarkup}× - {maxMarkup}×
               </p>
-              <p className="text-xs text-white/40">Rep earns % of this range</p>
+              <p className="text-xs text-muted-foreground">Rep earns % of this range</p>
             </div>
           </div>
         </div>
@@ -215,12 +215,12 @@ export default function PricingFormulaPage() {
         <div className="grid gap-4 md:grid-cols-5 mb-8">
           <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-4">
             <p className="text-xs text-red-400 uppercase tracking-wider mb-1">Total Cost</p>
-            <p className="text-2xl font-bold text-white">${totalCost.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-foreground">${totalCost.toFixed(2)}</p>
             <p className="text-xs text-red-400/60 mt-1">Protected</p>
           </div>
           <div className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4">
             <p className="text-xs text-amber-400 uppercase tracking-wider mb-1">Min Price Total</p>
-            <p className="text-2xl font-bold text-white">${totalMinPrice.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-foreground">${totalMinPrice.toFixed(2)}</p>
             <p className="text-xs text-amber-400/60 mt-1">{minMarkup}× cost</p>
           </div>
           <div className="rounded-2xl border border-green-500/20 bg-green-500/10 p-4">
@@ -230,37 +230,37 @@ export default function PricingFormulaPage() {
           </div>
           <div className="rounded-2xl border border-blue-500/20 bg-blue-500/10 p-4">
             <p className="text-xs text-blue-400 uppercase tracking-wider mb-1">Commission Pool</p>
-            <p className="text-2xl font-bold text-white">${totalCommissionPool.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-foreground">${totalCommissionPool.toFixed(2)}</p>
             <p className="text-xs text-blue-400/60 mt-1">Available for reps</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p className="text-xs text-white/50 uppercase tracking-wider mb-1">Retail Total</p>
-            <p className="text-2xl font-bold text-white">${totalRetail.toFixed(2)}</p>
-            <p className="text-xs text-white/40 mt-1">Current prices</p>
+          <div className="rounded-2xl border border-border bg-foreground/5 p-4">
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Retail Total</p>
+            <p className="text-2xl font-bold text-foreground">${totalRetail.toFixed(2)}</p>
+            <p className="text-xs text-muted-foreground mt-1">Current prices</p>
           </div>
         </div>
 
         {/* Products Table */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-          <div className="p-4 border-b border-white/10 flex items-center justify-between">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <Package className="h-5 w-5 text-white/50" />
+        <div className="rounded-2xl border border-border bg-foreground/5 overflow-hidden">
+          <div className="p-4 border-b border-border flex items-center justify-between">
+            <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
+              <Package className="h-5 w-5 text-muted-foreground" />
               Products ({products.length})
             </h2>
           </div>
           
           {loading ? (
-            <div className="p-8 text-center text-white/50">Loading products...</div>
+            <div className="p-8 text-center text-muted-foreground">Loading products...</div>
           ) : products.length === 0 ? (
             <div className="p-8 text-center">
-              <Package className="h-12 w-12 text-white/20 mx-auto mb-4" />
-              <p className="text-white/50">No products found</p>
+              <Package className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+              <p className="text-muted-foreground">No products found</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10 text-left text-xs uppercase tracking-wider text-white/40">
+                  <tr className="border-b border-border text-left text-xs uppercase tracking-wider text-muted-foreground">
                     <th className="p-4">Product</th>
                     <th className="p-4 text-right">Cost</th>
                     <th className="p-4 text-right">Min Price ({minMarkup}×)</th>
@@ -286,12 +286,12 @@ export default function PricingFormulaPage() {
                     const isInRange = !isBelowMin && !isAboveMax
                     
                     return (
-                      <tr key={product.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                      <tr key={product.id} className="border-b border-border hover:bg-foreground/5 transition-colors">
                         <td className="p-4">
                           <div>
-                            <p className="font-medium text-white">{product.base_name || product.name}</p>
+                            <p className="font-medium text-foreground">{product.base_name || product.name}</p>
                             {product.variant && (
-                              <p className="text-sm text-white/50">{product.variant}</p>
+                              <p className="text-sm text-muted-foreground">{product.variant}</p>
                             )}
                           </div>
                         </td>
@@ -305,7 +305,7 @@ export default function PricingFormulaPage() {
                           <span className="text-blue-400 font-medium">${maxPrice.toFixed(2)}</span>
                         </td>
                         <td className="p-4 text-right">
-                          <span className={`font-bold ${isBelowMin ? 'text-red-400' : 'text-white'}`}>
+                          <span className={`font-bold ${isBelowMin ? 'text-red-400' : 'text-foreground'}`}>
                             ${retail.toFixed(2)}
                           </span>
                         </td>

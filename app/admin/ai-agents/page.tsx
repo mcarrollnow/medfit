@@ -57,7 +57,7 @@ const agentTypeConfig: Record<string, { label: string; color: string; icon: Reac
   customer_support: { label: 'Customer Support', color: 'bg-purple-500/20 text-purple-400 border-purple-500/30', icon: <MessageSquare className="w-4 h-4" /> },
   sales: { label: 'Sales', color: 'bg-pink-500/20 text-pink-400 border-pink-500/30', icon: <Sparkles className="w-4 h-4" /> },
   shipping: { label: 'Shipping', color: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30', icon: <Package className="w-4 h-4" /> },
-  general: { label: 'General', color: 'bg-white/10 text-white/70 border-white/20', icon: <Bot className="w-4 h-4" /> },
+  general: { label: 'General', color: 'bg-foreground/10 text-foreground/70 border-border', icon: <Bot className="w-4 h-4" /> },
 }
 
 export default function AIAgentsPage() {
@@ -108,7 +108,7 @@ export default function AIAgentsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="flex items-center gap-3 text-white/50">
+        <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="w-6 h-6 animate-spin" />
           Loading AI agents...
         </div>
@@ -124,11 +124,11 @@ export default function AIAgentsPage() {
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
+                <Brain className="w-6 h-6 text-foreground" />
               </div>
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">AI Agents</h1>
-                <p className="text-white/50">Configure and train your AI assistants</p>
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">AI Agents</h1>
+                <p className="text-muted-foreground">Configure and train your AI assistants</p>
               </div>
             </div>
           </div>
@@ -150,60 +150,60 @@ export default function AIAgentsPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-2xl bg-foreground/5 border border-border">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
                 <Bot className="w-5 h-5 text-purple-400" />
               </div>
-              <span className="text-3xl font-bold text-white">{agents.length}</span>
+              <span className="text-3xl font-bold text-foreground">{agents.length}</span>
             </div>
-            <p className="text-white/50 text-sm">Total Agents</p>
+            <p className="text-muted-foreground text-sm">Total Agents</p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-2xl bg-foreground/5 border border-border">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
                 <Zap className="w-5 h-5 text-green-400" />
               </div>
-              <span className="text-3xl font-bold text-white">{agents.filter(a => a.is_active).length}</span>
+              <span className="text-3xl font-bold text-foreground">{agents.filter(a => a.is_active).length}</span>
             </div>
-            <p className="text-white/50 text-sm">Active</p>
+            <p className="text-muted-foreground text-sm">Active</p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-2xl bg-foreground/5 border border-border">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-blue-400" />
               </div>
-              <span className="text-3xl font-bold text-white">
+              <span className="text-3xl font-bold text-foreground">
                 {agents.reduce((sum, a) => sum + (a.resources?.[0]?.count || 0), 0)}
               </span>
             </div>
-            <p className="text-white/50 text-sm">Resources</p>
+            <p className="text-muted-foreground text-sm">Resources</p>
           </div>
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div className="p-4 rounded-2xl bg-foreground/5 border border-border">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-amber-400" />
               </div>
-              <span className="text-3xl font-bold text-white">
+              <span className="text-3xl font-bold text-foreground">
                 {agents.reduce((sum, a) => sum + (a.examples?.[0]?.count || 0), 0)}
               </span>
             </div>
-            <p className="text-white/50 text-sm">Examples</p>
+            <p className="text-muted-foreground text-sm">Examples</p>
           </div>
         </div>
 
         {/* Agents Grid */}
         {agents.length === 0 ? (
           <div className="text-center py-20">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-white/5 flex items-center justify-center">
-              <Bot className="w-10 h-10 text-white/30" />
+            <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-foreground/5 flex items-center justify-center">
+              <Bot className="w-10 h-10 text-muted-foreground" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No AI agents yet</h3>
-            <p className="text-white/50 mb-6 max-w-md mx-auto">
+            <h3 className="text-xl font-semibold text-foreground mb-2">No AI agents yet</h3>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
               Create your first AI agent to automate customer communications, order confirmations, and payment collection.
             </p>
             <Link href="/admin/ai-agents/new">
-              <Button className="rounded-xl h-12 px-8 bg-white text-black hover:bg-white/90">
+              <Button className="rounded-xl h-12 px-8 bg-primary text-primary-foreground hover:bg-card/90">
                 <Plus className="w-5 h-5 mr-2" />
                 Create Your First Agent
               </Button>
@@ -228,7 +228,7 @@ export default function AIAgentsPage() {
                     <Link href={`/admin/ai-agents/${agent.id}`}>
                       <div className={cn(
                         "group p-6 rounded-2xl border transition-all duration-300",
-                        "bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/[0.08]",
+                        "bg-foreground/5 border-border hover:border-border hover:bg-foreground/[0.08]",
                         !agent.is_active && "opacity-60"
                       )}>
                         <div className="flex items-start justify-between mb-4">
@@ -237,16 +237,16 @@ export default function AIAgentsPage() {
                               "w-14 h-14 rounded-2xl flex items-center justify-center text-2xl",
                               agent.is_active 
                                 ? "bg-gradient-to-br from-purple-500/30 to-pink-500/30 border border-purple-500/30"
-                                : "bg-white/10 border border-white/10"
+                                : "bg-foreground/10 border border-border"
                             )}>
                               {agent.avatar_url ? (
                                 <img src={agent.avatar_url} alt="" className="w-10 h-10 rounded-lg" />
                               ) : (
-                                <Bot className={cn("w-7 h-7", agent.is_active ? "text-purple-400" : "text-white/40")} />
+                                <Bot className={cn("w-7 h-7", agent.is_active ? "text-purple-400" : "text-muted-foreground")} />
                               )}
                             </div>
                             <div>
-                              <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors">
+                              <h3 className="text-lg font-semibold text-foreground group-hover:text-purple-400 transition-colors">
                                 {agent.name}
                               </h3>
                               <div className="flex items-center gap-2 mt-1">
@@ -265,20 +265,20 @@ export default function AIAgentsPage() {
                               toggleAgent(agent)
                             }}
                             disabled={togglingId === agent.id}
-                            className="p-2 rounded-xl hover:bg-white/10 transition-colors"
+                            className="p-2 rounded-xl hover:bg-foreground/10 transition-colors"
                           >
                             {togglingId === agent.id ? (
-                              <Loader2 className="w-6 h-6 animate-spin text-white/50" />
+                              <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
                             ) : agent.is_active ? (
                               <ToggleRight className="w-8 h-8 text-green-400" />
                             ) : (
-                              <ToggleLeft className="w-8 h-8 text-white/30" />
+                              <ToggleLeft className="w-8 h-8 text-muted-foreground" />
                             )}
                           </button>
                         </div>
 
                         {agent.description && (
-                          <p className="text-white/50 text-sm mb-4 line-clamp-2">
+                          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                             {agent.description}
                           </p>
                         )}
@@ -313,8 +313,8 @@ export default function AIAgentsPage() {
                         </div>
 
                         {/* Footer Stats */}
-                        <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                          <div className="flex items-center gap-4 text-sm text-white/40">
+                        <div className="flex items-center justify-between pt-4 border-t border-border">
+                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
                             <span className="flex items-center gap-1">
                               <BookOpen className="w-4 h-4" />
                               {resourceCount} resources
@@ -324,7 +324,7 @@ export default function AIAgentsPage() {
                               {exampleCount} examples
                             </span>
                           </div>
-                          <ChevronRight className="w-5 h-5 text-white/30 group-hover:text-white/60 transition-colors" />
+                          <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground/60 transition-colors" />
                         </div>
                       </div>
                     </Link>

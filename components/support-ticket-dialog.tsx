@@ -12,7 +12,7 @@ interface SupportTicketDialogProps {
 export function SupportTicketDialog({ isOpen, onClose, orderId }: SupportTicketDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto bg-black/90 border-white/10 backdrop-blur-xl p-6 md:p-8">
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto bg-background/90 border-border backdrop-blur-xl p-6 md:p-8">
         <SupportTicketFlow orderId={orderId} onClose={onClose} />
       </DialogContent>
     </Dialog>

@@ -159,8 +159,8 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
 
   if (isLoading) {
     return (
-      <div className={`bg-white/5 rounded-2xl p-6 animate-pulse ${className}`}>
-        <div className="h-6 bg-white/10 rounded w-1/2"></div>
+      <div className={`bg-foreground/5 rounded-2xl p-6 animate-pulse ${className}`}>
+        <div className="h-6 bg-foreground/10 rounded w-1/2"></div>
       </div>
     )
   }
@@ -168,10 +168,10 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
   // Not logged in - show login prompt
   if (!rep) {
     return (
-      <div className={`bg-white/5 border border-white/10 rounded-2xl p-6 ${className}`}>
+      <div className={`bg-foreground/5 border border-border rounded-2xl p-6 ${className}`}>
         <button
           onClick={() => setShowLogin(!showLogin)}
-          className="w-full flex items-center justify-between text-white/70 hover:text-white transition-colors"
+          className="w-full flex items-center justify-between text-foreground/70 hover:text-foreground transition-colors"
         >
           <div className="flex items-center gap-3">
             <Wallet className="w-5 h-5" />
@@ -187,7 +187,7 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 bg-white/5 border-white/10 rounded-xl text-white placeholder:text-white/40"
+              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground placeholder:text-muted-foreground"
             />
             <Input
               type="password"
@@ -195,13 +195,13 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              className="h-12 bg-white/5 border-white/10 rounded-xl text-white placeholder:text-white/40"
+              className="h-12 bg-foreground/5 border-border rounded-xl text-foreground placeholder:text-muted-foreground"
             />
             {loginError && <p className="text-red-400 text-sm">{loginError}</p>}
             <Button
               onClick={handleLogin}
               disabled={loginLoading || !email || !password}
-              className="w-full h-12 bg-white text-black hover:bg-white/90 rounded-xl font-medium"
+              className="w-full h-12 bg-primary text-primary-foreground hover:bg-card/90 rounded-xl font-medium"
             >
               <LogIn className="w-4 h-4 mr-2" />
               {loginLoading ? "Logging in..." : "Login as Rep"}
@@ -223,24 +223,24 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
             <Wallet className="w-5 h-5 text-amber-400" />
           </div>
           <div>
-            <p className="text-white font-medium">{rep.name}</p>
-            <p className="text-white/60 text-sm">Rep Account</p>
+            <p className="text-foreground font-medium">{rep.name}</p>
+            <p className="text-foreground/60 text-sm">Rep Account</p>
           </div>
         </div>
-        <button onClick={logout} className="text-white/40 hover:text-white transition-colors p-2">
+        <button onClick={logout} className="text-muted-foreground hover:text-foreground transition-colors p-2">
           <LogOut className="w-5 h-5" />
         </button>
       </div>
 
-      <div className="bg-black/20 rounded-xl p-4 mb-4">
-        <p className="text-white/60 text-sm mb-1">Available Commission</p>
+      <div className="bg-foreground/20 rounded-xl p-4 mb-4">
+        <p className="text-foreground/60 text-sm mb-1">Available Commission</p>
         <p className="text-2xl font-bold text-amber-400">${commissionBalance.toFixed(2)}</p>
       </div>
 
       {commissionBalance > 0 && (
         <>
-          <div className="flex items-center justify-between py-4 border-t border-white/10">
-            <span className="text-white">Apply commission to order</span>
+          <div className="flex items-center justify-between py-4 border-t border-border">
+            <span className="text-foreground">Apply commission to order</span>
             <Switch
               checked={useCommission}
               onCheckedChange={handleToggleCommission}
@@ -249,8 +249,8 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
           </div>
 
           {useCommission && (
-            <div className="space-y-2 pt-4 border-t border-white/10">
-              <div className="flex justify-between text-white/70">
+            <div className="space-y-2 pt-4 border-t border-border">
+              <div className="flex justify-between text-foreground/70">
                 <span>Cart Total</span>
                 <span>${cartTotal.toFixed(2)}</span>
               </div>
@@ -258,7 +258,7 @@ export function RepCommissionWidget({ cartTotal, onApplyCommission, className = 
                 <span>Commission Applied</span>
                 <span>-${commissionToApply.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-white text-lg font-bold pt-2 border-t border-white/10">
+              <div className="flex justify-between text-foreground text-lg font-bold pt-2 border-t border-border">
                 <span>You Pay</span>
                 <span>${remainingBalance.toFixed(2)}</span>
               </div>

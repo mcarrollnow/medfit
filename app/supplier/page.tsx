@@ -178,7 +178,7 @@ export default function SupplierDashboard() {
           >
             <Link
               href="/supplier/ship-product"
-              className="block glass-card rounded-3xl p-8 md:p-12 hover:bg-white/[0.04] transition-all duration-500 group"
+              className="block glass-card rounded-3xl p-8 md:p-12 hover:bg-foreground/[0.05] transition-all duration-500 group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">
@@ -223,7 +223,7 @@ export default function SupplierDashboard() {
               >
                 <Link
                   href={link.href}
-                  className="glass-card rounded-3xl p-8 md:p-10 block h-full hover:bg-white/[0.04] transition-all duration-500 group"
+                  className="glass-card rounded-3xl p-8 md:p-10 block h-full hover:bg-foreground/[0.05] transition-all duration-500 group"
                 >
                   <div className="flex items-start justify-between">
                     <div className="space-y-6">
@@ -283,7 +283,7 @@ export default function SupplierDashboard() {
                 >
                   <Link
                     href="/supplier/orders"
-                    className="glass-card rounded-2xl p-6 block hover:bg-white/[0.04] transition-all duration-300"
+                    className="glass-card rounded-2xl p-6 block hover:bg-foreground/[0.05] transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
@@ -293,7 +293,7 @@ export default function SupplierDashboard() {
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="font-mono text-sm">{order.order_number}</span>
-                            <span className="px-2 py-0.5 rounded-full text-xs font-mono bg-white/[0.06] border border-white/[0.1]">
+                            <span className="px-2 py-0.5 rounded-full text-xs font-mono bg-foreground/[0.07] border border-border">
                               {order.status}
                             </span>
                           </div>

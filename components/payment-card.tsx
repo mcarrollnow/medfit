@@ -22,17 +22,17 @@ export function PaymentCard({ title, description, logos, buttonText, featured }:
     <Card
       className={cn(
         "group relative overflow-hidden transition-all duration-300 cursor-pointer",
-        "border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
-        "hover:bg-white/[0.12] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]",
-        featured && "ring-1 ring-white/20",
+        "border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]",
+        "hover:bg-foreground/[0.12] hover:shadow-[0_12px_40px_rgba(58,66,51,0.2)]",
+        featured && "ring-1 ring-foreground/20",
       )}
     >
       <CardContent className="p-6 sm:p-8">
         <div className="flex flex-col h-full">
           {/* Title & Description */}
           <div className="mb-6">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 text-balance">{title}</h2>
-            <p className="text-white/50 text-sm sm:text-base text-pretty">{description}</p>
+            <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2 text-balance">{title}</h2>
+            <p className="text-muted-foreground text-sm sm:text-base text-pretty">{description}</p>
           </div>
 
           {/* Logos */}
@@ -40,7 +40,7 @@ export function PaymentCard({ title, description, logos, buttonText, featured }:
             {logos.map((logo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.05] border border-white/[0.08] p-2.5 transition-all duration-200 group-hover:bg-white/[0.08] group-hover:scale-105"
+                className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-foreground/[0.06] border border-border p-2.5 transition-all duration-200 group-hover:bg-foreground/[0.08] group-hover:scale-105"
                 title={logo.name}
               >
                 {logo.icon}
@@ -51,7 +51,7 @@ export function PaymentCard({ title, description, logos, buttonText, featured }:
           {/* Button */}
           <div className="mt-auto">
             <Button
-              className="w-full group/btn justify-between text-base font-medium h-12 sm:h-14 bg-white/[0.08] hover:bg-white/[0.15] border border-white/20 hover:border-white/40 text-white backdrop-blur-sm"
+              className="w-full group/btn justify-between text-base font-medium h-12 sm:h-14 bg-foreground/[0.08] hover:bg-foreground/[0.15] border border-border hover:border-border text-foreground backdrop-blur-sm"
               variant="outline"
             >
               <span>{buttonText}</span>

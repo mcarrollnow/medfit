@@ -707,7 +707,7 @@ function QRCodeDisplay({ value, size }: { value: string; size: number }) {
         />
       ) : (
         <div className="flex items-center justify-center" style={{width: size, height: size}}>
-          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
       )}
     </div>

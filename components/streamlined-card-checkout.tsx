@@ -170,10 +170,10 @@ export function StreamlinedCardCheckout({
       )}
 
       {/* Order Total Summary */}
-      <Card className="bg-white/5 border-white/10">
+      <Card className="bg-foreground/5 border-border">
         <CardContent className="p-6">
           <div className="space-y-3">
-            <div className="flex justify-between text-white/70">
+            <div className="flex justify-between text-foreground/70">
               <span>Subtotal</span>
               <span>${total.toFixed(2)}</span>
             </div>
@@ -183,8 +183,8 @@ export function StreamlinedCardCheckout({
                 <span>-${discountAmount.toFixed(2)}</span>
               </div>
             )}
-            <div className="border-t border-white/10 pt-3">
-              <div className="flex justify-between text-xl font-bold text-white">
+            <div className="border-t border-border pt-3">
+              <div className="flex justify-between text-xl font-bold text-foreground">
                 <span>Total</span>
                 <span>${finalTotal.toFixed(2)}</span>
               </div>
@@ -202,7 +202,7 @@ export function StreamlinedCardCheckout({
         <Button
           onClick={handlePayWithCard}
           disabled={isCreatingOrder || !isShippingComplete}
-          className="w-full h-16 text-lg font-bold bg-white text-black hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl"
+          className="w-full h-16 text-lg font-bold bg-primary text-primary-foreground hover:bg-card/90 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl"
           size="lg"
         >
           {isCreatingOrder ? (
@@ -225,7 +225,7 @@ export function StreamlinedCardCheckout({
       </motion.div>
 
       {/* Security Badge */}
-      <div className="flex items-center justify-center gap-4 text-white/40 text-sm">
+      <div className="flex items-center justify-center gap-4 text-muted-foreground text-sm">
         <div className="flex items-center gap-1.5">
           <Lock className="h-4 w-4" />
           <span>Secure Payment</span>
@@ -238,18 +238,18 @@ export function StreamlinedCardCheckout({
 
       {/* Accepted Cards */}
       <div className="text-center">
-        <p className="text-xs text-white/30 mb-2">Accepted Payment Methods</p>
+        <p className="text-xs text-muted-foreground mb-2">Accepted Payment Methods</p>
         <div className="flex justify-center gap-3">
-          <div className="px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 text-white/60 text-sm font-medium">
+          <div className="px-3 py-1.5 bg-foreground/5 rounded-lg border border-border text-foreground/60 text-sm font-medium">
             Visa
           </div>
-          <div className="px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 text-white/60 text-sm font-medium">
+          <div className="px-3 py-1.5 bg-foreground/5 rounded-lg border border-border text-foreground/60 text-sm font-medium">
             Mastercard
           </div>
-          <div className="px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 text-white/60 text-sm font-medium">
+          <div className="px-3 py-1.5 bg-foreground/5 rounded-lg border border-border text-foreground/60 text-sm font-medium">
             Amex
           </div>
-          <div className="px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 text-white/60 text-sm font-medium">
+          <div className="px-3 py-1.5 bg-foreground/5 rounded-lg border border-border text-foreground/60 text-sm font-medium">
             Discover
           </div>
         </div>

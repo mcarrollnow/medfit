@@ -253,19 +253,19 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
-      <div className="relative rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]">
+      <div className="relative rounded-3xl bg-foreground/5 backdrop-blur-xl border border-border overflow-hidden transition-all duration-300 hover:border-border hover:bg-card/[0.07]">
         {/* Header */}
         <button onClick={() => setIsOpen(!isOpen)} className="w-full p-5 sm:p-6 text-left">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center gap-4 sm:gap-5">
-              <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                <Package className="h-5 w-5 sm:h-7 sm:w-7 text-white/60" />
+              <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-xl sm:rounded-2xl bg-foreground/5 border border-border flex items-center justify-center flex-shrink-0">
+                <Package className="h-5 w-5 sm:h-7 sm:w-7 text-foreground/60" />
               </div>
               <div className="space-y-1 min-w-0">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-white truncate">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground truncate">
                   Order #{order.order_number || order.id.slice(0, 8).toUpperCase()}
                 </h3>
-                <p className="text-xs sm:text-sm text-white/50">{format(new Date(order.created_at), "MMM dd, yyyy")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{format(new Date(order.created_at), "MMM dd, yyyy")}</p>
               </div>
             </div>
 
@@ -283,12 +283,12 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
 
               <div className="flex items-center gap-4 sm:gap-6">
                 <div className="text-right">
-                  <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">${orderTotal.toFixed(2)}</p>
-                  <p className="text-xs sm:text-sm text-white/50">{order.payment_method || "Pending"}</p>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">${orderTotal.toFixed(2)}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{order.payment_method || "Pending"}</p>
                 </div>
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 sm:h-6 sm:w-6 text-white/40 transition-transform duration-300",
+                    "h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground transition-transform duration-300",
                     isOpen && "rotate-180",
                   )}
                 />
@@ -300,16 +300,16 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
         {/* Expanded Content */}
         <CollapsibleContent>
           <div className="px-6 sm:px-8 pb-8 pt-0">
-            <div className="border-t border-white/10 pt-8">
+            <div className="border-t border-border pt-8">
               {loading ? (
                 <div className="flex items-center justify-center py-16">
-                  <RefreshCw className="h-8 w-8 animate-spin text-white/40" />
+                  <RefreshCw className="h-8 w-8 animate-spin text-muted-foreground" />
                 </div>
               ) : (
                 <div className="space-y-8">
                   {/* Admin Status Actions */}
-                  <div className="flex flex-wrap items-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <span className="text-sm font-medium text-white/60 mr-2">Update Status:</span>
+                  <div className="flex flex-wrap items-center gap-3 p-6 rounded-2xl bg-foreground/5 border border-border">
+                    <span className="text-sm font-medium text-foreground/60 mr-2">Update Status:</span>
                     <div className="flex flex-wrap gap-2">
                       {["pending", "processing", "shipped", "delivered", "completed", "cancelled"].map((status) => {
                         const isActive = order.status === status
@@ -321,8 +321,8 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                             className={cn(
                               "px-4 py-2.5 rounded-xl text-sm font-medium transition-all border capitalize",
                               isActive
-                                ? "bg-white text-black border-white"
-                                : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:border-white/20",
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-foreground/5 text-foreground/70 border-border hover:bg-foreground/10 hover:border-border",
                             )}
                           >
                             {status}
@@ -353,8 +353,8 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                         className={cn(
                           "px-4 py-3 rounded-xl font-medium transition-all text-sm sm:text-base text-center",
                           activeTab === tab.id
-                            ? "bg-white text-black"
-                            : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white",
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-foreground/5 text-foreground/60 hover:bg-foreground/10 hover:text-foreground",
                         )}
                       >
                         {tab.label.charAt(0).toUpperCase() + tab.label.slice(1)}
@@ -369,30 +369,30 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                       <div className="space-y-4">
                         {items.length > 0 ? (
                           items.map((item, idx) => (
-                            <div key={idx} className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10">
+                            <div key={idx} className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-foreground/5 border border-border">
                               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                 <div className="flex items-center gap-3 sm:gap-4">
-                                  <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                                    <Package className="h-5 w-5 sm:h-6 sm:w-6 text-white/60" />
+                                  <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-lg sm:rounded-xl bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                                    <Package className="h-5 w-5 sm:h-6 sm:w-6 text-foreground/60" />
                                   </div>
                                   <div className="min-w-0">
-                                    <p className="font-semibold text-base sm:text-lg text-white truncate">
+                                    <p className="font-semibold text-base sm:text-lg text-foreground truncate">
                                       {item.product_name || `Product ${idx + 1}`}
                                     </p>
-                                    <p className="text-sm text-white/50">Qty: {item.quantity || 1}</p>
+                                    <p className="text-sm text-muted-foreground">Qty: {item.quantity || 1}</p>
                                   </div>
                                 </div>
                                 <div className="text-left sm:text-right">
-                                  <p className="text-lg sm:text-xl font-bold text-white">
+                                  <p className="text-lg sm:text-xl font-bold text-foreground">
                                     ${(Number(item.price_at_time || 0) * Number(item.quantity || 1)).toFixed(2)}
                                   </p>
-                                  <p className="text-sm text-white/50">${Number(item.price_at_time || 0).toFixed(2)} each</p>
+                                  <p className="text-sm text-muted-foreground">${Number(item.price_at_time || 0).toFixed(2)} each</p>
                                 </div>
                               </div>
                             </div>
                           ))
                         ) : (
-                          <div className="py-8 sm:py-12 text-center text-white/40">
+                          <div className="py-8 sm:py-12 text-center text-muted-foreground">
                             <Package className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-4 opacity-50" />
                             <p className="text-base sm:text-lg">Loading order items...</p>
                           </div>
@@ -403,19 +403,19 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                     {/* Shipping Tab */}
                     {activeTab === "shipping" && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+                        <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                              <MapPin className="h-5 w-5 text-white/60" />
+                            <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                              <MapPin className="h-5 w-5 text-foreground/60" />
                             </div>
-                            <h4 className="text-lg font-semibold text-white">Shipping Address</h4>
+                            <h4 className="text-lg font-semibold text-foreground">Shipping Address</h4>
                             {!hasRealShipping && (
                               <span className="ml-auto text-xs px-2 py-1 rounded-full bg-amber-500/20 text-amber-400">
                                 Sample Data
                               </span>
                             )}
                           </div>
-                          <div className="text-base text-white/80 space-y-1 pl-13">
+                          <div className="text-base text-foreground/80 space-y-1 pl-13">
                             <p>{hasRealShipping ? order.shipping_address_line1 : sampleShippingAddress.line1}</p>
                             <p>
                               {hasRealShipping
@@ -426,13 +426,13 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                           </div>
                         </div>
 
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+                        <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-4">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-3">
-                              <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                                <Truck className="h-5 w-5 text-white/60" />
+                              <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                                <Truck className="h-5 w-5 text-foreground/60" />
                               </div>
-                              <h4 className="text-lg font-semibold text-white">Tracking Info</h4>
+                              <h4 className="text-lg font-semibold text-foreground">Tracking Info</h4>
                               {!hasRealTracking && !editingTracking && (
                                 <span className="text-xs px-2 py-1 rounded-full bg-amber-500/20 text-amber-400">
                                   Sample Data
@@ -442,10 +442,10 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                             {!editingTracking && (
                               <Button
                                 variant="ghost"
-                                className="h-10 w-10 p-0 rounded-xl hover:bg-white/10"
+                                className="h-10 w-10 p-0 rounded-xl hover:bg-foreground/10"
                                 onClick={() => setEditingTracking(true)}
                               >
-                                <Edit2 className="h-4 w-4 text-white/60" />
+                                <Edit2 className="h-4 w-4 text-foreground/60" />
                               </Button>
                             )}
                           </div>
@@ -455,17 +455,17 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                 placeholder="Tracking number"
                                 value={trackingNumber}
                                 onChange={(e) => setTrackingNumber(e.target.value)}
-                                className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/40"
+                                className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                               />
                               <Input
                                 placeholder="Carrier (UPS, FedEx, USPS, etc.)"
                                 value={carrier}
                                 onChange={(e) => setCarrier(e.target.value)}
-                                className="h-12 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/40"
+                                className="h-12 rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                               />
                               <div className="flex gap-3">
                                 <Button
-                                  className="h-11 px-6 rounded-xl bg-white text-black hover:bg-white/90"
+                                  className="h-11 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                                   onClick={handleSaveTracking}
                                   disabled={saving}
                                 >
@@ -473,7 +473,7 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                 </Button>
                                 <Button
                                   variant="ghost"
-                                  className="h-11 px-6 rounded-xl hover:bg-white/10"
+                                  className="h-11 px-6 rounded-xl hover:bg-foreground/10"
                                   onClick={() => setEditingTracking(false)}
                                 >
                                   Cancel
@@ -482,21 +482,21 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                             </div>
                           ) : (
                             <div className="space-y-3">
-                              <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
-                                <span className="text-white/50">Carrier</span>
-                                <span className="font-medium text-white">
+                              <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+                                <span className="text-muted-foreground">Carrier</span>
+                                <span className="font-medium text-foreground">
                                   {hasRealTracking ? order.carrier || "N/A" : sampleTracking.carrier}
                                 </span>
                               </div>
-                              <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
-                                <span className="text-white/50">Tracking #</span>
+                              <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+                                <span className="text-muted-foreground">Tracking #</span>
                                 <div className="flex items-center gap-2">
-                                  <span className="font-mono text-white">
+                                  <span className="font-mono text-foreground">
                                     {hasRealTracking ? order.tracking_number : sampleTracking.tracking_number}
                                   </span>
                                   <Button
                                     variant="ghost"
-                                    className="h-8 w-8 p-0 rounded-lg hover:bg-white/10"
+                                    className="h-8 w-8 p-0 rounded-lg hover:bg-foreground/10"
                                     onClick={() =>
                                       copyToClipboard(
                                         hasRealTracking ? order.tracking_number! : sampleTracking.tracking_number,
@@ -507,14 +507,14 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                     {copied === "tracking" ? (
                                       <Check className="h-4 w-4 text-emerald-400" />
                                     ) : (
-                                      <Copy className="h-4 w-4 text-white/60" />
+                                      <Copy className="h-4 w-4 text-foreground/60" />
                                     )}
                                   </Button>
                                 </div>
                               </div>
-                              <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
-                                <span className="text-white/50">Shipped</span>
-                                <span className="text-white">
+                              <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+                                <span className="text-muted-foreground">Shipped</span>
+                                <span className="text-foreground">
                                   {format(
                                     new Date(
                                       hasRealTracking && order.shipped_at ? order.shipped_at : sampleTracking.shipped_at,
@@ -531,12 +531,12 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
 
                     {/* Payment Tab */}
                     {activeTab === "payment" && (
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-6">
+                      <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                            <Wallet className="h-5 w-5 text-white/60" />
+                          <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                            <Wallet className="h-5 w-5 text-foreground/60" />
                           </div>
-                          <h4 className="text-lg font-semibold text-white">Payment Details</h4>
+                          <h4 className="text-lg font-semibold text-foreground">Payment Details</h4>
                           {!hasRealPayment && (
                             <span className="ml-auto text-xs px-2 py-1 rounded-full bg-amber-500/20 text-amber-400">
                               Sample Data
@@ -544,27 +544,27 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                           )}
                         </div>
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
-                            <span className="text-white/50">Currency</span>
-                            <span className="font-semibold text-white uppercase">
+                          <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+                            <span className="text-muted-foreground">Currency</span>
+                            <span className="font-semibold text-foreground uppercase">
                               {hasRealPayment ? order.crypto_payment_currency || "USDT" : samplePayment.currency}
                             </span>
                           </div>
-                          <div className="flex items-center justify-between p-4 rounded-xl bg-white/5">
-                            <span className="text-white/50">Amount</span>
-                            <span className="font-mono text-xl font-bold text-white">
+                          <div className="flex items-center justify-between p-4 rounded-xl bg-foreground/5">
+                            <span className="text-muted-foreground">Amount</span>
+                            <span className="font-mono text-xl font-bold text-foreground">
                               {hasRealPayment ? order.crypto_payment_amount || "—" : samplePayment.amount}
                             </span>
                           </div>
-                          <div className="p-4 rounded-xl bg-white/5 space-y-2">
-                            <span className="text-white/50 text-sm">Payment Address</span>
+                          <div className="p-4 rounded-xl bg-foreground/5 space-y-2">
+                            <span className="text-muted-foreground text-sm">Payment Address</span>
                             <div className="flex items-center gap-2">
-                              <p className="font-mono text-sm text-white break-all flex-1">
+                              <p className="font-mono text-sm text-foreground break-all flex-1">
                                 {hasRealPayment ? order.crypto_payment_address || "—" : samplePayment.address}
                               </p>
                               <Button
                                 variant="ghost"
-                                className="h-8 w-8 p-0 rounded-lg hover:bg-white/10 shrink-0"
+                                className="h-8 w-8 p-0 rounded-lg hover:bg-foreground/10 shrink-0"
                                 onClick={() =>
                                   copyToClipboard(
                                     hasRealPayment ? order.crypto_payment_address! : samplePayment.address,
@@ -575,20 +575,20 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                 {copied === "address" ? (
                                   <Check className="h-4 w-4 text-emerald-400" />
                                 ) : (
-                                  <Copy className="h-4 w-4 text-white/60" />
+                                  <Copy className="h-4 w-4 text-foreground/60" />
                                 )}
                               </Button>
                             </div>
                           </div>
-                          <div className="p-4 rounded-xl bg-white/5 space-y-2">
-                            <span className="text-white/50 text-sm">Transaction Hash</span>
+                          <div className="p-4 rounded-xl bg-foreground/5 space-y-2">
+                            <span className="text-muted-foreground text-sm">Transaction Hash</span>
                             <div className="flex items-center gap-2">
-                              <p className="font-mono text-sm text-white break-all flex-1">
+                              <p className="font-mono text-sm text-foreground break-all flex-1">
                                 {hasRealPayment ? order.crypto_transaction_hash || "—" : samplePayment.transaction_hash}
                               </p>
                               <Button
                                 variant="ghost"
-                                className="h-8 w-8 p-0 rounded-lg hover:bg-white/10 shrink-0"
+                                className="h-8 w-8 p-0 rounded-lg hover:bg-foreground/10 shrink-0"
                                 onClick={() =>
                                   copyToClipboard(
                                     hasRealPayment ? order.crypto_transaction_hash! : samplePayment.transaction_hash,
@@ -599,7 +599,7 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                 {copied === "hash" ? (
                                   <Check className="h-4 w-4 text-emerald-400" />
                                 ) : (
-                                  <Copy className="h-4 w-4 text-white/60" />
+                                  <Copy className="h-4 w-4 text-foreground/60" />
                                 )}
                               </Button>
                             </div>
@@ -617,19 +617,19 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
 
                     {/* Timeline Tab */}
                     {activeTab === "timeline" && (
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                      <div className="p-6 rounded-2xl bg-foreground/5 border border-border">
                         <div className="flex items-center gap-3 mb-6">
-                          <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                            <History className="h-5 w-5 text-white/60" />
+                          <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                            <History className="h-5 w-5 text-foreground/60" />
                           </div>
-                          <h4 className="text-lg font-semibold text-white">Order Timeline</h4>
+                          <h4 className="text-lg font-semibold text-foreground">Order Timeline</h4>
                           {timeline.length === 0 && (
                             <span className="ml-auto text-xs px-2 py-1 rounded-full bg-amber-500/20 text-amber-400">
                               Sample Data
                             </span>
                           )}
                         </div>
-                        <div className="relative pl-8 border-l-2 border-white/10 ml-4 space-y-8">
+                        <div className="relative pl-8 border-l-2 border-border ml-4 space-y-8">
                           {displayTimeline.map((event, index) => {
                             const isLatest = index === displayTimeline.length - 1
                             return (
@@ -638,16 +638,16 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                                   className={cn(
                                     "absolute -left-[25px] top-1 h-4 w-4 rounded-full border-2",
                                     isLatest
-                                      ? "bg-white border-white shadow-[0_0_12px_rgba(255,255,255,0.5)]"
-                                      : "bg-white/10 border-white/30",
+                                      ? "bg-white border-primary shadow-[0_0_12px_rgba(58,66,51,0.15)]"
+                                      : "bg-foreground/10 border-border",
                                   )}
                                 />
                                 <div className="space-y-1">
-                                  <p className={cn("text-base font-semibold", isLatest ? "text-white" : "text-white/70")}>
+                                  <p className={cn("text-base font-semibold", isLatest ? "text-foreground" : "text-foreground/70")}>
                                     {event.status}
                                   </p>
-                                  <p className="text-sm text-white/50">{event.notes || event.description}</p>
-                                  <p className="text-xs font-mono text-white/40">
+                                  <p className="text-sm text-muted-foreground">{event.notes || event.description}</p>
+                                  <p className="text-xs font-mono text-muted-foreground">
                                     {format(new Date(event.created_at), "MMM dd, yyyy 'at' h:mm a")}
                                   </p>
                                 </div>
@@ -660,21 +660,21 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
 
                     {/* Notes Tab */}
                     {activeTab === "notes" && (
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-6">
+                      <div className="p-6 rounded-2xl bg-foreground/5 border border-border space-y-6">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                              <FileText className="h-5 w-5 text-white/60" />
+                            <div className="h-10 w-10 rounded-xl bg-foreground/10 flex items-center justify-center">
+                              <FileText className="h-5 w-5 text-foreground/60" />
                             </div>
-                            <h4 className="text-lg font-semibold text-white">Admin Notes</h4>
+                            <h4 className="text-lg font-semibold text-foreground">Admin Notes</h4>
                           </div>
                           {!editingNotes && (
                             <Button
                               variant="ghost"
-                              className="h-10 w-10 p-0 rounded-xl hover:bg-white/10"
+                              className="h-10 w-10 p-0 rounded-xl hover:bg-foreground/10"
                               onClick={() => setEditingNotes(true)}
                             >
-                              <Edit2 className="h-4 w-4 text-white/60" />
+                              <Edit2 className="h-4 w-4 text-foreground/60" />
                             </Button>
                           )}
                         </div>
@@ -684,11 +684,11 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                               placeholder="Add internal notes about this order..."
                               value={notes}
                               onChange={(e) => setNotes(e.target.value)}
-                              className="min-h-[150px] rounded-xl bg-white/5 border-white/10 text-white placeholder:text-white/40 resize-none"
+                              className="min-h-[150px] rounded-xl bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground resize-none"
                             />
                             <div className="flex gap-3">
                               <Button
-                                className="h-11 px-6 rounded-xl bg-white text-black hover:bg-white/90"
+                                className="h-11 px-6 rounded-xl bg-primary text-primary-foreground hover:bg-card/90"
                                 onClick={handleSaveNotes}
                                 disabled={saving}
                               >
@@ -696,7 +696,7 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                               </Button>
                               <Button
                                 variant="ghost"
-                                className="h-11 px-6 rounded-xl hover:bg-white/10"
+                                className="h-11 px-6 rounded-xl hover:bg-foreground/10"
                                 onClick={() => {
                                   setNotes(order.admin_notes || "")
                                   setEditingNotes(false)
@@ -707,16 +707,16 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                             </div>
                           </div>
                         ) : notes ? (
-                          <div className="p-5 rounded-xl bg-white/5 border border-white/10">
-                            <p className="text-base text-white/80 whitespace-pre-wrap leading-relaxed">{notes}</p>
+                          <div className="p-5 rounded-xl bg-foreground/5 border border-border">
+                            <p className="text-base text-foreground/80 whitespace-pre-wrap leading-relaxed">{notes}</p>
                           </div>
                         ) : (
-                          <div className="flex flex-col items-center justify-center py-12 text-white/40">
+                          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
                             <FileText className="h-12 w-12 mb-4" />
                             <p className="text-lg mb-2">No notes yet</p>
                             <Button
                               variant="ghost"
-                              className="text-white/60 hover:text-white"
+                              className="text-foreground/60 hover:text-foreground"
                               onClick={() => setEditingNotes(true)}
                             >
                               Add a note
@@ -727,7 +727,7 @@ export function AdminOrderCard({ order, onOrderUpdated }: AdminOrderCardProps) {
                         {order.refund_reason && (
                           <div className="p-5 rounded-xl bg-red-500/10 border border-red-500/20">
                             <p className="text-sm font-medium text-red-400 mb-2">Refund Reason</p>
-                            <p className="text-base text-white/80">{order.refund_reason}</p>
+                            <p className="text-base text-foreground/80">{order.refund_reason}</p>
                           </div>
                         )}
                       </div>

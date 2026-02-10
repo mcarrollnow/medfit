@@ -131,7 +131,7 @@ export function AddPhonePrompt({ userId, onDismiss, onComplete }: AddPhonePrompt
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm">
       <div className="glass-card rounded-3xl p-8 md:p-10 max-w-md w-full relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-noise opacity-5" />
         
@@ -176,8 +176,8 @@ export function AddPhonePrompt({ userId, onDismiss, onComplete }: AddPhonePrompt
                       onChange={handlePhoneChange}
                       placeholder="(555) 123-4567"
                       maxLength={14}
-                      style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                      className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors"
+                      style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                      className="w-full pl-12 pr-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -235,8 +235,8 @@ export function AddPhonePrompt({ userId, onDismiss, onComplete }: AddPhonePrompt
                     onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     placeholder="123456"
                     maxLength={6}
-                    style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
-                    className="w-full px-4 py-3.5 backdrop-blur-sm border border-white/10 rounded-2xl text-foreground placeholder-muted-foreground focus:border-white/20 focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
+                    style={{ backgroundColor: 'rgba(58,66,51,0.3)' }}
+                    className="w-full px-4 py-3.5 backdrop-blur-sm border border-border rounded-2xl text-foreground placeholder-muted-foreground focus:border-border focus:outline-none transition-colors text-center text-2xl font-mono tracking-[0.5em]"
                     autoFocus
                   />
                 </div>

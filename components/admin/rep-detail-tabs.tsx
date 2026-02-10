@@ -284,7 +284,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
       <div className="space-y-6">
         <Link
           href="/admin/reps"
-          className="inline-flex items-center gap-2 text-white/50 transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Representatives</span>
@@ -292,16 +292,16 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
 
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl lg:rounded-3xl bg-gradient-to-br from-white/20 to-white/5 text-2xl lg:text-3xl font-bold text-white shrink-0">
+            <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl lg:rounded-3xl bg-gradient-to-br from-foreground/20 to-foreground/5 text-2xl lg:text-3xl font-bold text-white shrink-0">
               {(rep.first_name?.[0] || rep.email?.[0] || "?").toUpperCase()}
             </div>
             <div className="space-y-1 min-w-0 flex-1">
-              <h1 className="text-xl lg:text-4xl font-bold tracking-tight text-white truncate">
+              <h1 className="text-xl lg:text-4xl font-bold tracking-tight text-foreground truncate">
                 {rep.first_name && rep.last_name ? `${rep.first_name} ${rep.last_name}` : rep.email}
               </h1>
-              <p className="text-sm lg:text-lg text-white/50 truncate">{rep.email}</p>
+              <p className="text-sm lg:text-lg text-muted-foreground truncate">{rep.email}</p>
               <div className="flex items-center gap-2 mt-2 flex-wrap">
-                <Badge className="bg-white/10 text-white/70 border-0 px-2 py-0.5 text-xs lg:px-3 lg:py-1 lg:text-sm">
+                <Badge className="bg-foreground/10 text-foreground/70 border-0 px-2 py-0.5 text-xs lg:px-3 lg:py-1 lg:text-sm">
                   {safeNumber(rep.commission_rate)}% Commission
                 </Badge>
                 {safeNumber(rep.bonus_commission) > 0 && (
@@ -327,20 +327,20 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
 
       {/* Stats Cards - Always 2x2 grid */}
       <div className="grid grid-cols-2 gap-3 lg:gap-4">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:p-6 backdrop-blur-xl">
-          <p className="text-xs text-white/40 uppercase tracking-wider">Customers</p>
-          <p className="mt-1 text-xl lg:text-3xl font-bold text-white">{customers.length}</p>
+        <div className="rounded-2xl border border-border bg-foreground/5 p-4 lg:p-6 backdrop-blur-xl">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">Customers</p>
+          <p className="mt-1 text-xl lg:text-3xl font-bold text-foreground">{customers.length}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:p-6 backdrop-blur-xl">
-          <p className="text-xs text-white/40 uppercase tracking-wider">Orders</p>
-          <p className="mt-1 text-xl lg:text-3xl font-bold text-white">{orders.length}</p>
+        <div className="rounded-2xl border border-border bg-foreground/5 p-4 lg:p-6 backdrop-blur-xl">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">Orders</p>
+          <p className="mt-1 text-xl lg:text-3xl font-bold text-foreground">{orders.length}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:p-6 backdrop-blur-xl">
-          <p className="text-xs text-white/40 uppercase tracking-wider">Total Sales</p>
+        <div className="rounded-2xl border border-border bg-foreground/5 p-4 lg:p-6 backdrop-blur-xl">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">Total Sales</p>
           <p className="mt-1 text-xl lg:text-3xl font-bold text-emerald-400">${totalSales.toLocaleString()}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 lg:p-6 backdrop-blur-xl">
-          <p className="text-xs text-white/40 uppercase tracking-wider">Commission</p>
+        <div className="rounded-2xl border border-border bg-foreground/5 p-4 lg:p-6 backdrop-blur-xl">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider">Commission</p>
           <p className="mt-1 text-xl lg:text-3xl font-bold text-amber-400">${totalCommission.toFixed(2)}</p>
         </div>
       </div>
@@ -350,13 +350,13 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
         <div className="lg:hidden">
           <button
             onClick={() => setShowTabMenu(!showTabMenu)}
-            className="w-full flex items-center justify-between gap-3 p-4 rounded-2xl bg-white/5 border border-white/10"
+            className="w-full flex items-center justify-between gap-3 p-4 rounded-2xl bg-foreground/5 border border-border"
           >
             <div className="flex items-center gap-3">
-              <ActiveIcon className="h-5 w-5 text-white" />
-              <span className="font-medium text-white">{activeTabData?.label}</span>
+              <ActiveIcon className="h-5 w-5 text-foreground" />
+              <span className="font-medium text-foreground">{activeTabData?.label}</span>
             </div>
-            <ChevronDown className={`h-5 w-5 text-white/50 transition-transform ${showTabMenu ? "rotate-180" : ""}`} />
+            <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform ${showTabMenu ? "rotate-180" : ""}`} />
           </button>
           <AnimatePresence>
             {showTabMenu && (
@@ -364,7 +364,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full left-0 right-0 z-50 mt-2 rounded-2xl bg-black/95 border border-white/10 backdrop-blur-xl overflow-hidden"
+                className="absolute top-full left-0 right-0 z-50 mt-2 rounded-2xl bg-background/95 border border-border backdrop-blur-xl overflow-hidden"
               >
                 {tabs.map((tab) => {
                   const Icon = tab.icon
@@ -377,7 +377,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                         setShowTabMenu(false)
                       }}
                       className={`w-full flex items-center gap-3 p-4 transition-colors ${
-                        isActive ? "bg-white text-black" : "text-white/70 hover:bg-white/10"
+                        isActive ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:bg-foreground/10"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
@@ -391,7 +391,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
         </div>
 
         {/* Desktop: Inline tabs - only on lg and up */}
-        <div className="hidden lg:flex gap-2 p-2 rounded-2xl bg-white/5 border border-white/10 flex-wrap">
+        <div className="hidden lg:flex gap-2 p-2 rounded-2xl bg-foreground/5 border border-border flex-wrap">
           {tabs.map((tab) => {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
@@ -400,7 +400,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
-                  isActive ? "bg-white text-black" : "text-white/60 hover:text-white hover:bg-white/10"
+                  isActive ? "bg-primary text-primary-foreground" : "text-foreground/60 hover:text-foreground hover:bg-foreground/10"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -416,7 +416,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
         {loading ? (
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-24 animate-pulse rounded-2xl bg-white/5" />
+              <div key={i} className="h-24 animate-pulse rounded-2xl bg-foreground/5" />
             ))}
           </div>
         ) : (
@@ -426,23 +426,23 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
               <div className="space-y-8">
                 {/* Recent Orders */}
                 <div className="space-y-4">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Recent Orders</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Recent Orders</h2>
                   {orders.slice(0, 5).length === 0 ? (
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-12 text-center">
-                      <ShoppingCart className="mx-auto h-10 w-10 text-white/20" />
-                      <p className="mt-4 text-white/50">No orders yet</p>
+                    <div className="rounded-2xl border border-border bg-foreground/5 p-12 text-center">
+                      <ShoppingCart className="mx-auto h-10 w-10 text-muted-foreground/50" />
+                      <p className="mt-4 text-muted-foreground">No orders yet</p>
                     </div>
                   ) : (
                     <div className="space-y-3">
                       {orders.slice(0, 5).map((order) => (
-                        <div key={order.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <div key={order.id} className="rounded-2xl border border-border bg-foreground/5 p-4">
                           <div className="flex flex-col gap-3">
                             <div className="flex items-start justify-between gap-2">
                               <div className="min-w-0 flex-1">
-                                <p className="font-semibold text-white text-sm lg:text-base truncate">
+                                <p className="font-semibold text-foreground text-sm lg:text-base truncate">
                                   Order #{order.order_number}
                                 </p>
-                                <p className="text-xs lg:text-sm text-white/50 truncate">{order.customer_name}</p>
+                                <p className="text-xs lg:text-sm text-muted-foreground truncate">{order.customer_name}</p>
                               </div>
                               <Badge
                                 className={`shrink-0 text-xs
@@ -456,11 +456,11 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                               </Badge>
                             </div>
                             <div className="flex items-center justify-between">
-                              <p className="text-xs text-white/30">
+                              <p className="text-xs text-muted-foreground">
                                 {order.created_at ? format(new Date(order.created_at), "MMM d, yyyy") : ""}
                               </p>
                               <div className="text-right">
-                                <p className="text-base lg:text-lg font-bold text-white">
+                                <p className="text-base lg:text-lg font-bold text-foreground">
                                   ${safeNumber(order.total_amount).toFixed(2)}
                                 </p>
                                 <p className="text-xs text-emerald-400">
@@ -480,25 +480,25 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
 
                 {/* Assigned Customers */}
                 <div className="space-y-4">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-white/40">Assigned Customers</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Assigned Customers</h2>
                   {customers.length === 0 ? (
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-12 text-center">
-                      <Users className="mx-auto h-10 w-10 text-white/20" />
-                      <p className="mt-4 text-white/50">No customers assigned</p>
+                    <div className="rounded-2xl border border-border bg-foreground/5 p-12 text-center">
+                      <Users className="mx-auto h-10 w-10 text-muted-foreground/50" />
+                      <p className="mt-4 text-muted-foreground">No customers assigned</p>
                     </div>
                   ) : (
                     <div className="space-y-3">
                       {customers.slice(0, 4).map((customer) => (
-                        <div key={customer.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <div key={customer.id} className="rounded-2xl border border-border bg-foreground/5 p-4">
                           <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-xl bg-white/10 text-base lg:text-lg font-bold text-white shrink-0">
+                            <div className="flex h-10 w-10 lg:h-12 lg:w-12 items-center justify-center rounded-xl bg-foreground/10 text-base lg:text-lg font-bold text-foreground shrink-0">
                               {getCustomerInitial(customer)}
                             </div>
                             <div className="min-w-0 flex-1">
-                              <p className="font-semibold text-white text-sm lg:text-base truncate">
+                              <p className="font-semibold text-foreground text-sm lg:text-base truncate">
                                 {getCustomerDisplayName(customer)}
                               </p>
-                              <p className="text-xs lg:text-sm text-white/50 truncate">{getCustomerEmail(customer)}</p>
+                              <p className="text-xs lg:text-sm text-muted-foreground truncate">{getCustomerEmail(customer)}</p>
                             </div>
                           </div>
                         </div>
@@ -513,7 +513,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
             {activeTab === "customers" && (
               <div className="space-y-6">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-white/50">{customers.length} customers assigned</p>
+                  <p className="text-muted-foreground">{customers.length} customers assigned</p>
                   <button
                     onClick={() => setShowAddCustomer(!showAddCustomer)}
                     className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-white px-6 font-bold text-black transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -532,45 +532,45 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+                      <div className="rounded-2xl border border-border bg-foreground/5 p-6 space-y-4">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-white text-lg">Add Customer</h3>
+                          <h3 className="font-semibold text-foreground text-lg">Add Customer</h3>
                           <button
                             onClick={() => setShowAddCustomer(false)}
-                            className="p-3 rounded-xl hover:bg-white/10 text-white/50 hover:text-white"
+                            className="p-3 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
                           >
                             <X className="h-5 w-5" />
                           </button>
                         </div>
                         <div className="relative">
-                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
+                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                           <Input
                             value={customerSearch}
                             onChange={(e) => setCustomerSearch(e.target.value)}
                             placeholder="Search unassigned customers..."
-                            className="rounded-xl h-14 pl-12 bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                            className="rounded-xl h-14 pl-12 bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
                         <div className="max-h-80 overflow-y-auto space-y-2">
                           {filteredUnassignedCustomers.length === 0 ? (
-                            <p className="text-center py-8 text-white/50">No unassigned customers found</p>
+                            <p className="text-center py-8 text-muted-foreground">No unassigned customers found</p>
                           ) : (
                             filteredUnassignedCustomers.map((customer) => (
                               <button
                                 key={customer.id}
                                 onClick={() => handleAssignCustomer(customer.id)}
-                                className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-left"
+                                className="w-full flex items-center gap-4 p-4 rounded-xl bg-foreground/5 hover:bg-foreground/10 transition-colors text-left"
                               >
-                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-lg font-bold text-white shrink-0">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-lg font-bold text-foreground shrink-0">
                                   {getCustomerInitial(customer)}
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                  <p className="font-medium text-white truncate">{getCustomerDisplayName(customer)}</p>
+                                  <p className="font-medium text-foreground truncate">{getCustomerDisplayName(customer)}</p>
                                   {customer.company_name && (
-                                    <p className="text-sm text-white/50 truncate">{customer.company_name}</p>
+                                    <p className="text-sm text-muted-foreground truncate">{customer.company_name}</p>
                                   )}
                                 </div>
-                                <Plus className="h-6 w-6 text-white/40 shrink-0" />
+                                <Plus className="h-6 w-6 text-muted-foreground shrink-0" />
                               </button>
                             ))
                           )}
@@ -582,25 +582,25 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
 
                 {/* Customer List */}
                 {customers.length === 0 ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-16 text-center">
-                    <Users className="mx-auto h-12 w-12 text-white/20" />
-                    <h3 className="mt-4 text-xl font-bold text-white">No customers assigned</h3>
-                    <p className="mt-2 text-white/50">Add customers to this representative</p>
+                  <div className="rounded-2xl border border-border bg-foreground/5 p-16 text-center">
+                    <Users className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                    <h3 className="mt-4 text-xl font-bold text-foreground">No customers assigned</h3>
+                    <p className="mt-2 text-muted-foreground">Add customers to this representative</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {customers.map((customer) => (
-                      <div key={customer.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6">
+                      <div key={customer.id} className="rounded-2xl border border-border bg-foreground/5 p-4 md:p-6">
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex items-center gap-4 min-w-0">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-lg font-bold text-white shrink-0">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-lg font-bold text-foreground shrink-0">
                               {getCustomerInitial(customer)}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-semibold text-white truncate">{getCustomerDisplayName(customer)}</p>
-                              <p className="text-sm text-white/50">{getCustomerEmail(customer) || ""}</p>
+                              <p className="font-semibold text-foreground truncate">{getCustomerDisplayName(customer)}</p>
+                              <p className="text-sm text-muted-foreground">{getCustomerEmail(customer) || ""}</p>
                               {customer.company_name && (
-                                <p className="text-sm text-white/40 truncate">{customer.company_name}</p>
+                                <p className="text-sm text-muted-foreground truncate">{customer.company_name}</p>
                               )}
                             </div>
                           </div>
@@ -622,24 +622,24 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
             {activeTab === "orders" && (
               <div className="space-y-4">
                 {orders.length === 0 ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-16 text-center">
-                    <ShoppingCart className="mx-auto h-12 w-12 text-white/20" />
-                    <h3 className="mt-4 text-xl font-bold text-white">No orders yet</h3>
-                    <p className="mt-2 text-white/50">Orders from this rep's customers will appear here</p>
+                  <div className="rounded-2xl border border-border bg-foreground/5 p-16 text-center">
+                    <ShoppingCart className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                    <h3 className="mt-4 text-xl font-bold text-foreground">No orders yet</h3>
+                    <p className="mt-2 text-muted-foreground">Orders from this rep's customers will appear here</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {orders.map((order) => (
-                      <div key={order.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6">
+                      <div key={order.id} className="rounded-2xl border border-border bg-foreground/5 p-4 md:p-6">
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                           <div className="space-y-1">
-                            <p className="text-lg font-semibold text-white">Order #{order.order_number}</p>
-                            <p className="text-white/50">{order.customer_name}</p>
-                            <p className="text-sm text-white/30">{format(new Date(order.created_at), "PPP")}</p>
+                            <p className="text-lg font-semibold text-foreground">Order #{order.order_number}</p>
+                            <p className="text-muted-foreground">{order.customer_name}</p>
+                            <p className="text-sm text-muted-foreground">{format(new Date(order.created_at), "PPP")}</p>
                           </div>
                           <div className="flex items-center gap-4 md:gap-6">
                             <div className="text-right">
-                              <p className="text-xl md:text-2xl font-bold text-white">
+                              <p className="text-xl md:text-2xl font-bold text-foreground">
                                 ${safeNumber(order.total_amount).toFixed(2)}
                               </p>
                               <p className="text-sm text-emerald-400">
@@ -670,15 +670,15 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
             {activeTab === "pricing" && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl font-bold text-white">Custom Product Pricing</h2>
-                  <p className="text-white/50 mt-1">Set special prices for this rep's discount codes</p>
+                  <h2 className="text-xl font-bold text-foreground">Custom Product Pricing</h2>
+                  <p className="text-muted-foreground mt-1">Set special prices for this rep's discount codes</p>
                 </div>
 
                 {groupedProducts.length === 0 ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-16 text-center">
-                    <Package className="mx-auto h-12 w-12 text-white/20" />
-                    <h3 className="mt-4 text-xl font-bold text-white">No products</h3>
-                    <p className="mt-2 text-white/50">Products will appear here</p>
+                  <div className="rounded-2xl border border-border bg-foreground/5 p-16 text-center">
+                    <Package className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                    <h3 className="mt-4 text-xl font-bold text-foreground">No products</h3>
+                    <p className="mt-2 text-muted-foreground">Products will appear here</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -689,7 +689,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                       return (
                         <div
                           key={group.base_name}
-                          className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden"
+                          className="rounded-2xl border border-border bg-foreground/5 overflow-hidden"
                         >
                           {/* Product Header */}
                           <button
@@ -698,28 +698,28 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                 isExpanded ? prev.filter((p) => p !== group.base_name) : [...prev, group.base_name],
                               )
                             }
-                            className="w-full flex items-center justify-between p-4 md:p-6 text-left hover:bg-white/5 transition-colors"
+                            className="w-full flex items-center justify-between p-4 md:p-6 text-left hover:bg-foreground/5 transition-colors"
                           >
                             <div className="flex items-center gap-4">
-                              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 shrink-0">
-                                <Package className="h-6 w-6 text-white/60" />
+                              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 shrink-0">
+                                <Package className="h-6 w-6 text-foreground/60" />
                               </div>
                               <div>
                                 <div className="flex items-center gap-3">
-                                  <p className="font-semibold text-white text-lg">{group.base_name}</p>
+                                  <p className="font-semibold text-foreground text-lg">{group.base_name}</p>
                                   {hasCustomPricing && (
                                     <Badge className="bg-emerald-500/20 text-emerald-400 border-0 px-2 py-0.5 text-xs">
                                       Custom Pricing
                                     </Badge>
                                   )}
                                 </div>
-                                <p className="text-sm text-white/50">
+                                <p className="text-sm text-muted-foreground">
                                   {group.variants.length} variant{group.variants.length !== 1 ? "s" : ""}
                                 </p>
                               </div>
                             </div>
                             <ChevronDown
-                              className={`h-5 w-5 text-white/50 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                              className={`h-5 w-5 text-muted-foreground transition-transform ${isExpanded ? "rotate-180" : ""}`}
                             />
                           </button>
 
@@ -732,7 +732,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                 exit={{ height: 0 }}
                                 className="overflow-hidden"
                               >
-                                <div className="border-t border-white/10 p-4 md:p-6 space-y-4">
+                                <div className="border-t border-border p-4 md:p-6 space-y-4">
                                   {group.variants.map((variant) => {
                                     const percentDiff = variant.custom_price
                                       ? (
@@ -746,22 +746,22 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                     return (
                                       <div
                                         key={variant.id}
-                                        className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-xl bg-white/5"
+                                        className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-xl bg-foreground/5"
                                       >
                                         <div className="flex-1 min-w-0">
-                                          <p className="font-medium text-white">{variant.variant || variant.name}</p>
-                                          {variant.color && <p className="text-sm text-white/40">{variant.color}</p>}
+                                          <p className="font-medium text-foreground">{variant.variant || variant.name}</p>
+                                          {variant.color && <p className="text-sm text-muted-foreground">{variant.color}</p>}
                                         </div>
 
                                         {/* Price Display */}
                                         <div className="flex items-center gap-4 flex-wrap">
                                           <div className="text-right">
-                                            <p className="text-xs text-white/40 uppercase">Retail</p>
-                                            <p className="font-bold text-white">${variant.retail_price.toFixed(2)}</p>
+                                            <p className="text-xs text-muted-foreground uppercase">Retail</p>
+                                            <p className="font-bold text-foreground">${variant.retail_price.toFixed(2)}</p>
                                           </div>
 
                                           <div className="text-right min-w-[100px]">
-                                            <p className="text-xs text-white/40 uppercase">Rep Price</p>
+                                            <p className="text-xs text-muted-foreground uppercase">Rep Price</p>
                                             {isEditing ? (
                                               <div className="flex items-center gap-2">
                                                 <Input
@@ -774,7 +774,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                                       [variant.id]: e.target.value,
                                                     }))
                                                   }
-                                                  className="h-10 w-24 rounded-xl bg-white/10 border-white/20 text-white text-right"
+                                                  className="h-10 w-24 rounded-xl bg-foreground/10 border-border text-foreground text-right"
                                                   autoFocus
                                                 />
                                                 <button
@@ -792,7 +792,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                                       return updated
                                                     })
                                                   }
-                                                  className="p-2 rounded-lg bg-white/10 text-white/50 hover:bg-white/20"
+                                                  className="p-2 rounded-lg bg-foreground/10 text-muted-foreground hover:bg-foreground/20"
                                                 >
                                                   <X className="h-4 w-4" />
                                                 </button>
@@ -809,7 +809,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                                     </Badge>
                                                   </>
                                                 ) : (
-                                                  <p className="text-white/40">—</p>
+                                                  <p className="text-muted-foreground">—</p>
                                                 )}
                                               </div>
                                             )}
@@ -825,7 +825,7 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                                                     [variant.id]: variant.custom_price?.toString() || "",
                                                   }))
                                                 }
-                                                className="p-3 rounded-xl bg-white/10 text-white/60 hover:bg-white/20 hover:text-white transition-colors"
+                                                className="p-3 rounded-xl bg-foreground/10 text-foreground/60 hover:bg-foreground/20 hover:text-foreground transition-colors"
                                               >
                                                 <Edit3 className="h-4 w-4" />
                                               </button>
@@ -859,8 +859,8 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
               <div className="space-y-6">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-white">Discount Codes</h2>
-                    <p className="text-white/50">Discount codes created by this rep</p>
+                    <h2 className="text-xl font-bold text-foreground">Discount Codes</h2>
+                    <p className="text-muted-foreground">Discount codes created by this rep</p>
                   </div>
                   <button
                     onClick={() => setShowCreateDiscount(!showCreateDiscount)}
@@ -880,49 +880,49 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
+                      <div className="rounded-2xl border border-border bg-foreground/5 p-6 space-y-4">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-white text-lg">Create Discount Code</h3>
+                          <h3 className="font-semibold text-foreground text-lg">Create Discount Code</h3>
                           <button
                             onClick={() => setShowCreateDiscount(false)}
-                            className="p-3 rounded-xl hover:bg-white/10 text-white/50 hover:text-white"
+                            className="p-3 rounded-xl hover:bg-foreground/10 text-muted-foreground hover:text-foreground"
                           >
                             <X className="h-5 w-5" />
                           </button>
                         </div>
                         <div className="grid gap-4 md:grid-cols-3">
                           <div className="space-y-2">
-                            <Label className="text-white/60">Code</Label>
+                            <Label className="text-foreground/60">Code</Label>
                             <Input
                               value={newDiscountCode}
                               onChange={(e) => setNewDiscountCode(e.target.value.toUpperCase())}
                               placeholder="SUMMER20"
-                              className="rounded-xl h-14 bg-white/5 border-white/10 text-white uppercase placeholder:text-white/30"
+                              className="rounded-xl h-14 bg-foreground/5 border-border text-foreground uppercase placeholder:text-muted-foreground"
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label className="text-white/60">Type</Label>
+                            <Label className="text-foreground/60">Type</Label>
                             <select
                               value={newDiscountType}
                               onChange={(e) => setNewDiscountType(e.target.value as "percentage" | "fixed")}
-                              className="w-full h-14 rounded-xl bg-white/5 border border-white/10 text-white px-4"
+                              className="w-full h-14 rounded-xl bg-foreground/5 border border-border text-foreground px-4"
                             >
-                              <option value="percentage" className="bg-black">
+                              <option value="percentage" className="bg-background">
                                 Percentage
                               </option>
-                              <option value="fixed" className="bg-black">
+                              <option value="fixed" className="bg-background">
                                 Fixed Amount
                               </option>
                             </select>
                           </div>
                           <div className="space-y-2">
-                            <Label className="text-white/60">Value</Label>
+                            <Label className="text-foreground/60">Value</Label>
                             <Input
                               type="number"
                               value={newDiscountValue}
                               onChange={(e) => setNewDiscountValue(e.target.value)}
                               placeholder={newDiscountType === "percentage" ? "20" : "10.00"}
-                              className="rounded-xl h-14 bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                              className="rounded-xl h-14 bg-foreground/5 border-border text-foreground placeholder:text-muted-foreground"
                             />
                           </div>
                         </div>
@@ -939,37 +939,37 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                 </AnimatePresence>
 
                 {discountHistory.length === 0 ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-16 text-center">
-                    <Percent className="mx-auto h-12 w-12 text-white/20" />
-                    <h3 className="mt-4 text-xl font-bold text-white">No discount codes</h3>
-                    <p className="mt-2 text-white/50">Create a discount code for this rep</p>
+                  <div className="rounded-2xl border border-border bg-foreground/5 p-16 text-center">
+                    <Percent className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                    <h3 className="mt-4 text-xl font-bold text-foreground">No discount codes</h3>
+                    <p className="mt-2 text-muted-foreground">Create a discount code for this rep</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {discountHistory.map((discount) => (
-                      <div key={discount.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6">
+                      <div key={discount.id} className="rounded-2xl border border-border bg-foreground/5 p-4 md:p-6">
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                           <div className="space-y-1">
                             <div className="flex items-center gap-3 flex-wrap">
-                              <p className="text-lg font-bold text-white font-mono">{discount.code}</p>
+                              <p className="text-lg font-bold text-foreground font-mono">{discount.code}</p>
                               <Badge
                                 className={`
-                                ${(discount.times_used || 0) > 0 ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/60"}
+                                ${(discount.times_used || 0) > 0 ? "bg-emerald-500/20 text-emerald-400" : "bg-foreground/10 text-foreground/60"}
                                 border-0 px-3 py-1
                               `}
                               >
                                 {(discount.times_used || 0) > 0 ? `Used ${discount.times_used}x` : "Unused"}
                               </Badge>
                             </div>
-                            <p className="text-white/50">
+                            <p className="text-muted-foreground">
                               {discount.discount_type === "percentage"
                                 ? `${discount.discount_value}% off`
                                 : `$${discount.discount_value} off`}
                             </p>
                           </div>
                           <div className="text-left md:text-right">
-                            <p className="text-sm text-white/40">Created</p>
-                            <p className="text-white/60">{format(new Date(discount.created_at), "PPP")}</p>
+                            <p className="text-sm text-muted-foreground">Created</p>
+                            <p className="text-foreground/60">{format(new Date(discount.created_at), "PPP")}</p>
                           </div>
                         </div>
                       </div>
@@ -982,32 +982,32 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
             {/* History Tab */}
             {activeTab === "history" && (
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-white">Price Edit History</h2>
+                <h2 className="text-xl font-bold text-foreground">Price Edit History</h2>
                 {priceHistory.length === 0 ? (
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-16 text-center">
-                    <Clock className="mx-auto h-12 w-12 text-white/20" />
-                    <h3 className="mt-4 text-xl font-bold text-white">No history</h3>
-                    <p className="mt-2 text-white/50">Price changes will be logged here</p>
+                  <div className="rounded-2xl border border-border bg-foreground/5 p-16 text-center">
+                    <Clock className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                    <h3 className="mt-4 text-xl font-bold text-foreground">No history</h3>
+                    <p className="mt-2 text-muted-foreground">Price changes will be logged here</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {priceHistory.map((edit) => (
-                      <div key={edit.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6">
+                      <div key={edit.id} className="rounded-2xl border border-border bg-foreground/5 p-4 md:p-6">
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                           <div className="flex items-center gap-4">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 shrink-0">
-                              <Package className="h-5 w-5 text-white/60" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-foreground/10 shrink-0">
+                              <Package className="h-5 w-5 text-foreground/60" />
                             </div>
                             <div>
-                              <p className="font-semibold text-white">{edit.product_name}</p>
+                              <p className="font-semibold text-foreground">{edit.product_name}</p>
                               <div className="flex items-center gap-2 text-sm">
-                                <span className="text-white/40">${safeNumber(edit.old_price).toFixed(2)}</span>
-                                <span className="text-white/30">→</span>
+                                <span className="text-muted-foreground">${safeNumber(edit.old_price).toFixed(2)}</span>
+                                <span className="text-muted-foreground">→</span>
                                 <span className="text-emerald-400">${safeNumber(edit.new_price).toFixed(2)}</span>
                               </div>
                             </div>
                           </div>
-                          <p className="text-sm text-white/40">{format(new Date(edit.created_at), "PPP 'at' p")}</p>
+                          <p className="text-sm text-muted-foreground">{format(new Date(edit.created_at), "PPP 'at' p")}</p>
                         </div>
                       </div>
                     ))}
@@ -1019,12 +1019,12 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
             {/* Settings Tab */}
             {activeTab === "settings" && (
               <div className="space-y-8">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 space-y-6">
-                  <h2 className="text-xl font-bold text-white">Commission Settings</h2>
+                <div className="rounded-2xl border border-border bg-foreground/5 p-6 md:p-8 space-y-6">
+                  <h2 className="text-xl font-bold text-foreground">Commission Settings</h2>
 
                   <div className="grid gap-6 md:grid-cols-2">
                     <div className="space-y-3">
-                      <Label className="text-white/60">Commission Rate (%)</Label>
+                      <Label className="text-foreground/60">Commission Rate (%)</Label>
                       <Input
                         type="number"
                         step="0.1"
@@ -1032,21 +1032,21 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                         max="100"
                         value={commissionRate}
                         onChange={(e) => setCommissionRate(Number(e.target.value))}
-                        className="rounded-xl h-14 bg-white/5 border-white/10 text-white text-lg"
+                        className="rounded-xl h-14 bg-foreground/5 border-border text-foreground text-lg"
                       />
-                      <p className="text-sm text-white/40">Percentage of each sale this rep earns</p>
+                      <p className="text-sm text-muted-foreground">Percentage of each sale this rep earns</p>
                     </div>
                     <div className="space-y-3">
-                      <Label className="text-white/60">Bonus Commission ($)</Label>
+                      <Label className="text-foreground/60">Bonus Commission ($)</Label>
                       <Input
                         type="number"
                         step="0.01"
                         min="0"
                         value={bonusCommission}
                         onChange={(e) => setBonusCommission(Number(e.target.value))}
-                        className="rounded-xl h-14 bg-white/5 border-white/10 text-white text-lg"
+                        className="rounded-xl h-14 bg-foreground/5 border-border text-foreground text-lg"
                       />
-                      <p className="text-sm text-white/40">Extra bonus amount added to pending commissions</p>
+                      <p className="text-sm text-muted-foreground">Extra bonus amount added to pending commissions</p>
                     </div>
                   </div>
 
@@ -1068,25 +1068,25 @@ export function RepDetailTabs({ rep, initialOrders, initialCustomers }: RepDetai
                   </button>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 space-y-4">
-                  <h2 className="text-xl font-bold text-white">Rep Information</h2>
+                <div className="rounded-2xl border border-border bg-foreground/5 p-6 md:p-8 space-y-4">
+                  <h2 className="text-xl font-bold text-foreground">Rep Information</h2>
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
-                      <p className="text-sm text-white/40">Email</p>
-                      <p className="text-white">{rep.email}</p>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="text-foreground">{rep.email}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-white/40">Name</p>
-                      <p className="text-white">
+                      <p className="text-sm text-muted-foreground">Name</p>
+                      <p className="text-foreground">
                         {rep.first_name && rep.last_name ? `${rep.first_name} ${rep.last_name}` : "Not set"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-white/40">Joined</p>
-                      <p className="text-white">{format(new Date(rep.created_at), "PPP")}</p>
+                      <p className="text-sm text-muted-foreground">Joined</p>
+                      <p className="text-foreground">{format(new Date(rep.created_at), "PPP")}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-white/40">Status</p>
+                      <p className="text-sm text-muted-foreground">Status</p>
                       <Badge className="bg-emerald-500/20 text-emerald-400 border-0 px-3 py-1">Active</Badge>
                     </div>
                   </div>

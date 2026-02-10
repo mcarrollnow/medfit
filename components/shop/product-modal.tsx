@@ -94,26 +94,26 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl bg-black border-white/10 text-white">
+      <DialogContent className="max-w-3xl bg-background border-border text-foreground">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-white">
+          <DialogTitle className="text-2xl font-bold text-foreground">
             {groupedProduct.base_name}
           </DialogTitle>
-          <DialogDescription className="text-white/60">
+          <DialogDescription className="text-foreground/60">
             Premium research compound • ≥99% pure • Third-party tested
           </DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-6 py-4">
           {/* Product Hero */}
-          <div className="relative h-48 rounded-lg bg-gradient-to-br from-zinc-900 to-black p-8">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 rounded-lg" />
+          <div className="relative h-48 rounded-lg bg-gradient-to-br from-zinc-900 to-background p-8">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/50 rounded-lg" />
             <div className="relative flex h-full items-center justify-center">
               <div 
                 className={`h-32 w-32 rounded-full bg-gradient-to-br ${groupedProduct.color || 'from-purple-600 to-blue-600'} p-[2px]`}
               >
-                <div className="flex h-full w-full items-center justify-center rounded-full bg-zinc-900">
-                  <span className="text-3xl font-bold text-white">
+                <div className="flex h-full w-full items-center justify-center rounded-full bg-card">
+                  <span className="text-3xl font-bold text-foreground">
                     {groupedProduct.base_name.slice(0, 3).toUpperCase()}
                   </span>
                 </div>
@@ -123,21 +123,21 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
 
           {/* Ratings */}
           {ratings.length > 0 && (
-            <div className="space-y-3 rounded-lg bg-zinc-900/50 p-6 border border-white/10">
-              <h4 className="font-semibold text-white mb-4">Research Metrics</h4>
+            <div className="space-y-3 rounded-lg bg-card/50 p-6 border border-border">
+              <h4 className="font-semibold text-foreground mb-4">Research Metrics</h4>
               {ratings.map((rating) => (
                 <div key={rating.label} className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-white/80">{rating.label}</span>
-                    <span className="text-sm font-bold text-white">{rating.value}</span>
+                    <span className="text-sm font-medium text-foreground/80">{rating.label}</span>
+                    <span className="text-sm font-bold text-foreground">{rating.value}</span>
                   </div>
-                  <div className="relative h-2 w-full overflow-hidden rounded-full bg-white/10">
+                  <div className="relative h-2 w-full overflow-hidden rounded-full bg-foreground/10">
                     <div
                       className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-400 to-emerald-400"
                       style={{ width: `${(rating.value / 10) * 100}%` }}
                     />
                   </div>
-                  <p className="text-xs text-white/60">{rating.description}</p>
+                  <p className="text-xs text-foreground/60">{rating.description}</p>
                 </div>
               ))}
             </div>
@@ -145,13 +145,13 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
 
           {/* Variant Selection */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white">Select Variant</h4>
+            <h4 className="font-semibold text-foreground">Select Variant</h4>
             <RadioGroup value={selectedVariantId} onValueChange={setSelectedVariantId}>
               <div className="grid gap-3">
                 {groupedProduct.variants.map((variant) => (
                   <div
                     key={variant.barcode}
-                    className="relative flex items-center space-x-3 rounded-lg border border-white/10 p-4 hover:border-white/20 transition-colors"
+                    className="relative flex items-center space-x-3 rounded-lg border border-border p-4 hover:border-border transition-colors"
                   >
                     <RadioGroupItem value={variant.barcode} id={variant.barcode} />
                     <Label
@@ -159,11 +159,11 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
                       className="flex flex-1 cursor-pointer items-center justify-between"
                     >
                       <div>
-                        <p className="font-medium text-white">{variant.variant}</p>
-                        <p className="text-sm text-white/60">SKU: {variant.barcode}</p>
+                        <p className="font-medium text-foreground">{variant.variant}</p>
+                        <p className="text-sm text-foreground/60">SKU: {variant.barcode}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-xl font-bold text-white">${parseFloat(variant.retail_price).toFixed(2)}</p>
+                        <p className="text-xl font-bold text-foreground">${parseFloat(variant.retail_price).toFixed(2)}</p>
                         {variant.in_stock ? (
                           <Badge variant="outline" className="border-green-500/50 text-green-400">
                             <Check className="mr-1 h-3 w-3" />
@@ -184,9 +184,9 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
 
           {/* Description */}
           {selectedVariant?.description && (
-            <div className="rounded-lg bg-zinc-900/50 p-6 border border-white/10">
-              <h4 className="font-semibold text-white mb-2">Description</h4>
-              <p className="text-sm text-white/80">{selectedVariant.description}</p>
+            <div className="rounded-lg bg-card/50 p-6 border border-border">
+              <h4 className="font-semibold text-foreground mb-2">Description</h4>
+              <p className="text-sm text-foreground/80">{selectedVariant.description}</p>
             </div>
           )}
 
@@ -195,7 +195,7 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
             <Button
               onClick={handleAddToCart}
               disabled={!selectedVariant?.in_stock || isLoading}
-              className="flex-1 bg-white text-black hover:bg-white/90 disabled:bg-white/50"
+              className="flex-1 bg-primary text-primary-foreground hover:bg-card/90 disabled:bg-foreground/50"
             >
               <ShoppingCart className="mr-2 h-4 w-4" />
               Add to Cart
@@ -204,7 +204,7 @@ export function ProductModal({ isOpen, onClose, groupedProduct }: ProductModalPr
               onClick={handleBuyNow}
               disabled={!selectedVariant?.in_stock || isLoading}
               variant="outline"
-              className="flex-1 border-white/20 text-white hover:bg-white/10"
+              className="flex-1 border-border text-foreground hover:bg-foreground/10"
             >
               Buy Now
             </Button>

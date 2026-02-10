@@ -77,7 +77,7 @@ function CashAppPaymentContent() {
       <div className="max-w-lg mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <Link
           href={`/payment?orderId=${orderData.orderId}&total=${orderData.orderTotal}&wallet=`}
-          className="mb-6 inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-white"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Payment Options
@@ -92,74 +92,74 @@ function CashAppPaymentContent() {
               className="h-10 w-auto"
             />
             <div>
-              <p className="text-white/50">
-                Total: <span className="font-semibold text-white text-xl">${orderData.orderTotal.toFixed(2)}</span>
+              <p className="text-muted-foreground">
+                Total: <span className="font-semibold text-foreground text-xl">${orderData.orderTotal.toFixed(2)}</span>
               </p>
             </div>
           </div>
         </div>
 
         {/* Payment Card */}
-        <Card className="border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        <Card className="border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]">
           <CardContent className="p-6 sm:p-8">
             {isMobile ? (
               /* Mobile View - Deep Link Button */
               <div className="space-y-6">
-                <div className="flex items-center gap-3 text-white/70">
+                <div className="flex items-center gap-3 text-foreground/70">
                   <Smartphone className="w-5 h-5" />
                   <span className="text-sm">Mobile device detected</span>
                 </div>
 
                 <div className="text-center space-y-4">
-                  <p className="text-white/70">
+                  <p className="text-foreground/70">
                     Tap below to open Cash App with the payment details prefilled
                   </p>
 
                   <Button
                     onClick={handleOpenCashApp}
-                    className="w-full h-14 text-lg font-semibold bg-[#00D632] hover:bg-[#00B82B] text-white border-0"
+                    className="w-full h-14 text-lg font-semibold bg-[#00D632] hover:bg-[#00B82B] text-foreground border-0"
                   >
                     <ExternalLink className="w-5 h-5 mr-2" />
                     Pay ${orderData.orderTotal.toFixed(2)} in Cash App
                   </Button>
 
-                  <p className="text-xs text-white/40">
-                    Sending to: <span className="font-mono text-white/60">{CASH_TAG}</span>
+                  <p className="text-xs text-muted-foreground">
+                    Sending to: <span className="font-mono text-foreground/60">{CASH_TAG}</span>
                   </p>
                 </div>
 
                 {/* Manual fallback */}
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-sm text-white/50 mb-3">
+                <div className="pt-4 border-t border-border">
+                  <p className="text-sm text-muted-foreground mb-3">
                     Or send manually:
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 h-12 px-4 rounded-xl bg-white/5 border border-white/10 flex items-center">
-                      <span className="text-white font-mono">{CASH_TAG}</span>
+                    <div className="flex-1 h-12 px-4 rounded-xl bg-foreground/5 border border-border flex items-center">
+                      <span className="text-foreground font-mono">{CASH_TAG}</span>
                     </div>
                     <Button
                       onClick={handleCopyTag}
                       variant="outline"
-                      className="h-12 px-4 bg-white/5 border-white/10 hover:bg-white/10"
+                      className="h-12 px-4 bg-foreground/5 border-border hover:bg-foreground/10"
                     >
                       {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
                     </Button>
                   </div>
-                  <p className="text-xs text-white/40 mt-2">
-                    Amount: <span className="font-mono text-white/60">${orderData.orderTotal.toFixed(2)}</span>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Amount: <span className="font-mono text-foreground/60">${orderData.orderTotal.toFixed(2)}</span>
                   </p>
                 </div>
               </div>
             ) : (
               /* Desktop View - QR Code */
               <div className="space-y-6">
-                <div className="flex items-center gap-3 text-white/70">
+                <div className="flex items-center gap-3 text-foreground/70">
                   <Monitor className="w-5 h-5" />
                   <span className="text-sm">Scan with your phone</span>
                 </div>
 
                 <div className="flex flex-col items-center space-y-4">
-                  <p className="text-white/70 text-center">
+                  <p className="text-foreground/70 text-center">
                     Scan this QR code with your phone to open Cash App with payment details prefilled
                   </p>
 
@@ -175,28 +175,28 @@ function CashAppPaymentContent() {
                   </div>
 
                   <div className="text-center space-y-1">
-                    <p className="text-sm text-white/50">
-                      Sending to: <span className="font-mono text-white/70">{CASH_TAG}</span>
+                    <p className="text-sm text-muted-foreground">
+                      Sending to: <span className="font-mono text-foreground/70">{CASH_TAG}</span>
                     </p>
-                    <p className="text-sm text-white/50">
-                      Amount: <span className="font-mono text-white/70">${orderData.orderTotal.toFixed(2)}</span>
+                    <p className="text-sm text-muted-foreground">
+                      Amount: <span className="font-mono text-foreground/70">${orderData.orderTotal.toFixed(2)}</span>
                     </p>
                   </div>
                 </div>
 
                 {/* Copy cashtag */}
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-sm text-white/50 mb-3">
+                <div className="pt-4 border-t border-border">
+                  <p className="text-sm text-muted-foreground mb-3">
                     Or copy cashtag to send manually:
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 h-12 px-4 rounded-xl bg-white/5 border border-white/10 flex items-center">
-                      <span className="text-white font-mono">{CASH_TAG}</span>
+                    <div className="flex-1 h-12 px-4 rounded-xl bg-foreground/5 border border-border flex items-center">
+                      <span className="text-foreground font-mono">{CASH_TAG}</span>
                     </div>
                     <Button
                       onClick={handleCopyTag}
                       variant="outline"
-                      className="h-12 px-4 bg-white/5 border-white/10 hover:bg-white/10"
+                      className="h-12 px-4 bg-foreground/5 border-border hover:bg-foreground/10"
                     >
                       {copied ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
                     </Button>
@@ -209,7 +209,7 @@ function CashAppPaymentContent() {
                     href={getCashAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/50 hover:text-white underline underline-offset-2"
+                    className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2"
                   >
                     Open Cash App in browser →
                   </a>
@@ -220,9 +220,9 @@ function CashAppPaymentContent() {
         </Card>
 
         {/* Instructions */}
-        <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-sm font-medium text-white mb-2">After sending payment:</h3>
-          <ol className="text-sm text-white/50 space-y-1 list-decimal list-inside">
+        <div className="mt-6 p-4 rounded-xl bg-foreground/5 border border-border">
+          <h3 className="text-sm font-medium text-foreground mb-2">After sending payment:</h3>
+          <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
             <li>Complete the payment in Cash App</li>
             <li>Take a screenshot of the confirmation</li>
             <li>Your order will be processed once we confirm receipt</li>
@@ -231,7 +231,7 @@ function CashAppPaymentContent() {
 
         {/* Info Note */}
         <div className="mt-6 text-center">
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-muted-foreground">
             Cash App payments are typically confirmed within minutes
           </p>
         </div>

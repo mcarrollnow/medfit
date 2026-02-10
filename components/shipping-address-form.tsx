@@ -229,7 +229,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
             id="name"
             value={formData.name}
             onChange={(e) => handleChange('name', e.target.value)}
-            className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+            className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
             required
           />
         </div>
@@ -241,7 +241,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
             type="email"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}
-            className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+            className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
             required
           />
         </div>
@@ -254,14 +254,14 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
             onChange={(e) => handleChange('addressLine1', e.target.value)}
             placeholder={apiError ? "Address autocomplete unavailable - type full address" : "Start typing address..."}
             disabled={!!apiError && isLoading}
-            className={`h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg ${apiError ? "border-red-500" : ""}`}
+            className={`h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg ${apiError ? "border-red-500" : ""}`}
             autoComplete="off"
             required
           />
           
           {isLoading && !googleLoaded && (
             <div className="absolute right-3 top-10">
-              <div className="animate-spin h-4 w-4 border-2 border-white/50 border-t-transparent rounded-full"></div>
+              <div className="animate-spin h-4 w-4 border-2 border-border0 border-t-transparent rounded-full"></div>
             </div>
           )}
           
@@ -283,7 +283,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
             value={formData.addressLine2}
             onChange={(e) => handleChange('addressLine2', e.target.value)}
             placeholder="Apartment, suite, unit, building, floor, etc."
-            className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+            className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
           />
         </div>
 
@@ -294,7 +294,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
               id="city"
               value={formData.city}
               onChange={(e) => handleChange('city', e.target.value)}
-              className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+              className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
               required
             />
           </div>
@@ -306,7 +306,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
               onChange={(e) => handleChange('state', e.target.value)}
               maxLength={2}
               placeholder="CA"
-              className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+              className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
               required
             />
           </div>
@@ -317,7 +317,7 @@ export function ShippingAddressFormSimplified({ onAddressChange }: ShippingAddre
               value={formData.zipCode}
               onChange={(e) => handleChange('zipCode', e.target.value)}
               placeholder="90210"
-              className="h-12 text-base bg-white/[0.03] border-white/20 focus:border-white/40 rounded-lg"
+              className="h-12 text-base bg-foreground/[0.04] border-border focus:border-border rounded-lg"
               required
             />
           </div>

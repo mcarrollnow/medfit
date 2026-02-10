@@ -19,11 +19,11 @@ export function GlassButton({ children, className, variant = "default", size = "
   const variantClasses = {
     // Chronicles glass-button aesthetic
     default: cn(
-      "bg-[rgba(255,255,255,0.05)]",
-      "border-[rgba(255,255,255,0.1)]",
+      "bg-foreground/[0.06]",
+      "border-border",
       "text-foreground",
-      "hover:bg-[rgba(255,255,255,0.1)]",
-      "hover:border-[rgba(255,255,255,0.2)]"
+      "hover:bg-foreground/10",
+      "hover:border-border"
     ),
     primary: cn(
       "bg-foreground",
@@ -33,10 +33,10 @@ export function GlassButton({ children, className, variant = "default", size = "
     ),
     outline: cn(
       "bg-transparent",
-      "border-[rgba(255,255,255,0.2)]",
+      "border-border",
       "text-foreground",
-      "hover:bg-[rgba(255,255,255,0.05)]",
-      "hover:border-[rgba(255,255,255,0.3)]"
+      "hover:bg-foreground/[0.06]",
+      "hover:border-border"
     ),
   }
 

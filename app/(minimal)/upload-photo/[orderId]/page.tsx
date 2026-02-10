@@ -130,7 +130,7 @@ export default function QRPhotoUploadPage() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-6">
         <div className="text-center max-w-sm">
-          <div className="bg-white/[0.04] rounded-full p-6 inline-block mb-6">
+          <div className="bg-foreground/[0.05] rounded-full p-6 inline-block mb-6">
             <X className="h-8 w-8 text-destructive-foreground" />
           </div>
           <h1 className="font-serif text-2xl font-light mb-3 text-foreground">
@@ -148,7 +148,7 @@ export default function QRPhotoUploadPage() {
     <div className="min-h-screen bg-background px-6 py-12 flex flex-col">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="bg-white/[0.04] rounded-full p-4 inline-block mb-4">
+        <div className="bg-foreground/[0.05] rounded-full p-4 inline-block mb-4">
           <Package className="h-6 w-6 text-foreground" />
         </div>
         <h1 className="font-serif text-xl font-light text-foreground">
@@ -178,7 +178,7 @@ export default function QRPhotoUploadPage() {
         className={cn(
           "w-full py-6 rounded-2xl font-mono flex items-center justify-center gap-3 transition-all mb-6",
           isUploading
-            ? "bg-white/[0.04] text-muted-foreground"
+            ? "bg-foreground/[0.05] text-muted-foreground"
             : "bg-foreground text-background active:scale-[0.98]"
         )}
       >
@@ -212,7 +212,7 @@ export default function QRPhotoUploadPage() {
             {photos.map((photo, idx) => (
               <div
                 key={idx}
-                className="relative rounded-xl overflow-hidden aspect-square border border-white/[0.08]"
+                className="relative rounded-xl overflow-hidden aspect-square border border-border"
               >
                 <img
                   src={photo.url}
@@ -229,7 +229,7 @@ export default function QRPhotoUploadPage() {
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={isUploading}
-              className="rounded-xl border border-dashed border-white/[0.15] aspect-square flex flex-col items-center justify-center gap-2 text-muted-foreground hover:text-foreground hover:border-white/30 transition-colors"
+              className="rounded-xl border border-dashed border-border aspect-square flex flex-col items-center justify-center gap-2 text-muted-foreground hover:text-foreground hover:border-border transition-colors"
             >
               <Plus className="h-6 w-6" />
               <span className="text-xs font-mono">Add</span>

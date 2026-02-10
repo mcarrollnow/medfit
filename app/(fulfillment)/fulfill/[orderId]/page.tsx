@@ -70,8 +70,8 @@ function StepIndicator({
                   isActive
                     ? "bg-foreground text-background"
                     : isComplete
-                    ? "bg-white/10 text-foreground border border-white/20"
-                    : "bg-white/[0.04] text-muted-foreground border border-white/[0.08]"
+                    ? "bg-foreground/10 text-foreground border border-border"
+                    : "bg-foreground/[0.05] text-muted-foreground border border-border"
                 )}
               >
                 {isComplete ? (
@@ -93,7 +93,7 @@ function StepIndicator({
               <div
                 className={cn(
                   "flex-1 h-px mx-2 md:mx-4",
-                  isComplete ? "bg-white/20" : "bg-white/[0.06]"
+                  isComplete ? "bg-foreground/20" : "bg-foreground/[0.07]"
                 )}
               />
             )}
@@ -643,7 +643,7 @@ export default function FulfillmentWizardPage() {
                   {order.order_items.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between bg-white/[0.02] border border-white/[0.06] rounded-xl p-4"
+                      className="flex items-center justify-between bg-foreground/[0.03] border border-border rounded-xl p-4"
                     >
                       <div>
                         <p className="text-foreground">{item.product_name}</p>
@@ -664,7 +664,7 @@ export default function FulfillmentWizardPage() {
                 </div>
 
                 {/* Totals */}
-                <div className="mt-6 pt-6 border-t border-white/[0.08] space-y-2">
+                <div className="mt-6 pt-6 border-t border-border space-y-2">
                   <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
                     <span className="font-mono">${Number(order.subtotal).toFixed(2)}</span>
@@ -675,7 +675,7 @@ export default function FulfillmentWizardPage() {
                       <span className="font-mono">-${Number(order.discount_amount).toFixed(2)}</span>
                     </div>
                   )}
-                  <div className="flex justify-between text-foreground pt-2 border-t border-white/[0.08]">
+                  <div className="flex justify-between text-foreground pt-2 border-t border-border">
                     <span className="font-light">Total</span>
                     <span className="font-mono text-xl font-light">
                       ${Number(order.total_amount).toFixed(2)}
@@ -717,8 +717,8 @@ export default function FulfillmentWizardPage() {
                         className={cn(
                           "w-full flex items-center gap-4 p-4 rounded-xl border transition-all text-left",
                           isPicked
-                            ? "bg-white/[0.06] border-white/20"
-                            : "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]"
+                            ? "bg-foreground/[0.07] border-border"
+                            : "bg-foreground/[0.03] border-border hover:bg-foreground/[0.05]"
                         )}
                       >
                         <div
@@ -726,7 +726,7 @@ export default function FulfillmentWizardPage() {
                             "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all",
                             isPicked
                               ? "bg-foreground text-background"
-                              : "border border-white/20"
+                              : "border border-border"
                           )}
                         >
                           {isPicked && <Check className="h-4 w-4" />}
@@ -751,7 +751,7 @@ export default function FulfillmentWizardPage() {
               </div>
 
               {/* Progress bar */}
-              <div className="w-full bg-white/[0.06] rounded-full h-2">
+              <div className="w-full bg-foreground/[0.07] rounded-full h-2">
                 <div
                   className="bg-foreground h-2 rounded-full transition-all duration-500"
                   style={{
@@ -886,7 +886,7 @@ export default function FulfillmentWizardPage() {
                     {photos.map((photo) => (
                       <div
                         key={photo.id}
-                        className="relative rounded-xl overflow-hidden aspect-square border border-white/[0.08]"
+                        className="relative rounded-xl overflow-hidden aspect-square border border-border"
                       >
                         <img
                           src={photo.url}
@@ -894,15 +894,15 @@ export default function FulfillmentWizardPage() {
                           className="w-full h-full object-cover"
                         />
                         {photo.filename && (
-                          <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-3 py-2">
-                            <p className="text-xs text-white font-mono truncate">{photo.filename}</p>
+                          <div className="absolute bottom-0 left-0 right-0 bg-foreground/60 px-3 py-2">
+                            <p className="text-xs text-foreground font-mono truncate">{photo.filename}</p>
                           </div>
                         )}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-12 border border-dashed border-white/[0.1] rounded-xl">
+                  <div className="text-center py-12 border border-dashed border-border rounded-xl">
                     <ImageIcon className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
                     <p className="text-sm text-muted-foreground font-mono mb-2">
                       No photos yet
@@ -950,7 +950,7 @@ export default function FulfillmentWizardPage() {
                       value={trackingNumber}
                       onChange={(e) => setTrackingNumber(e.target.value)}
                       placeholder="Enter tracking number..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
                     />
                   </div>
                   <div>
@@ -961,7 +961,7 @@ export default function FulfillmentWizardPage() {
                       value={carrier}
                       onChange={(e) => setCarrier(e.target.value)}
                       placeholder="DHL, FedEx, UPS, USPS..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-foreground font-mono focus:outline-none focus:border-white/20 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-foreground/[0.04] border border-border text-foreground font-mono focus:outline-none focus:border-border transition-colors"
                     />
                   </div>
                 </div>
@@ -991,7 +991,7 @@ export default function FulfillmentWizardPage() {
                     <span className="text-muted-foreground">Photos</span>
                     <span className="text-foreground font-mono">{photos.length}</span>
                   </div>
-                  <div className="flex justify-between pt-2 border-t border-white/[0.08]">
+                  <div className="flex justify-between pt-2 border-t border-border">
                     <span className="text-foreground">Order Total</span>
                     <span className="text-foreground font-mono text-lg">
                       ${Number(order.total_amount).toFixed(2)}

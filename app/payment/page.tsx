@@ -26,9 +26,9 @@ function PaymentCard({ title, description, logos, buttonText, featured, onClick 
       onClick={onClick}
       className={cn(
         "group relative overflow-hidden transition-all duration-300 cursor-pointer",
-        "border-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
-        "hover:bg-white/[0.12] hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)]",
-        featured && "ring-1 ring-white/20",
+        "border-0 bg-foreground/[0.08] backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(58,66,51,0.15)]",
+        "hover:bg-foreground/[0.12] hover:shadow-[0_12px_40px_rgba(58,66,51,0.2)]",
+        featured && "ring-1 ring-foreground/20",
       )}
     >
       <CardContent className="p-6 sm:p-8">
@@ -38,7 +38,7 @@ function PaymentCard({ title, description, logos, buttonText, featured, onClick 
             {logos.map((logo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white/[0.05] border border-white/[0.08] p-2 transition-all duration-200 group-hover:bg-white/[0.08] group-hover:scale-105"
+                className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-foreground/[0.06] border border-border p-2 transition-all duration-200 group-hover:bg-foreground/[0.08] group-hover:scale-105"
                 title={logo.name}
               >
                 {logo.icon}
@@ -48,14 +48,14 @@ function PaymentCard({ title, description, logos, buttonText, featured, onClick 
 
           {/* Title & Description */}
           <div className="flex-1">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2 text-balance">{title}</h2>
-            <p className="text-white/50 text-sm sm:text-base text-pretty leading-relaxed">{description}</p>
+            <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2 text-balance">{title}</h2>
+            <p className="text-muted-foreground text-sm sm:text-base text-pretty leading-relaxed">{description}</p>
           </div>
 
           {/* Button */}
-          <div className="mt-6 pt-4 border-t border-white/[0.08]">
+          <div className="mt-6 pt-4 border-t border-border">
             <Button
-              className="w-full group/btn justify-between text-base font-medium h-12 sm:h-14 bg-black/30 hover:bg-black/40 border border-white/10 text-white"
+              className="w-full group/btn justify-between text-base font-medium h-12 sm:h-14 bg-foreground/30 hover:bg-foreground/40 border border-border text-foreground"
               variant="outline"
             >
               <span>{buttonText}</span>
@@ -121,7 +121,7 @@ function PaymentHubContent() {
       <div className="max-w-5xl mx-auto">
         <Link
           href="/checkout"
-          className="mb-6 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Checkout
@@ -129,12 +129,12 @@ function PaymentHubContent() {
 
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-3">
             Choose Payment Method
           </h1>
-          <p className="text-white/50 text-base sm:text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg">
             Select your preferred way to complete your{' '}
-            <span className="font-semibold text-white">${orderData.orderTotal.toFixed(2)}</span> purchase
+            <span className="font-semibold text-foreground">${orderData.orderTotal.toFixed(2)}</span> purchase
           </p>
         </div>
 
