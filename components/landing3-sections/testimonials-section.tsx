@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
 
 export function TestimonialsSection() {
+  const { getImage } = useLanding3Images();
   return (
     <section id="about" className="bg-background">
       {/* Large Text Statement */}
@@ -16,7 +18,7 @@ export function TestimonialsSection() {
       {/* About Image */}
       <div className="relative aspect-[16/9] w-full">
         <Image
-          src="/images/3d4046a0-b072-4b07-941f-9141ee3ed4a7.png"
+          src={getImage('testimonials_bg')}
           alt="Mountain peaks at sunrise"
           fill
           className="object-cover"

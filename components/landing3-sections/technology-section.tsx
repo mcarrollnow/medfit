@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
 
 function ScrollRevealText({ text }: { text: string }) {
   const containerRef = useRef<HTMLParagraphElement>(null);
@@ -58,34 +59,35 @@ function ScrollRevealText({ text }: { text: string }) {
   );
 }
 
-const sideImages = [
-  {
-    src: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=1000",
-    alt: "Forest trail",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?q=80&w=1000",
-    alt: "Mountain peak",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000",
-    alt: "Alpine landscape",
-    position: "right",
-    span: 1,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000",
-    alt: "Snow mountain",
-    position: "right",
-    span: 1,
-  },
-];
-
 export function TechnologySection() {
+  const { getImage } = useLanding3Images();
+
+  const sideImages = [
+    {
+      src: getImage('tech_left_1'),
+      alt: "Forest trail",
+      position: "left",
+      span: 1,
+    },
+    {
+      src: getImage('tech_left_2'),
+      alt: "Mountain peak",
+      position: "left",
+      span: 1,
+    },
+    {
+      src: getImage('tech_right_1'),
+      alt: "Alpine landscape",
+      position: "right",
+      span: 1,
+    },
+    {
+      src: getImage('tech_right_2'),
+      alt: "Snow mountain",
+      position: "right",
+      span: 1,
+    },
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const textSectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -198,7 +200,7 @@ export function TechnologySection() {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?q=80&w=2000"
+                src={getImage('tech_main')}
                 alt="Aerial view of camping expedition in wilderness"
                 fill
                 className="object-cover"

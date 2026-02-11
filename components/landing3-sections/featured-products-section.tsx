@@ -1,41 +1,24 @@
 "use client";
 
 import { FadeImage } from "@/components/landing3-sections/fade-image";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
 
-const features = [
-  {
-    title: "Smart Temperature Control",
-    description: "Innovation",
-    image: "/images/d18fe616-5596-4559-90f5-a90f5397d0d8.png",
-  },
-  {
-    title: "Ultra-Light Carbon Frame",
-    description: "Performance",
-    image: "/images/e26fa9c3-966d-4966-94a4-954a1e511c1c.png",
-  },
-  {
-    title: "Weather-Resistant Design",
-    description: "Durability",
-    image: "/images/car.jpg",
-  },
-  {
-    title: "Integrated GPS Tracking",
-    description: "Navigation",
-    image: "/images/204cee22-9e85-49e8-9303-1d309af626b0.png",
-  },
-  {
-    title: "Built-In LED Flashlight",
-    description: "Visibility",
-    image: "/images/led-flashlight-bottle.png",
-  },
-  {
-    title: "Self-Heating Technology",
-    description: "Comfort",
-    image: "/images/heating-campfire.png",
-  },
+const featuresMeta = [
+  { slotId: "featured_1", title: "Smart Temperature Control", description: "Innovation" },
+  { slotId: "featured_2", title: "Ultra-Light Carbon Frame", description: "Performance" },
+  { slotId: "featured_3", title: "Weather-Resistant Design", description: "Durability" },
+  { slotId: "featured_4", title: "Integrated GPS Tracking", description: "Navigation" },
+  { slotId: "featured_5", title: "Built-In LED Flashlight", description: "Visibility" },
+  { slotId: "featured_6", title: "Self-Heating Technology", description: "Comfort" },
 ];
 
 export function FeaturedProductsSection() {
+  const { getImage } = useLanding3Images();
+
+  const features = featuresMeta.map((f) => ({
+    ...f,
+    image: getImage(f.slotId),
+  }));
   return (
     <section id="technology" className="bg-background">
       {/* Section Title */}

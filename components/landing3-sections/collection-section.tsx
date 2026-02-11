@@ -1,53 +1,24 @@
 "use client";
 
 import { FadeImage } from "@/components/landing3-sections/fade-image";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
 
-const accessories = [
-  {
-    id: 1,
-    name: "Wireless Charging Stand",
-    description: "Induction charging dock for effortless power",
-    price: "$89",
-    image: "/images/accessory-charger.png",
-  },
-  {
-    id: 2,
-    name: "Protective Silicone Sleeve",
-    description: "Textured grip sleeve for enhanced durability",
-    price: "$45",
-    image: "/images/accessory-sleeve.png",
-  },
-  {
-    id: 3,
-    name: "Carbon Fiber Bike Mount",
-    description: "Ultra-light mounting system for cycling",
-    price: "$129",
-    image: "/images/accessory-bike-mount.png",
-  },
-  {
-    id: 4,
-    name: "Premium Carry Strap",
-    description: "Adjustable strap with quick-release clips",
-    price: "$39",
-    image: "/images/accessory-strap.png",
-  },
-  {
-    id: 5,
-    name: "Carabiner Clip System",
-    description: "Secure attachment for hands-free carrying",
-    price: "$29",
-    image: "/images/accessory-carabiner.png",
-  },
-  {
-    id: 6,
-    name: "Bluetooth Speaker Base",
-    description: "High-fidelity audio dock with grip stabilizers",
-    price: "$149",
-    image: "/images/accessory-speaker-base.png",
-  },
+const accessoriesMeta = [
+  { id: 1, slotId: "accessory_1", name: "Wireless Charging Stand", description: "Induction charging dock for effortless power", price: "$89" },
+  { id: 2, slotId: "accessory_2", name: "Protective Silicone Sleeve", description: "Textured grip sleeve for enhanced durability", price: "$45" },
+  { id: 3, slotId: "accessory_3", name: "Carbon Fiber Bike Mount", description: "Ultra-light mounting system for cycling", price: "$129" },
+  { id: 4, slotId: "accessory_4", name: "Premium Carry Strap", description: "Adjustable strap with quick-release clips", price: "$39" },
+  { id: 5, slotId: "accessory_5", name: "Carabiner Clip System", description: "Secure attachment for hands-free carrying", price: "$29" },
+  { id: 6, slotId: "accessory_6", name: "Bluetooth Speaker Base", description: "High-fidelity audio dock with grip stabilizers", price: "$149" },
 ];
 
 export function CollectionSection() {
+  const { getImage } = useLanding3Images();
+
+  const accessories = accessoriesMeta.map((a) => ({
+    ...a,
+    image: getImage(a.slotId),
+  }));
   return (
     <section id="accessories" className="bg-background">
       {/* Section Title */}

@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
 
 export function PhilosophySection() {
+  const { getImage } = useLanding3Images();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [alpineTranslateX, setAlpineTranslateX] = useState(-100);
   const [forestTranslateX, setForestTranslateX] = useState(100);
@@ -83,7 +85,7 @@ export function PhilosophySection() {
                 }}
               >
                 <Image
-                  src="/images/product-backpack.png"
+                  src={getImage('philosophy_left')}
                   alt="V1 Expedition Backpack in alpine setting"
                   fill
                   className="object-cover"
@@ -106,7 +108,7 @@ export function PhilosophySection() {
                 }}
               >
                 <Image
-                  src="/images/02cdc426-dff4-4dff-b131-1b134c3699b5.png"
+                  src={getImage('philosophy_right')}
                   alt="V1 Thermal mug in forest setting"
                   fill
                   className="object-cover"

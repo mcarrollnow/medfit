@@ -362,8 +362,12 @@ export default function Landing3ImagesPage() {
         .from('landing3_images')
         .select('*')
 
-      if (error && error.code !== 'PGRST116') {
-        throw error
+      if (error) {
+        // Any error (missing table, no rows, permission denied, etc.) — just continue with empty state
+        console.warn('landing3_images fetch error:', error.code, error.message)
+        toast.error('Could not load images. The landing3_images table may not exist yet.')
+        setLoading(false)
+        return
       }
 
       if (data) {
@@ -377,8 +381,8 @@ export default function Landing3ImagesPage() {
         })
         setUploadedImages(imagesMap)
       }
-    } catch (error) {
-      console.error('Failed to fetch images:', error)
+    } catch (error: any) {
+      console.error('Failed to fetch images:', error?.message || error)
       toast.error('Failed to load uploaded images')
     } finally {
       setLoading(false)

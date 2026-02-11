@@ -2,8 +2,21 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLanding3Images } from "@/components/landing3-sections/landing3-images-provider";
+
+const galleryMeta = [
+  { slotId: "gallery_1", alt: "Thermal bottle on bike" },
+  { slotId: "gallery_2", alt: "Thermal bottle by lake" },
+  { slotId: "gallery_3", alt: "Thermal bottle in water" },
+  { slotId: "gallery_4", alt: "Thermal bottle by stream" },
+  { slotId: "gallery_5", alt: "Thermal bottle by fire" },
+  { slotId: "gallery_6", alt: "Thermal bottle in snow" },
+  { slotId: "gallery_7", alt: "Thermal bottle on mountain" },
+  { slotId: "gallery_8", alt: "Thermal bottle at canyon" },
+];
 
 export function GallerySection() {
+  const { getImage } = useLanding3Images();
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [sectionHeight, setSectionHeight] = useState("100vh");
@@ -11,16 +24,10 @@ export function GallerySection() {
   const rafRef = useRef<number | null>(null);
   const lastScrollRef = useRef(0);
 
-  const images = [
-    { src: "/images/bottle-bike.png", alt: "Thermal bottle on bike" },
-    { src: "/images/bottle-lake.png", alt: "Thermal bottle by lake" },
-    { src: "/images/bottle-water.png", alt: "Thermal bottle in water" },
-    { src: "/images/bottle-stream.png", alt: "Thermal bottle by stream" },
-    { src: "/images/bottle-fire.png", alt: "Thermal bottle by fire" },
-    { src: "/images/bottle-snow.png", alt: "Thermal bottle in snow" },
-    { src: "/images/bottle-mountain.png", alt: "Thermal bottle on mountain" },
-    { src: "/images/bottle-canyon.png", alt: "Thermal bottle at canyon" },
-  ];
+  const images = galleryMeta.map((g) => ({
+    src: getImage(g.slotId),
+    alt: g.alt,
+  }));
 
   // Calculate section height based on content width
   useEffect(() => {
